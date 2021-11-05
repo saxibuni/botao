@@ -1,0 +1,83 @@
+/** scss工具方法、自定义动画库相关 **/
+
+// 滚动条美化
+@mixin scrollbar-beautify($width: 4px, $radius: 10px, $background-color: #dad6d6) {
+  &::-webkit-scrollbar {
+    width: $width;
+    height: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0);
+    border-radius: $radius;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $radius;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: $background-color;
+  }
+
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  scrollbar-width: none;
+}
+
+///控制显示行数
+@mixin line-clamp($line: 2) {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $line;
+}
+
+// vue显隐动画
+@mixin fade($duration: 0.3) {
+  &.fade-enter-active,
+  &.fade-leave-active {
+    transition: opacity #{$duration}s;
+  }
+  &.fade-enter,
+  &.fade-leave-to {
+    opacity: 0;
+  }
+}
+
+// vue显隐动画
+@mixin fade-out-in($duration: 0.3) {
+  &.fade-enter-active,
+  &.fade-leave-active {
+    transition: opacity #{$duration}s;
+  }
+
+  &.fade-enter-active {
+    transition-delay: #{$duration}s;
+  }
+
+  &.fade-enter,
+  &.fade-leave-to {
+    opacity: 0;
+  }
+}
+
+// vue高度变化动画
+@mixin height-transition($height) {
+
+  &.height-enter,
+  &.height-leave-to {
+    height: 0;
+  }
+
+  &.height-enter-to,
+  &.height-leave {
+    height: $height;
+  }
+
+  &.height-enter-active,
+  &.height-leave-active {
+    overflow: hidden;
+    transition: height 0.3s;
+  }
+}

@@ -1,0 +1,19 @@
+$designWidth: 1920;
+
+html {
+  font-size: calc(100vw / #{$designWidth} * 100);
+}
+
+///超过1920px使用1920适配
+@media (min-width: 1920px) {
+	html {
+		font-size: 100px;
+	}
+}
+
+@media (orientation: portrait) and (max-device-width: 900px), (max-width: 900px){
+  $designWidth: 900;
+  html {
+    font-size: calc(100vw / #{$designWidth} * 100);
+  }
+}

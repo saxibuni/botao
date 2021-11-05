@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "target": "esnext",
+        "module": "esnext",
+        "sourceMap": true,
+        "allowJs": false,
+        "moduleResolution":"node",
+        "allowSyntheticDefaultImports": true,
+        "lib":[
+          "esnext",
+          "dom",
+          "dom.iterable",
+          "scripthost"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "root/*": ["src/*"],
+            "mm/*": ["src/mm/*"],
+            "assets/*" : ["src/assets/*"],
+            "pages/*": ["src/pages/*"],
+            "service/*": ["src/service/*"]
+        }
+    }
+}
