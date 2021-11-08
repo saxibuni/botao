@@ -23,6 +23,7 @@ import Brand from 'root/pages/brand/index.vue';
 import ResolvePreData from './ResolvePreData';
 
 import MapBox from "root/pages/echartmap.vue";
+import ShanghaiMap from "root/pages/shanghaimap.vue";
 
 Vue.use(Router);
 
@@ -161,6 +162,11 @@ const router = new Router({
 			path: '/mapbox',
 			name: 'mapbox',
 			component: MapBox
+		},
+		{
+			path: '/shanghaimap',
+			name: 'shanghaimap',
+			component: ShanghaiMap
 		},
 		{
 			path: '*',

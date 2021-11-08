@@ -209,7 +209,7 @@ export default class EchartMap extends Vue {
 			series: series
 		};
 
-		this.chart = echarts.init(document.querySelector(".map-box"));
+		this.chart = echarts.init(this.$el.querySelector(".map-box"));
 		this.chart.setOption(mapBoxOption);
 	}
 
