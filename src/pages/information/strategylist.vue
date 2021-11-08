@@ -37,22 +37,25 @@
 				</ul>
 			</div>
 		</div>
-		<ul class="list">
-			<li v-for="n in 6" :key="n">
-				<div class="img-box">
-					<img src="~assets/bg_home_banner2.jpg" alt="" />
-				</div>
-				<div class="info-box">
-					<div class="date">2021,Auguset,10</div>
-					<h4 class="title">看见这些等，邮箱这等这！</h4>
-					<p>优秀的灯光照明，的灯赋上觉上舒适体验瞬间。</p>
-					<div class="more">
-						More
-						<span></span>
+		<div class="list-box">
+			<ul class="list">
+				<li v-for="n in 6" :key="n">
+					<div class="img-box">
+						<img src="~assets/bg_home_banner2.jpg" alt="" />
 					</div>
-				</div>
-			</li>
-		</ul>
+					<div class="info-box">
+						<div class="date">2021,Auguset,10</div>
+						<h4 class="title">看见这些等，邮箱这等这！</h4>
+						<p>优秀的灯光照明，的灯赋上觉上舒适体验瞬间。</p>
+						<div class="more">
+							More
+							<span></span>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<Pagination></Pagination>
+		</div>
 	</div>
 </template>
 
@@ -180,27 +183,30 @@ export default StrategyList;
 			}
 		}
 	}
-	.list {
-		display: flex;
-		flex-wrap: wrap;
+	.list-box {
 		padding: 100px 80px;
 		background: #f6f6f6;
-		justify-content: space-between;
-		li {
-			background-color: #fff;
-			.img-box {
-				width: 566px;
-				height: 360px;
-				@include bigImg();
-			}
-			@include info();
-			.info-box {
-				box-sizing: border-box;
-				padding: 50px;
-				width: 100%;
-			}
-			&:nth-child(n + 4) {
-				margin-top: 50px;
+		.list {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin-bottom: 70px;
+			li {
+				background-color: #fff;
+				.img-box {
+					width: 566px;
+					height: 360px;
+					@include bigImg();
+				}
+				@include info();
+				.info-box {
+					box-sizing: border-box;
+					padding: 50px;
+					width: 100%;
+				}
+				&:nth-child(n + 4) {
+					margin-top: 50px;
+				}
 			}
 		}
 	}
