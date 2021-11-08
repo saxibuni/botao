@@ -101,7 +101,7 @@
 					</li>
 				</ul>
 				<div>
-					<img src="~assets/bg_home_banner1.jpg" alt="" />
+					<img src="~assets/bg_home_footer_qa.jpg" alt="" />
 					<div>
 						关注波涛了解
 						<br />

@@ -44,4 +44,37 @@ export default class home extends Vue {
 			}
 		}
 	};
+	bannerSwiperOptions3: any = {
+		speed: 500,
+		loop: true,
+		slideToClickedSlide: true,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+			type: 'custom',
+			renderCustom: function(index, current, total) {
+				var customPaginationHtml = "";
+				for (var i = 0; i < total; i++) {
+					if (i == current - 1) {
+						customPaginationHtml +=
+						`<span class="swiper-pagination-bullet swiper-pagination-bullet-active">${(i<10?'0'+(i+1):i+1)}</span>`;
+					} else {
+						customPaginationHtml +=
+						`<span class="swiper-pagination-bullet">${(i<10?'0'+(i+1):i+1)}</span>`;
+					}
+				}
+				return customPaginationHtml;
+			}
+		},
+		autoplay: {
+			delay: 98000,
+			disableOnInteraction: false
+		},
+		navigation: {
+			nextEl: '.next3',
+		},
+		on: {
+		}
+	};
+
 }
