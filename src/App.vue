@@ -91,7 +91,7 @@ html {
 	}
 
 	//swiper分页器样式
-	.swiper-pagination {
+	/* .swiper-pagination {
 		position: absolute;
 		left: 50%;
 		bottom: -66px;
@@ -111,7 +111,7 @@ html {
 				transform: scale(1.5) translateZ(0);
 			}
 		}
-	}
+	} */
 
 	///左右按钮尺寸和hover效果
 	.swiper-button-prev {

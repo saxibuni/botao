@@ -8,16 +8,16 @@ import CaseDetail from 'root/pages/case/detail.vue';
 import Design from 'root/pages/design/index.vue';
 import DesignList from 'root/pages/design/list.vue';
 import DesignDetail from 'root/pages/design/detail.vue';
-import CraftBuild from "root/pages/craftart/building.vue";
-import CraftTeam from "root/pages/craftart/team.vue";
-import CraftManager from "root/pages/craftart/manager.vue";
-import WholeDecoration from "root/pages/service/wholedecoration.vue";
-import CherryPick from "root/pages/service/cherrypick.vue";
-import SoftDecoration from "root/pages/service/cherrypick.vue";
-import Information from  "root/pages/information/index.vue";
-import OwnerVoice from "root/pages/information/ownervoice.vue";
-import StrategyList from "root/pages/information/strategylist.vue";
-import StrategyDetail from "root/pages/information/strategydetail.vue";
+import CraftBuild from 'root/pages/craftart/building.vue';
+import CraftTeam from 'root/pages/craftart/team.vue';
+import CraftManager from 'root/pages/craftart/manager.vue';
+import WholeDecoration from 'root/pages/service/wholedecoration.vue';
+import CherryPick from 'root/pages/service/cherrypick.vue';
+import SoftDecoration from 'root/pages/service/cherrypick.vue';
+import Information from 'root/pages/information/index.vue';
+import OwnerVoice from 'root/pages/information/ownervoice.vue';
+import StrategyList from 'root/pages/information/strategylist.vue';
+import StrategyDetail from 'root/pages/information/strategydetail.vue';
 import JoinUs from 'root/pages/information/joinus.vue';
 import Brand from 'root/pages/brand/index.vue';
 import ResolvePreData from './ResolvePreData';
@@ -38,15 +38,15 @@ Router.prototype.replace = function replace(location) {
 
 const router = new Router({
 	mode: 'hash',
-	scrollBehavior(to, from,savedPosition) {
+	scrollBehavior(to, from, savedPosition) {
 		if (to.name == from.name) {
 			return savedPosition;
 		}
-    return {
-      x: 0,
-      y: 0
-    }
-  },
+		return {
+			x: 0,
+			y: 0
+		};
+	},
 	routes: [
 		{
 			path: '/',
@@ -62,7 +62,7 @@ const router = new Router({
 				{
 					path: '/case/list',
 					name: 'case-list',
-					component: CaseList,
+					component: CaseList
 				},
 				{
 					path: '/case/listvr',
@@ -72,7 +72,7 @@ const router = new Router({
 				{
 					path: '/case/detail',
 					name: 'case-detail',
-					component: CaseDetail,
+					component: CaseDetail
 				}
 			]
 		},
@@ -149,7 +149,7 @@ const router = new Router({
 					path: '/infomation/join-us',
 					name: 'join-us',
 					component: JoinUs
-				},
+				}
 			]
 		},
 		{
