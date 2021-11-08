@@ -16,22 +16,10 @@ export default App;
 <style lang="scss">
 @import './style/animation';
 
-// @font-face {
-//   font-family: 'PingFang';
-//   font-weight: 400;
-//   src: url('~assets/fonts/PingFang-SC-Regular.woff');
-// }
-// @font-face {
-//   font-family: 'PingFang';
-//   font-weight: bold;
-//   src: url('~assets/fonts/PingFang-SC-Bold.woff');
-// }
-
-// @font-face {
-//   font-family: 'PingFang';
-//   font-weight: 600;
-//   src: url('~assets/fonts/PingFang-SC-Semibold.woff')
-// }
+@font-face {
+	font-family: 'athene';
+	src: url('~assets/fonts/Athene.woff');
+}
 
 @font-face {
 	font-family: 'Gilroy-Bold';
