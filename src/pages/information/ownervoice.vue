@@ -5,7 +5,7 @@
 			<h2>业主心声</h2>
 			<h3>OWEWE</h3>
 			<div class="swiper-box">
-				<swiper :options="ownerBannerOptions" ref="ownerBanner">
+				<swiper :options="ownerBannerOptions">
 					<swiper-slide v-for="n in 3" :key="n">
 						<div class="img-box">
 							<img />
@@ -23,11 +23,10 @@
 			<h2>大众点评</h2>
 			<h3>sadas</h3>
 			<div class="swiper-box">
-				swiper
-				<swiper>
-					<swiper-slide>1</swiper-slide>
-					<swiper-slide>2</swiper-slide>
-					<swiper-slide>3</swiper-slide>
+				<swiper :options="dpBannerOptions">
+					<swiper-slide v-for="n in 3" :key="n">
+						<div class="img-box" :style="{ background: colorArr[n] }">{{ n }}</div>
+					</swiper-slide>
 				</swiper>
 			</div>
 		</div>
@@ -35,13 +34,12 @@
 			<h2>荣誉锦旗</h2>
 			<h3>sadwqe</h3>
 			<div class="swiper-box">
-				<swiper>
-					<swiper-slide>1</swiper-slide>
-					<swiper-slide>2</swiper-slide>
-					<swiper-slide>3</swiper-slide>
-					<swiper-slide>4</swiper-slide>
-					<swiper-slide>5</swiper-slide>
-					<swiper-slide>6</swiper-slide>
+				<swiper :options="fhBannerOptions">
+					<swiper-slide v-for="n in 3" :key="n">
+						<div class="img-box">
+							{{ n }}
+						</div>
+					</swiper-slide>
 				</swiper>
 			</div>
 		</div>
@@ -56,9 +54,6 @@ export default OwnerVoice;
 <style lang="scss">
 .owner {
 	font-size: 16px;
-	img {
-		vertical-align: bottom;
-	}
 	@mixin title {
 		h2,
 		h3 {
@@ -110,11 +105,11 @@ export default OwnerVoice;
 			.swiper-slide-active {
 				.img-box {
 					opacity: 1;
-					transition: all .3s;
+					transition: all 0.3s;
 					.left-info {
 						width: 300px;
 						.inner-box {
-							transition: all 1s .5s;
+							transition: all 1s 0.5s;
 							left: 0px;
 						}
 					}
@@ -124,6 +119,15 @@ export default OwnerVoice;
 	}
 	.dian-ping {
 		background-color: aqua;
+		overflow: hidden;
+		.swiper-box {
+			margin: 0 auto;
+			width: 1400px;
+			.img-box {
+				height: 400px;
+				background: red;
+			}
+		}
 		@include title();
 		.swiper-box {
 			height: 500px;
@@ -131,6 +135,14 @@ export default OwnerVoice;
 	}
 	.flag-honer {
 		padding: 30px;
+		.swiper-box {
+			margin: 0 auto;
+			width: 1400px;
+			.img-box {
+				height: 500px;
+				background-color: red;
+			}
+		}
 		@include title();
 		.swiper-box {
 			height: 500px;

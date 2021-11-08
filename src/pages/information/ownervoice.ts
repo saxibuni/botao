@@ -3,6 +3,7 @@ import utils from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
 @Component
 export default class OwnerVoice extends Vue {
+	colorArr = ['red', 'yellow', 'green'];
 	///banner1
 	ownerBannerOptions: any = {
 		centeredSlides: true,
@@ -13,14 +14,24 @@ export default class OwnerVoice extends Vue {
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
-		},
-		pagination: {
-			// el: '.pagination2',
-			// clickable: true
-		},
-		navigation: {
-			// nextEl: '.next2',
-			// prevEl: '.prev2'
+		}
+	};
+	// banner2
+	dpBannerOptions: any = {
+		speed: 500,
+		loop: true,
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		}
+	};
+	// banner3
+	fhBannerOptions: any = {
+		speed: 500,
+		loop: true,
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
 		}
 	};
 }
