@@ -25,12 +25,6 @@ wow.init();
 utils.wow = wow;
 
 Vue.prototype.$bus = utils.emitter;
-Vue.prototype.resolveSEO = (data) => {
-	document.title = data.seo_title;
-	let meta = document.querySelectorAll('meta')
-	meta[3].content = data.seo_keywords;
-	meta[4].content = data.seo_description;
-}
 
 Vue.prototype.restartWow = () => { ///mounted周期函数之后调用
 	if (!store.getters.isPortrait) {

@@ -16,22 +16,10 @@ export default App;
 <style lang="scss">
 @import './style/animation';
 
-// @font-face {
-//   font-family: 'PingFang';
-//   font-weight: 400;
-//   src: url('~assets/fonts/PingFang-SC-Regular.woff');
-// }
-// @font-face {
-//   font-family: 'PingFang';
-//   font-weight: bold;
-//   src: url('~assets/fonts/PingFang-SC-Bold.woff');
-// }
-
-// @font-face {
-//   font-family: 'PingFang';
-//   font-weight: 600;
-//   src: url('~assets/fonts/PingFang-SC-Semibold.woff')
-// }
+@font-face {
+	font-family: 'athene';
+	src: url('~assets/fonts/Athene.woff');
+}
 
 @font-face {
 	font-family: 'Gilroy-Bold';
@@ -238,45 +226,6 @@ html {
 				width: 50px;
 			}
 		}
-	}
-}
-#app[state='portrait'] {
-	padding-top: 120px;
-	.swiper-button-prev,
-	.swiper-button-next {
-		outline: none;
-		transform: scale(1.45);
-		&:hover {
-			transform: scale(1.75);
-		}
-	}
-	.el-pagination {
-		transform: scale(1.4);
-	}
-	.swiper-pagination {
-		outline: none;
-		padding-left: 4px;
-		padding-right: 4px;
-		padding-bottom: 10px;
-		padding-top: 10px;
-		span:focus {
-			outline: none;
-		}
-		.swiper-pagination-bullet {
-			transform: translateY(10px);
-			height: 14px;
-			width: 14px;
-			&:not(:first-child) {
-				margin-left: 50px;
-			}
-			&.swiper-pagination-bullet-active {
-				transform: scale(1) translateZ(0) translateY(10px);
-				height: 18px;
-				width: 18px;
-				border-width: 4px;
-			}
-		}
-		/* transform: scale(2) translateZ(0) translateX(-25%); */
 	}
 }
 </style>
