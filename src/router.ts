@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from 'root/pages/home.vue';
 import Case from 'root/pages/case/index.vue';
 import CaseList from 'root/pages/case/list.vue';
+import CaseListVR from "root/pages/case/listvr.vue";
 import CaseDetail from 'root/pages/case/detail.vue';
 import Design from 'root/pages/design/index.vue';
 import DesignList from 'root/pages/design/list.vue';
@@ -60,6 +61,11 @@ const router = new Router({
 					path: '/case/list',
 					name: 'case-list',
 					component: CaseList,
+				},
+				{
+					path: '/case/listvr',
+					name: 'case-listvr',
+					component: CaseListVR,
 				},
 				{
 					path: '/case/detail',
