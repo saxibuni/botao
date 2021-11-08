@@ -17,7 +17,7 @@ export default App;
 @import './style/animation';
 
 @font-face {
-	font-family: 'athene';
+	font-family: 'Athene';
 	src: url('~assets/fonts/Athene.woff');
 }
 
