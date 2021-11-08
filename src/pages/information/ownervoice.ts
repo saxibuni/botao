@@ -20,10 +20,7 @@ export default class OwnerVoice extends Vue {
 	dpBannerOptions: any = {
 		speed: 500,
 		loop: true,
-		autoplay: {
-			delay: 3000,
-			disableOnInteraction: false
-		}
+
 	};
 	// banner3
 	fhBannerOptions: any = {

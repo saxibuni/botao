@@ -11,8 +11,8 @@
 					</div>
 					<div class="info-box">
 						<div class="date">2021,Auguset,10</div>
-						<h4 class="title">看见这些等，邮箱这等这等玩家课题了！</h4>
-						<p>优秀的灯光照明，赋予视觉上舒适体验瞬间优秀的灯光照明，赋予视觉上舒适体验瞬间，优秀的灯光照明，赋予视觉上舒适体验瞬间，优秀的灯光照明，赋予视觉上舒适体验瞬间。</p>
+						<h4 class="title">看见这些灯，又想折腾折腾我家客厅了！</h4>
+						<p>优秀的灯光照明，赋予视觉上舒适体验瞬间提升整个居住空间的档次。不论是有主灯设计还是无主灯设计，通过照明方式与空间的相互配合,即可打造宜居温馨的家居氛围。</p>
 						<div class="more">
 							More
 							<span></span>
@@ -20,14 +20,14 @@
 					</div>
 				</div>
 				<ul class="strategy-right">
-					<li v-for="n in 3" :key="n">
+					<li v-for="(v, i) in stratiegyArr" :key="i">
 						<div class="img-box">
-							<img src="~assets/bg_home_banner2.jpg" />
+							<img :src="v.imgUrl" />
 						</div>
 						<div class="info-box">
-							<div class="date">2021,Auguset,10</div>
-							<h4 class="title">看见这些等，邮箱这等这！</h4>
-							<p>优秀的灯光照明，赋予视觉上舒适体验瞬间优秀的灯赋予视觉上舒适体验瞬间。</p>
+							<div class="date">{{ v.date }}</div>
+							<h4 class="title">{{ v.title }}</h4>
+							<p>{{ v.text }}</p>
 							<div class="more">
 								More
 								<span></span>
@@ -39,14 +39,14 @@
 		</div>
 		<div class="list-box">
 			<ul class="list">
-				<li v-for="n in 6" :key="n">
+				<li v-for="(v, i) in list" :key="i">
 					<div class="img-box">
-						<img src="~assets/bg_home_banner2.jpg" alt="" />
+						<img :src="v.imgUrl" alt="" />
 					</div>
 					<div class="info-box">
-						<div class="date">2021,Auguset,10</div>
-						<h4 class="title">看见这些等，邮箱这等这！</h4>
-						<p>优秀的灯光照明，的灯赋上觉上舒适体验瞬间。</p>
+						<div class="date">{{ v.date }}</div>
+						<h4 class="title">{{ v.title }}</h4>
+						<p>{{v.text}}</p>
 						<div class="more">
 							More
 							<span></span>
@@ -66,35 +66,43 @@ export default StrategyList;
 
 <style lang="scss">
 .strategy-list {
-	padding-top: 112px;
 	font-size: 16px;
 	@mixin title {
 		h2,
 		h3 {
-			font-weight: 700;
-			font-size: 36px;
+			font-weight: 400;
 			text-align: center;
+			line-height: 1;
 		}
 		h2 {
+			font-size: 48px;
 			margin-top: 100px;
-			line-height: 1;
 		}
 		h3 {
 			margin-top: 25px;
 			margin-bottom: 107px;
-			line-height: 1;
+			font-family: Athene;
+			font-size: 24px;
 		}
 	}
 	@mixin info {
 		h4 {
-			margin-top: 15px;
-			font-size: 28px;
-			color: #ed5300;
-			font-weight: 700;
+			margin-top: 14px;
+			font-size: 26px;
+			font-weight: 400;
+			color: #eb551c;
+			line-height: 1;
 		}
 		p {
+			margin-top: 23px;
+			margin-bottom: 60px;
 			font-size: 18px;
-			margin: 20px 0;
+			font-weight: 400;
+			line-height: 30px;
+		}
+		.date {
+			line-height: 1;
+			font-size: 16px;
 		}
 		.more {
 			font-size: 18px;
@@ -135,14 +143,14 @@ export default StrategyList;
 		.strategy-box {
 			display: flex;
 			.strategy-left {
-				margin-right: 40px;
-				flex: 1;
+				margin-right: 39px;
+				width: 861px;
 				.img-box {
 					@include bigImg();
-					height: 544px;
+					height: 547px;
 				}
 				.info-box {
-					padding: 45px;
+					padding: 49px 40px 54px 40px;
 					background-color: #112033;
 					color: #fff;
 					@include info();
@@ -156,9 +164,9 @@ export default StrategyList;
 					.img-box {
 						@include bigImg();
 						flex: 1;
-						margin-right: 42px;
-						width: 365px;
-						height: 232px;
+						margin-right: 43px;
+						width: 366px;
+						height: 233px;
 					}
 					.info-box {
 						flex: 1;
@@ -173,11 +181,11 @@ export default StrategyList;
 						}
 					}
 					&:not(:last-child) {
-						padding-bottom: 30px;
+						padding-bottom: 40px;
 						border-bottom: 2px solid #ed5300;
 					}
 					&:nth-child(2) {
-						margin: 29px 0;
+						margin: 45px 0;
 					}
 				}
 			}
@@ -194,15 +202,25 @@ export default StrategyList;
 			li {
 				background-color: #fff;
 				.img-box {
-					width: 566px;
-					height: 360px;
+					width: 570px;
+					height: 362px;
 					@include bigImg();
 				}
 				@include info();
 				.info-box {
 					box-sizing: border-box;
-					padding: 50px;
+					padding: 41px 0 50px 39px;
 					width: 100%;
+					.date {
+						color: #888;
+					}
+					h4 {
+						color: #000;
+					}
+					p {
+						width: 490px;
+						color: #666;
+					}
 				}
 				&:nth-child(n + 4) {
 					margin-top: 50px;

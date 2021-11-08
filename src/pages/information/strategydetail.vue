@@ -25,9 +25,8 @@
 				</div>
 			</div>
 			<p>
-				客厅是一个家的名片，随州需求的变化，客厅也英尺变得变化多样。
-				<br />
-				说以，客厅的打开方式也可以是这样
+			客厅是一个家的名片,随着需求的变化,客厅也因此变得多元化。<br/>
+所以,客厅的打开方式也可以是这样
 			</p>
 			<div class="img-box">
 				<img src="~assets/bg_home_banner2.jpg" alt="" />
@@ -66,9 +65,7 @@
 				说以，客厅的打开方式也可以是这样
 			</p>
 		</div>
-		<div class="recommended-news">
-			
-		</div>
+		<div class="recommended-news"></div>
 	</div>
 </template>
 
@@ -79,16 +76,18 @@ export default StrategyDetail;
 
 <style lang="scss">
 .strategy-detail {
-	padding-top: 112px;
 	font-size: 18px;
+	h2,
+	h3 {
+		text-align: center;
+	}
 	.article {
-		padding: 30px 255px;
-		h2,
-		h3 {
+		padding: 100px 260px 0 260px;
+		h2 {
 			text-align: center;
-			font-size: 40px;
-			font-weight: 700;
-			letter-spacing: 5px;
+			font-size: 46px;
+			line-height: 1;
+			color: #000;
 		}
 		.title-info {
 			display: flex;
@@ -97,55 +96,90 @@ export default StrategyDetail;
 			height: 113px;
 			border-top: 2px solid #ccc;
 			border-bottom: 2px solid #ccc;
-			color: #737373;
+			color: #666;
 			.left {
 				display: flex;
 				align-items: center;
 				height: 100%;
 				i {
 					margin-right: 10px;
-					width: 18px;
-					height: 18px;
+					width: 20px;
+					height: 20px;
 					background: url(~assets/icons/ic_clock.png) no-repeat;
+					background-size: 100%;
 					&:nth-of-type(2) {
 						margin-left: 40px;
 					}
 				}
 				span {
 					margin-left: 10px;
+					font-size: 16px;
+					color: #666666;
 				}
 			}
 			.right {
 				display: flex;
 				align-items: center;
 				height: 100%;
+				color: #666;
+				font-size: 16px;
 				i {
 					margin: 0 10px;
 					width: 18px;
 					height: 18px;
-					background: url(~assets/icons/ic_clock.png) no-repeat;
+					cursor: pointer;
+					background: url(~assets/icons/ic_home_footer_weibo1.png) no-repeat;
+					&:nth-child(1) {
+						width: 17px;
+						height: 17px;
+						background: url(~assets/icons/ic_clock.png) no-repeat;
+						background-size: 100%;
+					}
 					&:nth-child(2) {
-						margin-left: 60px;
+						margin-left: 40px;
+						background-size: 100%;
+						&:hover {
+							background-image: url(~assets/icons/ic_home_footer_weibo2.png);
+						}
+					}
+					&:nth-child(3),
+					&:nth-child(4) {
+						background: url(~assets/icons/ic_home_footer_wechat1.png) no-repeat;
+						background-size: 100%;
+					}
+					&:nth-child(3) {
+						&:hover {
+							background-image: url(~assets/icons/ic_home_footer_wechat2.png);
+						}
 					}
 				}
 			}
 		}
 		p {
 			margin-top: 60px;
-			margin-bottom: 100px;
+			margin-bottom: 111px;
 			text-align: center;
 			line-height: 36px;
-			color: #727272;
+			font-size: 22px;
+			font-weight: 400;
+			color: #666666;
 			&:first-of-type {
-				margin-top: 120px;
+				margin-top: 138px;
 			}
 		}
 		.img-box {
 			margin-top: 100px;
-			margin-bottom: 80px;
+			margin-bottom: 100px;
+			img {
+				width: 1400px;
+				height: 723px;
+			}
 		}
 		h3 {
-			letter-spacing: 4px;
+			font-size: 32px;
+			font-weight: 400;
+			color: #000000;
+			line-height: 1;
 		}
 	}
 }

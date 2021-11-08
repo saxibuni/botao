@@ -7,5 +7,9 @@ import Banner from "root/components/banner.vue";
 	}
 })
 export default class Infomation extends Vue {
-
+	BannerData={
+		imgUrl:require('../../assets/bg_home_banner2.jpg'),
+		cn:'业主心声 ',
+		en:"Owner's voice"
+	}
 }
