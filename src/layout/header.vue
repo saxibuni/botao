@@ -58,9 +58,8 @@ export default class Header extends Vue {
 	align-items: center;
 	justify-content: center;
 	height: 112px;
-	background: rgba(18, 33, 51, .9);
 	position: fixed;
-	z-index: 99;
+	z-index: 999;
 	left: 0;
 	top: 0;
 	width: 100%;
