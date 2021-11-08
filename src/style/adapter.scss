@@ -10,10 +10,3 @@ html {
 		font-size: 100px;
 	}
 }
-
-@media (orientation: portrait) and (max-device-width: 900px), (max-width: 900px){
-  $designWidth: 900;
-  html {
-    font-size: calc(100vw / #{$designWidth} * 100);
-  }
-}

@@ -50,7 +50,6 @@ module.exports = {
 					loader: "sass-loader",
 					options: {
 						data: `
-									@import "root/style/var.scss";
 									@import "root/style/utils.scss";
 									@import "root/style/animation.scss";
 								`
