@@ -22,6 +22,8 @@ import JoinUs from 'root/pages/information/joinus.vue';
 import Brand from 'root/pages/brand/index.vue';
 import ResolvePreData from './ResolvePreData';
 
+import MapBox from "root/pages/echartmap.vue";
+
 Vue.use(Router);
 
 const originalPush = Router.prototype.push;
@@ -154,6 +156,11 @@ const router = new Router({
 			path: '/brand',
 			name: 'brand',
 			component: Brand
+		},
+		{
+			path: '/mapbox',
+			name: 'mapbox',
+			component: MapBox
 		},
 		{
 			path: '*',
