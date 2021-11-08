@@ -11,5 +11,10 @@ export default Infomation;
 </script>
 
 <style lang="scss">
+.information {
+	img {
+		vertical-align: bottom;
+	}
 
+}
 </style>
