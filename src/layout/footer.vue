@@ -137,6 +137,8 @@ export default class Footer extends Vue {}
 	color: #fff;
 	padding: 90px 0 75px 0;
 	box-sizing: border-box;
+	max-width: 1920px;
+	margin: 0 auto;
 	img {
 		display: block;
 	}
@@ -284,7 +286,7 @@ export default class Footer extends Vue {}
 						font-family: Gilroy;
 						font-weight: bold;
 						color: #ffffff;
-						margin-top: 14px;
+						margin-top: 16px;
 					}
 					&:nth-child(2){
 						margin-left: 313px;
@@ -345,7 +347,6 @@ export default class Footer extends Vue {}
 					}
 					&:hover{
 						background-position-y: -43PX;
-
 					}
 				}
 			}
