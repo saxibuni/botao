@@ -47,6 +47,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.3.6",
     "countup.js": "^2.0.8",
+    "echarts": "^5.2.2",
     "element-ui": "^2.15.6",
     "gsap": "npm:@gsap/shockingly@^3.7.1",
     "minireset.css": "0.0.7",

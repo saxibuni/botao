@@ -243,6 +243,130 @@
 				</div>
 			</div>
 		</div>
+		<div class="page5">
+			<div class="swiper">
+				<swiper :options="bannerSwiperOptions3">
+					<swiper-slide v-for="(item, i) in 3" :key="i">
+						<img src="~assets/bg_home_b5_pic1.jpg" alt="" />
+						<div class="text">
+							<h3>
+								<span>全案服务</span>
+								 创造精彩生活
+							</h3>
+							<div>
+								Whole case service
+							</div>
+							<h4>园林</h4>
+							<h5>自然惬意  给心灵一份静谧</h5>
+							<p>智能灌溉、灯光照明、智能安防、水景设计、植物种植设计</p>
+							<div class="btn">
+								服务详情
+							</div>
+						</div>
+					</swiper-slide>
+				</swiper>
+				<div class="swiper-pagination"></div>
+				<div class="bgimg">
+					<div>
+						<p>01</p>
+						<h5>软装</h5>
+						<h6>Soft outfit</h6>
+						<i class="next3"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page6">
+						<div class="text">
+							<h3>
+								<span>20+</span>
+								 年专注别墅大宅 全案引领者
+							</h3>
+							<div>
+								Brand introduction
+							</div>
+							<h4>我们 让空间更美好</h4>
+							<h5>we Make the space better</h5>
+							<p>
+								波涛装饰是波涛装饰集团旗下专业为高端住宅、豪宅、明星名流居所提供建筑规划、室内设计装饰施工、家具定制、智能设备、软装配套以及景观园林的一站式全案整装定制服务机构。 20多年年钻研，只为定制更加完美的高端品质住宅，拥有20000多位高端住宅业主的信赖。
+							</p>
+							<div class="btn">
+								走进波涛
+							</div>
+						</div>
+		</div>
+		<div class="page7">
+				<h3>
+					<span>波涛</span>与您分享最新资讯
+				</h3>
+				<div class="title">
+					<span>News information</span>
+					<div>
+						全部新闻
+						<i></i>
+					</div>
+				</div>
+				<div class="list">
+					<ul>
+						<li>
+							<div>
+								<img src="~assets/bg_home_b6_1.jpg" alt="">
+							</div>
+							<i></i>
+							<div class="text">
+								<p>客户评价</p>
+								<div>温暖家｜多面客厅，一种舒适</div>
+							</div>
+						</li>
+						<li class="item">
+							<div class="top">
+									<div>
+									<img src="~assets/bg_home_b6_2.jpg" alt="">
+										<div>
+												<p>August</p>
+												<b>28-08</b>
+										</div>
+									</div>
+									<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
+									<p>近期活动</p>
+							</div>
+
+							<div class="items">
+								<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
+								<p><span>装修攻略</span><span>24-08</span></p>
+							</div>
+
+							<div class="items">
+								<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
+								<p><span>近期活动</span><span>24-08</span></p>
+							</div>
+						</li>
+						<li class="item">
+							<div class="top">
+									<div>
+									<img src="~assets/bg_home_b6_2.jpg" alt="">
+										<div>
+												<p>August</p>
+												<b>28-08</b>
+										</div>
+									</div>
+									<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
+									<p>近期活动</p>
+							</div>
+
+							<div class="items">
+								<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
+								<p><span>装修攻略</span><span>24-08</span></p>
+							</div>
+
+							<div class="items">
+								<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
+								<p><span>近期活动</span><span>24-08</span></p>
+							</div>
+						</li>
+					</ul>
+				</div>
+		</div>
 	</div>
 </template>
 <script lang="ts">
@@ -949,6 +1073,10 @@ export default home;
 					z-index: 3;
 					cursor: pointer;
 					transform: translate(-50%,-50%);
+					transition: .3s;
+					&:hover{
+						transform: translate(-50%,-50%) scale(1.1) ;
+					}
 				}
 				>h2{
 					height: 118px;
@@ -1094,6 +1222,362 @@ export default home;
 					text-align: center;
 					right: 80px;
 					bottom: 88px;
+				}
+			}
+		}
+	}
+	.page5{
+		height: 970px;
+		position: relative;
+		.swiper{
+			position: relative;
+		.swiper-wrapper {
+			.swiper-slide {
+				img {
+					height: 100%;
+					width: 100%;
+				}
+				.text{
+					position: absolute;
+					padding: 98px 0 0 80px;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					h3{
+						height: 54px;
+						font-size: 56px;
+						font-weight: 400;
+						color: #fff;
+						span{
+							color: #EC5400;
+						}
+					}
+					div{
+						font-size: 30px;
+						font-family: Athene;
+						font-weight: 400;
+						color: #FFFFFF;
+						text-transform: uppercase;
+						margin: 24px 0 209px 0;
+					}
+					h4{
+						color: #FFFFFF;
+						font-size: 36px;
+					}
+					h5{
+						color: #FFFFFF;
+						font-size: 28px;
+					}
+					p{
+						height: 18px;
+						font-size: 18px;
+						font-weight: 400;
+						color: #FFFFFF;
+						width: 605px;
+						margin: 51px 0 104px 0;
+					}
+					.btn{
+						width: 170px;
+						height: 53px;
+						background: #ED5400;
+						font-size: 18px;
+						font-weight: 400;
+						color: #FFFFFF;
+						line-height: 53px;
+						text-align: center;
+						text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
+					}
+				}
+			}
+
+		}
+		.swiper-pagination{
+				position: absolute;
+				z-index: 99;
+				left: 80px;
+				bottom: 91px;
+				display: flex;
+				/deep/.swiper-pagination-bullet{
+					width: 50px;
+					height: 50px;
+					outline: none;
+					background: transparent;
+					border: 2px solid rgba(255,255,255,.8);
+					color: rgba(255,255,255,.5);
+					font-size: 16px;
+					line-height: 50px;
+					cursor: pointer;
+					&.swiper-pagination-bullet-active{
+						border: none;
+						background: url('~assets/icons/bg_home_b5_half.png') no-repeat;
+						background-size: 100% 100%;
+					}
+				}
+			}
+			.bgimg{
+				position: absolute;
+				right: 0;
+				top: 0;
+				z-index: 3;
+				width: 431px;
+				height: 100%;
+				background: url('~assets/bg_home_b5_mask2.png') center;
+				background-size: cover;
+				color: #fff;
+				padding-left: 225px;
+				padding-top: 295px;
+				p{
+					font-size: 32px;
+					font-family: Gilroy-Bold;
+					font-weight: bold;
+					color: #FFFFFF;
+					line-height: 48px;
+				}
+				h5{
+					height: 33px;
+					font-size: 36px;
+					font-weight: 400;
+					color: #FFFFFF;
+					margin: 128px 0 12px 0;
+				}
+				h6{
+					font-size: 30px;
+					font-family: Athene;
+					font-weight: 400;
+					color: #FFFFFF;
+					text-transform: uppercase;
+					overflow: hidden;
+					white-space: nowrap;
+					margin-bottom: 156px;
+				}
+				i{
+					display: block;
+					cursor: pointer;
+					width: 45px;
+					height: 45px;
+					border: 2px solid rgba(255, 255, 255, 1.12);
+					border-radius: 50%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					outline: none;
+					transition: transform .3s;
+					&:hover{
+						transform: scale(1.1);
+					}
+					&::after{
+						content: '';
+						width: 7px;
+						height: 11px;
+						background: url('~assets/icons/ic_home_banner_right.png') center;
+						background-size: 100% 100%;
+					}
+				}
+			}
+		}
+	}
+	.page6{
+		height: 1110px;
+		background: url('~assets/bg_home_b6.png') no-repeat right;
+		position: relative;
+		.text{
+					position: absolute;
+					padding: 101px 0 0 80px;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					h3{
+						height: 54px;
+						font-size: 56px;
+						font-weight: 400;
+						color: #000;
+						span{
+							color: #EC5400;
+						}
+					}
+					div{
+						font-size: 30px;
+						font-family: Athene;
+						font-weight: 400;
+						color: #000;
+						text-transform: uppercase;
+						margin: 24px 0 110px 0;
+					}
+					h4{
+						color: #000;
+						font-size: 34px;
+					}
+					h5{
+						color: #000;
+						font-size: 38px;
+						font-weight: 400;
+						text-transform: uppercase;
+					}
+					p{
+						font-size: 18px;
+						font-weight: 400;
+						color: #666;
+						width: 605px;
+						margin: 51px 0 104px 0;
+						line-height: 30px;
+					}
+					.btn{
+						width: 170px;
+						height: 53px;
+						background: #ED5400;
+						font-size: 18px;
+						font-weight: 400;
+						color: #FFFFFF;
+						line-height: 53px;
+						text-align: center;
+						text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
+					}
+				}
+	}
+	.page7{
+		padding: 100px 0;
+		width: 1770px;
+		margin: 0 auto;
+		h3{
+			height: 54px;
+			font-size: 56px;
+			font-weight: 400;
+			color: #000;
+			margin-bottom: 29px;
+			span{
+				color: #EC5400;
+			}
+		}
+		.title{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			span{
+				font-size: 30px;
+				font-family: Athene;
+				font-weight: 400;
+				color: #000000;
+			}
+			div{
+				display: flex;
+				align-items: center;
+				font-size: 18px;
+				font-weight: bold;
+				color: #000000;
+				cursor: pointer;
+				i {
+					width: 8px;
+					height: 14px;
+					background: url('~assets/icons/ic_home_b2_enter.png') no-repeat;
+					background-size: 100% 100%;
+					margin-left: 19px;
+				}
+			}
+		}
+		.list{
+			margin-top: 88px;
+			>ul{
+				display: flex;
+				justify-content: space-between;
+				li{
+					width: 553px;
+					position: relative;
+					&:nth-child(1){
+						div{
+							img{
+								width: 100%;
+								height: 450px;
+							}
+							&.text{
+								background: #122133;
+								height: 133px;
+								padding: 36px 10px 38px 39px;
+								p{
+									font-size: 18px;
+									font-weight: 400;
+									color: #FFFFFF;
+								}
+								div{
+									font-size: 26px;
+									font-weight: 400;
+									color: #FFFFFF;
+								}
+							}
+						}
+						i{
+							cursor: pointer;
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							transform: translate(-50%,-50%);
+							width: 90px;
+							height: 90px;
+							background: url(~assets/icons/ic_home_b3_play.png) no-repeat;
+							background-size: 100% 100%;
+							transition: .3s;
+							&:hover{
+								transform: translate(-50%,-50%) scale(1.1) ;
+							}
+						}
+					}
+					&.item{
+						width: 553px;
+						cursor: pointer;
+						.top{
+							height: 325px;
+							border-bottom: 1px solid #ED5400;
+							>div{
+								display: flex;
+								width: 100%;
+								img{
+									width: 382px;
+									height: 170px;
+								}
+								div{
+									width: 100%;
+									font-size: 16px;
+									width: 170px;
+									height: 170px;
+									background: #122133;
+									display: flex;
+									flex-wrap: wrap;
+									font-family: CenturyGothic;
+									font-weight: 400;
+									color: #FFFFFF;
+									text-align: center;
+									align-content: center;
+									p{
+										color: #FFFFFF;
+										width: 100%;
+										justify-content: center;
+										font-size: 24px;
+									}
+									b{
+										width: 100%;
+										font-size: 16px;
+										margin-top: 4px;
+									}
+								}
+							}
+						}
+
+						h4{
+							font-size: 20px;
+							font-weight: 700;
+							color: #000000;
+							margin-bottom: 12px;
+							padding-top: 50px;
+						}
+						p{
+							font-size: 18px;
+							font-weight: 400;
+							color: #888888;
+							display: flex;
+							justify-content: space-between;
+						}
+					}
 				}
 			}
 		}
