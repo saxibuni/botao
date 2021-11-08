@@ -228,43 +228,4 @@ html {
 		}
 	}
 }
-#app[state='portrait'] {
-	padding-top: 120px;
-	.swiper-button-prev,
-	.swiper-button-next {
-		outline: none;
-		transform: scale(1.45);
-		&:hover {
-			transform: scale(1.75);
-		}
-	}
-	.el-pagination {
-		transform: scale(1.4);
-	}
-	.swiper-pagination {
-		outline: none;
-		padding-left: 4px;
-		padding-right: 4px;
-		padding-bottom: 10px;
-		padding-top: 10px;
-		span:focus {
-			outline: none;
-		}
-		.swiper-pagination-bullet {
-			transform: translateY(10px);
-			height: 14px;
-			width: 14px;
-			&:not(:first-child) {
-				margin-left: 50px;
-			}
-			&.swiper-pagination-bullet-active {
-				transform: scale(1) translateZ(0) translateY(10px);
-				height: 18px;
-				width: 18px;
-				border-width: 4px;
-			}
-		}
-		/* transform: scale(2) translateZ(0) translateX(-25%); */
-	}
-}
 </style>
