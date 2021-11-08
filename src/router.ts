@@ -2,11 +2,11 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from 'root/pages/home.vue';
 import Case from 'root/pages/case/index.vue';
-import CaseList from 'root/pages/case/list';
-import CaseDetail from 'root/pages/case/detail';
+import CaseList from 'root/pages/case/list.vue';
+import CaseDetail from 'root/pages/case/detail.vue';
 import Design from 'root/pages/design/index.vue';
 import DesignList from 'root/pages/design/list.vue';
-import DesignDetail from 'root/pages/design/detail';
+import DesignDetail from 'root/pages/design/detail.vue';
 import CraftBuild from "root/pages/craftart/building.vue";
 import CraftTeam from "root/pages/craftart/team.vue";
 import CraftManager from "root/pages/craftart/manager.vue";
@@ -18,8 +18,8 @@ import OwnerVoice from "root/pages/information/ownervoice.vue";
 import StrategyList from "root/pages/information/strategylist.vue";
 import StrategyDetail from "root/pages/information/strategydetail.vue";
 import JoinUs from 'root/pages/information/joinus.vue';
+import Brand from 'root/pages/brand/index.vue';
 import ResolvePreData from './ResolvePreData';
-import Brand from './pages/brand';
 
 Vue.use(Router);
 
@@ -53,6 +53,7 @@ const router = new Router({
 		{
 			path: '/case',
 			name: 'case',
+			redirect: '/case/list',
 			component: Case,
 			children: [
 				{
@@ -70,6 +71,7 @@ const router = new Router({
 		{
 			path: '/design',
 			name: 'design',
+			redirect: '/design/list',
 			component: Design,
 			children: [
 				{
@@ -117,6 +119,7 @@ const router = new Router({
 		{
 			path: '/infomation',
 			name: 'information',
+			redirect: '/infomation/owner-voice',
 			component: Information,
 			children: [
 				{

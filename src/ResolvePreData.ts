@@ -7,9 +7,6 @@ export default class ResolvePreData {
       if (store.state.footData) {
         return resolve();
       }
-				setTimeout(()=>{
-					 store.state.hasShowCommitTip = true;
-				},60000)
       utils.service.queryFooterData(res => {
         let data = res.data;
         store.state.footData = data;
