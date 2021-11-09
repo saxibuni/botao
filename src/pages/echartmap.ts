@@ -1,3 +1,4 @@
+import { Events } from 'root/utils/EnumUtils';
 import { Vue, Component } from 'vue-property-decorator';
 let echarts = require('echarts/lib/echarts')
 require("echarts/extension/bmap/bmap.js");
@@ -211,6 +212,7 @@ export default class EchartMap extends Vue {
 
 		this.chart = echarts.init(this.$el.querySelector(".map-box"));
 		this.chart.setOption(mapBoxOption);
+		this.$bus.$on(Events.RESIZE, this.onResize);
 	}
 
 	convertData(data) {
@@ -219,7 +221,6 @@ export default class EchartMap extends Vue {
 			let dataItem = data[i];
 			let fromCoord = this.geoCoordMap[dataItem[0].name];
 			let toCoord = this.geoCoordMap[dataItem[1].name];
-			console.log(toCoord);
 			if (fromCoord && toCoord) {
 				res.push([{
 					coord: fromCoord
@@ -228,6 +229,17 @@ export default class EchartMap extends Vue {
 				}]);
 			}
 		}
+		console.log(res);
 		return res;
+	}
+
+	onResize() {
+		this.chart.resize();
+	}
+
+	beforeDestroy() {
+		this.$bus.$off(Events.RESIZE, this.onResize);
+		this.chart.dispose();
+		this.chart = null;
 	}
 }
