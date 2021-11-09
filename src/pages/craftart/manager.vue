@@ -1,6 +1,6 @@
 <template>
 	<div class="craft-manager">
-
+		<Banner :data="bannerData" />
 	</div>
 </template>
 
@@ -9,6 +9,4 @@ import Manager from './manager';
 export default Manager;
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

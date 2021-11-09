@@ -42,6 +42,146 @@
 				</div>
 			</div>
 		</div>
+		<div class="brand-data">
+			<div class="left">
+				<p>在全国近30个省，开设了300多家分公司</p>
+				<p>
+					深受20000+高端住宅业主的信赖
+				</p>
+				<p>建立核心竞争力，巩固市场优势，形成具有长久生命力的商业模式</p>
+				<ul>
+					<li>
+						<span>
+							<ICountUp :endVal="20000" :options="options1" ref="countup1"></ICountUp>
+							<span class="suffix">+</span>
+						</span>
+						<span>大宅别墅业主选择</span>
+					</li>
+					<li>
+						<span>
+							<ICountUp :endVal="300" :options="options1" ref="countup1"></ICountUp>
+							<span class="suffix">+</span>
+							<span class="fs18">家</span>
+						</span>
+						<span>波涛连锁分公司</span>
+					</li>
+					<li>
+						<span>
+							<ICountUp :endVal="18000" :options="options1" ref="countup1"></ICountUp>
+							<span class="suffix">+</span>
+							<span class="fs18">m²</span>
+						</span>
+						<span>波涛建材广场</span>
+					</li>
+					<li>
+						<span>
+							<ICountUp :endVal="21000" :options="options1" ref="countup1"></ICountUp>
+							<span class="fs18">m²</span>
+						</span>
+						<span>波涛大楼</span>
+					</li>
+					<li>
+						<span>
+							<ICountUp :endVal="15000" :options="options1" ref="countup1"></ICountUp>
+							<span class="suffix">+</span>
+							<span class="fs18">m²</span>
+						</span>
+						<span>白领公寓</span>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="text-box">
+					<h2>触达全国 · 布局未来</h2>
+					<h3>BRAND DATA</h3>
+				</div>
+				<MapBox></MapBox>
+			</div>
+		</div>
+		<div class="core-value">
+			<h2>核心价值观</h2>
+			<h3>以客户为中心 以员工为中心</h3>
+			<div class="img-list">
+				<div class="img-box">
+					<img src="~assets/bg_g1_part4_pic1.jpg" alt="" />
+					<div class="text">
+						<h2>诚信</h2>
+						<h3>立业基础</h3>
+						<div>SINCERITY</div>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="~assets/bg_g1_part4_pic2.jpg" alt="" />
+					<div class="text">
+						<h2>感恩</h2>
+						<h3>发展源泉</h3>
+						<div>GRATITUDE</div>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="~assets/bg_g1_part4_pic3.jpg" alt="" />
+					<div class="text">
+						<h2>奋斗</h2>
+						<h3>拼搏精神</h3>
+						<div>STRUGGLE</div>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="~assets/bg_g1_part4_pic4.jpg" alt="" />
+					<div class="text">
+						<h2>创新</h2>
+						<h3>制胜法宝</h3>
+						<div>INNOVATE</div>
+					</div>
+				</div>
+				<div class="img-box">
+					<img src="~assets/bg_g1_part4_pic5.jpg" alt="" />
+					<div class="text">
+						<h2>共赢</h2>
+						<h3>价值追求</h3>
+						<div>WIN-WIN</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="history">
+			<h2>波涛发展历程</h2>
+			<h3>DEVELOPMENT COURSE</h3>
+			<div class="info-box">
+				<div class="time">
+					<p>2006-2010</p>
+					<h2>起航·发展</h2>
+				</div>
+				<div class="info">
+					<p>波涛装饰正式成立，披荆斩棘，砥砺前行</p>
+					<p>[波涛装饰]注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。</p>
+				</div>
+			</div>
+		</div>
+		<div class="hover">
+			<h2>荣誉资质</h2>
+			<h3>匠心与精耕让我们走在行业发展前沿</h3>
+			<div class="nav">
+				<div>荣誉证书</div>
+				<div>研发专利</div>
+			</div>
+			<div class="swiper-box">
+				<div class="hover-swiper">
+					<swiper :options="hoverBannerOptions">
+						<swiper-slide v-for="n in 4" :key="n">
+							<div class="img-box">
+								<img src="~assets/bg_g1_part6_honer1.jpg" alt="" />
+							</div>
+							<h2>上海市建设工程白玉兰奖</h2>
+						</swiper-slide>
+					</swiper>
+					<div class="controal">
+						<div class="swiper-next hv-next"></div>
+						<div class="swiper-pre hv-pre"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -52,13 +192,38 @@ export default index;
 
 <style lang="scss">
 .brand {
-
 	@keyframes fade-ine {
 		from {
 			opacity: 0;
 		}
 		to {
 			opacity: 1;
+		}
+	}
+	.swiper-pre,
+	.swiper-next {
+		position: absolute;
+		z-index: 11;
+		top: 62px;
+		width: 13px;
+		height: 26px;
+		cursor: pointer;
+		transition: all 0.3s;
+	}
+	.swiper-pre {
+		left: 80px;
+		background: url(~assets/icons/ic_f4_left1.png) no-repeat;
+		background-size: 100%;
+		&:hover {
+			background-image: url(~assets/icons/ic_f4_left2.png);
+		}
+	}
+	.swiper-next {
+		right: 80px;
+		background: url(~assets/icons/ic_f4_right1.png) no-repeat;
+		background-size: 100%;
+		&:hover {
+			background-image: url(~assets/icons/ic_f4_right2.png);
 		}
 	}
 	.banner-box {
@@ -120,7 +285,7 @@ export default index;
 	}
 	.aside-nav {
 		z-index: 99;
-		position: fixed;
+		position: absolute;
 		top: 252px;
 		right: 200px;
 		font-size: 14px;
@@ -290,6 +455,340 @@ export default index;
 						width: 100%;
 						height: 100%;
 					}
+				}
+			}
+		}
+	}
+	.brand-data {
+		display: flex;
+		padding: 99px 50px 0 80px;
+		justify-content: space-between;
+		.left {
+			width: 523px;
+			height: 100%;
+			p {
+				font-size: 18px;
+				font-weight: 400;
+				color: #666666;
+				line-height: 43px;
+				&:first-of-type {
+					margin-top: 142px;
+				}
+			}
+			ul {
+				margin-top: 90px;
+				display: flex;
+				flex-wrap: wrap;
+				li {
+					display: flex;
+					flex-direction: column;
+					width: 220px;
+					> span {
+						display: flex;
+						align-items: flex-end;
+						font-size: 52px;
+						font-weight: bold;
+						color: #eb551c;
+						line-height: 1;
+						.suffix {
+							font-size: 26px;
+						}
+						.fs18 {
+							margin-left: 5px;
+							font-size: 18px;
+							line-height: 24px;
+						}
+						&:first-child {
+							width: 220px;
+						}
+						&:nth-of-type(2) {
+							margin-top: 14px;
+							font-size: 18px;
+							color: #333333;
+							line-height: 1;
+						}
+					}
+					&:nth-child(2n + 1) {
+						margin-right: 65px;
+					}
+					&:nth-child(n + 3) {
+						margin-top: 83px;
+					}
+				}
+			}
+		}
+		.right {
+			position: relative;
+			.text-box {
+				top: 0;
+				left: 86px;
+				position: absolute;
+				h2,
+				h3 {
+					text-align: center;
+					color: #000000;
+					line-height: 1;
+				}
+				h2 {
+					font-size: 48px;
+				}
+				h3 {
+					margin-top: 27px;
+					font-size: 24px;
+					font-family: Athene;
+				}
+			}
+			.map-box {
+				margin: 0;
+				width: 1152px;
+				height: 860px;
+			}
+		}
+	}
+	.core-value {
+		position: relative;
+		padding: 100px 80px 0 80px;
+		height: 580px;
+		background: url(~assets/bg_g1_part4.jpg) no-repeat;
+		background-size: 100%;
+		h2,
+		h3 {
+			font-weight: 400;
+			text-align: center;
+			color: #fff;
+			line-height: 1;
+		}
+		h2 {
+			font-size: 48px;
+		}
+		h3 {
+			margin-top: 30px;
+			font-size: 24px;
+		}
+		.img-list {
+			margin-top: 90px;
+			display: flex;
+			> div {
+				display: flex;
+				position: relative;
+				z-index: 11;
+				&:not(:last-child) {
+					margin-right: 20px;
+				}
+				.text {
+					position: absolute;
+					padding: 50px 0 59px 49px;
+					top: 0;
+					left: 0;
+					width: 336px;
+					height: 582px;
+					h2,
+					h3,
+					div {
+						text-align: start;
+						line-height: 1;
+						color: #ffffff;
+					}
+					h2 {
+						font-size: 28px;
+					}
+					h3 {
+						margin-top: 18px;
+						font-size: 20px;
+					}
+					div {
+						position: absolute;
+						left: 8px;
+						transform: rotate(90deg);
+						bottom: 100px;
+						font-size: 20px;
+					}
+				}
+				&:nth-child(2),
+				&:nth-child(4) {
+					top: -30px;
+				}
+			}
+		}
+	}
+	.history {
+		position: relative;
+		padding-top: 387px;
+		box-sizing: border-box;
+		height: 1260px;
+		background: url(~assets/bg_g1_part5.jpg) no-repeat;
+		background-size: 100%;
+		h2,
+		h3 {
+			text-align: center;
+			line-height: 1;
+		}
+		h2 {
+			font-size: 48px;
+		}
+		h3 {
+			margin-top: 25px;
+			font-size: 24px;
+			font-family: Athene;
+		}
+		.info-box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			display: flex;
+			width: 870px;
+			height: 180px;
+			color: #ffffff;
+			text-align: start;
+			.time {
+				box-sizing: border-box;
+				padding-top: 43px;
+				padding-left: 46px;
+				width: 240px;
+				height: 100%;
+				background: #eb551d;
+				p {
+					font-size: 30px;
+					font-weight: bold;
+					line-height: 1;
+				}
+				h2 {
+					text-align: start;
+					margin-top: 16px;
+					font-size: 26px;
+					line-height: 1;
+				}
+			}
+			.info {
+				padding: 43px 20px 0 50px;
+				flex: 1;
+				height: 100%;
+				background: #132132;
+				p {
+					line-height: 1;
+					&:first-of-type {
+						font-size: 22px;
+					}
+					&:nth-of-type(2) {
+						margin-top: 12px;
+						font-size: 18px;
+						line-height: 32px;
+					}
+				}
+			}
+		}
+	}
+	.hover {
+		box-sizing: border-box;
+		padding: 0 200px 0 190px;
+		overflow: hidden;
+		min-height: 970px;
+		background: url(~assets/bg_g1_part6.jpg) no-repeat;
+		background-size: 100%;
+		color: #ffffff;
+		h2,
+		h3 {
+			text-align: center;
+			line-height: 1;
+		}
+		h2 {
+			margin-top: 99px;
+			font-size: 48px;
+		}
+		h3 {
+			margin-top: 30px;
+			font-size: 24px;
+		}
+		.nav {
+			margin-top: 40px;
+			margin-bottom: 70px;
+			display: flex;
+			justify-content: center;
+			font-size: 18px;
+			div {
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 122px;
+				height: 39px;
+				cursor: pointer;
+				margin-right: 20px;
+				&:hover {
+					border: 1px solid #eb551d;
+					&::before,
+					&::after {
+						position: absolute;
+						content: '';
+						width: 5px;
+						height: 5px;
+						border-left: 1px solid #eb551d;
+						border-top: 1px solid #eb551d;
+						opacity: 0.5;
+					}
+					&::before {
+						top: 5px;
+						left: 5px;
+					}
+					&::after {
+						bottom: 5px;
+						right: 5px;
+						transform: rotate(180deg);
+					}
+				}
+				&.active {
+					border: 1px solid #eb551d;
+					&::before,
+					&::after {
+						position: absolute;
+						content: '';
+						width: 5px;
+						height: 5px;
+						border-left: 1px solid #eb551d;
+						border-top: 1px solid #eb551d;
+						opacity: 0.5;
+					}
+					&::before {
+						top: 5px;
+						left: 5px;
+					}
+					&::after {
+						bottom: 5px;
+						right: 5px;
+						transform: rotate(180deg);
+					}
+				}
+			}
+		}
+		.swiper-box {
+			position: relative;
+			.img-box {
+				display: flex;
+			}
+			h2 {
+				margin-top: 35px;
+				font-size: 22px;
+				color: #ffffff;
+				line-height: 1;
+			}
+			.hover-swiper{
+
+			}
+			.controal{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top:0;
+				left: 0;
+				.swiper-pre,.swiper-next{
+					top: 215px;
+					transform: translateY(-50%);
+				}
+				.swiper-pre{
+					left: -105px;
+				}
+				.swiper-next{
+					right: -105px;
 				}
 			}
 		}

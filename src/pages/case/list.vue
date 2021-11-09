@@ -331,6 +331,7 @@ export default CaseList;
 				line-height: 50px;
 				text-align: center;
 				cursor: pointer;
+				opacity: 1;
 				&.swiper-pagination-bullet-active {
 					border: none;
 					color: rgba(255, 255, 255, 1);

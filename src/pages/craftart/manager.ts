@@ -7,5 +7,5 @@ import Banner from "root/components/banner.vue";
 	}
 })
 export default class Manager extends Vue {
-
+	bannerData={cn:'施工管理',en:'CONSTRUCTION MANAGEMENT',imgUrl:require('root/assets/bg_d3_banner.jpg')}
 }
