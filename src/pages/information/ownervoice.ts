@@ -11,6 +11,13 @@ export default class OwnerVoice extends Vue {
 		spaceBetween: 30,
 		slidesPerView: 2,
 		loop: true,
+		navigation: {
+			nextEl: '.owner-next',
+			prevEl: '.owner-pre'
+		},
+		pagination: {
+			el: '.swiper-pagination'
+		},
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
@@ -20,7 +27,17 @@ export default class OwnerVoice extends Vue {
 	dpBannerOptions: any = {
 		speed: 500,
 		loop: true,
-
+		navigation: {
+			nextEl: '.dp-next',
+			prevEl: '.dp-pre'
+		},
+		pagination: {
+			el: '.dp-pagination'
+		},
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		}
 	};
 	// banner3
 	fhBannerOptions: any = {
@@ -29,6 +46,13 @@ export default class OwnerVoice extends Vue {
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
+		},
+		navigation: {
+			nextEl: '.fh-next',
+			prevEl: '.fh-pre'
+		},
+		pagination: {
+			el: '.fh-pagination'
 		}
 	};
 }
