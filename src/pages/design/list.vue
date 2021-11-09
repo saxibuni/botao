@@ -14,7 +14,7 @@
 					<i></i>
 				</div>
 				<p>
-					您可能感兴趣的设计师:
+					您可能感兴趣的设计师:&nbsp;
 					<span>陆靖浩</span>
 					<span>周芳乐</span>
 					<span>喻勤</span>
@@ -26,10 +26,7 @@
 			<div class="tabsList">
 				<p>设计师级别</p>
 				<ul>
-					<li>全部</li>
-					<li>总监设计师</li>
-					<li>首席设计师</li>
-					<li>设计师</li>
+					<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
 				</ul>
 			</div>
 		</div>
@@ -37,19 +34,21 @@
 			<ul>
 				<li v-for="i in 12" :key="i">
 					<div class="imgBox">
-						<img src="~assets/bg_home_b3_pic17.jpg" alt="" />
+						<img src="~assets/bg_c1_pic01.jpg" alt="" />
 						<div class="text">
 							<p>于一</p>
-							<p>设计总监 | 15年经验</p>
+							<p>设计总监 &nbsp;|&nbsp; 15年经验</p>
 						</div>
 					</div>
 					<div class="text">
 						<p>代表作品</p>
 						<p>嘉怡水岸、三林新村、华侨城、两河流域...</p>
+						<Button :text="'了解设计师'" />
 					</div>
 				</li>
 			</ul>
 		</div>
+		<Pagination />
 	</div>
 </template>
 
@@ -96,6 +95,7 @@ export default DesignList;
 					border: 1px solid #ed5400;
 					outline: none;
 					font-size: 20px;
+					text-indent: 1em;
 				}
 				i {
 					position: absolute;
@@ -106,6 +106,9 @@ export default DesignList;
 					height: 18px;
 					background: url('~assets/icons/bg_b1_part1_search.png') no-repeat;
 					background-size: 100% 100%;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 			p {
@@ -115,6 +118,10 @@ export default DesignList;
 				span {
 					color: #333333;
 					margin-right: 20px;
+					// font-weight: 600;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 		}
@@ -131,6 +138,7 @@ export default DesignList;
 				font-weight: 400;
 				color: #000000;
 				margin-right: 40px;
+				// font-weight: 600;
 			}
 			ul {
 				display: flex;
@@ -140,6 +148,52 @@ export default DesignList;
 					color: #666666;
 					padding: 11px 24px;
 					margin-right: 20px;
+					cursor: pointer;
+					position: relative;
+					transition: 0.3s;
+					border: 1px solid transparent;
+					&::after,
+					&::before {
+						content: '';
+						position: absolute;
+						border: 2px solid transparent;
+						width: 0px;
+						height: 0px;
+						transition: border 0.3s, width 0.3s, height 0.3s;
+						opacity: 0.35;
+					}
+					&::after {
+						left: 4px;
+						top: 4px;
+						border-right: none;
+						border-bottom: none;
+					}
+					&::before {
+						right: 4px;
+						bottom: 4px;
+						border-top: none;
+						border-left: none;
+					}
+					&.active,
+					&:hover {
+						border: 1px solid #ed5400;
+						color: #fff;
+						background-color: #ed5400;
+						&::after,
+						&::before {
+							border: 2px solid #fff;
+							width: 11px;
+							height: 11px;
+						}
+						&::after {
+							border-right: none;
+							border-bottom: none;
+						}
+						&::before {
+							border-top: none;
+							border-left: none;
+						}
+					}
 				}
 			}
 		}
@@ -158,8 +212,13 @@ export default DesignList;
 					width: 410px;
 					height: 500px;
 					overflow: hidden;
+					background: url('~assets/bg_c1_pic_mask.png') no-repeat;
+					background-position: bottom;
 					img {
 						width: 100%;
+						height: 500px;
+						position: relative;
+						z-index: -1;
 					}
 					.text {
 						position: absolute;
@@ -187,15 +246,34 @@ export default DesignList;
 						font-size: 18px;
 						&:nth-of-type(1) {
 							color: #333333;
+							// font-weight: 600;
 						}
 						&:nth-of-type(2) {
 							margin-top: 20px;
 							color: #666666;
+							@include line-clamp(1);
+						}
+					}
+					.button-wrap {
+						margin-top: 39px;
+						&:hover {
+							cursor: pointer;
+						}
+						.btn {
+							margin: 0;
+							width: 150px;
+							height: 48px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
 						}
 					}
 				}
 			}
 		}
+	}
+	.pagination-box {
+		margin: 40px 0 100px 0;
 	}
 }
 </style>

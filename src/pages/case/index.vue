@@ -1,6 +1,7 @@
 <template>
 	<div class="case-page">
-		<Banner :data="bannerData" />
+		<Banner :data="vrbannerData" v-if="$route.name == 'case-listvr'" />
+		<Banner :data="bannerData" v-else />
 		<router-view />
 	</div>
 </template>
