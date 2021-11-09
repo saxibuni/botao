@@ -45,8 +45,12 @@
 					</swiper-slide>
 				</swiper>
 			</div>
-			<div>
-				控制条
+			<div class="controal-box">
+				<div class="controals">
+					<div class="swiper-next owner-next"></div>
+					<div class="swiper-pre owner-pre"></div>
+					<div class="swiper-pagination owener-pagination"></div>
+				</div>
 			</div>
 		</div>
 
@@ -86,8 +90,12 @@
 					</swiper-slide>
 				</swiper>
 			</div>
-			<div>
-				控制条
+			<div class="controal-box">
+				<div class="controals">
+					<div class="swiper-next fh-next"></div>
+					<div class="swiper-pre fh-pre"></div>
+					<div class="swiper-pagination fh-pagination"></div>
+				</div>
 			</div>
 		</div>
 		<div class="dian-ping">
@@ -105,6 +113,10 @@
 					</swiper-slide>
 				</swiper>
 			</div>
+			<div class="button-box">
+				<div class="swiper-next dp-next"></div>
+				<div class="swiper-pre dp-pre"></div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -115,6 +127,59 @@ export default OwnerVoice;
 </script>
 
 <style lang="scss">
+.controal-box {
+	height: 198px;
+}
+.controals {
+	position: relative;
+	height: 100%;
+	.swiper-pagination {
+		position: absolute;
+		top: 50px;
+		left: 50%;
+		transform: translateX(-50%);
+		> span {
+			margin: 10px;
+			width: 15px;
+			height: 15px;
+			border-radius: 0;
+			background-color: #fff;
+			border: 1px solid #dcdcdc;
+			&.swiper-pagination-bullet-active {
+				border: 1px solid #ed5400;
+			}
+		}
+	}
+}
+.swiper-pre,
+.swiper-next {
+	position: absolute;
+	z-index: 11;
+	top: 62px;
+	width: 13px;
+	height: 13px;
+	border-bottom: 2px solid #ccc;
+	border-left: 2px solid #ccc;
+	transform: rotate(45deg);
+	cursor: pointer;
+	transition: all 0.3s;
+}
+.swiper-pre {
+	left: 80px;
+	&:hover {
+		border-color: #ed5400;
+		transform: rotate(45deg) scale(1.3);
+	}
+}
+.swiper-next {
+	transform: rotate(-135deg);
+	right: 80px;
+	&:hover {
+		border-color: #ed5400;
+		transform: rotate(-135deg) scale(1.3);
+	}
+}
+
 .owner {
 	font-size: 16px;
 	@mixin title {
@@ -155,11 +220,11 @@ export default OwnerVoice;
 					top: 50%;
 					transform: translateY(-50%);
 					left: -311px;
-					width: 450px;
+					width: 450px !important;
 					height: 493px;
 
 					.inner-box {
-						box-sizing: border-box;
+						// box-sizing: border-box;
 						padding: 41px 36px 64px 36px;
 						position: absolute;
 						left: 100%;
@@ -199,6 +264,7 @@ export default OwnerVoice;
 							}
 						}
 						> p {
+							width: 376px;
 							margin-top: 39px;
 							margin-bottom: 51px;
 							font-size: 16px;
@@ -237,8 +303,8 @@ export default OwnerVoice;
 						}
 						.img-box {
 							position: absolute;
-							right: 36px;
-							bottom: 37px;
+							right: 100px;
+							bottom: 122px;
 							width: 99px;
 							height: 84px;
 							background-color: red;
@@ -279,6 +345,7 @@ export default OwnerVoice;
 	}
 	.dian-ping {
 		@include title();
+		position: relative;
 		padding: 0 215px;
 		padding-bottom: 136px;
 		.swiper-box {
@@ -307,10 +374,23 @@ export default OwnerVoice;
 						height: 631px;
 						box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
 					}
-					&:not(:last-child){
+					&:not(:last-child) {
 						margin-right: 40px;
 					}
 				}
+			}
+		}
+		.button-box {
+			position: absolute;
+			.dp-pre,
+			.dp-next {
+				top: -438px;
+			}
+			.dp-pre {
+				left: -100px;
+			}
+			.dp-next {
+				right: -1590px;
 			}
 		}
 	}
@@ -392,6 +472,9 @@ export default OwnerVoice;
 					}
 				}
 			}
+		}
+		.controal-box {
+			height: 163px;
 		}
 	}
 }
