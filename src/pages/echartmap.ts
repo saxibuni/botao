@@ -1,3 +1,4 @@
+import { Events } from 'root/utils/EnumUtils';
 import { Vue, Component } from 'vue-property-decorator';
 let echarts = require('echarts/lib/echarts')
 require("echarts/extension/bmap/bmap.js");
@@ -41,38 +42,38 @@ export default class EchartMap extends Vue {
 	}
 
 	initChart() {
-		const HFData = [ // 数据中name的城市名称必须与geoCoordMap中城市名称一致, 不然关联不上，合肥到各地区的线路
-			[{ name: '合肥' }, { name: '长春', value: 66 }],
-			[{ name: '合肥' }, { name: '长沙', value: 66 }],
-			[{ name: '合肥' }, { name: '贵阳', value: 66 }],
-			[{ name: '合肥' }, { name: '杨凌', value: 66 }],
-			[{ name: '合肥' }, { name: '深圳', value: 66 }],
-			[{ name: '合肥' }, { name: '济南', value: 66 }],
-			[{ name: '合肥' }, { name: '海口', value: 66 }],
-			[{ name: '合肥' }, { name: '沈阳', value: 66 }],
-			[{ name: '合肥' }, { name: '武汉', value: 66 }],
-			[{ name: '合肥' }, { name: '昆明', value: 66 }],
-			[{ name: '合肥' }, { name: '合肥', value: 118 }],
-			[{ name: '合肥' }, { name: '杭州', value: 66 }],
-			[{ name: '合肥' }, { name: '成都', value: 66 }],
-			[{ name: '合肥' }, { name: '拉萨', value: 66 }],
-			[{ name: '合肥' }, { name: '天津', value: 66 }],
-			[{ name: '合肥' }, { name: '呼和浩特', value: 66 }],
-			[{ name: '合肥' }, { name: '哈尔滨', value: 66 }],
-			[{ name: '合肥' }, { name: '北京', value: 66 }],
-			[{ name: '合肥' }, { name: '南宁', value: 66 }],
-			[{ name: '合肥' }, { name: '南昌', value: 66 }],
-			[{ name: '合肥' }, { name: '乌鲁木齐', value: 66 }],
-			[{ name: '合肥' }, { name: '上海', value: 66 }]
+		const HFData = [ // 数据中name的城市名称必须与geoCoordMap中城市名称一致, 不然关联不上，上海到各地区的线路
+			[{ name: '上海' }, { name: '长春', value: 66 }],
+			[{ name: '上海' }, { name: '长沙', value: 66 }],
+			[{ name: '上海' }, { name: '贵阳', value: 66 }],
+			[{ name: '上海' }, { name: '杨凌', value: 66 }],
+			[{ name: '上海' }, { name: '深圳', value: 66 }],
+			[{ name: '上海' }, { name: '济南', value: 66 }],
+			[{ name: '上海' }, { name: '海口', value: 66 }],
+			[{ name: '上海' }, { name: '沈阳', value: 66 }],
+			[{ name: '上海' }, { name: '武汉', value: 66 }],
+			[{ name: '上海' }, { name: '昆明', value: 66 }],
+			[{ name: '上海' }, { name: '合肥', value: 66 }],
+			[{ name: '上海' }, { name: '杭州', value: 66 }],
+			[{ name: '上海' }, { name: '成都', value: 66 }],
+			[{ name: '上海' }, { name: '拉萨', value: 66 }],
+			[{ name: '上海' }, { name: '天津', value: 66 }],
+			[{ name: '上海' }, { name: '呼和浩特', value: 66 }],
+			[{ name: '上海' }, { name: '哈尔滨', value: 66 }],
+			[{ name: '上海' }, { name: '北京', value: 66 }],
+			[{ name: '上海' }, { name: '南宁', value: 66 }],
+			[{ name: '上海' }, { name: '南昌', value: 66 }],
+			[{ name: '上海' }, { name: '乌鲁木齐', value: 66 }],
+			[{ name: '上海' }, { name: '上海', value: 118 }]
 		];
 
 		const color = '#EB551D';
 		const planePath = 'arrow';
 		// const planePath = "path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z";
 		let series = [];
-		// 遍历由合肥到其他城市的线路
+		// 遍历由上海到其他城市的线路
 		[
-			['合肥', HFData]
+			['上海', HFData]
 		].forEach((item, i) => {
 			// 配置
 			series.push({
@@ -211,6 +212,7 @@ export default class EchartMap extends Vue {
 
 		this.chart = echarts.init(this.$el.querySelector(".map-box"));
 		this.chart.setOption(mapBoxOption);
+		this.$bus.$on(Events.RESIZE, this.onResize);
 	}
 
 	convertData(data) {
@@ -219,7 +221,6 @@ export default class EchartMap extends Vue {
 			let dataItem = data[i];
 			let fromCoord = this.geoCoordMap[dataItem[0].name];
 			let toCoord = this.geoCoordMap[dataItem[1].name];
-			console.log(toCoord);
 			if (fromCoord && toCoord) {
 				res.push([{
 					coord: fromCoord
@@ -228,6 +229,17 @@ export default class EchartMap extends Vue {
 				}]);
 			}
 		}
+		console.log(res);
 		return res;
+	}
+
+	onResize() {
+		this.chart.resize();
+	}
+
+	beforeDestroy() {
+		this.$bus.$off(Events.RESIZE, this.onResize);
+		this.chart.dispose();
+		this.chart = null;
 	}
 }
