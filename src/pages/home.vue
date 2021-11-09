@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="mask">
-					<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
+							<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
 				</div>
 				<div class="mask2"></div>
 			</div>
@@ -805,7 +805,7 @@ export default home;
 					background-size: cover;
 				}
 			}
-			.mask2 {
+			.mask {
 				position: absolute;
 				width: 100%;
 				z-index: 1;
