@@ -150,7 +150,7 @@
 						<img src="~assets/bg_home_b3_left_text.png" alt="" />
 					</div>
 					<div class="img-wrap">
-						<img src="~assets/bg_home_b3_pic17.jpg" alt="" />
+						<img :src="imgSrc" alt="" />
 						<div>
 							<p>Design concept</p>
 							<b>细节决定成败</b>
@@ -160,12 +160,12 @@
 			</div>
 			<div class="right">
 				<ul>
-					<li v-for="(item,i) in portraitList" :key="i" @click="onClick($event,item)">
+					<li v-for="(item,i) in portraitList" :key="i" @click="onClick($event,item,i)" :ref="`item${i}`">
 						<img :src="item" alt="">
 					</li>
 				</ul>
 
-				<div class="img-box">
+				<div class="img-box" :style="{top:`${top}px`,left:`${left}px`,width:`${width}px`,height:`${height}px`}">
 					<img :src="imgSrc" alt="">
 				</div>
 			</div>
@@ -753,6 +753,7 @@ export default home;
 					margin: 0;
 					.swiper-wrapper {
 						.swiper-slide {
+							box-sizing: border-box;
 							height: 125px;
 							border: 1px solid transparent;
 							&.swiper-slide-active {

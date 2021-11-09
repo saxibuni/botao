@@ -165,10 +165,17 @@ export default class home extends Vue {
 		spine.state.setAnimation(0, 'enter', false);
 		ScrollTrigger.getAll().forEach(child => child.kill());
 	}
-
-	onClick(event,item){
+	left = 0;
+	top = 0;
+	width = 0;
+	height = 0;
+	onClick(event,item,i){
 		this.imgSrc = item;
-		console.log(event);
+		let items = `item${i}`
+		this.left = this.$refs[items][0].offsetLeft;
+		this.top = this.$refs[items][0].offsetTop;
+		this.width = this.$refs[items][0].clientWidth;
+		this.height = this.$refs[items][0].clientHeight;
 	}
 
 }
