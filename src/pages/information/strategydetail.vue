@@ -315,41 +315,7 @@ export default StrategyDetail;
 				}
 			}
 		}
-		.btn {
-			text-align: center;
-			width: 170px;
-			height: 53px;
-			background: #ed5400;
-			font-size: 18px;
-			font-family: AlibabaPuHuiTiR;
-			font-weight: 400;
-			color: #ffffff;
-			line-height: 53px;
-			text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
-			margin: 0 auto;
-			cursor: pointer;
-			position: relative;
-			&::after,
-			&::before {
-				content: '';
-				position: absolute;
-				border: 2px solid #ffffff;
-				width: 8px;
-				height: 8px;
-			}
-			&::after {
-				left: 4px;
-				top: 4px;
-				border-right: none;
-				border-bottom: none;
-			}
-			&::before {
-				right: 4px;
-				bottom: 4px;
-				border-top: none;
-				border-left: none;
-			}
-		}
+
 	}
 }
 </style>

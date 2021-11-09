@@ -127,58 +127,6 @@ export default OwnerVoice;
 </script>
 
 <style lang="scss">
-.controal-box {
-	height: 198px;
-}
-.controals {
-	position: relative;
-	height: 100%;
-	.swiper-pagination {
-		position: absolute;
-		top: 50px;
-		left: 50%;
-		transform: translateX(-50%);
-		> span {
-			margin: 10px;
-			width: 15px;
-			height: 15px;
-			border-radius: 0;
-			background-color: #fff;
-			border: 1px solid #dcdcdc;
-			&.swiper-pagination-bullet-active {
-				border: 1px solid #ed5400;
-			}
-		}
-	}
-}
-.swiper-pre,
-.swiper-next {
-	position: absolute;
-	z-index: 11;
-	top: 62px;
-	width: 13px;
-	height: 13px;
-	border-bottom: 2px solid #ccc;
-	border-left: 2px solid #ccc;
-	transform: rotate(45deg);
-	cursor: pointer;
-	transition: all 0.3s;
-}
-.swiper-pre {
-	left: 80px;
-	&:hover {
-		border-color: #ed5400;
-		transform: rotate(45deg) scale(1.3);
-	}
-}
-.swiper-next {
-	transform: rotate(-135deg);
-	right: 80px;
-	&:hover {
-		border-color: #ed5400;
-		transform: rotate(-135deg) scale(1.3);
-	}
-}
 
 .owner {
 	font-size: 16px;

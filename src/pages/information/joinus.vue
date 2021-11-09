@@ -15,6 +15,10 @@
 			</div>
 		</div>
 		<div class="swiper-box">
+			<div class="control">
+				<div class="swiper-pre ju-pre"></div>
+				<div class="swiper-next ju-next"></div>
+			</div>
 			<swiper :options="jsBannerOptions">
 				<swiper-slide v-for="n in 5" :key="n">
 					<div class="img-box">
@@ -22,6 +26,19 @@
 					</div>
 				</swiper-slide>
 			</swiper>
+		</div>
+		<div class="xr">
+			<div class="text-box">
+				<h2>选人</h2>
+				<h3>“有魂、有力、有激情”的三有新人</h3>
+				<p>波涛是个充满无限可能的企业，而对于选用人才，坚持选用对自己的未来有明确目标和企图心的人才，梦想是目标、能力是支撑、激情是态度、准备是自信，波涛欢迎做好准备去迎接一切未知的挑战的人才</p>
+				<div class="btn">加入我们</div>
+			</div>
+			<div class="img-box">
+				<div class="img-box">
+					<img src="~assets/bg_home_banner2.jpg" alt="" />
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -60,43 +77,13 @@ export default JoinUs;
 				line-height: 40px;
 			}
 			.btn {
-				margin-top: 82px;
-				text-align: center;
-				width: 170px;
-				height: 53px;
-				background: #ed5400;
-				font-size: 18px;
-				font-family: AlibabaPuHuiTiR;
-				font-weight: 400;
-				color: #ffffff;
-				line-height: 53px;
-				text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
-				cursor: pointer;
-				position: relative;
-				&::after,
-				&::before {
-					content: '';
-					position: absolute;
-					border: 2px solid #ffffff;
-					width: 8px;
-					height: 8px;
-				}
-				&::after {
-					left: 4px;
-					top: 4px;
-					border-right: none;
-					border-bottom: none;
-				}
-				&::before {
-					right: 4px;
-					bottom: 4px;
-					border-top: none;
-					border-left: none;
-				}
+				margin: 0;
+				margin-top: 92px;
 			}
 		}
 	}
 	.swiper-box {
+		margin-top: 22px;
 		.swiper-container {
 			overflow: visible !important;
 		}
@@ -105,7 +92,7 @@ export default JoinUs;
 			overflow: inherit;
 		}
 		.swiper-slide-active {
-			transform: scale(1.3);
+			transform: scale(1.2);
 			.img-box {
 				position: relative;
 				img {
@@ -122,6 +109,40 @@ export default JoinUs;
 				z-index: -1 !important;
 				width: 100%;
 				height: 100%;
+			}
+		}
+		.control {
+			display: flex;
+			margin-bottom: 162px;
+			margin-left: 197px;
+			> div {
+				position: static;
+				&:first-child {
+					margin-right: 34px;
+				}
+			}
+		}
+	}
+	.xr {
+		display: flex;
+		margin-top: 288px;
+		padding: 0 196px;
+		.text-box {
+			h2 {
+				font-size: 62px;
+				color: #000000;
+				line-height: 1;
+			}
+			h3 {
+				font-size: 30px;
+				color: #ea551d;
+				line-height: 1;
+			}
+			p {
+				width: 617px;
+				font-size: 20px;
+				color: #666666;
+				line-height: 40px;
 			}
 		}
 	}
