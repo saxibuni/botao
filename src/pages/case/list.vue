@@ -25,8 +25,7 @@
 			<div class="tabsList" v-for="(item, index) in tabList" :key="index">
 				<p>{{ item.title }}</p>
 				<ul>
-					<li>全部</li>
-					<li v-for="(v, i) in item.info" :key="i">{{ v }}</li>
+					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
 				</ul>
 			</div>
 		</div>
@@ -52,9 +51,15 @@
 							<p>15年</p>
 						</div>
 					</div>
+					<Button :text="'找TA设计'" />
 				</div>
 			</div>
-			<img src="~assets/bg_b1_part2_right.jpg" alt="" />
+			<swiper :options="bannerSwiperOptions1">
+				<swiper-slide v-for="(item, i) in 3" :key="i">
+					<img src="~assets/bg_b1_part2_right.jpg" alt="" />
+				</swiper-slide>
+			</swiper>
+			<div class="swiper-pagination3"></div>
 		</div>
 		<div class="cases">
 			<Cases v-for="i in 6" :key="i" />
@@ -106,6 +111,7 @@ export default CaseList;
 					border: 1px solid #ed5400;
 					outline: none;
 					font-size: 20px;
+					text-indent: 1em;
 				}
 				i {
 					position: absolute;
@@ -116,6 +122,9 @@ export default CaseList;
 					height: 18px;
 					background: url('~assets/icons/bg_b1_part1_search.png') no-repeat;
 					background-size: 100% 100%;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 			p {
@@ -125,6 +134,10 @@ export default CaseList;
 				span {
 					color: #333333;
 					margin-right: 20px;
+					// font-weight: 600;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 		}
@@ -141,6 +154,7 @@ export default CaseList;
 				font-weight: 400;
 				color: #000000;
 				margin-right: 40px;
+				// font-weight: 600;
 			}
 			ul {
 				display: flex;
@@ -150,6 +164,52 @@ export default CaseList;
 					color: #666666;
 					padding: 11px 24px;
 					margin-right: 20px;
+					cursor: pointer;
+					position: relative;
+					transition: 0.3s;
+					border: 1px solid transparent;
+					&::after,
+					&::before {
+						content: '';
+						position: absolute;
+						border: 2px solid transparent;
+						width: 0px;
+						height: 0px;
+						transition: border 0.3s, width 0.3s, height 0.3s;
+						opacity: 0.35;
+					}
+					&::after {
+						left: 4px;
+						top: 4px;
+						border-right: none;
+						border-bottom: none;
+					}
+					&::before {
+						right: 4px;
+						bottom: 4px;
+						border-top: none;
+						border-left: none;
+					}
+					&.active,
+					&:hover {
+						border: 1px solid #ed5400;
+						color: #fff;
+						background-color: #ed5400;
+						&::after,
+						&::before {
+							border: 2px solid #fff;
+							width: 11px;
+							height: 11px;
+						}
+						&::after {
+							border-right: none;
+							border-bottom: none;
+						}
+						&::before {
+							border-top: none;
+							border-left: none;
+						}
+					}
 				}
 			}
 		}
@@ -164,12 +224,14 @@ export default CaseList;
 		}
 		.content {
 			position: absolute;
+			z-index: 99;
 			left: 0px;
 			> img {
 				position: relative;
 			}
 			.text {
 				position: absolute;
+
 				top: 130px;
 				left: 90px;
 				> p {
@@ -233,6 +295,59 @@ export default CaseList;
 						}
 					}
 				}
+				.button-wrap {
+					margin-top: 60px;
+					.btn {
+						margin: 0;
+						width: 150px;
+						height: 53px;
+						font-size: 18px;
+						color: #ffffff;
+						text-shadow: 0px 0px 30px rgba(183, 53, 19, 0.55);
+					}
+				}
+			}
+		}
+		.swiper-container {
+			width: 1220px;
+			height: 740px;
+			margin: 0;
+		}
+		.swiper-pagination3 {
+			position: absolute;
+			z-index: 99;
+			left: 1553px;
+			bottom: 60px;
+			display: flex;
+			.swiper-pagination-bullet {
+				font-family: Gilroy;
+				width: 50px;
+				height: 50px;
+				outline: none;
+				background: transparent;
+				border: 2px solid rgba(255, 255, 255, 0.3);
+				color: rgba(255, 255, 255, 0.5);
+				font-size: 16px;
+				line-height: 50px;
+				text-align: center;
+				cursor: pointer;
+				opacity: 1;
+				&.swiper-pagination-bullet-active {
+					border: none;
+					color: rgba(255, 255, 255, 1);
+					position: relative;
+					&::after {
+						content: '';
+						background: url('~assets/icons/bg_home_b5_half.png') no-repeat;
+						background-size: 100% 100%;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 50px;
+						height: 50px;
+						transform: rotate(180deg);
+					}
+				}
 			}
 		}
 	}
@@ -240,6 +355,9 @@ export default CaseList;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
+	}
+	.pagination-box {
+		margin: 40px 0 100px 0;
 	}
 }
 </style>
