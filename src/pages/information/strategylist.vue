@@ -1,5 +1,6 @@
 <template>
 	<div class="strategy-list">
+		<banner :data='BannerData'></banner>
 		<!-- 装修攻略列表 -->
 		<div class="decoration-strategy">
 			<h2>装修攻略</h2>
@@ -7,7 +8,7 @@
 			<div class="strategy-box">
 				<div class="strategy-left">
 					<div class="img-box">
-						<img src="~assets/bg_home_banner1.jpg" />
+						<img src="~assets/strategy1.jpg" />
 					</div>
 					<div class="info-box">
 						<div class="date">2021,Auguset,10</div>

@@ -1,6 +1,5 @@
 <template>
 	<div class="information">
-		<Banner :data="BannerData" />
 		<router-view />
 	</div>
 </template>
@@ -32,7 +31,7 @@ export default Infomation;
 				height: 15px;
 				border-radius: 0;
 				background-color: #fff;
-				border: 1px solid #dcdcdc;
+				border: 1px solid #ccc;
 				&.swiper-pagination-bullet-active {
 					border: 1px solid #ed5400;
 				}
@@ -45,62 +44,25 @@ export default Infomation;
 		z-index: 11;
 		top: 62px;
 		width: 13px;
-		height: 13px;
-		border-bottom: 2px solid #ccc;
-		border-left: 2px solid #ccc;
-		transform: rotate(45deg);
+		height: 26px;
 		cursor: pointer;
 		transition: all 0.3s;
 	}
 	.swiper-pre {
 		left: 80px;
+		background: url(~assets/icons/ic_f4_left1.png) no-repeat;
+		background-size: 100%;
 		&:hover {
-			border-color: #ed5400;
-			transform: rotate(45deg) scale(1.3);
+			background-image: url(~assets/icons/ic_f4_left2.png);
 		}
 	}
 	.swiper-next {
-		transform: rotate(-135deg);
 		right: 80px;
+		background: url(~assets/icons/ic_f4_right1.png) no-repeat;
+		background-size: 100%;
 		&:hover {
-			border-color: #ed5400;
-			transform: rotate(-135deg) scale(1.3);
+			background-image: url(~assets/icons/ic_f4_right2.png);
 		}
 	}
-	.btn {
-			text-align: center;
-			width: 170px;
-			height: 53px;
-			background: #ed5400;
-			font-size: 18px;
-			font-family: AlibabaPuHuiTiR;
-			font-weight: 400;
-			color: #ffffff;
-			line-height: 53px;
-			text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
-			margin: 0 auto;
-			cursor: pointer;
-			position: relative;
-			&::after,
-			&::before {
-				content: '';
-				position: absolute;
-				border: 2px solid #ffffff;
-				width: 8px;
-				height: 8px;
-			}
-			&::after {
-				left: 4px;
-				top: 4px;
-				border-right: none;
-				border-bottom: none;
-			}
-			&::before {
-				right: 4px;
-				bottom: 4px;
-				border-top: none;
-				border-left: none;
-			}
-		}
 }
 </style>

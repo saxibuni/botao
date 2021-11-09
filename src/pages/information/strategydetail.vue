@@ -1,5 +1,6 @@
 <template>
 	<div class="strategy-detail">
+		<banner :data="BannerData"></banner>
 		<!-- 装修攻略详情 -->
 		<div class="article">
 			<h2>
@@ -30,7 +31,7 @@
 				所以,客厅的打开方式也可以是这样
 			</p>
 			<div class="img-box">
-				<img src="~assets/bg_home_banner2.jpg" alt="" />
+				<img src="~assets/bg_f3_pic1.jpg" alt="" />
 			</div>
 			<h3>
 				各种风格的客厅，当空间不被定义
@@ -55,7 +56,7 @@
 				彰显国风文化的典雅别致。
 			</p>
 			<div class="img-box mb146">
-				<img src="~assets/bg_home_banner2.jpg" alt="" />
+				<img src="~assets/bg_f3_pic2.jpg" alt="" />
 			</div>
 			<p>
 				由于业主对北欧和现代的混搭风格情有独钟,所以本案设计师摒弃繁琐的裝饰,
@@ -87,7 +88,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn">更多新闻</div>
+			<Button :text="'更多新闻'"></Button>
 		</div>
 	</div>
 </template>
@@ -115,6 +116,7 @@ export default StrategyDetail;
 		.title-info {
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
 			margin-top: 52px;
 			height: 113px;
 			border-top: 2px solid #ccc;
@@ -125,12 +127,15 @@ export default StrategyDetail;
 				align-items: center;
 				height: 100%;
 				i {
-					margin-right: 10px;
+					margin-right: 20px;
 					width: 20px;
 					height: 20px;
-					background: url(~assets/icons/ic_clock.png) no-repeat;
+					background: url(~assets/icons/ic_f3_part2_time.png) no-repeat;
 					background-size: 100%;
 					&:nth-of-type(2) {
+						width: 24px;
+						height: 14px;
+						background-image: url(~assets/icons/ic_f3_part2_eye.png);
 						margin-left: 40px;
 					}
 				}
@@ -155,19 +160,28 @@ export default StrategyDetail;
 					&:nth-child(1) {
 						width: 17px;
 						height: 17px;
-						background: url(~assets/icons/ic_clock.png) no-repeat;
+						background: url(~assets/icons/ic_f3_part2_share.png) no-repeat;
 						background-size: 100%;
 					}
 					&:nth-child(2) {
+						width: 20px;
+						height: 18px;
 						margin-left: 40px;
 						background-size: 100%;
 						&:hover {
 							background-image: url(~assets/icons/ic_home_footer_weibo2.png);
 						}
 					}
-					&:nth-child(3),
-					&:nth-child(4) {
+					&:nth-child(3) {
+						width: 20px;
+						height: 17px;
 						background: url(~assets/icons/ic_home_footer_wechat1.png) no-repeat;
+						background-size: 100%;
+					}
+					&:nth-child(4) {
+						width: 16px;
+						height: 18px;
+						background: url(~assets/icons/ic_f3_part2_qq.png) no-repeat;
 						background-size: 100%;
 					}
 					&:nth-child(3) {
@@ -189,8 +203,12 @@ export default StrategyDetail;
 			&:first-of-type {
 				margin-top: 138px;
 			}
+			&:nth-of-type(2) {
+				margin-top: 56px;
+				margin-bottom: 170px;
+			}
 			&:nth-of-type(3) {
-				margin-top: 60px;
+				margin-top: 42px;
 				line-height: 40px;
 				margin-bottom: 0;
 			}
@@ -199,6 +217,7 @@ export default StrategyDetail;
 				margin-bottom: 0;
 			}
 			&:nth-of-type(6) {
+				margin-top: 42px;
 				margin-bottom: 236px;
 			}
 			&:nth-of-type(5),
@@ -208,14 +227,14 @@ export default StrategyDetail;
 		}
 		.img-box {
 			margin-top: 100px;
-			margin-bottom: 100px;
+			margin-bottom: 102px;
 			img {
 				width: 1400px;
 				height: 708px;
 			}
 		}
 		.mb146 {
-			margin-bottom: 146px;
+			margin-bottom: 144px;
 		}
 		h3 {
 			font-size: 32px;
@@ -315,7 +334,6 @@ export default StrategyDetail;
 				}
 			}
 		}
-
 	}
 }
 </style>
