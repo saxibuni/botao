@@ -74,25 +74,25 @@ export default ShangHaiMap;
 			}
 
 			&.jd {
-				transform: translate(675PX, 216PX);
+				transform: translate(675px, 216px);
 			}
 			&.cm {
-				transform: translate(934PX, 87PX);
+				transform: translate(934px, 87px);
 				.county, .info {
-					transform: translate(67PX, -34PX);
+					transform: translate(67px, -34px);
 				}
 			}
 			&.qp {
-				transform: translate(620PX, 354PX);
+				transform: translate(620px, 354px);
 			}
 			&.bs {
-				transform: translate(779PX, 186PX);
+				transform: translate(779px, 186px);
 			}
 			&.sj {
-				transform: translate(658PX, 477PX);
+				transform: translate(658px, 477px);
 			}
 			&.mh {
-				transform: translate(773px, 429PX);
+				transform: translate(773px, 429px);
 				.county {
 					font-size: 18.82px;
 				}
@@ -101,7 +101,7 @@ export default ShangHaiMap;
 				}
 			}
 			&.fx {
-				transform: translate(856PX, 576PX);
+				transform: translate(856px, 576px);
 			}
 			&.pd {
 				width: 130px;
@@ -109,7 +109,7 @@ export default ShangHaiMap;
 					width: 68px;
 					height: 51px;
 				}
-				transform: translate(953PX, 419PX);
+				transform: translate(953px, 419px);
 				.county {
 					font-size: 23.15px;
 				}

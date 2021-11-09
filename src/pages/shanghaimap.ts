@@ -1,3 +1,5 @@
+import { util } from 'echarts';
+import { Events } from 'root/utils/EnumUtils';
 import { Vue, Component } from 'vue-property-decorator';
 let echarts = require('echarts/lib/echarts');
 require("echarts/extension/bmap/bmap.js");
@@ -33,15 +35,18 @@ export default class ShangHaiMap extends Vue {
 				roam: false,
 				center: [121.490317, 31.162771], //设置可见中心坐标，以此坐标来放大和缩小
 				zoom: 1.35,
+				selectedMode: false,
 				label: {
 					show: false,
-					emphasis: {
-						show: false
-					}
 				},
 				itemStyle: {
-					areaColor: '#fff',
-					emphasis: {
+					areaColor: '#fff'
+				},
+				emphasis: {
+					label: {
+						show: false
+					},
+					itemStyle: {
 						areaColor: color,
 						shadowColor: 'rgba(0, 0, 0, 0.5)'
 					}
@@ -78,10 +83,22 @@ export default class ShangHaiMap extends Vue {
 		this.chart.on('mouseover', params => {
 			if (params.data) {
 				this.currentSelectId = params.data.id;
+				console.log(JSON.stringify(params.data));
 			}
 		});
-		this.chart.on('mouseout', params => {
+		this.chart.on('mouseout', () => {
 			this.currentSelectId = "";
 		});
+		this.$bus.$on(Events.RESIZE, this.onResize);
+	}
+
+	onResize() {
+		this.chart.resize();
+	}
+
+	beforeDestroy() {
+		this.$bus.$off(Events.RESIZE, this.onResize);
+		this.chart.dispose();
+		this.chart = null;
 	}
 }
