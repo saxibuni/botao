@@ -1,12 +1,17 @@
 import { Vue, Component } from 'vue-property-decorator';
+import * as PIXI from "pixi.js";
 import Button from "../components/button.vue";
+require("root/libs/pixi-spine.js");
+PIXI.utils.skipHello();
+
 @Component({
 	components: {
 		Button
 	}
 })
-
 export default class home extends Vue {
+	renderer: PIXI.WebGLRenderer | PIXI.CanvasRenderer; //开始不能赋值，不然就会变成vue监测属性
+
 	anList=['新中式','美式','北欧','欧式','现代'];
 	imgSrc = require("../assets/portrait/bg_home_b3_pic17.jpg");
 	portraitList = [
@@ -119,6 +124,15 @@ export default class home extends Vue {
 		on: {
 		}
 	};
+
+	mounted() {
+
+	}
+
+	initSpineAni() {
+
+	}
+
 
 	onClick(event,item){
 		this.imgSrc = item;
