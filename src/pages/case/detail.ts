@@ -32,10 +32,7 @@ export default class CaseDetail extends Vue {
 		spaceBetween: 30,
 		slidesPerView: 3,
 		slidesPerGroup: 3,
-		autoplay: {
-			delay: 2000,
-			disableOnInteraction: false
-		},
+		autoplay: false,
 		pagination: {
 			el: '.pagination2',
 			clickable: true
