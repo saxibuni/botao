@@ -1,14 +1,16 @@
 <template>
 	<div class="owner">
 		<!-- 业主心声 -->
+		<Banner :data="BannerData" />
+
 		<div class="owner-vioce">
 			<h2>业主心声</h2>
 			<h3>Owner's voice</h3>
 			<div class="swiper-box">
 				<swiper :options="ownerBannerOptions">
-					<swiper-slide v-for="n in 3" :key="n">
+					<swiper-slide v-for="(v, i) in ownerArr" :key="i">
 						<div class="img-box">
-							<img src="~assets/bg_home_banner2.jpg" />
+							<img :src="v.imgUrl" />
 							<div class="pause">
 								<img src="~assets/ic_home_b3_play.png" alt="" />
 							</div>
@@ -35,7 +37,7 @@
 										装修方案老人家看了都很满意，以复古风装修为主 家里的墙纸大多是暖色调，满满的温馨祥祥和
 										<span>[详情]</span>
 									</p>
-									<button>定制我的装修方案</button>
+									<Button :text="'定制我的方案'"></Button>
 									<div class="img-box">
 										<img />
 									</div>
@@ -53,37 +55,36 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="flag-honer">
 			<h2>荣誉锦旗</h2>
 			<h3>Flag of honor</h3>
 			<div class="swiper-box">
 				<swiper :options="fhBannerOptions">
-					<swiper-slide v-for="n in 3" :key="n">
+					<swiper-slide v-for="(v, i) in fhArr" :key="i">
 						<div class="img-box">
 							<div class="left">
 								<div class="top">
-									<img src="~assets/bg_home_banner2.jpg" alt="" />
-									<img src="~assets/bg_home_banner2.jpg" alt="" />
-									<img src="~assets/bg_home_banner2.jpg" alt="" />
+									<img :src="v.img1" alt="" />
+									<img :src="v.img4" alt="" />
+									<img :src="v.img5" alt="" />
 								</div>
 								<div class="bottom">
 									<div class="left">
-										<img src="~assets/bg_home_banner2.jpg" alt="" />
-										<img src="~assets/bg_home_banner2.jpg" alt="" />
+										<img :src="v.img2" alt="" />
+										<img :src="v.img3" alt="" />
 									</div>
 									<div class="right">
-										<img src="~assets/bg_home_banner2.jpg" alt="" />
+										<img :src="v.img6" alt="" />
 									</div>
 								</div>
 							</div>
 							<div class="out-right">
 								<div class="top">
-									<img src="~assets/bg_home_banner2.jpg" alt="" />
+									<img :src="v.img7" alt="" />
 								</div>
 								<div class="bottom">
-									<img src="~assets/bg_home_banner2.jpg" alt="" />
-									<img src="~assets/bg_home_banner2.jpg" alt="" />
+									<img :src="v.img8" alt="" />
+									<img :src="v.img9" alt="" />
 								</div>
 							</div>
 						</div>
@@ -103,12 +104,9 @@
 			<h3>owner reviews</h3>
 			<div class="swiper-box">
 				<swiper :options="dpBannerOptions">
-					<swiper-slide v-for="n in 3" :key="n">
+					<swiper-slide v-for="(v,i) in dpArr" :key="i">
 						<div class="img-box">
-							<img src="~assets/bg_home_banner2.jpg" alt="" />
-							<img src="~assets/bg_home_banner2.jpg" alt="" />
-							<img src="~assets/bg_home_banner2.jpg" alt="" />
-							<img src="~assets/bg_home_banner2.jpg" alt="" />
+							<img :src="v" alt="" />
 						</div>
 					</swiper-slide>
 				</swiper>
@@ -127,59 +125,6 @@ export default OwnerVoice;
 </script>
 
 <style lang="scss">
-.controal-box {
-	height: 198px;
-}
-.controals {
-	position: relative;
-	height: 100%;
-	.swiper-pagination {
-		position: absolute;
-		top: 50px;
-		left: 50%;
-		transform: translateX(-50%);
-		> span {
-			margin: 10px;
-			width: 15px;
-			height: 15px;
-			border-radius: 0;
-			background-color: #fff;
-			border: 1px solid #dcdcdc;
-			&.swiper-pagination-bullet-active {
-				border: 1px solid #ed5400;
-			}
-		}
-	}
-}
-.swiper-pre,
-.swiper-next {
-	position: absolute;
-	z-index: 11;
-	top: 62px;
-	width: 13px;
-	height: 13px;
-	border-bottom: 2px solid #ccc;
-	border-left: 2px solid #ccc;
-	transform: rotate(45deg);
-	cursor: pointer;
-	transition: all 0.3s;
-}
-.swiper-pre {
-	left: 80px;
-	&:hover {
-		border-color: #ed5400;
-		transform: rotate(45deg) scale(1.3);
-	}
-}
-.swiper-next {
-	transform: rotate(-135deg);
-	right: 80px;
-	&:hover {
-		border-color: #ed5400;
-		transform: rotate(-135deg) scale(1.3);
-	}
-}
-
 .owner {
 	font-size: 16px;
 	@mixin title {
@@ -224,7 +169,7 @@ export default OwnerVoice;
 					height: 493px;
 
 					.inner-box {
-						// box-sizing: border-box;
+						box-sizing: border-box;
 						padding: 41px 36px 64px 36px;
 						position: absolute;
 						left: 100%;
@@ -241,6 +186,9 @@ export default OwnerVoice;
 								flex-direction: column;
 								span {
 									font-size: 16px;
+									&:nth-child(2){
+										margin-top: 5px;
+									}
 								}
 								.name {
 									font-size: 30px;
@@ -264,47 +212,27 @@ export default OwnerVoice;
 							}
 						}
 						> p {
-							width: 376px;
+							width: 386px;
 							margin-top: 39px;
 							margin-bottom: 51px;
 							font-size: 16px;
 							line-height: 26px;
 							span {
-								color: #eb551d;
+								color: #ED5400;
 							}
 						}
-						> button {
-							position: relative;
-							color: #fff;
-							border: none;
-							width: 207px;
-							height: 53px;
-							background: #eb551d;
-							font-size: 18px;
-							text-shadow: 0px 0px 30px rgba(183, 53, 19, 0.55);
-							letter-spacing: 1px;
-							&::before,
-							&::after {
-								content: '';
-								position: absolute;
-								top: 4px;
-								left: 4px;
-								width: 9px;
-								height: 9px;
-								opacity: 0.45;
-								border-top: 1px solid #fff;
-								border-left: 1px solid #fff;
-							}
-							&::after {
-								transform: rotate(180deg);
-								top: 40px;
-								left: 193px;
+						.button-wrap {
+							.btn {
+								margin: 0;
+								width: 207px;
+								height: 53px;
+								background-color: #EB551D;
 							}
 						}
 						.img-box {
 							position: absolute;
-							right: 100px;
-							bottom: 122px;
+							right: 36px;
+							bottom: 37px;
 							width: 99px;
 							height: 84px;
 							background-color: red;
@@ -347,36 +275,41 @@ export default OwnerVoice;
 		@include title();
 		position: relative;
 		padding: 0 215px;
-		padding-bottom: 136px;
+		padding-bottom: 116px;
 		.swiper-box {
 			margin: 0 auto;
+			// min-height: 700px;
+			.swiper-container{
+				padding: 20px;
+			}
 			.img-box {
 				display: flex;
+				box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
 				img {
-					&:first-child {
-						width: 344px;
-						height: 649px;
-						box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
-					}
-					&:nth-child(2) {
-						width: 343px;
-						height: 548px;
-						box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.15);
-						opacity: 0.8;
-					}
-					&:nth-child(3) {
-						width: 341px;
-						height: 502px;
-						box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
-					}
-					&:nth-child(4) {
-						width: 341px;
-						height: 631px;
-						box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
-					}
-					&:not(:last-child) {
-						margin-right: 40px;
-					}
+					// &:first-child {
+					// 	width: 344px;
+					// 	height: 649px;
+					// 	box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
+					// }
+					// &:nth-child(2) {
+					// 	width: 343px;
+					// 	height: 548px;
+					// 	box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.15);
+					// 	opacity: 0.8;
+					// }
+					// &:nth-child(3) {
+					// 	width: 341px;
+					// 	height: 502px;
+					// 	box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
+					// }
+					// &:nth-child(4) {
+					// 	width: 341px;
+					// 	height: 631px;
+					// 	box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
+					// }
+					// &:not(:last-child) {
+					// 	margin-right: 40px;
+					// }
 				}
 			}
 		}
@@ -384,13 +317,13 @@ export default OwnerVoice;
 			position: absolute;
 			.dp-pre,
 			.dp-next {
-				top: -438px;
+				top: -525px;
 			}
 			.dp-pre {
-				left: -100px;
+				left: -119px;
 			}
 			.dp-next {
-				right: -1590px;
+				right: -1608px;
 			}
 		}
 	}
@@ -475,6 +408,14 @@ export default OwnerVoice;
 		}
 		.controal-box {
 			height: 163px;
+			.swiper-pre{
+				top: 58px;
+				left:0px;
+			}
+			.swiper-next{
+				top: 58px;
+				right: 0px;
+			}
 		}
 	}
 }

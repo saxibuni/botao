@@ -1460,6 +1460,7 @@ export default home;
 					width: 100%;
 				}
 				.btn-wrap {
+					width: 170px;
 					position: absolute;
 					right: 80px;
 					bottom: 88px;
