@@ -1,0 +1,383 @@
+
+zoujinbotao.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+t_005
+  rotate: false
+  xy: 1133, 81
+  size: 211, 145
+  orig: 1593, 1097
+  offset: 117, 275
+  index: -1
+t_006
+  rotate: false
+  xy: 1404, 81
+  size: 204, 108
+  orig: 1593, 1097
+  offset: 155, 301
+  index: -1
+t_007
+  rotate: true
+  xy: 1909, 448
+  size: 154, 30
+  orig: 1593, 1097
+  offset: 218, 347
+  index: -1
+t_008
+  rotate: true
+  xy: 1909, 223
+  size: 165, 14
+  orig: 1593, 1097
+  offset: 245, 365
+  index: -1
+t_009
+  rotate: true
+  xy: 1909, 662
+  size: 169, 49
+  orig: 1593, 1097
+  offset: 243, 350
+  index: -1
+t_010
+  rotate: false
+  xy: 1668, 66
+  size: 169, 84
+  orig: 1593, 1097
+  offset: 275, 334
+  index: -1
+t_020
+  rotate: false
+  xy: 1444, 249
+  size: 174, 524
+  orig: 1593, 1097
+  offset: 567, 178
+  index: -1
+t_021
+  rotate: false
+  xy: 1678, 210
+  size: 171, 563
+  orig: 1593, 1097
+  offset: 597, 165
+  index: -1
+t_025
+  rotate: false
+  xy: 60, 108
+  size: 167, 734
+  orig: 1593, 1097
+  offset: 710, 104
+  index: -1
+t_026
+  rotate: true
+  xy: 287, 60
+  size: 166, 786
+  orig: 1593, 1097
+  offset: 743, 86
+  index: -1
+t_031
+  rotate: true
+  xy: 528, 1173
+  size: 159, 1003
+  orig: 1593, 1097
+  offset: 878, 0
+  index: -1
+t_032
+  rotate: true
+  xy: 528, 1392
+  size: 165, 1032
+  orig: 1593, 1097
+  offset: 904, 0
+  index: -1
+t_033
+  rotate: true
+  xy: 528, 1617
+  size: 170, 1063
+  orig: 1593, 1097
+  offset: 925, 0
+  index: -1
+t_034
+  rotate: false
+  xy: 60, 902
+  size: 174, 1086
+  orig: 1593, 1097
+  offset: 955, 0
+  index: -1
+t_035
+  rotate: false
+  xy: 294, 902
+  size: 174, 1086
+  orig: 1593, 1097
+  offset: 985, 0
+  index: -1
+t_036
+  rotate: true
+  xy: 528, 1847
+  size: 141, 1097
+  orig: 1593, 1097
+  offset: 1019, 0
+  index: -1
+t_037
+  rotate: true
+  xy: 528, 991
+  size: 122, 1097
+  orig: 1593, 1097
+  offset: 1048, 0
+  index: -1
+t_038
+  rotate: true
+  xy: 528, 833
+  size: 98, 1097
+  orig: 1593, 1097
+  offset: 1084, 0
+  index: -1
+t_039
+  rotate: true
+  xy: 287, 703
+  size: 70, 1097
+  orig: 1593, 1097
+  offset: 1119, 0
+  index: -1
+t_040
+  rotate: true
+  xy: 287, 586
+  size: 57, 1097
+  orig: 1593, 1097
+  offset: 1155, 0
+  index: -1
+t_041
+  rotate: true
+  xy: 287, 486
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1193, 0
+  index: -1
+t_042
+  rotate: true
+  xy: 287, 386
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1223, 0
+  index: -1
+t_043
+  rotate: true
+  xy: 287, 286
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1253, 0
+  index: -1
+t_044
+  rotate: false
+  xy: 1685, 891
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1283, 0
+  index: -1
+t_045
+  rotate: false
+  xy: 1785, 891
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1313, 0
+  index: -1
+t_046
+  rotate: false
+  xy: 1885, 891
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1343, 0
+  index: -1
+
+zoujinbotao2.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+t_001
+  rotate: false
+  xy: 986, 208
+  size: 217, 314
+  orig: 1593, 1097
+  offset: 0, 167
+  index: -1
+t_002
+  rotate: false
+  xy: 1467, 789
+  size: 210, 265
+  orig: 1593, 1097
+  offset: 31, 199
+  index: -1
+t_003
+  rotate: false
+  xy: 1501, 185
+  size: 209, 221
+  orig: 1593, 1097
+  offset: 63, 226
+  index: -1
+t_004
+  rotate: false
+  xy: 513, 60
+  size: 205, 183
+  orig: 1593, 1097
+  offset: 93, 252
+  index: -1
+t_011
+  rotate: true
+  xy: 1823, 1754
+  size: 184, 132
+  orig: 1593, 1097
+  offset: 305, 323
+  index: -1
+t_012
+  rotate: true
+  xy: 1740, 769
+  size: 182, 180
+  orig: 1593, 1097
+  offset: 333, 300
+  index: -1
+t_013
+  rotate: false
+  xy: 1737, 1011
+  size: 182, 220
+  orig: 1593, 1097
+  offset: 363, 288
+  index: -1
+t_014
+  rotate: false
+  xy: 1501, 466
+  size: 179, 263
+  orig: 1593, 1097
+  offset: 389, 273
+  index: -1
+t_015
+  rotate: false
+  xy: 1263, 299
+  size: 178, 306
+  orig: 1593, 1097
+  offset: 420, 257
+  index: -1
+t_016
+  rotate: false
+  xy: 1223, 665
+  size: 184, 349
+  orig: 1593, 1097
+  offset: 445, 241
+  index: -1
+t_017
+  rotate: false
+  xy: 986, 582
+  size: 177, 393
+  orig: 1593, 1097
+  offset: 477, 226
+  index: -1
+t_018
+  rotate: false
+  xy: 748, 343
+  size: 178, 438
+  orig: 1593, 1097
+  offset: 506, 207
+  index: -1
+t_019
+  rotate: false
+  xy: 513, 303
+  size: 175, 478
+  orig: 1593, 1097
+  offset: 536, 191
+  index: -1
+t_022
+  rotate: false
+  xy: 284, 174
+  size: 169, 607
+  orig: 1593, 1097
+  offset: 625, 148
+  index: -1
+t_023
+  rotate: false
+  xy: 1604, 1291
+  size: 159, 647
+  orig: 1593, 1097
+  offset: 656, 134
+  index: -1
+t_024
+  rotate: false
+  xy: 60, 88
+  size: 164, 693
+  orig: 1593, 1097
+  offset: 682, 118
+  index: -1
+t_027
+  rotate: false
+  xy: 1389, 1114
+  size: 155, 824
+  orig: 1593, 1097
+  offset: 773, 68
+  index: -1
+t_028
+  rotate: false
+  xy: 1180, 1074
+  size: 149, 864
+  orig: 1593, 1097
+  offset: 804, 56
+  index: -1
+t_029
+  rotate: false
+  xy: 972, 1035
+  size: 148, 903
+  orig: 1593, 1097
+  offset: 830, 39
+  index: -1
+t_030
+  rotate: false
+  xy: 759, 983
+  size: 153, 955
+  orig: 1593, 1097
+  offset: 856, 12
+  index: -1
+t_047
+  rotate: false
+  xy: 60, 841
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1373, 0
+  index: -1
+t_048
+  rotate: false
+  xy: 160, 841
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1403, 0
+  index: -1
+t_049
+  rotate: false
+  xy: 260, 841
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1433, 0
+  index: -1
+t_050
+  rotate: false
+  xy: 360, 841
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1463, 0
+  index: -1
+t_051
+  rotate: false
+  xy: 460, 841
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1493, 0
+  index: -1
+t_052
+  rotate: false
+  xy: 560, 841
+  size: 40, 1097
+  orig: 1593, 1097
+  offset: 1523, 0
+  index: -1
+t_053
+  rotate: false
+  xy: 660, 841
+  size: 39, 1097
+  orig: 1593, 1097
+  offset: 1554, 0
+  index: -1
