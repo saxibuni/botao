@@ -1,6 +1,6 @@
 <template>
 	<div class="design-page">
-		<Banner />
+		<Banner :data="bannerData" />
 		<router-view />
 	</div>
 </template>
@@ -10,6 +10,4 @@ import Design from './index';
 export default Design;
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

@@ -1,6 +1,6 @@
 <template>
 	<div class="case-page">
-		<Banner />
+		<Banner :data="bannerData" />
 		<router-view />
 	</div>
 </template>
@@ -10,6 +10,4 @@ import Case from './index';
 export default Case;
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
