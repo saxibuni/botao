@@ -9,7 +9,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class aboutInstructor extends Vue {
 	@Prop({
 		required: false,
-		type: Object,
+		type: String,
 		default: ''
 	})
 	text!: any;
@@ -18,6 +18,7 @@ export default class aboutInstructor extends Vue {
 
 <style scoped lang="scss">
 .button-wrap {
+	width: 100%;
 	.btn {
 		width: 170px;
 		height: 53px;
