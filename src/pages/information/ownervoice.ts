@@ -75,11 +75,11 @@ export default class OwnerVoice extends Vue {
 		},
 		pagination: {
 			el: '.swiper-pagination'
+		},
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
 		}
-		// autoplay: {
-		// 	delay: 3000,
-		// 	disableOnInteraction: false
-		// }
 	};
 	// banner2
 	dpBannerOptions: any = {

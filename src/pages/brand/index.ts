@@ -1,14 +1,19 @@
 import { Vue, Component } from 'vue-property-decorator';
-import Banner from '../../components/banner.vue';
-import Button from '../../components/button.vue';
+import Banner from 'root/components/banner.vue';
+import Button from 'root/components/button.vue';
+import MapBox from 'root/pages/echartmap.vue';
+import ICountUp from 'root/components/countup.vue';
 @Component({
 	components: {
 		Button,
-		Banner
+		Banner,
+		MapBox,
+		ICountUp
 	}
 })
 export default class Brand extends Vue {
-	isActive=7;
+	isActive = 7;
+	bannerActive=0;
 	BannerData = {
 		imgUrl: require('../../assets/bg_g1_banner.jpg'),
 		cn: '波涛品牌',
@@ -89,4 +94,22 @@ export default class Brand extends Vue {
 			img: require('../../assets/bg_g1_part2_pic.jpg')
 		}
 	];
+	options1 = {
+		// suffix: '+',
+		useEasing: true
+	};
+	hoverBannerOptions = {
+		speed: 500,
+		spaceBetween: 77,
+		slidesPerView: 4,
+		loop: true,
+		navigation: {
+			nextEl: '.hv-next',
+			prevEl: '.hv-pre'
+		}
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		}
+	};
 }
