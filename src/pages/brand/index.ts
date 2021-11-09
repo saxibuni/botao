@@ -1,7 +1,6 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Banner from '../../components/banner.vue';
 import Button from '../../components/button.vue';
-import 
 @Component({
 	components: {
 		Button,
