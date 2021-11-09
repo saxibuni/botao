@@ -13,12 +13,13 @@ import ICountUp from 'root/components/countup.vue';
 })
 export default class Brand extends Vue {
 	isActive = 7;
-	bannerActive=0;
+	bannerActive = 0;
 	BannerData = {
 		imgUrl: require('../../assets/bg_g1_banner.jpg'),
 		cn: '波涛品牌',
 		en: 'ABOUT BOTAOGROUP'
 	};
+	nav = ['荣誉证书', '研发专利'];
 	btBrandArr = ['壹澜建材', '九衡堂', '锦沁建筑劳务', '繁构国际设计', '汇海船舶', '锦悦建设', '波涛家庭装饰', '波澜管理', '波涛装饰家居', '波涛简嘉公寓', '波涛商学院', '波涛软装'];
 	btBrandInfoArr = [
 		{
@@ -94,11 +95,31 @@ export default class Brand extends Vue {
 			img: require('../../assets/bg_g1_part2_pic.jpg')
 		}
 	];
+	hvBanner = [
+		{
+			imgUrl: require('../../assets/bg_g1_part6_honer1.jpg'),
+			title: '上海市建设工程白玉兰奖'
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part6_honer2.jpg'),
+			title: '上海市装饰装修行业“十强"企业'
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part6_honer3.jpg'),
+			title: '全国装饰装修行业“百强”企业'
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part6_honer4.jpg'),
+			title: '上海市消保委“装潢”指引企业'
+		}
+	];
 	options1 = {
 		// suffix: '+',
 		useEasing: true
 	};
 	hoverBannerOptions = {
+		observer: true,
+		observeParents: true,
 		speed: 500,
 		spaceBetween: 77,
 		slidesPerView: 4,
@@ -106,10 +127,29 @@ export default class Brand extends Vue {
 		navigation: {
 			nextEl: '.hv-next',
 			prevEl: '.hv-pre'
-		}
+		},
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
 		}
 	};
+	researchBannerOptions = {
+		observer: true,
+		observeParents: true,
+		speed: 500,
+		spaceBetween: 77,
+		slidesPerView: 4,
+		loop: true,
+		navigation: {
+			nextEl: '.res-next',
+			prevEl: '.res-pre'
+		},
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		}
+	};
+	// change(i){
+	// 	this.
+	// }
 }

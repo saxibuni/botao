@@ -176,7 +176,8 @@ export default JoinUs;
 	.swiper-box {
 		margin-top: 22px;
 		.swiper-container {
-			overflow: visible !important;
+			// overflow: visible !important;
+			padding: 60px;
 		}
 		.swiper-slide {
 			transition: all 0.3s;
@@ -236,7 +237,7 @@ export default JoinUs;
 		display: flex;
 		overflow: hidden;
 		justify-content: space-between;
-		margin-top: 288px;
+		margin-top: 228px;
 		padding: 0 196px;
 		.text-box {
 			margin-top: 247px;

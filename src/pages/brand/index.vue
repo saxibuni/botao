@@ -162,22 +162,35 @@
 			<h2>荣誉资质</h2>
 			<h3>匠心与精耕让我们走在行业发展前沿</h3>
 			<div class="nav">
-				<div>荣誉证书</div>
-				<div>研发专利</div>
+				<div v-for="(v, i) in nav" :key="i" :class="bannerActive == i ? 'active' : ''" @click="bannerActive = i">{{ v }}</div>
 			</div>
 			<div class="swiper-box">
-				<div class="hover-swiper">
+				<div class="hover-swiper" v-if="bannerActive == 0">
 					<swiper :options="hoverBannerOptions">
-						<swiper-slide v-for="n in 4" :key="n">
+						<swiper-slide v-for="(v, i) in hvBanner" :key="i">
 							<div class="img-box">
-								<img src="~assets/bg_g1_part6_honer1.jpg" alt="" />
+								<img :src="v.imgUrl" alt="" />
 							</div>
-							<h2>上海市建设工程白玉兰奖</h2>
+							<h2>{{ v.title }}</h2>
 						</swiper-slide>
 					</swiper>
 					<div class="controal">
 						<div class="swiper-next hv-next"></div>
 						<div class="swiper-pre hv-pre"></div>
+					</div>
+				</div>
+				<div class="research-swiper" v-if="bannerActive == 1">
+					<swiper :options="researchBannerOptions">
+						<swiper-slide v-for="(v, i) in hvBanner" :key="i">
+							<div class="img-box">
+								<img :src="v.imgUrl" alt="" />
+							</div>
+							<h2>{{ v.title }}</h2>
+						</swiper-slide>
+					</swiper>
+					<div class="controal">
+						<div class="swiper-next res-next"></div>
+						<div class="swiper-pre res-pre"></div>
 					</div>
 				</div>
 			</div>
@@ -762,6 +775,7 @@ export default index;
 		}
 		.swiper-box {
 			position: relative;
+
 			.img-box {
 				display: flex;
 			}
@@ -771,23 +785,21 @@ export default index;
 				color: #ffffff;
 				line-height: 1;
 			}
-			.hover-swiper{
-
-			}
-			.controal{
+			.controal {
 				position: absolute;
 				width: 100%;
 				height: 100%;
-				top:0;
+				top: 0;
 				left: 0;
-				.swiper-pre,.swiper-next{
+				.swiper-pre,
+				.swiper-next {
 					top: 215px;
 					transform: translateY(-50%);
 				}
-				.swiper-pre{
+				.swiper-pre {
 					left: -105px;
 				}
-				.swiper-next{
+				.swiper-next {
 					right: -105px;
 				}
 			}
