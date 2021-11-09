@@ -2,11 +2,12 @@
 	<div class="case-detail">
 		<div class="crumbs">
 			<p>
-				精选案例 &nbsp;
+				<span>精选案例</span>
+				&nbsp;
 				<i></i>
 				&nbsp;
 			</p>
-			<p>上海东方颐城</p>
+			<p><span>上海东方颐城</span></p>
 		</div>
 		<div class="title">
 			<h3>上海东方颐城</h3>
@@ -43,22 +44,42 @@
 			</div>
 		</div>
 		<div class="swiper">
-			<div class="swiperBox"></div>
+			<div class="swiperBox">
+				<swiper :options="swiperOptions1">
+					<swiper-slide v-for="(item, i) in 3" :key="i">
+						<img src="~assets/bg_b2_part2.jpg" alt="" />
+						<img src="~assets/ic_c2_play.png" alt="" />
+					</swiper-slide>
+				</swiper>
+				<div class="swiper-pagination"></div>
+
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
 			<div class="content">
 				<img src="~assets/bg_b2_part2_user.png" alt="" />
 				<p>谷晓云</p>
 				<p>首席设计师</p>
 				<p>从业年限：10 年</p>
 				<p>ta的作品：东方颐城 、城云开外 、玖玺合院...</p>
+				<Button :text="'找TA设计'" />
 			</div>
 		</div>
 		<div class="other">
 			<h3>为您推荐其他筑梦案例</h3>
 			<ul>
-				<li>同风格案例</li>
-				<li>同设计师案例</li>
+				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
 			</ul>
-			<div class="otherSwiper"></div>
+			<div class="otherSwiper">
+				<swiper :options="swiperOptions2">
+					<swiper-slide v-for="(item, index) in 9" :key="index">
+						<Cases />
+					</swiper-slide>
+				</swiper>
+				<div class="swiper-pagination pagination2"></div>
+				<div class="swiper-button-prev prev2"></div>
+				<div class="swiper-button-next next2"></div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -70,8 +91,9 @@ export default CaseDetail;
 
 <style lang="scss">
 .case-detail {
-	padding: 0 80px;
+	// padding: 0 80px;
 	.crumbs {
+		padding: 0 80px;
 		display: flex;
 		justify-content: flex-end;
 		margin: 39px 0 60px 0;
@@ -88,10 +110,16 @@ export default CaseDetail;
 				background: url('~assets/icons/ic_b2_part2_crumb.png') no-repeat;
 				background-size: 100% 100%;
 			}
+			span {
+				&:hover {
+					cursor: pointer;
+				}
+			}
 		}
 	}
 	.title {
 		display: flex;
+		padding: 0 80px;
 		h3 {
 			font-size: 56px;
 			color: #000000;
@@ -149,7 +177,7 @@ export default CaseDetail;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				margin-left: 205px;
+				margin-left: 200px;
 				i {
 					width: 33px;
 					height: 29px;
@@ -160,17 +188,72 @@ export default CaseDetail;
 					margin-top: 14px;
 					font-size: 18px;
 					color: #122133;
+					// font-weight: 600;
 				}
 			}
 		}
 	}
 	.swiper {
+		padding: 0 80px;
 		display: flex;
 		margin: 80px 0 110px 0;
 		.swiperBox {
 			width: 1220px;
 			height: 740px;
-			background-color: yellowgreen;
+			position: relative;
+			img {
+				&:nth-of-type(2) {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -80%);
+				}
+			}
+			.swiper-container {
+				width: 1220px;
+				height: 740px;
+			}
+			.swiper-button-prev,
+			.swiper-button-next {
+				top: 335px;
+				transform: all 0.3s;
+				&:hover {
+					transform: all 0.3s;
+					&::after {
+						color: #eb551c;
+					}
+				}
+			}
+			.swiper-button-prev {
+				margin-left: 50px;
+			}
+			.swiper-button-next {
+				margin-right: 40px;
+			}
+			.swiper-pagination {
+				width: 66px;
+				height: 12px;
+				position: absolute;
+				left: 50%;
+				bottom: 150px;
+				transform: translateX(-50%);
+				.swiper-pagination-bullet {
+					margin-right: 15px;
+					box-sizing: border-box;
+					width: 12px;
+					height: 12px;
+					border: 2px solid #ababab;
+					border-radius: 0;
+					background: transparent;
+					opacity: 1;
+					&:last-of-type {
+						margin-right: 0;
+					}
+				}
+				.swiper-pagination-bullet-active {
+					border: 2px solid #eb551d;
+				}
+			}
 		}
 		.content {
 			display: flex;
@@ -179,6 +262,7 @@ export default CaseDetail;
 			background: #132132;
 			width: 540px;
 			height: 740px;
+			padding: 0 88px;
 			img {
 				width: 180px;
 				height: 180px;
@@ -203,6 +287,8 @@ export default CaseDetail;
 				&:nth-of-type(4) {
 					font-size: 18px;
 					margin-top: 20px;
+					margin-bottom: 57px;
+					@include line-clamp(1);
 				}
 			}
 		}
@@ -226,9 +312,113 @@ export default CaseDetail;
 				height: 39px;
 				font-size: 18px;
 				color: #666666;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				&:nth-of-type(1) {
 					margin-right: 14px;
 				}
+				cursor: pointer;
+				position: relative;
+				transition: 0.3s;
+				border: 1px solid transparent;
+				&::after,
+				&::before {
+					content: '';
+					position: absolute;
+					border: 2px solid transparent;
+					width: 0px;
+					height: 0px;
+					transition: border 0.3s, width 0.3s, height 0.3s;
+					opacity: 0.35;
+				}
+				&::after {
+					left: 4px;
+					top: 4px;
+					border-right: none;
+					border-bottom: none;
+				}
+				&::before {
+					right: 4px;
+					bottom: 4px;
+					border-top: none;
+					border-left: none;
+				}
+				&.active,
+				&:hover {
+					border: 1px solid #ed5400;
+					color: #fff;
+					background-color: #ed5400;
+					&::after,
+					&::before {
+						border: 2px solid #fff;
+						width: 11px;
+						height: 11px;
+					}
+					&::after {
+						border-right: none;
+						border-bottom: none;
+					}
+					&::before {
+						border-top: none;
+						border-left: none;
+					}
+				}
+			}
+		}
+		.otherSwiper {
+			margin-top: 60px;
+			height: 782px;
+			width: 1760px;
+			.swiper-container {
+				height: 610px;
+				.swiper-wrapper {
+					left: 218px;
+					top: 282px;
+				}
+			}
+			.swiper-pagination {
+				width: 66px;
+				height: 12px;
+				position: relative;
+				left: 50%;
+				top: -30px;
+				transform: translateX(-50%);
+				.swiper-pagination-bullet {
+					margin-right: 15px;
+					box-sizing: border-box;
+					width: 12px;
+					height: 12px;
+					border: 2px solid #ababab;
+					border-radius: 0;
+					background: transparent;
+					opacity: 1;
+					&:last-of-type {
+						margin-right: 0;
+					}
+				}
+				.swiper-pagination-bullet-active {
+					border: 2px solid #eb551d;
+				}
+			}
+			.swiper-button-prev,
+			.swiper-button-next {
+				position: relative;
+				z-index: 999;
+
+				&::after {
+					color: #aaaaaa;
+					font-size: 34px;
+				}
+			}
+			.swiper-button-prev {
+				left: 5px;
+				top: 62px;
+			}
+			.swiper-button-next {
+				// margin-right: 40px;
+				left: 1705px;
+				top: 50px;
 			}
 		}
 	}

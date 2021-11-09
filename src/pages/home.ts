@@ -1,12 +1,20 @@
 import { Vue, Component } from 'vue-property-decorator';
+import * as PIXI from "pixi.js";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Button from "../components/button.vue";
+require("root/libs/pixi-spine.js");
+gsap.registerPlugin(ScrollTrigger);
+PIXI.utils.skipHello();
+
 @Component({
 	components: {
 		Button
 	}
 })
-
 export default class home extends Vue {
+	pixiView: PIXI.Application; //开始不能赋值，不然就会变成vue监测属性
+
 	anList=['新中式','美式','北欧','欧式','现代'];
 	imgSrc = require("../assets/portrait/bg_home_b3_pic17.jpg");
 	portraitList = [
@@ -119,6 +127,44 @@ export default class home extends Vue {
 		on: {
 		}
 	};
+
+	mounted() {
+		this.initSpineAni();
+		this.initScrollTrigger();
+	}
+
+	initSpineAni() {
+		let loader = PIXI.loader;
+		let res = PIXI.loader.resources as any;
+		if (!res['homeani']) loader.add('homeani', './spine/zoujinbotao.json');
+
+		loader.load(() => {
+			this.pixiView = new PIXI.Application({
+				view: this.$el.querySelector('.canvas-wrapper canvas'),
+				transparent: true
+			});
+			this.pixiView.renderer.resize(1920, 1097);
+
+			let spine = new PIXI.spine.Spine(res['homeani'].spineData);
+			spine.skeleton.setToSetupPose();
+			spine.position.set(1124, 548);
+			this.pixiView.stage.addChild(spine);
+		});
+	}
+
+	initScrollTrigger() {
+		ScrollTrigger.create({
+			trigger: this.$el.querySelector('.page6'),
+			onEnter: () => this.onTriggerPlaySpine(),
+			onEnterBack: () => this.onTriggerPlaySpine()
+		});
+	}
+
+	onTriggerPlaySpine() {
+		let spine = this.pixiView.stage.children[0] as PIXI.spine.Spine;
+		spine.state.setAnimation(0, 'enter', false);
+		ScrollTrigger.getAll().forEach(child => child.kill());
+	}
 
 	onClick(event,item){
 		this.imgSrc = item;

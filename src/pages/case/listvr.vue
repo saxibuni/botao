@@ -3,10 +3,10 @@
 		<div class="title">
 			<div class="left">
 				<h3>
-					<span>1000+</span>
-					经典案例 筑梦幸福家
+					<span>VR体验</span>
+					沉浸式畅游理想家
 				</h3>
-				<p>BUILD A HAPPY HOME</p>
+				<p>TRAVEL TO YOUR IDEAL HOME</p>
 			</div>
 			<div class="right">
 				<div class="search">
@@ -17,7 +17,7 @@
 					热门搜索：
 					<span>独栋别墅</span>
 					<span>新中式</span>
-					<span>欧式</span>
+					<span>法式</span>
 				</p>
 			</div>
 		</div>
@@ -25,8 +25,7 @@
 			<div class="tabsList" v-for="(item, index) in tabList" :key="index">
 				<p>{{ item.title }}</p>
 				<ul>
-					<li>全部</li>
-					<li v-for="(v, i) in item.info" :key="i">{{ v }}</li>
+					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
 				</ul>
 			</div>
 		</div>
@@ -45,11 +44,14 @@
 								<span>120㎡</span>
 							</p>
 						</div>
-						<div class="Right"></div>
+						<div class="right">
+							<Button :text="'VR全景体验'" />
+						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
+		<Pagination />
 	</div>
 </template>
 
@@ -96,6 +98,7 @@ export default CaseListVr;
 					border: 1px solid #ed5400;
 					outline: none;
 					font-size: 20px;
+					text-indent: 1em;
 				}
 				i {
 					position: absolute;
@@ -106,6 +109,9 @@ export default CaseListVr;
 					height: 18px;
 					background: url('~assets/icons/bg_b1_part1_search.png') no-repeat;
 					background-size: 100% 100%;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 			p {
@@ -115,6 +121,10 @@ export default CaseListVr;
 				span {
 					color: #333333;
 					margin-right: 20px;
+					// font-weight: 600;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 		}
@@ -131,6 +141,7 @@ export default CaseListVr;
 				font-weight: 400;
 				color: #000000;
 				margin-right: 40px;
+				// font-weight: 600;
 			}
 			ul {
 				display: flex;
@@ -140,6 +151,52 @@ export default CaseListVr;
 					color: #666666;
 					padding: 11px 24px;
 					margin-right: 20px;
+					cursor: pointer;
+					position: relative;
+					transition: 0.3s;
+					border: 1px solid transparent;
+					&::after,
+					&::before {
+						content: '';
+						position: absolute;
+						border: 2px solid transparent;
+						width: 0px;
+						height: 0px;
+						transition: border 0.3s, width 0.3s, height 0.3s;
+						opacity: 0.35;
+					}
+					&::after {
+						left: 4px;
+						top: 4px;
+						border-right: none;
+						border-bottom: none;
+					}
+					&::before {
+						right: 4px;
+						bottom: 4px;
+						border-top: none;
+						border-left: none;
+					}
+					&.active,
+					&:hover {
+						border: 1px solid #ed5400;
+						color: #fff;
+						background-color: #ed5400;
+						&::after,
+						&::before {
+							border: 2px solid #fff;
+							width: 11px;
+							height: 11px;
+						}
+						&::after {
+							border-right: none;
+							border-bottom: none;
+						}
+						&::before {
+							border-top: none;
+							border-left: none;
+						}
+					}
 				}
 			}
 		}
@@ -190,9 +247,18 @@ export default CaseListVr;
 							}
 						}
 					}
+					.button-wrap {
+						margin-top: 54px;
+						.btn {
+							margin: 0;
+						}
+					}
 				}
 			}
 		}
+	}
+	.pagination-box {
+		margin: 40px 0 100px 0;
 	}
 }
 </style>

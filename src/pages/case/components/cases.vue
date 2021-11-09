@@ -28,7 +28,7 @@
 								<p>首席设计师</p>
 							</div>
 						</div>
-						<div class="bottomRight"></div>
+						<Button :text="'找TA设计'" />
 					</div>
 				</div>
 			</li>
@@ -37,7 +37,12 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-@Component
+import Button from 'root/components/button.vue';
+@Component({
+	components: {
+		Button
+	}
+})
 export default class Caese extends Vue {
 	@Prop({
 		required: false,
@@ -127,6 +132,7 @@ export default class Caese extends Vue {
 							margin-top: 10px;
 							font-size: 16px;
 							color: #122133;
+							// font-weight: 600;
 						}
 					}
 				}
@@ -134,6 +140,7 @@ export default class Caese extends Vue {
 					padding: 25px 50px 35px 50px;
 					display: flex;
 					justify-content: space-between;
+					align-items: center;
 					.bottomLeft {
 						display: flex;
 						align-items: center;
@@ -143,6 +150,7 @@ export default class Caese extends Vue {
 								&:nth-of-type(1) {
 									color: #122133;
 									font-size: 20px;
+									// font-weight: 600;
 								}
 								&:nth-of-type(2) {
 									margin-top: 10px;
@@ -150,6 +158,18 @@ export default class Caese extends Vue {
 									font-size: 16px;
 								}
 							}
+						}
+					}
+					.button-wrap {
+						width: 150px;
+						height: 48px;
+						/deep/.btn {
+							margin: 0;
+							width: 150px;
+							height: 48px;
+							display: flex;
+							justify-content: center;
+							align-items: center;
 						}
 					}
 				}
