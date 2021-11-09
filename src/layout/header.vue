@@ -3,7 +3,7 @@
 
 		<div>
 			<div class="logo">
-				<img src="~assets/bg_home_banner1.jpg" alt="">
+				<img @click="$router.push({name:'home'})" src="~assets/bg_home_banner1.jpg" alt="">
 				<div>
 					<h3>我们，让空间更美好</h3>
 					<p>BETTER SPACE,BETTER LIFE</p>
@@ -12,7 +12,7 @@
 
 			<div class="nav">
 				<ul>
-					<li v-for="(item,i) in navList" :key="i" :class="navIndex==i?'active':''">{{item}}</li>
+					<li v-for="(item,i) in navList" :key="i" :class="$route.name==item.url?'active':''" @click="$router.push({name:item.url})">{{item.title}}</li>
 				</ul>
 			</div>
 
@@ -31,8 +31,14 @@ import { Vue, Component, Watch } from 'vue-property-decorator';
 
 @Component
 export default class Header extends Vue {
-	navList = ['精选案例','设计名人堂','精工匠艺','全案服务','最新资讯','波涛品牌'];
-	navIndex = 0;
+	navList = [
+		{title:'精选案例',url:'case'},
+		{title:'设计名人堂',url:'design'},
+		{title:'精工匠艺',url:'craft-building'},
+		{title:'全案服务',url:'whole-decoration'},
+		{title:'最新资讯',url:'information'},
+		{title:'波涛品牌',url:'brand'},
+	];
 	navBgColor = false;
 	mounted() {
 		window.addEventListener('scroll', this.handleScroll, true);
