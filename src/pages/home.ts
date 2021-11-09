@@ -1,8 +1,51 @@
 import { Vue, Component } from 'vue-property-decorator';
+import Button from "../components/button.vue";
+@Component({
+	components: {
+		Button
+	}
+})
 
-@Component
 export default class home extends Vue {
 	anList=['新中式','美式','北欧','欧式','现代'];
+	imgSrc = require("../assets/portrait/bg_home_b3_pic17.jpg");
+	portraitList = [
+		require("../assets/portrait/bg_home_b3_pic01.jpg"),
+		require("../assets/portrait/bg_home_b3_pic02.jpg"),
+		require("../assets/portrait/bg_home_b3_pic03.jpg"),
+		require("../assets/portrait/bg_home_b3_pic04.jpg"),
+		require("../assets/portrait/bg_home_b3_pic05.jpg"),
+		require("../assets/portrait/bg_home_b3_pic06.jpg"),
+		require("../assets/portrait/bg_home_b3_pic07.jpg"),
+		require("../assets/portrait/bg_home_b3_pic08.jpg"),
+		require("../assets/portrait/bg_home_b3_pic09.jpg"),
+		require("../assets/portrait/bg_home_b3_pic10.jpg"),
+		require("../assets/portrait/bg_home_b3_pic11.jpg"),
+		require("../assets/portrait/bg_home_b3_pic12.jpg"),
+		require("../assets/portrait/bg_home_b3_pic13.jpg"),
+		require("../assets/portrait/bg_home_b3_pic14.jpg"),
+		require("../assets/portrait/bg_home_b3_pic15.jpg"),
+		require("../assets/portrait/bg_home_b3_pic16.jpg"),
+		require("../assets/portrait/bg_home_b3_pic17.jpg"),
+		require("../assets/portrait/bg_home_b3_pic18.jpg"),
+		require("../assets/portrait/bg_home_b3_pic19.jpg"),
+		require("../assets/portrait/bg_home_b3_pic20.jpg"),
+		require("../assets/portrait/bg_home_b3_pic21.jpg"),
+		require("../assets/portrait/bg_home_b3_pic22.jpg"),
+		require("../assets/portrait/bg_home_b3_pic23.jpg"),
+		require("../assets/portrait/bg_home_b3_pic24.jpg"),
+		require("../assets/portrait/bg_home_b3_pic25.jpg"),
+		require("../assets/portrait/bg_home_b3_pic26.jpg"),
+		require("../assets/portrait/bg_home_b3_pic27.jpg"),
+		require("../assets/portrait/bg_home_b3_pic28.jpg"),
+		require("../assets/portrait/bg_home_b3_pic29.jpg"),
+		require("../assets/portrait/bg_home_b3_pic30.jpg"),
+		require("../assets/portrait/bg_home_b3_pic31.jpg"),
+		require("../assets/portrait/bg_home_b3_pic32.jpg"),
+		require("../assets/portrait/bg_home_b3_pic34.jpg"),
+		require("../assets/portrait/bg_home_b3_pic35.jpg"),
+		require("../assets/portrait/bg_home_b3_pic09.jpg"),
+	]
 	anIndex = 0;
 	bannerSwiperOptions: any = {
 		speed: 500,
@@ -49,7 +92,7 @@ export default class home extends Vue {
 		loop: true,
 		slideToClickedSlide: true,
 		pagination: {
-			el: '.swiper-pagination',
+			el: '.swiper-pagination3',
 			clickable: true,
 			type: 'custom',
 			renderCustom: function(index, current, total) {
@@ -76,5 +119,10 @@ export default class home extends Vue {
 		on: {
 		}
 	};
+
+	onClick(event,item){
+		this.imgSrc = item;
+		console.log(event);
+	}
 
 }

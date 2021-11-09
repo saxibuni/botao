@@ -14,9 +14,8 @@
 							<br />
 							mansions
 						</div>
-						<div class="btn">
-							走进波涛
-							<i></i>
+						<div>
+							<Button text="走进波涛"></Button>
 						</div>
 					</div>
 				</swiper-slide>
@@ -67,8 +66,8 @@
 						<p>
 							地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
 						</p>
-						<div class="btn">
-							案例详情
+						<div class="btn-box">
+							<Button text="案例详情"></Button>
 						</div>
 					</div>
 				</div>
@@ -145,7 +144,9 @@
 						</p>
 						<h5>代表作品</h5>
 						<p>嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
-						<div class="btn">TA的作品</div>
+						<div class="btn-box">
+							<Button text="TA的作品"></Button>
+						</div>
 						<img src="~assets/bg_home_b3_left_text.png" alt="" />
 					</div>
 					<div class="img-wrap">
@@ -157,9 +158,23 @@
 					</div>
 				</div>
 			</div>
-			<div class="right"></div>
+			<div class="right">
+				<ul>
+					<li v-for="(item,i) in portraitList" :key="i" @click="onClick($event,item)">
+						<img :src="item" alt="">
+					</li>
+				</ul>
+
+				<div class="img-box">
+					<img :src="imgSrc" alt="">
+				</div>
+			</div>
 			<div class="next">
 				设计名人堂
+				<i></i>
+			</div>
+			<div class="control">
+				<i></i>
 				<i></i>
 			</div>
 		</div>
@@ -168,7 +183,10 @@
 				<img src="~assets/bg_home_b4_left.jpg" alt="" />
 				<div class="text">
 					<h2>
-						<span>国家一级</span>施工资质<br />隐蔽工程终身免费保修
+						<span>国家一级</span>
+						施工资质
+						<br />
+						隐蔽工程终身免费保修
 					</h2>
 					<p>build worksite</p>
 					<div>
@@ -219,27 +237,32 @@
 							<p>金牌项目经理</p>
 						</li>
 					</ul>
-					<img src="~assets/icons/ic_home_b3_play.png" alt="">
+					<img src="~assets/icons/ic_home_b3_play.png" alt="" />
 				</div>
 			</div>
 			<div class="right">
 				<div class="text">
-					<img src="~assets/bg_home_b4_roll.png" alt="">
+					<img src="~assets/bg_home_b4_roll.png" alt="" />
 					<div>
 						<h5>水电工艺施工标准</h5>
-						<p>先弹线后再开槽，开槽时必须横平竖直；<br>
-							墙地面开槽必须弹单线用切割机开槽；<br>
+						<p>
+							先弹线后再开槽，开槽时必须横平竖直；
+							<br />
+							墙地面开槽必须弹单线用切割机开槽；
+							<br />
 							所有线管、水管必须用管卡固定。
 						</p>
 					</div>
 				</div>
 				<div class="img-wrap">
-					<img src="~assets/bg_home_b4_right.jpg" alt="">
+					<img src="~assets/bg_home_b4_right.jpg" alt="" />
 					<div class="div1"></div>
 					<div class="div2"></div>
 					<div class="div3"></div>
 					<div class="div4"></div>
-					<div class="btn">预约参观工地</div>
+					<div class="btn-wrap">
+						<Button text="预约参观工地"></Button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -251,21 +274,21 @@
 						<div class="text">
 							<h3>
 								<span>全案服务</span>
-								 创造精彩生活
+								创造精彩生活
 							</h3>
 							<div>
 								Whole case service
 							</div>
 							<h4>园林</h4>
-							<h5>自然惬意  给心灵一份静谧</h5>
+							<h5>自然惬意 给心灵一份静谧</h5>
 							<p>智能灌溉、灯光照明、智能安防、水景设计、植物种植设计</p>
 							<div class="btn">
-								服务详情
+								<Button text="服务详情"></Button>
 							</div>
 						</div>
 					</swiper-slide>
 				</swiper>
-				<div class="swiper-pagination"></div>
+				<div class="swiper-pagination3"></div>
 				<div class="bgimg">
 					<div>
 						<p>01</p>
@@ -277,95 +300,109 @@
 			</div>
 		</div>
 		<div class="page6">
-						<div class="text">
-							<h3>
-								<span>20+</span>
-								 年专注别墅大宅 全案引领者
-							</h3>
-							<div>
-								Brand introduction
-							</div>
-							<h4>我们 让空间更美好</h4>
-							<h5>we Make the space better</h5>
-							<p>
-								波涛装饰是波涛装饰集团旗下专业为高端住宅、豪宅、明星名流居所提供建筑规划、室内设计装饰施工、家具定制、智能设备、软装配套以及景观园林的一站式全案整装定制服务机构。 20多年年钻研，只为定制更加完美的高端品质住宅，拥有20000多位高端住宅业主的信赖。
-							</p>
-							<div class="btn">
-								走进波涛
-							</div>
-						</div>
+			<div class="text">
+				<h3>
+					<span>20+</span>
+					年专注别墅大宅 全案引领者
+				</h3>
+				<div>
+					Brand introduction
+				</div>
+				<h4>我们 让空间更美好</h4>
+				<h5>we Make the space better</h5>
+				<p>
+					波涛装饰是波涛装饰集团旗下专业为高端住宅、豪宅、明星名流居所提供建筑规划、室内设计装饰施工、家具定制、智能设备、软装配套以及景观园林的一站式全案整装定制服务机构。
+					20多年年钻研，只为定制更加完美的高端品质住宅，拥有20000多位高端住宅业主的信赖。
+				</p>
+				<div class="btn">
+					<Button text="走进波涛"></Button>
+				</div>
+			</div>
 		</div>
 		<div class="page7">
-				<h3>
-					<span>波涛</span>与您分享最新资讯
-				</h3>
-				<div class="title">
-					<span>News information</span>
-					<div>
-						全部新闻
+			<h3>
+				<span>波涛</span>
+				与您分享最新资讯
+			</h3>
+			<div class="title">
+				<span>News information</span>
+				<div>
+					全部新闻
+					<i></i>
+				</div>
+			</div>
+			<div class="list">
+				<ul>
+					<li>
+						<div>
+							<img src="~assets/bg_home_b6_1.jpg" alt="" />
+						</div>
 						<i></i>
-					</div>
-				</div>
-				<div class="list">
-					<ul>
-						<li>
+						<div class="text">
+							<p>客户评价</p>
+							<div>温暖家｜多面客厅，一种舒适</div>
+						</div>
+					</li>
+					<li class="item">
+						<div class="top">
 							<div>
-								<img src="~assets/bg_home_b6_1.jpg" alt="">
+								<img src="~assets/bg_home_b6_2.jpg" alt="" />
+								<div>
+									<p>August</p>
+									<b>28-08</b>
+								</div>
 							</div>
-							<i></i>
-							<div class="text">
-								<p>客户评价</p>
-								<div>温暖家｜多面客厅，一种舒适</div>
-							</div>
-						</li>
-						<li class="item">
-							<div class="top">
-									<div>
-									<img src="~assets/bg_home_b6_2.jpg" alt="">
-										<div>
-												<p>August</p>
-												<b>28-08</b>
-										</div>
-									</div>
-									<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
-									<p>近期活动</p>
-							</div>
+							<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
+							<p>近期活动</p>
+						</div>
 
-							<div class="items">
-								<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
-								<p><span>装修攻略</span><span>24-08</span></p>
-							</div>
+						<div class="items">
+							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
+							<p>
+								<span>装修攻略</span>
+								<span>24-08</span>
+							</p>
+						</div>
 
-							<div class="items">
-								<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
-								<p><span>近期活动</span><span>24-08</span></p>
+						<div class="items">
+							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
+							<p>
+								<span>近期活动</span>
+								<span>24-08</span>
+							</p>
+						</div>
+					</li>
+					<li class="item">
+						<div class="top">
+							<div>
+								<img src="~assets/bg_home_b6_2.jpg" alt="" />
+								<div>
+									<p>August</p>
+									<b>28-08</b>
+								</div>
 							</div>
-						</li>
-						<li class="item">
-							<div class="top">
-									<div>
-									<img src="~assets/bg_home_b6_2.jpg" alt="">
-										<div>
-												<p>August</p>
-												<b>28-08</b>
-										</div>
-									</div>
-									<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
-									<p>近期活动</p>
-							</div>
+							<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
+							<p>近期活动</p>
+						</div>
 
-							<div class="items">
-								<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
-								<p><span>装修攻略</span><span>24-08</span></p>
-							</div>
+						<div class="items">
+							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
+							<p>
+								<span>装修攻略</span>
+								<span>24-08</span>
+							</p>
+						</div>
 
-							<div class="items">
-								<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
-								<p><span>近期活动</span><span>24-08</span></p>
-							</div>
-						</li>
-					</ul>
-				</div>
+						<div class="items">
+							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
+							<p>
+								<span>近期活动</span>
+								<span>24-08</span>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </template>
@@ -417,40 +454,6 @@ export default home;
 						text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.23);
 						text-align: center;
 						margin: 62px 0 100px 0;
-						&.btn {
-							width: 170px;
-							height: 53px;
-							background: #ed5400;
-							font-size: 18px;
-							font-family: AlibabaPuHuiTiR;
-							font-weight: 400;
-							color: #ffffff;
-							line-height: 53px;
-							text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
-							margin: 0 auto;
-							cursor: pointer;
-							position: relative;
-							&::after,
-							&::before {
-								content: '';
-								position: absolute;
-								border: 2px solid #ffffff;
-								width: 8px;
-								height: 8px;
-							}
-							&::after {
-								left: 4px;
-								top: 4px;
-								border-right: none;
-								border-bottom: none;
-							}
-							&::before {
-								right: 4px;
-								bottom: 4px;
-								border-top: none;
-								border-left: none;
-							}
-						}
 					}
 				}
 			}
@@ -711,38 +714,24 @@ export default home;
 						color: #ffffff;
 						line-height: 30px;
 					}
-					.btn {
+					.btn-box {
 						width: 170px;
 						height: 53px;
 						margin-top: 60px;
-						background: #ed5400;
-						font-size: 18px;
-						font-weight: 400;
-						color: #ffffff;
-						line-height: 53px;
-						text-align: center;
-						position: relative;
-						cursor: pointer;
-						&::after,
-						&::before {
-							content: '';
-							position: absolute;
-							border: 2px solid #fff;
-							width: 10px;
-							height: 10px;
-							transition: border 0.3s, width 0.3s, height 0.3s;
-						}
-						&::after {
-							left: 5px;
-							top: 5px;
-							border-right: none;
-							border-bottom: none;
-						}
-						&::before {
-							right: 5px;
-							bottom: 5px;
-							border-top: none;
-							border-left: none;
+						/deep/.btn {
+							&::after,
+							&::before {
+								width: 10px;
+								height: 10px;
+							}
+							&::after {
+								left: 5px;
+								top: 5px;
+							}
+							&::before {
+								right: 5px;
+								bottom: 5px;
+							}
 						}
 					}
 				}
@@ -767,7 +756,7 @@ export default home;
 								img {
 									transform-origin: bottom;
 									border: 1px solid #ffffff;
-									transform:translateY(0px) scaleY(1.2)!important;
+									transform: translateY(0px) scaleY(1.2) !important;
 								}
 							}
 							img {
@@ -849,11 +838,24 @@ export default home;
 		background: #132234;
 		height: 1142px;
 		position: relative;
+
 		> .left {
 			background: url('~assets/bg_home_b3_left.jpg') no-repeat;
 			background-size: cover;
 			width: 1188px;
 			padding: 106px 71px 0 80px;
+			position: relative;
+			&::after {
+				position: absolute;
+				content: '';
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				background: rgba(0, 0, 0, 0.15);
+				pointer-events: none;
+			}
 			> h2 {
 				height: 53px;
 				font-size: 56px;
@@ -888,17 +890,6 @@ export default home;
 			.left-text {
 				display: flex;
 				justify-content: space-between;
-				&::after {
-					position: absolute;
-					content: '';
-					width: 100%;
-					height: 100%;
-					top: 0;
-					left: 0;
-					z-index: 1;
-					background: rgba(0, 0, 0, 0.15);
-					pointer-events: none;
-				}
 				.text {
 					flex: 1;
 					padding-top: 18px;
@@ -937,39 +928,8 @@ export default home;
 						line-height: 30px;
 						width: 380px;
 					}
-					.btn {
+					.btn-box {
 						width: 170px;
-						height: 53px;
-						background: #ed5400;
-						text-align: center;
-						line-height: 53px;
-						font-size: 18px;
-						font-weight: 400;
-						color: #ffffff;
-						line-height: 53px;
-						text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
-						position: relative;
-						cursor: pointer;
-						&::after,
-						&::before {
-							content: '';
-							position: absolute;
-							border: 2px solid #fff;
-							width: 11px;
-							height: 11px;
-						}
-						&::after {
-							left: 6px;
-							top: 6px;
-							border-right: none;
-							border-bottom: none;
-						}
-						&::before {
-							right: 6px;
-							bottom: 6px;
-							border-top: none;
-							border-left: none;
-						}
 					}
 					img {
 						width: 878px;
@@ -1014,6 +974,242 @@ export default home;
 		.right {
 			flex: 1;
 			height: 1142px;
+			overflow: hidden;
+			background: #122133;
+			position: relative;
+			&::after {
+				position: absolute;
+				content: '';
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 1;
+				background: rgba(0, 0, 0, 0.4);
+				pointer-events: none;
+			}
+			ul{
+				li{
+					position: absolute;
+					cursor: pointer;
+					width: 134px;
+					height: 152px;
+					img{
+						width: 100%;
+						height: 100%;
+					}
+					&:nth-child(1){
+						left: 0;
+						top: -6px;
+						width: 134px;
+						height: 152px;
+					}
+					&:nth-child(2){
+						left: 0;
+						top:156px;
+						width: 134px;
+						height: 162px;
+					}
+					&:nth-child(3){
+						left: 0;
+						top:328px;
+						width: 134px;
+						height: 162px;
+					}
+					&:nth-child(4){
+						left: 0;
+						top:500px;
+						width: 134px;
+						height: 162px;
+					}
+					&:nth-child(5){
+						left: 0;
+						top:672px;
+						width: 134px;
+						height: 162px;
+					}
+					&:nth-child(6){
+						left: 0;
+						top:844px;
+						width: 160px;
+						height: 195px;
+					}
+					&:nth-child(7){
+						left: 0;
+						top:1049px;
+						width: 160px;
+						height: 195px;
+					}
+					&:nth-child(8){
+						top:-106px;
+						left: 144px;
+						width: 187px;
+						height: 227px;
+					}
+					&:nth-child(9){
+						top:133px;
+						left: 144px;
+						width: 187px;
+						height: 227px;
+					}
+					&:nth-child(10){
+						top:370px;
+						left: 144px;
+						width: 187px;
+						height: 227px;
+					}
+					&:nth-child(11){
+						top:607px;
+						left: 144px;
+						width: 187px;
+						height: 227px;
+					}
+					&:nth-child(12){
+						top:844px;
+						left: 170px;
+						width: 161px;
+						height: 195px;
+					}
+					&:nth-child(13){
+						top:1049px;
+						left: 170px;
+						width: 161px;
+						height: 195px;
+					}
+					&:nth-child(14){
+						top: -78px;
+						left: 341px;
+						width: 124px;
+						height: 151px;
+					}
+					&:nth-child(15){
+						top: 83px;
+						left: 341px;
+						width: 124px;
+						height: 151px;
+					}
+					&:nth-child(16){
+						top: 244px;
+						left: 341px;
+						width: 124px;
+						height: 151px;
+					}
+					&:nth-child(17){
+						top: 405px;
+						left: 341px;
+						width: 124px;
+						height: 151px;
+					}
+					&:nth-child(18){
+						top: 566px;
+						left: 341px;
+						width: 124px;
+						height: 151px;
+					}
+					&:nth-child(19){
+						top: 725px;
+						left: 341px;
+						width: 124px;
+						height: 152px;
+					}
+					&:nth-child(20){
+						top: 887px;
+						left: 341px;
+						width: 124px;
+						height: 152px;
+					}
+					&:nth-child(21){
+						top: 1049px;
+						left: 341px;
+						width: 124px;
+						height: 152px;
+					}
+					&:nth-child(22){
+						top: -104px;
+						left: 475px;
+						width: 117px;
+						height: 142px;
+					}
+					&:nth-child(23){
+						top:  48px;
+						left: 475px;
+						width: 117px;
+						height: 142px;
+					}
+					&:nth-child(24){
+						top:  200px;
+						left: 475px;
+						width: 117px;
+						height: 142px;
+					}
+					&:nth-child(25){
+						top:  352px;
+						left: 475px;
+						width: 117px;
+						height: 142px;
+					}
+					&:nth-child(26){
+						top:  504px;
+						left: 475px;
+						width: 117px;
+						height: 142px;
+					}
+					&:nth-child(27){
+						top:  656px;
+						left: 475px;
+						width: 117px;
+						height: 142px;
+					}
+					&:nth-child(28){
+						top:  808px;
+						left: 475px;
+						width: 189px;
+						height: 231px;
+					}
+					&:nth-child(29){
+						top:  1049px;
+						left: 475px;
+						width: 188px;
+						height: 230px;
+					}
+					&:nth-child(30){
+						top:  9px;
+						left: 602px;
+						width: 130px;
+						height: 174px;
+					}
+					&:nth-child(31){
+						top:  193px;
+						left: 602px;
+						width: 130px;
+						height: 195px;
+					}
+					&:nth-child(32){
+						top:  398px;
+						left: 602px;
+						width: 130px;
+						height: 195px;
+					}
+					&:nth-child(33){
+						top:  603px;
+						left: 602px;
+						width: 130px;
+						height: 195px;
+					}
+					&:nth-child(34){
+						top:  808px;
+						width: 170px;
+						left: 674px;
+						height: 231px;
+					}
+					&:nth-child(35){
+						top:  1049px;
+						width: 140px;
+						left: 674px;
+						height: 231px;
+					}
+				}
+			}
 		}
 		.next {
 			height: 18px;
@@ -1025,7 +1221,7 @@ export default home;
 			position: absolute;
 			display: flex;
 			align-items: center;
-			z-index: 1;
+			z-index: 2;
 			cursor: pointer;
 			i {
 				width: 8px;
@@ -1035,10 +1231,65 @@ export default home;
 				margin-left: 19px;
 			}
 		}
+		.control{
+			position: absolute;
+			z-index: 2;
+			top: 50%;
+			right: 67px;
+			transform: translateY(-50%);
+			i{
+				display: block;
+				width: 26px;
+				height: 26px;
+				cursor: pointer;
+				background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
+				background-size: 26px 13px;
+				&:nth-child(2){
+					background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
+					background-size: 26px 13px;
+					margin-top: 15px;
+				}
+			}
+		}
+		.img-box{
+			position: absolute;
+			width: 124px;
+			height: 151px;
+			z-index: 3;
+			left: 341px;
+			top: 405px;
+			cursor: pointer;
+			background: #fff;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			&::after,
+			&::before {
+				content: '';
+				position: absolute;
+				border: 2px solid #EB5518;
+				width: 8px;
+				height: 8px;
+			}
+			&::after {
+				left: 4px;
+				top: 4px;
+				border-right: none;
+				border-bottom: none;
+			}
+			&::before {
+				right: 4px;
+				bottom: 4px;
+				border-top: none;
+				border-left: none;
+			}
+		}
 	}
 	.page4 {
 		height: 970px;
 		display: flex;
+		overflow: hidden;
 		.left {
 			width: 960px;
 			height: 970px;
@@ -1057,7 +1308,7 @@ export default home;
 				background: url('~assets/bg_home_b4_mask.png') no-repeat;
 				background-size: cover;
 			}
-			.text{
+			.text {
 				position: absolute;
 				left: 0;
 				top: 0;
@@ -1065,38 +1316,38 @@ export default home;
 				height: 100%;
 				z-index: 2;
 				padding: 100px 0 0 80px;
-				img{
+				img {
 					width: 90px;
 					position: absolute;
 					top: 50%;
 					left: 50%;
 					z-index: 3;
 					cursor: pointer;
-					transform: translate(-50%,-50%);
-					transition: .3s;
-					&:hover{
-						transform: translate(-50%,-50%) scale(1.1) ;
+					transform: translate(-50%, -50%);
+					transition: 0.3s;
+					&:hover {
+						transform: translate(-50%, -50%) scale(1.1);
 					}
 				}
-				>h2{
+				> h2 {
 					height: 118px;
 					font-size: 56px;
 					font-weight: 400;
 					color: #fff;
-					span{
-						color: #ED5400;
+					span {
+						color: #ed5400;
 					}
 				}
-				>p{
+				> p {
 					height: 26px;
 					font-size: 30px;
 					font-family: Athene;
 					font-weight: 400;
-					color: #FFFFFF;
+					color: #ffffff;
 					margin: 42px 0 70px 0;
 					text-transform: uppercase;
 				}
-				>div{
+				> div {
 					height: 18px;
 					font-size: 18px;
 					font-weight: 400;
@@ -1114,67 +1365,65 @@ export default home;
 						margin-left: 19px;
 					}
 				}
-				ul{
+				ul {
 					display: flex;
 					flex-wrap: wrap;
 					color: #fff;
 					margin-top: 315px;
-					li{
+					li {
 						margin-bottom: 43px;
-						div{
+						div {
 							font-size: 40px;
 							font-weight: bold;
 							line-height: 55px;
 							font-family: Gilroy-Bold;
-							span{
+							span {
 								font-size: 18px;
 							}
 						}
-						p{
+						p {
 							font-size: 18px;
 							font-weight: 400;
-							color: #FEFEFE;
+							color: #fefefe;
 						}
 						&:nth-child(1),
-						&:nth-child(4){
+						&:nth-child(4) {
 							width: 340px;
 						}
 						&:nth-child(2),
-						&:nth-child(5){
+						&:nth-child(5) {
 							width: 337px;
 						}
-
 					}
 				}
 			}
-
 		}
 		.right {
 			width: 960px;
 			height: 970px;
-			background:rgba(250, 252, 255, 0.11);
+			background: rgba(250, 252, 255, 0.11);
 			position: relative;
-			.text{
+			.text {
 				position: absolute;
 				left: 80px;
 				top: 96px;
 				z-index: 3;
 				display: flex;
 				align-items: center;
-				img{
+				img {
 					width: 215px;
-					height:215px;
+					height: 215px;
 					border-right: 100%;
 					margin-right: 35px;
 				}
-				h5{
+				h5 {
 					height: 23px;
 					font-size: 24px;
 					font-weight: 400;
 					color: #000000;
 					margin-bottom: 22px;
 				}
-				p{
+				p {
 					width: 337px;
 					height: 82px;
 					font-size: 18px;
@@ -1183,139 +1432,127 @@ export default home;
 					line-height: 32px;
 				}
 			}
-			.img-wrap{
+			.img-wrap {
 				position: relative;
-				div{
+				> div {
 					position: absolute;
 					width: 65px;
 					height: 65px;
 					cursor: pointer;
 				}
-				.div1{
+				.div1 {
 					top: 369px;
 					left: 431px;
 				}
-				.div2{
+				.div2 {
 					top: 330px;
 					left: 775px;
 				}
-				.div3{
+				.div3 {
 					top: 549px;
 					left: 493px;
 				}
-				.div4{
+				.div4 {
 					top: 602px;
 					left: 764px;
 				}
-				img{
+				img {
 					width: 100%;
 				}
-				.btn{
-					width: 170px;
-					height: 53px;
-					background: #ED5400;
-					font-size: 18px;
-					font-weight: 400;
-					color: #FFFFFF;
-					line-height: 53px;
-					text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
-					text-align: center;
+				.btn-wrap {
+					position: absolute;
 					right: 80px;
 					bottom: 88px;
+					display: flex;
+					justify-content: flex-end;
 				}
 			}
 		}
 	}
-	.page5{
+	.page5 {
+		overflow: hidden;
 		height: 970px;
 		position: relative;
-		.swiper{
+		.swiper {
 			position: relative;
-		.swiper-wrapper {
-			.swiper-slide {
-				img {
-					height: 100%;
-					width: 100%;
-				}
-				.text{
-					position: absolute;
-					padding: 98px 0 0 80px;
-					left: 0;
-					top: 0;
-					width: 100%;
-					height: 100%;
-					h3{
-						height: 54px;
-						font-size: 56px;
-						font-weight: 400;
-						color: #fff;
-						span{
-							color: #EC5400;
+			.swiper-wrapper {
+				.swiper-slide {
+					img {
+						height: 100%;
+						width: 100%;
+					}
+					.text {
+						position: absolute;
+						padding: 98px 0 0 80px;
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						h3 {
+							height: 54px;
+							font-size: 56px;
+							font-weight: 400;
+							color: #fff;
+							span {
+								color: #ec5400;
+							}
 						}
-					}
-					div{
-						font-size: 30px;
-						font-family: Athene;
-						font-weight: 400;
-						color: #FFFFFF;
-						text-transform: uppercase;
-						margin: 24px 0 209px 0;
-					}
-					h4{
-						color: #FFFFFF;
-						font-size: 36px;
-					}
-					h5{
-						color: #FFFFFF;
-						font-size: 28px;
-					}
-					p{
-						height: 18px;
-						font-size: 18px;
-						font-weight: 400;
-						color: #FFFFFF;
-						width: 605px;
-						margin: 51px 0 104px 0;
-					}
-					.btn{
-						width: 170px;
-						height: 53px;
-						background: #ED5400;
-						font-size: 18px;
-						font-weight: 400;
-						color: #FFFFFF;
-						line-height: 53px;
-						text-align: center;
-						text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
+						div {
+							font-size: 30px;
+							font-family: Athene;
+							font-weight: 400;
+							color: #ffffff;
+							text-transform: uppercase;
+							margin: 24px 0 209px 0;
+						}
+						h4 {
+							color: #ffffff;
+							font-size: 36px;
+						}
+						h5 {
+							color: #ffffff;
+							font-size: 28px;
+						}
+						p {
+							height: 18px;
+							font-size: 18px;
+							font-weight: 400;
+							color: #ffffff;
+							width: 605px;
+							margin: 51px 0 104px 0;
+						}
+						.btn {
+							width: 170px;
+							height: 53px;
+						}
 					}
 				}
 			}
-
-		}
-		.swiper-pagination{
+			.swiper-pagination3 {
 				position: absolute;
 				z-index: 99;
 				left: 80px;
 				bottom: 91px;
 				display: flex;
-				/deep/.swiper-pagination-bullet{
+				/deep/.swiper-pagination-bullet {
 					width: 50px;
 					height: 50px;
 					outline: none;
 					background: transparent;
-					border: 2px solid rgba(255,255,255,.8);
-					color: rgba(255,255,255,.5);
+					border: 2px solid rgba(255, 255, 255, 0.8);
+					color: rgba(255, 255, 255, 0.5);
 					font-size: 16px;
 					line-height: 50px;
+					text-align: center;
 					cursor: pointer;
-					&.swiper-pagination-bullet-active{
+					&.swiper-pagination-bullet-active {
 						border: none;
 						background: url('~assets/icons/bg_home_b5_half.png') no-repeat;
 						background-size: 100% 100%;
 					}
 				}
 			}
-			.bgimg{
+			.bgimg {
 				position: absolute;
 				right: 0;
 				top: 0;
@@ -1327,31 +1564,31 @@ export default home;
 				color: #fff;
 				padding-left: 225px;
 				padding-top: 295px;
-				p{
+				p {
 					font-size: 32px;
 					font-family: Gilroy-Bold;
 					font-weight: bold;
-					color: #FFFFFF;
+					color: #ffffff;
 					line-height: 48px;
 				}
-				h5{
+				h5 {
 					height: 33px;
 					font-size: 36px;
 					font-weight: 400;
-					color: #FFFFFF;
+					color: #ffffff;
 					margin: 128px 0 12px 0;
 				}
-				h6{
+				h6 {
 					font-size: 30px;
 					font-family: Athene;
 					font-weight: 400;
-					color: #FFFFFF;
+					color: #ffffff;
 					text-transform: uppercase;
 					overflow: hidden;
 					white-space: nowrap;
 					margin-bottom: 156px;
 				}
-				i{
+				i {
 					display: block;
 					cursor: pointer;
 					width: 45px;
@@ -1362,11 +1599,11 @@ export default home;
 					align-items: center;
 					justify-content: center;
 					outline: none;
-					transition: transform .3s;
-					&:hover{
+					transition: transform 0.3s;
+					&:hover {
 						transform: scale(1.1);
 					}
-					&::after{
+					&::after {
 						content: '';
 						width: 7px;
 						height: 11px;
@@ -1377,90 +1614,90 @@ export default home;
 			}
 		}
 	}
-	.page6{
+	.page6 {
 		height: 1110px;
 		background: url('~assets/bg_home_b6.png') no-repeat right;
 		position: relative;
-		.text{
-					position: absolute;
-					padding: 101px 0 0 80px;
-					left: 0;
-					top: 0;
-					width: 100%;
-					height: 100%;
-					h3{
-						height: 54px;
-						font-size: 56px;
-						font-weight: 400;
-						color: #000;
-						span{
-							color: #EC5400;
-						}
-					}
-					div{
-						font-size: 30px;
-						font-family: Athene;
-						font-weight: 400;
-						color: #000;
-						text-transform: uppercase;
-						margin: 24px 0 110px 0;
-					}
-					h4{
-						color: #000;
-						font-size: 34px;
-					}
-					h5{
-						color: #000;
-						font-size: 38px;
-						font-weight: 400;
-						text-transform: uppercase;
-					}
-					p{
-						font-size: 18px;
-						font-weight: 400;
-						color: #666;
-						width: 605px;
-						margin: 51px 0 104px 0;
-						line-height: 30px;
-					}
-					.btn{
-						width: 170px;
-						height: 53px;
-						background: #ED5400;
-						font-size: 18px;
-						font-weight: 400;
-						color: #FFFFFF;
-						line-height: 53px;
-						text-align: center;
-						text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
-					}
+		.text {
+			position: absolute;
+			padding: 101px 0 0 80px;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			h3 {
+				height: 54px;
+				font-size: 56px;
+				font-weight: 400;
+				color: #000;
+				span {
+					color: #ec5400;
 				}
+			}
+			div {
+				font-size: 30px;
+				font-family: Athene;
+				font-weight: 400;
+				color: #000;
+				text-transform: uppercase;
+				margin: 24px 0 110px 0;
+			}
+			h4 {
+				color: #000;
+				font-size: 34px;
+			}
+			h5 {
+				color: #000;
+				font-size: 38px;
+				font-weight: 400;
+				text-transform: uppercase;
+			}
+			p {
+				font-size: 18px;
+				font-weight: 400;
+				color: #666;
+				width: 605px;
+				margin: 51px 0 104px 0;
+				line-height: 30px;
+			}
+			.btn {
+				width: 170px;
+				height: 53px;
+				background: #ed5400;
+				font-size: 18px;
+				font-weight: 400;
+				color: #ffffff;
+				line-height: 53px;
+				text-align: center;
+				text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
+			}
+		}
 	}
-	.page7{
+	.page7 {
 		padding: 100px 0;
 		width: 1770px;
 		margin: 0 auto;
-		h3{
+		h3 {
 			height: 54px;
 			font-size: 56px;
 			font-weight: 400;
 			color: #000;
 			margin-bottom: 29px;
-			span{
-				color: #EC5400;
+			span {
+				color: #ec5400;
 			}
 		}
-		.title{
+		.title {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			span{
+			span {
 				font-size: 30px;
 				font-family: Athene;
 				font-weight: 400;
 				color: #000000;
 			}
-			div{
+			div {
 				display: flex;
 				align-items: center;
 				font-size: 18px;
@@ -1476,66 +1713,66 @@ export default home;
 				}
 			}
 		}
-		.list{
+		.list {
 			margin-top: 88px;
-			>ul{
+			> ul {
 				display: flex;
 				justify-content: space-between;
-				li{
+				li {
 					width: 553px;
 					position: relative;
-					&:nth-child(1){
-						div{
-							img{
+					&:nth-child(1) {
+						div {
+							img {
 								width: 100%;
 								height: 450px;
 							}
-							&.text{
+							&.text {
 								background: #122133;
 								height: 133px;
 								padding: 36px 10px 38px 39px;
-								p{
+								p {
 									font-size: 18px;
 									font-weight: 400;
-									color: #FFFFFF;
+									color: #ffffff;
 								}
-								div{
+								div {
 									font-size: 26px;
 									font-weight: 400;
-									color: #FFFFFF;
+									color: #ffffff;
 								}
 							}
 						}
-						i{
+						i {
 							cursor: pointer;
 							position: absolute;
 							left: 50%;
 							top: 50%;
-							transform: translate(-50%,-50%);
+							transform: translate(-50%, -50%);
 							width: 90px;
 							height: 90px;
 							background: url(~assets/icons/ic_home_b3_play.png) no-repeat;
 							background-size: 100% 100%;
-							transition: .3s;
-							&:hover{
-								transform: translate(-50%,-50%) scale(1.1) ;
+							transition: 0.3s;
+							&:hover {
+								transform: translate(-50%, -50%) scale(1.1);
 							}
 						}
 					}
-					&.item{
+					&.item {
 						width: 553px;
 						cursor: pointer;
-						.top{
+						.top {
 							height: 325px;
-							border-bottom: 1px solid #ED5400;
-							>div{
+							border-bottom: 1px solid #ed5400;
+							> div {
 								display: flex;
 								width: 100%;
-								img{
+								img {
 									width: 382px;
 									height: 170px;
 								}
-								div{
+								div {
 									width: 100%;
 									font-size: 16px;
 									width: 170px;
@@ -1545,16 +1782,16 @@ export default home;
 									flex-wrap: wrap;
 									font-family: CenturyGothic;
 									font-weight: 400;
-									color: #FFFFFF;
+									color: #ffffff;
 									text-align: center;
 									align-content: center;
-									p{
-										color: #FFFFFF;
+									p {
+										color: #ffffff;
 										width: 100%;
 										justify-content: center;
 										font-size: 24px;
 									}
-									b{
+									b {
 										width: 100%;
 										font-size: 16px;
 										margin-top: 4px;
@@ -1563,14 +1800,14 @@ export default home;
 							}
 						}
 
-						h4{
+						h4 {
 							font-size: 20px;
 							font-weight: 700;
 							color: #000000;
 							margin-bottom: 12px;
 							padding-top: 50px;
 						}
-						p{
+						p {
 							font-size: 18px;
 							font-weight: 400;
 							color: #888888;
