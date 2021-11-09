@@ -219,7 +219,6 @@ export default class EchartMap extends Vue {
 			let dataItem = data[i];
 			let fromCoord = this.geoCoordMap[dataItem[0].name];
 			let toCoord = this.geoCoordMap[dataItem[1].name];
-			console.log(toCoord);
 			if (fromCoord && toCoord) {
 				res.push([{
 					coord: fromCoord
@@ -228,6 +227,7 @@ export default class EchartMap extends Vue {
 				}]);
 			}
 		}
+		console.log(res);
 		return res;
 	}
 }
