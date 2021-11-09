@@ -300,6 +300,9 @@
 			</div>
 		</div>
 		<div class="page6">
+			<div class="canvas-wrapper">
+				<canvas></canvas>
+			</div>
 			<div class="text">
 				<h3>
 					<span>20+</span>
@@ -1616,9 +1619,20 @@ export default home;
 		}
 	}
 	.page6 {
-		height: 1110px;
-		background: url('~assets/bg_home_b6.png') no-repeat right;
+		height: 1097px;
 		position: relative;
+		.canvas-wrapper {
+			position: absolute;
+			left: 0;
+			top: 0;
+			pointer-events: none;
+			width: 100%;
+			height: 100%;
+			canvas {
+				width: 100%;
+				height: 100%;
+			}
+		}
 		.text {
 			position: absolute;
 			padding: 101px 0 0 80px;
