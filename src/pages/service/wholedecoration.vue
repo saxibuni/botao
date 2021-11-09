@@ -571,8 +571,11 @@ export default WholeDecoration;
 							}
 						}
 						h3 {
-							margin-top: 40px;
-							color: #fff;
+							width: 350px;
+							position: absolute;
+							bottom: 500%;
+							top: auto;
+							color: #333;
 						}
 					}
 				}
