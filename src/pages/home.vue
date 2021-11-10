@@ -282,7 +282,10 @@
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions3">
 					<swiper-slide v-for="(item, i) in 3" :key="i">
-						<img src="~assets/bg_home_b5_pic1.jpg" alt="" />
+						<img src="~assets/bg_home_b5_a1.jpg" alt="" />
+						<!-- <img src="~assets/bg_home_b5_a2.jpg" alt="" />
+						<img src="~assets/bg_home_b5_a3.jpg" alt="" />
+						<img src="~assets/bg_home_b5_a4.jpg" alt="" /> -->
 						<div class="text">
 							<h3>
 								<span>全案服务</span>
@@ -1501,7 +1504,7 @@ export default home;
 									width: 30px;
 									height: 30px;
 									opacity: 0.13;
-									animation: animated-width 2.5s infinite;
+									animation: a软装2.5s infinite;
 								}
 						}
 					@keyframes animated-width {
@@ -1609,6 +1612,7 @@ export default home;
 			.swiper-wrapper {
 				.swiper-slide {
 					img {
+						// position: absolute;
 						height: 100%;
 						width: 100%;
 					}
@@ -1657,6 +1661,8 @@ export default home;
 							height: 53px;
 						}
 					}
+				}
+				.swiper-slide-active{
 				}
 			}
 			.swiper-pagination3 {

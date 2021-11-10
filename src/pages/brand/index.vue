@@ -931,11 +931,12 @@ export default index;
 				display: flex;
 				margin: 137px 0 0 140px;
 				width: 100%;
+				height: 509px;
 				background: url(~assets/bg_g1_part7_line.png) no-repeat center;
 				background-size: 100%;
 				li {
 					position: relative;
-					top: -56px;
+					top: -25px;
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
@@ -988,7 +989,7 @@ export default index;
 						}
 					}
 					&:nth-child(2n) {
-						top: 59px;
+						top: 86px;
 						flex-direction: column-reverse;
 						.text-box {
 							display: flex;
