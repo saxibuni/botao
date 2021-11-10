@@ -2,7 +2,11 @@ import { Vue, Component } from 'vue-property-decorator';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
+import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
+Vue.use(BaiduMap, {
+	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
+});
 @Component({
 	components: {
 		Button,
@@ -12,6 +16,9 @@ import ICountUp from 'root/components/countup.vue';
 	}
 })
 export default class Brand extends Vue {
+	center: any = { lng: 121.437186, lat: 31.188195 };
+	historyScroll: HTMLElement;
+	height: number = 0;
 	isActive = 7;
 	bannerActive = 0;
 	BannerData = {
@@ -19,6 +26,7 @@ export default class Brand extends Vue {
 		cn: '波涛品牌',
 		en: 'ABOUT BOTAOGROUP'
 	};
+	asideNav = ['波涛品牌', '品牌数据', '核心价值观', '发展历程', '荣誉资质', '社会责任', '联系我们'];
 	nav = ['荣誉证书', '研发专利'];
 	btBrandArr = ['壹澜建材', '九衡堂', '锦沁建筑劳务', '繁构国际设计', '汇海船舶', '锦悦建设', '波涛家庭装饰', '波澜管理', '波涛装饰家居', '波涛简嘉公寓', '波涛商学院', '波涛软装'];
 	btBrandInfoArr = [
@@ -113,23 +121,23 @@ export default class Brand extends Vue {
 			title: '上海市消保委“装潢”指引企业'
 		}
 	];
-	socialArr=[
+	socialArr = [
 		{
-			imgUrl:require('../../assets/bg_g1_part7_pic1.jpg'),
-			time:'2003',
-			text:['非典期间捐献物资，与人民群众同心协力，共克时艰','波涛集团每年定期组织无偿公益献血活动']
+			imgUrl: require('../../assets/bg_g1_part7_pic1.jpg'),
+			time: '2003',
+			text: ['非典期间捐献物资，与人民群众同心协力，共克时艰', '波涛集团每年定期组织无偿公益献血活动']
 		},
 		{
-			imgUrl:require('../../assets/bg_g1_part7_pic2.jpg'),
-			time:'2008',
-			text:['为汶川地震灾区捐献救援物资','波涛集团每年定期组织无偿公益献血活动']
+			imgUrl: require('../../assets/bg_g1_part7_pic2.jpg'),
+			time: '2008',
+			text: ['为汶川地震灾区捐献救援物资', '波涛集团每年定期组织无偿公益献血活动']
 		},
 		{
-			imgUrl:require('../../assets/bg_g1_part7_pic3.jpg'),
-			time:'2009',
-			text:['捐资援建中国最北部希望小学-齐齐哈尔希望小学','波涛集团每年定期组织无偿公益献血活动']
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		}
-	]
+	];
 	options1 = {
 		// suffix: '+',
 		useEasing: true
@@ -166,7 +174,20 @@ export default class Brand extends Vue {
 			disableOnInteraction: false
 		}
 	};
-	// change(i){
-	// 	this.
-	// }
+	mounted() {
+		const hs = document.querySelector<HTMLElement>('.history-scroll');
+		const img = hs.querySelector<HTMLElement>('.inner-img');
+		hs.addEventListener('scroll', () => {
+			
+			this.height = hs.scrollTop + 100;
+		});
+	}
+	scroll(i) {
+		const brand = document.querySelector<HTMLElement>('.brand');
+		const Element = brand.querySelector<HTMLElement>(`.select${i}`);
+		let top: number = Element.offsetTop;
+		window.scroll({ top, behavior: 'smooth' });
+	}
+
+
 }

@@ -11,15 +11,11 @@
 			</div>
 		</div>
 		<ul class="aside-nav">
-			<li class="active"><span>波涛品牌</span></li>
-			<li><span>品牌数据</span></li>
-			<li><span>核心价值观</span></li>
-			<li><span>发展历程</span></li>
-			<li><span>荣誉资质</span></li>
-			<li><span>社会责任</span></li>
-			<li><span>联系我们</span></li>
+			<li v-for="(v, i) in asideNav" :key="i">
+				<span @click="scroll(i)" :class="'item' + i">{{ v }}</span>
+			</li>
 		</ul>
-		<div class="botao-brand">
+		<div class="botao-brand select0">
 			<div class="left">
 				<div class="img-box">
 					<img src="~assets/bg_g1_part2_logo.png" alt="" />
@@ -42,7 +38,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="brand-data">
+		<div class="brand-data select1">
 			<div class="left">
 				<p>在全国近30个省，开设了300多家分公司</p>
 				<p>
@@ -98,7 +94,7 @@
 				<ChinaMap />
 			</div>
 		</div>
-		<div class="core-value">
+		<div class="core-value select2">
 			<h2>核心价值观</h2>
 			<h3>以客户为中心 以员工为中心</h3>
 			<div class="img-list">
@@ -144,10 +140,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="history">
+		<div class="history select3">
 			<h2>波涛发展历程</h2>
 			<h3>DEVELOPMENT COURSE</h3>
-			<div class="info-box">
+			<div class="img-box history-scroll">
+				<div class="gray-img">
+					<img src="~assets/bg_g1_part5_way1.png" alt="" />
+				</div>
+				<div class="inner-img" :style="{ height: height + 'px' }"></div>
+			</div>
+			<div class="info-box" style="display:none;">
 				<div class="time">
 					<p>2006-2010</p>
 					<h2>起航·发展</h2>
@@ -158,7 +160,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="hover">
+		<div class="hover select4">
 			<h2>荣誉资质</h2>
 			<h3>匠心与精耕让我们走在行业发展前沿</h3>
 			<div class="nav">
@@ -195,7 +197,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="social-response">
+		<div class="social-response select5">
 			<h2>社会责任</h2>
 			<h3>social responsibility</h3>
 			<ul>
@@ -204,12 +206,12 @@
 					<div class="text-box">
 						<div class="dosh"></div>
 						<h2>{{ v.time }}</h2>
-						<p v-for="(value, index) in i % 2 == 0 ? v.text : v.text.reverse()" :key="index">{{ value }}</p>
+						<p v-for="(value, index) in v.text" :key="index">{{ value }}</p>
 					</div>
 				</li>
 			</ul>
 		</div>
-		<div class="contact-us">
+		<div class="contact-us select6">
 			<div class="left">
 				<h2>联系我们</h2>
 				<h3>CONTACTUS</h3>
@@ -243,7 +245,13 @@
 					</ul>
 				</div>
 			</div>
-			<div class="right"></div>
+			<div class="right">
+				<baidu-map class="bm-view" :zoom="20" :center="center" :scroll-wheel-zoom="true" :pinch-to-zoom="true">
+					<!-- <bm-marker :position="center" :icon="{ url: require('assets/icons/location_point.png'), size: { width: 19, height: 25 } }"></bm-marker> -->
+					<!-- <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation> -->
+					<!-- <bm-map-type :map-types="['BMAP_NORMAL_MAP', 'BMAP_SATELLITE_MAP']" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type> -->
+				</baidu-map>
+			</div>
 		</div>
 	</div>
 </template>
@@ -387,6 +395,7 @@ export default index;
 				right: 0;
 				top: -5px;
 				margin-right: 22px;
+				transition: all 0.3s;
 			}
 			&::before {
 				position: absolute;
@@ -396,11 +405,12 @@ export default index;
 				height: 6px;
 				border-radius: 50%;
 				background-color: #fff;
+				transition: all 0.3s;
 			}
 			&:last-child {
 				border: none;
 			}
-			&.active {
+			&:hover {
 				color: #eb5518;
 				&::before {
 					background-color: #eb5518;
@@ -715,6 +725,37 @@ export default index;
 			font-size: 24px;
 			font-family: Athene;
 		}
+		.img-box {
+			@include scrollbar-beautify();
+			position: absolute;
+			top: 540px;
+			left: 600px;
+			overflow-y: scroll;
+			width: 548px;
+			height: 716px;
+			img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				&:first {
+					top: 4px;
+					left: 4px;
+				}
+			}
+			.gray-img{
+				// height: 2000px;
+			}
+			.inner-img {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 548px;
+				height: 100px;
+				background: url(~assets/bg_g1_part5_way2.png) no-repeat;
+				background-size: 100%;
+			}
+		}
 		.info-box {
 			position: absolute;
 			top: 50%;
@@ -959,7 +1000,7 @@ export default index;
 					}
 					.dosh {
 						left: -34px;
-						top: 34px;
+						top: 28px;
 					}
 				}
 				&:first-child {
@@ -992,6 +1033,7 @@ export default index;
 		}
 	}
 	.contact-us {
+		display: flex;
 		margin-top: 105px;
 		height: 745px;
 		.left {
@@ -1099,6 +1141,9 @@ export default index;
 		.right {
 			flex: 1;
 			height: 100%;
+			.bm-view {
+				height: 100%;
+			}
 		}
 	}
 }
