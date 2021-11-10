@@ -28,20 +28,20 @@
 				<ul>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的姓名" />
+						<input type="text" v-model="form.userName" placeholder="输入您的姓名" />
 						<b>*</b>
 					</li>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的联系电话" />
+						<input type="text" maxlength="11" v-model="form.phone" placeholder="输入您的联系电话" />
 						<b>*</b>
 					</li>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的装修面积" />
+						<input type="text" v-model="form.area" placeholder="输入您的装修面积" />
 						<b>*</b>
 					</li>
-					<li class="btn">提交需求</li>
+					<li class="btn" @click="onSubmit()">提交需求</li>
 				</ul>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 							地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
 						</p>
 						<div class="btn-box">
-							<Button text="案例详情"></Button>
+							<Button text="案例详情" @click.native="$router.push({name:'case-detail'})"></Button>
 						</div>
 					</div>
 				</div>
@@ -285,7 +285,7 @@
 						<li style="font-size:10px;" :class="{ active: picIndex == i }" v-for="(item, i) in picList" :key="i"><img :src="item" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
-						<Button text="预约参观工地"></Button>
+						<Button text="预约参观工地" @click.native="$router.push({name:'craft-building'})"></Button>
 					</div>
 				</div>
 			</div>
@@ -355,7 +355,7 @@
 			</h3>
 			<div class="title">
 				<span>News information</span>
-				<div>
+				<div @click="$router.push({name:'owner-voice'})">
 					全部新闻
 					<i></i>
 				</div>
@@ -373,7 +373,7 @@
 						</div>
 					</li>
 					<li class="item">
-						<div class="top">
+						<div class="top" @click="$router.push({name:'strategy-detail'})">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
 								<div>
@@ -385,7 +385,7 @@
 							<p>近期活动</p>
 						</div>
 
-						<div class="items">
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
 							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
 							<p>
 								<span>装修攻略</span>
@@ -393,7 +393,7 @@
 							</p>
 						</div>
 
-						<div class="items">
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
 							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
 							<p>
 								<span>近期活动</span>
@@ -402,7 +402,7 @@
 						</div>
 					</li>
 					<li class="item">
-						<div class="top">
+						<div class="top" @click="$router.push({name:'strategy-detail'})">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
 								<div>
@@ -414,7 +414,7 @@
 							<p>近期活动</p>
 						</div>
 
-						<div class="items">
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
 							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
 							<p>
 								<span>装修攻略</span>
@@ -422,8 +422,8 @@
 							</p>
 						</div>
 
-						<div class="items">
-							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
+							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳180°</h4>
 							<p>
 								<span>近期活动</span>
 								<span>24-08</span>
@@ -573,11 +573,13 @@ export default home;
 					&:nth-child(2) {
 						i {
 							background: url('~assets/icons/ic_home_banner_phone.png');
+						  background-size: 100% 100%;
 						}
 					}
 					&:nth-child(3) {
 						i {
 							background: url('~assets/icons/ic_home_banner_area.png');
+					  	background-size: 100% 100%;
 						}
 					}
 					&.btn {

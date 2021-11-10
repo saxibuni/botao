@@ -1064,6 +1064,8 @@ export default index;
 				left: 150px;
 				top: 100px;
 				width: 0;
+				height: 80px;
+				overflow: hidden;
 				.svg {
 					height: 80px;
 					position: absolute;

@@ -10,6 +10,7 @@ import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
 import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
+import { Events } from 'root/utils/EnumUtils';
 
 gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin);
 Vue.use(BaiduMap, {
@@ -211,6 +212,9 @@ export default class Brand extends Vue {
 		this.createDragger();
 		this.createTrigger();
 		this.createMovePath();
+
+		this.onResize();
+		this.$bus.$on(Events.RESIZE, this.onResize);
 	}
 
 	createDragger() {
@@ -291,7 +295,14 @@ export default class Brand extends Vue {
 			});
 	}
 
+	onResize() {
+		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
+		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
+		svgBox.style.width = ul.clientWidth + 'px';
+	}
+
 	beforeDestroy() {
+		this.$bus.$off(Events.RESIZE, this.onResize);
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
 		ScrollTrigger.getAll().forEach(child => child.kill());
