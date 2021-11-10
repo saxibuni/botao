@@ -1260,11 +1260,25 @@ export default home;
 				cursor: pointer;
 				background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
 				background-size: 26px 13px;
+				&:nth-child(1){
+					&:hover{
+						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
+						background-size: 26px 13px;
+						transform: rotate(180deg) ;
+					}
+				}
 				&:nth-child(2){
-					background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
+					background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
 					background-size: 26px 13px;
 					margin-top: 15px;
+					transform: rotate(180deg);
+					&:hover{
+						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
+						background-size: 26px 13px;
+						transform: rotate(180deg) rotate(180deg);
+					}
 				}
+
 			}
 		}
 		.img-box{
