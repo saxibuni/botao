@@ -147,7 +147,7 @@
 				<div class="gray-img">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
 				</div>
-				<div class="inner-img" :style="{ height: height + 'px' }"></div>
+				<div class="inner-img"></div>
 			</div>
 			<div class="info-box">
 				<div class="time">
@@ -728,32 +728,33 @@ export default index;
 			font-family: Athene;
 		}
 		.img-box {
-			@include scrollbar-beautify();
+			@include scrollbar-beautify(0);
 			position: absolute;
 			top: 540px;
-			left: 600px;
+			left: 400px;
 			overflow-y: scroll;
-			width: 548px;
+			width: 670px;
 			height: 716px;
-			img {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				&:first {
-					top: 4px;
-					left: 4px;
-				}
-			}
+
 			.gray-img{
-				// height: 2000px;
+				height: 1245px;
+				img {
+					position: absolute;
+					top: 6px;
+					left: 7px;
+					width: 654px;
+					&:first {
+						top: 4px;
+						left: 4px;
+					}
+				}
 			}
 			.inner-img {
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: 548px;
-				height: 100px;
+				width: 660px;
+				height: 490px;
 				background: url(~assets/bg_g1_part5_way2.png) no-repeat;
 				background-size: 100%;
 			}

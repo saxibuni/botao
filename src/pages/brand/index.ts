@@ -2,13 +2,15 @@ import { Vue, Component } from 'vue-property-decorator';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
 import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
+import { Events } from 'root/utils/EnumUtils';
 
-gsap.registerPlugin(Draggable, InertiaPlugin);
+gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger);
 Vue.use(BaiduMap, {
 	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
 });
@@ -22,6 +24,8 @@ Vue.use(BaiduMap, {
 })
 export default class Brand extends Vue {
 	draggerTarget1: any;
+	draggerTarget2: any;
+	distance: number = 0;
 
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	historyScroll: HTMLElement;
@@ -192,20 +196,10 @@ export default class Brand extends Vue {
 		}
 	};
 	mounted() {
-		const hs = document.querySelector<HTMLElement>('.history-scroll');
-		const img = hs.querySelector<HTMLElement>('.inner-img');
-		hs.addEventListener('scroll', () => {
-			this.height = hs.scrollTop + 100;
-		});
-
 		this.createDragger();
-	}
-	scroll(i) {
-		const headHeight = document.querySelector<HTMLElement>('.header').clientHeight;
-		const brand = document.querySelector<HTMLElement>('.brand');
-		const Element = brand.querySelector<HTMLElement>(`.select${i}`);
-		let top: number = Element.offsetTop-headHeight;
-		window.scroll({ top, behavior: 'smooth' });
+		this.createTrigger();
+		// this.onResize();
+		// this.$bus.$on(Events.RESIZE, this.onResize);
 	}
 
 	createDragger() {
@@ -215,10 +209,28 @@ export default class Brand extends Vue {
 			cursor: 'auto',
 			edgeResistance: 0.7
 		})[0];
+
+		this.draggerTarget2 = Draggable.create('.history-scroll', {
+			type: 'scrollTop',
+			inertia: true,
+			cursor: 'auto',
+			edgeResistance: 0.7
+		})
+	}
+
+	createTrigger() {
+		ScrollTrigger.create({
+			scroller: '.history-scroll',
+			onUpdate: self => {
+				let offset = self.progress * (1245 - 490);
+				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 4.9 + offset / 100 + 'rem';
+			}
+		})
 	}
 
 	beforeDestroy() {
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
+		ScrollTrigger.getAll().forEach(child => child.kill());
 	}
 }
