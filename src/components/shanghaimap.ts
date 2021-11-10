@@ -82,10 +82,12 @@ export default class ShangHaiMap extends Vue {
 			if (params.data) {
 				this.currentSelectId = params.data.id;
 				console.log(JSON.stringify(params.data));
+				this.$emit('data',this.currentSelectId)
 			}
 		});
 		this.chart.on('mouseout', () => {
 			this.currentSelectId = "";
+			this.$emit('data',this.currentSelectId)
 		});
 		this.$bus.$on(Events.RESIZE, this.onResize);
 	}
