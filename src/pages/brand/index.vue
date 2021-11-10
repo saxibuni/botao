@@ -12,7 +12,7 @@
 		</div>
 		<ul class="aside-nav">
 			<li v-for="(v, i) in asideNav" :key="i">
-				<span @click="scroll(i)" :class="'item' + i">{{ v }}</span>
+				<span @click="jump(i)" :class="'item' + i">{{ v }}</span>
 			</li>
 		</ul>
 		<div class="botao-brand select0">
@@ -779,6 +779,7 @@ export default index;
 					}
 				}
 				> div {
+					opacity: 0;
 					position: absolute;
 					z-index: 10;
 					width: 14px;

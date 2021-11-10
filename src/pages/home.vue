@@ -1635,6 +1635,14 @@ export default home;
 		.swiper {
 			position: relative;
 			.swiper-wrapper {
+				@keyframes fadeIn {
+					from {
+						opacity: 0;
+					}
+					to {
+						opacity: 1;
+					}
+				}
 				.swiper-slide {
 					.img-box {
 						position: relative;
@@ -1645,19 +1653,30 @@ export default home;
 							left: 0;
 							width: 100%;
 							height: 100%;
+							opacity: 0;
 							height: 970px;
-							&:not(:first-child) {
-								opacity: 0;
+							&:first-child {
+								opacity: 1;
 							}
-							&:nth-of-type(2) {
-								transition: opacity 0.5s 1.5s;
-							}
-							&:nth-of-type(3) {
-								transition: opacity 0.5s 3s;
-							}
-							&:nth-of-type(4) {
-								transition: opacity 0.5s 4.5s;
-							}
+							// &:not(:first-child) {
+							// 	opacity: 0;
+							// 	// transition: opacity .5s;
+							// 	animation: fadeIn .5s forwards;
+							// }
+							// &:nth-of-type(2) {
+							// 	// transition: opacity 0.5s 1.5s;
+							// 	animation: fadeIn .5s 1.5s forwards;
+
+							// }
+							// &:nth-of-type(3) {
+							// 	// transition: opacity 0.5s 3s;
+							// 	animation: fadeIn .5s 3s forwards;
+
+							// }
+							// &:nth-of-type(4) {
+							// 	// transition: opacity 0.5s 4.5s;
+							// 	animation: fadeIn .5s 4.5s forwards;
+							// }
 						}
 					}
 					.text {
@@ -1709,7 +1728,23 @@ export default home;
 				.swiper-slide-active {
 					.img-box {
 						img {
-							opacity: 1 !important;
+							// opacity: 1 !important;
+							&:not(:first-child) {
+								// transition: opacity .5s;
+								animation: fadeIn 0.5s forwards;
+							}
+							&:nth-of-type(2) {
+								// transition: opacity 0.5s 1.5s;
+								animation: fadeIn 0.5s 1.5s forwards;
+							}
+							&:nth-of-type(3) {
+								// transition: opacity 0.5s 3s;
+								animation: fadeIn 0.5s 3s forwards;
+							}
+							&:nth-of-type(4) {
+								// transition: opacity 0.5s 4.5s;
+								animation: fadeIn 0.5s 4.5s forwards;
+							}
 						}
 					}
 				}
