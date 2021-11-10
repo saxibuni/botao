@@ -241,7 +241,13 @@ export default class Brand extends Vue {
 		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? this.isShow-- : this.isShow++;
 	}
-
+	jump(i){
+		const headerHeight =document.querySelector<HTMLElement>('.header').clientHeight;
+		const brand =document.querySelector<HTMLElement>('.brand');
+		const item =brand.querySelector<HTMLElement>(`.select${i}`)
+		let top =item.offsetTop-headerHeight
+		window.scroll({top,behavior:'smooth'})
+	}
 	createMovePath() {
 		let path = this.$el.querySelector<SVGPathElement>('.svg .st0');
 		let ball = this.$el.querySelector('.testball');

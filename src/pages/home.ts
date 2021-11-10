@@ -134,14 +134,17 @@ export default class home extends Vue {
 				return customPaginationHtml;
 			}
 		},
-		autoplay: {
-			delay: 6000,
-			disableOnInteraction: false
-		},
+		// autoplay: {
+		// 	delay: 6000,
+		// 	disableOnInteraction: false
+		// },
 		navigation: {
 			nextEl: '.next3',
 		},
 		on: {
+			slideChangeTransitionEnd: function(){
+				alert(this.activeIndex);
+			}
 		}
 	};
 
