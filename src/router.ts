@@ -13,7 +13,7 @@ import CraftTeam from 'root/pages/craftart/team.vue';
 import CraftManager from 'root/pages/craftart/manager.vue';
 import WholeDecoration from 'root/pages/service/wholedecoration.vue';
 import CherryPick from 'root/pages/service/cherrypick.vue';
-import SoftDecoration from 'root/pages/service/cherrypick.vue';
+import SoftDecoration from 'root/pages/service/softdecoration.vue';
 import Information from 'root/pages/information/index.vue';
 import OwnerVoice from 'root/pages/information/ownervoice.vue';
 import StrategyList from 'root/pages/information/strategylist.vue';
