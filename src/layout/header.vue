@@ -3,7 +3,8 @@
 
 		<div>
 			<div class="logo">
-				<img @click="$router.push({name:'home'})" src="~assets/bg_home_banner1.jpg" alt="">
+				<img v-if="!navBgColor" @click="$router.push({name:'home'})" src="~assets/ic_home_banner_logo.png" alt="">
+				<img v-if="navBgColor" @click="$router.push({name:'home'})" src="~assets/ic_home_banner_logo2.png" alt="">
 				<div>
 					<h3>我们，让空间更美好</h3>
 					<p>BETTER SPACE,BETTER LIFE</p>

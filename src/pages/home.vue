@@ -241,7 +241,7 @@
 				</div>
 			</div>
 			<div class="right">
-				<div class="text">
+				<div class="text" :class="{active:textActive}">
 					<img src="~assets/bg_home_b4_roll.png" alt="" />
 					<div>
 						<h5>水电工艺施工标准</h5>
@@ -256,10 +256,22 @@
 				</div>
 				<div class="img-wrap">
 					<img src="~assets/bg_home_b4_right.jpg" alt="" />
-					<div class="div1"></div>
-					<div class="div2"></div>
-					<div class="div3"></div>
-					<div class="div4"></div>
+					<div class="div1" @click="textActiveFun(2)">
+						<i></i>
+					</div>
+					<div class="div2" @click="textActiveFun(3)">
+						<i></i>
+					</div>
+					<div class="div3" @click="textActiveFun(1)">
+						<i></i>
+					</div>
+					<div class="div4" @click="textActiveFun(0)">
+						<i></i>
+					</div>
+
+					<ul class="pic-box">
+							<li style="font-size:10px;" :class="{active:picIndex==i}" v-for="(item,i) in picList" :key="i"><img :src="item" alt=""></li>
+					</ul>
 					<div class="btn-wrap">
 						<Button text="预约参观工地"></Button>
 					</div>
@@ -815,7 +827,6 @@ export default home;
 				left: 0;
 				top: initial;
 				bottom: 0;
-				background-position: bottom;
 				mask: url('~assets/bg_home_b2_mask_pic00.png');
 				img {
 					position: absolute;
@@ -830,6 +841,7 @@ export default home;
 				z-index: 1;
 				height: 135px;
 				background: url('~assets/bg_home_b2_mask_pic0.png');
+				background-size: 100% auto;
 				left: 0;
 				top: initial;
 				bottom: 0;
@@ -1179,25 +1191,25 @@ export default home;
 					&:nth-child(30){
 						top:  9px;
 						left: 602px;
-						width: 130px;
+						width: 178px;
 						height: 174px;
 					}
 					&:nth-child(31){
 						top:  193px;
 						left: 602px;
-						width: 130px;
+						width: 178px;
 						height: 195px;
 					}
 					&:nth-child(32){
 						top:  398px;
 						left: 602px;
-						width: 130px;
+						width: 178px;
 						height: 195px;
 					}
 					&:nth-child(33){
 						top:  603px;
 						left: 602px;
-						width: 130px;
+						width: 178px;
 						height: 195px;
 					}
 					&:nth-child(34){
@@ -1414,6 +1426,11 @@ export default home;
 				z-index: 3;
 				display: flex;
 				align-items: center;
+				opacity: 0;
+				transition: opacity .3s;
+				&.active{
+					opacity: 1;
+				}
 				img {
 					width: 215px;
 					height: 215px;
@@ -1439,14 +1456,56 @@ export default home;
 			.img-wrap {
 				position: relative;
 				> div {
-					position: absolute;
-					width: 65px;
-					height: 65px;
-					cursor: pointer;
+					&:not(.btn-wrap){
+						position: absolute;
+						width: 65px;
+						height: 65px;
+						cursor: pointer;
+						z-index: 3;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						i{
+								width: 8px;
+								height: 8px;
+								background: #ED5400;
+								border-radius: 50%;
+								&:after,
+								&::before{
+									position: absolute;
+									content: '';
+									width: 30px;
+									height: 30px;
+									border: 1px solid #ED5400;
+									opacity: 0.3;
+									border-radius: 50%;
+									top: 50%;
+									left: 50%;
+									transform: translate(-50%,-50%);
+								}
+								&::before{
+									width: 30px;
+									height: 30px;
+									opacity: 0.13;
+									animation: animated-width 2.5s infinite;
+								}
+						}
+					@keyframes animated-width {
+						0% {
+							width: 30px;
+							height: 30px;
+						}
+						100% {
+							width: 65px;
+							height: 65px;
+						}
+					}
+					}
 				}
 				.div1 {
 					top: 369px;
 					left: 431px;
+
 				}
 				.div2 {
 					top: 330px;
@@ -1460,8 +1519,61 @@ export default home;
 					top: 602px;
 					left: 764px;
 				}
-				img {
+				>img {
 					width: 100%;
+					height: 100%;
+				}
+				.pic-box{
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					li{
+						position: absolute;
+						z-index: 2;
+						img{
+							opacity: 0;
+							transition:opacity .3s;
+						}
+						&:nth-child(1){
+							bottom:266px;
+							right:94px;
+							img{
+								width: 180px;
+								height: 155px;
+							}
+						}
+						&:nth-child(2){
+							bottom:330px;
+							right:344px;
+							img{
+								width: 132px;
+								height: 124px;
+							}
+						}
+						&:nth-child(3){
+							bottom: 414px;
+							left: 358px;
+							img{
+								width: 220px;
+								height: 200px;
+							}
+						}
+						&:nth-child(4){
+							bottom: 490px;
+							right: 93px;
+							img{
+								width: 193px;
+								height: 175px;
+							}
+						}
+						&.active{
+							img{
+								opacity: 1;
+							}
+						}
+					}
 				}
 				.btn-wrap {
 					width: 170px;
@@ -1781,14 +1893,25 @@ export default home;
 						.top {
 							height: 325px;
 							border-bottom: 1px solid #ed5400;
+							&:hover{
+								img{
+									transform: scale(1.1);
+								}
+							}
 							> div {
 								display: flex;
 								width: 100%;
+								overflow: hidden;
 								img {
+									transition:transform .3s;
 									width: 382px;
 									height: 170px;
+									position: relative;
+									z-index: 1;
 								}
 								div {
+									position: relative;
+									z-index: 2;
 									width: 100%;
 									font-size: 16px;
 									width: 170px;

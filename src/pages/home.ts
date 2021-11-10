@@ -54,6 +54,14 @@ export default class home extends Vue {
 		require("../assets/portrait/bg_home_b3_pic35.jpg"),
 		require("../assets/portrait/bg_home_b3_pic09.jpg"),
 	]
+	picList=[
+		require("../assets/bg_home_b4_right1.png"),
+		require("../assets/bg_home_b4_right2.png"),
+		require("../assets/bg_home_b4_right3.png"),
+		require("../assets/bg_home_b4_right4.png"),
+	]
+	textActive = true;
+	picIndex = 0;
 	anIndex = 0;
 	bannerSwiperOptions: any = {
 		speed: 500,
@@ -178,4 +186,11 @@ export default class home extends Vue {
 		this.height = this.$refs[items][0].clientHeight;
 	}
 
+	textActiveFun(i){
+		this.picIndex=i;
+		this.textActive=false;
+		setTimeout(()=>{
+			this.textActive=true;
+		},300)
+	}
 }

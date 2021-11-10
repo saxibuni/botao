@@ -1,16 +1,16 @@
 <template>
-	<div class="echart-map-demo">
+	<div class="china-map-wrapper">
 		<div class="map-box"></div>
 	</div>
 </template>
 
 <script lang="ts">
-import EchartMap from './echartmap';
-export default EchartMap;
+import ChinaMap from './chinamap';
+export default ChinaMap;
 </script>
 
 <style lang="scss">
-.echart-map-demo {
+.china-map-wrapper {
 	.map-box {
 		width: 856px;
 		height: 640px;

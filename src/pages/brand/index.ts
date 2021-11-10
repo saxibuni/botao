@@ -1,13 +1,13 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
-import MapBox from 'root/pages/echartmap.vue';
+import ChinaMap from 'root/components/chinamap.vue';
 import ICountUp from 'root/components/countup.vue';
 @Component({
 	components: {
 		Button,
 		Banner,
-		MapBox,
+		ChinaMap,
 		ICountUp
 	}
 })

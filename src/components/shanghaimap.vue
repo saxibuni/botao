@@ -1,5 +1,5 @@
 <template>
-	<div class="shanghai-map-demo">
+	<div class="shanghai-map-wrapper">
 		<div class="map-box"></div>
 		<ul class="data-list">
 			<li class="item" v-for="item in data" :class="[item.id, {'active': item.id == currentSelectId}]" :key="item.id">
@@ -18,13 +18,12 @@ export default ShangHaiMap;
 </script>
 
 <style lang="scss">
-.shanghai-map-demo {
+.shanghai-map-wrapper {
 	position: relative;
 	.map-box {
 		width: 1760px;
 		height: 860px;
 		margin: 210px auto 0 auto;
-		background: gainsboro;
 	}
 
 	.data-list {
