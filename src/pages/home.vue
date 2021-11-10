@@ -1622,13 +1622,13 @@ export default home;
 								opacity: 0;
 							}
 							&:nth-of-type(2) {
-								transition: opacity 0.3s 1s;
+								transition: opacity 0.5s 1.5s;
 							}
 							&:nth-of-type(3) {
-								transition: opacity 0.3s 2s;
+								transition: opacity 0.5s 3s;
 							}
 							&:nth-of-type(4) {
-								transition: opacity 0.3s 3s;
+								transition: opacity 0.5s 4.5s;
 							}
 						}
 					}
