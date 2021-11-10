@@ -20,7 +20,16 @@
 			<div class="tel">
 				<div><i></i>400-920-2982</div>
 				<i class="search"></i>
-				<i class="menu"></i>
+				<i class="menu" @mouseenter="onMouseover($event)">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+					<g id="_x31_">
+						<path class="normal" d="M2,7c0,0,2.9-2.5,6.4-1.5c4,1.2,4.8,3.3,8.3,3.3c3.4,0,5.3-1.7,5.3-1.7"/>
+						<path class="normal" d="M2,13c0,0,2.9-2.5,6.4-1.5c4,1.2,4.8,3.3,8.3,3.3c3.4,0,5.3-1.7,5.3-1.7"/>
+						<path class="normal" d="M2,19c0,0,2.9-2.5,6.4-1.5c4,1.2,4.8,3.3,8.3,3.3c3.4,0,5.3-1.7,5.3-1.7"/>
+					</g>
+					</svg>
+				</i>
 			</div>
 		</div>
 
@@ -29,9 +38,36 @@
 
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
+import gsap from "gsap";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+gsap.registerPlugin(MorphSVGPlugin);
+
+const warps = [
+	[
+		"M2,9.2C2.2,9.3,4.7,9,6.5,7.9c2.6-1.6,6.4-3,8.6-3.1c3.9-0.2,6.6,2.5,6.6,2.5",
+		"M2,7.2c1.8,1.2,4.1,1,5.9,0.5c2.9-0.8,5.2-2.5,7.5-2.9C19.1,4.2,22,5.7,22,5.7",
+		"M2,6.1c3.6-0.1,4.6,2.7,7.9,3c2.8,0.3,4.6-1.6,6.8-2.6C19.6,5.3,22,5.7,22,5.7",
+		"M2,5.1c1.4,0.1,2.6,0.3,4,0.6c2.1,0.5,6.3,3,10,2.8c3.3-0.2,6-2.8,6-2.8"
+	],
+	[
+		"M2,14.4c3.2-2.4,6-3.1,8.3-3.1c3,0.1,7,2.1,8.3,2.8c1.2,0.7,3.1,0.7,3.1,0.7",
+		"M2,15.2c0.2,0.1,2.7-0.2,4.5-1.3c2.6-1.6,6.4-3,8.6-3.1c3.9-0.2,6.6,2.5,6.6,2.5",
+		"M2,13.3c1.8,1.2,4.1,1,5.9,0.5c2.9-0.8,5.2-2.5,7.5-2.9c3.7-0.7,6.6,0.9,6.6,0.9",
+		"M2,11.9c3.6-0.1,4.6,2.7,7.9,3c2.8,0.3,4.6-1.7,6.8-2.6c2.5-1,5.3-0.8,5.3-0.8",
+		"M2,10.8c1.4,0.1,2.6,0.3,4,0.6c2.1,0.5,6.3,3,10,2.8c3.3-0.2,6-2.8,6-2.8"
+	],
+	[
+		"M2,20.3c3.2-2.4,6-3.1,8.3-3.1c3,0.1,7,2.1,8.3,2.8c1.2,0.7,3.1,0.7,3.1,0.7",
+		"M2,21.1c0.2,0.1,2.7-0.2,4.5-1.3c2.6-1.6,6.4-3,8.6-3.1c3.9-0.2,6.6,2.5,6.6,2.5",
+		"M2,19.3c1.8,1.2,4.1,1,5.9,0.5c2.9-0.8,5.2-2.5,7.5-2.9c3.7-0.7,6.6,0.9,6.6,0.9",
+		"M2,17.7c3.6-0.1,4.6,2.7,7.9,3c2.8,0.3,4.6-1.7,6.8-2.6c2.5-1,5.3-0.8,5.3-0.8",
+		"M2,16.5c1.4,0.1,2.6,0.3,4,0.6c2.1,0.5,6.3,3,10,2.8c3.3-0.2,6-2.8,6-2.8"
+	]
+];
 
 @Component
 export default class Header extends Vue {
+	tl: any;
 	navList = [
 		{title:'精选案例',url:'case'},
 		{title:'设计名人堂',url:'design'},
@@ -53,6 +89,41 @@ export default class Header extends Vue {
 			this.navBgColor = false;
 		}
 	}
+
+	onMouseover(event) {
+		let normals = event.target.querySelectorAll(".normal");
+		if(gsap.isTweening(normals[0])) return;
+
+	 	for (let i = 0; i < 3; i++) {
+			let morph = [];
+			warps[i].forEach(p => {
+				morph.push({
+					morphSVG: p
+				})
+			});
+
+			let tl = gsap.timeline()
+			.to(normals[i], {
+				defaults: {
+					duration: 1,
+					ease: "none"
+				},
+
+				keyframes: [...morph, {
+					morphSVG: normals[i]
+				}]
+			})
+
+			gsap.fromTo(tl, {
+				time: 0
+			}, {
+				duration: 1,
+				time: 5,
+			});
+			if (i === 0) this.tl = tl;
+		}
+	}
+
 }
 </script>
 <style scoped lang="scss">
@@ -200,20 +271,30 @@ export default class Header extends Vue {
 				}
 			}
 			.search{
-					width: 24px;
-					height: 24px;
-					background: url('~assets/icons/ic_home_top_search.png');
-					background-size: 100% 100%;
-					margin-left: 46px;
-					cursor: pointer;
+				width: 24px;
+				height: 24px;
+				background: url('~assets/icons/ic_home_top_search.png');
+				background-size: 100% 100%;
+				margin-left: 46px;
+				cursor: pointer;
 			}
 			.menu{
-					width: 24px;
-					height: 24px;
-					background: url('~assets/icons/ic_home_top_menu.png');
-					margin-left: 46px;
-					cursor: pointer;
-					background-size: 100% 100%;
+				width: 24px;
+				height: 24px;
+				margin-left: 46px;
+				cursor: pointer;
+				position: relative;
+				svg {
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					path {
+						display:inline;fill:none;
+						stroke:#FFFFFF;stroke-width:1.8502;stroke-linecap:round;stroke-miterlimit:10;
+					}
+				}
 			}
 		}
 	}
@@ -240,8 +321,11 @@ export default class Header extends Vue {
 					color:#333333;
 				}
 			.menu{
-					background: url('~assets/icons/ic_home_top_search_orange.png');
-					background-size: 100% 100%;
+				svg {
+					path {
+						stroke: #ed5401;
+					}
+				}
 			}
 			}
 		}
