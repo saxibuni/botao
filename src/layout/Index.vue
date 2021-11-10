@@ -4,6 +4,7 @@
 		<slot />
 		<Footer v-if="$store.state.footData" />
 		<Sidebar v-if="$store.state.footData" />
+		<CapitalRetention/>
 	</div>
 </template>
 
