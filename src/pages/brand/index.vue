@@ -217,8 +217,7 @@
 				<svg class="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					viewBox="0 0 3680 80" style="enable-background:new 0 0 3680 80;" xml:space="preserve">
 					<g>
-						<path d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70"/>
-						<path class="progress" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70"/>
+						<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70"/>
 					</g>
 				</svg>
 				<div class="testball"></div>
@@ -1006,9 +1005,6 @@ export default index;
 				height: 80px;
 				path {
 					fill:none;stroke:#DCDCDC;stroke-miterlimit:10;stroke-dasharray:3.9998,2.9998;
-					&.progress {
-						opacity: 0;
-					}
 				}
 			}
 			.testball {

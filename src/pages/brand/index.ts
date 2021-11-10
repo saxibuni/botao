@@ -199,8 +199,7 @@ export default class Brand extends Vue {
 	mounted() {
 		this.createDragger();
 		this.createTrigger();
-		// this.onResize();
-		// this.$bus.$on(Events.RESIZE, this.onResize);
+		this.createMovePath();
 	}
 
 	createDragger() {
@@ -227,6 +226,29 @@ export default class Brand extends Vue {
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 1.9 + offset / 100 + 'rem';
 			}
 		})
+	}
+
+	createMovePath() {
+		let path = this.$el.querySelector<SVGPathElement>('.svg .st0');
+		let ball = this.$el.querySelector('.testball');
+		let pathPoint = { n: 0 }, end = 0.5;
+
+		gsap.timeline({
+			defaults: {
+				duration: 3,
+				ease: "none"
+			}
+		})
+		.to(ball, {
+			motionPath: {
+				path: path,
+				align: path,
+				alignOrigin: [0.5, 0.5],
+				autoRotate: true,
+				start: pathPoint.n,
+				end: end
+			}
+		});
 	}
 
 	beforeDestroy() {
