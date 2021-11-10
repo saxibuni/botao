@@ -92,11 +92,9 @@ export default class ChinaMap extends Vue {
 				},
 				// lineStyle出发到目的地 的线条颜色
 				lineStyle: {
-					normal: {
-						color: color,
-						width: 0,
-						curveness: 0.2 //幅度
-					}
+					color: color,
+					width: 0,
+					curveness: 0.2 //幅度
 				},
 				data: this.convertData(item[1]) //开始到结束数据
 			},
@@ -113,13 +111,11 @@ export default class ChinaMap extends Vue {
 					symbolSize: 6
 				},
 				lineStyle: {
-					normal: {
-						color: color,
-						type: 'dotted',
-						width: 1.5,
-						opacity: 0.4,
-						curveness: 0.2
-					}
+					color: color,
+					type: 'dotted',
+					width: 1.5,
+					opacity: 0.4,
+					curveness: 0.2
 				},
 				data: this.convertData(item[1])
 			},
@@ -133,19 +129,15 @@ export default class ChinaMap extends Vue {
 					brushType: 'stroke'
 				},
 				label: {
-					normal: {
-						show: true,
-						position: 'right',
-						formatter: '{b}'
-					}
+					show: true,
+					position: 'right',
+					formatter: '{b}'
 				},
 				symbolSize: (val) => {
 					return val[2] / 8;
 				},
 				itemStyle: {
-					normal: {
-						color: color
-					}
+					color: color
 				},
 				data: (<any>item[1]).map((dataItem) => {
 					return {
@@ -165,19 +157,17 @@ export default class ChinaMap extends Vue {
 			zoom: 1.20,
 			selectedMode: false,
 			label: {
-				normal: {
-					show: false,
-				},
-				emphasis: { // 对应的鼠标悬浮效果
-					show: false,
-				}
+				show: false,
 			},
 			itemStyle: {
-				normal: {
-					areaColor: '#fff',
-					borderColor: color
+				areaColor: '#fff',
+				borderColor: color
+			},
+			emphasis: {
+				label: {
+					show: false
 				},
-				emphasis: {
+				itemStyle: {
 					areaColor: "#eee",
 					borderColor: color,
 					shadowColor: 'rgba(0, 0, 0, 0.5)'
@@ -197,15 +187,13 @@ export default class ChinaMap extends Vue {
 				center: [104.3, 35.8], //设置可见中心坐标，以此坐标来放大和缩小
 				zoom: 1.18, //放大级别
 				itemStyle: {
-					normal: {
-						// 地图底色
-						areaColor: color,
-						borderColor: color,
-						shadowBlur: 6,
-						shadowColor: color,
-						shadowOffsetX: -3,
-						shadowOffsetY: 2,
-					},
+					// 地图底色
+					areaColor: color,
+					borderColor: color,
+					shadowBlur: 6,
+					shadowColor: color,
+					shadowOffsetX: -3,
+					shadowOffsetY: 2,
 				}
 			},
 			series: series

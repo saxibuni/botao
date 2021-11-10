@@ -54,6 +54,15 @@ export default class home extends Vue {
 		require("../assets/portrait/bg_home_b3_pic35.jpg"),
 		require("../assets/portrait/bg_home_b3_pic09.jpg"),
 	]
+	page5List=[{
+		imgSrc:[require('../assets/bg_home_b5_a1.jpg'),require('../assets/bg_home_b5_a2.jpg'),require('../assets/bg_home_b5_a3.jpg'),require('../assets/bg_home_b5_a4.jpg')]
+	},
+	{
+		imgSrc:[require('../assets/bg_home_b5_b1.jpg'),require('../assets/bg_home_b5_b2.jpg'),require('../assets/bg_home_b5_b3.jpg'),require('../assets/bg_home_b5_b4.jpg')]
+	},
+	{
+		imgSrc:[require('../assets/bg_home_b5_c1.jpg'),require('../assets/bg_home_b5_c2.jpg'),require('../assets/bg_home_b5_c3.jpg')]
+	}]
 	picList=[
 		require("../assets/bg_home_b4_right1.png"),
 		require("../assets/bg_home_b4_right2.png"),
@@ -126,7 +135,7 @@ export default class home extends Vue {
 			}
 		},
 		autoplay: {
-			delay: 98000,
+			delay: 6000,
 			disableOnInteraction: false
 		},
 		navigation: {

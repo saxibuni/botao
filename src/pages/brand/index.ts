@@ -1,8 +1,19 @@
 import { Vue, Component } from 'vue-property-decorator';
+import gsap from 'gsap';
+import { Draggable } from 'gsap/Draggable';
+import { InertiaPlugin } from 'gsap/InertiaPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
+import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
+import { Events } from 'root/utils/EnumUtils';
+
+gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger);
+Vue.use(BaiduMap, {
+	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
+});
 @Component({
 	components: {
 		Button,
@@ -12,6 +23,13 @@ import ICountUp from 'root/components/countup.vue';
 	}
 })
 export default class Brand extends Vue {
+	draggerTarget1: any;
+	draggerTarget2: any;
+	distance: number = 0;
+
+	center: any = { lng: 121.437186, lat: 31.188195 };
+	historyScroll: HTMLElement;
+	height: number = 0;
 	isActive = 7;
 	bannerActive = 0;
 	BannerData = {
@@ -19,6 +37,7 @@ export default class Brand extends Vue {
 		cn: '波涛品牌',
 		en: 'ABOUT BOTAOGROUP'
 	};
+	asideNav = ['波涛品牌', '品牌数据', '核心价值观', '发展历程', '荣誉资质', '社会责任', '联系我们'];
 	nav = ['荣誉证书', '研发专利'];
 	btBrandArr = ['壹澜建材', '九衡堂', '锦沁建筑劳务', '繁构国际设计', '汇海船舶', '锦悦建设', '波涛家庭装饰', '波澜管理', '波涛装饰家居', '波涛简嘉公寓', '波涛商学院', '波涛软装'];
 	btBrandInfoArr = [
@@ -113,6 +132,33 @@ export default class Brand extends Vue {
 			title: '上海市消保委“装潢”指引企业'
 		}
 	];
+	socialArr = [
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic1.jpg'),
+			time: '2003',
+			text: ['非典期间捐献物资，与人民群众同心协力，共克时艰', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic2.jpg'),
+			time: '2008',
+			text: ['为汶川地震灾区捐献救援物资', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		}
+	];
 	options1 = {
 		// suffix: '+',
 		useEasing: true
@@ -149,7 +195,42 @@ export default class Brand extends Vue {
 			disableOnInteraction: false
 		}
 	};
-	// change(i){
-	// 	this.
-	// }
+	mounted() {
+		this.createDragger();
+		this.createTrigger();
+		// this.onResize();
+		// this.$bus.$on(Events.RESIZE, this.onResize);
+	}
+
+	createDragger() {
+		this.draggerTarget1 = Draggable.create('.social-response .content-box', {
+			type: 'scrollLeft',
+			inertia: true,
+			cursor: 'auto',
+			edgeResistance: 0.7
+		})[0];
+
+		this.draggerTarget2 = Draggable.create('.history-scroll', {
+			type: 'scrollTop',
+			inertia: true,
+			cursor: 'auto',
+			edgeResistance: 0.7
+		})
+	}
+
+	createTrigger() {
+		ScrollTrigger.create({
+			scroller: '.history-scroll',
+			onUpdate: self => {
+				let offset = self.progress * (1245 - 190);
+				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 1.9 + offset / 100 + 'rem';
+			}
+		})
+	}
+
+	beforeDestroy() {
+		this.draggerTarget1.kill();
+		this.draggerTarget1 = null;
+		ScrollTrigger.getAll().forEach(child => child.kill());
+	}
 }

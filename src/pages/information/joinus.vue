@@ -141,6 +141,9 @@ export default JoinUs;
 
 <style lang="scss">
 .join-us {
+		box-sizing: border-box;
+	margin: 0 auto;
+	width: 1916px;
 	.page1 {
 		display: flex;
 		justify-content: space-between;
@@ -184,7 +187,7 @@ export default JoinUs;
 			overflow: inherit;
 		}
 		.swiper-slide-active {
-			transform: scale(1.2);
+			transform: scale(1.1);
 			.img-box {
 				position: relative;
 				img {

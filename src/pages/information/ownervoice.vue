@@ -39,7 +39,7 @@
 									</p>
 									<Button :text="'定制我的方案'"></Button>
 									<div class="img-box">
-										<img />
+										<img src="~assets/ic_f1_part2_dou.png" />
 									</div>
 								</div>
 							</div>
@@ -104,9 +104,10 @@
 			<h3>owner reviews</h3>
 			<div class="swiper-box">
 				<swiper :options="dpBannerOptions">
-					<swiper-slide v-for="(v,i) in dpArr" :key="i">
+					<swiper-slide v-for="(v, i) in dpArr" :key="i">
 						<div class="img-box">
 							<img :src="v" alt="" />
+							<div class="mask"></div>
 						</div>
 					</swiper-slide>
 				</swiper>
@@ -127,6 +128,9 @@ export default OwnerVoice;
 <style lang="scss">
 .owner {
 	font-size: 16px;
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 1916px;
 	@mixin title {
 		h2,
 		h3 {
@@ -186,7 +190,7 @@ export default OwnerVoice;
 								flex-direction: column;
 								span {
 									font-size: 16px;
-									&:nth-child(2){
+									&:nth-child(2) {
 										margin-top: 5px;
 									}
 								}
@@ -218,7 +222,7 @@ export default OwnerVoice;
 							font-size: 16px;
 							line-height: 26px;
 							span {
-								color: #ED5400;
+								color: #ed5400;
 							}
 						}
 						.button-wrap {
@@ -226,16 +230,15 @@ export default OwnerVoice;
 								margin: 0;
 								width: 207px;
 								height: 53px;
-								background-color: #EB551D;
+								background-color: #eb551d;
 							}
 						}
 						.img-box {
 							position: absolute;
 							right: 36px;
-							bottom: 37px;
+							bottom: 26px;
 							width: 99px;
 							height: 84px;
-							background-color: red;
 							img {
 								width: 100%;
 								height: 100%;
@@ -279,37 +282,38 @@ export default OwnerVoice;
 		.swiper-box {
 			margin: 0 auto;
 			// min-height: 700px;
-			.swiper-container{
+			.swiper-container {
 				padding: 20px;
 			}
 			.img-box {
+				position: relative;
 				display: flex;
 				box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
-				img {
-					// &:first-child {
-					// 	width: 344px;
-					// 	height: 649px;
-					// 	box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
-					// }
-					// &:nth-child(2) {
-					// 	width: 343px;
-					// 	height: 548px;
-					// 	box-shadow: 0px 0px 35px 0px rgba(0, 0, 0, 0.15);
-					// 	opacity: 0.8;
-					// }
-					// &:nth-child(3) {
-					// 	width: 341px;
-					// 	height: 502px;
-					// 	box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
-					// }
-					// &:nth-child(4) {
-					// 	width: 341px;
-					// 	height: 631px;
-					// 	box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
-					// }
-					// &:not(:last-child) {
-					// 	margin-right: 40px;
-					// }
+				cursor: pointer;
+				.mask {
+					opacity: 0;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(255, 255, 255, 0.8);
+					transition: all 0.3s;
+					&::after {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+						z-index: 10;
+						width: 65px;
+						height: 65px;
+						content: '';
+						background: url(~assets/icons/ic_f1_part4_searcg.png) no-repeat;
+						background-size: 100%;
+					}
+				}
+				&:hover .mask{
+					opacity: 1;
 				}
 			}
 		}
@@ -331,7 +335,8 @@ export default OwnerVoice;
 		@include title();
 		overflow: hidden;
 		padding: 0 100px 0 80px;
-		background-color: skyblue;
+		background: url(~assets/bg_f1_part3.jpg) no-repeat;
+		background-size: 100%;
 		h2,
 		h3 {
 			color: #fff;
@@ -408,11 +413,11 @@ export default OwnerVoice;
 		}
 		.controal-box {
 			height: 163px;
-			.swiper-pre{
+			.swiper-pre {
 				top: 58px;
-				left:0px;
+				left: 0px;
 			}
-			.swiper-next{
+			.swiper-next {
 				top: 58px;
 				right: 0px;
 			}

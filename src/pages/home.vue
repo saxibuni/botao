@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="mask">
-							<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
+					<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
 				</div>
 				<div class="mask2"></div>
 			</div>
@@ -160,13 +160,13 @@
 			</div>
 			<div class="right">
 				<ul>
-					<li v-for="(item,i) in portraitList" :key="i" @click="onClick($event,item,i)" :ref="`item${i}`">
-						<img :src="item" alt="">
+					<li v-for="(item, i) in portraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`">
+						<img :src="item" alt="" />
 					</li>
 				</ul>
 
-				<div class="img-box" :style="{top:`${top}px`,left:`${left}px`,width:`${width}px`,height:`${height}px`}">
-					<img :src="imgSrc" alt="">
+				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }">
+					<img :src="imgSrc" alt="" />
 				</div>
 			</div>
 			<div class="next">
@@ -241,7 +241,7 @@
 				</div>
 			</div>
 			<div class="right">
-				<div class="text" :class="{active:textActive}">
+				<div class="text" :class="{ active: textActive }">
 					<img src="~assets/bg_home_b4_roll.png" alt="" />
 					<div>
 						<h5>水电工艺施工标准</h5>
@@ -270,7 +270,7 @@
 					</div>
 
 					<ul class="pic-box">
-							<li style="font-size:10px;" :class="{active:picIndex==i}" v-for="(item,i) in picList" :key="i"><img :src="item" alt=""></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == i }" v-for="(item, i) in picList" :key="i"><img :src="item" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
 						<Button text="预约参观工地"></Button>
@@ -281,8 +281,10 @@
 		<div class="page5">
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions3">
-					<swiper-slide v-for="(item, i) in 3" :key="i">
-						<img src="~assets/bg_home_b5_pic1.jpg" alt="" />
+					<swiper-slide v-for="(item, i) in page5List" :key="i">
+						<div class="img-box">
+							<img v-for="(v, i) in item.imgSrc" :key="i" :src="v" alt="" />
+						</div>
 						<div class="text">
 							<h3>
 								<span>全案服务</span>
@@ -1004,222 +1006,222 @@ export default home;
 				background: rgba(0, 0, 0, 0.4);
 				pointer-events: none;
 			}
-			ul{
-				li{
+			ul {
+				li {
 					position: absolute;
 					cursor: pointer;
 					width: 134px;
 					height: 152px;
-					img{
+					img {
 						width: 100%;
 						height: 100%;
 					}
-					&:nth-child(1){
+					&:nth-child(1) {
 						left: 0;
 						top: -6px;
 						width: 134px;
 						height: 152px;
 					}
-					&:nth-child(2){
+					&:nth-child(2) {
 						left: 0;
-						top:156px;
+						top: 156px;
 						width: 134px;
 						height: 162px;
 					}
-					&:nth-child(3){
+					&:nth-child(3) {
 						left: 0;
-						top:328px;
+						top: 328px;
 						width: 134px;
 						height: 162px;
 					}
-					&:nth-child(4){
+					&:nth-child(4) {
 						left: 0;
-						top:500px;
+						top: 500px;
 						width: 134px;
 						height: 162px;
 					}
-					&:nth-child(5){
+					&:nth-child(5) {
 						left: 0;
-						top:672px;
+						top: 672px;
 						width: 134px;
 						height: 162px;
 					}
-					&:nth-child(6){
+					&:nth-child(6) {
 						left: 0;
-						top:844px;
+						top: 844px;
 						width: 160px;
 						height: 195px;
 					}
-					&:nth-child(7){
+					&:nth-child(7) {
 						left: 0;
-						top:1049px;
+						top: 1049px;
 						width: 160px;
 						height: 195px;
 					}
-					&:nth-child(8){
-						top:-106px;
+					&:nth-child(8) {
+						top: -106px;
 						left: 144px;
 						width: 187px;
 						height: 227px;
 					}
-					&:nth-child(9){
-						top:133px;
+					&:nth-child(9) {
+						top: 133px;
 						left: 144px;
 						width: 187px;
 						height: 227px;
 					}
-					&:nth-child(10){
-						top:370px;
+					&:nth-child(10) {
+						top: 370px;
 						left: 144px;
 						width: 187px;
 						height: 227px;
 					}
-					&:nth-child(11){
-						top:607px;
+					&:nth-child(11) {
+						top: 607px;
 						left: 144px;
 						width: 187px;
 						height: 227px;
 					}
-					&:nth-child(12){
-						top:844px;
+					&:nth-child(12) {
+						top: 844px;
 						left: 170px;
 						width: 161px;
 						height: 195px;
 					}
-					&:nth-child(13){
-						top:1049px;
+					&:nth-child(13) {
+						top: 1049px;
 						left: 170px;
 						width: 161px;
 						height: 195px;
 					}
-					&:nth-child(14){
+					&:nth-child(14) {
 						top: -78px;
 						left: 341px;
 						width: 124px;
 						height: 151px;
 					}
-					&:nth-child(15){
+					&:nth-child(15) {
 						top: 83px;
 						left: 341px;
 						width: 124px;
 						height: 151px;
 					}
-					&:nth-child(16){
+					&:nth-child(16) {
 						top: 244px;
 						left: 341px;
 						width: 124px;
 						height: 151px;
 					}
-					&:nth-child(17){
+					&:nth-child(17) {
 						top: 405px;
 						left: 341px;
 						width: 124px;
 						height: 151px;
 					}
-					&:nth-child(18){
+					&:nth-child(18) {
 						top: 566px;
 						left: 341px;
 						width: 124px;
 						height: 151px;
 					}
-					&:nth-child(19){
+					&:nth-child(19) {
 						top: 725px;
 						left: 341px;
 						width: 124px;
 						height: 152px;
 					}
-					&:nth-child(20){
+					&:nth-child(20) {
 						top: 887px;
 						left: 341px;
 						width: 124px;
 						height: 152px;
 					}
-					&:nth-child(21){
+					&:nth-child(21) {
 						top: 1049px;
 						left: 341px;
 						width: 124px;
 						height: 152px;
 					}
-					&:nth-child(22){
+					&:nth-child(22) {
 						top: -104px;
 						left: 475px;
 						width: 117px;
 						height: 142px;
 					}
-					&:nth-child(23){
-						top:  48px;
+					&:nth-child(23) {
+						top: 48px;
 						left: 475px;
 						width: 117px;
 						height: 142px;
 					}
-					&:nth-child(24){
-						top:  200px;
+					&:nth-child(24) {
+						top: 200px;
 						left: 475px;
 						width: 117px;
 						height: 142px;
 					}
-					&:nth-child(25){
-						top:  352px;
+					&:nth-child(25) {
+						top: 352px;
 						left: 475px;
 						width: 117px;
 						height: 142px;
 					}
-					&:nth-child(26){
-						top:  504px;
+					&:nth-child(26) {
+						top: 504px;
 						left: 475px;
 						width: 117px;
 						height: 142px;
 					}
-					&:nth-child(27){
-						top:  656px;
+					&:nth-child(27) {
+						top: 656px;
 						left: 475px;
 						width: 117px;
 						height: 142px;
 					}
-					&:nth-child(28){
-						top:  808px;
+					&:nth-child(28) {
+						top: 808px;
 						left: 475px;
 						width: 189px;
 						height: 231px;
 					}
-					&:nth-child(29){
-						top:  1049px;
+					&:nth-child(29) {
+						top: 1049px;
 						left: 475px;
 						width: 188px;
 						height: 230px;
 					}
-					&:nth-child(30){
-						top:  9px;
+					&:nth-child(30) {
+						top: 9px;
 						left: 602px;
 						width: 178px;
 						height: 174px;
 					}
-					&:nth-child(31){
-						top:  193px;
+					&:nth-child(31) {
+						top: 193px;
 						left: 602px;
 						width: 178px;
 						height: 195px;
 					}
-					&:nth-child(32){
-						top:  398px;
+					&:nth-child(32) {
+						top: 398px;
 						left: 602px;
 						width: 178px;
 						height: 195px;
 					}
-					&:nth-child(33){
-						top:  603px;
+					&:nth-child(33) {
+						top: 603px;
 						left: 602px;
 						width: 178px;
 						height: 195px;
 					}
-					&:nth-child(34){
-						top:  808px;
+					&:nth-child(34) {
+						top: 808px;
 						width: 170px;
 						left: 674px;
 						height: 231px;
 					}
-					&:nth-child(35){
-						top:  1049px;
+					&:nth-child(35) {
+						top: 1049px;
 						width: 140px;
 						left: 674px;
 						height: 231px;
@@ -1247,41 +1249,40 @@ export default home;
 				margin-left: 19px;
 			}
 		}
-		.control{
+		.control {
 			position: absolute;
 			z-index: 2;
 			top: 50%;
 			right: 67px;
 			transform: translateY(-50%);
-			i{
+			i {
 				display: block;
 				width: 26px;
 				height: 26px;
 				cursor: pointer;
 				background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
 				background-size: 26px 13px;
-				&:nth-child(1){
-					&:hover{
+				&:nth-child(1) {
+					&:hover {
 						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
 						background-size: 26px 13px;
-						transform: rotate(180deg) ;
+						transform: rotate(180deg);
 					}
 				}
-				&:nth-child(2){
+				&:nth-child(2) {
 					background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
 					background-size: 26px 13px;
 					margin-top: 15px;
 					transform: rotate(180deg);
-					&:hover{
+					&:hover {
 						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
 						background-size: 26px 13px;
 						transform: rotate(180deg) rotate(180deg);
 					}
 				}
-
 			}
 		}
-		.img-box{
+		.img-box {
 			position: absolute;
 			width: 124px;
 			height: 151px;
@@ -1290,7 +1291,7 @@ export default home;
 			top: 405px;
 			cursor: pointer;
 			background: #fff;
-			img{
+			img {
 				width: 100%;
 				height: 100%;
 			}
@@ -1298,7 +1299,7 @@ export default home;
 			&::before {
 				content: '';
 				position: absolute;
-				border: 2px solid #EB5518;
+				border: 2px solid #eb5518;
 				width: 8px;
 				height: 8px;
 			}
@@ -1441,8 +1442,8 @@ export default home;
 				display: flex;
 				align-items: center;
 				opacity: 0;
-				transition: opacity .3s;
-				&.active{
+				transition: opacity 0.3s;
+				&.active {
 					opacity: 1;
 				}
 				img {
@@ -1470,7 +1471,7 @@ export default home;
 			.img-wrap {
 				position: relative;
 				> div {
-					&:not(.btn-wrap){
+					&:not(.btn-wrap) {
 						position: absolute;
 						width: 65px;
 						height: 65px;
@@ -1479,47 +1480,46 @@ export default home;
 						display: flex;
 						align-items: center;
 						justify-content: center;
-						i{
-								width: 8px;
-								height: 8px;
-								background: #ED5400;
+						i {
+							width: 8px;
+							height: 8px;
+							background: #ed5400;
+							border-radius: 50%;
+							&:after,
+							&::before {
+								position: absolute;
+								content: '';
+								width: 30px;
+								height: 30px;
+								border: 1px solid #ed5400;
+								opacity: 0.3;
 								border-radius: 50%;
-								&:after,
-								&::before{
-									position: absolute;
-									content: '';
-									width: 30px;
-									height: 30px;
-									border: 1px solid #ED5400;
-									opacity: 0.3;
-									border-radius: 50%;
-									top: 50%;
-									left: 50%;
-									transform: translate(-50%,-50%);
-								}
-								&::before{
-									width: 30px;
-									height: 30px;
-									opacity: 0.13;
-									animation: animated-width 2.5s infinite;
-								}
+								top: 50%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+							}
+							&::before {
+								width: 30px;
+								height: 30px;
+								opacity: 0.13;
+								animation: a软装2.5s infinite;
+							}
 						}
-					@keyframes animated-width {
-						0% {
-							width: 30px;
-							height: 30px;
+						@keyframes animated-width {
+							0% {
+								width: 30px;
+								height: 30px;
+							}
+							100% {
+								width: 65px;
+								height: 65px;
+							}
 						}
-						100% {
-							width: 65px;
-							height: 65px;
-						}
-					}
 					}
 				}
 				.div1 {
 					top: 369px;
 					left: 431px;
-
 				}
 				.div2 {
 					top: 330px;
@@ -1533,57 +1533,57 @@ export default home;
 					top: 602px;
 					left: 764px;
 				}
-				>img {
+				> img {
 					width: 100%;
 					height: 100%;
 				}
-				.pic-box{
+				.pic-box {
 					position: absolute;
 					left: 0;
 					top: 0;
 					width: 100%;
 					height: 100%;
-					li{
+					li {
 						position: absolute;
 						z-index: 2;
-						img{
+						img {
 							opacity: 0;
-							transition:opacity .3s;
+							transition: opacity 0.3s;
 						}
-						&:nth-child(1){
-							bottom:266px;
-							right:94px;
-							img{
+						&:nth-child(1) {
+							bottom: 266px;
+							right: 94px;
+							img {
 								width: 180px;
 								height: 155px;
 							}
 						}
-						&:nth-child(2){
-							bottom:330px;
-							right:344px;
-							img{
+						&:nth-child(2) {
+							bottom: 330px;
+							right: 344px;
+							img {
 								width: 132px;
 								height: 124px;
 							}
 						}
-						&:nth-child(3){
+						&:nth-child(3) {
 							bottom: 414px;
 							left: 358px;
-							img{
+							img {
 								width: 220px;
 								height: 200px;
 							}
 						}
-						&:nth-child(4){
+						&:nth-child(4) {
 							bottom: 490px;
 							right: 93px;
-							img{
+							img {
 								width: 193px;
 								height: 175px;
 							}
 						}
-						&.active{
-							img{
+						&.active {
+							img {
 								opacity: 1;
 							}
 						}
@@ -1608,9 +1608,29 @@ export default home;
 			position: relative;
 			.swiper-wrapper {
 				.swiper-slide {
-					img {
-						height: 100%;
-						width: 100%;
+					.img-box {
+						position: relative;
+						height: 970px;
+						img {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							height: 970px;
+							&:not(:first-child) {
+								opacity: 0;
+							}
+							&:nth-of-type(2) {
+								transition: opacity 0.5s 1.5s;
+							}
+							&:nth-of-type(3) {
+								transition: opacity 0.5s 3s;
+							}
+							&:nth-of-type(4) {
+								transition: opacity 0.5s 4.5s;
+							}
+						}
 					}
 					.text {
 						position: absolute;
@@ -1655,6 +1675,13 @@ export default home;
 						.btn {
 							width: 170px;
 							height: 53px;
+						}
+					}
+				}
+				.swiper-slide-active {
+					.img-box {
+						img {
+							opacity: 1 !important;
 						}
 					}
 				}
@@ -1907,8 +1934,8 @@ export default home;
 						.top {
 							height: 325px;
 							border-bottom: 1px solid #ed5400;
-							&:hover{
-								img{
+							&:hover {
+								img {
 									transform: scale(1.1);
 								}
 							}
@@ -1917,7 +1944,7 @@ export default home;
 								width: 100%;
 								overflow: hidden;
 								img {
-									transition:transform .3s;
+									transition: transform 0.3s;
 									width: 382px;
 									height: 170px;
 									position: relative;

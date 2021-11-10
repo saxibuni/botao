@@ -94,10 +94,10 @@ export default class OwnerVoice extends Vue {
 		pagination: {
 			el: '.dp-pagination'
 		},
-		// autoplay: {
-		// 	delay: 3000,
-		// 	disableOnInteraction: false
-		// }
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		}
 	};
 	// banner3
 	fhBannerOptions: any = {
