@@ -41,8 +41,8 @@ export default class navLists extends Vue {
 			en: 'Selected case',
 			url: 'case',
 			son: [
-				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'' }
+				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'case-list' },
+				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'case-listvr' }
 			]
 		},
 		{
@@ -50,9 +50,9 @@ export default class navLists extends Vue {
 			url: 'design',
 			en: 'Design Hall of Fame',
 			son: [
-				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
+				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
+				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
+				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' }
 			]
 		},
 		{
@@ -60,19 +60,19 @@ export default class navLists extends Vue {
 			url: 'craft-building',
 			en: 'fine craftsmen skill',
 			son: [
-				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
+				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-building' },
+				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-team' },
+				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-manager' }
 			]
 		},
 		{
 			title: '全案服务',
-			url: 'whole-decoration',
+			url: 'cherry-pick',
 			en: 'A whole service',
 			son: [
-				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
+				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
+				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'soft-decoration' },
+				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'whole-decoration' }
 			]
 		},
 		{
@@ -80,10 +80,10 @@ export default class navLists extends Vue {
 			url: 'information',
 			en: 'latest information',
 			son: [
-				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
-				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
+				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
+				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
+				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
+				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'join-us' }
 			]
 		},
 		{
