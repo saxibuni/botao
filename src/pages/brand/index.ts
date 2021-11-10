@@ -30,6 +30,7 @@ export default class Brand extends Vue {
 	progressIndex: number = 0;
 
 	center: any = { lng: 121.437186, lat: 31.188195 };
+	times: '';
 	historyScroll: HTMLElement;
 	height: number = 0;
 	isActive = 7;
@@ -168,7 +169,7 @@ export default class Brand extends Vue {
 		{ time: '2011-2014', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2015-2016', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] }
 	];
 	options1 = {
 		// suffix: '+',
@@ -244,7 +245,11 @@ export default class Brand extends Vue {
 		for (let i = 0; i < pos.length; i++) {
 			if (pos[i] <= height) {
 				this.progressIndex = i;
+				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
+				times[i].style.opacity = '1';
 			} else {
+				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
+				times[i].style.opacity = '0';
 				break;
 			}
 		}
@@ -254,34 +259,36 @@ export default class Brand extends Vue {
 		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? this.isShow-- : this.isShow++;
 	}
-	jump(i){
-		const headerHeight =document.querySelector<HTMLElement>('.header').clientHeight;
-		const brand =document.querySelector<HTMLElement>('.brand');
-		const item =brand.querySelector<HTMLElement>(`.select${i}`)
-		let top =item.offsetTop-headerHeight
-		window.scroll({top,behavior:'smooth'})
+	jump(i) {
+		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
+		const brand = document.querySelector<HTMLElement>('.brand');
+		const item = brand.querySelector<HTMLElement>(`.select${i}`);
+		let top = item.offsetTop - headerHeight;
+		window.scroll({ top, behavior: 'smooth' });
 	}
 	createMovePath() {
 		let path = this.$el.querySelector<SVGPathElement>('.svg .st0');
 		let ball = this.$el.querySelector('.plane');
-		let pathPoint = { n: 0 }, end = 0.5;
+		let pathPoint = { n: 0 },
+			end = 0.5;
 
-		gsap.timeline({
-			defaults: {
-				duration: 3,
-				ease: "none"
-			}
-		})
-		.to(ball, {
-			motionPath: {
-				path: path,
-				align: path,
-				alignOrigin: [0.5, 0.5],
-				autoRotate: true,
-				start: pathPoint.n,
-				end: end
-			}
-		});
+		gsap
+			.timeline({
+				defaults: {
+					duration: 3,
+					ease: 'none'
+				}
+			})
+			.to(ball, {
+				motionPath: {
+					path: path,
+					align: path,
+					alignOrigin: [0.5, 0.5],
+					autoRotate: true,
+					start: pathPoint.n,
+					end: end
+				}
+			});
 	}
 
 	beforeDestroy() {
