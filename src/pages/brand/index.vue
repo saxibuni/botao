@@ -158,19 +158,28 @@
 					<div class="time4">
 						<span>2015-2016</span>
 					</div>
-
+					<div class="time5">
+						<span>2017-2018</span>
+					</div>
+					<div class="time6">
+						<span>2019-2020</span>
+					</div>
+					<div class="time7">
+						<span>2020-2021</span>
+					</div>
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box">
+			<div class="info-box" v-for="(v, i) in devolopeList" v-show="isShow == i" :key="i">
 				<div class="time">
-					<p>2006-2010</p>
-					<h2>起航·发展</h2>
+					<p>{{ v.time }}</p>
+					<h2>{{ v.name }}</h2>
 				</div>
 				<div class="info">
-					<p>波涛装饰正式成立，披荆斩棘，砥砺前行</p>
-					<p>[波涛装饰]注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。</p>
+					<p v-for="(item, index) in v.text" :key="index">{{ item }}</p>
 				</div>
+				<div class="pre" @click="change('pre')"></div>
+				<div class="next" @click="change('next')"></div>
 			</div>
 		</div>
 		<div class="hover select4">
@@ -812,6 +821,30 @@ export default index;
 						left: 18px;
 					}
 				}
+				.time5 {
+					top: 851px;
+					left: 334px;
+					span {
+						top: -35px;
+						left: 21px;
+					}
+				}
+				.time6 {
+					left: 554px;
+					top: 1039px;
+					span {
+						top: -34px;
+						left: 5px;
+					}
+					.time7 {
+						top: 1216px;
+						left: 588px;
+						span {
+							top: 1px;
+							left: -134px;
+						}
+					}
+				}
 			}
 			.inner-img {
 				position: absolute;
@@ -866,6 +899,32 @@ export default index;
 						font-size: 18px;
 						line-height: 32px;
 					}
+				}
+			}
+			.pre,
+			.next {
+				position: absolute;
+				z-index: 11;
+				bottom: -50px;
+				width: 13px;
+				height: 26px;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			.pre {
+				left: 80px;
+				background: url(~assets/icons/ic_f4_left1.png) no-repeat;
+				background-size: 100%;
+				&:hover {
+					background-image: url(~assets/icons/ic_f4_left2.png);
+				}
+			}
+			.next {
+				right: 80px;
+				background: url(~assets/icons/ic_f4_right1.png) no-repeat;
+				background-size: 100%;
+				&:hover {
+					background-image: url(~assets/icons/ic_f4_right2.png);
 				}
 			}
 		}
