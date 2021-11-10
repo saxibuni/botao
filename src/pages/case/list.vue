@@ -3,10 +3,10 @@
 		<div class="title">
 			<div class="left">
 				<h3>
-					<span>VR体验</span>
-					沉浸式畅游理想家
+					<ICountUp :endVal="1000" :options="options1" ref="countup1"></ICountUp>
+					经典案例 筑梦幸福家
 				</h3>
-				<p>TRAVEL TO YOUR IDEAL HOME</p>
+				<p>BUILD A HAPPY HOME</p>
 			</div>
 			<div class="right">
 				<div class="search">
@@ -17,7 +17,7 @@
 					热门搜索：
 					<span>独栋别墅</span>
 					<span>新中式</span>
-					<span>法式</span>
+					<span>欧式</span>
 				</p>
 			</div>
 		</div>

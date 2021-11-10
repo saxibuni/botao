@@ -58,12 +58,18 @@ export default Team;
 				}
 				.mask {
 					opacity: 1;
+					.content {
+						opacity: 1;
+						transform: translateY(0px);
+					}
 				}
 			}
 			.text {
 				position: absolute;
 				left: 50px;
 				bottom: 50px;
+				opacity: 1;
+				transition: opacity 0.3s;
 				p {
 					color: #fff;
 					&:nth-of-type(1) {
@@ -93,11 +99,14 @@ export default Team;
 				height: 500px;
 				background: rgba(19, 33, 50, 0.8);
 				opacity: 0;
-				transition: opacity 0.3s;
+				transition: opacity 0.5s;
 				.content {
 					position: absolute;
 					left: 50px;
 					bottom: 45px;
+					transform: translateY(100px);
+					opacity: 0;
+					transition: all 0.5s;
 					p {
 						color: #ffffff;
 						&:nth-of-type(1) {

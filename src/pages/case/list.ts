@@ -2,11 +2,13 @@ import { Vue, Component } from 'vue-property-decorator';
 import Cases from './components/cases.vue'
 import Pagination from '../../components/pagination.vue'
 import Button from 'root/components/button.vue'
+import ICountUp from 'root/components/countup.vue';
 @Component({
 	components: {
 		Cases,
 		Pagination,
-		Button
+		Button,
+		ICountUp
 	}
 })
 export default class CaseList extends Vue {
@@ -43,5 +45,9 @@ export default class CaseList extends Vue {
 		},
 		on: {
 		}
+	};
+	options1 = {
+		suffix: '+',
+		useEasing: true
 	};
 }

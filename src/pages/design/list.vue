@@ -3,7 +3,7 @@
 		<div class="title">
 			<div class="left">
 				<h3>
-					<span>100+</span>
+					<ICountUp :endVal="100" :options="options1" ref="countup1"></ICountUp>
 					位别墅大宅设计大咖
 				</h3>
 				<p>VILLA MANSION DESIGN TYCOON</p>
