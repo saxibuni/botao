@@ -928,10 +928,10 @@ export default index;
 			@include scrollbar-beautify(0);
 			ul {
 				position: relative;
+				padding-bottom: 20px;
 				display: flex;
 				margin: 137px 0 0 140px;
 				width: 100%;
-				height: 509px;
 				background: url(~assets/bg_g1_part7_line.png) no-repeat center;
 				background-size: 100%;
 				li {
