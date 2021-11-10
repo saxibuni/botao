@@ -754,7 +754,7 @@ export default index;
 				top: 0;
 				left: 0;
 				width: 660px;
-				height: 490px;
+				height: 190px;
 				background: url(~assets/bg_g1_part5_way2.png) no-repeat;
 				background-size: 100%;
 			}

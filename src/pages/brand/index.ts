@@ -222,8 +222,8 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
-				let offset = self.progress * (1245 - 490);
-				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 4.9 + offset / 100 + 'rem';
+				let offset = self.progress * (1245 - 190);
+				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 1.9 + offset / 100 + 'rem';
 			}
 		})
 	}
