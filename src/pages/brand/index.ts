@@ -1,9 +1,14 @@
 import { Vue, Component } from 'vue-property-decorator';
+import gsap from 'gsap';
+import { Draggable } from 'gsap/Draggable';
+import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
 import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
+
+gsap.registerPlugin(Draggable, InertiaPlugin);
 Vue.use(BaiduMap, {
 	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
 });
@@ -136,6 +141,16 @@ export default class Brand extends Vue {
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
 			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		}
 	];
 	options1 = {
@@ -178,9 +193,10 @@ export default class Brand extends Vue {
 		const hs = document.querySelector<HTMLElement>('.history-scroll');
 		const img = hs.querySelector<HTMLElement>('.inner-img');
 		hs.addEventListener('scroll', () => {
-			
 			this.height = hs.scrollTop + 100;
 		});
+
+		this.createDragger();
 	}
 	scroll(i) {
 		const brand = document.querySelector<HTMLElement>('.brand');
@@ -189,5 +205,13 @@ export default class Brand extends Vue {
 		window.scroll({ top, behavior: 'smooth' });
 	}
 
+	createDragger() {
+		let dragger = Draggable.create('.social-response .content-box', {
+			type: 'scrollLeft',
+			inertia: true,
+			cursor: 'auto',
+			edgeResistance: 0.7,
+		})
+	}
 
 }

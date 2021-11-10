@@ -200,16 +200,18 @@
 		<div class="social-response select5">
 			<h2>社会责任</h2>
 			<h3>social responsibility</h3>
-			<ul>
-				<li v-for="(v, i) in socialArr" :key="i">
-					<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
-					<div class="text-box">
-						<div class="dosh"></div>
-						<h2>{{ v.time }}</h2>
-						<p v-for="(value, index) in v.text" :key="index">{{ value }}</p>
-					</div>
-				</li>
-			</ul>
+			<div class="content-box">
+				<ul>
+					<li v-for="(v, i) in socialArr" :key="i">
+						<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
+						<div class="text-box">
+							<div class="dosh"></div>
+							<h2>{{ v.time }}</h2>
+							<p v-for="(value, index) in v.text" :key="index">{{ value }}</p>
+						</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div class="contact-us select6">
 			<div class="left">
@@ -922,113 +924,116 @@ export default index;
 		padding-bottom: 60px;
 		@include title();
 
-		ul {
-			position: relative;
-			display: flex;
-			margin: 137px 0 0 140px;
-			width: 100%;
-			background: url(~assets/bg_g1_part7_line.png) no-repeat center;
-			background-size: 100%;
-			li {
+		.content-box {
+			@include scrollbar-beautify(0);
+			ul {
 				position: relative;
-				top: -56px;
 				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				width: 327px;
-				height: 450px;
-				.img-box {
-					height: 203px;
-					img {
-						width: 100%;
-						height: 100%;
-					}
-				}
-				.text-box {
-					position: relative;
-					h2 {
-						margin-top: 0;
-						text-align: start;
-						margin-bottom: 16px;
-						font-size: 34px;
-						font-weight: bold;
-					}
-					p {
-						width: 359px;
-						font-size: 18px;
-						color: #666666;
-						line-height: 30px;
-						&:nth-of-type(2) {
-							margin-top: 10px;
-						}
-					}
-					.dosh {
-						position: relative;
-						left: -34px;
-						top: -34px;
-						width: 30px;
-						height: 30px;
-						border-radius: 50%;
-						border: 1px solid #eb551d;
-						&::before {
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%, -50%);
-							content: '';
-							width: 10px;
-							height: 10px;
-							background: #eb551d;
-							border-radius: 50%;
-						}
-					}
-				}
-				&:nth-child(2n) {
-					top: 59px;
-					flex-direction: column-reverse;
-					.text-box {
-						display: flex;
-						flex-direction: column-reverse;
-					}
-					p {
-						margin-top: 0;
-						line-height: 40px;
-					}
-					h2 {
-						margin-bottom: 0;
-						margin-top: 26px;
-					}
-					.dosh {
-						left: -34px;
-						top: 28px;
-					}
-				}
-				&:first-child {
-					margin-left: 205px;
-				}
-				&:not(:last-child) {
-					margin-right: 130px;
-				}
-			}
-			&::before {
-				position: absolute;
-				top: 50.5%;
-				left: -31px;
-				content: '';
-				width: 31px;
-				height: 31px;
-				background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
+				margin: 137px 0 0 140px;
+				width: 100%;
+				background: url(~assets/bg_g1_part7_line.png) no-repeat center;
 				background-size: 100%;
-				font-size: 18px;
-				color: #eb551d;
-			}
-			&::after {
-				position: absolute;
-				content: '让梦想起飞';
-				top: 58%;
-				left: -54px;
-				font-size: 18px;
-				color: #eb551d;
+				li {
+					position: relative;
+					top: -56px;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					width: 327px;
+					height: 450px;
+					.img-box {
+						height: 203px;
+						img {
+							width: 100%;
+							height: 100%;
+						}
+					}
+					.text-box {
+						position: relative;
+						h2 {
+							margin-top: 0;
+							text-align: start;
+							margin-bottom: 16px;
+							font-size: 34px;
+							font-weight: bold;
+						}
+						p {
+							width: 359px;
+							font-size: 18px;
+							color: #666666;
+							line-height: 30px;
+							&:nth-of-type(2) {
+								margin-top: 10px;
+							}
+						}
+						.dosh {
+							position: relative;
+							left: -34px;
+							top: -34px;
+							width: 30px;
+							height: 30px;
+							border-radius: 50%;
+							border: 1px solid #eb551d;
+							&::before {
+								position: absolute;
+								top: 50%;
+								left: 50%;
+								transform: translate(-50%, -50%);
+								content: '';
+								width: 10px;
+								height: 10px;
+								background: #eb551d;
+								border-radius: 50%;
+							}
+						}
+					}
+					&:nth-child(2n) {
+						top: 59px;
+						flex-direction: column-reverse;
+						.text-box {
+							display: flex;
+							flex-direction: column-reverse;
+						}
+						p {
+							margin-top: 0;
+							line-height: 40px;
+						}
+						h2 {
+							margin-bottom: 0;
+							margin-top: 26px;
+						}
+						.dosh {
+							left: -34px;
+							top: 28px;
+						}
+					}
+					&:first-child {
+						margin-left: 205px;
+					}
+					&:not(:last-child) {
+						margin-right: 130px;
+					}
+				}
+				&::before {
+					position: absolute;
+					top: 50.5%;
+					left: -31px;
+					content: '';
+					width: 31px;
+					height: 31px;
+					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
+					background-size: 100%;
+					font-size: 18px;
+					color: #eb551d;
+				}
+				&::after {
+					position: absolute;
+					content: '让梦想起飞';
+					top: 58%;
+					left: -54px;
+					font-size: 18px;
+					color: #eb551d;
+				}
 			}
 		}
 	}
