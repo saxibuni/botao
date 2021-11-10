@@ -3,14 +3,15 @@ import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
 import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
-import { Events } from 'root/utils/EnumUtils';
 
-gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger);
+gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin);
 Vue.use(BaiduMap, {
 	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
 });
