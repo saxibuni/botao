@@ -19,7 +19,20 @@ export default class home extends Vue {
 
 	anList=['新中式','美式','北欧','欧式','现代'];
 	imgSrc = require("../assets/portrait/bg_home_b3_pic17.jpg");
+	page2ImgSrc = require("../assets/bg_home_b2_pic1.jpg");
+	page2ImgSrcList = [
+		require("../assets/bg_home_b2_pic1.jpg"),
+		require("../assets/bg_home_b2_pic2.jpg"),
+		require("../assets/bg_home_b2_pic3.jpg"),
+		require("../assets/bg_home_b2_pic4.jpg"),
+		require("../assets/bg_home_b2_pic5.jpg"),
+		require("../assets/bg_home_b2_pic6.jpg"),
+		require("../assets/bg_home_b2_pic1.jpg"),
+		require("../assets/bg_home_b2_pic2.jpg"),
+	]
+	page2Index = 0;
 	page3Index  = 17;
+	page2Ani = true;
 	portraitList = [
 		require("../assets/portrait/bg_home_b3_pic01.jpg"),
 		require("../assets/portrait/bg_home_b3_pic02.jpg"),
@@ -86,12 +99,7 @@ export default class home extends Vue {
 			nextEl: '.next1',
 			prevEl: '.prev1'
 		},
-		preventClicks: false,
-		on: {
-			click: v => {
-
-			}
-		}
+		preventClicks: false
 	};
 	bannerSwiperOptions2: any = {
 		speed: 500,
@@ -110,8 +118,8 @@ export default class home extends Vue {
 		},
 		preventClicks: false,
 		on: {
-			click: v => {
-
+			slideChangeTransitionStart: function() {
+				utils.emitter.$emit('page2IndexFun', this.realIndex);
 			}
 		}
 	};
@@ -143,8 +151,6 @@ export default class home extends Vue {
 		},
 		navigation: {
 			nextEl: '.next3',
-		},
-		on: {
 		}
 	};
 
@@ -155,6 +161,13 @@ export default class home extends Vue {
 			this.onResize()
 		})
 		utils.emitter.$on(Events.RESIZE, this.onResize);
+		utils.emitter.$on('page2IndexFun', (introductionIndex: number) => {
+			this.page2Index = introductionIndex;
+			this.page2Ani = false;
+			setTimeout(()=>{
+				this.page2Ani = true;
+			},300)
+		});
 	}
 	onResize() {
 			let items = `item${this.page3Index}`;
