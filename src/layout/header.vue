@@ -281,6 +281,7 @@ export default class Header extends Vue {
 					font-size: 10px;
 					font-family: Gilroy;
 					font-weight: 400;
+					letter-spacing: 1px;
 				}
 			}
 		}

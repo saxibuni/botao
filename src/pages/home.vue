@@ -56,8 +56,8 @@
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
-					<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
-					<div class="text">
+					<img :class="{active:page2Ani}" :src="page2ImgSrcList[page2Index]" alt="" />
+					<div class="text" :class="{active:page2Ani}">
 						<h3>上海东方颐城</h3>
 						<h4>
 							<span>现代风格</span>
@@ -74,8 +74,8 @@
 
 				<div class="swiper-wrap">
 					<swiper class="dswiper" :options="bannerSwiperOptions2">
-						<swiper-slide v-for="(item, i) in 8" :key="i">
-							<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
+						<swiper-slide v-for="(item, i) in page2ImgSrcList" :key="i">
+							<img :src="item" alt="" />
 						</swiper-slide>
 					</swiper>
 					<div class="swiper-button-wrap">
@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="mask">
-					<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
+					<img :src="page2ImgSrcList[page2Index]" alt="" />
 				</div>
 				<div class="mask2"></div>
 			</div>
@@ -434,6 +434,7 @@ export default home;
 	margin: 0 auto;
 	img {
 		display: block;
+		-webkit-user-drag: none;
 	}
 	.page1 {
 		height: 970px;
@@ -647,7 +648,7 @@ export default home;
 				position: relative;
 				text-align: center;
 				line-height: 39px;
-				transition: 0.3s;
+				transition: 0.5s;
 				border: 1px solid transparent;
 				&::after,
 				&::before {
@@ -709,11 +710,22 @@ export default home;
 				img {
 					width: 100%;
 					height: 100%;
+					transition: .3s;
+					opacity: .3;
+
+					&.active{
+						opacity: 1;
+					}
 				}
 				.text {
 					position: absolute;
 					top: 206px;
 					left: 100px;
+					transition: .83s;
+					opacity: .3;
+					&.active{
+						opacity: 1;
+					}
 					h3 {
 						height: 32px;
 						font-size: 34px;
