@@ -244,7 +244,7 @@ export default class Brand extends Vue {
 
 	createMovePath() {
 		let path = this.$el.querySelector<SVGPathElement>('.svg .st0');
-		let ball = this.$el.querySelector('.testball');
+		let ball = this.$el.querySelector('.plane');
 		let pathPoint = { n: 0 }, end = 0.5;
 
 		gsap.timeline({
