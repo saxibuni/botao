@@ -135,7 +135,7 @@ export default class home extends Vue {
 			}
 		},
 		autoplay: {
-			delay: 4000,
+			delay: 6000,
 			disableOnInteraction: false
 		},
 		navigation: {

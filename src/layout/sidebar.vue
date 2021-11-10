@@ -5,7 +5,7 @@
 				<i></i>
 				<p>在线咨询</p>
 			</div>
-			<div>
+			<div @click="$store.state.dialogVisible=true">
 				<i></i>
 				<p>获取报价</p>
 			</div>
@@ -45,9 +45,9 @@ export default class sidebar extends Vue {
 	transform: translateY(-50%);
 	width: 70px;
 	background: #122133;
-	z-index: 999;
-	>div{
-		div{
+	z-index: 99;
+	> div {
+		div {
 			height: 85px;
 			display: flex;
 			align-items: center;
@@ -56,16 +56,16 @@ export default class sidebar extends Vue {
 			font-size: 14px;
 			flex-wrap: wrap;
 			cursor: pointer;
-			transition: .3s;
+			transition: 0.3s;
 			position: relative;
 			align-content: center;
 			&::after,
 			&::before {
 				content: '';
 				position: absolute;
-				border: 2PX solid transparent;
+				border: 2px solid transparent;
 				width: 8px;
-				transition: .3s;
+				transition: 0.3s;
 				height: 8px;
 			}
 			&::after {
@@ -80,31 +80,55 @@ export default class sidebar extends Vue {
 				border-top: none;
 				border-left: none;
 			}
-			&:hover{
-				background: #E95628;
+			&:hover {
+				background: #e95628;
 				&::after,
 				&::before {
-					border: 2PX solid #fff;
+					border: 2px solid #fff;
 				}
-					&::after {
-						border-right: none;
-						border-bottom: none;
-					}
-					&::before {
-						border-top: none;
-						border-left: none;
-					}
+				&::after {
+					border-right: none;
+					border-bottom: none;
+				}
+				&::before {
+					border-top: none;
+					border-left: none;
+				}
 			}
-			i{
+			i {
 				height: 25px;
 				width: 100%;
-				background: url("~assets/icons/ic_e1_part2_07.png") no-repeat center center;
+				background: url('~assets/icons/ic_e1_part2_07.png') no-repeat center center;
 				background-size: auto 100%;
 				margin-bottom: 10px;
 			}
-			p{
+			p {
 				width: 100%;
 				text-align: center;
+			}
+			&:nth-child(1) {
+				i {
+					background: url('~assets/icons/ic_home_side_line.png') no-repeat center center;
+					background-size: 23px auto;
+				}
+			}
+			&:nth-child(2) {
+				i {
+					background: url('~assets/icons/ic_home_side_price.png') no-repeat center center;
+					background-size: 20px auto;
+				}
+			}
+			&:nth-child(3) {
+				i {
+					background: url('~assets/icons/ic_home_side_design.png') no-repeat center center;
+					background-size:22px auto;
+				}
+			}
+			&:nth-child(4) {
+				i {
+					background: url('~assets/icons/ic_home_side_up.png') no-repeat center center;
+					background-size: auto 17px;
+				}
 			}
 		}
 	}
