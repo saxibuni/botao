@@ -47,7 +47,7 @@
 		</div>
 		<div class="page2">
 			<h2>
-				<span>1000+</span>
+				<ICountUp :endVal="1000" :options="options1"></ICountUp>
 				经典案例 筑梦幸福家
 			</h2>
 			<p>Select cases</p>
@@ -56,8 +56,8 @@
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
-					<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
-					<div class="text">
+					<img :class="{active:page2Ani}" :src="page2ImgSrcList[page2Index]" alt="" />
+					<div class="text" :class="{active:page2Ani}">
 						<h3>上海东方颐城</h3>
 						<h4>
 							<span>现代风格</span>
@@ -74,8 +74,8 @@
 
 				<div class="swiper-wrap">
 					<swiper class="dswiper" :options="bannerSwiperOptions2">
-						<swiper-slide v-for="(item, i) in 8" :key="i">
-							<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
+						<swiper-slide v-for="(item, i) in page2ImgSrcList" :key="i">
+							<img :src="item" alt="" />
 						</swiper-slide>
 					</swiper>
 					<div class="swiper-button-wrap">
@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="mask">
-					<img src="~assets/bg_home_b2_pic1.jpg" alt="" />
+					<img :src="page2ImgSrcList[page2Index]" alt="" />
 				</div>
 				<div class="mask2"></div>
 			</div>
@@ -92,34 +92,34 @@
 		<div class="page3">
 			<div class="left">
 				<h2>
-					<span>100+</span>
+					<ICountUp :endVal="100" :options="options1"></ICountUp>
 					位别墅大宅设计大咖
 				</h2>
 				<ul>
 					<li>
 						<div>
-							<b>95</b>
+							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b>10</b>
+							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
 							年
 						</div>
 						<p>以上从业经验</p>
 					</li>
 					<li>
 						<div>
-							<b>8</b>
+							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>
 							支
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b>90</b>
+							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>荣获设计奖项</p>
@@ -196,42 +196,54 @@
 					<ul>
 						<li>
 							<div>
-								138
+								<b>
+								<ICountUp :endVal="138" :options="options2"></ICountUp>
+								</b>
 								<span>项</span>
 							</div>
 							<p>工地管理条例</p>
 						</li>
 						<li>
 							<div>
-								316
+								<b>
+								<ICountUp :endVal="316" :options="options2"></ICountUp>
+								</b>
 								<span>条</span>
 							</div>
 							<p>施工工艺标准</p>
 						</li>
 						<li>
 							<div>
-								14
+								<b>
+								<ICountUp :endVal="14" :options="options2"></ICountUp>
+								</b>
 								<span>项</span>
 							</div>
 							<p>工程技术专利</p>
 						</li>
 						<li>
 							<div>
-								259
+								<b>
+								<ICountUp :endVal="259" :options="options2"></ICountUp>
+								</b>
 								<span>条</span>
 							</div>
 							<p>验收标准</p>
 						</li>
 						<li>
 							<div>
-								600
+								<b>
+								<ICountUp :endVal="600" :options="options2"></ICountUp>
+								</b>
 								<span>个</span>
 							</div>
 							<p>改在建工地</p>
 						</li>
 						<li>
 							<div>
-								100
+								<b>
+								<ICountUp :endVal="100" :options="options2"></ICountUp>
+								</b>
 								<span>+</span>
 							</div>
 							<p>金牌项目经理</p>
@@ -319,7 +331,7 @@
 			</div>
 			<div class="text">
 				<h3>
-					<span>20+</span>
+					<ICountUp :endVal="20" :options="options1"></ICountUp>
 					年专注别墅大宅 全案引领者
 				</h3>
 				<div>
@@ -434,6 +446,7 @@ export default home;
 	margin: 0 auto;
 	img {
 		display: block;
+		-webkit-user-drag: none;
 	}
 	.page1 {
 		height: 970px;
@@ -578,6 +591,10 @@ export default home;
 						color: #ffffff;
 						border: 2px solid #ed5400;
 						position: relative;
+						transition: transform 0.5s ease 0s;
+						&:hover{
+							transform: translateY(-3px);
+						}
 						&::after,
 						&::before {
 							content: '';
@@ -643,7 +660,7 @@ export default home;
 				position: relative;
 				text-align: center;
 				line-height: 39px;
-				transition: 0.3s;
+				transition: 0.5s;
 				border: 1px solid transparent;
 				&::after,
 				&::before {
@@ -705,11 +722,22 @@ export default home;
 				img {
 					width: 100%;
 					height: 100%;
+					transition: .3s;
+					opacity: .3;
+
+					&.active{
+						opacity: 1;
+					}
 				}
 				.text {
 					position: absolute;
 					top: 206px;
 					left: 100px;
+					transition: .83s;
+					opacity: .3;
+					&.active{
+						opacity: 1;
+					}
 					h3 {
 						height: 32px;
 						font-size: 34px;
@@ -1408,7 +1436,7 @@ export default home;
 							font-weight: bold;
 							line-height: 55px;
 							font-family: Gilroy-Bold;
-							span {
+							>span {
 								font-size: 18px;
 							}
 						}
@@ -1502,7 +1530,7 @@ export default home;
 								width: 30px;
 								height: 30px;
 								opacity: 0.13;
-								animation: a软装2.5s infinite;
+								animation: animated-width 2.5s infinite;
 							}
 						}
 						@keyframes animated-width {
@@ -1548,7 +1576,7 @@ export default home;
 						z-index: 2;
 						img {
 							opacity: 0;
-							transition: opacity 0.3s;
+							transition: opacity 0.5s ease 0s;
 						}
 						&:nth-child(1) {
 							bottom: 266px;
@@ -1867,13 +1895,6 @@ export default home;
 			.btn {
 				width: 170px;
 				height: 53px;
-				background: #ed5400;
-				font-size: 18px;
-				font-weight: 400;
-				color: #ffffff;
-				line-height: 53px;
-				text-align: center;
-				text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
 			}
 		}
 	}

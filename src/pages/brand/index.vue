@@ -221,13 +221,15 @@
 			<h2>社会责任</h2>
 			<h3>social responsibility</h3>
 			<div class="content-box">
-				<svg class="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-					viewBox="0 0 3680 80" style="enable-background:new 0 0 3680 80;" xml:space="preserve">
-					<g>
-						<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70"/>
-					</g>
-				</svg>
-				<div class="testball"></div>
+				<div class="svg-box">
+					<svg class="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 3680 80" style="enable-background:new 0 0 3680 80;" xml:space="preserve">
+						<g>
+							<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70"/>
+						</g>
+					</svg>
+					<div class="plane"></div>
+				</div>
 				<ul>
 					<li v-for="(v, i) in socialArr" :key="i">
 						<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
@@ -857,7 +859,7 @@ export default index;
 				top: 0;
 				left: 0;
 				width: 660px;
-				height: 190px;
+				height: 290px;
 				background: url(~assets/bg_g1_part5_way2.png) no-repeat;
 				background-size: 100%;
 			}
@@ -1056,24 +1058,29 @@ export default index;
 
 		.content-box {
 			@include scrollbar-beautify(0);
-			.svg {
+			.svg-box {
 				position: absolute;
 				left: 150px;
 				top: 100px;
-				height: 80px;
-				path {
-					fill:none;stroke:#DCDCDC;stroke-miterlimit:10;stroke-dasharray:3.9998,2.9998;
+				width: 0;
+				.svg {
+					height: 80px;
+					position: absolute;
+					path {
+						fill:none;stroke:#DCDCDC;stroke-miterlimit:10;stroke-dasharray:3.9998,2.9998;
+					}
+				}
+				.plane {
+					position: absolute;
+					left: 150px;
+					top: 100px;
+					width: 10px;
+					height: 10px;
+					background: red;
+					border-radius: 5px;
 				}
 			}
-			.testball {
-				position: absolute;
-				left: 150px;
-				top: 100px;
-				width: 10px;
-				height: 10px;
-				background: red;
-				border-radius: 5px;
-			}
+
 			ul {
 				position: relative;
 				padding-bottom: 87px;

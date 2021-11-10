@@ -6,10 +6,14 @@ import Button from "../components/button.vue";
 require("root/libs/pixi-spine.js");
 gsap.registerPlugin(ScrollTrigger);
 PIXI.utils.skipHello();
+import utils from 'root/utils';
+import { Events } from 'root/utils/EnumUtils';
+import ICountUp from 'root/components/countup.vue';
 
 @Component({
 	components: {
-		Button
+		Button,
+		ICountUp
 	}
 })
 export default class home extends Vue {
@@ -17,6 +21,20 @@ export default class home extends Vue {
 
 	anList=['新中式','美式','北欧','欧式','现代'];
 	imgSrc = require("../assets/portrait/bg_home_b3_pic17.jpg");
+	page2ImgSrc = require("../assets/bg_home_b2_pic1.jpg");
+	page2ImgSrcList = [
+		require("../assets/bg_home_b2_pic1.jpg"),
+		require("../assets/bg_home_b2_pic2.jpg"),
+		require("../assets/bg_home_b2_pic3.jpg"),
+		require("../assets/bg_home_b2_pic4.jpg"),
+		require("../assets/bg_home_b2_pic5.jpg"),
+		require("../assets/bg_home_b2_pic6.jpg"),
+		require("../assets/bg_home_b2_pic1.jpg"),
+		require("../assets/bg_home_b2_pic2.jpg"),
+	]
+	page2Index = 0;
+	page3Index  = 17;
+	page2Ani = true;
 	portraitList = [
 		require("../assets/portrait/bg_home_b3_pic01.jpg"),
 		require("../assets/portrait/bg_home_b3_pic02.jpg"),
@@ -83,12 +101,7 @@ export default class home extends Vue {
 			nextEl: '.next1',
 			prevEl: '.prev1'
 		},
-		preventClicks: false,
-		on: {
-			click: v => {
-
-			}
-		}
+		preventClicks: false
 	};
 	bannerSwiperOptions2: any = {
 		speed: 500,
@@ -107,8 +120,8 @@ export default class home extends Vue {
 		},
 		preventClicks: false,
 		on: {
-			click: v => {
-
+			slideChangeTransitionStart: function() {
+				utils.emitter.$emit('page2IndexFun', this.realIndex);
 			}
 		}
 	};
@@ -134,31 +147,44 @@ export default class home extends Vue {
 				return customPaginationHtml;
 			}
 		},
-		// autoplay: {
-		// 	delay: 6000,
-		// 	disableOnInteraction: false
-		// },
+		autoplay: {
+			delay: 6000,
+			disableOnInteraction: false
+		},
 		navigation: {
 			nextEl: '.next3',
-		},
-		on: {
-			slideChangeTransitionEnd: function(){
-				alert(this.activeIndex);
-			}
 		}
+	};
+	options1 = {
+		suffix: '+',
+		useGrouping: false,
+	};
+	options2= {
+		useGrouping: false,
 	};
 
 	mounted() {
 		this.initSpineAni();
 		this.initScrollTrigger();
 		setTimeout(()=>{
-			this.left = this.$refs.item17[0].offsetLeft;
-			this.top = this.$refs.item17[0].offsetTop;
-			this.width = this.$refs.item17[0].clientWidth;
-			this.height = this.$refs.item17[0].clientHeight;
+			this.onResize()
 		})
+		utils.emitter.$on(Events.RESIZE, this.onResize);
+		utils.emitter.$on('page2IndexFun', (introductionIndex: number) => {
+			this.page2Index = introductionIndex;
+			this.page2Ani = false;
+			setTimeout(()=>{
+				this.page2Ani = true;
+			},300)
+		});
 	}
-
+	onResize() {
+			let items = `item${this.page3Index}`;
+			this.left = this.$refs[items][0].offsetLeft;
+			this.top = this.$refs[items][0].offsetTop;
+			this.width = this.$refs[items][0].clientWidth;
+			this.height = this.$refs[items][0].clientHeight;
+	}
 	initSpineAni() {
 		let loader = PIXI.loader;
 		let res = PIXI.loader.resources as any;
@@ -197,7 +223,8 @@ export default class home extends Vue {
 	height = 0;
 	onClick(event,item,i){
 		this.imgSrc = item;
-		let items = `item${i}`
+		let items = `item${i}`;
+		this.page3Index = i;
 		this.left = this.$refs[items][0].offsetLeft;
 		this.top = this.$refs[items][0].offsetTop;
 		this.width = this.$refs[items][0].clientWidth;

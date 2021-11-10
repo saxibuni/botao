@@ -56,7 +56,7 @@ export default class sidebar extends Vue {
 			font-size: 14px;
 			flex-wrap: wrap;
 			cursor: pointer;
-			transition: 0.3s;
+			transition:background 0.3s;
 			position: relative;
 			align-content: center;
 			&::after,

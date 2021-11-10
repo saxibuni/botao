@@ -19,7 +19,7 @@
 				<h3>{{ item.en }}</h3>
 				<h4></h4>
 				<div>
-					<h5 v-for="(it, i) in item.son" :key="i">
+					<h5 v-for="(it, i) in item.son" :key="i" @click="navShow = false;$router.push({name:it.url})">
 						{{ it.title }}
 					</h5>
 				</div>
@@ -41,8 +41,8 @@ export default class navLists extends Vue {
 			en: 'Selected case',
 			url: 'case',
 			son: [
-				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png') }
+				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'' }
 			]
 		},
 		{
@@ -50,9 +50,9 @@ export default class navLists extends Vue {
 			url: 'design',
 			en: 'Design Hall of Fame',
 			son: [
-				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png') }
+				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
 			]
 		},
 		{
@@ -60,9 +60,9 @@ export default class navLists extends Vue {
 			url: 'craft-building',
 			en: 'fine craftsmen skill',
 			son: [
-				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png') }
+				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
 			]
 		},
 		{
@@ -70,9 +70,9 @@ export default class navLists extends Vue {
 			url: 'whole-decoration',
 			en: 'A whole service',
 			son: [
-				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png') }
+				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
 			]
 		},
 		{
@@ -80,10 +80,10 @@ export default class navLists extends Vue {
 			url: 'information',
 			en: 'latest information',
 			son: [
-				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png') }
+				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' },
+				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'' }
 			]
 		},
 		{
@@ -91,13 +91,13 @@ export default class navLists extends Vue {
 			url: 'brand',
 			en: 'botao brand',
 			son: [
-				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png') },
-				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png') }
+				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'1' },
+				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'2' },
+				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'3'},
+				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'4' },
+				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'5' },
+				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'6' },
+				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'7'}
 			]
 		}
 	];
@@ -149,6 +149,7 @@ export default class navLists extends Vue {
 						height: 10px;
 						font-size: 10px;
 						font-family: Gilroy;
+						letter-spacing: 1px;
 						font-weight: 400;
 					}
 				}

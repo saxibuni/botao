@@ -58,17 +58,17 @@ const router = new Router({
 			component: Case,
 			children: [
 				{
-					path: '/case/list',
+					path: '/case/list', //B1精选案例列表
 					name: 'case-list',
 					component: CaseList
 				},
 				{
-					path: '/case/listvr',
+					path: '/case/listvr', //B3精选案例列表VR
 					name: 'case-listvr',
 					component: CaseListVR,
 				},
 				{
-					path: '/case/detail',
+					path: '/case/detail', //B2精选案例详情
 					name: 'case-detail',
 					component: CaseDetail
 				}
@@ -81,44 +81,44 @@ const router = new Router({
 			component: Design,
 			children: [
 				{
-					path: '/design/list',
+					path: '/design/list',  //C1设计名人堂列表
 					name: 'design-list',
 					component: DesignList
 				},
 				{
-					path: '/design/detail',
+					path: '/design/detail', //C2设计名人堂详情
 					name: 'design-detail',
 					component: DesignDetail
 				}
 			]
 		},
 		{
-			path: '/craft-building',
+			path: '/craft-building', //D1精工匠艺 在建工地
 			name: 'craft-building',
 			component: CraftBuild
 		},
 		{
-			path: '/craft-team',
+			path: '/craft-team', //D2精工匠艺 施工团队
 			name: 'craft-team',
 			component: CraftTeam
 		},
 		{
-			path: '/craft-manager',
+			path: '/craft-manager', //D3精工匠艺 施工管理
 			name: 'craft-manager',
 			component: CraftManager
 		},
 		{
-			path: '/whole-decoration',
+			path: '/whole-decoration', //E1全案服务 全案整装
 			name: 'whole-decoration',
 			component: WholeDecoration
 		},
 		{
-			path: '/cherry-pick',
+			path: '/cherry-pick', //E2全案服务 严选主材
 			name: 'cherry-pick',
 			component: CherryPick
 		},
 		{
-			path: '/soft-decoration',
+			path: '/soft-decoration', //E3全案服务 软装生活
 			name: 'soft-decoration',
 			component: SoftDecoration
 		},
@@ -129,29 +129,29 @@ const router = new Router({
 			component: Information,
 			children: [
 				{
-					path: '/infomation/owner-voice',
+					path: '/infomation/owner-voice', //F1资讯中心 业主心声
 					name: 'owner-voice',
 					component: OwnerVoice
 				},
 				{
-					path: '/infomation/strategy-list',
+					path: '/infomation/strategy-list', //F2资讯中心 装修攻略列表
 					name: 'strategy-list',
 					component: StrategyList
 				},
 				{
-					path: '/infomation/strategy-detail',
+					path: '/infomation/strategy-detail', //F3资讯中心 装修攻略详情
 					name: 'strategy-detail',
 					component: StrategyDetail
 				},
 				{
-					path: '/infomation/join-us',
+					path: '/infomation/join-us', //F4资讯中心 招贤纳士
 					name: 'join-us',
 					component: JoinUs
 				}
 			]
 		},
 		{
-			path: '/brand',
+			path: '/brand', // G1波涛品牌
 			name: 'brand',
 			component: Brand
 		},
