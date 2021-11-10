@@ -27,6 +27,8 @@ export default class Brand extends Vue {
 	draggerTarget1: any;
 	draggerTarget2: any;
 	distance: number = 0;
+	progressIndex: number = 0;
+
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	historyScroll: HTMLElement;
 	height: number = 0;
@@ -167,8 +169,6 @@ export default class Brand extends Vue {
 		{ time: '2015-2016', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-
-
 	];
 	options1 = {
 		// suffix: '+',
@@ -229,14 +229,27 @@ export default class Brand extends Vue {
 	}
 
 	createTrigger() {
+		let pos = [257, 443, 535, 630, 851, 1039];
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
-				let offset = self.progress * (1245 - 190);
-				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 1.9 + offset / 100 + 'rem';
+				let offset = self.progress * (1245 - 290);
+				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
+				this.calcProgressIndex(offset + 290, pos);
 			}
 		});
 	}
+
+	calcProgressIndex(height: number, pos: number[]) {
+		for (let i = 0; i < pos.length; i++) {
+			if (pos[i] <= height) {
+				this.progressIndex = i;
+			} else {
+				break;
+			}
+		}
+	}
+
 	change(str) {
 		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? this.isShow-- : this.isShow++;
