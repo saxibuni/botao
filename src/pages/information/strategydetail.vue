@@ -100,6 +100,9 @@ export default StrategyDetail;
 
 <style lang="scss">
 .strategy-detail {
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 1916px;
 	font-size: 18px;
 	h2,
 	h3 {
@@ -280,7 +283,7 @@ export default StrategyDetail;
 						height: 100%;
 						transition: all 0.3s;
 						&:hover {
-							transform: scale(1.2);
+							transform: scale(1.1);
 						}
 					}
 				}
@@ -323,7 +326,7 @@ export default StrategyDetail;
 						}
 						&:hover span {
 							margin-left: 20px;
-							transform: rotate(-45deg) scale(1.2);
+							transform: rotate(-45deg) scale(1.1);
 						}
 					}
 				}

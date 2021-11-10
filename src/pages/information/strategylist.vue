@@ -1,6 +1,6 @@
 <template>
 	<div class="strategy-list">
-		<banner :data='BannerData'></banner>
+		<banner :data="BannerData"></banner>
 		<!-- 装修攻略列表 -->
 		<div class="decoration-strategy">
 			<h2>装修攻略</h2>
@@ -47,7 +47,7 @@
 					<div class="info-box">
 						<div class="date">{{ v.date }}</div>
 						<h4 class="title">{{ v.title }}</h4>
-						<p>{{v.text}}</p>
+						<p>{{ v.text }}</p>
 						<div class="more">
 							More
 							<span></span>
@@ -67,6 +67,9 @@ export default StrategyList;
 
 <style lang="scss">
 .strategy-list {
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 1916px;
 	font-size: 16px;
 	@mixin title {
 		h2,
@@ -122,7 +125,7 @@ export default StrategyList;
 			}
 			&:hover span {
 				margin-left: 20px;
-				transform: rotate(-45deg) scale(1.2);
+				transform: rotate(-45deg) scale(1.1);
 			}
 		}
 	}
@@ -134,7 +137,7 @@ export default StrategyList;
 			transition: all 0.3s;
 		}
 		&:hover img {
-			transform: scale(1.08);
+			transform: scale(1.1);
 		}
 	}
 	.decoration-strategy {

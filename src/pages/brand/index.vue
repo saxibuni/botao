@@ -175,8 +175,8 @@
 						</swiper-slide>
 					</swiper>
 					<div class="controal">
-						<div class="swiper-next hv-next"></div>
-						<div class="swiper-pre hv-pre"></div>
+						<div v-if="bannerActive == 0" class="swiper-next hv-next"></div>
+						<div v-if="bannerActive == 0" class="swiper-pre hv-pre"></div>
 					</div>
 				</div>
 				<div class="research-swiper" v-if="bannerActive == 1">
@@ -189,11 +189,61 @@
 						</swiper-slide>
 					</swiper>
 					<div class="controal">
-						<div class="swiper-next res-next"></div>
-						<div class="swiper-pre res-pre"></div>
+						<div v-if="bannerActive == 1" class="swiper-next res-next"></div>
+						<div v-if="bannerActive == 1" class="swiper-pre res-pre"></div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="social-response">
+			<h2>社会责任</h2>
+			<h3>social responsibility</h3>
+			<ul>
+				<li v-for="(v, i) in socialArr" :key="i">
+					<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
+					<div class="text-box">
+						<div class="dosh"></div>
+						<h2>{{ v.time }}</h2>
+						<p v-for="(value, index) in i % 2 == 0 ? v.text : v.text.reverse()" :key="index">{{ value }}</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="contact-us">
+			<div class="left">
+				<h2>联系我们</h2>
+				<h3>CONTACTUS</h3>
+				<div class="info-box">
+					<ul>
+						<li>
+							<div>
+								<span>Phone number</span>
+								<span>400-920-2982</span>
+							</div>
+							<div>
+								<span>E-mail</span>
+								<span>botaogroup@BTcom</span>
+							</div>
+						</li>
+						<li>
+							<div>
+								<span>Address</span>
+								<span>上海徐汇区中山西路2331号</span>
+							</div>
+						</li>
+						<li>
+							<div class="img-box">
+								<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+							</div>
+							<div class="info">
+								<span>关注波涛了解</span>
+								<span>最新装饰风格</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="right"></div>
 		</div>
 	</div>
 </template>
@@ -205,12 +255,33 @@ export default index;
 
 <style lang="scss">
 .brand {
+	box-sizing: border-box;
+	margin: 0 auto;
+	width: 1916px;
 	@keyframes fade-ine {
 		from {
 			opacity: 0;
 		}
 		to {
 			opacity: 1;
+		}
+	}
+	@mixin title {
+		h2,
+		h3 {
+			text-align: center;
+			font-weight: 400;
+			color: #000000;
+			line-height: 1;
+		}
+		h2 {
+			margin-top: 99px;
+			font-size: 48px;
+		}
+		h3 {
+			margin-top: 25px;
+			font-size: 24px;
+			font-family: Athene;
 		}
 	}
 	.swiper-pre,
@@ -803,6 +874,231 @@ export default index;
 					right: -105px;
 				}
 			}
+		}
+	}
+	.social-response {
+		overflow: hidden;
+		padding-bottom: 60px;
+		@include title();
+
+		ul {
+			position: relative;
+			display: flex;
+			margin: 137px 0 0 140px;
+			width: 100%;
+			background: url(~assets/bg_g1_part7_line.png) no-repeat center;
+			background-size: 100%;
+			li {
+				position: relative;
+				top: -56px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 327px;
+				height: 450px;
+				.img-box {
+					height: 203px;
+					img {
+						width: 100%;
+						height: 100%;
+					}
+				}
+				.text-box {
+					position: relative;
+					h2 {
+						margin-top: 0;
+						text-align: start;
+						margin-bottom: 16px;
+						font-size: 34px;
+						font-weight: bold;
+					}
+					p {
+						width: 359px;
+						font-size: 18px;
+						color: #666666;
+						line-height: 30px;
+						&:nth-of-type(2) {
+							margin-top: 10px;
+						}
+					}
+					.dosh {
+						position: relative;
+						left: -34px;
+						top: -34px;
+						width: 30px;
+						height: 30px;
+						border-radius: 50%;
+						border: 1px solid #eb551d;
+						&::before {
+							position: absolute;
+							top: 50%;
+							left: 50%;
+							transform: translate(-50%, -50%);
+							content: '';
+							width: 10px;
+							height: 10px;
+							background: #eb551d;
+							border-radius: 50%;
+						}
+					}
+				}
+				&:nth-child(2n) {
+					top: 59px;
+					flex-direction: column-reverse;
+					.text-box {
+						display: flex;
+						flex-direction: column-reverse;
+					}
+					p {
+						margin-top: 0;
+						line-height: 40px;
+					}
+					h2 {
+						margin-bottom: 0;
+						margin-top: 26px;
+					}
+					.dosh {
+						left: -34px;
+						top: 34px;
+					}
+				}
+				&:first-child {
+					margin-left: 205px;
+				}
+				&:not(:last-child) {
+					margin-right: 130px;
+				}
+			}
+			&::before {
+				position: absolute;
+				top: 50.5%;
+				left: -31px;
+				content: '';
+				width: 31px;
+				height: 31px;
+				background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
+				background-size: 100%;
+				font-size: 18px;
+				color: #eb551d;
+			}
+			&::after {
+				position: absolute;
+				content: '让梦想起飞';
+				top: 58%;
+				left: -54px;
+				font-size: 18px;
+				color: #eb551d;
+			}
+		}
+	}
+	.contact-us {
+		margin-top: 105px;
+		height: 745px;
+		.left {
+			@include title();
+			box-sizing: border-box;
+			padding: 99px 0 0 80px;
+			width: 860px;
+			height: 100%;
+			background: url(~assets/bg_g1_part8.jpg) no-repeat;
+			background-size: 100%;
+			h2,
+			h3 {
+				text-align: start;
+			}
+			h2 {
+				margin-top: 0;
+			}
+			.info-box {
+				box-sizing: border-box;
+				padding: 69px 80px 0 129px;
+				margin-top: 58px;
+				height: 491px;
+				background-color: #fff;
+				ul {
+					li {
+						display: flex;
+						justify-content: space-between;
+
+						> div {
+							position: relative;
+							display: flex;
+							flex-direction: column;
+							span {
+								line-height: 1;
+								&:first-child {
+									font-size: 16px;
+									color: #999999;
+								}
+								&:nth-child(2) {
+									margin-top: 23px;
+									margin-bottom: 29px;
+									font-size: 24px;
+									font-weight: bold;
+									color: #132132;
+								}
+							}
+							&::before {
+								position: absolute;
+								left: -75px;
+								top: 11px;
+								content: '';
+								width: 34px;
+								height: 34px;
+								background: url(~assets/icons/ic_g1_part8_phone.png) no-repeat;
+								background-size: 100%;
+							}
+							&:nth-child(2)::before {
+								width: 40px;
+								height: 28px;
+								background-image: url(~assets/icons/ic_g1_part8_email.png);
+							}
+						}
+						&:not(:first-child) {
+							margin-top: 39px;
+						}
+						&:not(:last-child) {
+							border-bottom: 1px solid #eee;
+						}
+						&:nth-child(2) {
+							> div {
+								&:nth-child(1) {
+									&::before {
+										width: 34px;
+										height: 42px;
+										background-image: url(~assets/icons/ic_g1_part8_position.png);
+									}
+								}
+							}
+						}
+						&:last-child {
+							justify-content: flex-start;
+							> div {
+								&::before {
+									display: none;
+								}
+							}
+							.info {
+								margin-top: 35px;
+								margin-left: 23px;
+								display: flex;
+								flex-direction: column;
+								span {
+									margin: 0;
+									font-size: 18px;
+									font-weight: 400;
+									color: #999999;
+									line-height: 32px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.right {
+			flex: 1;
+			height: 100%;
 		}
 	}
 }

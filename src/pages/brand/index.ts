@@ -113,6 +113,23 @@ export default class Brand extends Vue {
 			title: '上海市消保委“装潢”指引企业'
 		}
 	];
+	socialArr=[
+		{
+			imgUrl:require('../../assets/bg_g1_part7_pic1.jpg'),
+			time:'2003',
+			text:['非典期间捐献物资，与人民群众同心协力，共克时艰','波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl:require('../../assets/bg_g1_part7_pic2.jpg'),
+			time:'2008',
+			text:['为汶川地震灾区捐献救援物资','波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl:require('../../assets/bg_g1_part7_pic3.jpg'),
+			time:'2009',
+			text:['捐资援建中国最北部希望小学-齐齐哈尔希望小学','波涛集团每年定期组织无偿公益献血活动']
+		}
+	]
 	options1 = {
 		// suffix: '+',
 		useEasing: true
