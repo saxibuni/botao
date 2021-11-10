@@ -149,7 +149,7 @@
 				</div>
 				<div class="inner-img" :style="{ height: height + 'px' }"></div>
 			</div>
-			<div class="info-box" style="display:none;">
+			<div class="info-box">
 				<div class="time">
 					<p>2006-2010</p>
 					<h2>起航·发展</h2>
@@ -249,9 +249,9 @@
 			</div>
 			<div class="right">
 				<baidu-map class="bm-view" :zoom="20" :center="center" :scroll-wheel-zoom="true" :pinch-to-zoom="true">
-					<!-- <bm-marker :position="center" :icon="{ url: require('assets/icons/location_point.png'), size: { width: 19, height: 25 } }"></bm-marker> -->
-					<!-- <bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation> -->
-					<!-- <bm-map-type :map-types="['BMAP_NORMAL_MAP', 'BMAP_SATELLITE_MAP']" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type> -->
+					<bm-marker :position="center" :icon="{ url: require('assets/icons/ic_g1_part8_bt.png'), size: { width: 181, height: 68 } }"></bm-marker>
+					<bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
+					<bm-map-type :map-types="['BMAP_NORMAL_MAP', 'BMAP_SATELLITE_MAP']" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
 				</baidu-map>
 			</div>
 		</div>
