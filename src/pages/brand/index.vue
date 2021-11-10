@@ -146,6 +146,19 @@
 			<div class="img-box history-scroll">
 				<div class="gray-img">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
+					<div class="time1">
+						<span>2001-2005</span>
+					</div>
+					<div class="time2">
+						<span>2006-2010</span>
+					</div>
+					<div class="time3">
+						<span>2011-2014</span>
+					</div>
+					<div class="time4">
+						<span>2015-2016</span>
+					</div>
+
 				</div>
 				<div class="inner-img"></div>
 			</div>
@@ -736,7 +749,8 @@ export default index;
 			width: 670px;
 			height: 716px;
 
-			.gray-img{
+			.gray-img {
+				position: relative;
 				height: 1245px;
 				img {
 					position: absolute;
@@ -746,6 +760,56 @@ export default index;
 					&:first {
 						top: 4px;
 						left: 4px;
+					}
+				}
+				> div {
+					position: absolute;
+					z-index: 10;
+					width: 14px;
+					height: 14px;
+					border-radius: 50%;
+					border: 1px solid #132132;
+					background-color: #fff;
+					span {
+						position: absolute;
+						width: 200px;
+						top: 0;
+						left: 0;
+						font-size: 20px;
+						font-weight: bold;
+						color: #132132;
+					}
+				}
+				.time1 {
+					top: 257px;
+					left: 134px;
+					span {
+						top: -33px;
+						left: -108px;
+					}
+				}
+				.time2 {
+					top: 443px;
+					left: 102px;
+					span {
+						top: -33px;
+						left: 19px;
+					}
+				}
+				.time3 {
+					top: 535px;
+					left: 307px;
+					span {
+						top: 19px;
+						left: -118px;
+					}
+				}
+				.time4 {
+					top: 630px;
+					left: 397px;
+					span {
+						top: 19px;
+						left: 18px;
 					}
 				}
 			}
