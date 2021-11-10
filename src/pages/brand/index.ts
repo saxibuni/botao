@@ -3,14 +3,15 @@ import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
 import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
-import { Events } from 'root/utils/EnumUtils';
 
-gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger);
+gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin);
 Vue.use(BaiduMap, {
 	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
 });
@@ -26,12 +27,12 @@ export default class Brand extends Vue {
 	draggerTarget1: any;
 	draggerTarget2: any;
 	distance: number = 0;
-
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	historyScroll: HTMLElement;
 	height: number = 0;
 	isActive = 7;
 	bannerActive = 0;
+	isShow = 0;
 	BannerData = {
 		imgUrl: require('../../assets/bg_g1_banner.jpg'),
 		cn: '波涛品牌',
@@ -159,6 +160,16 @@ export default class Brand extends Vue {
 			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		}
 	];
+	devolopeList = [
+		{ time: '2001-2005', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+		{ time: '2006-2010', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+		{ time: '2011-2014', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+		{ time: '2015-2016', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+
+
+	];
 	options1 = {
 		// suffix: '+',
 		useEasing: true
@@ -198,8 +209,7 @@ export default class Brand extends Vue {
 	mounted() {
 		this.createDragger();
 		this.createTrigger();
-		// this.onResize();
-		// this.$bus.$on(Events.RESIZE, this.onResize);
+		this.createMovePath();
 	}
 
 	createDragger() {
@@ -215,7 +225,7 @@ export default class Brand extends Vue {
 			inertia: true,
 			cursor: 'auto',
 			edgeResistance: 0.7
-		})
+		});
 	}
 
 	createTrigger() {
@@ -225,7 +235,34 @@ export default class Brand extends Vue {
 				let offset = self.progress * (1245 - 190);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 1.9 + offset / 100 + 'rem';
 			}
+		});
+	}
+	change(str) {
+		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
+		str == 'pre' ? this.isShow-- : this.isShow++;
+	}
+
+	createMovePath() {
+		let path = this.$el.querySelector<SVGPathElement>('.svg .st0');
+		let ball = this.$el.querySelector('.testball');
+		let pathPoint = { n: 0 }, end = 0.5;
+
+		gsap.timeline({
+			defaults: {
+				duration: 3,
+				ease: "none"
+			}
 		})
+		.to(ball, {
+			motionPath: {
+				path: path,
+				align: path,
+				alignOrigin: [0.5, 0.5],
+				autoRotate: true,
+				start: pathPoint.n,
+				end: end
+			}
+		});
 	}
 
 	beforeDestroy() {

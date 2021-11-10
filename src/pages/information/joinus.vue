@@ -30,7 +30,12 @@
 		</div>
 		<div class="xr">
 			<div class="text-box">
-				<h2>选人</h2>
+				<div class="text">
+					SELECT
+					<br />
+					A PERSON
+				</div>
+				<div><h2>选人</h2></div>
 				<h3>“有魂、有力、有激情”的三有新人</h3>
 				<p>波涛是个充满无限可能的企业，而对于选用人才，坚持选用对自己的未来有明确目标和企图心的人才，梦想是目标、能力是支撑、激情是态度、准备是自信，波涛欢迎做好准备去迎接一切未知的挑战的人才</p>
 				<Button :text="'加入我们'"></Button>
@@ -41,7 +46,12 @@
 		</div>
 		<div class="yongr">
 			<div class="text-box">
-				<h2>用人</h2>
+				<div class="text">
+					EMPLOY
+					<br />
+					PEOPLE
+				</div>
+				<div><h2>用人</h2></div>
 				<h3>以德为先（德者先、能者上、庸者下）</h3>
 				<p>
 					以德为先是波涛一贯的用人理念，“德”体现的是一个人的心性和修养，“能”是指一个人的才能、能力，“庸”指懒惰、行动力极弱的人波涛重视有德的人，重用有才能的人,因为这样的人才会在团队的工作中发挥正面效果,而庸者必然会被淘汰
@@ -54,8 +64,14 @@
 		</div>
 		<div class="yur">
 			<div class="text-box">
-				<h2>育人</h2>
+				<div class="text">
+					EDUCATE
+					<br />
+					PEOPLE
+				</div>
+				<div><h2>育人</h2></div>
 				<h3>递进培育（立足岗位、磨炼成才、精心培养、助推成长）</h3>
+
 				<p>
 					波涛要提升企业的综合实力，要求每一位员工都立足自己的岗位，将岗位作为自己的舞台，不断增强自己的经验、知识和技能，同时为员工提供层层递进的培训机会，挖掘员工的潜力，让其在实践中丰富自身经验，了解更多知识，提升个人的工作技能，助推人才成长
 				</p>
@@ -67,7 +83,12 @@
 		</div>
 		<div class="lr">
 			<div class="text-box">
-				<h2>留人</h2>
+				<div class="text">
+					KEEP
+					<br />
+					PEOPLE
+				</div>
+				<div><h2>留人</h2></div>
 				<h3>共生共长（事业留人、发展留人、情感留人）</h3>
 				<p>波涛重视员工个人价值的体现，让大家在为波涛工作的同时，个人事业有所成就、物质生活极大改善，营造一个有情感的大家庭，使大家在家的温情的感染下互相关心、互相支持、共同提高</p>
 				<p>
@@ -141,7 +162,7 @@ export default JoinUs;
 
 <style lang="scss">
 .join-us {
-		box-sizing: border-box;
+	box-sizing: border-box;
 	margin: 0 auto;
 	width: 1916px;
 	.page1 {
@@ -243,11 +264,29 @@ export default JoinUs;
 		margin-top: 228px;
 		padding: 0 196px;
 		.text-box {
+			position: relative;
 			margin-top: 247px;
+			.text {
+				position: absolute;
+				width: 900px;
+				top: -245px;
+				left: -199px;
+				font-size: 161px;
+				font-family: Athene;
+				color: #ededed;
+				line-height: 175px;
+			}
 			h2 {
 				font-size: 62px;
 				color: #000000;
 				line-height: 1;
+			}
+			> div {
+				height: 62px;
+				h2 {
+					position: absolute;
+					top: 0;
+				}
 			}
 			h3 {
 				margin-top: 31px;
@@ -285,6 +324,13 @@ export default JoinUs;
 		}
 		.text-box {
 			text-align: right;
+			.text {
+				left: -68px;
+			}
+			> div {
+				display: flex;
+				justify-content: flex-end;
+			}
 		}
 	}
 	.yur {
@@ -302,6 +348,14 @@ export default JoinUs;
 		.text-box {
 			margin-top: 31px;
 			text-align: right;
+			.text {
+				top: -37px;
+				left: -64px;
+			}
+			> div {
+				display: flex;
+				justify-content: flex-end;
+			}
 			p {
 				margin-bottom: 0;
 				span {
@@ -441,10 +495,9 @@ export default JoinUs;
 				height: 16px;
 				background: url(~assets/icons/ic_f4_phone.png) no-repeat;
 				background-size: 100%;
-
 			}
-			&:nth-of-type(1){
-				i{
+			&:nth-of-type(1) {
+				i {
 				}
 			}
 			&:nth-of-type(2) {
@@ -473,9 +526,9 @@ export default JoinUs;
 			}
 		}
 	}
-	.button-wrap{
-		.btn{
-			background-color: #EB551D;
+	.button-wrap {
+		.btn {
+			background-color: #eb551d;
 		}
 	}
 }

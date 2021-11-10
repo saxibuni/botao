@@ -146,18 +146,38 @@
 			<div class="img-box history-scroll">
 				<div class="gray-img">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
+					<div class="time1">
+						<span>2001-2005</span>
+					</div>
+					<div class="time2">
+						<span>2006-2010</span>
+					</div>
+					<div class="time3">
+						<span>2011-2014</span>
+					</div>
+					<div class="time4">
+						<span>2015-2016</span>
+					</div>
+					<div class="time5">
+						<span>2017-2018</span>
+					</div>
+					<div class="time6">
+						<span>2019-2020</span>
+					</div>
+
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box">
+			<div class="info-box" v-for="(v, i) in devolopeList" v-show="isShow == i" :key="i">
 				<div class="time">
-					<p>2006-2010</p>
-					<h2>起航·发展</h2>
+					<p>{{ v.time }}</p>
+					<h2>{{ v.name }}</h2>
 				</div>
 				<div class="info">
-					<p>波涛装饰正式成立，披荆斩棘，砥砺前行</p>
-					<p>[波涛装饰]注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。</p>
+					<p v-for="(item, index) in v.text" :key="index">{{ item }}</p>
 				</div>
+				<div class="pre" @click="change('pre')"></div>
+				<div class="next" @click="change('next')"></div>
 			</div>
 		</div>
 		<div class="hover select4">
@@ -201,6 +221,13 @@
 			<h2>社会责任</h2>
 			<h3>social responsibility</h3>
 			<div class="content-box">
+				<svg class="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					viewBox="0 0 3680 80" style="enable-background:new 0 0 3680 80;" xml:space="preserve">
+					<g>
+						<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70"/>
+					</g>
+				</svg>
+				<div class="testball"></div>
 				<ul>
 					<li v-for="(v, i) in socialArr" :key="i">
 						<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
@@ -736,7 +763,8 @@ export default index;
 			width: 670px;
 			height: 716px;
 
-			.gray-img{
+			.gray-img {
+				position: relative;
 				height: 1245px;
 				img {
 					position: absolute;
@@ -746,6 +774,80 @@ export default index;
 					&:first {
 						top: 4px;
 						left: 4px;
+					}
+				}
+				> div {
+					position: absolute;
+					z-index: 10;
+					width: 14px;
+					height: 14px;
+					border-radius: 50%;
+					border: 1px solid #132132;
+					background-color: #fff;
+					span {
+						position: absolute;
+						width: 200px;
+						top: 0;
+						left: 0;
+						font-size: 20px;
+						font-weight: bold;
+						color: #132132;
+					}
+				}
+				.time1 {
+					top: 257px;
+					left: 134px;
+					span {
+						top: -33px;
+						left: -108px;
+					}
+				}
+				.time2 {
+					top: 443px;
+					left: 102px;
+					span {
+						top: -33px;
+						left: 19px;
+					}
+				}
+				.time3 {
+					top: 535px;
+					left: 307px;
+					span {
+						top: 19px;
+						left: -118px;
+					}
+				}
+				.time4 {
+					top: 630px;
+					left: 397px;
+					span {
+						top: 19px;
+						left: 18px;
+					}
+				}
+				.time5 {
+					top: 851px;
+					left: 334px;
+					span {
+						top: -35px;
+						left: 21px;
+					}
+				}
+				.time6 {
+					left: 554px;
+					top: 1039px;
+					span {
+						top: -34px;
+						left: 5px;
+					}
+					.time7 {
+						top: 1216px;
+						left: 588px;
+						span {
+							top: 1px;
+							left: -134px;
+						}
 					}
 				}
 			}
@@ -802,6 +904,32 @@ export default index;
 						font-size: 18px;
 						line-height: 32px;
 					}
+				}
+			}
+			.pre,
+			.next {
+				position: absolute;
+				z-index: 11;
+				bottom: -50px;
+				width: 13px;
+				height: 26px;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			.pre {
+				left: 80px;
+				background: url(~assets/icons/ic_f4_left1.png) no-repeat;
+				background-size: 100%;
+				&:hover {
+					background-image: url(~assets/icons/ic_f4_left2.png);
+				}
+			}
+			.next {
+				right: 80px;
+				background: url(~assets/icons/ic_f4_right1.png) no-repeat;
+				background-size: 100%;
+				&:hover {
+					background-image: url(~assets/icons/ic_f4_right2.png);
 				}
 			}
 		}
@@ -927,9 +1055,27 @@ export default index;
 
 		.content-box {
 			@include scrollbar-beautify(0);
+			.svg {
+				position: absolute;
+				left: 150px;
+				top: 100px;
+				height: 80px;
+				path {
+					fill:none;stroke:#DCDCDC;stroke-miterlimit:10;stroke-dasharray:3.9998,2.9998;
+				}
+			}
+			.testball {
+				position: absolute;
+				left: 150px;
+				top: 100px;
+				width: 10px;
+				height: 10px;
+				background: red;
+				border-radius: 5px;
+			}
 			ul {
 				position: relative;
-				padding-bottom: 20px;
+				padding-bottom: 87px;
 				display: flex;
 				margin: 137px 0 0 140px;
 				width: 100%;
@@ -971,7 +1117,7 @@ export default index;
 						.dosh {
 							position: relative;
 							left: -34px;
-							top: -34px;
+							top: -20px;
 							width: 30px;
 							height: 30px;
 							border-radius: 50%;
@@ -1006,8 +1152,11 @@ export default index;
 						}
 						.dosh {
 							left: -34px;
-							top: 28px;
+							top: 42px;
 						}
+					}
+					&:nth-child(3){
+						top: -27px;
 					}
 					&:first-child {
 						margin-left: 205px;
