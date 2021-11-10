@@ -210,6 +210,12 @@ export default class Brand extends Vue {
 		this.createDragger();
 		this.createTrigger();
 		this.createMovePath();
+		let number = this.$route.query.number;
+		if(number){
+			setTimeout(()=>{
+				this.jump(number)
+			})
+		}
 	}
 
 	createDragger() {

@@ -19,7 +19,7 @@
 				<h3>{{ item.en }}</h3>
 				<h4></h4>
 				<div>
-					<h5 v-for="(it, i) in item.son" :key="i" @click="navShow = false;$router.push({name:it.url})">
+					<h5 v-for="(it, i) in item.son" :key="i" @click="navShow = false;$router.push({name:it.url,query:{number:it.query}})">
 						{{ it.title }}
 					</h5>
 				</div>
@@ -67,7 +67,7 @@ export default class navLists extends Vue {
 		},
 		{
 			title: '全案服务',
-			url: 'cherry-pick',
+			url: 'whole-decoration',
 			en: 'A whole service',
 			son: [
 				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
@@ -91,13 +91,13 @@ export default class navLists extends Vue {
 			url: 'brand',
 			en: 'botao brand',
 			son: [
-				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'1' },
-				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'2' },
-				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'3'},
-				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'4' },
-				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'5' },
-				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'6' },
-				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'7'}
+				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:0 },
+				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:1 },
+				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:2},
+				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:3 },
+				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:4 },
+				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:5 },
+				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:6}
 			]
 		}
 	];
