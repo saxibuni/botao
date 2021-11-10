@@ -238,4 +238,29 @@ export default class home extends Vue {
 			this.textActive=true;
 		},300)
 	}
+	form = {
+		userName:'',
+		phone:'',
+		area:'',
+	}
+	onSubmit(){
+		if(!this.form.userName){
+			alert('请输入您的姓名！')
+			return
+		}
+		if(this.form.phone.length!=11){
+			alert('请输入您的联系电话！')
+			return
+		}
+		if(!this.form.area){
+			alert('请输入您的装修面积！')
+			return
+		}
+		alert('提交成功')
+		this.form = {
+				userName:'',
+				phone:'',
+				area:'',
+		}
+	}
 }

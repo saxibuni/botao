@@ -28,20 +28,20 @@
 				<ul>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的姓名" />
+						<input type="text" v-model="form.userName" placeholder="输入您的姓名" />
 						<b>*</b>
 					</li>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的联系电话" />
+						<input type="text" maxlength="11" v-model="form.phone" placeholder="输入您的联系电话" />
 						<b>*</b>
 					</li>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的装修面积" />
+						<input type="text" v-model="form.area" placeholder="输入您的装修面积" />
 						<b>*</b>
 					</li>
-					<li class="btn">提交需求</li>
+					<li class="btn" @click="onSubmit()">提交需求</li>
 				</ul>
 			</div>
 		</div>
@@ -573,11 +573,13 @@ export default home;
 					&:nth-child(2) {
 						i {
 							background: url('~assets/icons/ic_home_banner_phone.png');
+						  background-size: 100% 100%;
 						}
 					}
 					&:nth-child(3) {
 						i {
 							background: url('~assets/icons/ic_home_banner_area.png');
+					  	background-size: 100% 100%;
 						}
 					}
 					&.btn {

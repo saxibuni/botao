@@ -11,20 +11,20 @@
 					<ul>
 						<li>
 							<i></i>
-							<input type="text" placeholder="输入您的姓名" />
+							<input type="text" v-model="form.userName" placeholder="输入您的姓名" />
 							<b>*</b>
 						</li>
 						<li>
 							<i></i>
-							<input type="text" placeholder="输入您的联系电话" />
+							<input type="text" v-model="form.phone" maxlength="11" placeholder="输入您的联系电话" />
 							<b>*</b>
 						</li>
 						<li>
 							<i></i>
-							<input type="text" placeholder="输入您的装修面积" />
+							<input type="text" v-model="form.area" placeholder="输入您的装修面积" />
 							<b>*</b>
 						</li>
-						<li class="btn">免费获取报价</li>
+						<li class="btn" @click="onSubmit()">免费获取报价</li>
 					</ul>
 				</div>
 				<ul>
@@ -92,6 +92,11 @@ import { Vue, Component } from 'vue-property-decorator';
 
 @Component
 export default class Footer extends Vue {
+	form = {
+		userName:'',
+		phone:'',
+		area:'',
+	}
 	navList = [
 		{
 			title: '精选案例',
@@ -158,6 +163,26 @@ export default class Footer extends Vue {
 			]
 		}
 	];
+	onSubmit(){
+		if(!this.form.userName){
+			alert('请输入您的姓名！')
+			return
+		}
+		if(this.form.phone.length!=11){
+			alert('请输入您的联系电话！')
+			return
+		}
+		if(!this.form.area){
+			alert('请输入您的装修面积！')
+			return
+		}
+		alert('提交成功')
+		this.form = {
+				userName:'',
+				phone:'',
+				area:'',
+		}
+	}
 }
 </script>
 <style scoped lang="scss">
