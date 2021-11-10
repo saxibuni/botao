@@ -218,7 +218,6 @@ export default class ChinaMap extends Vue {
 				}]);
 			}
 		}
-		console.log(res);
 		return res;
 	}
 

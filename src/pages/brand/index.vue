@@ -788,6 +788,9 @@ export default index;
 					border: 1px solid #132132;
 					background-color: #fff;
 					transition: all .3s;
+					&:nth-child(1) {
+						opacity: 1;
+					}
 					span {
 						position: absolute;
 						width: 200px;
