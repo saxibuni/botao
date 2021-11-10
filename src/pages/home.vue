@@ -578,6 +578,10 @@ export default home;
 						color: #ffffff;
 						border: 2px solid #ed5400;
 						position: relative;
+						transition: transform 0.5s ease 0s;
+						&:hover{
+							transform: translateY(-3px);
+						}
 						&::after,
 						&::before {
 							content: '';
@@ -1502,7 +1506,7 @@ export default home;
 								width: 30px;
 								height: 30px;
 								opacity: 0.13;
-								animation: a软装2.5s infinite;
+								animation: animated-width 2.5s infinite;
 							}
 						}
 						@keyframes animated-width {
@@ -1548,7 +1552,7 @@ export default home;
 						z-index: 2;
 						img {
 							opacity: 0;
-							transition: opacity 0.3s;
+							transition: opacity 0.5s ease 0s;
 						}
 						&:nth-child(1) {
 							bottom: 266px;
@@ -1832,13 +1836,6 @@ export default home;
 			.btn {
 				width: 170px;
 				height: 53px;
-				background: #ed5400;
-				font-size: 18px;
-				font-weight: 400;
-				color: #ffffff;
-				line-height: 53px;
-				text-align: center;
-				text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
 			}
 		}
 	}

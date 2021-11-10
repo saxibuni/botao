@@ -6,6 +6,8 @@ import Button from "../components/button.vue";
 require("root/libs/pixi-spine.js");
 gsap.registerPlugin(ScrollTrigger);
 PIXI.utils.skipHello();
+import utils from 'root/utils';
+import { Events } from 'root/utils/EnumUtils';
 
 @Component({
 	components: {
@@ -17,6 +19,7 @@ export default class home extends Vue {
 
 	anList=['新中式','美式','北欧','欧式','现代'];
 	imgSrc = require("../assets/portrait/bg_home_b3_pic17.jpg");
+	page3Index  = 17;
 	portraitList = [
 		require("../assets/portrait/bg_home_b3_pic01.jpg"),
 		require("../assets/portrait/bg_home_b3_pic02.jpg"),
@@ -149,13 +152,17 @@ export default class home extends Vue {
 		this.initSpineAni();
 		this.initScrollTrigger();
 		setTimeout(()=>{
-			this.left = this.$refs.item17[0].offsetLeft;
-			this.top = this.$refs.item17[0].offsetTop;
-			this.width = this.$refs.item17[0].clientWidth;
-			this.height = this.$refs.item17[0].clientHeight;
+			this.onResize()
 		})
+		utils.emitter.$on(Events.RESIZE, this.onResize);
 	}
-
+	onResize() {
+			let items = `item${this.page3Index}`;
+			this.left = this.$refs[items][0].offsetLeft;
+			this.top = this.$refs[items][0].offsetTop;
+			this.width = this.$refs[items][0].clientWidth;
+			this.height = this.$refs[items][0].clientHeight;
+	}
 	initSpineAni() {
 		let loader = PIXI.loader;
 		let res = PIXI.loader.resources as any;
@@ -194,7 +201,8 @@ export default class home extends Vue {
 	height = 0;
 	onClick(event,item,i){
 		this.imgSrc = item;
-		let items = `item${i}`
+		let items = `item${i}`;
+		this.page3Index = i;
 		this.left = this.$refs[items][0].offsetLeft;
 		this.top = this.$refs[items][0].offsetTop;
 		this.width = this.$refs[items][0].clientWidth;

@@ -28,45 +28,9 @@
 					</ul>
 				</div>
 				<ul>
-					<li>
-						<h5>精选案例</h5>
-						<p>墅装案例</p>
-						<p>VR装修体验</p>
-					</li>
-					<li>
-						<h5>设计名人堂</h5>
-						<p>擅长户型</p>
-						<p>擅长风格</p>
-						<p>设计师级别</p>
-					</li>
-					<li>
-						<h5>精工匠艺</h5>
-						<p>在施工地</p>
-						<p>工艺标准</p>
-						<p>管理体系</p>
-					</li>
-					<li>
-						<h5>全案服务</h5>
-						<p>严选材料</p>
-						<p>软装生活</p>
-						<p>无忧售后</p>
-					</li>
-					<li>
-						<h5>最新资讯</h5>
-						<p>公司新闻</p>
-						<p>装修攻略</p>
-						<p>近期活动</p>
-						<p>招贤纳士</p>
-					</li>
-					<li>
-						<h5>波涛品牌</h5>
-						<p>品牌介绍</p>
-						<p>品牌数据</p>
-						<p>企业理念</p>
-						<p>发展历程</p>
-						<p>荣誉资质</p>
-						<p>社会责任</p>
-						<p>联系我们</p>
+					<li v-for="(item,i) in navList" :key="i">
+						<h5>{{item.title}}</h5>
+						<p @click="$router.push({name:it.url})" v-for="(it,index) in item.son" :key="index">{{it.title}}</p>
 					</li>
 				</ul>
 			</div>
@@ -127,7 +91,68 @@
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
-export default class Footer extends Vue {}
+export default class Footer extends Vue {
+		navList = [
+		{
+			title: '精选案例',
+			url: 'case',
+			son: [
+				{ title: '墅装案例', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
+				{ title: 'VR装修体验', icon:require("../assets/icons/ic_home_drop_experience.png"),url:'' }
+			]
+		},
+		{
+			title: '设计名人堂',
+			url: 'design',
+			son: [
+				{ title: '擅长户型', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
+				{ title: '擅长风格', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
+				{ title: '设计师级别', icon: require("../assets/icons/ic_home_drop_ex.png"),url:'' }
+			]
+		},
+		{
+			title: '精工匠艺',
+			url: 'craft-building',
+			son: [
+				{ title: '在施工地', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '工艺标准', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '管理体系', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
+			]
+		},
+		{
+			title: '全案服务',
+			url: 'whole-decoration',
+			son: [
+				{ title: '严选材料', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '软装生活', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '无忧售后', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
+			]
+		},
+		{
+			title: '最新资讯',
+			url: 'information',
+			son: [
+				{ title: '公司新闻', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '装修攻略', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '近期活动', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '招贤纳士', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
+			]
+		},
+		{
+			title: '波涛品牌',
+			url: 'brand',
+			son: [
+				{ title: '品牌介绍', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '品牌数据', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '企业理念', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '发展历程', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '荣誉资质', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '社会责任', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '联系我们', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'}
+			]
+		}
+	];
+}
 </script>
 <style scoped lang="scss">
 .footer {

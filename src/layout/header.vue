@@ -16,7 +16,7 @@
 						{{ item.title }}
 						<b></b>
 						<div class="nav-son">
-							<div v-for="(it, i) in item.son" :key="i">
+							<div v-for="(it, i) in item.son" :key="i" @click.stop="$router.push({name:it.url})">
 								<span>
 									<i>
 										<img :src="it.icon" alt="">
@@ -106,58 +106,58 @@ export default class Header extends Vue {
 			title: '精选案例',
 			url: 'case',
 			son: [
-				{ title: '墅装案例', icon:require("../assets/icons/ic_home_drop_ex.png") },
-				{ title: 'VR装修体验', icon:require("../assets/icons/ic_home_drop_experience.png") }
+				{ title: '墅装案例', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
+				{ title: 'VR装修体验', icon:require("../assets/icons/ic_home_drop_experience.png"),url:'' }
 			]
 		},
 		{
 			title: '设计名人堂',
 			url: 'design',
 			son: [
-				{ title: '擅长户型', icon:require("../assets/icons/ic_home_drop_ex.png") },
-				{ title: '擅长风格', icon:require("../assets/icons/ic_home_drop_ex.png") },
-				{ title: '设计师级别', icon: require("../assets/icons/ic_home_drop_ex.png") }
+				{ title: '擅长户型', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
+				{ title: '擅长风格', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
+				{ title: '设计师级别', icon: require("../assets/icons/ic_home_drop_ex.png"),url:'' }
 			]
 		},
 		{
 			title: '精工匠艺',
 			url: 'craft-building',
 			son: [
-				{ title: '在施工地', icon: require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '工艺标准', icon: require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '管理体系', icon: require("../assets/icons/ic_home_drop_ex.png")}
+				{ title: '在施工地', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '工艺标准', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '管理体系', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
 			]
 		},
 		{
 			title: '全案服务',
 			url: 'whole-decoration',
 			son: [
-				{ title: '严选材料', icon: require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '软装生活', icon: require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '无忧售后', icon: require("../assets/icons/ic_home_drop_ex.png")}
+				{ title: '严选材料', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '软装生活', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '无忧售后', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
 			]
 		},
 		{
 			title: '最新资讯',
 			url: 'information',
 			son: [
-				{ title: '公司新闻', icon: require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '装修攻略', icon: require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '近期活动', icon: require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '招贤纳士', icon: require("../assets/icons/ic_home_drop_ex.png")}
+				{ title: '公司新闻', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '装修攻略', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '近期活动', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
+				{ title: '招贤纳士', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
 			]
 		},
 		{
 			title: '波涛品牌',
 			url: 'brand',
 			son: [
-				{ title: '品牌介绍', icon:require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '品牌数据', icon:require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '企业理念', icon:require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '发展历程', icon:require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '荣誉资质', icon:require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '社会责任', icon:require("../assets/icons/ic_home_drop_ex.png")},
-				{ title: '联系我们', icon:require("../assets/icons/ic_home_drop_ex.png")}
+				{ title: '品牌介绍', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '品牌数据', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '企业理念', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '发展历程', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '荣誉资质', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '社会责任', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
+				{ title: '联系我们', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'}
 			]
 		}
 	];
