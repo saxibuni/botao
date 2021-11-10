@@ -1,8 +1,8 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Banner from "root/components/banner.vue";
-import Pagination from '../../components/pagination.vue'
+import Pagination from 'root/components/pagination.vue'
 import Button from 'root/components/button.vue'
-import ShangHaiMap from '../shanghaimap';
+import ShangHaiMap from 'root/components/shanghaimap.vue';
 @Component({
 	components: {
 		Banner,

@@ -48,6 +48,7 @@
 					<p>浦发东悦城</p>
 					<p>同润蓝美俊庭</p>
 				</div>
+				<img src="~assets/bg_d1_part2.jpg" alt="" />
 			</div>
 			<div class="list">
 				<ul>
@@ -163,6 +164,12 @@ export default Building;
 			height: 860px;
 			margin: 70px 0 80px 0;
 			position: relative;
+			> img {
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: -1;
+			}
 			/deep/.map-box {
 				margin: 0;
 			}

@@ -95,7 +95,7 @@
 					<h2>触达全国 · 布局未来</h2>
 					<h3>BRAND DATA</h3>
 				</div>
-				<MapBox></MapBox>
+				<ChinaMap />
 			</div>
 		</div>
 		<div class="core-value">
