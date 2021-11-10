@@ -248,7 +248,6 @@ export default class Brand extends Vue {
 				break;
 			}
 		}
-		console.log(this.progressIndex);
 	}
 
 	change(str) {
