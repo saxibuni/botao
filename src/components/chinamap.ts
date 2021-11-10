@@ -6,7 +6,7 @@ require("root/libs/china.js");
 require("root/libs/chinaMapOutline.js");
 
 @Component
-export default class EchartMap extends Vue {
+export default class ChinaMap extends Vue {
 	chart = null;
 	geoCoordMap = {
 		'安徽省铜陵': [117.81154, 30.945515],
