@@ -47,7 +47,7 @@
 		</div>
 		<div class="page2">
 			<h2>
-				<span>1000+</span>
+				<ICountUp :endVal="1000" :options="options1"></ICountUp>
 				经典案例 筑梦幸福家
 			</h2>
 			<p>Select cases</p>
@@ -92,34 +92,34 @@
 		<div class="page3">
 			<div class="left">
 				<h2>
-					<span>100+</span>
+					<ICountUp :endVal="100" :options="options1"></ICountUp>
 					位别墅大宅设计大咖
 				</h2>
 				<ul>
 					<li>
 						<div>
-							<b>95</b>
+							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b>10</b>
+							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
 							年
 						</div>
 						<p>以上从业经验</p>
 					</li>
 					<li>
 						<div>
-							<b>8</b>
+							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>
 							支
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b>90</b>
+							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>荣获设计奖项</p>
@@ -196,42 +196,54 @@
 					<ul>
 						<li>
 							<div>
-								138
+								<b>
+								<ICountUp :endVal="138" :options="options2"></ICountUp>
+								</b>
 								<span>项</span>
 							</div>
 							<p>工地管理条例</p>
 						</li>
 						<li>
 							<div>
-								316
+								<b>
+								<ICountUp :endVal="316" :options="options2"></ICountUp>
+								</b>
 								<span>条</span>
 							</div>
 							<p>施工工艺标准</p>
 						</li>
 						<li>
 							<div>
-								14
+								<b>
+								<ICountUp :endVal="14" :options="options2"></ICountUp>
+								</b>
 								<span>项</span>
 							</div>
 							<p>工程技术专利</p>
 						</li>
 						<li>
 							<div>
-								259
+								<b>
+								<ICountUp :endVal="259" :options="options2"></ICountUp>
+								</b>
 								<span>条</span>
 							</div>
 							<p>验收标准</p>
 						</li>
 						<li>
 							<div>
-								600
+								<b>
+								<ICountUp :endVal="600" :options="options2"></ICountUp>
+								</b>
 								<span>个</span>
 							</div>
 							<p>改在建工地</p>
 						</li>
 						<li>
 							<div>
-								100
+								<b>
+								<ICountUp :endVal="100" :options="options2"></ICountUp>
+								</b>
 								<span>+</span>
 							</div>
 							<p>金牌项目经理</p>
@@ -319,7 +331,7 @@
 			</div>
 			<div class="text">
 				<h3>
-					<span>20+</span>
+					<ICountUp :endVal="20" :options="options1"></ICountUp>
 					年专注别墅大宅 全案引领者
 				</h3>
 				<div>
@@ -1424,7 +1436,7 @@ export default home;
 							font-weight: bold;
 							line-height: 55px;
 							font-family: Gilroy-Bold;
-							span {
+							>span {
 								font-size: 18px;
 							}
 						}

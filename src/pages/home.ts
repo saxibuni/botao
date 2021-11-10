@@ -8,10 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 PIXI.utils.skipHello();
 import utils from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
+import ICountUp from 'root/components/countup.vue';
 
 @Component({
 	components: {
-		Button
+		Button,
+		ICountUp
 	}
 })
 export default class home extends Vue {
@@ -152,6 +154,13 @@ export default class home extends Vue {
 		navigation: {
 			nextEl: '.next3',
 		}
+	};
+	options1 = {
+		suffix: '+',
+		useGrouping: false,
+	};
+	options2= {
+		useGrouping: false,
 	};
 
 	mounted() {
