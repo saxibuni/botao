@@ -293,7 +293,7 @@
 		<div class="page5">
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions3">
-					<swiper-slide v-for="(item, i) in page5List" :key="i">
+					<swiper-slide v-for="(item, i) in page5List" class="page5Slide" :key="i">
 						<div class="img-box">
 							<img v-for="(v, i) in item.imgSrc" :key="i" :src="v" alt="" />
 						</div>
@@ -1661,25 +1661,6 @@ export default home;
 							&:first-child {
 								opacity: 1;
 							}
-							// &:not(:first-child) {
-							// 	opacity: 0;
-							// 	// transition: opacity .5s;
-							// 	animation: fadeIn .5s forwards;
-							// }
-							// &:nth-of-type(2) {
-							// 	// transition: opacity 0.5s 1.5s;
-							// 	animation: fadeIn .5s 1.5s forwards;
-
-							// }
-							// &:nth-of-type(3) {
-							// 	// transition: opacity 0.5s 3s;
-							// 	animation: fadeIn .5s 3s forwards;
-
-							// }
-							// &:nth-of-type(4) {
-							// 	// transition: opacity 0.5s 4.5s;
-							// 	animation: fadeIn .5s 4.5s forwards;
-							// }
 						}
 					}
 					.text {
@@ -1728,24 +1709,19 @@ export default home;
 						}
 					}
 				}
-				.swiper-slide-active {
+				.active {
 					.img-box {
 						img {
-							// opacity: 1 !important;
 							&:not(:first-child) {
-								// transition: opacity .5s;
 								animation: fadeIn 0.5s forwards;
 							}
 							&:nth-of-type(2) {
-								// transition: opacity 0.5s 1.5s;
 								animation: fadeIn 0.5s 1.5s forwards;
 							}
 							&:nth-of-type(3) {
-								// transition: opacity 0.5s 3s;
 								animation: fadeIn 0.5s 3s forwards;
 							}
 							&:nth-of-type(4) {
-								// transition: opacity 0.5s 4.5s;
 								animation: fadeIn 0.5s 4.5s forwards;
 							}
 						}

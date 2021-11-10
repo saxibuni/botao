@@ -146,22 +146,22 @@
 			<div class="img-box history-scroll">
 				<div class="gray-img">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
-					<div class="time1">
+					<div class="time1 yearTime">
 						<span>2001-2005</span>
 					</div>
-					<div class="time2">
+					<div class="time2 yearTime">
 						<span>2006-2010</span>
 					</div>
-					<div class="time3">
+					<div class="time3 yearTime">
 						<span>2011-2014</span>
 					</div>
-					<div class="time4">
+					<div class="time4 yearTime">
 						<span>2015-2016</span>
 					</div>
-					<div class="time5">
+					<div class="time5 yearTime">
 						<span>2017-2018</span>
 					</div>
-					<div class="time6">
+					<div class="time6 yearTime">
 						<span>2019-2020</span>
 					</div>
 
@@ -787,6 +787,10 @@ export default index;
 					border-radius: 50%;
 					border: 1px solid #132132;
 					background-color: #fff;
+					transition: all .3s;
+					&:nth-child(1) {
+						opacity: 1;
+					}
 					span {
 						position: absolute;
 						width: 200px;
@@ -1063,6 +1067,8 @@ export default index;
 				left: 150px;
 				top: 100px;
 				width: 0;
+				height: 80px;
+				overflow: hidden;
 				.svg {
 					height: 80px;
 					position: absolute;
