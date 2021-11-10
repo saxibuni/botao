@@ -178,8 +178,7 @@ export default class Brand extends Vue {
 		const hs = document.querySelector<HTMLElement>('.history-scroll');
 		const img = hs.querySelector<HTMLElement>('.inner-img');
 		hs.addEventListener('scroll', () => {
-			
-			this.height = hs.scrollTop + 100;
+			this.height = hs.scrollTop;
 		});
 	}
 	scroll(i) {
@@ -188,6 +187,4 @@ export default class Brand extends Vue {
 		let top: number = Element.offsetTop;
 		window.scroll({ top, behavior: 'smooth' });
 	}
-
-
 }
