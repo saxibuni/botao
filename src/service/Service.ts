@@ -11,6 +11,9 @@ export class Service extends EventEmitter {
             console.log(res);
             return success(res);
         }, (err) => {
+						if (err) {
+							console.error("请求出错!");
+						}
             return error && error(0);
         });
     }
