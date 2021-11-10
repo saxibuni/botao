@@ -24,7 +24,6 @@ export default ShangHaiMap;
 		width: 1760px;
 		height: 860px;
 		margin: 210px auto 0 auto;
-		background: gainsboro;
 	}
 
 	.data-list {
