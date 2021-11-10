@@ -387,7 +387,7 @@ export default class Header extends Vue {
 						align-items: center;
 						justify-content: center;
 						opacity: 0;
-						transition: opacity .5s;
+						transition: opacity .3s;
 						pointer-events: none;
 						div{
 							&:not(:first-child){
