@@ -164,9 +164,7 @@
 					<div class="time6">
 						<span>2019-2020</span>
 					</div>
-					<div class="time7">
-						<span>2020-2021</span>
-					</div>
+
 				</div>
 				<div class="inner-img"></div>
 			</div>
