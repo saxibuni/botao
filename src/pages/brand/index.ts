@@ -142,12 +142,12 @@ export default class Brand extends Vue {
 		{
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
-			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+			text: ['捐资援建中国最北部希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		},
 		{
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
-			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+			text: ['捐资援建中国最北部希望尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		},
 		{
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
@@ -201,9 +201,10 @@ export default class Brand extends Vue {
 		this.createDragger();
 	}
 	scroll(i) {
+		const headHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.brand');
 		const Element = brand.querySelector<HTMLElement>(`.select${i}`);
-		let top: number = Element.offsetTop;
+		let top: number = Element.offsetTop-headHeight;
 		window.scroll({ top, behavior: 'smooth' });
 	}
 
@@ -212,7 +213,7 @@ export default class Brand extends Vue {
 			type: 'scrollLeft',
 			inertia: true,
 			cursor: 'auto',
-			edgeResistance: 0.7,
+			edgeResistance: 0.7
 		})[0];
 	}
 
@@ -220,5 +221,4 @@ export default class Brand extends Vue {
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
 	}
-
 }
