@@ -241,7 +241,6 @@ export default class Brand extends Vue {
 		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? this.isShow-- : this.isShow++;
 	}
-<<<<<<< HEAD
 
 	createMovePath() {
 		let path = this.$el.querySelector<SVGPathElement>('.svg .st0');
@@ -266,8 +265,6 @@ export default class Brand extends Vue {
 		});
 	}
 
-=======
->>>>>>> a3f7096ca8566a422f2691411199cca6e6afc66c
 	beforeDestroy() {
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
