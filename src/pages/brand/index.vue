@@ -1079,7 +1079,7 @@ export default index;
 			}
 			ul {
 				position: relative;
-				padding-bottom: 20px;
+				padding-bottom: 87px;
 				display: flex;
 				margin: 137px 0 0 140px;
 				width: 100%;
@@ -1121,7 +1121,7 @@ export default index;
 						.dosh {
 							position: relative;
 							left: -34px;
-							top: -34px;
+							top: -20px;
 							width: 30px;
 							height: 30px;
 							border-radius: 50%;
@@ -1156,8 +1156,11 @@ export default index;
 						}
 						.dosh {
 							left: -34px;
-							top: 28px;
+							top: 42px;
 						}
+					}
+					&:nth-child(3){
+						top: -27px;
 					}
 					&:first-child {
 						margin-left: 205px;

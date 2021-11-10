@@ -166,9 +166,7 @@ export default class Brand extends Vue {
 		{ time: '2011-2014', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2015-2016', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-
-
+		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] }
 	];
 	options1 = {
 		// suffix: '+',
@@ -241,6 +239,13 @@ export default class Brand extends Vue {
 	change(str) {
 		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? this.isShow-- : this.isShow++;
+	}
+	jump(i) {
+		const headHeight = document.querySelector<HTMLElement>('.header').clientHeight;
+		const brand = document.querySelector<HTMLElement>('.brand');
+		const item = brand.querySelector<HTMLElement>(`.select${i}`);
+		let top: number = item.offsetTop - headHeight;
+		window.scroll({ top, behavior: 'smooth' });
 	}
 	beforeDestroy() {
 		this.draggerTarget1.kill();
