@@ -11,31 +11,31 @@
 				</div>
 			</div>
 			<div class="mapInfo">
-				<ShangHaiMap />
+				<ShangHaiMap @data="fn" />
 				<div class="leftContent">
 					<div>
 						<p>
-							<span>20</span>
+							<ICountUp :endVal="20" :options="options1" ref="countup1"></ICountUp>
 							年
 						</p>
 						<p>深耕别墅大宅装饰领域</p>
 					</div>
 					<div>
 						<p>
-							<span>95</span>
+							<ICountUp :endVal="95" :options="options1" ref="countup1"></ICountUp>
 							%
 						</p>
 						<p>上海高端楼盘覆盖率</p>
 					</div>
 					<div>
 						<p>
-							<span>800</span>
+							<ICountUp :endVal="800" :options="options1" ref="countup1"></ICountUp>
 							+
 						</p>
 						<p>每年在建工地</p>
 					</div>
 				</div>
-				<div class="rightContent">
+				<div class="rightContent" v-if="currentSelectId">
 					<h4>浦东</h4>
 					<p>在建56套</p>
 					<p>保利首创颂</p>
@@ -47,6 +47,17 @@
 					<p>绿地东上海</p>
 					<p>浦发东悦城</p>
 					<p>同润蓝美俊庭</p>
+					<div class="line">
+						<div class="line2" v-show="currentSelectId == 'pd'"></div>
+						<div class="line3" v-show="currentSelectId == 'fx'"></div>
+						<div class="line4" v-show="currentSelectId == 'mh'"></div>
+						<div class="line5" v-show="currentSelectId == 'cm'"></div>
+						<div class="line6" v-show="currentSelectId == 'bs'"></div>
+						<div class="line7" v-show="currentSelectId == 'jd'"></div>
+						<div class="line8" v-show="currentSelectId == 'qp'"></div>
+						<div class="line9" v-show="currentSelectId == 'sj'"></div>
+						<div class="line1" v-show="currentSelectId"></div>
+					</div>
 				</div>
 				<img src="~assets/bg_d1_part2.jpg" alt="" />
 			</div>
@@ -86,6 +97,14 @@ export default Building;
 
 <style lang="scss" scoped>
 .craft-building {
+	@keyframes fade-ine {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
 	.main {
 		padding: 0 80px;
 		.tabs {
@@ -214,6 +233,7 @@ export default Building;
 				position: absolute;
 				top: 239px;
 				right: 123px;
+				animation: fade-ine 1s ease forwards;
 				&::after,
 				&::before {
 					content: '';
@@ -249,6 +269,56 @@ export default Building;
 						color: #eb551d;
 						margin-top: 8px;
 						margin-bottom: 10px;
+					}
+				}
+				.line {
+					position: absolute;
+					right: 288px;
+					top: 117px;
+					display: flex;
+					div {
+						height: 1px;
+						background-color: #eb551d;
+						transform-origin: right;
+					}
+					.line1 {
+						width: 230px;
+					}
+					.line2 {
+						width: 120px;
+						transform: rotate(-45deg);
+					}
+					.line3 {
+						width: 320px;
+						transform: rotate(-50deg);
+					}
+					.line3 {
+						width: 320px;
+						transform: rotate(-50deg);
+					}
+					.line4 {
+						width: 300px;
+						transform: rotate(-20deg);
+					}
+					.line5 {
+						width: 270px;
+						transform: rotate(63deg);
+					}
+					.line6 {
+						width: 305px;
+						transform: rotate(28deg);
+					}
+					.line7 {
+						width: 400px;
+						transform: rotate(16deg);
+					}
+					.line8 {
+						width: 430px;
+						transform: rotate(-3deg);
+					}
+					.line9 {
+						width: 425px;
+						transform: rotate(-20deg);
 					}
 				}
 			}
