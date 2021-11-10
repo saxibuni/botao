@@ -21,6 +21,8 @@ Vue.use(BaiduMap, {
 	}
 })
 export default class Brand extends Vue {
+	draggerTarget1: any;
+
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	historyScroll: HTMLElement;
 	height: number = 0;
@@ -206,12 +208,17 @@ export default class Brand extends Vue {
 	}
 
 	createDragger() {
-		let dragger = Draggable.create('.social-response .content-box', {
+		this.draggerTarget1 = Draggable.create('.social-response .content-box', {
 			type: 'scrollLeft',
 			inertia: true,
 			cursor: 'auto',
 			edgeResistance: 0.7,
-		})
+		})[0];
+	}
+
+	beforeDestroy() {
+		this.draggerTarget1.kill();
+		this.draggerTarget1 = null;
 	}
 
 }
