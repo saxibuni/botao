@@ -28,26 +28,26 @@
 				<ul>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的姓名" />
+						<input type="text" v-model="form.userName" placeholder="输入您的姓名" />
 						<b>*</b>
 					</li>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的联系电话" />
+						<input type="text" maxlength="11" v-model="form.phone" placeholder="输入您的联系电话" />
 						<b>*</b>
 					</li>
 					<li>
 						<i></i>
-						<input type="text" placeholder="输入您的装修面积" />
+						<input type="text" v-model="form.area" placeholder="输入您的装修面积" />
 						<b>*</b>
 					</li>
-					<li class="btn">提交需求</li>
+					<li class="btn" @click="onSubmit()">提交需求</li>
 				</ul>
 			</div>
 		</div>
 		<div class="page2">
 			<h2>
-				<span>1000+</span>
+				<ICountUp :endVal="1000" :options="options1"></ICountUp>
 				经典案例 筑梦幸福家
 			</h2>
 			<p>Select cases</p>
@@ -67,7 +67,7 @@
 							地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
 						</p>
 						<div class="btn-box">
-							<Button text="案例详情"></Button>
+							<Button text="案例详情" @click.native="$router.push({name:'case-detail'})"></Button>
 						</div>
 					</div>
 				</div>
@@ -92,34 +92,34 @@
 		<div class="page3">
 			<div class="left">
 				<h2>
-					<span>100+</span>
+					<ICountUp :endVal="100" :options="options1"></ICountUp>
 					位别墅大宅设计大咖
 				</h2>
 				<ul>
 					<li>
 						<div>
-							<b>95</b>
+							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b>10</b>
+							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
 							年
 						</div>
 						<p>以上从业经验</p>
 					</li>
 					<li>
 						<div>
-							<b>8</b>
+							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>
 							支
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b>90</b>
+							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>荣获设计奖项</p>
@@ -196,42 +196,54 @@
 					<ul>
 						<li>
 							<div>
-								138
+								<b>
+								<ICountUp :endVal="138" :options="options2"></ICountUp>
+								</b>
 								<span>项</span>
 							</div>
 							<p>工地管理条例</p>
 						</li>
 						<li>
 							<div>
-								316
+								<b>
+								<ICountUp :endVal="316" :options="options2"></ICountUp>
+								</b>
 								<span>条</span>
 							</div>
 							<p>施工工艺标准</p>
 						</li>
 						<li>
 							<div>
-								14
+								<b>
+								<ICountUp :endVal="14" :options="options2"></ICountUp>
+								</b>
 								<span>项</span>
 							</div>
 							<p>工程技术专利</p>
 						</li>
 						<li>
 							<div>
-								259
+								<b>
+								<ICountUp :endVal="259" :options="options2"></ICountUp>
+								</b>
 								<span>条</span>
 							</div>
 							<p>验收标准</p>
 						</li>
 						<li>
 							<div>
-								600
+								<b>
+								<ICountUp :endVal="600" :options="options2"></ICountUp>
+								</b>
 								<span>个</span>
 							</div>
 							<p>改在建工地</p>
 						</li>
 						<li>
 							<div>
-								100
+								<b>
+								<ICountUp :endVal="100" :options="options2"></ICountUp>
+								</b>
 								<span>+</span>
 							</div>
 							<p>金牌项目经理</p>
@@ -273,7 +285,7 @@
 						<li style="font-size:10px;" :class="{ active: picIndex == i }" v-for="(item, i) in picList" :key="i"><img :src="item" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
-						<Button text="预约参观工地"></Button>
+						<Button text="预约参观工地" @click.native="$router.push({name:'craft-building'})"></Button>
 					</div>
 				</div>
 			</div>
@@ -319,7 +331,7 @@
 			</div>
 			<div class="text">
 				<h3>
-					<span>20+</span>
+					<ICountUp :endVal="20" :options="options1"></ICountUp>
 					年专注别墅大宅 全案引领者
 				</h3>
 				<div>
@@ -343,7 +355,7 @@
 			</h3>
 			<div class="title">
 				<span>News information</span>
-				<div>
+				<div @click="$router.push({name:'owner-voice'})">
 					全部新闻
 					<i></i>
 				</div>
@@ -361,7 +373,7 @@
 						</div>
 					</li>
 					<li class="item">
-						<div class="top">
+						<div class="top" @click="$router.push({name:'strategy-detail'})">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
 								<div>
@@ -373,7 +385,7 @@
 							<p>近期活动</p>
 						</div>
 
-						<div class="items">
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
 							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
 							<p>
 								<span>装修攻略</span>
@@ -381,7 +393,7 @@
 							</p>
 						</div>
 
-						<div class="items">
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
 							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
 							<p>
 								<span>近期活动</span>
@@ -390,7 +402,7 @@
 						</div>
 					</li>
 					<li class="item">
-						<div class="top">
+						<div class="top" @click="$router.push({name:'strategy-detail'})">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
 								<div>
@@ -402,7 +414,7 @@
 							<p>近期活动</p>
 						</div>
 
-						<div class="items">
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
 							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
 							<p>
 								<span>装修攻略</span>
@@ -410,8 +422,8 @@
 							</p>
 						</div>
 
-						<div class="items">
-							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
+						<div class="items" @click="$router.push({name:'strategy-detail'})">
+							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳180°</h4>
 							<p>
 								<span>近期活动</span>
 								<span>24-08</span>
@@ -561,11 +573,13 @@ export default home;
 					&:nth-child(2) {
 						i {
 							background: url('~assets/icons/ic_home_banner_phone.png');
+						  background-size: 100% 100%;
 						}
 					}
 					&:nth-child(3) {
 						i {
 							background: url('~assets/icons/ic_home_banner_area.png');
+					  	background-size: 100% 100%;
 						}
 					}
 					&.btn {
@@ -1424,7 +1438,7 @@ export default home;
 							font-weight: bold;
 							line-height: 55px;
 							font-family: Gilroy-Bold;
-							span {
+							>span {
 								font-size: 18px;
 							}
 						}
@@ -1623,6 +1637,14 @@ export default home;
 		.swiper {
 			position: relative;
 			.swiper-wrapper {
+				@keyframes fadeIn {
+					from {
+						opacity: 0;
+					}
+					to {
+						opacity: 1;
+					}
+				}
 				.swiper-slide {
 					.img-box {
 						position: relative;
@@ -1633,19 +1655,30 @@ export default home;
 							left: 0;
 							width: 100%;
 							height: 100%;
+							opacity: 0;
 							height: 970px;
-							&:not(:first-child) {
-								opacity: 0;
+							&:first-child {
+								opacity: 1;
 							}
-							&:nth-of-type(2) {
-								transition: opacity 0.5s 1.5s;
-							}
-							&:nth-of-type(3) {
-								transition: opacity 0.5s 3s;
-							}
-							&:nth-of-type(4) {
-								transition: opacity 0.5s 4.5s;
-							}
+							// &:not(:first-child) {
+							// 	opacity: 0;
+							// 	// transition: opacity .5s;
+							// 	animation: fadeIn .5s forwards;
+							// }
+							// &:nth-of-type(2) {
+							// 	// transition: opacity 0.5s 1.5s;
+							// 	animation: fadeIn .5s 1.5s forwards;
+
+							// }
+							// &:nth-of-type(3) {
+							// 	// transition: opacity 0.5s 3s;
+							// 	animation: fadeIn .5s 3s forwards;
+
+							// }
+							// &:nth-of-type(4) {
+							// 	// transition: opacity 0.5s 4.5s;
+							// 	animation: fadeIn .5s 4.5s forwards;
+							// }
 						}
 					}
 					.text {
@@ -1697,7 +1730,23 @@ export default home;
 				.swiper-slide-active {
 					.img-box {
 						img {
-							opacity: 1 !important;
+							// opacity: 1 !important;
+							&:not(:first-child) {
+								// transition: opacity .5s;
+								animation: fadeIn 0.5s forwards;
+							}
+							&:nth-of-type(2) {
+								// transition: opacity 0.5s 1.5s;
+								animation: fadeIn 0.5s 1.5s forwards;
+							}
+							&:nth-of-type(3) {
+								// transition: opacity 0.5s 3s;
+								animation: fadeIn 0.5s 3s forwards;
+							}
+							&:nth-of-type(4) {
+								// transition: opacity 0.5s 4.5s;
+								animation: fadeIn 0.5s 4.5s forwards;
+							}
 						}
 					}
 				}

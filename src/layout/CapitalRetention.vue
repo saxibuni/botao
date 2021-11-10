@@ -1,7 +1,7 @@
 <template>
 	<div class="capital-retention" :class="{ active: $store.state.dialogVisible }">
 		<div>
-			<img @click="$store.state.dialogVisible=false" class="close" src="~assets/icons/ic_home_popup_close.png" alt="" />
+			<img @click="$store.state.dialogVisible = false" class="close" src="~assets/icons/ic_home_popup_close.png" alt="" />
 			<div>
 				<div class="from">
 					<h2>装修报价</h2>
@@ -13,23 +13,33 @@
 					<ul>
 						<li>
 							<i></i>
-							<input type="text" placeholder="您的称呼" />
+							<input type="text" v-model="form.userName" placeholder="您的称呼" />
 							<b>*</b>
 						</li>
 						<li>
 							<i></i>
-							<input type="text" placeholder="您的电话" />
+							<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
 							<b>*</b>
 						</li>
 						<li>
 							<i></i>
-							<input type="text" placeholder="您的面积" />
+							<input type="text" v-model="form.area" placeholder="您的面积" />
 							<b>*</b>
 						</li>
 					</ul>
 					<div class="btns">
-						<div>提交</div>
-						<div>重置</div>
+						<div @click="onSubmit()">提交</div>
+						<div
+							@click="
+								form = {
+									userName: '',
+									phone: '',
+									area: ''
+								}
+							"
+						>
+							重置
+						</div>
 					</div>
 				</div>
 				<div class="right">
@@ -85,12 +95,30 @@ export default class CapitalRetention extends Vue {
 	}
 	keyword = '';
 	searchShow: boolean = false;
-	onSearch() {
-		if (!this.keyword) {
-			alert('请输入需要搜索的内容！');
+	form = {
+		userName: '',
+		phone: '',
+		area: ''
+	};
+	onSubmit() {
+		if (!this.form.userName) {
+			alert('请输入您的姓名！');
 			return;
 		}
-		this.searchShow = false;
+		if (this.form.phone.length != 11) {
+			alert('请输入您的联系电话！');
+			return;
+		}
+		if (!this.form.area) {
+			alert('请输入您的装修面积！');
+			return;
+		}
+		alert('提交成功');
+		this.form = {
+			userName: '',
+			phone: '',
+			area: ''
+		};
 	}
 }
 </script>
@@ -106,13 +134,13 @@ export default class CapitalRetention extends Vue {
 	align-items: center;
 	justify-content: center;
 	opacity: 0;
-	transition: .3s;
+	transition: 0.3s;
 	z-index: 999;
 	pointer-events: none;
-	&.active{
+	&.active {
 		opacity: 1;
 		pointer-events: auto;
-		>div{
+		> div {
 			opacity: 1;
 			transform: translateY(0);
 		}
@@ -123,7 +151,7 @@ export default class CapitalRetention extends Vue {
 		background: #ffffff;
 		position: relative;
 		display: flex;
-		transition: .3s;
+		transition: 0.3s;
 		transform: translateY(80px);
 		opacity: 0;
 		.close {
@@ -139,158 +167,158 @@ export default class CapitalRetention extends Vue {
 				transform: rotate(-90deg);
 			}
 		}
-		>div{
+		> div {
 			display: flex;
-		.from {
-			padding: 54px 0 0 80px;
-			h2 {
-				font-size: 36px;
-				height: 35px;
-				font-weight: 400;
-				color: #000000;
-				line-height: 42px;
-			}
-			h3 {
-				height: 16px;
-				font-size: 16px;
-				font-weight: 400;
-				color: #666666;
-				margin: 19px 0 45px 0;
-				span {
-					color: rgba(237, 84, 0, 1);
-				}
-			}
-			ul {
-				li {
-					width: 365px;
-					height: 45px;
-					background: #f6f8f9;
-					margin-bottom: 20px;
-					display: flex;
-					align-items: center;
-					padding: 0 30px;
-					position: relative;
-					i {
-						width: 18px;
-						height: 20px;
-						background: url('~assets/icons/ic_home_footer__user_gray.png') no-repeat;
-						background-size: 100% auto;
-					}
-					b {
-						position: absolute;
-						right: 20px;
-						top: 50%;
-						transform: translateY(-30%);
-						font-size: 18px;
-						font-weight: 400;
-						color: #ed5400;
-					}
-					input {
-						height: 100%;
-						background: none;
-						border: none;
-						color: #000;
-						font-size: 18px;
-						font-weight: bold;
-						padding-left: 19px;
-						&::placeholder {
-							color: #000;
-							font-weight: bold;
-						}
-					}
-					&:nth-child(2) {
-						i {
-							background: url('~assets/icons/ic_home_footer_fhone_gray.png') no-repeat;
-							background-size: 100% auto;
-						}
-					}
-					&:nth-child(3) {
-						i {
-							background: url('~assets/icons/ic_home_footer_area_gray.png') no-repeat;
-							background-size: 100% auto;
-						}
-					}
-				}
-			}
-			.btns {
-				width: 365px;
-				display: flex;
-				margin-top: 35px;
-				justify-content: space-between;
-				div {
-					width: 168px;
-					height: 45px;
-					background: #ed5400;
-					line-height: 45px;
-					text-align: center;
-					color: #fff;
-					cursor: pointer;
-					font-weight: 700;
-					font-size: 18px;
-					&:nth-child(2) {
-						background: #122133;
-					}
-				}
-			}
-		}
-		.right{
-			margin-left: 95px;
-			margin-top: 115px;
-			>div{
-				width: 430px;
-				height: 260px;
-				border: 1px solid #E8E8E8;
-				padding-top: 40px;
-				h3{
-					font-size: 22px;
+			.from {
+				padding: 54px 0 0 80px;
+				h2 {
+					font-size: 36px;
+					height: 35px;
 					font-weight: 400;
 					color: #000000;
-					text-align: center;
-					span{
-						font-size: 35px;
+					line-height: 42px;
+				}
+				h3 {
+					height: 16px;
+					font-size: 16px;
+					font-weight: 400;
+					color: #666666;
+					margin: 19px 0 45px 0;
+					span {
 						color: rgba(237, 84, 0, 1);
 					}
 				}
-				ul{
-					width: 286px;
-					display: flex;
-					flex-wrap: wrap;
-					margin: 0 auto;
-					margin-top: 45px;
-					li{
-						width: 50%;
-						height: 17px;
+				ul {
+					li {
+						width: 365px;
+						height: 45px;
+						background: #f6f8f9;
+						margin-bottom: 20px;
 						display: flex;
 						align-items: center;
-						&:nth-child(1),
-						&:nth-child(2){
-							margin-bottom: 30px;
+						padding: 0 30px;
+						position: relative;
+						i {
+							width: 18px;
+							height: 20px;
+							background: url('~assets/icons/ic_home_footer__user_gray.png') no-repeat;
+							background-size: 100% auto;
 						}
-						b{
-							font-size: 16px;
-							font-weight: 600;
-							color: #333333;
+						b {
+							position: absolute;
+							right: 20px;
+							top: 50%;
+							transform: translateY(-30%);
+							font-size: 18px;
+							font-weight: 400;
+							color: #ed5400;
 						}
-						span{
-							font-size: 16px;
-							color: rgba(237, 84, 0, 1);
-							font-weight: 600;
-							width: 55px;
-							font-family: Gilroy-Bold;
+						input {
+							height: 100%;
+							background: none;
+							border: none;
+							color: #000;
+							font-size: 18px;
+							font-weight: bold;
+							padding-left: 19px;
+							&::placeholder {
+								color: #000;
+								font-weight: bold;
+							}
+						}
+						&:nth-child(2) {
+							i {
+								background: url('~assets/icons/ic_home_footer_fhone_gray.png') no-repeat;
+								background-size: 100% auto;
+							}
+						}
+						&:nth-child(3) {
+							i {
+								background: url('~assets/icons/ic_home_footer_area_gray.png') no-repeat;
+								background-size: 100% auto;
+							}
 						}
 					}
 				}
-
+				.btns {
+					width: 365px;
+					display: flex;
+					margin-top: 35px;
+					justify-content: space-between;
+					div {
+						width: 168px;
+						height: 45px;
+						background: #ed5400;
+						line-height: 45px;
+						text-align: center;
+						color: #fff;
+						cursor: pointer;
+						font-weight: 700;
+						font-size: 18px;
+						&:nth-child(2) {
+							background: #122133;
+						}
+					}
+				}
 			}
-			p{
-				font-size: 16px;
-				font-weight: 400;
-				color: #999999;
-				line-height: 45px;
-				text-align: center;
-				margin-top:18px;
+			.right {
+				margin-left: 95px;
+				margin-top: 115px;
+				> div {
+					width: 430px;
+					height: 260px;
+					border: 1px solid #e8e8e8;
+					padding-top: 40px;
+					h3 {
+						font-size: 22px;
+						font-weight: 400;
+						color: #000000;
+						text-align: center;
+						span {
+							font-size: 35px;
+							color: rgba(237, 84, 0, 1);
+						}
+					}
+					ul {
+						width: 286px;
+						display: flex;
+						flex-wrap: wrap;
+						margin: 0 auto;
+						margin-top: 45px;
+						li {
+							width: 50%;
+							height: 17px;
+							display: flex;
+							align-items: center;
+							&:nth-child(1),
+							&:nth-child(2) {
+								margin-bottom: 30px;
+							}
+							b {
+								font-size: 16px;
+								font-weight: 600;
+								color: #333333;
+							}
+							span {
+								font-size: 16px;
+								color: rgba(237, 84, 0, 1);
+								font-weight: 600;
+								width: 55px;
+								font-family: Gilroy-Bold;
+							}
+						}
+					}
+				}
+				p {
+					font-size: 16px;
+					font-weight: 400;
+					color: #999999;
+					line-height: 45px;
+					text-align: center;
+					margin-top: 18px;
+				}
 			}
-		}}
+		}
 	}
 }
 </style>

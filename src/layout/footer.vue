@@ -11,20 +11,20 @@
 					<ul>
 						<li>
 							<i></i>
-							<input type="text" placeholder="输入您的姓名" />
+							<input type="text" v-model="form.userName" placeholder="输入您的姓名" />
 							<b>*</b>
 						</li>
 						<li>
 							<i></i>
-							<input type="text" placeholder="输入您的联系电话" />
+							<input type="text" v-model="form.phone" maxlength="11" placeholder="输入您的联系电话" />
 							<b>*</b>
 						</li>
 						<li>
 							<i></i>
-							<input type="text" placeholder="输入您的装修面积" />
+							<input type="text" v-model="form.area" placeholder="输入您的装修面积" />
 							<b>*</b>
 						</li>
-						<li class="btn">免费获取报价</li>
+						<li class="btn" @click="onSubmit()">免费获取报价</li>
 					</ul>
 				</div>
 				<ul>
@@ -92,66 +92,97 @@ import { Vue, Component } from 'vue-property-decorator';
 
 @Component
 export default class Footer extends Vue {
-		navList = [
+	form = {
+		userName:'',
+		phone:'',
+		area:'',
+	}
+	navList = [
 		{
 			title: '精选案例',
+			en: 'Selected case',
 			url: 'case',
 			son: [
-				{ title: '墅装案例', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
-				{ title: 'VR装修体验', icon:require("../assets/icons/ic_home_drop_experience.png"),url:'' }
+				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'case-list' },
+				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'case-listvr' }
 			]
 		},
 		{
 			title: '设计名人堂',
 			url: 'design',
+			en: 'Design Hall of Fame',
 			son: [
-				{ title: '擅长户型', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
-				{ title: '擅长风格', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'' },
-				{ title: '设计师级别', icon: require("../assets/icons/ic_home_drop_ex.png"),url:'' }
+				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
+				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
+				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' }
 			]
 		},
 		{
 			title: '精工匠艺',
 			url: 'craft-building',
+			en: 'fine craftsmen skill',
 			son: [
-				{ title: '在施工地', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
-				{ title: '工艺标准', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
-				{ title: '管理体系', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
+				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-building' },
+				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-team' },
+				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-manager' }
 			]
 		},
 		{
 			title: '全案服务',
-			url: 'whole-decoration',
+			url: 'cherry-pick',
+			en: 'A whole service',
 			son: [
-				{ title: '严选材料', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
-				{ title: '软装生活', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
-				{ title: '无忧售后', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
+				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
+				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'soft-decoration' },
+				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'whole-decoration' }
 			]
 		},
 		{
 			title: '最新资讯',
 			url: 'information',
+			en: 'latest information',
 			son: [
-				{ title: '公司新闻', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
-				{ title: '装修攻略', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
-				{ title: '近期活动', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''},
-				{ title: '招贤纳士', icon: require("../assets/icons/ic_home_drop_ex.png"),url:''}
+				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
+				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
+				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
+				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'join-us' }
 			]
 		},
 		{
 			title: '波涛品牌',
 			url: 'brand',
+			en: 'botao brand',
 			son: [
-				{ title: '品牌介绍', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
-				{ title: '品牌数据', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
-				{ title: '企业理念', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
-				{ title: '发展历程', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
-				{ title: '荣誉资质', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
-				{ title: '社会责任', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'},
-				{ title: '联系我们', icon:require("../assets/icons/ic_home_drop_ex.png"),url:'brand'}
+				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'1' },
+				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'2' },
+				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'3'},
+				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'4' },
+				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'5' },
+				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'6' },
+				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'7'}
 			]
 		}
 	];
+	onSubmit(){
+		if(!this.form.userName){
+			alert('请输入您的姓名！')
+			return
+		}
+		if(this.form.phone.length!=11){
+			alert('请输入您的联系电话！')
+			return
+		}
+		if(!this.form.area){
+			alert('请输入您的装修面积！')
+			return
+		}
+		alert('提交成功')
+		this.form = {
+				userName:'',
+				phone:'',
+				area:'',
+		}
+	}
 }
 </script>
 <style scoped lang="scss">

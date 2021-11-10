@@ -8,10 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 PIXI.utils.skipHello();
 import utils from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
+import ICountUp from 'root/components/countup.vue';
 
 @Component({
 	components: {
-		Button
+		Button,
+		ICountUp
 	}
 })
 export default class home extends Vue {
@@ -153,6 +155,13 @@ export default class home extends Vue {
 			nextEl: '.next3',
 		}
 	};
+	options1 = {
+		suffix: '+',
+		useGrouping: false,
+	};
+	options2= {
+		useGrouping: false,
+	};
 
 	mounted() {
 		this.initSpineAni();
@@ -228,5 +237,30 @@ export default class home extends Vue {
 		setTimeout(()=>{
 			this.textActive=true;
 		},300)
+	}
+	form = {
+		userName:'',
+		phone:'',
+		area:'',
+	}
+	onSubmit(){
+		if(!this.form.userName){
+			alert('请输入您的姓名！')
+			return
+		}
+		if(this.form.phone.length!=11){
+			alert('请输入您的联系电话！')
+			return
+		}
+		if(!this.form.area){
+			alert('请输入您的装修面积！')
+			return
+		}
+		alert('提交成功')
+		this.form = {
+				userName:'',
+				phone:'',
+				area:'',
+		}
 	}
 }
