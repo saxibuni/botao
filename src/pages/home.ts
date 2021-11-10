@@ -151,8 +151,12 @@ export default class home extends Vue {
 			nextEl: '.next3'
 		},
 		on: {
+
 			slideChangeTransitionEnd: function() {
-				this.slides[this.activeIndex].classList.toggle('active');
+				for (let i = 0; i <= this.slides.length - 1; i++) {
+					this.slides[i].classList.remove('active');
+				}
+				this.slides[this.activeIndex].classList.add('active');
 			}
 		}
 	};
@@ -239,28 +243,28 @@ export default class home extends Vue {
 		}, 300);
 	}
 	form = {
-		userName:'',
-		phone:'',
-		area:'',
-	}
-	onSubmit(){
-		if(!this.form.userName){
-			alert('请输入您的姓名！')
-			return
+		userName: '',
+		phone: '',
+		area: ''
+	};
+	onSubmit() {
+		if (!this.form.userName) {
+			alert('请输入您的姓名！');
+			return;
 		}
-		if(this.form.phone.length!=11){
-			alert('请输入您的联系电话！')
-			return
+		if (this.form.phone.length != 11) {
+			alert('请输入您的联系电话！');
+			return;
 		}
-		if(!this.form.area){
-			alert('请输入您的装修面积！')
-			return
+		if (!this.form.area) {
+			alert('请输入您的装修面积！');
+			return;
 		}
-		alert('提交成功')
+		alert('提交成功');
 		this.form = {
-				userName:'',
-				phone:'',
-				area:'',
-		}
+			userName: '',
+			phone: '',
+			area: ''
+		};
 	}
 }
