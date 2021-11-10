@@ -61,7 +61,7 @@ export default class home extends Vue {
 		imgSrc:[require('../assets/bg_home_b5_b1.jpg'),require('../assets/bg_home_b5_b2.jpg'),require('../assets/bg_home_b5_b3.jpg'),require('../assets/bg_home_b5_b4.jpg')]
 	},
 	{
-		imgSrc:[require('../assets/bg_home_b5_c2.jpg'),require('../assets/bg_home_b5_c3.jpg')]
+		imgSrc:[require('../assets/bg_home_b5_c1.jpg'),require('../assets/bg_home_b5_c2.jpg'),require('../assets/bg_home_b5_c3.jpg')]
 	}]
 	picList=[
 		require("../assets/bg_home_b4_right1.png"),
