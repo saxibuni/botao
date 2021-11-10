@@ -139,6 +139,12 @@ export default class home extends Vue {
 	mounted() {
 		this.initSpineAni();
 		this.initScrollTrigger();
+		setTimeout(()=>{
+			this.left = this.$refs.item17[0].offsetLeft;
+			this.top = this.$refs.item17[0].offsetTop;
+			this.width = this.$refs.item17[0].clientWidth;
+			this.height = this.$refs.item17[0].clientHeight;
+		})
 	}
 
 	initSpineAni() {
