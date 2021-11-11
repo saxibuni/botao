@@ -272,12 +272,12 @@ html {
 	.botao-brand {
 		.left {
 			opacity: 0;
-			animation: slide-left-in 1s, fade-in 1s;
+			animation: slide-left-in 2s, fade-in 2s;
 			animation-fill-mode: forwards;
 		}
 		.right-box {
 			opacity: 0;
-			animation: slide-right-in 1s, fade-in 1s;
+			animation: slide-right-in 2s, fade-in 2s;
 			animation-fill-mode: forwards;
 		}
 	}
@@ -367,12 +367,12 @@ html {
 	.contact-us {
 		.left {
 			opacity: 0;
-			animation: slide-left-in 1s, fade-in 1s;
+			animation: slide-left-in 2s, fade-in 2s;
 			animation-fill-mode: forwards;
 		}
 		.right {
 			opacity: 0;
-			animation: slide-right-in 1s, fade-in 1s;
+			animation: slide-right-in 2s, fade-in 2s;
 			animation-fill-mode: forwards;
 		}
 	}

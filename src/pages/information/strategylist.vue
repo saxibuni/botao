@@ -1,6 +1,6 @@
 <template>
 	<div class="strategy-list">
-		<!-- <banner :data="BannerData"></banner> -->
+		<banner :data="BannerData"></banner>
 		<!-- 装修攻略列表 -->
 		<div class="decoration-strategy">
 			<h2>装修攻略</h2>
