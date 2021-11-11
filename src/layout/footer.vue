@@ -30,7 +30,7 @@
 				<ul>
 					<li v-for="(item,i) in navList" :key="i">
 						<h5>{{item.title}}</h5>
-						<p @click="$router.push({name:it.url,query:{number:it.query}})" v-for="(it,index) in item.son" :key="index">{{it.title}}</p>
+						<p @click="$router.push({name:it.url,params:{number:it.query}})" v-for="(it,index) in item.son" :key="index">{{it.title}}</p>
 					</li>
 				</ul>
 			</div>

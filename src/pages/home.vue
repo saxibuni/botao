@@ -274,7 +274,7 @@
 						<li style="font-size:10px;" :class="{ active: picIndex == i }" v-for="(item, i) in picList" :key="i"><img :src="item" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
-						<Button text="预约参观工地" @click.native="$router.push({name:'craft-building'})"></Button>
+						<Button text="预约参观工地" @click.native="$store.state.dialogDesign.visit=true"></Button>
 					</div>
 				</div>
 			</div>
@@ -667,7 +667,7 @@ export default home;
 				position: relative;
 				text-align: center;
 				line-height: 39px;
-				transition: 0.5s;
+				transition: border 0.5s , color 0.5s;
 				border: 1px solid transparent;
 				&::after,
 				&::before {
@@ -729,9 +729,8 @@ export default home;
 				img {
 					width: 100%;
 					height: 100%;
-					transition: .3s;
+					transition:opacity .3s;
 					opacity: .3;
-
 					&.active{
 						opacity: 1;
 					}
@@ -740,14 +739,10 @@ export default home;
 					position: absolute;
 					top: 206px;
 					left: 100px;
-					transition: .83s;
-					opacity: .3;
+					transition:opacity .83s;
 					opacity: 0;
 					animation: slide-down-in 1s, fade-in 1s;
 					animation-fill-mode: forwards;
-					&.active{
-						opacity: 1;
-					}
 					h3 {
 						height: 32px;
 						font-size: 34px;
@@ -1441,7 +1436,7 @@ export default home;
 					z-index: 3;
 					cursor: pointer;
 					transform: translate(-50%, -50%);
-					transition: 0.3s;
+					transition:transform 0.3s;
 					&:hover {
 						transform: translate(-50%, -50%) scale(1.1);
 					}
@@ -2077,7 +2072,7 @@ export default home;
 							height: 90px;
 							background: url(~assets/icons/ic_home_b3_play.png) no-repeat;
 							background-size: 100% 100%;
-							transition: 0.3s;
+							transition:transform 0.3s;
 							&:hover {
 								transform: translate(-50%, -50%) scale(1.1);
 							}

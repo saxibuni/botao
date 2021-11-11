@@ -16,7 +16,7 @@
 						{{ item.title }}
 						<b></b>
 						<div class="nav-son">
-							<div v-for="(it, i) in item.son" :key="i" @click.stop="$router.push({name:it.url,query:{number:it.query}})">
+							<div v-for="(it, i) in item.son" :key="i" @click.stop="$router.push({name:it.url,params:{number:it.query}})">
 								<span>
 									<i>
 										<img :src="it.icon" alt="">
