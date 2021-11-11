@@ -299,15 +299,20 @@ export default class Brand extends Vue {
 	}
 
 	change(str) {
-		if ((this.progressIndex == 0 && str == 'pre') || (this.progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
-		str == 'pre' ? this.progressIndex-- : this.progressIndex++;
+		let progressIndex = this.progressIndex;
+		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
+		str == 'pre' ? progressIndex-- : progressIndex++;
 
-		// let scrollTop = this.pos[this.progressIndex] - this.pos[0];
-		// console.log(scrollTop);
-		// gsap.to('.history-scroll', {
-		// 	duration: 0.5,
-		// 	scrollTop: scrollTop
-		// });
+		let offset = 20;
+		let height = this.pos[progressIndex] + offset;
+		let progress = (height - 290) / (1245 - 290);
+		let totalScroll = 1245 - 716;
+		let distance = progress * totalScroll;
+
+		gsap.to('.history-scroll', {
+			duration: 0.5,
+			scrollTop: distance
+		});
 	}
 
 	jump(i) {
