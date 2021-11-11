@@ -177,6 +177,21 @@ export default class Brand extends Vue {
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
 			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+			time: '2009',
+			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		}
 	];
 	devolopeList = [
