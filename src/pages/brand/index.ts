@@ -260,6 +260,8 @@ export default class Brand extends Vue {
 			onUpdate: self => {
 				let offset = self.progress * (1245 - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
+				console.log(offset + 290);
+
 				this.calcProgressIndex(offset + 290, this.pos);
 			}
 		});
@@ -271,6 +273,7 @@ export default class Brand extends Vue {
 				this.progressIndex = i;
 				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
 				times[i].style.opacity = '1';
+				this.isShow=i
 			} else {
 				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
 				times[i].style.opacity = '0';
@@ -282,20 +285,9 @@ export default class Brand extends Vue {
 	change(str) {
 		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? this.isShow-- : this.isShow++;
-		this.scrollToTarget(this.isShow);
 	}
 
-	scrollToTarget(i: number) {
-		let distance = this.pos[i];
-		const container = document.querySelector('.history-scroll');
-		// gsap.to(container, {
-		// 	// duration: distance / 4000,
-		// 	// ease: 'power2',
-		// 	scrollTo: {
-		// 		y: 312
-		// 	}
-		// });
-	}
+
 
 	jump(i) {
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
