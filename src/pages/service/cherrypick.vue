@@ -507,6 +507,7 @@ export default CheckPick;
 			left: 50%;
 			transform: translateX(-50%);
 			bottom: -1px;
+			clip-path: ellipse(330px 330px at 50% 100%);
 		}
 		.circle {
 			width: 1413px;
@@ -521,6 +522,7 @@ export default CheckPick;
 			justify-content: center;
 			align-items: center;
 			.circle2 {
+				clip-path: circle(50%);
 				width: 1329px;
 				height: 1329px;
 				border-radius: 50%;
@@ -587,11 +589,11 @@ export default CheckPick;
 					background-color: #eeeeee;
 					width: 250px;
 					height: 250px;
-					border-radius: 50%;
 					display: flex;
 					justify-content: center;
 					align-items: center;
 					transition: all 0.3s;
+					z-index: 23;
 					p {
 						font-size: 22px;
 						color: #000000;
@@ -729,7 +731,7 @@ export default CheckPick;
 					transform: rotate(-90deg);
 					img {
 						position: absolute;
-						z-index: 99;
+						z-index: 22;
 						transform: rotate(67deg) scale(0.95);
 						top: -32px;
 						left: 463px;
@@ -739,6 +741,7 @@ export default CheckPick;
 						top: 134px;
 						border-radius: 0 !important;
 						transform: rotate(69deg);
+						clip-path: ellipse(510px 510px at 204% 100%);
 						p {
 							left: 82px;
 							top: 142px;
@@ -773,6 +776,10 @@ export default CheckPick;
 				transform: rotate(21deg);
 				.imgBox {
 					overflow: hidden;
+					img {
+						width:  300px;
+						height: 300px;
+					}
 					.mask {
 						position: absolute;
 						width: 200px;
