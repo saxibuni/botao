@@ -236,7 +236,7 @@ export default class Brand extends Vue {
 		this.createTrigger();
 		this.initPathTarget();
 
-		let number = this.$route.query.number;
+		let number = this.$route.params.number;
 		if (number) {
 			setTimeout(() => {
 				this.jump(number);

@@ -19,7 +19,7 @@
 				<h3>{{ item.en }}</h3>
 				<h4></h4>
 				<div>
-					<h5 v-for="(it, i) in item.son" :key="i" @click="navShow = false;$router.push({name:it.url,query:{number:it.query}})">
+					<h5 v-for="(it, i) in item.son" :key="i" @click="navShow = false;$router.push({name:it.url,params:{number:it.query}})">
 						{{ it.title }}
 					</h5>
 				</div>
