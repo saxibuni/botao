@@ -32,22 +32,24 @@
 		<div class="list">
 			<ul>
 				<li v-for="i in 6" :key="i">
-					<div class="imgBox">
-						<img src="~assets/bg_b3_part2_vr1.jpg" alt="" />
-					</div>
-					<div class="content">
-						<div class="left">
-							<p>上海东方颐城</p>
-							<p>
-								<span>现代风格</span>
-								<span>独栋别墅</span>
-								<span>120㎡</span>
-							</p>
+					<a href="https://vr.justeasy.cn/view/aaf955dd50e59970-1598584621.html" target="_blank">
+						<div class="imgBox">
+							<img src="~assets/bg_b3_part2_vr1.jpg" alt="" />
 						</div>
-						<div class="right">
-							<Button :text="'VR全景体验'" />
+						<div class="content">
+							<div class="left">
+								<p>上海东方颐城</p>
+								<p>
+									<span>现代风格</span>
+									<span>独栋别墅</span>
+									<span>120㎡</span>
+								</p>
+							</div>
+							<div class="right">
+								<Button :text="'VR全景体验'" />
+							</div>
 						</div>
-					</div>
+					</a>
 				</li>
 			</ul>
 		</div>
@@ -209,6 +211,10 @@ export default CaseListVr;
 			justify-content: space-between;
 			li {
 				margin-bottom: 60px;
+				cursor: pointer;
+				a {
+					text-decoration: none;
+				}
 				.imgBox {
 					width: 855px;
 					height: 520px;

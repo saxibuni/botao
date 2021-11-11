@@ -109,7 +109,8 @@
 								<el-tab-pane name="1">
 									<span slot="label">
 										<img src="~assets/icons/ic_d3_part6_a2.png" alt="" v-if="activeName == 1" />
-										<img src="~assets/icons/ic_d3_part6_a1.png" alt="" v-else />
+										<!-- <img src="~assets/icons/ic_d3_part6_a1.png" alt="" v-else /> -->
+										<i v-else></i>
 										<p>7重质量巡检</p>
 									</span>
 									<div class="content">
@@ -127,7 +128,8 @@
 								<el-tab-pane name="2">
 									<span slot="label">
 										<img src="~assets/icons/ic_d3_part6_b2.png" alt="" v-if="activeName == 2" />
-										<img src="~assets/icons/ic_d3_part6_b1.png" alt="" v-else />
+										<!-- <img src="~assets/icons/ic_d3_part6_b1.png" alt="" v-else /> -->
+										<i v-else></i>
 										<p>董事长投诉热线</p>
 									</span>
 									<div class="content">
@@ -145,7 +147,8 @@
 								<el-tab-pane name="3">
 									<span slot="label">
 										<img src="~assets/icons/ic_d3_part6_c2.png" alt="" v-if="activeName == 3" />
-										<img src="~assets/icons/ic_d3_part6_c1.png" alt="" v-else />
+										<!-- <img src="~assets/icons/ic_d3_part6_c1.png" alt="" v-else /> -->
+										<i v-else></i>
 										<p>独立质检部门</p>
 									</span>
 									<div class="content">
@@ -163,7 +166,8 @@
 								<el-tab-pane name="4">
 									<span slot="label">
 										<img src="~assets/icons/ic_d3_part6_d2.png" alt="" v-if="activeName == 4" />
-										<img src="~assets/icons/ic_d3_part6_d1.png" alt="" v-else />
+										<!-- <img src="~assets/icons/ic_d3_part6_d1.png" alt="" v-else /> -->
+										<i v-else></i>
 										<p>微信群/工地直播</p>
 									</span>
 									<div class="content">
@@ -682,6 +686,78 @@ export default Manager;
 											padding: 0;
 											// margin-right: 95px;
 											padding-right: 95px;
+											&:nth-child(2) {
+												span {
+													i {
+														display: block;
+														background: url('~assets/icons/ic_d3_part6_a1.png') no-repeat;
+														background-size: 100% 100%;
+														width: 41px;
+														height: 41px;
+													}
+												}
+												&:hover {
+													span {
+														i {
+															background: url('~assets/icons/ic_d3_part6_a2.png') no-repeat;
+														}
+													}
+												}
+											}
+											&:nth-child(3) {
+												span {
+													i {
+														display: block;
+														background: url('~assets/icons/ic_d3_part6_b1.png') no-repeat;
+														background-size: 100% 100%;
+														width: 41px;
+														height: 40px;
+													}
+												}
+												&:hover {
+													span {
+														i {
+															background: url('~assets/icons/ic_d3_part6_b2.png') no-repeat;
+														}
+													}
+												}
+											}
+											&:nth-child(4) {
+												span {
+													i {
+														display: block;
+														background: url('~assets/icons/ic_d3_part6_c1.png') no-repeat;
+														background-size: 100% 100%;
+														width: 47px;
+														height: 46px;
+													}
+												}
+												&:hover {
+													span {
+														i {
+															background: url('~assets/icons/ic_d3_part6_c2.png') no-repeat;
+														}
+													}
+												}
+											}
+											&:nth-child(5) {
+												span {
+													i {
+														display: block;
+														background: url('~assets/icons/ic_d3_part6_d1.png') no-repeat;
+														background-size: 100% 100%;
+														width: 43px;
+														height: 42px;
+													}
+												}
+												&:hover {
+													span {
+														i {
+															background: url('~assets/icons/ic_d3_part6_d2.png') no-repeat;
+														}
+													}
+												}
+											}
 											&:hover {
 												color: #eb551d !important;
 											}
