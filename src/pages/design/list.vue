@@ -108,8 +108,10 @@ export default DesignList;
 					height: 18px;
 					background: url('~assets/icons/bg_b1_part1_search.png') no-repeat;
 					background-size: 100% 100%;
+					cursor: pointer;
+					transition: transform .3s;
 					&:hover {
-						cursor: pointer;
+					 transform: translateY(-50%) scale(1.1);
 					}
 				}
 			}
@@ -121,8 +123,10 @@ export default DesignList;
 					color: #333333;
 					margin-right: 20px;
 					// font-weight: 600;
-					&:hover {
-						cursor: pointer;
+					cursor: pointer;
+					transition: color .3s;
+					&:hover{
+						color: #ed5400;
 					}
 				}
 			}

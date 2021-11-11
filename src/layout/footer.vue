@@ -79,8 +79,12 @@
 					 友情链接：<a href="">波涛公装</a> | <a href="">波涛装饰</a>
 				</div>
 				<div class="icons">
-					<i></i>
-					<i></i>
+					<i>
+						<div>
+							<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+						</div>
+					</i>
+					<i @click="wbJump()"></i>
 				</div>
 			</div>
 		</div>
@@ -194,6 +198,9 @@ export default class Footer extends Vue {
 			phone: '',
 			area: ''
 		};
+	}
+	wbJump(){
+		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 https://www.baidu.com`)
 	}
 }
 </script>
@@ -333,6 +340,29 @@ export default class Footer extends Vue {
 				display: flex;
 				color: #fff;
 				li {
+					 &:hover{
+							i{
+									transition: all .4s;
+									animation: bounce-up 1.5s linear infinite;
+							}
+						}
+						@keyframes bounce-up {
+								10% {
+										transform: rotate(20deg);
+									}
+									20% {
+										transform: rotate(-10deg);
+									}
+									30% {
+										transform: rotate(5deg);
+									}
+									40% {
+										transform: rotate(-5deg);
+									}
+									50%,100% {
+										transform: rotate(0deg);
+									}
+						}
 					> div {
 						height: 13px;
 						font-size: 16px;
@@ -354,7 +384,6 @@ export default class Footer extends Vue {
 					h3 {
 						height: 17px;
 						font-size: 20px;
-						font-family: Gilroy;
 						font-weight: bold;
 						color: #ffffff;
 						margin-top: 16px;
@@ -412,12 +441,33 @@ export default class Footer extends Vue {
 					background-position: -11PX -11PX;
 					margin-left: 21px;
 					cursor: pointer;
+					position: relative;
 					transition: .3s;
 					&:nth-child(2){
 						background-position: -41PX -11PX;
 					}
 					&:hover{
 						background-position-y: -43PX;
+						>div{
+							opacity: 1;
+							transform: translateX(-50%) translateX(0);
+						}
+					}
+					>div{
+						transition:opacity .5s,transform .5s;
+						opacity: 0;
+						pointer-events: none;
+						background: #fff;
+						position: absolute;
+						left: 50%;
+						transform: translateX(-50%) translateY(-10%);
+						bottom: 150%;
+						width: 150px;
+						height: 150px;
+						img{
+							width: 150px;
+							height: 150px;
+						}
 					}
 				}
 			}
