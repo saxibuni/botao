@@ -1,6 +1,9 @@
 <template>
 	<div class="shanghai-map-wrapper">
-		<div class="map-box"></div>
+		<div class="map-bg">
+		</div>
+		<div class="map-box">
+		</div>
 		<ul class="data-list">
 			<li class="item" v-for="item in data" :class="[item.id, {'active': item.id == currentSelectId}]" :key="item.id">
 				<i></i>
@@ -20,10 +23,17 @@ export default ShangHaiMap;
 <style lang="scss">
 .shanghai-map-wrapper {
 	position: relative;
+	.map-bg {
+		width: 1760px;
+		height: 860px;
+		position: absolute;
+		background: url('~assets/shanghaimap_bg.png') no-repeat;
+		background-size: 100% 100%;
+	}
+
 	.map-box {
 		width: 1760px;
 		height: 860px;
-		margin: 210px auto 0 auto;
 	}
 
 	.data-list {

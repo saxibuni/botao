@@ -163,25 +163,37 @@ export default class Footer extends Vue {
 			]
 		}
 	];
-	onSubmit(){
-		if(!this.form.userName){
-			alert('请输入您的姓名！')
-			return
+	onSubmit() {
+		if (!this.form.userName) {
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入您的姓名'
+			}
+			return;
 		}
-		if(this.form.phone.length!=11){
-			alert('请输入您的联系电话！')
-			return
+		if (this.form.phone.length != 11) {
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入正确的联系电话'
+			}
+			return;
 		}
-		if(!this.form.area){
-			alert('请输入您的装修面积！')
-			return
+		if (!this.form.area) {
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入您的装修面积'
+			}
+			return;
 		}
-		alert('提交成功')
+		this.$store.state.dialog={
+			state:1,
+			text:'提交成功'
+		}
 		this.form = {
-				userName:'',
-				phone:'',
-				area:'',
-		}
+			userName: '',
+			phone: '',
+			area: ''
+		};
 	}
 }
 </script>
@@ -246,8 +258,10 @@ export default class Footer extends Vue {
 						border: none;
 						color: #fff;
 						font-size: 18px;
+						font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 						padding-left: 19px;
 						&::placeholder {
+							font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 							color: #999999;
 						}
 					}

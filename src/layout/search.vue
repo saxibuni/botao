@@ -42,7 +42,10 @@ export default class search extends Vue {
 	searchShow: boolean = false;
 	onSearch() {
 		if (!this.keyword) {
-			alert('请输入需要搜索的内容！');
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入需要搜索的内容'
+			}
 			return;
 		}
 		this.searchShow = false;
@@ -113,9 +116,11 @@ export default class search extends Vue {
 				font-size: 18px;
 				border: none;
 				padding-left: 50px;
+				font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 				&::placeholder{
 					font-size: 18px;
 					font-weight: 400;
+					font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 					color: #888888;
 				}
 			}

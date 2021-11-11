@@ -556,9 +556,11 @@ export default home;
 						background: none;
 						border: none;
 						color: #fff;
+						font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 						font-size: 18px;
 						padding-left: 19px;
 						&::placeholder {
+				  		font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 							color: #999999;
 						}
 					}
@@ -620,7 +622,6 @@ export default home;
 		> h2 {
 			height: 53px;
 			font-size: 56px;
-			font-family: Gilroy;
 			font-weight: bold;
 			line-height: 53px;
 			color: #000000;
@@ -632,6 +633,7 @@ export default home;
 				color: #ed5400;
 				width: 180px;
 				display: inline-block;
+				font-family: Gilroy-Bold;
 			}
 		}
 		> p {

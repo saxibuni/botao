@@ -8,13 +8,19 @@ export interface State {
 	dialogVisible: boolean;
 	footData: any;
 	menuData: any;
+	dialog:any;
 }
 
 let state: State = {
 	state: ScreenState.PORTRAIT,
 	dialogVisible: false,
 	footData: null,
-	menuData: null
+	menuData: null,
+	dialog:{
+		state:0,
+		text: '',
+		time: 3000
+	}
 };
 
 let getters = {

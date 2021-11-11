@@ -346,7 +346,7 @@ export default class Brand extends Vue {
 		svgBox.style.width = ul.clientWidth + 'px';
 
 		setTimeout(() => {
-			this.pathTween.kill();
+			this.pathTween && this.pathTween.kill();
 			this.isPlayingPath = false;
 			this.doMovePath(this.prePathIndex, true);
 		});
@@ -357,6 +357,6 @@ export default class Brand extends Vue {
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
 		ScrollTrigger.getAll().forEach(child => child.kill());
-		this.pathTween.kill();
+		this.pathTween && this.pathTween.kill();
 	}
 }
