@@ -1,12 +1,18 @@
 <template>
 	<div class="brand">
 		<div class="banner-box">
-			<Banner :data="BannerData"></Banner>
-			<p class="text">
+			<video id="v1" controls preload="true" width="100%" poster="../../assets/bg_g1_banner.jpg">
+				<source :src="'./botao.mp4'" type="video/mp4" />
+			</video>
+			<div class="banner-text" v-show="textShow">
+				<h3>波涛品牌</h3>
+				<p>ABOUT BOTAOGROUP</p>
+			</div>
+			<h6 class="text" v-show="textShow">
 				波涛装饰集团成立于2001年，总部设立于中国上海，经过二十几年的发展，形成了集建筑、工装、家装、软装、加盟、培训、家居建材、供应链、船舶内装、中医健康等为一体的综合性装饰集团公司。
-			</p>
+			</h6>
 			<div class="aside-text">BOTAOGROUP VIDEO</div>
-			<div class="img-box">
+			<div class="img-box" @click="play" v-show="!playFlag">
 				<img src="~assets/ic_home_b3_play.png" alt="" />
 			</div>
 		</div>
@@ -362,29 +368,39 @@ export default index;
 		}
 	}
 	.banner-box {
+		display: flex;
 		position: relative;
 		.banner {
 			height: 970px;
 			img {
 				height: 100%;
 			}
-			.banner-text {
-				margin-top: 0;
-				transform: translate(0);
-				top: 332px;
-				left: 81px;
-				h3 {
-					text-align: start;
-					font-size: 56px;
-					line-height: 1;
-				}
-				p {
-					margin-top: 24px;
-					font-size: 24px;
-					line-height: 1;
-				}
+		}
+		.banner-text {
+			position: absolute;
+			margin-top: 0;
+			transform: translate(0);
+			top: 332px;
+			left: 81px;
+			color: #fff;
+			h3 {
+				text-align: start;
+				font-size: 56px;
+				line-height: 1;
+			}
+			p {
+				margin-top: 24px;
+				font-size: 24px;
+				line-height: 1;
 			}
 		}
+		// 		>h2,>h3{
+		// 			font-size: 56px;
+		// font-family: AlibabaPuHuiTiM;
+		// font-weight: 400;
+		// color: #FFFFFF;
+		// line-height: 55px;
+		// 		}
 		.text {
 			position: absolute;
 			bottom: 323px;
@@ -405,6 +421,7 @@ export default index;
 		}
 		.img-box {
 			position: absolute;
+			display: flex;
 			top: 50%;
 			left: 50%;
 			width: 85px;
