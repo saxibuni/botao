@@ -808,9 +808,10 @@ html {
 				overflow: hidden;
 				img {
 					transition: all 0.3s;
+				transform: scale(1.02);
 				}
 				&:hover img {
-					transform: scale($imgScale);
+					transform: scale(1.06);
 				}
 				&:not(:last-child) {
 					margin-right: 20px;
