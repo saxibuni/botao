@@ -382,7 +382,7 @@ export default class Header extends Vue {
 						cursor: auto;
 						left: 50%;
 						transform: translateX(-50%);
-						top: 112px;
+						top: 111px;
 						width: 1920px;
 						height: 110px;
 						background: rgba(18, 33, 51, .85);
