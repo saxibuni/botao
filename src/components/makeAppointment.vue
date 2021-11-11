@@ -1,67 +1,72 @@
 <template>
-	<div class="make-appointment" :class="{ active: $store.state.dialogDesign.design || $store.state.dialogDesign.visit}">
-		<div :class="{ height: $store.state.dialogDesign.design }">
-			<img @click="$store.state.dialogDesign.design = false;$store.state.dialogDesign.visit = false" class="close" src="~assets/icons/ic_home_popup_close2.png" alt="" />
-			<div>
-				<div class="from">
-					<h2>预约设计</h2>
-					<h3>
-						今天已有<span>{{$store.state.dialogDesign.design?58:88}}</span>位业主预约了{{$store.state.dialogDesign.design?'设计':'参观工地'}}
-					</h3>
-					<ul>
-						<li>
-							<i></i>
-							<input type="text" v-model="form.userName" placeholder="您的称呼" />
-							<b>*</b>
-						</li>
-						<li>
-							<i></i>
-							<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
-							<b>*</b>
-						</li>
-						<li v-if="$store.state.dialogDesign.design">
-							<i></i>
-							<input type="text" v-model="form.area" placeholder="您的户型" />
-							<b>*</b>
-						</li>
-					</ul>
-					<div class="btns">
-						<div @click="onSubmit()">
-							<Button text="提交" />
-						</div>
+	<transition name="slideFadeIn">
+		<Popup class="make-appointment" v-if="$store.state.dialogDesign.design || $store.state.dialogDesign.visit">
+			<div class="mask"></div>
+			<div class="body">
+					<img @click="$store.state.dialogDesign.design = false;$store.state.dialogDesign.visit = false" class="close" src="~assets/icons/ic_home_popup_close2.png" alt="" />
+					<div :class="{ height: $store.state.dialogDesign.design }">
+						<div class="from">
+							<h2>预约设计</h2>
+							<h3>
+								今天已有<span>{{$store.state.dialogDesign.design?58:88}}</span>位业主预约了{{$store.state.dialogDesign.design?'设计':'参观工地'}}
+							</h3>
+							<ul>
+								<li>
+									<i></i>
+									<input type="text" v-model="form.userName" placeholder="您的称呼" />
+									<b>*</b>
+								</li>
+								<li>
+									<i></i>
+									<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
+									<b>*</b>
+								</li>
+								<li v-if="$store.state.dialogDesign.design">
+									<i></i>
+									<input type="text" v-model="form.area" placeholder="您的户型" />
+									<b>*</b>
+								</li>
+							</ul>
+							<div class="btns">
+								<div @click="onSubmit()">
+									<Button text="提交" />
+								</div>
 
-						<div
-							@click="
-								form = {
-									userName: '',
-									phone: '',
-									area: ''
-								}
-							"
-						>
-							<Button text="重置" />
+								<div
+									@click="
+										form = {
+											userName: '',
+											phone: '',
+											area: ''
+										}
+									"
+								>
+									<Button text="重置" />
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="right" :class="{active:$store.state.dialogDesign.design}">
-						<div>
-							<p>
- 								关注波涛微信公众号<br>了解更多装饰资讯
-							</p>
-							<img src="~/assets/bg_home_footer_qa.jpg" alt="">
+						<div class="right" :class="{active:$store.state.dialogDesign.design}">
+								<div>
+									<p>
+										关注波涛微信公众号<br>了解更多装饰资讯
+									</p>
+									<img src="~/assets/bg_home_footer_qa.jpg" alt="">
+								</div>
 						</div>
 				</div>
 			</div>
-		</div>
-	</div>
+		</Popup>
+	</transition>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
+import Popup from './popup.vue';
 import Button from './button.vue';
 
 @Component({
 	components:{
+		Popup,
 		Button
 	}
 })
@@ -109,57 +114,21 @@ export default class makeAppointment extends Vue {
 </script>
 <style scoped lang="scss">
 .make-appointment {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
-	transition: opacity 0.3s;
-	z-index: 999;
-	pointer-events: none;
-	&.active {
-		opacity: 1;
-		pointer-events: auto;
-		> div {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	> div {
-		width: 1050px;
+	.body{
 	  height: 470px;
-		background: #ffffff;
-		position: relative;
-		display: flex;
-		transition:opacity 0.3s,transform 0.3s;
-		transform: translateY(80px);
-		opacity: 0;
-		&.height{
-			height: 530px;
-		}
-		.close {
-			width: 18px;
-			height: 18px;
-			display: block;
-			position: absolute;
-			right: 40px;
-			top: 40px;
-			cursor: pointer;
-			transition: transform 0.3s;
-			&:hover {
-				transform: rotate(-90deg);
-			}
-		}
+		background: transparent;
 		> div {
+			&.height{
+				.from{
+					height: 530px;
+				}
+			}
 			display: flex;
 			.from {
 				width: 585px;
 				padding: 69px 0 0 110px;
+				background: #FFFFFF;
+	  		height: 470px;
 				h2 {
 					font-size: 36px;
 					height: 35px;

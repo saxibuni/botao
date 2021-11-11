@@ -51,6 +51,41 @@ export default class CheckPick extends Vue {
 		{ tag: '国际高端住宅实景体验馆', title: '20大风格整装会客厅、大健康生活体验区', text:'科技影音娱乐视听区：VR体验、互动黑科技高端橱卫整装区：品牌实景展示、功能性橱卫体验运动休闲娱乐区：高尔夫等室内运动休息区大型亲子游乐区：大型游艺设备、海洋球池、乐高天地茶酒文化大健康品评区：养生茶品茗会、限量佳酿品鉴会'},
 		{ tag: '品牌实体店', title: '', text:''},
 	]
+	page3Data=[
+		{
+		text:'木作材料 ',
+		imgUrl:require('root/assets/bg_e2_part3_08.png')
+		},
+		{
+		text:'防水材料 ',
+		imgUrl:require('root/assets/bg_e2_part3_07.png')
+		},
+		{
+		text:'粘结材料 ',
+		imgUrl:require('root/assets/bg_e2_part3_06.png')
+		},
+		{
+		text:'电线材料 ',
+		imgUrl:require('root/assets/bg_e2_part3_05.png')
+		},
+		{
+		text:'吊顶材料 ',
+		imgUrl:require('root/assets/bg_e2_part3_04.png')
+		},
+		{
+		text:'油漆涂料 ',
+		imgUrl:require('root/assets/bg_e2_part3_03.png')
+		},
+		{
+		text:'电器管材',
+		imgUrl:require('root/assets/bg_e2_part3_02.png')
+		},
+		{
+		text:'给水管材 ',
+		imgUrl:require('root/assets/bg_e2_part3_01.png')
+		},
+
+]
 	iconClick(i){
 		this.iconIndex = i;
 	}

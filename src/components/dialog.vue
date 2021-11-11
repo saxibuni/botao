@@ -1,6 +1,6 @@
 <template>
   <transition name="slideDownward">
-			<div class="dialog" v-if="$store.state.dialog.state!=0">
+		<Popup class="dialog" v-if="$store.state.dialog.state!=0">
 				<div class="hsycms-model-mask" ></div>
 				<div class="hsycms-model" :class="$store.state.dialog.state==1?'hsycms-model-success':'hsycms-model-error'">
 
@@ -22,13 +22,18 @@
 					</div>
 					<div class="hsycms-model-text">{{$store.state.dialog.text}}</div>
 				</div>
-			</div>
+		</Popup>
 	</transition>
 
 </template>
 <script lang="ts">
 import { Vue, Component,Watch} from 'vue-property-decorator';
-@Component
+import Popup from './popup.vue';
+@Component({
+	components:{
+		Popup
+	}
+})
 export default class dialog extends Vue {
 	time = null;
 	@Watch('$store.state.dialog.state')
@@ -71,11 +76,11 @@ export default class dialog extends Vue {
 		left: 0;
 		top: 0;
 		background: rgba(0, 0, 0, 0.3);
-		z-index: 2222;
+		z-index: 10000;
 	}
 	.hsycms-model {
 		position: fixed;
-		z-index: 3333;
+		z-index: 10001;
 		left: 0;
 		right: 0;
 		margin: auto;

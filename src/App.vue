@@ -62,7 +62,7 @@ html {
 				.header{
 				  width: calc(100% - 4px);
 				}
-				.capital-retention{
+				.popup{
 				  width: calc(100% - 4px);
 				}
 		}

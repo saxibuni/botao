@@ -1,89 +1,97 @@
 <template>
-	<div class="capital-retention" :class="{ active: $store.state.dialogVisible }">
-		<div>
-			<img @click="$store.state.dialogVisible = false" class="close" src="~assets/icons/ic_home_popup_close.png" alt="" />
-			<div>
-				<div class="from">
-					<h2>装修报价</h2>
-					<h3>
-						今天已有
-						<span>858</span>
-						位业主获取了装修预算
-					</h3>
-					<ul>
-						<li>
-							<i></i>
-							<input type="text" v-model="form.userName" placeholder="您的称呼" />
-							<b>*</b>
-						</li>
-						<li>
-							<i></i>
-							<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
-							<b>*</b>
-						</li>
-						<li>
-							<i></i>
-							<input type="text" v-model="form.area" placeholder="您的面积" />
-							<b>*</b>
-						</li>
-					</ul>
-					<div class="btns">
-						<div @click="onSubmit()">提交</div>
-						<div
-							@click="
-								form = {
-									userName: '',
-									phone: '',
-									area: ''
-								}
-							"
-						>
-							重置
+	<transition name="slideFadeIn">
+		<Popup class="capital-retention" v-if="$store.state.dialogVisible">
+				<div class="mask"></div>
+				<div class="body">
+					<img @click="$store.state.dialogVisible = false" class="close" src="~assets/icons/ic_home_popup_close.png" alt="" />
+					<div>
+						<div class="from">
+							<h2>装修报价</h2>
+							<h3>
+								今天已有
+								<span>858</span>
+								位业主获取了装修预算
+							</h3>
+							<ul>
+								<li>
+									<i></i>
+									<input type="text" v-model="form.userName" placeholder="您的称呼" />
+									<b>*</b>
+								</li>
+								<li>
+									<i></i>
+									<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
+									<b>*</b>
+								</li>
+								<li>
+									<i></i>
+									<input type="text" v-model="form.area" placeholder="您的面积" />
+									<b>*</b>
+								</li>
+							</ul>
+							<div class="btns">
+								<div @click="onSubmit()">提交</div>
+								<div
+									@click="
+										form = {
+											userName: '',
+											phone: '',
+											area: ''
+										}
+									"
+								>
+									重置
+								</div>
+							</div>
+						</div>
+						<div class="right">
+							<div>
+								<h3>
+									您的装修预算
+									<span>258238</span>
+									元
+								</h3>
+								<ul>
+									<li>
+										<b>材料费：</b>
+										<span>54544</span>
+										<b>元</b>
+									</li>
+
+									<li>
+										<b>人工费：</b>
+										<span>15255</span>
+										<b>元</b>
+									</li>
+									<li>
+										<b>设计费：</b>
+										<span>5115</span>
+										<b>元</b>
+									</li>
+									<li>
+										<b>质检费：</b>
+										<span>3216</span>
+										<b>元</b>
+									</li>
+								</ul>
+							</div>
+							<p>*装修价格会根据实际情况上下有所浮动</p>
 						</div>
 					</div>
 				</div>
-				<div class="right">
-					<div>
-						<h3>
-							您的装修预算
-							<span>258238</span>
-							元
-						</h3>
-						<ul>
-							<li>
-								<b>材料费：</b>
-								<span>54544</span>
-								<b>元</b>
-							</li>
-
-							<li>
-								<b>人工费：</b>
-								<span>15255</span>
-								<b>元</b>
-							</li>
-							<li>
-								<b>设计费：</b>
-								<span>5115</span>
-								<b>元</b>
-							</li>
-							<li>
-								<b>质检费：</b>
-								<span>3216</span>
-								<b>元</b>
-							</li>
-						</ul>
-					</div>
-					<p>*装修价格会根据实际情况上下有所浮动</p>
-				</div>
-			</div>
-		</div>
-	</div>
+		</Popup>
+	</transition>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
+import Popup from './popup.vue';
 
-@Component
+@Component({
+	components:{
+		Popup
+	}
+})
 export default class CapitalRetention extends Vue {
 	form = {
 		userName: '',
@@ -126,50 +134,9 @@ export default class CapitalRetention extends Vue {
 }
 </script>
 <style scoped lang="scss">
+
 .capital-retention {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0, 0, 0, 0.5);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	opacity: 0;
-	transition: opacity 0.3s;
-	z-index: 999;
-	pointer-events: none;
-	&.active {
-		opacity: 1;
-		pointer-events: auto;
-		> div {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-	> div {
-		width: 1050px;
-		height: 500px;
-		background: #ffffff;
-		position: relative;
-		display: flex;
-		transition: 0.3s;
-		transform: translateY(80px);
-		opacity: 0;
-		.close {
-			width: 18px;
-			height: 18px;
-			display: block;
-			position: absolute;
-			right: 40px;
-			top: 40px;
-			cursor: pointer;
-			transition: 0.3s;
-			&:hover {
-				transform: rotate(-90deg);
-			}
-		}
+  .body {
 		> div {
 			display: flex;
 			.from {
