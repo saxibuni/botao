@@ -73,14 +73,14 @@ export default class StrategyList extends Vue {
 		}
 	];
 
-	addClass(i) {
-		const father = document.querySelector<HTMLElement>('.strategy-right');
+	addClass(i,dom) {
+		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
 
 		lis[i].classList.add('hover');
 	}
-	removeClass(i) {
-		const father = document.querySelector<HTMLElement>('.strategy-right');
+	removeClass(i,dom) {
+		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
 		for (let i = 0; i < lis.length; i++) {
 			lis[i].classList.remove('hover');

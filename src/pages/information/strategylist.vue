@@ -29,7 +29,7 @@
 							<div class="date">{{ v.date }}</div>
 							<h4 class="title">{{ v.title }}</h4>
 							<p>{{ v.text }}</p>
-							<div class="more" @click="$router.push({ name: 'strategy-detail' })" @mouseenter="addClass(i)" @mouseleave="removeClass(i)">
+							<div class="more" @click="$router.push({ name: 'strategy-detail' })" @mouseenter="addClass(i, '.strategy-right')" @mouseleave="removeClass(i, '.strategy-right')">
 								More
 								<span></span>
 							</div>
@@ -39,8 +39,8 @@
 			</div>
 		</div>
 		<div class="list-box">
-			<ul class="list">
-				<li v-for="(v, i) in list" :key="i">
+			<ul class="list wow">
+				<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.5 * i + 1+ 's' }" :key="i">
 					<div class="img-box">
 						<img :src="v.imgUrl" alt="" />
 					</div>
@@ -48,7 +48,7 @@
 						<div class="date">{{ v.date }}</div>
 						<h4 class="title">{{ v.title }}</h4>
 						<p>{{ v.text }}</p>
-						<div class="more" @click="$router.push({ name: 'strategy-detail' })">
+						<div class="more" @click="$router.push({ name: 'strategy-detail' })" @mouseenter="addClass(i, '.list')" @mouseleave="removeClass(i, '.list')">
 							More
 							<span></span>
 						</div>
@@ -66,27 +66,40 @@ export default StrategyList;
 </script>
 
 <style lang="scss">
-html{
-	.strategy-list{
-.decoration-strategy{
-	h2,h3{
+html {
+	.strategy-list {
+		.decoration-strategy {
+			h2,
+			h3 {
 				opacity: 0;
 				animation: slide-up-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
-	}
-}
-.decoration-strategy{
-	.strategy-left{
-			opacity: 0;
+			}
+		}
+		.decoration-strategy {
+			.strategy-left {
+				opacity: 0;
 				animation: slide-left-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
-	}
-		.strategy-right{
-			opacity: 0;
+			}
+			.strategy-right {
+				opacity: 0;
 				animation: slide-right-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
-	}
-}
+			}
+		}
+		.list-box {
+			.list {
+				opacity: 0;
+				animation: fade-in 1s ease;
+				animation-fill-mode: forwards;
+				li {
+					opacity: 0;
+					animation: fade-in 1s ease;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
 	}
 }
 .strategy-list {
@@ -201,11 +214,12 @@ html{
 						@include info();
 						h4 {
 							color: #000;
-							transition: color .3s;
+							transition: color 0.3s;
 						}
 						.more {
 							margin-top: 40px;
 							color: #000;
+							transition: all 0.3s;
 						}
 					}
 					&:not(:last-child) {
@@ -215,14 +229,17 @@ html{
 					&:nth-child(2) {
 						margin: 45px 0;
 					}
-					&.hover{
-						.title{
+					&.hover {
+						.title {
 							color: #eb551c;
 						}
-						.img-box{
-							img{
-							transform: scale($imgScale);
+						.img-box {
+							img {
+								transform: scale($imgScale);
 							}
+						}
+						.more {
+							color: #eb551c !important;
 						}
 					}
 				}
@@ -245,6 +262,7 @@ html{
 					@include bigImg();
 				}
 				@include info();
+
 				.info-box {
 					box-sizing: border-box;
 					padding: 41px 0 50px 39px;
@@ -254,6 +272,7 @@ html{
 					}
 					h4 {
 						color: #000;
+						transition: all 0.3s;
 					}
 					p {
 						width: 490px;
@@ -262,6 +281,22 @@ html{
 				}
 				&:nth-child(n + 4) {
 					margin-top: 50px;
+				}
+				.more {
+					transition: all 0.3s;
+				}
+				&.hover {
+					.title {
+						color: #eb551c;
+					}
+					.img-box {
+						img {
+							transform: scale($imgScale);
+						}
+					}
+					.more {
+						color: #eb551c !important;
+					}
 				}
 			}
 		}

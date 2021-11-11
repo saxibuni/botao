@@ -8,8 +8,9 @@
 			:page-size="data.size"
 			layout="prev, pager, next, jumper"
 			:total="data.total"
+			class="wow"
 		></el-pagination>
-		<button>确定</button>
+		<button class="wow">确定</button>
 	</div>
 </template>
 <script lang="ts">
@@ -22,7 +23,9 @@ export default class pagination extends Vue {
 		default: () => {}
 	})
 	data!: any;
-
+	mounted() {
+		this.restartWow();
+	}
 	currentPage = 1;
 	handleSizeChange(val) {
 		console.log(`每页 ${val} 条`);
@@ -34,6 +37,21 @@ export default class pagination extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+html {
+	.pagination-box {
+		.el-pagination {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		button {
+			opacity: 0;
+			animation: slide-up-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+}
+
 .pagination-box {
 	display: flex;
 	justify-content: center;
