@@ -114,9 +114,10 @@ export default class navLists extends Vue {
 	background-size: 100% 100%;
 	z-index: 999;
 	height: 970px;
-	transform: translateX(-50%) translateY(-100%);
+	transform: translateX(-50%) translateY(0);
 	padding: 0 11px;
-	transition: transform 0.3s;
+	transition: clip-path 0.3s;
+	clip-path: ellipse(0 0 at 100% 0);
 	.logo {
 		display: flex;
 		align-items: center;
@@ -276,7 +277,8 @@ export default class navLists extends Vue {
 		}
 	}
 	&.active {
-		transform: translateX(-50%) translateY(0);
+		// transform: translateX(-50%) translateY(0);
+		clip-path: ellipse(141% 141% at 100% 0%);
 	}
 }
 </style>
