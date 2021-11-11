@@ -53,6 +53,19 @@ html {
 			-webkit-appearance: none;
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		}
+		&.over-hide{
+				overflow: hidden;
+				padding-right: 4px;
+				.sidebar{
+					right: 4px;
+				}
+				.header{
+				  width: calc(100% - 4px);
+				}
+				.capital-retention{
+				  width: calc(100% - 4px);
+				}
+		}
 	}
 
 	.el-dialog {

@@ -134,7 +134,7 @@ export default class CapitalRetention extends Vue {
 	align-items: center;
 	justify-content: center;
 	opacity: 0;
-	transition: 0.3s;
+	transition: opacity 0.3s;
 	z-index: 999;
 	pointer-events: none;
 	&.active {
