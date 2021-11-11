@@ -18,6 +18,8 @@ export default index;
 
 <style lang="scss">
 .layout {
+	width: 1920px;
+	margin: 0 auto;
 	.out-page {
 		min-height: 100vh;
 	}
