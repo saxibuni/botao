@@ -88,12 +88,13 @@
 			<Pagination :data="paginationData" />
 		</div>
 		<transition name="slideFadeIn">
-			<Prop class="buldingProp" v-if="isPop"  @click.native="show">
+			<Prop class="buldingProp" v-if="isPop" @click.native="show">
 				<div class="mask"></div>
 				<div class="img-box">
 					<video controls preload="true">
 						<source :src="'./botao.mp4'" type="video/mp4" />
 					</video>
+					<div class="close"></div>
 				</div>
 			</Prop>
 		</transition>
@@ -436,10 +437,36 @@ export default Building;
 			margin: 45px 0 100px 0;
 		}
 	}
-	.buldingProp{
-		.img-box{
+	.buldingProp {
+		.img-box {
 			position: absolute;
 			z-index: 11111;
+			.close {
+				position: absolute;
+				top: -40px;
+				right: 0;
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				background-color: #878787;
+				cursor: pointer;
+				&::after,
+				&::before {
+					position: absolute;
+					content: '';
+					top: 15px;
+					left: 6px;
+					width: 20px;
+					height: 2px;
+					background-color: #525151;
+				}
+				&::after {
+					transform: rotate(45deg);
+				}
+				&::before {
+					transform: rotate(-45deg);
+				}
+			}
 		}
 	}
 }
