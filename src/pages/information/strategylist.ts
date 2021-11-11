@@ -1,6 +1,6 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue';
-import Banner from '../../components/banner.vue'
+import Banner from '../../components/banner.vue';
 @Component({
 	components: {
 		Pagination,
@@ -8,11 +8,11 @@ import Banner from '../../components/banner.vue'
 	}
 })
 export default class StrategyList extends Vue {
-	paginationData={size:100,total:1000}
+	paginationData = { size: 100, total: 1000 };
 	BannerData = {
 		imgUrl: require('../../assets/strategybg.jpg'),
 		cn: '最新资讯',
-		en: "Construction management"
+		en: 'Construction management'
 	};
 	stratiegyArr = [
 		{
@@ -72,4 +72,18 @@ export default class StrategyList extends Vue {
 			text: '俗话说硬装为骨，软装为魂色彩作为软装设计的精髓，就足以让家居空间出彩，客厅作为待客的门面'
 		}
 	];
+
+	addClass(i) {
+		const father = document.querySelector<HTMLElement>('.strategy-right');
+		const lis = father.querySelectorAll<HTMLElement>('li');
+
+		lis[i].classList.add('hover');
+	}
+	removeClass(i) {
+		const father = document.querySelector<HTMLElement>('.strategy-right');
+		const lis = father.querySelectorAll<HTMLElement>('li');
+		for (let i = 0; i < lis.length; i++) {
+			lis[i].classList.remove('hover');
+		}
+	}
 }
