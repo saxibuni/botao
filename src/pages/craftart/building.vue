@@ -66,7 +66,7 @@
 					<li v-for="(item, i) in 9" :key="i">
 						<div class="imgBox">
 							<img src="~assets/bg_d1_pic01.jpg" alt="" />
-							<img src="~assets/ic_c2_play.png" alt="" />
+							<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
 						</div>
 						<div class="text">
 							<p>香格丽花园</p>
@@ -87,6 +87,16 @@
 			</div>
 			<Pagination :data="paginationData" />
 		</div>
+		<transition name="slideFadeIn">
+			<Prop class="buldingProp" v-if="isPop"  @click.native="show">
+				<div class="mask"></div>
+				<div class="img-box">
+					<video controls preload="true">
+						<source :src="'./botao.mp4'" type="video/mp4" />
+					</video>
+				</div>
+			</Prop>
+		</transition>
 	</div>
 </template>
 
@@ -413,6 +423,12 @@ export default Building;
 		}
 		.pagination-box {
 			margin: 45px 0 100px 0;
+		}
+	}
+	.buldingProp{
+		.img-box{
+			position: absolute;
+			z-index: 11111;
 		}
 	}
 }

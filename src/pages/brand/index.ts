@@ -196,6 +196,38 @@ export default class Brand extends Vue {
 		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] }
 	];
+	coreList = [
+		{
+			imgUrl: require('../../assets/bg_g1_part4_pic1.jpg'),
+			title1: '诚信',
+			title2: '立业基础',
+			eng: 'SINCERITY'
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part4_pic2.jpg'),
+			title1: '感恩',
+			title2: '发展源泉',
+			eng: 'GRATITUDE'
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part4_pic3.jpg'),
+			title1: '奋斗',
+			title2: '拼搏精神',
+			eng: 'STRUGGLE'
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part4_pic4.jpg'),
+			title1: '创新',
+			title2: '制胜法宝',
+			eng: 'INNOVATE'
+		},
+		{
+			imgUrl: require('../../assets/bg_g1_part4_pic5.jpg'),
+			title1: '共赢',
+			title2: '价值追求',
+			eng: 'WIN-WIN'
+		}
+	];
 	options1 = {
 		// suffix: '+',
 		useEasing: true
@@ -232,7 +264,7 @@ export default class Brand extends Vue {
 			disableOnInteraction: false
 		}
 	};
-	textShow:boolean=true;
+	textShow: boolean = true;
 	mounted() {
 		this.createDragger();
 		this.createTrigger();
@@ -240,6 +272,7 @@ export default class Brand extends Vue {
 		this.initVideo();
 		this.jump(this.$route.params.number);
 		this.onResize();
+		this.restartWow();
 		this.$bus.$on(Events.RESIZE, this.onResize);
 	}
 
@@ -247,7 +280,7 @@ export default class Brand extends Vue {
 		const v1 = document.querySelector<HTMLElement>('#v1');
 		v1.addEventListener('play', () => {
 			this.playFlag = true;
-			this.textShow=false;
+			this.textShow = false;
 		});
 		v1.addEventListener('pause', () => {
 			this.playFlag = false;

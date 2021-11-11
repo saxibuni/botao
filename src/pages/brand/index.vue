@@ -46,11 +46,11 @@
 		</div>
 		<div class="brand-data select1">
 			<div class="left">
-				<p>在全国近30个省，开设了300多家分公司</p>
-				<p>
+				<p class="wow">在全国近30个省，开设了300多家分公司</p>
+				<p class="wow">
 					深受20000+高端住宅业主的信赖
 				</p>
-				<p>建立核心竞争力，巩固市场优势，形成具有长久生命力的商业模式</p>
+				<p class="wow">建立核心竞争力，巩固市场优势，形成具有长久生命力的商业模式</p>
 				<ul>
 					<li>
 						<span>
@@ -94,71 +94,39 @@
 			</div>
 			<div class="right">
 				<div class="text-box">
-					<h2>触达全国 · 布局未来</h2>
-					<h3>BRAND DATA</h3>
+					<h2 class="wow">触达全国 · 布局未来</h2>
+					<h3 class="wow">BRAND DATA</h3>
 				</div>
-				<ChinaMap />
+				<ChinaMap class="wow" />
 			</div>
 		</div>
 		<div class="core-value select2">
-			<h2>核心价值观</h2>
-			<h3>以客户为中心 以员工为中心</h3>
+			<h2 class="wow">核心价值观</h2>
+			<h3 class="wow">以客户为中心 以员工为中心</h3>
 			<div class="img-list">
-				<div class="img-box">
-					<img src="~assets/bg_g1_part4_pic1.jpg" alt="" />
+				<div class="img-box wow" v-for="(v, i) in coreList" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<img :src="v.imgUrl" alt="" />
 					<div class="text">
-						<h2>诚信</h2>
-						<h3>立业基础</h3>
-						<div>SINCERITY</div>
-					</div>
-				</div>
-				<div class="img-box">
-					<img src="~assets/bg_g1_part4_pic2.jpg" alt="" />
-					<div class="text">
-						<h2>感恩</h2>
-						<h3>发展源泉</h3>
-						<div>GRATITUDE</div>
-					</div>
-				</div>
-				<div class="img-box">
-					<img src="~assets/bg_g1_part4_pic3.jpg" alt="" />
-					<div class="text">
-						<h2>奋斗</h2>
-						<h3>拼搏精神</h3>
-						<div>STRUGGLE</div>
-					</div>
-				</div>
-				<div class="img-box">
-					<img src="~assets/bg_g1_part4_pic4.jpg" alt="" />
-					<div class="text">
-						<h2>创新</h2>
-						<h3>制胜法宝</h3>
-						<div>INNOVATE</div>
-					</div>
-				</div>
-				<div class="img-box">
-					<img src="~assets/bg_g1_part4_pic5.jpg" alt="" />
-					<div class="text">
-						<h2>共赢</h2>
-						<h3>价值追求</h3>
-						<div>WIN-WIN</div>
+						<h2>{{ v.title1 }}</h2>
+						<h3>{{ v.title2 }}</h3>
+						<div>{{ v.eng }}</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="history select3">
-			<h2>波涛发展历程</h2>
-			<h3>DEVELOPMENT COURSE</h3>
-			<div class="img-box history-scroll">
+			<h2 class="wow">波涛发展历程</h2>
+			<h3 class="wow">DEVELOPMENT COURSE</h3>
+			<div class="img-box history-scroll wow">
 				<div class="gray-img">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
-					<div v-for="(item, i) in devolopeList" :class='["yearTime", `time${i + 1}`]' v-show="progressIndex >= i">
-						<span>{{item.time}}</span>
+					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" v-show="progressIndex >= i" :key="i">
+						<span>{{ item.time }}</span>
 					</div>
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box" v-for="(v, i) in devolopeList" v-show="progressIndex == i" :key="i">
+			<div class="info-box wow" v-for="(v, i) in devolopeList" v-show="progressIndex == i" :key="i">
 				<div class="time">
 					<p>{{ v.time }}</p>
 					<h2>{{ v.name }}</h2>
@@ -171,12 +139,12 @@
 			</div>
 		</div>
 		<div class="hover select4">
-			<h2>荣誉资质</h2>
-			<h3>匠心与精耕让我们走在行业发展前沿</h3>
-			<div class="nav">
+			<h2 class="wow">荣誉资质</h2>
+			<h3 class="wow">匠心与精耕让我们走在行业发展前沿</h3>
+			<div class="nav wow">
 				<div v-for="(v, i) in nav" :key="i" :class="bannerActive == i ? 'active' : ''" @click="bannerActive = i">{{ v }}</div>
 			</div>
-			<div class="swiper-box">
+			<div class="swiper-box wow">
 				<div class="hover-swiper" v-if="bannerActive == 0">
 					<swiper :options="hoverBannerOptions">
 						<swiper-slide v-for="(v, i) in hvBanner" :key="i">
@@ -307,6 +275,76 @@ html {
 			.right-box {
 				opacity: 0;
 				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.brand-data {
+			.left {
+				> p {
+					opacity: 0;
+					animation: slide-up-in 1s, fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+			.right {
+				.text-box {
+					h2,
+					h3 {
+						opacity: 0;
+						animation: slide-up-in 1s, fade-in 1s;
+						animation-fill-mode: forwards;
+					}
+				}
+				.china-map-wrapper {
+					opacity: 0;
+					animation: slide-down-in 1s, fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
+		.core-value {
+			> h2,
+			> h3 {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.img-list {
+				.img-box {
+					opacity: 0;
+					animation: fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
+		.history {
+			> h2,
+			> h3 {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.history-scroll {
+				opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.info-box {
+				opacity: 0;
+				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.hover {
+			> h2,
+			h3 {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.nav,.swiper-box{
+					opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
 			}
 		}

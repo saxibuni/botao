@@ -117,7 +117,7 @@
 			</div>
 		</div>
 		<transition name="slideFadeIn">
-			<Prop class="ownerProp"  v-if="isPop" @click.native="isPop = false">
+			<Prop class="ownerProp" v-if="isPop" @click.native="isPop = false">
 				<div class="mask"></div>
 				<div class="img-box">
 					<img :src="imgUrl" alt="" />
@@ -507,12 +507,12 @@ html {
 			height: 500px;
 		}
 	}
-.ownerProp{
-	.img-box{
-		position: absolute;
-		z-index: 11111;
+	.ownerProp {
+		.img-box {
+			position: absolute;
+			z-index: 11111;
+			transform: scale(1.2);
+		}
 	}
 }
-}
-
 </style>
