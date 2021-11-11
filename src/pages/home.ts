@@ -182,7 +182,7 @@ export default class home extends Vue {
 			this.page2Ani = false;
 			setTimeout(() => {
 				this.page2Ani = true;
-			}, 300);
+			},300);
 		});
 	}
 	onResize() {
