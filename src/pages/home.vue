@@ -245,9 +245,14 @@
 				</div>
 			</div>
 			<div class="right">
-				<div class="text" :class="{ active: textActive }">
-					<img src="~assets/bg_home_b4_roll.png" alt="" />
-					<div>
+				<div class="text">
+					<h2>
+						<transition-group name="toggle-image">
+								<img :src="imgSrc" alt="" v-if="textActive" key="a" />
+								<img src="~assets/bg_home_b4_roll.png" alt="" v-if="!textActive" key="b" />
+						</transition-group>
+					</h2>
+					<div :class="{ active: textActive2 }">
 						<h5>水电工艺施工标准</h5>
 						<p>
 							先弹线后再开槽，开槽时必须横平竖直；
@@ -664,7 +669,8 @@ export default home;
 				font-family: Alibaba PuHuiTi;
 				font-weight: 400;
 				color: #666;
-				width: 122px;
+				min-width: 122px;
+				padding: 0 20px;
 				height: 39px;
 				cursor: pointer;
 				position: relative;
@@ -1581,31 +1587,45 @@ export default home;
 				z-index: 3;
 				display: flex;
 				align-items: center;
-				opacity: 0;
-				transition: opacity 0.3s;
-				&.active {
-					opacity: 1;
+				h2{
+					position: relative;
+					width: 215px;
+					margin-right: 35px;
+					height: 215px;
+					overflow: hidden;
+					border-radius: 100%;
 				}
 				img {
+					position: absolute;
+					left: 0;
+					top: 0;
 					width: 215px;
 					height: 215px;
-					border-right: 100%;
-					margin-right: 35px;
+					border-radius: 100%;
+					@include toggle-image();
+
 				}
-				h5 {
-					height: 23px;
-					font-size: 24px;
-					font-weight: 400;
-					color: #000000;
-					margin-bottom: 22px;
-				}
-				p {
-					width: 337px;
-					height: 82px;
-					font-size: 18px;
-					font-weight: 400;
-					color: #888888;
-					line-height: 32px;
+				>div{
+ 					opacity: 0;
+					transition: opacity 0.3s;
+					&.active {
+						opacity: 1;
+					}
+					h5 {
+						height: 23px;
+						font-size: 24px;
+						font-weight: 400;
+						color: #000000;
+						margin-bottom: 22px;
+					}
+					p {
+						width: 337px;
+						height: 82px;
+						font-size: 18px;
+						font-weight: 400;
+						color: #888888;
+						line-height: 32px;
+					}
 				}
 			}
 			.img-wrap {
@@ -2052,6 +2072,13 @@ export default home;
 				li {
 					width: 553px;
 					position: relative;
+					.items{
+						&:hover{
+								h4{
+									color: #ec5400;
+								}
+						}
+					}
 					&:nth-child(1) {
 						animation: slide-down-in 1s, fade-in 1s;
 						div {
@@ -2107,6 +2134,9 @@ export default home;
 								img {
 									transform: scale($imgScale);
 								}
+								h4{
+									color: #ec5400;
+								}
 							}
 							> div {
 								display: flex;
@@ -2155,6 +2185,7 @@ export default home;
 							color: #000000;
 							margin-bottom: 12px;
 							padding-top: 50px;
+							transition: color .3s;
 						}
 						p {
 							font-size: 18px;
