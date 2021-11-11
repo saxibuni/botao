@@ -56,8 +56,8 @@
 			</div>
 		</div>
 		<div class="flag-honer">
-			<h2>荣誉锦旗</h2>
-			<h3>Flag of honor</h3>
+			<h2 class="wow">荣誉锦旗</h2>
+			<h3 class="wow">Flag of honor</h3>
 			<div class="swiper-box">
 				<swiper :options="fhBannerOptions">
 					<swiper-slide v-for="(v, i) in fhArr" :key="i">
@@ -102,7 +102,7 @@
 		<div class="dian-ping">
 			<h2>业主点评</h2>
 			<h3>owner reviews</h3>
-			<div class="swiper-box">
+			<div class="swiper-box wow">
 				<swiper :options="dpBannerOptions">
 					<swiper-slide v-for="(v, i) in dpArr" :key="i">
 						<div class="img-box">
@@ -126,6 +126,23 @@ export default OwnerVoice;
 </script>
 
 <style lang="scss">
+html {
+	.owner {
+		.owner-vioce {
+			h2,
+			h3 {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.swiper-box{
+					opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
 .owner {
 	font-size: 16px;
 	box-sizing: border-box;
@@ -312,7 +329,7 @@ export default OwnerVoice;
 						background-size: 100%;
 					}
 				}
-				&:hover .mask{
+				&:hover .mask {
 					opacity: 1;
 				}
 			}

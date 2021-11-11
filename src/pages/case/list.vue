@@ -64,7 +64,7 @@
 		<div class="cases">
 			<Cases v-for="i in 6" :key="i" />
 		</div>
-		<Pagination />
+		<Pagination :data="paginationData" />
 	</div>
 </template>
 
@@ -87,6 +87,8 @@ export default CaseList;
 				font-weight: bold;
 				span {
 					color: #ed5400;
+					display: inline-block;
+					width: 172px;
 				}
 			}
 			p {

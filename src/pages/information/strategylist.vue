@@ -29,7 +29,7 @@
 							<div class="date">{{ v.date }}</div>
 							<h4 class="title">{{ v.title }}</h4>
 							<p>{{ v.text }}</p>
-							<div class="more">
+							<div class="more" @click="$router.push({ name: 'strategy-detail' })">
 								More
 								<span></span>
 							</div>
@@ -48,14 +48,14 @@
 						<div class="date">{{ v.date }}</div>
 						<h4 class="title">{{ v.title }}</h4>
 						<p>{{ v.text }}</p>
-						<div class="more">
+						<div class="more" @click="$router.push({ name: 'strategy-detail' })">
 							More
 							<span></span>
 						</div>
 					</div>
 				</li>
 			</ul>
-			<Pagination></Pagination>
+			<Pagination :data="paginationData"></Pagination>
 		</div>
 	</div>
 </template>
@@ -231,6 +231,14 @@ export default StrategyList;
 				}
 			}
 		}
+	}
+	.el-pager {
+		li {
+			background-color: #f6f6f6 !important;
+		}
+	}
+	.el-input__inner {
+		background-color: #f6f6f6 !important;
 	}
 }
 </style>

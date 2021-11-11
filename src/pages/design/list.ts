@@ -10,6 +10,7 @@ import ICountUp from 'root/components/countup.vue';
 	}
 })
 export default class DesignList extends Vue {
+	paginationData={size:100,total:1000}
 	tabs=['全部','总监设计师','首席设计师','设计师']
 	activeIndex=0
 	options1 = {

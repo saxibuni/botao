@@ -2,7 +2,7 @@
 	<div class="cases">
 		<ul>
 			<li>
-				<div class="imgBox">
+				<div class="imgBox" @click="$router.push('/case/detail')">
 					<img src="~assets/bg_b1_part3_pic1.jpg" alt="" />
 				</div>
 				<div class="content">
@@ -59,15 +59,24 @@ export default class Caese extends Vue {
 		li {
 			display: flex;
 			flex-direction: column;
+			height: 610px !important;
 			.imgBox {
 				width: 567px;
 				height: 345px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				cursor: pointer;
+				overflow: hidden;
+				&:hover {
+					img {
+						transform: scale($imgScale);
+					}
+				}
 				img {
 					width: 100%;
 					height: 100%;
+					transition: transform 0.3s;
 				}
 			}
 			.content {
