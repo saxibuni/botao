@@ -1,12 +1,12 @@
 <template>
 	<div class="cases">
 		<ul>
-			<li @click="$router.push('/case/detail')">
-				<div class="imgBox">
+			<li>
+				<div class="imgBox" @click.stop="$router.push('/case/detail')">
 					<img src="~assets/bg_b1_part3_pic1.jpg" alt="" />
 				</div>
 				<div class="content">
-					<div class="top">
+					<div class="top" @click.stop="$router.push('/case/detail')">
 						<div class="topLeft">
 							<p>上海东方颐城</p>
 							<p>

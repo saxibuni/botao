@@ -1401,7 +1401,7 @@ export default home;
 			position: absolute;
 			z-index: 2;
 			top: 50%;
-			right: 67px;
+			right: 73px;
 			transform: translateY(-50%);
 			i {
 				display: block;

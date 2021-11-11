@@ -54,35 +54,35 @@ export default class CheckPick extends Vue {
 	page3Data=[
 		{
 		text:'木作材料 ',
-		imgUrl:require('root/assets/bg_e2_part3_08.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 		{
 		text:'防水材料 ',
-		imgUrl:require('root/assets/bg_e2_part3_07.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 		{
 		text:'粘结材料 ',
-		imgUrl:require('root/assets/bg_e2_part3_06.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 		{
 		text:'电线材料 ',
-		imgUrl:require('root/assets/bg_e2_part3_05.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 		{
 		text:'吊顶材料 ',
-		imgUrl:require('root/assets/bg_e2_part3_04.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 		{
 		text:'油漆涂料 ',
-		imgUrl:require('root/assets/bg_e2_part3_03.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 		{
 		text:'电器管材',
-		imgUrl:require('root/assets/bg_e2_part3_02.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 		{
 		text:'给水管材 ',
-		imgUrl:require('root/assets/bg_e2_part3_01.png')
+		imgUrl:require('root/assets/bg_e2_part3_09.png')
 		},
 
 ]
