@@ -1,8 +1,8 @@
 <template>
 	<div class="cases">
 		<ul>
-			<li>
-				<div class="imgBox" @click="$router.push('/case/detail')">
+			<li @click="$router.push('/case/detail')">
+				<div class="imgBox">
 					<img src="~assets/bg_b1_part3_pic1.jpg" alt="" />
 				</div>
 				<div class="content">
@@ -28,7 +28,7 @@
 								<p>首席设计师</p>
 							</div>
 						</div>
-						<Button @click.native="$store.state.dialogDesign.design=true" :text="'找TA设计'" />
+						<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
 					</div>
 				</div>
 			</li>
@@ -60,6 +60,16 @@ export default class Caese extends Vue {
 			display: flex;
 			flex-direction: column;
 			height: 610px !important;
+			cursor: pointer;
+			&:hover {
+				.topLeft {
+					p {
+						&:nth-of-type(1) {
+							color: #eb551d !important;
+						}
+					}
+				}
+			}
 			.imgBox {
 				width: 567px;
 				height: 345px;
@@ -95,6 +105,7 @@ export default class Caese extends Vue {
 							&:nth-of-type(1) {
 								font-size: 28px;
 								color: #000000;
+								transition: all 0.3s;
 							}
 							&:nth-of-type(2) {
 								margin-top: 15px;
