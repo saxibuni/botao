@@ -14,9 +14,9 @@
 
 						<svg width="50" height="50" v-if="$store.state.dialog.state==2">
 							<!-- 失败 -->
-							<circle class="hsycms-alert-svgcircle" cx="25" cy="25" r="24" fill="none" stroke="#ed5400" stroke-width="2"></circle>
-							<polyline class="hsycms-alert-svgca1" fill="none" stroke="#ed5400" stroke-width="2.5" points="18,17 32,35" stroke-linecap="round" stroke-linejoin="round"></polyline>
-							<polyline class="hsycms-alert-svgca2" fill="none" stroke="#ed5400" stroke-width="2.5" points="18,35 32,17" stroke-linecap="round" stroke-linejoin="round"></polyline>
+							<circle class="hsycms-alert-svgcircle" cx="25" cy="25" r="24" fill="none" stroke="#f34f4f" stroke-width="2"></circle>
+							<polyline class="hsycms-alert-svgca1" fill="none" stroke="#f34f4f" stroke-width="2.5" points="18,17 32,35" stroke-linecap="round" stroke-linejoin="round"></polyline>
+							<polyline class="hsycms-alert-svgca2" fill="none" stroke="#f34f4f" stroke-width="2.5" points="18,35 32,17" stroke-linecap="round" stroke-linejoin="round"></polyline>
 						</svg>
 
 					</div>
@@ -127,7 +127,7 @@ export default class dialog extends Vue {
 		animation-delay: 0.9s;
 	}
 	.hsycms-model.hsycms-model-error .hsycms-model-text {
-		color: #ed5400;
+		color: #f34f4f;
 	}
 	.hsycms-model .hsycms-model-content {
 		padding-top: 0;
@@ -154,7 +154,7 @@ export default class dialog extends Vue {
 		padding: 12PX;
 	}
 	.hsycms-model .hsycms-model-btn button:last-child {
-		color: #ed5400;
+		color: #f34f4f;
 	}
 	.hsycms-model .hsycms-model-btn button.cancel {
 		border-right: 1PX solid #f1f1f1;
