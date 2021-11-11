@@ -18,7 +18,7 @@
 						{{ item.title }}
 						<b></b>
 						<div class="nav-son" :class="{active: item.active}"  @click.stop>
-							<div v-for="(it, i) in item.son" :key="i"  @click.stop=" (item.active = false),$router.push({name:it.url,params:{number:it.query}})" >
+							<div v-for="(it, i) in item.son" :key="i"  @click.stop=" (item.active = false),$router.push({name:it.url,params:{number:it.query}})" :style="{ 'animation-delay': 0.08 * i + 0.09 + 's' }">
 								<span>
 									<i>
 										<img :src="it.icon" alt="">
@@ -397,8 +397,14 @@ export default class Header extends Vue {
 						&.active {
 							opacity: 1;
 							pointer-events: auto;
+							>div{
+									opacity: 0;
+									animation: fade-in 1.5s;
+									animation-fill-mode: forwards;
+							}
 						}
 						div{
+							overflow: hidden;
 							&:not(:first-child){
 								margin-left: 90px;
 							}
