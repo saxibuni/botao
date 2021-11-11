@@ -33,7 +33,7 @@ export default class aboutInstructor extends Vue {
 		cursor: pointer;
 		position: relative;
 		text-align: center;
-		transition: transform 0.5s ease 0s;
+		transition: transform 0.3s;
 		&:hover{
 			transform: translateY(-3px);
 		}
