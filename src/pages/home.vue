@@ -145,7 +145,7 @@
 						<h5>代表作品</h5>
 						<p>嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
 						<div class="btn-box">
-							<Button text="TA的作品"></Button>
+							<Button @click.native="$router.push({name:'design-detail'})" text="TA的作品"></Button>
 						</div>
 						<img src="~assets/bg_home_b3_left_text.png" alt="" />
 					</div>
