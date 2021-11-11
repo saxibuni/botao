@@ -4,25 +4,30 @@
 		<el-pagination
 			@size-change="handleSizeChange"
 			@current-change="handleCurrentChange"
-			:current-page.sync="currentPage3"
-			:page-size="100"
+			:current-page.sync="currentPage"
+			:page-size="data.size"
 			layout="prev, pager, next, jumper"
-			:total="1000"
+			:total="data.total"
 		></el-pagination>
 		<button>确定</button>
 	</div>
 </template>
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component,Prop} from 'vue-property-decorator';
 @Component
 export default class pagination extends Vue {
-	currentPage1 = 5;
-	currentPage2 = 5;
-	currentPage3 = 5;
-	currentPage4 = 4;
+		@Prop({
+		required: false,
+		type: Object,
+		default: () => {}
+	})
+	data!: any;
+
+	currentPage = 1;
 	handleSizeChange(val) {
 		console.log(`每页 ${val} 条`);
 	}
+
 	handleCurrentChange(val) {
 		console.log(`当前页: ${val}`);
 	}
@@ -60,7 +65,7 @@ export default class pagination extends Vue {
 				font-size: 18px;
 				font-weight: bold;
 				color: #122133;
-				background-color: #f6f6f6;
+				background-color: #fff;
 
 				&.active {
 					color: #ed5502;
@@ -86,7 +91,7 @@ export default class pagination extends Vue {
 					border: none;
 					border-radius: 0;
 					border-bottom: 1px solid #b6bbc1;
-					background-color: #f6f6f6;
+					background-color: #fff;
 					font-family: AlibabaPuHuiTiR;
 					font-size: 14px;
 					font-weight: bold;
