@@ -32,7 +32,7 @@
 		</div>
 		<div class="content">
 			<ul>
-				<li v-for="i in 12" :key="i">
+				<li v-for="i in 12" :key="i" @click="$router.push('/design/detail')">
 					<div class="imgBox">
 						<img src="~assets/bg_c1_pic01.jpg" alt="" />
 						<div class="text">
@@ -43,7 +43,7 @@
 					<div class="text">
 						<p>代表作品</p>
 						<p>嘉怡水岸、三林新村、华侨城、两河流域...</p>
-						<Button :text="'了解设计师'" @click.native="$router.push('/design/detail')" />
+						<Button :text="'了解设计师'" />
 					</div>
 				</li>
 			</ul>
@@ -209,6 +209,7 @@ export default DesignList;
 			li {
 				margin-bottom: 40px;
 				width: 410px;
+				cursor: pointer;
 				.imgBox {
 					position: relative;
 					width: 410px;
@@ -216,11 +217,17 @@ export default DesignList;
 					overflow: hidden;
 					background: url('~assets/bg_c1_pic_mask.png') no-repeat;
 					background-position: bottom;
+					&:hover {
+						img {
+							transform: scale($imgScale);
+						}
+					}
 					img {
 						width: 100%;
 						height: 500px;
 						position: relative;
 						z-index: -1;
+						transition: transform 0.3s;
 					}
 					.text {
 						position: absolute;
