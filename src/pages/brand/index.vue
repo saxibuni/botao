@@ -1107,7 +1107,8 @@ export default index;
 				margin: 137px 0 0 140px;
 				width: auto;
 				background: url(~assets/bg_g1_part7_line.png) no-repeat center;
-				background-size: 100%;
+				// background-size: 100%;
+	background-position: left center;
 				li {
 					position: relative;
 					top: -25px;
