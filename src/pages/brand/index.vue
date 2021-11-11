@@ -203,7 +203,11 @@
 				</div>
 				<ul>
 					<li v-for="(v, i) in socialArr" :key="i" class="wow" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
-						<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
+						<div class="img-box">
+							<div class="inner">
+								<img :src="v.imgUrl" alt="" />
+							</div>
+						</div>
 						<div class="text-box">
 							<div class="dosh" @click="doMovePath(i)"></div>
 							<h2>{{ v.time }}</h2>
@@ -490,7 +494,7 @@ html {
 			border-radius: 50%;
 			transform: translate(-50%, -50%) translate(0, -5px);
 			overflow: hidden;
-				transition: all .3s;
+			transition: all 0.3s;
 
 			z-index: 1;
 			img {
@@ -498,7 +502,7 @@ html {
 				height: 100%;
 			}
 			&:hover {
-				transform: translate(-50%, -50%) translate(0, -5px)  scale($imgScale);
+				transform: translate(-50%, -50%) translate(0, -5px) scale($imgScale);
 			}
 		}
 	}
@@ -801,6 +805,14 @@ html {
 				display: flex;
 				position: relative;
 				z-index: 11;
+				overflow: hidden;
+				img {
+					transition: all 0.3s;
+				transform: scale(1.02);
+				}
+				&:hover img {
+					transform: scale(1.06);
+				}
 				&:not(:last-child) {
 					margin-right: 20px;
 				}
@@ -1213,10 +1225,18 @@ html {
 					width: 327px;
 					height: 450px;
 					.img-box {
+						width: 327px;
 						height: 203px;
-						img {
-							width: 100%;
-							height: 100%;
+						.inner {
+							overflow: hidden;
+							img {
+								width: 327px;
+								height: 203px;
+								transition: all 0.3s;
+							}
+						}
+						&:hover img {
+							transform: scale($imgScale);
 						}
 					}
 					.text-box {

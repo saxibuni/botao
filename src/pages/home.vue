@@ -56,7 +56,15 @@
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
-					<img :class="{ active: page2Ani }" :src="page2ImgSrcList[page2Index]" alt="" />
+
+					<div class="imgs-wrap">
+						<transition-group name="fade" tag="div">
+							<template v-for="(item, i) in page2ImgSrcList">
+								<img class="imgs" v-if="i == page2Index" :key="i" :src="item" alt="" />
+							</template>
+						</transition-group>
+					</div>
+					<!-- <img :class="{ active: page2Ani }" :src="page2ImgSrcList[page2Index]" alt="" /> -->
 					<div class="text wow" :class="{ active: page2Ani }">
 						<h3>上海东方颐城</h3>
 						<h4>
@@ -259,7 +267,7 @@
 				<div class="text">
 					<h2>
 						<transition-group name="toggle-image">
-							<img :src="imgSrc" alt="" v-if="textActive" key="a" />
+							<img src="~assets/portrait/bg_home_b3_pic01.jpg" alt="" v-if="textActive" key="a" />
 							<img src="~assets/bg_home_b4_roll.png" alt="" v-if="!textActive" key="b" />
 						</transition-group>
 					</h2>
@@ -783,13 +791,24 @@ export default home;
 				left: 0;
 				top: 0;
 				z-index: 1;
+				.imgs-wrap{
+					width: 1770px;
+					height: 910px;
+					position: relative;
+					background: #fff;
+					.imgs{
+						position: absolute;
+						left: 0;
+						top:0;
+						@include fade-out-in(0.25);
+					}
+				}
+
 				img {
 					width: 100%;
 					height: 100%;
-					transition: opacity 0.3s;
-					opacity: 0.3;
 					&.active {
-						opacity: 1;
+  					opacity: 1;
 					}
 				}
 				.text {
@@ -925,6 +944,8 @@ export default home;
 				top: initial;
 				bottom: 0;
 				mask: url('~assets/bg_home_b2_mask_pic00.png');
+				mask-repeat: no-repeat;
+				mask-size: 100% 100%;
 				img {
 					position: absolute;
 					bottom: 0;

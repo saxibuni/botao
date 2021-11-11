@@ -33,8 +33,8 @@
 										和波涛算是第二次合作了，第一次是给自己家的房子装修装修效果非常不错，于是就想着把父母的房子也交给波涛装修。
 										<br />
 										<br />
-										装修方案老人家看了都很满意，以复古风装修为主 家里的墙纸大多是暖色调，满满的温馨祥祥和
-										<span>[详情]</span>
+										装修方案老人家看了都很满意，以复古风装修为主家里的墙纸大多是暖色调，满满的温馨祥祥和
+										<span @click="$router.push({name:'strategy-detail'})">[详情]</span>
 									</p>
 									<Button :text="'定制我的方案'"></Button>
 									<div class="img-box">
@@ -121,6 +121,7 @@
 				<div class="mask"></div>
 				<div class="img-box">
 					<img :src="imgUrl" alt="" />
+					<div class="close"></div>
 				</div>
 			</Prop>
 		</transition>
@@ -208,7 +209,7 @@ html {
 					top: 50%;
 					transform: translateY(-50%);
 					left: -311px;
-					width: 450px !important;
+					width: 460px !important;
 					height: 493px;
 					.inner-box {
 						box-sizing: border-box;
@@ -256,6 +257,7 @@ html {
 						}
 						> p {
 							width: 386px;
+							min-height: 156px;
 							margin-top: 39px;
 							margin-bottom: 51px;
 							font-size: 16px;
@@ -298,6 +300,9 @@ html {
 						.inner-box {
 							transition: all 1s 0.5s;
 							left: 0px;
+							span{
+								cursor: pointer;
+							}
 						}
 					}
 					.pause {
@@ -321,6 +326,9 @@ html {
 				}
 			}
 		}
+	.swiper-pagination-bullet{
+				border: 2px solid #dcdcdc !important;
+			}
 	}
 	.dian-ping {
 		@include title();
@@ -512,5 +520,31 @@ html {
 			transform: scale(1.2);
 		}
 	}
+		.close {
+				position: absolute;
+				top: -34px;
+				right: 0;
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background-color: #878787;
+				cursor: pointer;
+				&::after,
+				&::before {
+					position: absolute;
+					content: '';
+					top: 12px;
+					left: 4px;
+					width: 18px;
+					height: 2px;
+					background-color: #525151;
+				}
+				&::after {
+					transform: rotate(45deg);
+				}
+				&::before {
+					transform: rotate(-45deg);
+				}
+			}
 }
 </style>

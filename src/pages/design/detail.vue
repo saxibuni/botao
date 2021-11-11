@@ -313,6 +313,7 @@ export default DesignDetail;
 					.swiper-button-prev,
 					.swiper-button-next {
 						bottom: 78px;
+						width: 20px;
 						&::after {
 							font-size: 16px;
 						}
