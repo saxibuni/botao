@@ -1,11 +1,12 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
-
+import Prop from 'root/components/popup.vue'
 @Component({
 	components: {
 		Banner,
-		Button
+		Button,
+		Prop
 	}
 })
 export default class OwnerVoice extends Vue {
