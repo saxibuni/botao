@@ -155,6 +155,7 @@ export default class CapitalRetention extends Vue {
 					color: #666666;
 					margin: 19px 0 45px 0;
 					span {
+						font-family: Gilroy-Bold;
 						color: rgba(237, 84, 0, 1);
 					}
 				}

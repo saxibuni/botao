@@ -1,9 +1,11 @@
 <template>
-	<div class="header" :class="navBgColor ? 'active' : ''">
+	<div class="header" :class="navBgColor||$route.name=='search' ? 'active' : ''">
 		<div class="box">
 			<div class="logo">
-				<img v-if="!navBgColor" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo.png" alt="" />
-				<img v-if="navBgColor" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
+				<img v-if="!navBgColor&&$route.name!='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo.png" alt="" />
+				<img v-if="navBgColor&&$route.name!='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
+
+				<img v-if="$route.name=='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
 				<div>
 					<h3>我们，让空间更美好</h3>
 					<p>BETTER SPACE,BETTER LIFE</p>
