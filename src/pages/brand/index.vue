@@ -152,28 +152,13 @@
 			<div class="img-box history-scroll">
 				<div class="gray-img">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
-					<div class="time1 yearTime">
-						<span>2001-2005</span>
-					</div>
-					<div class="time2 yearTime">
-						<span>2006-2010</span>
-					</div>
-					<div class="time3 yearTime">
-						<span>2011-2014</span>
-					</div>
-					<div class="time4 yearTime">
-						<span>2015-2016</span>
-					</div>
-					<div class="time5 yearTime">
-						<span>2017-2018</span>
-					</div>
-					<div class="time6 yearTime">
-						<span>2019-2020</span>
+					<div v-for="(item, i) in devolopeList" :class='["yearTime", `time${i + 1}`]' v-show="progressIndex >= i">
+						<span>{{item.time}}</span>
 					</div>
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box" v-for="(v, i) in devolopeList" v-show="isShow == i" :key="i">
+			<div class="info-box" v-for="(v, i) in devolopeList" v-show="progressIndex == i" :key="i">
 				<div class="time">
 					<p>{{ v.time }}</p>
 					<h2>{{ v.name }}</h2>
@@ -770,7 +755,7 @@ export default index;
 		position: relative;
 		padding-top: 387px;
 		box-sizing: border-box;
-		height: 1260px;
+		height: 1255px;
 		background: url(~assets/bg_g1_part5.jpg) no-repeat;
 		background-size: 100%;
 		h2,
@@ -817,9 +802,6 @@ export default index;
 					border: 1px solid #132132;
 					background-color: #fff;
 					transition: all 0.3s;
-					&:not(:first-of-type) {
-						opacity: 0;
-					}
 					span {
 						position: absolute;
 						width: 200px;
