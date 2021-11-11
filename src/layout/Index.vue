@@ -5,6 +5,7 @@
 		<Footer v-if="$store.state.footData" />
 		<Sidebar v-if="$store.state.footData" />
 		<CapitalRetention/>
+		<Dialog></Dialog>
 	</div>
 </template>
 
@@ -15,6 +16,8 @@ export default index;
 
 <style lang="scss">
 .layout {
-
+	.out-page {
+		min-height: 100vh;
+	}
 }
 </style>
