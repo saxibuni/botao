@@ -101,8 +101,6 @@ export default StrategyDetail;
 <style lang="scss">
 .strategy-detail {
 	box-sizing: border-box;
-	margin: 0 auto;
-	width: 1916px;
 	font-size: 18px;
 	h2,
 	h3 {

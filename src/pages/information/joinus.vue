@@ -163,8 +163,6 @@ export default JoinUs;
 <style lang="scss">
 .join-us {
 	box-sizing: border-box;
-	margin: 0 auto;
-	width: 1916px;
 	.page1 {
 		display: flex;
 		justify-content: space-between;

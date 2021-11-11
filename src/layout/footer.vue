@@ -207,7 +207,6 @@ export default class Footer extends Vue {
 	color: #fff;
 	padding: 90px 0 75px 0;
 	box-sizing: border-box;
-	max-width: 1920px;
 	margin: 0 auto;
 	img {
 		display: block;

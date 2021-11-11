@@ -298,8 +298,6 @@ export default index;
 <style lang="scss">
 .brand {
 	box-sizing: border-box;
-	margin: 0 auto;
-	width: 1916px;
 	@keyframes fade-ine {
 		from {
 			opacity: 0;
