@@ -1086,9 +1086,9 @@ export default index;
 				.svg {
 					height: 80px;
 					left: 138px;
-					top: 30px;
+					top: 28px;
 					position: absolute;
-					transform: scale(0.89, 0.7);
+					transform: scale(0.89, 0.75);
 					transform-origin: left center;
 					path {
 						fill: none;
