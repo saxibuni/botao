@@ -30,6 +30,14 @@ export default class Brand extends Vue {
 	distance: number = 0;
 	progressIndex: number = 0;
 
+	isPlayingPath: boolean = false;
+	prePathIndex: number = -1; //前一次的路径点
+	pathTween: any;
+	unit = 0.06148;
+	offset = 0.03;
+	path: SVGPathElement;
+	plane: HTMLElement;
+
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	times: '';
 	historyScroll: HTMLElement;
@@ -187,7 +195,6 @@ export default class Brand extends Vue {
 		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] }
 	];
-	pos = [257, 443, 535, 630, 851, 1039];
 	options1 = {
 		// suffix: '+',
 		useEasing: true
@@ -227,7 +234,8 @@ export default class Brand extends Vue {
 	mounted() {
 		this.createDragger();
 		this.createTrigger();
-		this.createMovePath();
+		this.initPathTarget();
+
 		let number = this.$route.query.number;
 		if (number) {
 			setTimeout(() => {
@@ -255,14 +263,14 @@ export default class Brand extends Vue {
 	}
 
 	createTrigger() {
+		let pos = [257, 443, 535, 630, 851, 1039];
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
 				let offset = self.progress * (1245 - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
-				console.log(offset + 290);
 
-				this.calcProgressIndex(offset + 290, this.pos);
+				this.calcProgressIndex(offset + 290, pos);
 			}
 		});
 	}
@@ -273,7 +281,7 @@ export default class Brand extends Vue {
 				this.progressIndex = i;
 				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
 				times[i].style.opacity = '1';
-				this.isShow=i
+				this.isShow = i
 			} else {
 				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
 				times[i].style.opacity = '0';
@@ -287,8 +295,6 @@ export default class Brand extends Vue {
 		str == 'pre' ? this.isShow-- : this.isShow++;
 	}
 
-
-
 	jump(i) {
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.brand');
@@ -296,27 +302,40 @@ export default class Brand extends Vue {
 		let top = item.offsetTop - headerHeight;
 		window.scroll({ top, behavior: 'smooth' });
 	}
-	createMovePath() {
-		let path = this.$el.querySelector<SVGPathElement>('.svg .st0');
-		let ball = this.$el.querySelector('.plane');
-		let pathPoint = { n: 0 },
-			end = 0.5;
 
-		gsap
+	initPathTarget() {
+		this.path = this.$el.querySelector<SVGPathElement>('.svg .st0');
+		this.plane = this.$el.querySelector('.plane');
+	}
+
+	doMovePath(index: number, immediate: boolean = false) {
+		if (this.isPlayingPath) return;
+
+		let start = this.prePathIndex == -1 ? 0 : this.offset + this.unit * this.prePathIndex;
+		let end = this.offset + this.unit * index;
+		let duration = immediate ? 0 : Math.abs(end - start) * 15;
+
+		this.isPlayingPath = true;
+		this.prePathIndex = index;
+
+		this.pathTween = gsap
 			.timeline({
 				defaults: {
-					duration: 3,
+					duration,
 					ease: 'none'
 				}
 			})
-			.to(ball, {
+			.to(this.plane, {
 				motionPath: {
-					path: path,
-					align: path,
+					path: this.path,
+					align: this.path,
 					alignOrigin: [0.5, 0.5],
 					autoRotate: true,
-					start: pathPoint.n,
-					end: end
+					start,
+					end
+				},
+				onComplete: () => {
+					this.isPlayingPath = false;
 				}
 			});
 	}
@@ -325,6 +344,12 @@ export default class Brand extends Vue {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
 		svgBox.style.width = ul.clientWidth + 'px';
+
+		setTimeout(() => {
+			this.pathTween.kill();
+			this.isPlayingPath = false;
+			this.doMovePath(this.prePathIndex, true);
+		});
 	}
 
 	beforeDestroy() {
@@ -332,5 +357,6 @@ export default class Brand extends Vue {
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
 		ScrollTrigger.getAll().forEach(child => child.kill());
+		this.pathTween.kill();
 	}
 }

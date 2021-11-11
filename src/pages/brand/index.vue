@@ -221,20 +221,12 @@
 			<h3>social responsibility</h3>
 			<div class="content-box">
 				<div class="svg-box">
-					<svg
-						class="svg"
-						version="1.1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-						x="0px"
-						y="0px"
-						viewBox="0 0 3680 80"
-						style="enable-background:new 0 0 3680 80;"
-						xml:space="preserve"
-					>
-						<g>
-							<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70" />
-						</g>
+					<svg version="1.1" class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 7523 72" style="enable-background:new 0 0 7523 72;" xml:space="preserve">
+					<path class="st0" d="M0.7,30.2C52.1,14.8,108.5,1,210,1c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
+						c228.5,0,228.5-70,457-70s228.5,70,457,70s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
+						s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70
+						s228.5,70,457,70c228.5,0,228.5-70,457-70"/>
 					</svg>
 					<div class="plane"></div>
 				</div>
@@ -242,7 +234,7 @@
 					<li v-for="(v, i) in socialArr" :key="i">
 						<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
 						<div class="text-box">
-							<div class="dosh"></div>
+							<div class="dosh" @click="doMovePath(i)"></div>
 							<h2>{{ v.time }}</h2>
 							<p v-for="(value, index) in v.text" :key="index">{{ value }}</p>
 						</div>
@@ -1074,29 +1066,31 @@ export default index;
 			}
 			.svg-box {
 				position: absolute;
-				left: 150px;
-				top: 100px;
+				left: 0;
+				top: 333px;
+				height: 300px;
 				width: 0;
-				height: 80px;
-				// overflow: hidden;
+				overflow: hidden;
 				.svg {
 					height: 80px;
+					left: 138px;
+					top: 30px;
 					position: absolute;
+					transform: scale(0.89, 0.7);
+					transform-origin: left center;
 					path {
-						fill: none;
-						stroke: #dcdcdc;
-						stroke-miterlimit: 10;
-						stroke-dasharray: 3.9998, 2.9998;
+						fill:none;stroke:#DBDBDB;stroke-miterlimit:10;stroke-dasharray:4,4;
 					}
 				}
 				.plane {
 					position: absolute;
-					left: 150px;
-					top: 250px;
-					width: 31px;
+					left: 122.37px;
+					top: 49.5px;
+					width: 37px;
 					height: 31px;
 					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
 					background-size: 100%;
+					transform: rotate(-13.2449deg);
 				}
 			}
 
@@ -1106,9 +1100,6 @@ export default index;
 				display: flex;
 				margin: 137px 0 0 140px;
 				width: auto;
-				background: url(~assets/bg_g1_part7_line.png) no-repeat center;
-				// background-size: 100%;
-				background-position: left center;
 				li {
 					position: relative;
 					top: -25px;
@@ -1150,6 +1141,11 @@ export default index;
 							height: 30px;
 							border-radius: 50%;
 							border: 1px solid #eb551d;
+							cursor: pointer;
+							transition: transform .3s;
+							&:hover {
+								transform: scale(1.1);
+							}
 							&::before {
 								position: absolute;
 								top: 50%;
@@ -1193,22 +1189,10 @@ export default index;
 						margin-right: 130px;
 					}
 				}
-				&::before {
-					position: absolute;
-					top: 50.5%;
-					left: -31px;
-					content: '';
-					width: 31px;
-					height: 31px;
-					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
-					background-size: 100%;
-					font-size: 18px;
-					color: #eb551d;
-				}
 				&::after {
 					position: absolute;
 					content: '让梦想起飞';
-					top: 58%;
+					top: 56%;
 					left: -54px;
 					font-size: 18px;
 					color: #eb551d;
