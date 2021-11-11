@@ -22,7 +22,8 @@ export default class home extends Vue {
 
 	pixiView: PIXI.Application; //开始不能赋值，不然就会变成vue监测属性
 	activeIndex: number = -1;
-	anList = ['新中式', '美式', '北欧', '欧式', '现代'];
+
+	anList = ['轻奢/现代/港式', '中式/新中式', '欧式/法式/地中海/美式', '日式/侘寂/工业风'];
 	imgSrc = require('../assets/portrait/bg_home_b3_pic17.jpg');
 	page2ImgSrc = require('../assets/bg_home_b2_pic1.jpg');
 	page2ImgSrcList = [
@@ -227,6 +228,7 @@ export default class home extends Vue {
 	top = 0;
 	width = 0;
 	height = 0;
+	textActive2 = true;
 	onClick(event, item, i) {
 		this.showProfile = !this.showProfile;
 		this.imgSrc = item;
@@ -241,10 +243,11 @@ export default class home extends Vue {
 
 	textActiveFun(i) {
 		this.picIndex = i;
-		this.textActive = false;
-		setTimeout(() => {
-			this.textActive = true;
-		}, 300);
+		this.textActive = !this.textActive;
+		this.textActive2 = false;
+		setTimeout(()=>{
+			this.textActive2 = true;
+		},300)
 	}
 	form = {
 		userName: '',
