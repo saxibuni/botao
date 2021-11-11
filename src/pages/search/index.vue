@@ -222,18 +222,23 @@ export default class Search extends Vue {
 				border: 1px solid #ed5400;
 				font-size: 18px;
 				padding-left: 35px;
-				background: transparent url(~assets/icons/ic_home_top_search.png) no-repeat 551px center;
-				background-size: 24px 24px;
+				background: transparent;
 				padding-right: 90px;
 			}
 		 	i{
 				 position: absolute;
 				 right: 0;
 				 top: 0;
-				 width: 70px;
+				 width: 73px;
 				 height: 100%;
 				 z-index: 3;
 				 cursor: pointer;
+				 background:  url(~assets/icons/ic_home_top_search.png) no-repeat center center;
+			   background-size: 24px 24px;
+				 &:hover{
+					 transform: scale(1.1);
+				 	 transition: transform .3s;
+				 }
 			}
 		}
 		p {

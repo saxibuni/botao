@@ -136,7 +136,13 @@ export default class search extends Vue {
 				justify-content: center;
 				margin-left: 10px;
 				cursor: pointer;
+				&:hover{
+					img{
+						transform: scale(1.1);
+					}
+				}
 				img{
+					transition:transform .3s;
 					width: 25px;
 				}
 			}
@@ -150,6 +156,10 @@ export default class search extends Vue {
 				font-weight: 400;
 				color: #FFFFFF;
 				cursor: pointer;
+				transition: color .3s;
+				&:hover{
+					color: #ed5400;
+				}
 				&:not(:first-child){
 					margin-left: 40px;
 				}
