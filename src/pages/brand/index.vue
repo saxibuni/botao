@@ -158,13 +158,13 @@
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box" v-for="(v, i) in devolopeList" v-show="progressIndex == i" :key="i">
+			<div class="info-box">
 				<div class="time">
-					<p>{{ v.time }}</p>
-					<h2>{{ v.name }}</h2>
+					<p>{{ devolopeList[progressIndex].time }}</p>
+					<h2>{{ devolopeList[progressIndex].name }}</h2>
 				</div>
 				<div class="info">
-					<p v-for="(item, index) in v.text" :key="index">{{ item }}</p>
+					<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
 				</div>
 				<div class="pre" @click="change('pre')"></div>
 				<div class="next" @click="change('next')"></div>
@@ -1086,9 +1086,9 @@ export default index;
 				.svg {
 					height: 80px;
 					left: 138px;
-					top: 30px;
+					top: 28px;
 					position: absolute;
-					transform: scale(0.89, 0.7);
+					transform: scale(0.89, 0.75);
 					transform-origin: left center;
 					path {
 						fill: none;

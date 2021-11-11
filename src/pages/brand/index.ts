@@ -192,7 +192,7 @@ export default class Brand extends Vue {
 		{ time: '2001-2005', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2006-2010', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2011-2014', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-		{ time: '2015-2016', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
+		{ time: '2015-2016', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场。'] },
 		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
 		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] }
 	];
@@ -299,15 +299,20 @@ export default class Brand extends Vue {
 	}
 
 	change(str) {
-		if ((this.progressIndex == 0 && str == 'pre') || (this.progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
-		str == 'pre' ? this.progressIndex-- : this.progressIndex++;
+		let progressIndex = this.progressIndex;
+		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
+		str == 'pre' ? progressIndex-- : progressIndex++;
 
-		// let scrollTop = this.pos[this.progressIndex] - this.pos[0];
-		// console.log(scrollTop);
-		// gsap.to('.history-scroll', {
-		// 	duration: 0.5,
-		// 	scrollTop: scrollTop
-		// });
+		let offset = 20;
+		let height = this.pos[progressIndex] + offset;
+		let progress = (height - 290) / (1245 - 290);
+		let totalScroll = 1245 - 716;
+		let distance = progress * totalScroll;
+
+		gsap.to('.history-scroll', {
+			duration: 0.5,
+			scrollTop: distance
+		});
 	}
 
 	jump(i) {
