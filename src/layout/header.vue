@@ -320,6 +320,9 @@ export default class Header extends Vue {
 					text-align: center;
 					cursor: pointer;
 					transition: color 0.3s;
+					&:not(:last-child) {
+						margin-right: 30px;
+					}
 					&::after,
 					&::before {
 						content: '';
@@ -341,9 +344,7 @@ export default class Header extends Vue {
 						border-top: none;
 						border-left: none;
 					}
-					&:not(:last-child) {
-						margin-right: 30px;
-					}
+
 					&.active{
 						color: #fff;
 						&::after,
@@ -432,8 +433,8 @@ export default class Header extends Vue {
 					}
 					b{
 						position: absolute;
-						width: 100%;
-						height: 112px;
+						width: 130%;
+						height: 125px;
 						top: 50%;
 						transform: translateY(-50%);
 						left: 0;
