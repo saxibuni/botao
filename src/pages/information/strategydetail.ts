@@ -34,4 +34,19 @@ export default class StrategyDetail extends Vue {
 			text: '俗话说硬装为骨，软装为魂色彩作为软装设计的精髓，就足以让家居空间出彩，客厅作为待客的门面'
 		}
 	];
+	addClass(i,dom) {
+		console.log(1111);
+
+		const father = document.querySelector<HTMLElement>(dom);
+		const lis = father.querySelectorAll<HTMLElement>('.item');
+
+		lis[i].classList.add('hover');
+	}
+	removeClass(i,dom) {
+		const father = document.querySelector<HTMLElement>(dom);
+		const lis = father.querySelectorAll<HTMLElement>('.item');
+		for (let i = 0; i < lis.length; i++) {
+			lis[i].classList.remove('hover');
+		}
+	}
 }

@@ -22,7 +22,7 @@
 			</li>
 		</ul>
 		<div class="botao-brand select0">
-			<div class="left">
+			<div class="left wow">
 				<div class="img-box">
 					<img src="~assets/bg_g1_part2_logo.png" alt="" />
 				</div>
@@ -30,7 +30,7 @@
 					<li v-for="(v, i) in btBrandArr" :class="isActive == i ? 'active' : ''" @click="isActive = i" :key="i"><Button :text="v"></Button></li>
 				</ul>
 			</div>
-			<div class="right-box">
+			<div class="right-box wow">
 				<div class="right" v-show="i == isActive" v-for="(v, i) in btBrandInfoArr" :key="i">
 					<h3>
 						{{ v.title }}
@@ -311,6 +311,22 @@ export default index;
 </script>
 
 <style lang="scss">
+html {
+	.brand {
+		.botao-brand {
+			.left {
+				opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.right-box {
+				opacity: 0;
+				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
 .brand {
 	box-sizing: border-box;
 	margin: 0 auto;
@@ -525,6 +541,7 @@ export default index;
 								color: #fff;
 								background: #eb551d;
 								border: 1px solid #eb551d;
+								transform: translateY(0);
 								&::after {
 									border-color: #fff;
 								}

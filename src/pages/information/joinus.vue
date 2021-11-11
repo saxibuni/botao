@@ -2,7 +2,7 @@
 	<div class="join-us">
 		<banner :data="BannerData"></banner>
 		<div class="page1">
-			<div class="left">
+			<div class="left wow">
 				<h2>
 					人才理念—
 					<br />
@@ -10,12 +10,12 @@
 				</h2>
 				<h4>Talent concept</h4>
 			</div>
-			<div class="right">
+			<div class="right wow">
 				<p>选贤举能，贤者必上进,能者有前途。波涛引进德才兼备的贤者，为每一位真正能为企业发展做出贡献的员工提供尽情发挥的舞台,个人的付出和收获、能力和地位必定成正比</p>
 				<Button :text="'加入我们'"></Button>
 			</div>
 		</div>
-		<div class="swiper-box">
+		<div class="swiper-box wow">
 			<div class="control">
 				<div class="swiper-pre ju-pre"></div>
 				<div class="swiper-next ju-next"></div>
@@ -29,7 +29,7 @@
 			</swiper>
 		</div>
 		<div class="xr">
-			<div class="text-box">
+			<div class="text-box wow">
 				<div class="text">
 					SELECT
 					<br />
@@ -40,12 +40,12 @@
 				<p>波涛是个充满无限可能的企业，而对于选用人才，坚持选用对自己的未来有明确目标和企图心的人才，梦想是目标、能力是支撑、激情是态度、准备是自信，波涛欢迎做好准备去迎接一切未知的挑战的人才</p>
 				<Button :text="'加入我们'"></Button>
 			</div>
-			<div class="img-box">
+			<div class="img-box wow">
 				<img src="~assets/bg_f4_part3.jpg" alt="" />
 			</div>
 		</div>
 		<div class="yongr">
-			<div class="text-box">
+			<div class="text-box wow">
 				<div class="text">
 					EMPLOY
 					<br />
@@ -58,12 +58,12 @@
 				</p>
 				<Button :text="'加入我们'"></Button>
 			</div>
-			<div class="img-box">
+			<div class="img-box wow">
 				<img src="~assets/bg_f4_part4.jpg" alt="" />
 			</div>
 		</div>
 		<div class="yur">
-			<div class="text-box">
+			<div class="text-box wow">
 				<div class="text">
 					EDUCATE
 					<br />
@@ -77,12 +77,12 @@
 				</p>
 				<Button :text="'加入我们'"></Button>
 			</div>
-			<div class="img-box">
+			<div class="img-box wow">
 				<img src="~assets/bg_f4_part5.jpg" alt="" />
 			</div>
 		</div>
 		<div class="lr">
-			<div class="text-box">
+			<div class="text-box wow">
 				<div class="text">
 					KEEP
 					<br />
@@ -111,15 +111,15 @@
 				</p>
 				<Button :text="'加入我们'"></Button>
 			</div>
-			<div class="img-box">
+			<div class="img-box wow">
 				<img src="~assets/bg_f4_part6.jpg" alt="" />
 			</div>
 		</div>
 		<div class="info">
-			<h2>招聘信息</h2>
-			<h3>recruitment information</h3>
+			<h2 class="wow">招聘信息</h2>
+			<h3 class="wow">recruitment information</h3>
 			<ul>
-				<li v-for="(v, i) in jobList" v-show="i < jobShowFlag" :key="i">
+				<li class="wow" v-for="(v, i) in jobList" v-show="i < jobShowFlag" :key="i" :style="{ 'animation-delay': 0.03 * i + 0.03 + 's' }">
 					<h2>{{ v.name }}</h2>
 					<div class="icon">
 						<i></i>
@@ -136,21 +136,21 @@
 				</li>
 			</ul>
 			<Button :text="'更多职位'" @click.native="getMore"></Button>
-			<h4>人力资源部</h4>
-			<p>
+			<h4 class="wow">人力资源部</h4>
+			<p class="wow">
 				<i></i>
 				13681921483（微信同号）
 			</p>
-			<p>
+			<p class="wow">
 				<i></i>
 				上海市徐汇区中山西路2331号 波涛装饰集团
 			</p>
-			<div>
+			<div class="out-box wow">
 				<div class="img-box">
 					<img src="~assets/bg_home_footer_qa.jpg" alt="" />
 				</div>
 			</div>
-			<p>扫码咨询</p>
+			<p class="wow">扫码咨询</p>
 		</div>
 	</div>
 </template>
@@ -161,6 +161,96 @@ export default JoinUs;
 </script>
 
 <style lang="scss">
+html {
+	.join-us {
+		.page1 {
+			.left {
+				opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.right {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.swiper-box {
+			opacity: 0;
+			animation: slide-up-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.xr {
+			.text-box {
+				opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.img-box {
+				opacity: 0;
+				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.yongr {
+			.text-box {
+				opacity: 0;
+				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.img-box {
+				opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.yur {
+			.text-box {
+				opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.img-box {
+				opacity: 0;
+				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.lr {
+			.text-box {
+				opacity: 0;
+				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.img-box {
+				opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.info {
+			> h2,
+			h3 {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			> ul {
+				li {
+					opacity: 0;
+					animation: fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+			> h4,
+			p,.out-box {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
 .join-us {
 	box-sizing: border-box;
 	margin: 0 auto;
