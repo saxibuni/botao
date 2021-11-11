@@ -164,7 +164,6 @@
 					<div class="time6 yearTime">
 						<span>2019-2020</span>
 					</div>
-
 				</div>
 				<div class="inner-img"></div>
 			</div>
@@ -222,10 +221,19 @@
 			<h3>social responsibility</h3>
 			<div class="content-box">
 				<div class="svg-box">
-					<svg class="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						viewBox="0 0 3680 80" style="enable-background:new 0 0 3680 80;" xml:space="preserve">
+					<svg
+						class="svg"
+						version="1.1"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						x="0px"
+						y="0px"
+						viewBox="0 0 3680 80"
+						style="enable-background:new 0 0 3680 80;"
+						xml:space="preserve"
+					>
 						<g>
-							<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70"/>
+							<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70" />
 						</g>
 					</svg>
 					<div class="plane"></div>
@@ -779,7 +787,6 @@ export default index;
 					}
 				}
 				> div {
-					opacity: 0;
 					position: absolute;
 					z-index: 10;
 					width: 14px;
@@ -787,9 +794,9 @@ export default index;
 					border-radius: 50%;
 					border: 1px solid #132132;
 					background-color: #fff;
-					transition: all .3s;
-					&:nth-child(1) {
-						opacity: 1;
+					transition: all 0.3s;
+					&:not(:first-of-type) {
+						opacity: 0;
 					}
 					span {
 						position: absolute;
@@ -1062,6 +1069,9 @@ export default index;
 
 		.content-box {
 			@include scrollbar-beautify(0);
+			> div {
+				display: flex !important;
+			}
 			.svg-box {
 				position: absolute;
 				left: 150px;
@@ -1073,7 +1083,10 @@ export default index;
 					height: 80px;
 					position: absolute;
 					path {
-						fill:none;stroke:#DCDCDC;stroke-miterlimit:10;stroke-dasharray:3.9998,2.9998;
+						fill: none;
+						stroke: #dcdcdc;
+						stroke-miterlimit: 10;
+						stroke-dasharray: 3.9998, 2.9998;
 					}
 				}
 				.plane {
@@ -1089,10 +1102,10 @@ export default index;
 
 			ul {
 				position: relative;
-				padding-bottom: 87px;
+				height: 537px;
 				display: flex;
 				margin: 137px 0 0 140px;
-				width: 100%;
+				width: auto;
 				background: url(~assets/bg_g1_part7_line.png) no-repeat center;
 				background-size: 100%;
 				li {
@@ -1169,7 +1182,7 @@ export default index;
 							top: 42px;
 						}
 					}
-					&:nth-child(3){
+					&:nth-child(3) {
 						top: -27px;
 					}
 					&:first-child {
