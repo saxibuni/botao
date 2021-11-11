@@ -97,4 +97,7 @@ export default class CheckPick extends Vue {
 		console.log(this.activeIndex);
 
 	}
+	mounted() {
+		this.restartWow();
+	}
 }

@@ -10,10 +10,10 @@
 		</div>
 
 		<div class="page2">
-			<h2>服务优势</h2>
-			<p>Service advantages</p>
+			<h2 class="wow">服务优势</h2>
+			<p class="wow">Service advantages</p>
 			<div>
-				<div class="left">
+				<div class="left wow">
 					<div :class="{ active: iconIndex == 0 }" @click="iconClick(0)">
 						<i>
 							<img src="~assets/icons/ic_e2_part2_a1.png" alt="" />
@@ -50,7 +50,7 @@
 						<span>饰后优势</span>
 					</div>
 				</div>
-				<div class="right">
+				<div class="right wow">
 					<div class="swiper">
 						<swiper :options="bannerSwiperOptions">
 							<swiper-slide v-for="(item, i) in 3" :key="i">
@@ -83,7 +83,7 @@
 			</div>
 		</div>
 
-		<div class="page3">
+		<div class="page3 wow">
 			<h2>绿色建材让家越住越健康</h2>
 			<p>Green building materials</p>
 			<div class="circle">
@@ -108,10 +108,10 @@
 		</div>
 
 		<div class="page4">
-			<h2>私家花园定制</h2>
-			<p>Private garden customization</p>
+			<h2 class="wow">私家花园定制</h2>
+			<p class="wow">Private garden customization</p>
 			<div class="box">
-				<div class="left">
+				<div class="left wow">
 					<div>
 						<img src="~assets/bg_e2_part4_01.jpg" alt="" />
 						<b>01</b>
@@ -122,7 +122,7 @@
 					</div>
 				</div>
 				<div class="right">
-					<div>
+					<div class="wow">
 						<img src="~assets/bg_e2_part4_02.jpg" alt="" />
 						<b>02</b>
 						<div class="text">
@@ -131,7 +131,7 @@
 						</div>
 					</div>
 
-					<div>
+					<div class="wow">
 						<img src="~assets/bg_e2_part4_03.jpg" alt="" />
 						<b>03</b>
 						<div class="text">
@@ -140,7 +140,7 @@
 						</div>
 					</div>
 
-					<div>
+					<div class="wow">
 						<img src="~assets/bg_e2_part4_04.jpg" alt="" />
 						<b>04</b>
 						<div class="text">
@@ -149,7 +149,7 @@
 						</div>
 					</div>
 
-					<div>
+					<div class="wow">
 						<img src="~assets/bg_e2_part4_05.jpg" alt="" />
 						<b>05</b>
 						<div class="text">
@@ -158,7 +158,7 @@
 						</div>
 					</div>
 
-					<div>
+					<div class="wow">
 						<img src="~assets/bg_e2_part4_06.jpg" alt="" />
 						<b>06</b>
 						<div class="text">
@@ -171,8 +171,8 @@
 		</div>
 
 		<div class="page5">
-			<h2>全屋智能</h2>
-			<p>Whole house intelligence</p>
+			<h2 class="wow">全屋智能</h2>
+			<p class="wow">Whole house intelligence</p>
 			<ul>
 				<li v-for="(item, i) in list" :key="i">
 					<i></i>
@@ -190,12 +190,12 @@
 		</div>
 
 		<div class="page6">
-			<h2>
+			<h2 class="wow">
 				<span>18000㎡</span>
 				沉浸体验最潮家装逛展
 			</h2>
-			<p>5大主题展厅 10大品质生活体验区</p>
-			<ul>
+			<p class="wow">5大主题展厅 10大品质生活体验区</p>
+			<ul class="wow">
 				<li v-for="(item, i) in list2" :key="i">
 					<h2>
 						{{ item.tag }}
@@ -207,9 +207,9 @@
 		</div>
 
 		<div class="page7">
-			<h2>高端品牌直采</h2>
-			<p>High-end brands</p>
-			<div class="swiper">
+			<h2 class="wow">高端品牌直采</h2>
+			<p class="wow">High-end brands</p>
+			<div class="swiper wow">
 				<swiper :options="bannerSwiperOptions2">
 					<swiper-slide v-for="(item, i) in 3" :key="i">
 						<div class="img-wrap" v-for="(item, i) in 26" :key="i">
@@ -286,6 +286,9 @@ export default CheckPick;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -297,6 +300,9 @@ export default CheckPick;
 			color: #000000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> div {
 			width: 1770px;
@@ -306,6 +312,9 @@ export default CheckPick;
 			margin-top: 80px;
 			.left {
 				width: 313px;
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
 				> div {
 					display: flex;
 					align-items: center;
@@ -380,6 +389,9 @@ export default CheckPick;
 			.right {
 				width: 1457px;
 				height: 588px;
+				opacity: 0;
+				animation: slide-down-in 2s, fade-in 2s;
+				animation-fill-mode: forwards;
 				.swiper {
 					width: 100%;
 					position: relative;
@@ -483,6 +495,9 @@ export default CheckPick;
 		background: url('~assets/bg_e2_part3.jpg') no-repeat;
 		background-size: cover;
 		position: relative;
+		opacity: 0;
+		animation: slide-down-in 1s, fade-in 1s;
+		animation-fill-mode: forwards;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
@@ -800,6 +815,9 @@ export default CheckPick;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -811,6 +829,9 @@ export default CheckPick;
 			color: #000000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		.box {
 			display: flex;
@@ -821,6 +842,9 @@ export default CheckPick;
 			.left {
 				width: 490px;
 				height: 830px;
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
 				> div {
 					overflow: hidden;
 					position: relative;
@@ -887,6 +911,9 @@ export default CheckPick;
 				> div {
 					overflow: hidden;
 					position: relative;
+					opacity: 0;
+					animation: slide-down-in 1s, fade-in 1s;
+					animation-fill-mode: forwards;
 					&::before {
 						position: absolute;
 						content: '';
@@ -912,27 +939,32 @@ export default CheckPick;
 						width: 416px;
 						height: 410px;
 						margin-right: 10px;
+						animation-delay: .1s;
 					}
 					&:nth-child(2) {
 						width: 834px;
 						height: 410px;
+						animation-delay: .2s;
 					}
 					&:nth-child(3) {
 						width: 416px;
 						height: 410px;
 						margin-top: 10px;
 						margin-right: 10px;
+						animation-delay: .3s;
 					}
 					&:nth-child(4) {
 						width: 412px;
 						margin-right: 10px;
 						margin-top: 10px;
 						height: 410px;
+						animation-delay: .4s;
 					}
 					&:nth-child(5) {
 						width: 412px;
 						height: 410px;
 						margin-top: 10px;
+						animation-delay: .5s;
 					}
 				}
 			}
@@ -962,6 +994,9 @@ export default CheckPick;
 			color: #fff;
 			text-align: center;
 			z-index: 2;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -975,6 +1010,9 @@ export default CheckPick;
 			text-align: center;
 			margin-top: 24px;
 			z-index: 2;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		ul {
 			li {
@@ -1084,6 +1122,7 @@ export default CheckPick;
 					transition: 0.3s;
 					pointer-events: none;
 					position: absolute;
+					z-index: 99;
 					width: 320px;
 					left: 115px;
 					top: -28px;
@@ -1167,6 +1206,9 @@ export default CheckPick;
 			color: #000;
 			text-align: center;
 			z-index: 2;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 			span {
 				color: rgba(235, 85, 29, 1);
 				font-family: Gilroy-Bold;
@@ -1180,8 +1222,14 @@ export default CheckPick;
 			text-align: center;
 			margin-top: 24px;
 			z-index: 2;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		ul {
+			opacity: 0;
+			animation: fade-in 1s;
+			animation-fill-mode: forwards;
 			li {
 				position: absolute;
 				background: #ffffff;
@@ -1287,6 +1335,9 @@ export default CheckPick;
 			color: #000;
 			text-align: center;
 			z-index: 2;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -1300,12 +1351,18 @@ export default CheckPick;
 			text-align: center;
 			margin-top: 24px;
 			z-index: 2;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		.swiper {
 			width: 1660px;
 			height: 515px;
 			margin: 80px auto;
 			position: relative;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 			.swiper-slide {
 				height: 515px;
 				.img-wrap {
