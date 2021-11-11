@@ -224,6 +224,7 @@ export default Building;
 				}
 			}
 			.rightContent {
+				pointer-events: none;
 				width: 290px;
 				height: 452px;
 				border: 1px solid #eb551d;
