@@ -331,9 +331,12 @@ export default class Brand extends Vue {
 
 	doMovePath(index: number, immediate: boolean = false) {
 		if (this.isPlayingPath) return;
+		if (index == this.prePathIndex) return;
 
+		let isForward  = index - this.prePathIndex > 0 ? true : false;
+		console.log(isForward);
 		let start = this.prePathIndex == -1 ? 0 : this.offset + this.unit * this.prePathIndex;
-		let end = this.offset + this.unit * index;
+		let end = this.offset + this.unit * index + (isForward ? 0 : -0.0095);
 		let duration = immediate ? 0 : Math.abs(end - start) * 15;
 
 		this.isPlayingPath = true;
