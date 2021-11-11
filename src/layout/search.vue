@@ -49,6 +49,7 @@ export default class search extends Vue {
 			return;
 		}
 		this.searchShow = false;
+		this.$router.push({name:'search'})
 	}
 }
 </script>
@@ -116,6 +117,8 @@ export default class search extends Vue {
 				font-size: 18px;
 				border: none;
 				padding-left: 50px;
+				padding-right:50px;
+
 				font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 				&::placeholder{
 					font-size: 18px;

@@ -144,6 +144,7 @@ export default class makeAppointment extends Vue {
 					margin: 19px 0 45px 0;
 					span {
 						color: rgba(237, 84, 0, 1);
+						font-family: Gilroy-Bold;
 					}
 				}
 				ul {

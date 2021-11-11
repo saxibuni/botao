@@ -28,7 +28,7 @@
 								<p>首席设计师</p>
 							</div>
 						</div>
-						<Button :text="'找TA设计'" />
+						<Button @click.native="$store.state.dialogDesign.design=true" :text="'找TA设计'" />
 					</div>
 				</div>
 			</li>
