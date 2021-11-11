@@ -1,9 +1,11 @@
 <template>
-	<div class="header" :class="navBgColor ? 'active' : ''">
+	<div class="header" :class="navBgColor||$route.name=='search' ? 'active' : ''">
 		<div class="box">
 			<div class="logo">
-				<img v-if="!navBgColor" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo.png" alt="" />
-				<img v-if="navBgColor" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
+				<img v-if="!navBgColor&&$route.name!='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo.png" alt="" />
+				<img v-if="navBgColor&&$route.name!='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
+
+				<img v-if="$route.name=='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
 				<div>
 					<h3>我们，让空间更美好</h3>
 					<p>BETTER SPACE,BETTER LIFE</p>
@@ -380,7 +382,7 @@ export default class Header extends Vue {
 						cursor: auto;
 						left: 50%;
 						transform: translateX(-50%);
-						top: 112px;
+						top: 111px;
 						width: 1920px;
 						height: 110px;
 						background: rgba(18, 33, 51, .85);

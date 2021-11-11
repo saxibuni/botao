@@ -21,6 +21,7 @@ import StrategyDetail from 'root/pages/information/strategydetail.vue';
 import JoinUs from 'root/pages/information/joinus.vue';
 import Brand from 'root/pages/brand/index.vue';
 import ResolvePreData from './ResolvePreData';
+import Search from 'root/pages/search/index.vue';
 
 Vue.use(Router);
 
@@ -173,6 +174,12 @@ const router = new Router({
 			name: 'brand',
 			meta:{title:'brand'},
 			component: Brand
+		},
+		{
+			path: '/search', // 搜索
+			name: 'search',
+			meta:{title:'Search'},
+			component: Search
 		},
 		{
 			path: '*',

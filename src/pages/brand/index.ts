@@ -29,6 +29,7 @@ export default class Brand extends Vue {
 	draggerTarget2: any;
 	distance: number = 0;
 	progressIndex: number = 0;
+	pos = [257, 443, 535, 630, 851, 1039];
 
 	isPlayingPath: boolean = false;
 	prePathIndex: number = -1; //前一次的路径点
@@ -37,6 +38,7 @@ export default class Brand extends Vue {
 	offset = 0.03;
 	path: SVGPathElement;
 	plane: HTMLElement;
+
 	playFlag: boolean = false;
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	times: '';
@@ -44,7 +46,6 @@ export default class Brand extends Vue {
 	height: number = 0;
 	isActive = 7;
 	bannerActive = 0;
-	isShow = 0;
 	BannerData = {
 		imgUrl: require('../../assets/bg_g1_banner.jpg'),
 		cn: '波涛品牌',
@@ -276,14 +277,13 @@ export default class Brand extends Vue {
 	}
 
 	createTrigger() {
-		let pos = [257, 443, 535, 630, 851, 1039];
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
 				let offset = self.progress * (1245 - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
 
-				this.calcProgressIndex(offset + 290, pos);
+				this.calcProgressIndex(offset + 290, this.pos);
 			}
 		});
 	}
@@ -292,20 +292,27 @@ export default class Brand extends Vue {
 		for (let i = 0; i < pos.length; i++) {
 			if (pos[i] <= height) {
 				this.progressIndex = i;
-				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
-				times[i].style.opacity = '1';
-				this.isShow = i;
 			} else {
-				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
-				times[i].style.opacity = '0';
 				break;
 			}
 		}
 	}
 
 	change(str) {
-		if ((this.isShow == 0 && str == 'pre') || (this.isShow == this.devolopeList.length - 1 && str == 'next')) return;
-		str == 'pre' ? this.isShow-- : this.isShow++;
+		let progressIndex = this.progressIndex;
+		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
+		str == 'pre' ? progressIndex-- : progressIndex++;
+
+		let offset = 20;
+		let height = this.pos[progressIndex] + offset;
+		let progress = (height - 290) / (1245 - 290);
+		let totalScroll = 1245 - 716;
+		let distance = progress * totalScroll;
+
+		gsap.to('.history-scroll', {
+			duration: 0.5,
+			scrollTop: distance
+		});
 	}
 
 	jump(i) {
@@ -360,9 +367,11 @@ export default class Brand extends Vue {
 		svgBox.style.width = ul.clientWidth + 'px';
 
 		setTimeout(() => {
-			this.pathTween && this.pathTween.kill();
-			this.isPlayingPath = false;
-			this.doMovePath(this.prePathIndex, true);
+			if (this.pathTween) {
+				this.pathTween.kill();
+				this.isPlayingPath = false;
+				this.doMovePath(this.prePathIndex, true);
+			}
 		});
 	}
 

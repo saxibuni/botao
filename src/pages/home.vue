@@ -47,16 +47,17 @@
 		</div>
 		<div class="page2">
 			<h2 class="wow">
-				<ICountUp :endVal="1000" :options="options1"></ICountUp>经典案例 筑梦幸福家
+				<ICountUp :endVal="1000" :options="options1"></ICountUp>
+				经典案例 筑梦幸福家
 			</h2>
-			<p  class="wow">Select cases</p>
+			<p class="wow">Select cases</p>
 			<div class="tabs wow">
 				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="anIndex = i">{{ item }}</div>
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
-					<img :class="{active:page2Ani}" :src="page2ImgSrcList[page2Index]" alt="" />
-					<div class="text wow" :class="{active:page2Ani}">
+					<img :class="{ active: page2Ani }" :src="page2ImgSrcList[page2Index]" alt="" />
+					<div class="text wow" :class="{ active: page2Ani }">
 						<h3>上海东方颐城</h3>
 						<h4>
 							<span>现代风格</span>
@@ -66,7 +67,7 @@
 							地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
 						</p>
 						<div class="btn-box">
-							<Button text="案例详情" @click.native="$router.push({name:'case-detail'})"></Button>
+							<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
 						</div>
 					</div>
 				</div>
@@ -97,25 +98,29 @@
 				<ul>
 					<li>
 						<div>
-							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>%
+							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>
+							%
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>年
+							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
+							年
 						</div>
 						<p>以上从业经验</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>支
+							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>
+							支
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>%
+							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>
+							%
 						</div>
 						<p>荣获设计奖项</p>
 					</li>
@@ -195,48 +200,54 @@
 						<li>
 							<div>
 								<b>
-								<ICountUp :endVal="138" :options="options2"></ICountUp>
-								</b><span>项</span>
+									<ICountUp :endVal="138" :options="options2"></ICountUp>
+								</b>
+								<span>项</span>
 							</div>
 							<p>工地管理条例</p>
 						</li>
 						<li>
 							<div>
 								<b>
-								<ICountUp :endVal="316" :options="options2"></ICountUp>
-								</b><span>条</span>
+									<ICountUp :endVal="316" :options="options2"></ICountUp>
+								</b>
+								<span>条</span>
 							</div>
 							<p>施工工艺标准</p>
 						</li>
 						<li>
 							<div>
 								<b>
-								<ICountUp :endVal="14" :options="options2"></ICountUp>
-								</b><span>项</span>
+									<ICountUp :endVal="14" :options="options2"></ICountUp>
+								</b>
+								<span>项</span>
 							</div>
 							<p>工程技术专利</p>
 						</li>
 						<li>
 							<div>
 								<b>
-								<ICountUp :endVal="259" :options="options2"></ICountUp>
-								</b><span>条</span>
+									<ICountUp :endVal="259" :options="options2"></ICountUp>
+								</b>
+								<span>条</span>
 							</div>
 							<p>验收标准</p>
 						</li>
 						<li>
 							<div>
 								<b>
-								<ICountUp :endVal="600" :options="options2"></ICountUp>
-								</b><span>个</span>
+									<ICountUp :endVal="600" :options="options2"></ICountUp>
+								</b>
+								<span>个</span>
 							</div>
 							<p>改在建工地</p>
 						</li>
 						<li>
 							<div>
 								<b>
-								<ICountUp :endVal="100" :options="options2"></ICountUp>
-								</b><span>+</span>
+									<ICountUp :endVal="100" :options="options2"></ICountUp>
+								</b>
+								<span>+</span>
 							</div>
 							<p>金牌项目经理</p>
 						</li>
@@ -248,8 +259,8 @@
 				<div class="text">
 					<h2>
 						<transition-group name="toggle-image">
-								<img :src="imgSrc" alt="" v-if="textActive" key="a" />
-								<img src="~assets/bg_home_b4_roll.png" alt="" v-if="!textActive" key="b" />
+							<img :src="imgSrc" alt="" v-if="textActive" key="a" />
+							<img src="~assets/bg_home_b4_roll.png" alt="" v-if="!textActive" key="b" />
 						</transition-group>
 					</h2>
 					<div :class="{ active: textActive2 }">
@@ -282,7 +293,7 @@
 						<li style="font-size:10px;" :class="{ active: picIndex == i }" v-for="(item, i) in picList" :key="i"><img :src="item" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
-						<Button text="预约参观工地" @click.native="$store.state.dialogDesign.visit=true"></Button>
+						<Button text="预约参观工地" @click.native="$store.state.dialogDesign.visit = true"></Button>
 					</div>
 				</div>
 			</div>
@@ -344,6 +355,43 @@
 					<Button text="走进波涛"></Button>
 				</div>
 			</div>
+			<div class="right wow">
+				<div>
+					<h3>
+						<ICountUp :endVal="300" :options="options2"></ICountUp>
+						<b>+</b>
+					</h3>
+					<p>多家分公司全国开设</p>
+				</div>
+				<div>
+					<h3>
+						<ICountUp :endVal="15000" :options="options2"></ICountUp>
+						<b>+</b>
+					</h3>
+					<p>大宅业主的选择</p>
+				</div>
+				<div>
+					<h3>
+						<ICountUp :endVal="2000" :options="options2"></ICountUp>
+						<b>㎡</b>
+					</h3>
+					<p>家居建材广场</p>
+				</div>
+				<div>
+					<h3>
+						<ICountUp :endVal="300" :options="options2"></ICountUp>
+						<b>个</b>
+					</h3>
+					<p>国内外大牌供应商</p>
+				</div>
+				<div>
+					<h3>
+						<ICountUp :endVal="100" :options="options2"></ICountUp>
+						<b>亿</b>
+					</h3>
+					<p>产值 100年企业追求</p>
+				</div>
+			</div>
 		</div>
 		<div class="page7">
 			<h3 class="wow">
@@ -352,7 +400,7 @@
 			</h3>
 			<div class="title wow">
 				<span>News information</span>
-				<div @click="$router.push({name:'owner-voice'})">
+				<div @click="$router.push({ name: 'owner-voice' })">
 					全部新闻
 					<i></i>
 				</div>
@@ -370,7 +418,7 @@
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" @click="$router.push({name:'strategy-detail'})">
+						<div class="top" @click="$router.push({ name: 'strategy-detail' })">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
 								<div>
@@ -382,7 +430,7 @@
 							<p>近期活动</p>
 						</div>
 
-						<div class="items" @click="$router.push({name:'strategy-detail'})">
+						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
 							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
 							<p>
 								<span>装修攻略</span>
@@ -390,7 +438,7 @@
 							</p>
 						</div>
 
-						<div class="items" @click="$router.push({name:'strategy-detail'})">
+						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
 							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
 							<p>
 								<span>近期活动</span>
@@ -399,7 +447,7 @@
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" @click="$router.push({name:'strategy-detail'})">
+						<div class="top" @click="$router.push({ name: 'strategy-detail' })">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
 								<div>
@@ -411,7 +459,7 @@
 							<p>近期活动</p>
 						</div>
 
-						<div class="items" @click="$router.push({name:'strategy-detail'})">
+						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
 							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
 							<p>
 								<span>装修攻略</span>
@@ -419,7 +467,7 @@
 							</p>
 						</div>
 
-						<div class="items" @click="$router.push({name:'strategy-detail'})">
+						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
 							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳180°</h4>
 							<p>
 								<span>近期活动</span>
@@ -568,20 +616,20 @@ export default home;
 						font-size: 18px;
 						padding-left: 19px;
 						&::placeholder {
-				  		font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
+							font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 							color: #999999;
 						}
 					}
 					&:nth-child(2) {
 						i {
 							background: url('~assets/icons/ic_home_banner_phone.png');
-						  background-size: 100% 100%;
+							background-size: 100% 100%;
 						}
 					}
 					&:nth-child(3) {
 						i {
 							background: url('~assets/icons/ic_home_banner_area.png');
-					  	background-size: 100% 100%;
+							background-size: 100% 100%;
 						}
 					}
 					&.btn {
@@ -596,7 +644,7 @@ export default home;
 						border: 2px solid #ed5400;
 						position: relative;
 						transition: transform 0.5s ease 0s;
-						&:hover{
+						&:hover {
 							transform: translateY(-3px);
 						}
 						&::after,
@@ -676,7 +724,7 @@ export default home;
 				position: relative;
 				text-align: center;
 				line-height: 39px;
-				transition: border 0.5s , color 0.5s;
+				transition: border 0.5s, color 0.5s;
 				border: 1px solid transparent;
 				&::after,
 				&::before {
@@ -738,9 +786,9 @@ export default home;
 				img {
 					width: 100%;
 					height: 100%;
-					transition:opacity .3s;
-					opacity: .3;
-					&.active{
+					transition: opacity 0.3s;
+					opacity: 0.3;
+					&.active {
 						opacity: 1;
 					}
 				}
@@ -748,7 +796,7 @@ export default home;
 					position: absolute;
 					top: 206px;
 					left: 100px;
-					transition:opacity .83s;
+					transition: opacity 0.83s;
 					opacity: 0;
 					animation: slide-down-in 1s, fade-in 1s;
 					animation-fill-mode: forwards;
@@ -950,30 +998,30 @@ export default home;
 					p {
 						font-size: 20px;
 					}
-					&:nth-child(1){
-						div{
-							b{
+					&:nth-child(1) {
+						div {
+							b {
 								width: 48px;
 							}
 						}
 					}
-					&:nth-child(2){
-						div{
-							b{
+					&:nth-child(2) {
+						div {
+							b {
 								width: 45px;
 							}
 						}
 					}
-					&:nth-child(3){
-						div{
-							b{
+					&:nth-child(3) {
+						div {
+							b {
 								width: 27px;
 							}
 						}
 					}
-					&:nth-child(4){
-						div{
-							b{
+					&:nth-child(4) {
+						div {
+							b {
 								width: 50px;
 							}
 						}
@@ -1047,7 +1095,7 @@ export default home;
 						top: 0;
 						width: 100%;
 						height: 100%;
-						transition: transform .3s;
+						transition: transform 0.3s;
 						&:hover {
 							transform: scale($imgScale);
 						}
@@ -1094,7 +1142,7 @@ export default home;
 				top: 0;
 				left: 0;
 				z-index: 1;
-				background: linear-gradient(to bottom,rgba(0,0,0,0.9),rgba(0,0,0,0.5),rgba(0,0,0,0.9));
+				background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
 				pointer-events: none;
 			}
 			ul {
@@ -1332,15 +1380,15 @@ export default home;
 			align-items: center;
 			z-index: 2;
 			cursor: pointer;
-			&:hover{
-				i{
+			&:hover {
+				i {
 					transform: translateX(4px);
 				}
 			}
 			i {
 				width: 8px;
 				height: 14px;
-				transition: transform .3s;
+				transition: transform 0.3s;
 				background: url('~assets/icons/ic_home_b2_enter.png') no-repeat;
 				background-size: 100% 100%;
 				margin-left: 19px;
@@ -1359,7 +1407,7 @@ export default home;
 				cursor: pointer;
 				background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
 				background-size: 26px 13px;
-				transition: .3s;
+				transition: 0.3s;
 				&:nth-child(1) {
 					&:hover {
 						background: url(~assets/icons/ic_home_b3_top_orange.png) no-repeat center center;
@@ -1455,7 +1503,7 @@ export default home;
 					z-index: 3;
 					cursor: pointer;
 					transform: translate(-50%, -50%);
-					transition:transform 0.3s;
+					transition: transform 0.3s;
 					&:hover {
 						transform: translate(-50%, -50%) scale(1.1);
 					}
@@ -1508,10 +1556,10 @@ export default home;
 							font-weight: bold;
 							line-height: 55px;
 							font-family: Gilroy-Bold;
-							b{
+							b {
 								display: inline-block;
 							}
-							>span {
+							> span {
 								font-size: 18px;
 							}
 						}
@@ -1528,45 +1576,45 @@ export default home;
 						&:nth-child(5) {
 							width: 337px;
 						}
-						&:nth-child(1){
-							div{
-								b{
+						&:nth-child(1) {
+							div {
+								b {
 									width: 64px;
 								}
 							}
 						}
-						&:nth-child(2){
-							div{
-								b{
+						&:nth-child(2) {
+							div {
+								b {
 									width: 62px;
 								}
 							}
 						}
-						&:nth-child(3){
-							div{
-								b{
+						&:nth-child(3) {
+							div {
+								b {
 									width: 43px;
 								}
 							}
 						}
 
-						&:nth-child(4){
-							div{
-								b{
+						&:nth-child(4) {
+							div {
+								b {
 									width: 66px;
 								}
 							}
 						}
-						&:nth-child(5){
-							div{
-								b{
+						&:nth-child(5) {
+							div {
+								b {
 									width: 75px;
 								}
 							}
 						}
-						&:nth-child(6){
-							div{
-								b{
+						&:nth-child(6) {
+							div {
+								b {
 									width: 70px;
 								}
 							}
@@ -1587,7 +1635,7 @@ export default home;
 				z-index: 3;
 				display: flex;
 				align-items: center;
-				h2{
+				h2 {
 					position: relative;
 					width: 215px;
 					margin-right: 35px;
@@ -1603,10 +1651,9 @@ export default home;
 					height: 215px;
 					border-radius: 100%;
 					@include toggle-image();
-
 				}
-				>div{
- 					opacity: 0;
+				> div {
+					opacity: 0;
 					transition: opacity 0.3s;
 					&.active {
 						opacity: 1;
@@ -2011,6 +2058,48 @@ export default home;
 				height: 53px;
 			}
 		}
+		.right {
+			opacity: 0;
+			animation: fade-in 1s;
+			animation-fill-mode: forwards;
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 280px;
+			padding-top: 145px;
+			div {
+				margin-bottom: 106px;
+				&:last-child {
+					margin: 0;
+				}
+				h3 {
+					display: flex;
+					align-items: flex-end;
+					span {
+						font-size: 60px;
+						font-family: Gilroy-Bold;
+						font-weight: bold;
+						line-height: 1;
+						height: 50px;
+						color: #ed5400;
+					}
+					b {
+						font-size: 18px;
+						font-weight: bold;
+						color: #e95627;
+						line-height: 1;
+						margin-left: 5px;
+					}
+				}
+				p {
+					font-size: 18px;
+					font-weight: 400;
+					color: #fefefe;
+					margin-top: 15px;
+				}
+			}
+		}
 	}
 	.page7 {
 		padding: 100px 0;
@@ -2049,13 +2138,13 @@ export default home;
 				font-weight: bold;
 				color: #000000;
 				cursor: pointer;
-				&:hover{
-					i{
+				&:hover {
+					i {
 						transform: translateX(4px);
 					}
 				}
 				i {
-					transition: transform .3s;
+					transition: transform 0.3s;
 					width: 8px;
 					height: 14px;
 					background: url('~assets/icons/ic_home_b2_enter.png') no-repeat;
@@ -2072,11 +2161,11 @@ export default home;
 				li {
 					width: 553px;
 					position: relative;
-					.items{
-						&:hover{
-								h4{
-									color: #ec5400;
-								}
+					.items {
+						&:hover {
+							h4 {
+								color: #ec5400;
+							}
 						}
 					}
 					&:nth-child(1) {
@@ -2112,7 +2201,7 @@ export default home;
 							height: 90px;
 							background: url(~assets/icons/ic_home_b3_play.png) no-repeat;
 							background-size: 100% 100%;
-							transition:transform 0.3s;
+							transition: transform 0.3s;
 							&:hover {
 								transform: translate(-50%, -50%) scale(1.1);
 							}
@@ -2134,7 +2223,7 @@ export default home;
 								img {
 									transform: scale($imgScale);
 								}
-								h4{
+								h4 {
 									color: #ec5400;
 								}
 							}
@@ -2185,7 +2274,7 @@ export default home;
 							color: #000000;
 							margin-bottom: 12px;
 							padding-top: 50px;
-							transition: color .3s;
+							transition: color 0.3s;
 						}
 						p {
 							font-size: 18px;
