@@ -367,7 +367,7 @@ export default SoftDecoration;
 				animation-fill-mode: forwards;
 				&:hover {
 					img {
-						transform: scale(1.1);
+						transform: scale(#{$imgScale});
 					}
 				}
 				img {
@@ -718,7 +718,7 @@ export default SoftDecoration;
 					overflow: hidden;
 					&:hover{
 						img{
-							transform: scale(1.1);
+							transform: scale(#{$imgScale});
 						}
 					}
 					img {
@@ -868,6 +868,7 @@ export default SoftDecoration;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
 				animation-delay: .2s;
+				overflow: hidden;
 				&:hover {
 					> div {
 						background: #eb551d;
@@ -880,10 +881,14 @@ export default SoftDecoration;
 						color: #eb551d;
 						border: 1px solid #eb551d;
 					}
+					img{
+						transform: scale(#{$imgScale});
+					}
 				}
 				> img {
 					width: 100%;
 					height: 356px;
+					transition:transform .3s;
 				}
 				> div {
 					display: flex;
@@ -894,6 +899,8 @@ export default SoftDecoration;
 					height: 230px;
 					transition: 0.3s;
 					align-content: center;
+					position: relative;
+					z-index: 2;
 					p {
 						text-align: center;
 						font-size: 24px;
