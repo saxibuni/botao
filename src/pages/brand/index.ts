@@ -33,7 +33,7 @@ export default class Brand extends Vue {
 	isPlayingPath: boolean = false;
 	prePathIndex: number = -1; //前一次的路径点
 	pathTween: any;
-	unit = 0.0615;
+	unit = 0.06148;
 	offset = 0.03;
 	path: SVGPathElement;
 	plane: HTMLElement;
@@ -308,15 +308,16 @@ export default class Brand extends Vue {
 		this.plane = this.$el.querySelector('.plane');
 	}
 
-	doMovePath(index: number) {
+	doMovePath(index: number, immediate: boolean = false) {
 		if (this.isPlayingPath) return;
 
 		let start = this.prePathIndex == -1 ? 0 : this.offset + this.unit * this.prePathIndex;
 		let end = this.offset + this.unit * index;
-		let duration = Math.abs(end - start) * 20;
-		console.log(duration);
+		let duration = immediate ? 0 : Math.abs(end - start) * 15;
 
 		this.isPlayingPath = true;
+		this.prePathIndex = index;
+
 		this.pathTween = gsap
 			.timeline({
 				defaults: {
@@ -335,7 +336,6 @@ export default class Brand extends Vue {
 				},
 				onComplete: () => {
 					this.isPlayingPath = false;
-					this.prePathIndex = index;
 				}
 			});
 	}
@@ -344,6 +344,12 @@ export default class Brand extends Vue {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
 		svgBox.style.width = ul.clientWidth + 'px';
+
+		setTimeout(() => {
+			this.pathTween.kill();
+			this.isPlayingPath = false;
+			this.doMovePath(this.prePathIndex, true);
+		});
 	}
 
 	beforeDestroy() {
@@ -351,5 +357,6 @@ export default class Brand extends Vue {
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
 		ScrollTrigger.getAll().forEach(child => child.kill());
+		this.pathTween.kill();
 	}
 }
