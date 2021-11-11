@@ -29,7 +29,7 @@ export default class CaseDetail extends Vue {
 	};
 	swiperOptions2: any = {
 		speed: 500,
-		spaceBetween: 30,
+		spaceBetween: 5,
 		slidesPerView: 3,
 		slidesPerGroup: 3,
 		autoplay: false,

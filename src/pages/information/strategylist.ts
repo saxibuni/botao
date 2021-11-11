@@ -8,6 +8,7 @@ import Banner from '../../components/banner.vue'
 	}
 })
 export default class StrategyList extends Vue {
+	paginationData={size:100,total:1000}
 	BannerData = {
 		imgUrl: require('../../assets/strategybg.jpg'),
 		cn: '最新资讯',
