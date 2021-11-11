@@ -221,12 +221,24 @@
 			<h3>social responsibility</h3>
 			<div class="content-box">
 				<div class="svg-box">
-					<svg version="1.1" class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-						viewBox="0 0 7523 72" style="enable-background:new 0 0 7523 72;" xml:space="preserve">
-					<path class="st0" d="M0.7,30.2C52.1,14.8,108.5,1,210,1c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
+					<svg
+						version="1.1"
+						class="svg"
+						xmlns="http://www.w3.org/2000/svg"
+						xmlns:xlink="http://www.w3.org/1999/xlink"
+						x="0px"
+						y="0px"
+						viewBox="0 0 7523 72"
+						style="enable-background:new 0 0 7523 72;"
+						xml:space="preserve"
+					>
+						<path
+							class="st0"
+							d="M0.7,30.2C52.1,14.8,108.5,1,210,1c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
 						c228.5,0,228.5-70,457-70s228.5,70,457,70s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
 						s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70
-						s228.5,70,457,70c228.5,0,228.5-70,457-70"/>
+						s228.5,70,457,70c228.5,0,228.5-70,457-70"
+						/>
 					</svg>
 					<div class="plane"></div>
 				</div>
@@ -1079,7 +1091,10 @@ export default index;
 					transform: scale(0.89, 0.7);
 					transform-origin: left center;
 					path {
-						fill:none;stroke:#DBDBDB;stroke-miterlimit:10;stroke-dasharray:4,4;
+						fill: none;
+						stroke: #dbdbdb;
+						stroke-miterlimit: 10;
+						stroke-dasharray: 4, 4;
 					}
 				}
 				.plane {
@@ -1117,10 +1132,12 @@ export default index;
 					}
 					.text-box {
 						position: relative;
+						flex: 1;
+						min-height: 224px;
 						h2 {
-							margin-top: 0;
+							margin-top: 108px;
 							text-align: start;
-							margin-bottom: 16px;
+							margin-bottom: 22px;
 							font-size: 34px;
 							font-weight: bold;
 						}
@@ -1134,15 +1151,15 @@ export default index;
 							}
 						}
 						.dosh {
-							position: relative;
-							left: -34px;
-							top: -20px;
+							position: absolute;
+							left: -33px;
+							top: 40px;
 							width: 30px;
 							height: 30px;
 							border-radius: 50%;
 							border: 1px solid #eb551d;
 							cursor: pointer;
-							transition: transform .3s;
+							transition: transform 0.3s;
 							&:hover {
 								transform: scale(1.1);
 							}
@@ -1165,6 +1182,7 @@ export default index;
 						.text-box {
 							display: flex;
 							flex-direction: column-reverse;
+							margin-bottom: 115px;
 						}
 						p {
 							margin-top: 0;
@@ -1172,11 +1190,11 @@ export default index;
 						}
 						h2 {
 							margin-bottom: 0;
-							margin-top: 26px;
+							margin-top: 16px !important;
 						}
 						.dosh {
-							left: -34px;
-							top: 42px;
+							left: -33px;
+							top: 282px;
 						}
 					}
 					&:nth-child(3) {

@@ -119,7 +119,7 @@
 			<h2>招聘信息</h2>
 			<h3>recruitment information</h3>
 			<ul>
-				<li v-for="(v, i) in jobList" :key="i">
+				<li v-for="(v, i) in jobList" v-show="i < jobShowFlag" :key="i">
 					<h2>{{ v.name }}</h2>
 					<div class="icon">
 						<i></i>
@@ -135,7 +135,7 @@
 					<Button :text="'立即申请'"></Button>
 				</li>
 			</ul>
-			<Button :text="'更多职位'"></Button>
+			<Button :text="'更多职位'" @click.native="getMore"></Button>
 			<h4>人力资源部</h4>
 			<p>
 				<i></i>
@@ -351,6 +351,7 @@ export default JoinUs;
 			.text {
 				top: -37px;
 				left: -64px;
+				z-index: -1;
 			}
 			> div {
 				display: flex;

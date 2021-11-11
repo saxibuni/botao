@@ -2,11 +2,10 @@
 	<div class="owner">
 		<!-- 业主心声 -->
 		<Banner :data="BannerData" />
-
 		<div class="owner-vioce">
 			<h2>业主心声</h2>
 			<h3>Owner's voice</h3>
-			<div class="swiper-box">
+			<div class="swiper-box wow">
 				<swiper :options="ownerBannerOptions">
 					<swiper-slide v-for="(v, i) in ownerArr" :key="i">
 						<div class="img-box">
@@ -49,42 +48,42 @@
 			</div>
 			<div class="controal-box">
 				<div class="controals">
-					<div class="swiper-next owner-next"></div>
-					<div class="swiper-pre owner-pre"></div>
-					<div class="swiper-pagination owener-pagination"></div>
+					<div class="swiper-next owner-next wow"></div>
+					<div class="swiper-pre owner-pre wow"></div>
+					<div class="swiper-pagination wow owener-pagination"></div>
 				</div>
 			</div>
 		</div>
 		<div class="flag-honer">
 			<h2 class="wow">荣誉锦旗</h2>
 			<h3 class="wow">Flag of honor</h3>
-			<div class="swiper-box">
+			<div class="swiper-box wow">
 				<swiper :options="fhBannerOptions">
 					<swiper-slide v-for="(v, i) in fhArr" :key="i">
 						<div class="img-box">
 							<div class="left">
 								<div class="top">
-									<img :src="v.img1" alt="" />
-									<img :src="v.img4" alt="" />
-									<img :src="v.img5" alt="" />
+									<div class="img-box"><img :src="v.img1" alt="" /></div>
+									<div class="img-box"><img :src="v.img4" alt="" /></div>
+									<div class="img-box"><img :src="v.img5" alt="" /></div>
 								</div>
 								<div class="bottom">
 									<div class="left">
-										<img :src="v.img2" alt="" />
-										<img :src="v.img3" alt="" />
+										<div class="img-box"><img :src="v.img2" alt="" /></div>
+										<div class="img-box"><img :src="v.img3" alt="" /></div>
 									</div>
 									<div class="right">
-										<img :src="v.img6" alt="" />
+										<div class="img-box"><img :src="v.img6" alt="" /></div>
 									</div>
 								</div>
 							</div>
 							<div class="out-right">
 								<div class="top">
-									<img :src="v.img7" alt="" />
+									<div class="img-box"><img :src="v.img7" alt="" /></div>
 								</div>
 								<div class="bottom">
-									<img :src="v.img8" alt="" />
-									<img :src="v.img9" alt="" />
+									<div class="img-box"><img :src="v.img8" alt="" /></div>
+									<div class="img-box"><img :src="v.img9" alt="" /></div>
 								</div>
 							</div>
 						</div>
@@ -93,15 +92,15 @@
 			</div>
 			<div class="controal-box">
 				<div class="controals">
-					<div class="swiper-next fh-next"></div>
-					<div class="swiper-pre fh-pre"></div>
-					<div class="swiper-pagination fh-pagination"></div>
+					<div class="swiper-next wow fh-next"></div>
+					<div class="swiper-pre wow fh-pre"></div>
+					<div class="swiper-pagination wow fh-pagination"></div>
 				</div>
 			</div>
 		</div>
 		<div class="dian-ping">
-			<h2>业主点评</h2>
-			<h3>owner reviews</h3>
+			<h2 class="wow">业主点评</h2>
+			<h3 class="wow">owner reviews</h3>
 			<div class="swiper-box wow">
 				<swiper :options="dpBannerOptions">
 					<swiper-slide v-for="(v, i) in dpArr" :key="i">
@@ -113,8 +112,8 @@
 				</swiper>
 			</div>
 			<div class="button-box">
-				<div class="swiper-next dp-next"></div>
-				<div class="swiper-pre dp-pre"></div>
+				<div class="swiper-next wow dp-next"></div>
+				<div class="swiper-pre wow dp-pre"></div>
 			</div>
 		</div>
 	</div>
@@ -128,18 +127,35 @@ export default OwnerVoice;
 <style lang="scss">
 html {
 	.owner {
-		.owner-vioce {
+		.owner-vioce,
+		.flag-honer,
+		.dian-ping {
 			h2,
 			h3 {
 				opacity: 0;
 				animation: slide-up-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
 			}
-			.swiper-box{
-					opacity: 0;
+			.swiper-box {
+				opacity: 0;
 				animation: slide-down-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
 			}
+		}
+		.swiper-next {
+			opacity: 0;
+			animation: slide-left-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.swiper-pre {
+			opacity: 0;
+			animation: slide-right-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.swiper-pagination {
+			opacity: 0;
+			animation: fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 	}
 }
@@ -174,7 +190,7 @@ html {
 				position: relative;
 				height: 608px;
 				opacity: 0.5;
-				transition: all 0.3s;
+				transition: all 1s;
 				img {
 					width: 100%;
 					height: 100%;
@@ -188,7 +204,6 @@ html {
 					left: -311px;
 					width: 450px !important;
 					height: 493px;
-
 					.inner-box {
 						box-sizing: border-box;
 						padding: 41px 36px 64px 36px;
@@ -198,6 +213,7 @@ html {
 						height: 100%;
 						background-color: #122133;
 						color: #fff;
+						transition: all 1s;
 						.top {
 							display: flex;
 							padding-bottom: 33px;
@@ -267,10 +283,10 @@ html {
 			/deep/.swiper {
 				display: none;
 			}
-			.swiper-slide-active {
+			.active {
 				.img-box {
 					opacity: 1;
-					transition: all 0.3s;
+					transition: all 1s;
 					.left-info {
 						width: 450px;
 						.inner-box {
@@ -279,13 +295,22 @@ html {
 						}
 					}
 					.pause {
+						opacity: 0;
 						position: absolute;
-						z-index: 10;
 						top: 50%;
 						left: 50%;
-						transform: translate(-50%, -50%);
+						margin-left: -45px;
+						margin-top: -45px;
+						animation: fade-in 1s forwards;
 						width: 90px;
 						height: 90px;
+						overflow: hidden;
+						border-radius: 50%;
+						transition: transform 0.3s;
+						cursor: pointer;
+						&:hover {
+							transform: scale(1.1);
+						}
 					}
 				}
 			}
@@ -332,6 +357,9 @@ html {
 				&:hover .mask {
 					opacity: 1;
 				}
+					&:hover{
+						box-shadow: 0px 0px 35px 0px rgba(196, 21, 21, 0.15);
+					}
 			}
 		}
 		.button-box {
@@ -364,16 +392,27 @@ html {
 			.img-box {
 				// height: 500px;
 				display: flex;
+				.img-box {
+					display: flex;
+					overflow: hidden;
+					img {
+						width: 100%;
+						height: 100%;
+						transition: all 0.3s;
+					}
+					&:hover img {
+						transform: scale($imgScale);
+					}
+				}
 				.left {
 					.top {
 						display: flex;
 						margin-bottom: 15px;
-						width: 332px;
 						height: 266px;
-						img {
+						.img-box {
+							width: 332px;
+							height: 266px;
 							margin-right: 20px;
-							width: 100%;
-							height: 100%;
 							&:last-child {
 								margin-right: 0;
 							}
@@ -386,12 +425,18 @@ html {
 							width: 332px;
 							flex-direction: column;
 							margin-right: 20px;
-							img {
-								margin-right: 20px;
+							.img-box {
+								position: relative;
+								display: flex;
 								width: 332px;
 								height: 266px;
-								&:last-child {
-									margin-right: 0;
+								img {
+									position: absolute;
+									bottom: -2px;
+									margin-right: 20px;
+									&:last-child {
+										margin-right: 0;
+									}
 								}
 								&:not(:last-child) {
 									margin-bottom: 15px;
@@ -409,17 +454,24 @@ html {
 				.out-right {
 					margin-left: 20px;
 					.top {
-						img {
+						.img-box {
 							width: 684px;
 							height: 548px;
+							overflow: hidden;
 						}
 					}
 					.bottom {
 						margin-top: 14px;
 						display: flex;
-						img {
+						.img-box {
+							position: relative;
 							width: 332px;
 							height: 266px;
+							overflow: hidden;
+							img {
+								position: absolute;
+								bottom: -2px;
+							}
 							&:not(:last-child) {
 								margin-right: 20px;
 							}
