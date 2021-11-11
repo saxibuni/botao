@@ -221,20 +221,12 @@
 			<h3>social responsibility</h3>
 			<div class="content-box">
 				<div class="svg-box">
-					<svg
-						class="svg"
-						version="1.1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-						x="0px"
-						y="0px"
-						viewBox="0 0 3680 80"
-						style="enable-background:new 0 0 3680 80;"
-						xml:space="preserve"
-					>
-						<g>
-							<path class="st0" d="M0,5c230,0,230,70,460,70C690,75,690,5,920,5s230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70c230,0,230,70,460,70c230,0,230-70,460-70" />
-						</g>
+					<svg version="1.1" class="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 7523 72" style="enable-background:new 0 0 7523 72;" xml:space="preserve">
+					<path class="st0" d="M0.7,30.2C52.1,14.8,108.5,1,210,1c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
+						c228.5,0,228.5-70,457-70s228.5,70,457,70s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
+						s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70
+						s228.5,70,457,70c228.5,0,228.5-70,457-70"/>
 					</svg>
 					<div class="plane"></div>
 				</div>
@@ -1074,19 +1066,18 @@ export default index;
 			}
 			.svg-box {
 				position: absolute;
-				left: 150px;
-				top: 100px;
+				left: 138px;
+				top: 363px;
 				width: 0;
 				height: 80px;
 				// overflow: hidden;
 				.svg {
 					height: 80px;
 					position: absolute;
+					transform: scale(0.89, 0.7);
+					transform-origin: left center;
 					path {
-						fill: none;
-						stroke: #dcdcdc;
-						stroke-miterlimit: 10;
-						stroke-dasharray: 3.9998, 2.9998;
+						fill:none;stroke:#DBDBDB;stroke-miterlimit:10;stroke-dasharray:4,4;
 					}
 				}
 				.plane {
@@ -1106,9 +1097,6 @@ export default index;
 				display: flex;
 				margin: 137px 0 0 140px;
 				width: auto;
-				background: url(~assets/bg_g1_part7_line.png) no-repeat center;
-				// background-size: 100%;
-				background-position: left center;
 				li {
 					position: relative;
 					top: -25px;

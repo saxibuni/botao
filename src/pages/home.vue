@@ -24,7 +24,7 @@
 				<div class="prev prev1"></div>
 				<div class="next next1"></div>
 			</div>
-			<div class="form">
+			<div class="form wow">
 				<ul>
 					<li>
 						<i></i>
@@ -46,18 +46,17 @@
 			</div>
 		</div>
 		<div class="page2">
-			<h2>
-				<ICountUp :endVal="1000" :options="options1"></ICountUp>
-				经典案例 筑梦幸福家
+			<h2 class="wow">
+				<ICountUp :endVal="1000" :options="options1"></ICountUp>经典案例 筑梦幸福家
 			</h2>
-			<p>Select cases</p>
-			<div class="tabs">
+			<p  class="wow">Select cases</p>
+			<div class="tabs wow">
 				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="anIndex = i">{{ item }}</div>
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
 					<img :class="{active:page2Ani}" :src="page2ImgSrcList[page2Index]" alt="" />
-					<div class="text" :class="{active:page2Ani}">
+					<div class="text wow" :class="{active:page2Ani}">
 						<h3>上海东方颐城</h3>
 						<h4>
 							<span>现代风格</span>
@@ -72,7 +71,7 @@
 					</div>
 				</div>
 
-				<div class="swiper-wrap">
+				<div class="swiper-wrap wow">
 					<swiper class="dswiper" :options="bannerSwiperOptions2">
 						<swiper-slide v-for="(item, i) in page2ImgSrcList" :key="i">
 							<img :src="item" alt="" />
@@ -98,34 +97,30 @@
 				<ul>
 					<li>
 						<div>
-							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>
-							%
+							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>%
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
-							年
+							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>年
 						</div>
 						<p>以上从业经验</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>
-							支
+							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>支
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>
-							%
+							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>%
 						</div>
 						<p>荣获设计奖项</p>
 					</li>
 				</ul>
-				<div class="left-text">
+				<div class="left-text wow">
 					<div class="text">
 						<h4>于一</h4>
 						<span>设计总监</span>
@@ -158,7 +153,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="right">
+			<div class="right wow">
 				<ul>
 					<li v-for="(item, i) in portraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`">
 						<img :src="item" alt="" />
@@ -178,7 +173,7 @@
 				<i></i>
 			</div>
 		</div>
-		<div class="page4">
+		<div class="page4 wow">
 			<div class="left">
 				<img src="~assets/bg_home_b4_left.jpg" alt="" />
 				<div class="text">
@@ -198,8 +193,7 @@
 							<div>
 								<b>
 								<ICountUp :endVal="138" :options="options2"></ICountUp>
-								</b>
-								<span>项</span>
+								</b><span>项</span>
 							</div>
 							<p>工地管理条例</p>
 						</li>
@@ -207,8 +201,7 @@
 							<div>
 								<b>
 								<ICountUp :endVal="316" :options="options2"></ICountUp>
-								</b>
-								<span>条</span>
+								</b><span>条</span>
 							</div>
 							<p>施工工艺标准</p>
 						</li>
@@ -216,8 +209,7 @@
 							<div>
 								<b>
 								<ICountUp :endVal="14" :options="options2"></ICountUp>
-								</b>
-								<span>项</span>
+								</b><span>项</span>
 							</div>
 							<p>工程技术专利</p>
 						</li>
@@ -225,8 +217,7 @@
 							<div>
 								<b>
 								<ICountUp :endVal="259" :options="options2"></ICountUp>
-								</b>
-								<span>条</span>
+								</b><span>条</span>
 							</div>
 							<p>验收标准</p>
 						</li>
@@ -234,8 +225,7 @@
 							<div>
 								<b>
 								<ICountUp :endVal="600" :options="options2"></ICountUp>
-								</b>
-								<span>个</span>
+								</b><span>个</span>
 							</div>
 							<p>改在建工地</p>
 						</li>
@@ -243,8 +233,7 @@
 							<div>
 								<b>
 								<ICountUp :endVal="100" :options="options2"></ICountUp>
-								</b>
-								<span>+</span>
+								</b><span>+</span>
 							</div>
 							<p>金牌项目经理</p>
 						</li>
@@ -290,7 +279,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="page5">
+		<div class="page5 wow">
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions3">
 					<swiper-slide v-for="(item, i) in page5List" class="page5Slide" :key="i">
@@ -325,7 +314,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="page6">
+		<div class="page6 wow">
 			<div class="canvas-wrapper">
 				<canvas></canvas>
 			</div>
@@ -349,11 +338,11 @@
 			</div>
 		</div>
 		<div class="page7">
-			<h3>
+			<h3 class="wow">
 				<span>波涛</span>
 				与您分享最新资讯
 			</h3>
-			<div class="title">
+			<div class="title wow">
 				<span>News information</span>
 				<div @click="$router.push({name:'owner-voice'})">
 					全部新闻
@@ -362,7 +351,7 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li>
+					<li class="wow">
 						<div>
 							<img src="~assets/bg_home_b6_1.jpg" alt="" />
 						</div>
@@ -372,7 +361,7 @@
 							<div>温暖家｜多面客厅，一种舒适</div>
 						</div>
 					</li>
-					<li class="item">
+					<li class="item wow">
 						<div class="top" @click="$router.push({name:'strategy-detail'})">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
@@ -401,7 +390,7 @@
 							</p>
 						</div>
 					</li>
-					<li class="item">
+					<li class="item wow">
 						<div class="top" @click="$router.push({name:'strategy-detail'})">
 							<div>
 								<img src="~assets/bg_home_b6_2.jpg" alt="" />
@@ -529,6 +518,9 @@ export default home;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 			ul {
 				display: flex;
 				align-items: center;
@@ -633,8 +625,13 @@ export default home;
 			line-height: 53px;
 			color: #000000;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 			span {
 				color: #ed5400;
+				width: 180px;
+				display: inline-block;
 			}
 		}
 		> p {
@@ -646,11 +643,17 @@ export default home;
 			text-align: center;
 			margin: 25px 0 0 0;
 			text-transform: uppercase;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		.tabs {
 			margin: 51px auto 60px auto;
 			display: flex;
 			justify-content: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 			> div {
 				font-size: 18px;
 				font-family: Alibaba PuHuiTi;
@@ -737,6 +740,9 @@ export default home;
 					left: 100px;
 					transition: .83s;
 					opacity: .3;
+					opacity: 0;
+					animation: slide-down-in 1s, fade-in 1s;
+					animation-fill-mode: forwards;
 					&.active{
 						opacity: 1;
 					}
@@ -792,6 +798,9 @@ export default home;
 				display: flex;
 				justify-content: flex-start;
 				padding-left: 100px;
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
 				.dswiper {
 					width: 920px;
 					margin: 0;
@@ -886,7 +895,6 @@ export default home;
 		background: #132234;
 		height: 1142px;
 		position: relative;
-
 		> .left {
 			background: url('~assets/bg_home_b3_left.jpg') no-repeat;
 			background-size: cover;
@@ -913,6 +921,8 @@ export default home;
 				span {
 					color: #ed5400;
 					font-family: Gilroy-Bold;
+					display: inline-block;
+					width: 124px;
 				}
 			}
 			> ul {
@@ -928,16 +938,48 @@ export default home;
 							font-family: Gilroy-Bold;
 							font-size: 40px;
 							margin-right: 5px;
+							display: inline-block;
 						}
 					}
 					p {
 						font-size: 20px;
+					}
+					&:nth-child(1){
+						div{
+							b{
+								width: 48px;
+							}
+						}
+					}
+					&:nth-child(2){
+						div{
+							b{
+								width: 45px;
+							}
+						}
+					}
+					&:nth-child(3){
+						div{
+							b{
+								width: 27px;
+							}
+						}
+					}
+					&:nth-child(4){
+						div{
+							b{
+								width: 50px;
+							}
+						}
 					}
 				}
 			}
 			.left-text {
 				display: flex;
 				justify-content: space-between;
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
 				.text {
 					flex: 1;
 					padding-top: 18px;
@@ -1020,6 +1062,9 @@ export default home;
 			}
 		}
 		.right {
+			opacity: 0;
+			animation: slide-down-in 2.6s, fade-in 1s;
+			animation-fill-mode: forwards;
 			flex: 1;
 			height: 1142px;
 			overflow: hidden;
@@ -1271,9 +1316,15 @@ export default home;
 			align-items: center;
 			z-index: 2;
 			cursor: pointer;
+			&:hover{
+				i{
+					transform: translateX(4px);
+				}
+			}
 			i {
 				width: 8px;
 				height: 14px;
+				transition: transform .3s;
 				background: url('~assets/icons/ic_home_b2_enter.png') no-repeat;
 				background-size: 100% 100%;
 				margin-left: 19px;
@@ -1292,23 +1343,22 @@ export default home;
 				cursor: pointer;
 				background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
 				background-size: 26px 13px;
-				/* transition: .3s; */
+				transition: .3s;
 				&:nth-child(1) {
 					&:hover {
-						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
+						background: url(~assets/icons/ic_home_b3_top_orange.png) no-repeat center center;
 						background-size: 26px 13px;
-						transform: rotate(180deg) scale(1.05);
+						transform: scale(1.15);
 					}
 				}
 				&:nth-child(2) {
-					background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
+					background: url(~assets/icons/ic_home_b3_down_white.png) no-repeat center center;
 					background-size: 26px 13px;
 					margin-top: 15px;
-					transform: rotate(180deg);
 					&:hover {
 						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
 						background-size: 26px 13px;
-						transform: rotate(180deg) rotate(180deg) scale(1.05);
+						transform: scale(1.15);
 					}
 				}
 			}
@@ -1349,6 +1399,9 @@ export default home;
 		}
 	}
 	.page4 {
+		opacity: 0;
+		animation: slide-down-in 1s, fade-in 1s;
+		animation-fill-mode: forwards;
 		height: 970px;
 		display: flex;
 		overflow: hidden;
@@ -1439,6 +1492,9 @@ export default home;
 							font-weight: bold;
 							line-height: 55px;
 							font-family: Gilroy-Bold;
+							b{
+								display: inline-block;
+							}
 							>span {
 								font-size: 18px;
 							}
@@ -1455,6 +1511,49 @@ export default home;
 						&:nth-child(2),
 						&:nth-child(5) {
 							width: 337px;
+						}
+						&:nth-child(1){
+							div{
+								b{
+									width: 64px;
+								}
+							}
+						}
+						&:nth-child(2){
+							div{
+								b{
+									width: 62px;
+								}
+							}
+						}
+						&:nth-child(3){
+							div{
+								b{
+									width: 43px;
+								}
+							}
+						}
+
+						&:nth-child(4){
+							div{
+								b{
+									width: 66px;
+								}
+							}
+						}
+						&:nth-child(5){
+							div{
+								b{
+									width: 75px;
+								}
+							}
+						}
+						&:nth-child(6){
+							div{
+								b{
+									width: 70px;
+								}
+							}
 						}
 					}
 				}
@@ -1632,6 +1731,9 @@ export default home;
 		}
 	}
 	.page5 {
+		opacity: 0;
+		animation: slide-down-in 1s, fade-in 1s;
+		animation-fill-mode: forwards;
 		overflow: hidden;
 		height: 970px;
 		position: relative;
@@ -1815,6 +1917,9 @@ export default home;
 		}
 	}
 	.page6 {
+		opacity: 0;
+		animation: slide-down-in 1s, fade-in 1s;
+		animation-fill-mode: forwards;
 		height: 1097px;
 		position: relative;
 		.canvas-wrapper {
@@ -1887,11 +1992,17 @@ export default home;
 			font-weight: 400;
 			color: #000;
 			margin-bottom: 29px;
+			opacity: 0;
+			animation: slide-down-in 2s, fade-in 1s;
+			animation-fill-mode: forwards;
 			span {
 				color: #ec5400;
 			}
 		}
 		.title {
+			opacity: 0;
+			animation: slide-down-in 2s, fade-in 1s;
+			animation-fill-mode: forwards;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
@@ -1908,7 +2019,13 @@ export default home;
 				font-weight: bold;
 				color: #000000;
 				cursor: pointer;
+				&:hover{
+					i{
+						transform: translateX(4px);
+					}
+				}
 				i {
+					transition: transform .3s;
 					width: 8px;
 					height: 14px;
 					background: url('~assets/icons/ic_home_b2_enter.png') no-repeat;
@@ -1926,6 +2043,7 @@ export default home;
 					width: 553px;
 					position: relative;
 					&:nth-child(1) {
+						animation: slide-down-in 1s, fade-in 1s;
 						div {
 							img {
 								width: 100%;
@@ -1963,6 +2081,12 @@ export default home;
 							}
 						}
 					}
+					&:nth-child(2) {
+						animation: slide-down-in 1.3s, fade-in 1.3s;
+					}
+					&:nth-child(3) {
+						animation: slide-down-in 1.6s, fade-in 1.6s;
+					}
 					&.item {
 						width: 553px;
 						cursor: pointer;
@@ -1971,7 +2095,7 @@ export default home;
 							border-bottom: 1px solid #ed5400;
 							&:hover {
 								img {
-									transform: scale(1.1);
+									transform: scale($imgScale);
 								}
 							}
 							> div {

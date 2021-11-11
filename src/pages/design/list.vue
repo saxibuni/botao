@@ -48,7 +48,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination />
+		<Pagination :data="paginationData" />
 	</div>
 </template>
 
@@ -71,6 +71,8 @@ export default DesignList;
 				font-weight: bold;
 				span {
 					color: #ed5400;
+					display: inline-block;
+					width: 123px;
 				}
 			}
 			p {

@@ -39,4 +39,7 @@ export default class WholeDecoration extends Vue {
 			}
 		})
 	}
+	mounted() {
+		this.restartWow();
+	}
 }

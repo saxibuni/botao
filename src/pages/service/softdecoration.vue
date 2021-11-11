@@ -9,60 +9,60 @@
 			<img class="mask" src="~assets/bg_e3_banner_left.png" alt="" />
 		</div>
 		<div class="page2">
-			<h2>软装配饰定制</h2>
-			<p>Deserve to act the role of custom</p>
+			<h2 class="wow">软装配饰定制</h2>
+			<p class="wow">Deserve to act the role of custom</p>
 
 			<ul>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_01.png" alt="" />
 					<div>
 						<p>绿植</p>
 						<h6>Green Plant</h6>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_02.png" alt="" />
 					<div>
 						<p>挂画</p>
 						<h6>Hanging Picture</h6>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_03.png" alt="" />
 					<div>
 						<p>家具</p>
 						<h6>Furniture</h6>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_04.png" alt="" />
 					<div>
 						<p>灯具</p>
 						<h6>Lighting</h6>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_05.png" alt="" />
 					<div>
 						<p>饰品</p>
 						<h6>Accessories</h6>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_06.png" alt="" />
 					<div>
 						<p>壁布</p>
 						<h6>Wall Cloth</h6>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_07.png" alt="" />
 					<div>
 						<p>窗帘</p>
 						<h6>Curtain</h6>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part2_08.png" alt="" />
 					<div>
 						<p>地毯</p>
@@ -70,7 +70,7 @@
 					</div>
 				</li>
 			</ul>
-			<div>
+			<div class="wow">
 				<p></p>
 				<p></p>
 				<p></p>
@@ -80,10 +80,10 @@
 		</div>
 
 		<div class="page3">
-			<h2>软装案例</h2>
-			<p>Soft cases</p>
+			<h2 class="wow">软装案例</h2>
+			<p class="wow">Soft cases</p>
 			<div>
-				<div class="left">
+				<div class="left wow">
 					<h2>
 						<span>250+</span>
 						沪上精装楼盘
@@ -107,19 +107,19 @@
 						<Button text="案例详情"></Button>
 					</div>
 				</div>
-				<div class="right">
+				<div class="right wow">
 					<img src="~assets/bg_e3_part6.jpg" alt="">
 				</div>
 			</div>
 		</div>
 		<div class="page4">
-			<h2>软装设计师</h2>
-			<p>Soft Designer</p>
+			<h2 class="wow">软装设计师</h2>
+			<p class="wow">Soft Designer</p>
 
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions">
-					<swiper-slide v-for="(item, i) in 5" :key="i">
-						<div class="box">
+					<swiper-slide class="wow" v-for="(item, i) in 5" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+						<div class="box" >
 							<div class="img-wrap">
 								<img src="~assets/bg_e3_part4_04.jpg" alt="" />
 								<div>
@@ -144,10 +144,10 @@
 		</div>
 
 		<div class="page5">
-			<h2>服务流程</h2>
-			<p>Service process</p>
+			<h2 class="wow">服务流程</h2>
+			<p class="wow">Service process</p>
 			<ul>
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part5_01.jpg" alt="" />
 					<b>01</b>
 					<div>
@@ -156,7 +156,7 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part5_02.jpg" alt="" />
 					<b>02</b>
 					<div>
@@ -165,7 +165,7 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part5_03.jpg" alt="" />
 					<b>03</b>
 					<div>
@@ -175,7 +175,7 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part5_04.jpg" alt="" />
 					<b>04</b>
 					<div>
@@ -184,7 +184,7 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="wow">
 					<img src="~assets/bg_e3_part5_05.jpg" alt="" />
 					<b>05</b>
 					<div>
@@ -196,11 +196,11 @@
 		</div>
 
 		<div class="page6">
-			<h2>软装配选</h2>
-			<p>Soft assembly elected</p>
+			<h2 class="wow">软装配选</h2>
+			<p class="wow">Soft assembly elected</p>
 			<div>
 				<ul>
-					<li>
+					<li class="wow">
 						<div>
 							<i>
 								<img src="~assets/icons/ic_e3_part6_1a.png" alt="" />
@@ -211,7 +211,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li class="wow">
 						<div>
 							<i>
 								<img src="~assets/icons/ic_e3_part6_2a.png" alt="" />
@@ -222,7 +222,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li class="wow">
 						<div>
 							<i>
 								<img src="~assets/icons/ic_e3_part6_3a.png" alt="" />
@@ -233,7 +233,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li class="wow">
 						<div>
 							<i>
 								<img src="~assets/icons/ic_e3_part6_4a.png" alt="" />
@@ -244,7 +244,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li class="wow">
 						<div>
 							<i>
 								<img src="~assets/icons/ic_e3_part6_5a.png" alt="" />
@@ -255,7 +255,7 @@
 						</div>
 					</li>
 
-					<li>
+					<li class="wow">
 						<div>
 							<i>
 								<img src="~assets/icons/ic_e3_part6_6a.png" alt="" />
@@ -279,6 +279,8 @@ export default SoftDecoration;
 <style lang="scss">
 .soft-decoration {
 	box-sizing: border-box;
+	margin: 0 auto;
+	max-width: 1920px;
 	img {
 		display: block;
 	}
@@ -332,6 +334,9 @@ export default SoftDecoration;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -343,6 +348,9 @@ export default SoftDecoration;
 			color: #000000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		ul {
 			li {
@@ -354,9 +362,12 @@ export default SoftDecoration;
 				border-radius: 100%;
 				cursor: pointer;
 				overflow: hidden;
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
 				&:hover {
 					img {
-						transform: scale(1.1);
+						transform: scale(#{$imgScale});
 					}
 				}
 				img {
@@ -386,11 +397,13 @@ export default SoftDecoration;
 					height: 260px;
 					top: 307px;
 					left: 106px;
+					animation-delay: .1s;
 				}
 				&:nth-child(2) {
 					top: 591px;
 					left: 257px;
 					width: 240px;
+					animation-delay: .2s;
 					height: 240px;
 				}
 
@@ -399,6 +412,7 @@ export default SoftDecoration;
 					left: 575px;
 					width: 361px;
 					height: 361px;
+					animation-delay: .3s;
 					z-index: 3;
 				}
 
@@ -406,6 +420,7 @@ export default SoftDecoration;
 					top: 419px;
 					left: 900px;
 					width: 265px;
+					animation-delay: .4s;
 					height: 265px;
 				}
 
@@ -413,6 +428,7 @@ export default SoftDecoration;
 					top: 661px;
 					left: 789px;
 					width: 187px;
+					animation-delay: .5s;
 					height: 187px;
 				}
 
@@ -420,23 +436,29 @@ export default SoftDecoration;
 					top: 352px;
 					left: 1228px;
 					width: 215px;
+					animation-delay: .6s;
 					height: 215px;
 				}
 				&:nth-child(7) {
 					top: 602px;
 					left: 1322px;
 					width: 196px;
+					animation-delay: .7s;
 					height: 196px;
 				}
 				&:nth-child(8) {
 					top: 359px;
 					left: 1518px;
 					width: 295px;
+					animation-delay: .8s;
 					height: 295px;
 				}
 			}
 		}
 		> div {
+			opacity: 0;
+			animation:  fade-in 3s;
+			animation-fill-mode: forwards;
 			p {
 				position: absolute;
 				border: 2px solid #eb551d;
@@ -491,6 +513,9 @@ export default SoftDecoration;
 			font-weight: 400;
 			color: #fff;
 			text-align: center;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -502,6 +527,9 @@ export default SoftDecoration;
 			color: #fff;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> div {
 			margin-top: 58px;
@@ -510,6 +538,10 @@ export default SoftDecoration;
 			.left {
 				position: relative;
 				width: 600px;
+				opacity: 0;
+				animation:slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+				z-index: 6;
 				>h2 {
 					padding-left: 80px;
 					span {
@@ -624,6 +656,11 @@ export default SoftDecoration;
 			.right {
 				flex: 1;
 				height: 778px;
+				opacity: 0;
+				animation: fade-in 2s;
+				animation-fill-mode: forwards;
+				position: relative;
+				z-index: 2;
 				img{
 					width: 100%;
 					height: 100%;
@@ -643,6 +680,9 @@ export default SoftDecoration;
 			font-weight: 400;
 			color: #000;
 			text-align: center;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -654,12 +694,20 @@ export default SoftDecoration;
 			color: #000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		.swiper {
 			width: 1770px;
 			margin: 0 auto;
 			margin-top: 60px;
 			position: relative;
+			.swiper-slide{
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
+			}
 			.box {
 				box-sizing: border-box;
 				margin-bottom: 50px;
@@ -670,7 +718,7 @@ export default SoftDecoration;
 					overflow: hidden;
 					&:hover{
 						img{
-							transform: scale(1.1);
+							transform: scale(#{$imgScale});
 						}
 					}
 					img {
@@ -785,6 +833,9 @@ export default SoftDecoration;
 			font-weight: 400;
 			color: #000;
 			text-align: center;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -796,6 +847,9 @@ export default SoftDecoration;
 			color: #000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 
 		ul {
@@ -810,6 +864,11 @@ export default SoftDecoration;
 				position: relative;
 				flex-wrap: wrap;
 				cursor: pointer;
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
+				animation-delay: .2s;
+				overflow: hidden;
 				&:hover {
 					> div {
 						background: #eb551d;
@@ -822,10 +881,14 @@ export default SoftDecoration;
 						color: #eb551d;
 						border: 1px solid #eb551d;
 					}
+					img{
+						transform: scale(#{$imgScale});
+					}
 				}
 				> img {
 					width: 100%;
 					height: 356px;
+					transition:transform .3s;
 				}
 				> div {
 					display: flex;
@@ -836,6 +899,8 @@ export default SoftDecoration;
 					height: 230px;
 					transition: 0.3s;
 					align-content: center;
+					position: relative;
+					z-index: 2;
 					p {
 						text-align: center;
 						font-size: 24px;
@@ -865,6 +930,7 @@ export default SoftDecoration;
 					z-index: 3;
 				}
 				&:nth-child(2n) {
+					animation-delay: .4s;
 					> div {
 						order: 1;
 					}
@@ -889,6 +955,9 @@ export default SoftDecoration;
 			font-weight: 400;
 			color: #000;
 			text-align: center;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -900,6 +969,9 @@ export default SoftDecoration;
 			color: #000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation:slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> div {
 			width: 1760px;
@@ -926,6 +998,9 @@ export default SoftDecoration;
 					height: 735px;
 					position: relative;
 					cursor: pointer;
+					opacity: 0;
+					animation:slide-down-in 2s, fade-in 2s;
+					animation-fill-mode: forwards;
 					&:hover {
 						div {
 							transform: translateY(-20px);
@@ -969,6 +1044,7 @@ export default SoftDecoration;
 						}
 					}
 					&:nth-child(1) {
+						animation-delay: .15s;
 						div {
 							img {
 								width: 52px;
@@ -977,6 +1053,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(2) {
+						animation-delay: .3s;
 						div {
 							img {
 								width: 46px;
@@ -985,6 +1062,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(3) {
+						animation-delay: .45s;
 						div {
 							img {
 								width: 33px;
@@ -993,6 +1071,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(4) {
+						animation-delay: .6s;
 						div {
 							img {
 								width: 55px;
@@ -1001,6 +1080,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(5) {
+						animation-delay: .75s;
 						div {
 							img {
 								width: 39px;
@@ -1009,6 +1089,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(1) {
+						animation-delay: .9s;
 						div {
 							img {
 								width: 46px;

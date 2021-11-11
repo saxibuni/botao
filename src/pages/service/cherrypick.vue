@@ -218,6 +218,8 @@ export default CheckPick;
 <style lang="scss">
 .cherry-pick {
 	box-sizing: border-box;
+	margin: 0 auto;
+	max-width: 1920px;
 	img {
 		display: block;
 	}

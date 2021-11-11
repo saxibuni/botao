@@ -85,7 +85,7 @@
 					</li>
 				</ul>
 			</div>
-			<Pagination />
+			<Pagination :data="paginationData" />
 		</div>
 	</div>
 </template>
@@ -201,6 +201,26 @@ export default Building;
 					&:nth-of-type(1) {
 						> p {
 							font-size: 24px !important;
+							span {
+								display: inline-block;
+								width: 82px;
+							}
+						}
+					}
+					&:nth-of-type(2) {
+						> p {
+							span {
+								display: inline-block;
+								width: 76px;
+							}
+						}
+					}
+					&:nth-of-type(3) {
+						> p {
+							span {
+								display: inline-block;
+								width: 132px;
+							}
 						}
 					}
 					p {
