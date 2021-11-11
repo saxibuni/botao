@@ -643,6 +643,7 @@ export default SoftDecoration;
 						color: #666666;
 						line-height: 36px;
 						margin: 40px 0 70px 0;
+						@include line-clamp(4);
 					}
 					.button-wrap{
 						width: 170px;
@@ -763,6 +764,7 @@ export default SoftDecoration;
 						line-height: 30px;
 						text-align: center;
 						margin-bottom: 35px;
+						@include line-clamp(2);
 					}
 				}
 			}
