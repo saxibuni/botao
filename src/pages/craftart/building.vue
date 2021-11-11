@@ -354,6 +354,16 @@ export default Building;
 					width: 560px;
 					margin-bottom: 40px;
 					box-shadow: 0px 3px 17px 1px rgba(0, 0, 0, 0.05);
+					&:hover {
+						cursor: pointer;
+						.text {
+							p {
+								&:nth-of-type(1) {
+									color: #eb551d;
+								}
+							}
+						}
+					}
 					.imgBox {
 						position: relative;
 						width: 560px;
@@ -382,6 +392,7 @@ export default Building;
 								font-weight: 400;
 								color: #000000;
 								margin-top: 40px;
+								transition: all 0.3s;
 							}
 							&:nth-of-type(2) {
 								margin: 15px 0;
