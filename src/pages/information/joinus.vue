@@ -166,65 +166,65 @@ html {
 		.page1 {
 			.left {
 				opacity: 0;
-				animation: slide-left-in 1s, fade-in 1s;
+				animation: slide-left-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 			.right {
 				opacity: 0;
-				animation: slide-up-in 1s, fade-in 1s;
+				animation: slide-up-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 		}
 		.swiper-box {
 			opacity: 0;
-			animation: slide-up-in 1s, fade-in 1s;
+			animation: slide-up-in 2s, fade-in 2s;
 			animation-fill-mode: forwards;
 		}
 		.xr {
 			.text-box {
 				opacity: 0;
-				animation: slide-left-in 1s, fade-in 1s;
+				animation: slide-left-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 			.img-box {
 				opacity: 0;
-				animation: slide-right-in 1s, fade-in 1s;
+				animation: slide-right-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 		}
 		.yongr {
 			.text-box {
 				opacity: 0;
-				animation: slide-right-in 1s, fade-in 1s;
+				animation: slide-right-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 			.img-box {
 				opacity: 0;
-				animation: slide-left-in 1s, fade-in 1s;
+				animation: slide-left-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 		}
 		.yur {
 			.text-box {
 				opacity: 0;
-				animation: slide-left-in 1s, fade-in 1s;
+				animation: slide-left-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 			.img-box {
 				opacity: 0;
-				animation: slide-right-in 1s, fade-in 1s;
+				animation: slide-right-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 		}
 		.lr {
 			.text-box {
 				opacity: 0;
-				animation: slide-right-in 1s, fade-in 1s;
+				animation: slide-right-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 			.img-box {
 				opacity: 0;
-				animation: slide-left-in 1s, fade-in 1s;
+				animation: slide-left-in 2s, fade-in 2s;
 				animation-fill-mode: forwards;
 			}
 		}
