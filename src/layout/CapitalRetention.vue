@@ -222,9 +222,11 @@ export default class CapitalRetention extends Vue {
 							border: none;
 							color: #000;
 							font-size: 18px;
+							font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 							font-weight: bold;
 							padding-left: 19px;
 							&::placeholder {
+								font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 								color: #000;
 								font-weight: bold;
 							}

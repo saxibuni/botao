@@ -258,8 +258,10 @@ export default class Footer extends Vue {
 						border: none;
 						color: #fff;
 						font-size: 18px;
+						font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 						padding-left: 19px;
 						&::placeholder {
+							font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
 							color: #999999;
 						}
 					}
