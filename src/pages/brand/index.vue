@@ -11,7 +11,7 @@
 			</div>
 		</div>
 		<ul class="aside-nav">
-			<li v-for="(v, i) in asideNav" :key="i">
+			<li v-for="(v, i) in asideNav" :key="i" @click="jump(i)">
 				<span @click="jump(i)" :class="'item' + i">{{ v }}</span>
 			</li>
 		</ul>
@@ -410,7 +410,7 @@ export default index;
 		z-index: 99;
 		position: absolute;
 		top: 252px;
-		right: 200px;
+		right: 80px;
 		font-size: 14px;
 		color: #fff;
 		line-height: 1;
@@ -1070,7 +1070,7 @@ export default index;
 				top: 363px;
 				width: 0;
 				height: 80px;
-				overflow: hidden;
+				// overflow: hidden;
 				.svg {
 					height: 80px;
 					position: absolute;
@@ -1083,11 +1083,11 @@ export default index;
 				.plane {
 					position: absolute;
 					left: 150px;
-					top: 100px;
-					width: 10px;
-					height: 10px;
-					background: red;
-					border-radius: 5px;
+					top: 250px;
+					width: 31px;
+					height: 31px;
+					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
+					background-size: 100%;
 				}
 			}
 

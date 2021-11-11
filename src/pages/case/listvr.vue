@@ -51,7 +51,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination />
+		<Pagination :data="paginationData" />
 	</div>
 </template>
 

@@ -70,7 +70,7 @@ export default class Caese extends Vue {
 				overflow: hidden;
 				&:hover {
 					img {
-						transform: scale(1.1);
+						transform: scale($imgScale);
 					}
 				}
 				img {

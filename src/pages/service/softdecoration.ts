@@ -77,4 +77,7 @@ export default class SoftDecoration extends Vue {
 			this.textActive = true;
 		},300)
 	}
+	mounted() {
+		this.restartWow();
+	}
 }

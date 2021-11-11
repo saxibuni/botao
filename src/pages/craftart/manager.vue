@@ -79,7 +79,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="swiper" v-show="active2Index == i" v-for="(v, i) in 7" :key="i">
+					<div class="swiper">
 						<swiper :options="swiperOptions1">
 							<swiper-slide v-for="(item, index) in 9" :key="index">
 								<div class="imgBox">
@@ -557,7 +557,7 @@ export default Manager;
 				.swiper {
 					height: 782px;
 					width: 1760px;
-					animation: fade-ine 1s ease forwards;
+					// animation: fade-ine 1s ease forwards;
 					.imgBox {
 						position: relative;
 						width: 573px;

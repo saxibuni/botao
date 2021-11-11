@@ -10,11 +10,11 @@
 			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 		</div>
 		<div class="page2">
-			<h2>服务流程</h2>
-			<p>Service process</p>
+			<h2 class="wow">服务流程</h2>
+			<p class="wow">Service process</p>
 			<div class="part">
 				<ul>
-					<li v-for="(item, i) in list" :key="i">
+					<li v-for="(item, i) in list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<h2 @mouseover="onClick(i)">
 							{{ i + 1 }}
 							<i :class="{active:item.active}">
@@ -30,10 +30,10 @@
 			</div>
 		</div>
 		<div class="page3">
-			<h2>服务团队</h2>
-			<p>Service team</p>
+			<h2 class="wow">服务团队</h2>
+			<p class="wow">Service team</p>
 			<ul>
-				<li>
+				<li class="wow">
 					<div class="icon">
 						<i></i>
 					</div>
@@ -47,7 +47,7 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<div class="text">
 						<h4>软装服务</h4>
@@ -57,7 +57,7 @@
 					</div>
 				</li>
 
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<div class="text">
 						<h4>工程服务</h4>
@@ -68,7 +68,7 @@
 						<p>工程总监</p>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<div class="text">
 						<h4>客服服务</h4>
@@ -78,7 +78,7 @@
 						<p>维修人员</p>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<div class="text">
 						<h4>配套服务</h4>
@@ -89,7 +89,7 @@
 						<p>智能工程师</p>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<div class="text">
 						<h4>材料服务</h4>
@@ -99,7 +99,7 @@
 						<p>材料商客户经理</p>
 					</div>
 				</li>
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<div class="text">
 						<h4>质检服务</h4>
@@ -110,32 +110,32 @@
 			</ul>
 		</div>
 		<div class="page4">
-			<h2>如何合理规划大宅别墅装修费用？</h2>
-			<p>Villa decoration cost</p>
+			<h2 class="wow">如何合理规划大宅别墅装修费用？</h2>
+			<p class="wow">Villa decoration cost</p>
 
 			<ul>
-				<li>
+				<li class="wow">
 					<div>
 						<span>设计</span>
 						<img src="~assets/icons/ic_e1_part4_01.png" alt="" />
 					</div>
 					<p>平面规划、效果图、施工图、设计跟踪、现场交底</p>
 				</li>
-				<li>
+				<li class="wow">
 					<div>
 						<span>土建</span>
 						<img src="~assets/icons/ic_e1_part4_02.png" alt="" />
 					</div>
 					<p>外部改造、内部改造</p>
 				</li>
-				<li>
+				<li class="wow">
 					<div>
 						<span>基础装修</span>
 						<img src="~assets/icons/ic_e1_part4_03.png" alt="" />
 					</div>
 					<p>基础功能装修、设计造型装修、管理费用</p>
 				</li>
-				<li>
+				<li class="wow">
 					<div>
 						<img src="~assets/icons/ic_e1_part4_04.png" alt="" />
 						<span>主材</span>
@@ -145,14 +145,14 @@
 						其他(集成吊顶.配电箱.空气开关、开关插座、不锈钢)
 					</p>
 				</li>
-				<li>
+				<li class="wow">
 					<div>
 						<img src="~assets/icons/ic_e1_part4_05.png" alt="" />
 						<span>智能/设备</span>
 					</div>
 					<p>中央空调、新风系统、五恒系统、中央水处理、 地采暖、中央吸尘、电梯、光伏系统、电渗透防潮系统、园林 防蚊系统、智能灯光系统、智能安防系统、电器控制系统、 电动窗帘系统、影音系统</p>
 				</li>
-				<li>
+				<li class="wow">
 					<div>
 						<img src="~assets/icons/ic_e1_part4_06.png" alt="" />
 						<span>软装</span>
@@ -162,13 +162,13 @@
 			</ul>
 		</div>
 		<div class="page5">
-			<h2>
+			<h2 class="wow">
 				选择波涛装饰 · 选择一生一
 				<span>“饰”</span>
 			</h2>
-			<p>After-sales service</p>
+			<p class="wow">After-sales service</p>
 			<div>
-				<div>
+				<div class="wow">
 					<h1>曾经·你是这样装修的</h1>
 					<p>需要132个人前后打交道</p>
 					<p>需要为联系各自事宜打326个电话</p>
@@ -179,13 +179,13 @@
 					<p>需要在工地上待180天</p>
 					<h3>以1敌10! 工期慢! 售后无保障.. ..焦头烂额!</h3>
 				</div>
-				<div>
+				<div class="wow">
 					<h1>现在·金管家全程服务</h1>
 					<p>管家式专人服务，替您解决一切问题</p>
 				</div>
 			</div>
 			<ul>
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<h2>
 						水电隐蔽工程
@@ -194,7 +194,7 @@
 					</h2>
 				</li>
 
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<h2>
 						饰后满三年
@@ -203,7 +203,7 @@
 					</h2>
 				</li>
 
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<h2>
 						硬装工程
@@ -212,7 +212,7 @@
 					</h2>
 				</li>
 
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<h2>
 						24小时
@@ -220,7 +220,7 @@
 						解决报修服务
 					</h2>
 				</li>
-				<li>
+				<li class="wow">
 					<div class="icon"></div>
 					<h2>
 						终身定期
@@ -241,6 +241,8 @@ export default WholeDecoration;
 <style lang="scss">
 .whole-decoration {
 	box-sizing: border-box;
+	width: 1920px;
+	margin: 0 auto;
 	img {
 		display: block;
 	}
@@ -292,6 +294,9 @@ export default WholeDecoration;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -303,6 +308,9 @@ export default WholeDecoration;
 			color: #000000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		.part {
 			position: absolute;
@@ -319,6 +327,9 @@ export default WholeDecoration;
 					display: flex;
 					justify-content: center;
 					flex-wrap: wrap;
+					opacity: 0;
+					animation: fade-in 1s;
+					animation-fill-mode: forwards;
 					h2 {
 						width: 25px;
 						height: 25px;
@@ -592,6 +603,9 @@ export default WholeDecoration;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -603,6 +617,9 @@ export default WholeDecoration;
 			color: #000000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		ul {
 			display: flex;
@@ -616,7 +633,11 @@ export default WholeDecoration;
 				height: 305px;
 				border-left: 1px solid #dddddd;
 				padding-left: 36px;
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
 				&:nth-child(1) {
+					animation-delay: .1s;
 					width: 480px;
 					padding-top: 10px;
 					.icon {
@@ -627,6 +648,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(2) {
+					animation-delay: .2s;
 					padding-top: 10px;
 					width: 504px;
 					.icon {
@@ -637,6 +659,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(3) {
+					animation-delay: .3s;
 					padding-top: 10px;
 					width: 492px;
 					.icon {
@@ -647,6 +670,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(4) {
+					animation-delay: .4s;
 					padding-top: 10px;
 					width: 350px;
 					.icon {
@@ -657,6 +681,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(5) {
+					animation-delay: .5s;
 					width: 480px;
 					margin-left: 240px;
 					padding-top: 58px;
@@ -669,6 +694,7 @@ export default WholeDecoration;
 				}
 				&:nth-child(6) {
 					padding-top: 58px;
+					animation-delay: .6s;
 					width: 480px;
 					.icon {
 						background: url('~assets/icons/ic_e1_part3_f1.png') no-repeat center center;
@@ -680,6 +706,7 @@ export default WholeDecoration;
 				&:nth-child(7) {
 					padding-top: 58px;
 					width: 479px;
+					animation-delay: .7s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part3_g1.png') no-repeat center center;
 						&:hover {
@@ -725,6 +752,9 @@ export default WholeDecoration;
 			font-weight: 400;
 			color: #fff;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> p {
 			font-family: Athene;
@@ -736,10 +766,16 @@ export default WholeDecoration;
 			color: #fff;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		ul {
 			li {
 				position: absolute;
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
 				div {
 					display: flex;
 					align-items: center;
@@ -767,6 +803,7 @@ export default WholeDecoration;
 					top: 251px;
 					left: 0;
 					width: 675px;
+					animation-delay: .2s;
 					div {
 						margin-bottom: 36px;
 						img {
@@ -778,6 +815,7 @@ export default WholeDecoration;
 					top: 461px;
 					width: 675px;
 					left: 0;
+					animation-delay: .6s;
 					div {
 						img {
 							width: 45px;
@@ -788,6 +826,7 @@ export default WholeDecoration;
 					top: 683px;
 					width: 675px;
 					left: 0;
+					animation-delay: 1s;
 					div {
 						img {
 							width: 34px;
@@ -802,6 +841,7 @@ export default WholeDecoration;
 					top: 251px;
 					right: 0;
 					width: 622px;
+					animation-delay: .4s;
 					div {
 						margin-bottom: 25px;
 						justify-content: start;
@@ -822,6 +862,7 @@ export default WholeDecoration;
 				&:nth-child(5) {
 					top: 524px;
 					right: 0;
+					animation-delay: .8s;
 					width: 622px;
 					div {
 						margin-bottom: 25px;
@@ -842,6 +883,7 @@ export default WholeDecoration;
 				&:nth-child(6) {
 					top: 777px;
 					right: 0;
+					animation-delay: 1.2s;
 					width: 622px;
 					div {
 						justify-content: start;
@@ -870,6 +912,9 @@ export default WholeDecoration;
 			font-weight: 400;
 			color: #000;
 			text-align: center;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 			span {
 				color: rgba(235, 85, 29, 1);
 			}
@@ -884,6 +929,9 @@ export default WholeDecoration;
 			color: #000;
 			text-align: center;
 			margin-top: 24px;
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
 		}
 		> div {
 			background: url('~assets/bg_e1_part5.jpg') center center;
@@ -896,6 +944,9 @@ export default WholeDecoration;
 				width: 50%;
 				height: 620px;
 				&:nth-child(1) {
+					opacity: 0;
+					animation: slide-down-in 1s, fade-in 1s;
+					animation-fill-mode: forwards;
 					padding: 90px 0 0 102px;
 					h1 {
 						font-size: 36px;
@@ -930,6 +981,9 @@ export default WholeDecoration;
 				}
 				&:nth-child(2) {
 					position: relative;
+					opacity: 0;
+					animation: slide-down-in 1.5s, fade-in 1.5s;
+					animation-fill-mode: forwards;
 					h1 {
 						position: absolute;
 						height: 35px;
@@ -962,6 +1016,9 @@ export default WholeDecoration;
 			padding-top: 121px;
 			li {
 				width: 20%;
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
 				.icon {
 					width: 89px;
 					height: 89px;
@@ -977,30 +1034,35 @@ export default WholeDecoration;
 					line-height: 36px;
 				}
 				&:nth-child(1) {
+					animation-delay: .1s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_1.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(2) {
+					animation-delay: .2s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_2.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(3) {
+					animation-delay: .3s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_3.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(4) {
+					animation-delay: .4s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_4.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(5) {
+					animation-delay: .5s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_5.png') no-repeat center center;
 					}

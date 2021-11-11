@@ -166,6 +166,7 @@ export default class home extends Vue {
 		useGrouping: false
 	};
 	mounted() {
+		this.restartWow();
 		this.initSpineAni();
 		this.initScrollTrigger();
 		setTimeout(() => {
