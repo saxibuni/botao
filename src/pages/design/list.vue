@@ -43,7 +43,7 @@
 					<div class="text">
 						<p>代表作品</p>
 						<p>嘉怡水岸、三林新村、华侨城、两河流域...</p>
-						<Button :text="'了解设计师'" />
+						<Button :text="'了解设计师'" @click.native="$router.push('/design/detail')" />
 					</div>
 				</li>
 			</ul>
