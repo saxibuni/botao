@@ -1,4 +1,4 @@
-import { Vue, Component, Watch } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import Layout from "./layout/Index.vue";
 import utils from "./utils";
 @Component({
@@ -21,12 +21,4 @@ export default class App extends Vue {
 			utils.emitter.$emit('scroll');
 		});
 	}
-	@Watch('$store.state.dialogVisible')
-  bodyOverHid() {
-      if(this.$store.state.dialogVisible){
-        document.querySelector('body').setAttribute('class', 'over-hide');
-      }else{
-        document.querySelector('body').removeAttribute('class');
-      }
-  }
 }
