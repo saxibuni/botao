@@ -9,6 +9,7 @@ PIXI.utils.skipHello();
 import utils from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
 import ICountUp from 'root/components/countup.vue';
+import { TimeSelect } from 'element-ui';
 
 @Component({
 	components: {
@@ -17,6 +18,8 @@ import ICountUp from 'root/components/countup.vue';
 	}
 })
 export default class home extends Vue {
+	showProfile: boolean = true;
+
 	pixiView: PIXI.Application; //开始不能赋值，不然就会变成vue监测属性
 	activeIndex: number = -1;
 	anList = ['新中式', '美式', '北欧', '欧式', '现代'];
@@ -225,7 +228,9 @@ export default class home extends Vue {
 	width = 0;
 	height = 0;
 	onClick(event, item, i) {
+		this.showProfile = !this.showProfile;
 		this.imgSrc = item;
+
 		let items = `item${i}`;
 		this.page3Index = i;
 		this.left = this.$refs[items][0].offsetLeft;
