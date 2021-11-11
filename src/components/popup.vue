@@ -77,11 +77,6 @@ export default class popup extends Vue {
 						transform: rotate(-90deg);
 					}
 				}
-				>div{
-					>div{
-
-					}
-				}
 			}
 	}
 </style>
