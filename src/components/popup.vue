@@ -26,7 +26,7 @@ export default class popup extends Vue {
 			&.slideFadeIn-enter,
 			&.slideFadeIn-leave-to {
 					background: rgba(0, 0, 0, 0);
-					.body {
+					.body,.img-box {
 							transform: translateY(80px);
 							opacity: 0;
 					}
@@ -40,7 +40,7 @@ export default class popup extends Vue {
 					.mask {
 							transition: opacity .3s ease;
 					}
-					.body {
+					.body,.img-box {
 							transition: transform .3s ease, opacity .3s ease;
 					}
 			}
@@ -75,11 +75,6 @@ export default class popup extends Vue {
 					transition: 0.3s;
 					&:hover {
 						transform: rotate(-90deg);
-					}
-				}
-				>div{
-					>div{
-
 					}
 				}
 			}

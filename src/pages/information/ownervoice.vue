@@ -116,6 +116,14 @@
 				<div class="swiper-pre wow dp-pre"></div>
 			</div>
 		</div>
+		<transition name="slideFadeIn">
+			<Prop class="ownerProp"  v-if="isPop" @click.native="isPop = false">
+				<div class="mask"></div>
+				<div class="img-box">
+					<img :src="imgUrl" alt="" />
+				</div>
+			</Prop>
+		</transition>
 	</div>
 </template>
 
@@ -357,9 +365,9 @@ html {
 				&:hover .mask {
 					opacity: 1;
 				}
-					&:hover{
-						box-shadow: 0px 0px 35px 0px rgba(196, 21, 21, 0.15);
-					}
+				&:hover {
+					box-shadow: 0px 0px 35px 0px rgba(196, 21, 21, 0.15);
+				}
 			}
 		}
 		.button-box {
@@ -492,5 +500,19 @@ html {
 			}
 		}
 	}
+	.popup {
+		background-color: rgba(0, 0, 0, 0.5);
+		.text {
+			width: 500px;
+			height: 500px;
+		}
+	}
+.ownerProp{
+	.img-box{
+		position: absolute;
+		z-index: 11111;
+	}
 }
+}
+
 </style>
