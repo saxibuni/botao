@@ -9,7 +9,7 @@
 				<i></i>
 				<p>获取报价</p>
 			</div>
-			<div>
+			<div @click="$store.state.dialogDesign.design=true">
 				<i></i>
 				<p>预约设计</p>
 			</div>

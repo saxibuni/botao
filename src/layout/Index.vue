@@ -5,7 +5,8 @@
 		<Footer v-if="$store.state.footData" />
 		<Sidebar v-if="$store.state.footData" />
 		<CapitalRetention/>
-		<Dialog></Dialog>
+		<Dialog />
+		<MakeAppointment />
 	</div>
 </template>
 

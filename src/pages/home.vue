@@ -274,7 +274,7 @@
 						<li style="font-size:10px;" :class="{ active: picIndex == i }" v-for="(item, i) in picList" :key="i"><img :src="item" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
-						<Button text="预约参观工地" @click.native="$router.push({name:'craft-building'})"></Button>
+						<Button text="预约参观工地" @click.native="$store.state.dialogDesign.visit=true"></Button>
 					</div>
 				</div>
 			</div>

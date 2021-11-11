@@ -2,7 +2,8 @@ import { Vue, Component } from 'vue-property-decorator';
 import Header from "./header.vue";
 import Footer from "./footer.vue";
 import Sidebar from "./sidebar.vue";
-import CapitalRetention from "./CapitalRetention.vue";
+import CapitalRetention from "../components/CapitalRetention.vue";
+import MakeAppointment from "../components/makeAppointment.vue";
 import Dialog from "../components/dialog.vue";
 
 @Component({
@@ -11,7 +12,8 @@ import Dialog from "../components/dialog.vue";
 		Footer,
 		Sidebar,
 		CapitalRetention,
-		Dialog
+		Dialog,
+		MakeAppointment
 	}
 })
 export default class layout extends Vue {

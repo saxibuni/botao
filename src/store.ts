@@ -9,6 +9,7 @@ export interface State {
 	footData: any;
 	menuData: any;
 	dialog:any;
+	dialogDesign:any;
 }
 
 let state: State = {
@@ -20,8 +21,12 @@ let state: State = {
 		state:0,
 		text: '',
 		time: 3000
+	},
+	dialogDesign:{
+		design:false,
+		visit:false
 	}
-};
+}
 
 let getters = {
 	isPortrait(state: State) {
