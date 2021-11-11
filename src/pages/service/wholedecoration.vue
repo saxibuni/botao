@@ -241,7 +241,8 @@ export default WholeDecoration;
 <style lang="scss">
 .whole-decoration {
 	box-sizing: border-box;
-	width: 1920px;
+	max-width: 1920px;
+	overflow: hidden;
 	margin: 0 auto;
 	img {
 		display: block;

@@ -170,8 +170,6 @@ html {
 .owner {
 	font-size: 16px;
 	box-sizing: border-box;
-	margin: 0 auto;
-	width: 1916px;
 	@mixin title {
 		h2,
 		h3 {

@@ -212,6 +212,15 @@ export default CaseListVr;
 			li {
 				margin-bottom: 60px;
 				cursor: pointer;
+				&:hover {
+					.left {
+						p {
+							&:nth-of-type(1) {
+								color: #eb551d !important;
+							}
+						}
+					}
+				}
 				a {
 					text-decoration: none;
 				}
@@ -229,6 +238,7 @@ export default CaseListVr;
 								font-size: 30px;
 								color: #000000;
 								margin-top: 39px;
+								transition: all 0.3s;
 							}
 							&:nth-of-type(2) {
 								margin-top: 10px;

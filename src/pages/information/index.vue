@@ -11,9 +11,7 @@ export default Infomation;
 
 <style lang="scss">
 .information {
-		box-sizing: border-box;
-	margin: 0 auto;
-	width: 1916px;
+	box-sizing: border-box;
 	img {
 		vertical-align: bottom;
 	}

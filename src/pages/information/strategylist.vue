@@ -105,8 +105,6 @@ html {
 }
 .strategy-list {
 	box-sizing: border-box;
-	margin: 0 auto;
-	width: 1916px;
 	font-size: 16px;
 	@mixin title {
 		h2,
