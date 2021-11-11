@@ -234,7 +234,7 @@
 					<li v-for="(v, i) in socialArr" :key="i">
 						<div class="img-box"><img :src="v.imgUrl" alt="" /></div>
 						<div class="text-box">
-							<div class="dosh"></div>
+							<div class="dosh" @click="doMovePath(i)"></div>
 							<h2>{{ v.time }}</h2>
 							<p v-for="(value, index) in v.text" :key="index">{{ value }}</p>
 						</div>
@@ -1066,13 +1066,15 @@ export default index;
 			}
 			.svg-box {
 				position: absolute;
-				left: 138px;
-				top: 363px;
+				left: 0;
+				top: 333px;
+				height: 300px;
 				width: 0;
-				height: 80px;
-				// overflow: hidden;
+				overflow: hidden;
 				.svg {
 					height: 80px;
+					left: 138px;
+					top: 30px;
 					position: absolute;
 					transform: scale(0.89, 0.7);
 					transform-origin: left center;
@@ -1082,12 +1084,13 @@ export default index;
 				}
 				.plane {
 					position: absolute;
-					left: 150px;
-					top: 250px;
-					width: 31px;
+					left: 122.37px;
+					top: 49.5px;
+					width: 37px;
 					height: 31px;
 					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
 					background-size: 100%;
+					transform: rotate(-13.2449deg);
 				}
 			}
 
@@ -1138,6 +1141,11 @@ export default index;
 							height: 30px;
 							border-radius: 50%;
 							border: 1px solid #eb551d;
+							cursor: pointer;
+							transition: transform .3s;
+							&:hover {
+								transform: scale(1.1);
+							}
 							&::before {
 								position: absolute;
 								top: 50%;
@@ -1181,22 +1189,10 @@ export default index;
 						margin-right: 130px;
 					}
 				}
-				&::before {
-					position: absolute;
-					top: 50.5%;
-					left: -31px;
-					content: '';
-					width: 31px;
-					height: 31px;
-					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
-					background-size: 100%;
-					font-size: 18px;
-					color: #eb551d;
-				}
 				&::after {
 					position: absolute;
 					content: '让梦想起飞';
-					top: 58%;
+					top: 56%;
 					left: -54px;
 					font-size: 18px;
 					color: #eb551d;
