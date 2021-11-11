@@ -820,6 +820,8 @@ export default home;
 						font-weight: 400;
 						color: #ffffff;
 						line-height: 30px;
+						@include line-clamp(3);
+						max-height: 90px;
 					}
 					.btn-box {
 						width: 170px;
@@ -1071,6 +1073,7 @@ export default home;
 						color: #ffffff;
 						line-height: 30px;
 						width: 380px;
+						@include line-clamp(4);
 					}
 					.btn-box {
 						width: 170px;
@@ -1536,7 +1539,13 @@ export default home;
 					align-items: center;
 					z-index: 1;
 					cursor: pointer;
+					&:hover{
+						i{
+							transform: translateX(4px);
+						}
+					}
 					i {
+						transition: transform .3s;
 						width: 8px;
 						height: 14px;
 						background: url('~assets/icons/ic_home_b2_enter.png') no-repeat;
@@ -1667,11 +1676,11 @@ export default home;
 					}
 					p {
 						width: 337px;
-						height: 82px;
 						font-size: 18px;
 						font-weight: 400;
 						color: #888888;
 						line-height: 32px;
+						@include line-clamp(4);
 					}
 				}
 			}
@@ -1875,12 +1884,12 @@ export default home;
 							font-size: 28px;
 						}
 						p {
-							height: 18px;
 							font-size: 18px;
 							font-weight: 400;
 							color: #ffffff;
 							width: 605px;
 							margin: 51px 0 104px 0;
+							@include line-clamp(1);
 						}
 						.btn {
 							width: 170px;
@@ -2052,6 +2061,7 @@ export default home;
 				width: 605px;
 				margin: 51px 0 104px 0;
 				line-height: 30px;
+				@include line-clamp(7);
 			}
 			.btn {
 				width: 170px;
@@ -2275,6 +2285,7 @@ export default home;
 							margin-bottom: 12px;
 							padding-top: 50px;
 							transition: color 0.3s;
+							@include line-clamp(1);
 						}
 						p {
 							font-size: 18px;

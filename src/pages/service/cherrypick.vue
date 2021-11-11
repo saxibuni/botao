@@ -90,12 +90,18 @@
 				<div class="father" v-for="(item, i) in page3Data" :key="i">
 					<div class="content">
 						<div class="container">
-							<img :src="item.imgUrl" alt="" />
-							<div class="text">
+							<div class="imgBox">
+								<img :src="item.imgUrl" alt="" />
+								<div class="mask"></div>
+							</div>
+							<div class="text" :class="activeIndex == i ? 'active' : ''">
 								<p>{{ item.text }}</p>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="circle2">
+					<div class="box" v-for="(item, i) in page3Data" :key="i" @mouseover="fn(i)" @mouseout="fn(-1)"></div>
 				</div>
 			</div>
 			<img src="~assets/bg_e2_part3_00.png" alt="" />
@@ -514,6 +520,52 @@ export default CheckPick;
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			.circle2 {
+				width: 1329px;
+				height: 1329px;
+				border-radius: 50%;
+				overflow: hidden;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				.box {
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: 99999;
+					width: 645px;
+					height: 685px;
+					background-color: transparent;
+					margin-top: -20px;
+					margin-left: 42px;
+					transform-origin: right bottom;
+					&:hover {
+						cursor: pointer;
+					}
+					transform: rotate(-69.5deg) skewY(69.5deg);
+					&:nth-of-type(2) {
+						transform: rotate(-47.9deg) skewY(69.2deg);
+					}
+					&:nth-of-type(3) {
+						transform: rotate(-25.9deg) skewY(69deg);
+					}
+					&:nth-of-type(4) {
+						transform: rotate(-3.5deg) skewY(68.5deg);
+					}
+					&:nth-of-type(5) {
+						transform: rotate(19.6deg) skewY(68.5deg);
+					}
+					&:nth-of-type(6) {
+						transform: rotate(43deg) skewY(68deg);
+					}
+					&:nth-of-type(7) {
+						transform: rotate(66.5deg) skewY(68deg);
+					}
+					&:nth-of-type(8) {
+						transform: rotate(89.8deg) skewY(68.2deg);
+					}
+				}
+			}
 			.father {
 				margin-top: 1px;
 				// width: 976px;
@@ -528,21 +580,29 @@ export default CheckPick;
 				z-index: -1;
 				img {
 					position: absolute;
-					z-index: 999;
-					cursor: pointer;
+					z-index: 22;
 				}
 				.text {
 					position: absolute;
-					z-index: 9999;
-					cursor: pointer;
+					background-color: #eeeeee;
+					width: 250px;
+					height: 250px;
+					border-radius: 50%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					transition: all 0.3s;
 					p {
 						font-size: 22px;
 						color: #000000;
 						width: 45px;
 						line-height: 32px;
+						transition: all 0.3s;
+						position: absolute;
 					}
 				}
 				.active {
+					background: #eb551d;
 					p {
 						color: #fff;
 					}
@@ -554,9 +614,13 @@ export default CheckPick;
 						left: 439px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 449px;
+						top: 124px;
 						transform: rotate(-90deg);
+						p {
+							left: 90px;
+							top: 110px;
+						}
 					}
 				}
 				&:nth-of-type(2) {
@@ -567,9 +631,13 @@ export default CheckPick;
 						left: 424px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 478px;
+						top: 145px;
 						transform: rotate(-67deg);
+						p {
+							left: 102px;
+							top: 78px;
+						}
 					}
 				}
 				&:nth-of-type(3) {
@@ -580,9 +648,13 @@ export default CheckPick;
 						left: 431px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 478px;
+						top: 145px;
 						transform: rotate(-46deg);
+						p {
+							left: 98px;
+							top: 78px;
+						}
 					}
 				}
 				&:nth-of-type(4) {
@@ -593,9 +665,13 @@ export default CheckPick;
 						left: 456px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 478px;
+						top: 146px;
 						transform: rotate(-20deg);
+						p {
+							left: 92px;
+							top: 90px;
+						}
 					}
 				}
 				&:nth-of-type(5) {
@@ -606,9 +682,13 @@ export default CheckPick;
 						left: 422px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 477px;
+						top: 148px;
 						transform: rotate(0deg);
+						p {
+							left: 96px;
+							top: 88px;
+						}
 					}
 				}
 				&:nth-of-type(6) {
@@ -619,9 +699,13 @@ export default CheckPick;
 						left: 411px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 460px;
+						top: 146px;
 						transform: rotate(24deg);
+						p {
+							left: 110px;
+							top: 82px;
+						}
 					}
 				}
 				&:nth-of-type(7) {
@@ -632,9 +716,13 @@ export default CheckPick;
 						left: 426px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 460px;
+						top: 146px;
 						transform: rotate(47deg);
+						p {
+							left: 100px;
+							top: 80px;
+						}
 					}
 				}
 				&:nth-of-type(8) {
@@ -647,9 +735,14 @@ export default CheckPick;
 						left: 463px;
 					}
 					.text {
-						left: 567px;
-						top: 227px;
+						left: 519px;
+						top: 134px;
+						border-radius: 0 !important;
 						transform: rotate(69deg);
+						p {
+							left: 82px;
+							top: 142px;
+						}
 					}
 				}
 			}
@@ -672,15 +765,22 @@ export default CheckPick;
 				// height: 976px;
 				width: 1329px;
 				height: 1329px;
-				background: #eeeeee;
-				// background: red;
+				// background: #eeeeee;
+				// background: #eb551d;
 				position: absolute;
 				border-radius: 50%;
 				clip: rect(0px, 664.5px, 1329px, 0);
 				transform: rotate(21deg);
-				// cursor: pointer;
-				overflow: hidden;
-				z-index: -1;
+				.imgBox {
+					overflow: hidden;
+					.mask {
+						position: absolute;
+						width: 200px;
+						height: 200px;
+						background-color: red;
+						z-index: 999999;
+					}
+				}
 			}
 		}
 	}

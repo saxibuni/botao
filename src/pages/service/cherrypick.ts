@@ -89,4 +89,12 @@ export default class CheckPick extends Vue {
 	iconClick(i){
 		this.iconIndex = i;
 	}
+	activeIndex=9
+	fn(i){
+		console.log(i);
+
+		this.activeIndex=7-i
+		console.log(this.activeIndex);
+
+	}
 }
