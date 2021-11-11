@@ -104,7 +104,7 @@
 			<div class="swiper-box wow">
 				<swiper :options="dpBannerOptions">
 					<swiper-slide v-for="(v, i) in dpArr" :key="i">
-						<div class="img-box" @click="$store.state.dialogVisible = true">
+						<div class="img-box">
 							<img :src="v" alt="" />
 							<div class="mask"></div>
 						</div>
@@ -116,11 +116,14 @@
 				<div class="swiper-pre wow dp-pre"></div>
 			</div>
 		</div>
-		<Prop class="capital-retention" v-if="$store.state.dialogVisible">
-			<div class="img-box">
-				<img @click="$store.state.dialogVisible = false" src="~assets/bg_g1_part6_honer1.jpg" alt="" />
-			</div>
-		</Prop>
+		<transition name="slideFadeIn">
+			<Prop class="ownerProp"  v-if="isPop" @click.native="isPop = false">
+				<div class="mask"></div>
+				<div class="img-box">
+					<img :src="imgUrl" alt="" />
+				</div>
+			</Prop>
+		</transition>
 	</div>
 </template>
 
@@ -504,5 +507,12 @@ html {
 			height: 500px;
 		}
 	}
+.ownerProp{
+	.img-box{
+		position: absolute;
+		z-index: 11111;
+	}
 }
+}
+
 </style>

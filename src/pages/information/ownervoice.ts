@@ -1,7 +1,8 @@
 import { Vue, Component } from 'vue-property-decorator';
+import utils from 'root/utils';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
-import Prop from 'root/components/popup.vue'
+import Prop from 'root/components/popup.vue';
 @Component({
 	components: {
 		Banner,
@@ -10,6 +11,8 @@ import Prop from 'root/components/popup.vue'
 	}
 })
 export default class OwnerVoice extends Vue {
+	isPop: boolean = false;
+	imgUrl = '';
 	BannerData = {
 		imgUrl: require('../../assets/ownerbg.jpg'),
 		cn: '业主心声 ',
@@ -108,6 +111,13 @@ export default class OwnerVoice extends Vue {
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
+		},
+		on: {
+			click: function() {
+				if (!this.clickedIndex) return;
+				const img = this.slides[this.clickedIndex].querySelector('img');
+				utils.emitter.$emit('dpIndex', { index: this.clickedIndex, img });
+			}
 		}
 	};
 	// banner3
@@ -127,4 +137,12 @@ export default class OwnerVoice extends Vue {
 			el: '.fh-pagination'
 		}
 	};
+	mounted() {
+		utils.emitter.$on('dpIndex', obj => {
+			this.isPop = true;
+			// console.log(obj.img);
+			// this.imgDOM = obj.img;
+			this.imgUrl = obj.img.getAttribute('src');
+		});
+	}
 }
