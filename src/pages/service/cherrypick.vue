@@ -528,6 +528,7 @@ export default CheckPick;
 				position: absolute;
 				left: 50%;
 				transform: translateX(-50%);
+				clip-path: circle(50%);
 				.box {
 					position: absolute;
 					top: 0;
