@@ -403,6 +403,7 @@ export default class Header extends Vue {
 								text-align: center;
 								cursor: pointer;
 								line-height: 1;
+								transition: color .3s;
 								i{
 									display: block;
 									margin: 0 auto;
@@ -415,7 +416,11 @@ export default class Header extends Vue {
 										margin: 0 auto;
 									}
 								}
-
+							}
+							&:hover{
+									span{
+										color: #ed5400;
+									}
 							}
 						}
 					}
@@ -449,7 +454,26 @@ export default class Header extends Vue {
 					background: url('~assets/icons/ic_home_top_phone.png');
 					background-size: 100% 100%;
 					margin-right: 3px;
+					transition: all .4s;
+    			animation: bounce-up 1.5s linear infinite;
 				}
+				 @keyframes bounce-up {
+            10% {
+                transform: rotate(20deg);
+              }
+              20% {
+                transform: rotate(-10deg);
+              }
+              30% {
+                transform: rotate(5deg);
+              }
+              40% {
+                transform: rotate(-5deg);
+              }
+              50%,100% {
+                transform: rotate(0deg);
+              }
+         }
 			}
 			.search {
 				width: 24px;
@@ -458,6 +482,10 @@ export default class Header extends Vue {
 				background-size: 100% 100%;
 				margin-left: 46px;
 				cursor: pointer;
+				transition:transform .3s;
+				&:hover{
+					transform: scale(1.1);
+				}
 			}
 			.menu {
 				width: 24px;
