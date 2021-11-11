@@ -145,7 +145,10 @@
 						<img src="~assets/bg_home_b3_left_text.png" alt="" />
 					</div>
 					<div class="img-wrap">
-						<img :src="imgSrc" alt="" />
+						<transition-group name="toggle-image">
+							<img :src="imgSrc" alt="" v-if="showProfile" key="a" />
+							<img :src="imgSrc" alt="" v-if="!showProfile" key="b" />
+						</transition-group>
 						<div>
 							<p>Design concept</p>
 							<b>细节决定成败</b>
@@ -1031,9 +1034,19 @@ export default home;
 					width: 540px;
 					height: 658px;
 					position: relative;
+					overflow: hidden;
 					img {
+						position: absolute;
+						left: 0;
+						top: 0;
 						width: 100%;
 						height: 100%;
+						transition: transform .3s;
+						&:hover {
+							transform: scale($imgScale);
+						}
+
+						@include toggle-image();
 					}
 					div {
 						position: absolute;

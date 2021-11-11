@@ -81,3 +81,14 @@
     transition: height 0.3s;
   }
 }
+
+@mixin toggle-image {
+	&.toggle-image-enter-active,
+	&.toggle-image-leave-active {
+		transition: all .3s ease;
+	}
+	&.toggle-image-enter, &.toggle-image-leave-to {
+		transform: scale(1.2);
+		opacity: 0;
+	}
+}
