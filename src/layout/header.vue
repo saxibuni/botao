@@ -12,11 +12,11 @@
 
 			<div class="nav">
 				<ul>
-					<li v-for="(item, index) in navList" :key="index" :class="$route.name == item.url ? 'active' : ''" @click="$router.push({ name: item.url })">
+					<li v-for="(item, index) in navList" :key="index" :class="rouertName == item.url ? 'active' : ''" @click="$router.push({ name: item.url })">
 						{{ item.title }}
 						<b></b>
 						<div class="nav-son">
-							<div v-for="(it, i) in item.son" :key="i" @click.stop="$router.push({name:it.url})">
+							<div v-for="(it, i) in item.son" :key="i" @click.stop="$router.push({name:it.url,query:{number:it.query}})">
 								<span>
 									<i>
 										<img :src="it.icon" alt="">
@@ -133,7 +133,7 @@ export default class Header extends Vue {
 		},
 		{
 			title: '全案服务',
-			url: 'cherry-pick',
+			url: 'whole-decoration',
 			en: 'A whole service',
 			son: [
 				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
@@ -157,17 +157,22 @@ export default class Header extends Vue {
 			url: 'brand',
 			en: 'botao brand',
 			son: [
-				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'1' },
-				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'2' },
-				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'3'},
-				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'4' },
-				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'5' },
-				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'6' },
-				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:'7'}
+				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:0 },
+				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:1 },
+				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:2},
+				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:3 },
+				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:4 },
+				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:5 },
+				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:6}
 			]
 		}
 	];
 	navBgColor = false;
+	rouertName = '';
+	@Watch('$route', { immediate: true })
+	routeChange() {
+			this.rouertName = this.$route.meta.title
+	}
 	mounted() {
 		window.addEventListener('scroll', this.handleScroll, true);
 	}
@@ -382,7 +387,7 @@ export default class Header extends Vue {
 						align-items: center;
 						justify-content: center;
 						opacity: 0;
-						transition: opacity .5s;
+						transition: opacity .3s;
 						pointer-events: none;
 						div{
 							&:not(:first-child){

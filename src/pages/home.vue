@@ -1292,11 +1292,12 @@ export default home;
 				cursor: pointer;
 				background: url(~assets/icons/ic_home_b3_top_white.png) no-repeat center center;
 				background-size: 26px 13px;
+				/* transition: .3s; */
 				&:nth-child(1) {
 					&:hover {
 						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
 						background-size: 26px 13px;
-						transform: rotate(180deg);
+						transform: rotate(180deg) scale(1.05);
 					}
 				}
 				&:nth-child(2) {
@@ -1307,7 +1308,7 @@ export default home;
 					&:hover {
 						background: url(~assets/icons/ic_home_b3_down_orange.png) no-repeat center center;
 						background-size: 26px 13px;
-						transform: rotate(180deg) rotate(180deg);
+						transform: rotate(180deg) rotate(180deg) scale(1.05);
 					}
 				}
 			}

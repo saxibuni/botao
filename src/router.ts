@@ -55,21 +55,25 @@ const router = new Router({
 			path: '/case',
 			name: 'case',
 			redirect: '/case/list',
+			meta:{title:'case'},
 			component: Case,
 			children: [
 				{
 					path: '/case/list', //B1精选案例列表
 					name: 'case-list',
+					meta:{title:'case'},
 					component: CaseList
 				},
 				{
 					path: '/case/listvr', //B3精选案例列表VR
 					name: 'case-listvr',
+					meta:{title:'case'},
 					component: CaseListVR,
 				},
 				{
 					path: '/case/detail', //B2精选案例详情
 					name: 'case-detail',
+					meta:{title:'case'},
 					component: CaseDetail
 				}
 			]
@@ -78,16 +82,19 @@ const router = new Router({
 			path: '/design',
 			name: 'design',
 			redirect: '/design/list',
+			meta:{title:'design'},
 			component: Design,
 			children: [
 				{
 					path: '/design/list',  //C1设计名人堂列表
 					name: 'design-list',
+					meta:{title:'design'},
 					component: DesignList
 				},
 				{
 					path: '/design/detail', //C2设计名人堂详情
 					name: 'design-detail',
+					meta:{title:'design'},
 					component: DesignDetail
 				}
 			]
@@ -95,57 +102,68 @@ const router = new Router({
 		{
 			path: '/craft-building', //D1精工匠艺 在建工地
 			name: 'craft-building',
+			meta:{title:'craft-building'},
 			component: CraftBuild
 		},
 		{
 			path: '/craft-team', //D2精工匠艺 施工团队
 			name: 'craft-team',
+			meta:{title:'craft-building'},
 			component: CraftTeam
 		},
 		{
 			path: '/craft-manager', //D3精工匠艺 施工管理
 			name: 'craft-manager',
+			meta:{title:'craft-building'},
 			component: CraftManager
 		},
 		{
 			path: '/whole-decoration', //E1全案服务 全案整装
 			name: 'whole-decoration',
+			meta:{title:'whole-decoration'},
 			component: WholeDecoration
 		},
 		{
 			path: '/cherry-pick', //E2全案服务 严选主材
 			name: 'cherry-pick',
+			meta:{title:'whole-decoration'},
 			component: CherryPick
 		},
 		{
 			path: '/soft-decoration', //E3全案服务 软装生活
 			name: 'soft-decoration',
+			meta:{title:'whole-decoration'},
 			component: SoftDecoration
 		},
 		{
 			path: '/infomation',
 			name: 'information',
 			redirect: '/infomation/owner-voice',
+			meta:{title:'infomation'},
 			component: Information,
 			children: [
 				{
 					path: '/infomation/owner-voice', //F1资讯中心 业主心声
 					name: 'owner-voice',
+					meta:{title:'information'},
 					component: OwnerVoice
 				},
 				{
 					path: '/infomation/strategy-list', //F2资讯中心 装修攻略列表
 					name: 'strategy-list',
+					meta:{title:'information'},
 					component: StrategyList
 				},
 				{
 					path: '/infomation/strategy-detail', //F3资讯中心 装修攻略详情
 					name: 'strategy-detail',
+					meta:{title:'information'},
 					component: StrategyDetail
 				},
 				{
 					path: '/infomation/join-us', //F4资讯中心 招贤纳士
 					name: 'join-us',
+					meta:{title:'information'},
 					component: JoinUs
 				}
 			]
@@ -153,6 +171,7 @@ const router = new Router({
 		{
 			path: '/brand', // G1波涛品牌
 			name: 'brand',
+			meta:{title:'brand'},
 			component: Brand
 		},
 		{
