@@ -14,11 +14,11 @@
 
 			<div class="nav">
 				<ul>
-					<li v-for="(item, index) in navList" :key="index" :class="rouertName == item.url ? 'active' : ''" @click="$router.push({ name: item.url })">
+					<li v-for="(item, index) in navList" :key="index" :class="rouertName == item.url ? 'active' : ''" @mouseover="item.active = true" @mouseout="item.active = false" @click="$router.push({ name: item.url })">
 						{{ item.title }}
 						<b></b>
-						<div class="nav-son">
-							<div v-for="(it, i) in item.son" :key="i" @click.stop="$router.push({name:it.url,params:{number:it.query}})">
+						<div class="nav-son" :class="{active: item.active}"  @click.stop>
+							<div v-for="(it, i) in item.son" :key="i"  @click.stop=" (item.active = false),$router.push({name:it.url,params:{number:it.query}})" >
 								<span>
 									<i>
 										<img :src="it.icon" alt="">
@@ -106,8 +106,9 @@ export default class Header extends Vue {
 	navList = [
 		{
 			title: '精选案例',
-			en: 'Selected case',
 			url: 'case',
+			en: 'Selected case',
+			active:false,
 			son: [
 				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'case-list' },
 				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'case-listvr' }
@@ -117,6 +118,7 @@ export default class Header extends Vue {
 			title: '设计名人堂',
 			url: 'design',
 			en: 'Design Hall of Fame',
+			active:false,
 			son: [
 				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
 				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
@@ -127,6 +129,7 @@ export default class Header extends Vue {
 			title: '精工匠艺',
 			url: 'craft-building',
 			en: 'fine craftsmen skill',
+			active:false,
 			son: [
 				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-building' },
 				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-team' },
@@ -137,6 +140,7 @@ export default class Header extends Vue {
 			title: '全案服务',
 			url: 'whole-decoration',
 			en: 'A whole service',
+			active:false,
 			son: [
 				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
 				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'soft-decoration' },
@@ -147,6 +151,7 @@ export default class Header extends Vue {
 			title: '最新资讯',
 			url: 'information',
 			en: 'latest information',
+			active:false,
 			son: [
 				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
 				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
@@ -158,6 +163,7 @@ export default class Header extends Vue {
 			title: '波涛品牌',
 			url: 'brand',
 			en: 'botao brand',
+			active:false,
 			son: [
 				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:0 },
 				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:1 },
@@ -371,10 +377,6 @@ export default class Header extends Vue {
 							border-top: none;
 							border-left: none;
 						}
-						.nav-son{
-							opacity: 1;
-							pointer-events: auto;
-						}
 					}
 					.nav-son{
 						display: flex;
@@ -391,6 +393,10 @@ export default class Header extends Vue {
 						opacity: 0;
 						transition: opacity .3s;
 						pointer-events: none;
+						&.active {
+							opacity: 1;
+							pointer-events: auto;
+						}
 						div{
 							&:not(:first-child){
 								margin-left: 90px;
