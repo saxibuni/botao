@@ -74,11 +74,20 @@ export default class OwnerVoice extends Vue {
 			prevEl: '.owner-pre'
 		},
 		pagination: {
+			clickable: true,
 			el: '.swiper-pagination'
 		},
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
+		},
+		on: {
+			slideChangeTransitionEnd: function() {
+				for (let i = 0; i <= this.slides.length - 1; i++) {
+					this.slides[i].classList.remove('active');
+				}
+				this.slides[this.activeIndex].classList.add('active');
+			}
 		}
 	};
 	// banner2
@@ -92,6 +101,7 @@ export default class OwnerVoice extends Vue {
 		spaceBetween: 40,
 		slidesPerView: 4,
 		pagination: {
+			clickable: true,
 			el: '.dp-pagination'
 		},
 		autoplay: {
@@ -112,6 +122,7 @@ export default class OwnerVoice extends Vue {
 			prevEl: '.fh-pre'
 		},
 		pagination: {
+			clickable: true,
 			el: '.fh-pagination'
 		}
 	};

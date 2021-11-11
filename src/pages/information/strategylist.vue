@@ -137,7 +137,7 @@ export default StrategyList;
 			transition: all 0.3s;
 		}
 		&:hover img {
-			transform: scale(1.1);
+			transform: scale($imgScale);
 		}
 	}
 	.decoration-strategy {
