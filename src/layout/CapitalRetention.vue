@@ -85,16 +85,6 @@ import { Vue, Component, Watch } from 'vue-property-decorator';
 
 @Component
 export default class CapitalRetention extends Vue {
-	@Watch('searchShow')
-	onSearchFUn() {
-		if (this.searchShow) {
-			(<any>this.$refs)['search'].focus();
-		} else {
-			(<any>this.$refs)['search'].blur();
-		}
-	}
-	keyword = '';
-	searchShow: boolean = false;
 	form = {
 		userName: '',
 		phone: '',
@@ -102,23 +92,36 @@ export default class CapitalRetention extends Vue {
 	};
 	onSubmit() {
 		if (!this.form.userName) {
-			alert('请输入您的姓名！');
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入您的姓名'
+			}
 			return;
 		}
 		if (this.form.phone.length != 11) {
-			alert('请输入您的联系电话！');
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入正确的联系电话'
+			}
 			return;
 		}
 		if (!this.form.area) {
-			alert('请输入您的装修面积！');
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入您的装修面积'
+			}
 			return;
 		}
-		alert('提交成功');
+		this.$store.state.dialog={
+			state:1,
+			text:'提交成功'
+		}
 		this.form = {
 			userName: '',
 			phone: '',
 			area: ''
 		};
+		this.$store.state.dialogVisible = false;
 	}
 }
 </script>

@@ -42,7 +42,10 @@ export default class search extends Vue {
 	searchShow: boolean = false;
 	onSearch() {
 		if (!this.keyword) {
-			alert('请输入需要搜索的内容！');
+			this.$store.state.dialog={
+				state:2,
+				text:'请输入需要搜索的内容'
+			}
 			return;
 		}
 		this.searchShow = false;
