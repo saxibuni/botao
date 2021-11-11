@@ -305,9 +305,9 @@ export default CaseDetail;
 			color: #000000;
 			margin: 90px 0 20px 0;
 		}
-		ul {
+		> ul {
 			display: flex;
-			li {
+			> li {
 				width: 140px;
 				height: 39px;
 				font-size: 18px;
@@ -371,10 +371,9 @@ export default CaseDetail;
 			height: 782px;
 			width: 1760px;
 			.swiper-container {
-				height: 610px;
+				height: 625px;
 				.swiper-wrapper {
-					left: 218px;
-					top: 282px;
+					left: 11px;
 				}
 			}
 			.swiper-pagination {
