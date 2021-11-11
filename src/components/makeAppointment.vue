@@ -136,7 +136,7 @@ export default class makeAppointment extends Vue {
 		background: #ffffff;
 		position: relative;
 		display: flex;
-		transition: 0.3s;
+		transition:opacity 0.3s,transform 0.3s;
 		transform: translateY(80px);
 		opacity: 0;
 		&.height{
@@ -150,7 +150,7 @@ export default class makeAppointment extends Vue {
 			right: 40px;
 			top: 40px;
 			cursor: pointer;
-			transition: 0.3s;
+			transition: transform 0.3s;
 			&:hover {
 				transform: rotate(-90deg);
 			}
