@@ -29,7 +29,7 @@
 							<div class="date">{{ v.date }}</div>
 							<h4 class="title">{{ v.title }}</h4>
 							<p>{{ v.text }}</p>
-							<div class="more">
+							<div class="more"  @click="$router.push({name:'strategy-detail'})">
 								More
 								<span></span>
 							</div>
@@ -48,7 +48,7 @@
 						<div class="date">{{ v.date }}</div>
 						<h4 class="title">{{ v.title }}</h4>
 						<p>{{ v.text }}</p>
-						<div class="more">
+						<div class="more" @click="$router.push({name:'strategy-detail'})">
 							More
 							<span></span>
 						</div>
