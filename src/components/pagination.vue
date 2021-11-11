@@ -13,10 +13,10 @@
 	</div>
 </template>
 <script lang="ts">
-import { Vue, Component,Prop} from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class pagination extends Vue {
-		@Prop({
+	@Prop({
 		required: false,
 		type: Object,
 		default: () => {}
@@ -66,9 +66,14 @@ export default class pagination extends Vue {
 				font-weight: bold;
 				color: #122133;
 				background-color: #fff;
-
+				transition: all 0.3s;
+				&.number:hover {
+					transform: translateY(-3px);
+					color: #ed5502;
+				}
 				&.active {
 					color: #ed5502;
+					transform: scale(1) !important;
 				}
 			}
 		}

@@ -6,7 +6,7 @@
 			<h2>装修攻略</h2>
 			<h3>DECORATION STRATIEGY</h3>
 			<div class="strategy-box">
-				<div class="strategy-left">
+				<div class="strategy-left wow">
 					<div class="img-box">
 						<img src="~assets/strategy1.jpg" />
 					</div>
@@ -20,7 +20,7 @@
 						</div>
 					</div>
 				</div>
-				<ul class="strategy-right">
+				<ul class="strategy-right wow">
 					<li v-for="(v, i) in stratiegyArr" :key="i">
 						<div class="img-box">
 							<img :src="v.imgUrl" />
@@ -29,7 +29,7 @@
 							<div class="date">{{ v.date }}</div>
 							<h4 class="title">{{ v.title }}</h4>
 							<p>{{ v.text }}</p>
-							<div class="more" @click="$router.push({ name: 'strategy-detail' })">
+							<div class="more" @click="$router.push({ name: 'strategy-detail' })" @mouseenter="addClass(i)" @mouseleave="removeClass(i)">
 								More
 								<span></span>
 							</div>
@@ -66,6 +66,29 @@ export default StrategyList;
 </script>
 
 <style lang="scss">
+html{
+	.strategy-list{
+.decoration-strategy{
+	h2,h3{
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+	}
+}
+.decoration-strategy{
+	.strategy-left{
+			opacity: 0;
+				animation: slide-left-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+	}
+		.strategy-right{
+			opacity: 0;
+				animation: slide-right-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+	}
+}
+	}
+}
 .strategy-list {
 	box-sizing: border-box;
 	margin: 0 auto;
@@ -137,7 +160,7 @@ export default StrategyList;
 			transition: all 0.3s;
 		}
 		&:hover img {
-			transform: scale(1.1);
+			transform: scale($imgScale);
 		}
 	}
 	.decoration-strategy {
@@ -178,6 +201,7 @@ export default StrategyList;
 						@include info();
 						h4 {
 							color: #000;
+							transition: color .3s;
 						}
 						.more {
 							margin-top: 40px;
@@ -190,6 +214,16 @@ export default StrategyList;
 					}
 					&:nth-child(2) {
 						margin: 45px 0;
+					}
+					&.hover{
+						.title{
+							color: #eb551c;
+						}
+						.img-box{
+							img{
+							transform: scale($imgScale);
+							}
+						}
 					}
 				}
 			}

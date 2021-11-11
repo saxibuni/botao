@@ -5,5 +5,7 @@ import { Vue, Component } from 'vue-property-decorator';
 	}
 })
 export default class Infomation extends Vue {
-
+mounted() {
+	this.restartWow()
+}
 }
