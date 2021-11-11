@@ -1088,7 +1088,7 @@ export default home;
 				top: 0;
 				left: 0;
 				z-index: 1;
-				background: linear-gradient(to bottom,rgba(0,0,0,0.8),rgba(0,0,0,0.5),rgba(0,0,0,0.8));
+				background: linear-gradient(to bottom,rgba(0,0,0,0.9),rgba(0,0,0,0.5),rgba(0,0,0,0.9));
 				pointer-events: none;
 			}
 			ul {
