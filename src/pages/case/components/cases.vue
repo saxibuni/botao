@@ -66,16 +66,16 @@ export default class Caese extends Vue {
 				justify-content: center;
 				align-items: center;
 				cursor: pointer;
-				overflow: hidden;
-				&:hover {
-					img {
-						transform: scale(1.1);
-					}
-				}
+				// overflow: hidden;
+				// &:hover {
+				// 	img {
+				// 		transform: scale(1.1);
+				// 	}
+				// }
 				img {
 					width: 100%;
 					height: 100%;
-					transition: transform 0.3s;
+					// transition: transform 0.3s;
 				}
 			}
 			.content {
