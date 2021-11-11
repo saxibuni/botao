@@ -237,15 +237,11 @@ export default class Brand extends Vue {
 		this.createTrigger();
 		this.initPathTarget();
 		this.initVideo();
-		let number = this.$route.params.number;
-		if (number) {
-			setTimeout(() => {
-				this.jump(number);
-			});
-		}
+		this.jump(this.$route.params.number);
 		this.onResize();
 		this.$bus.$on(Events.RESIZE, this.onResize);
 	}
+
 	initVideo() {
 		const v1 = document.querySelector<HTMLElement>('#v1');
 		v1.addEventListener('play', () => {
@@ -258,7 +254,7 @@ export default class Brand extends Vue {
 	}
 
 	play() {
-		const v1 = document.querySelector<HTMLElement>('#v1');
+		const v1 = document.querySelector<HTMLVideoElement>('#v1');
 		v1.play();
 		this.playFlag = !this.playFlag;
 	}
@@ -313,6 +309,7 @@ export default class Brand extends Vue {
 	}
 
 	jump(i) {
+		if (typeof i === 'undefined') return;
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.brand');
 		const item = brand.querySelector<HTMLElement>(`.select${i}`);

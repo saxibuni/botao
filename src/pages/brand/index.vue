@@ -428,7 +428,8 @@ export default index;
 			height: 85px;
 			cursor: pointer;
 			border-radius: 50%;
-			transform: translate(-50%, -50%);
+			transform: translate(-50%, -50%) translate(0, -5px);
+			z-index: 1;
 			img {
 				width: 100%;
 				height: 100%;
