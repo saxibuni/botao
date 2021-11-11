@@ -86,6 +86,19 @@
 		<div class="page3">
 			<h2>绿色建材让家越住越健康</h2>
 			<p>Green building materials</p>
+			<div class="circle">
+				<div class="father" v-for="(item, i) in page3Data" :key="i">
+					<div class="content">
+						<div class="container">
+							<img :src="item.imgUrl" alt="" />
+							<div class="text">
+								<p>{{ item.text }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<img src="~assets/bg_e2_part3_00.png" alt="" />
 		</div>
 
 		<div class="page4">
@@ -199,11 +212,9 @@
 					</swiper-slide>
 				</swiper>
 				<div class="swiper-button-wrap">
-					<div class="prev prev2">
-					</div>
+					<div class="prev prev2"></div>
 					<div class="swiper-pagination2"></div>
-					<div class="next next2">
-					</div>
+					<div class="next next2"></div>
 				</div>
 			</div>
 		</div>
@@ -465,7 +476,7 @@ export default CheckPick;
 		height: 970px;
 		background: url('~assets/bg_e2_part3.jpg') no-repeat;
 		background-size: cover;
-
+		position: relative;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
@@ -484,6 +495,193 @@ export default CheckPick;
 			color: #fff;
 			text-align: center;
 			margin-top: 24px;
+		}
+		> img {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: -1px;
+		}
+		.circle {
+			width: 1413px;
+			height: 1413px;
+			border: 1px solid #ffffff;
+			border-radius: 50%;
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, 50%);
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.father {
+				margin-top: 1px;
+				// width: 976px;
+				// height: 976px;
+				width: 1329px;
+				height: 1329px;
+				transform: rotate(68.8deg);
+				/* background: lightgoldenrodyellow; */
+				position: absolute;
+				overflow: hidden;
+				border-radius: 50%;
+				z-index: -1;
+				img {
+					position: absolute;
+					z-index: 999;
+					cursor: pointer;
+				}
+				.text {
+					position: absolute;
+					z-index: 9999;
+					cursor: pointer;
+					p {
+						font-size: 22px;
+						color: #000000;
+						width: 45px;
+						line-height: 32px;
+					}
+				}
+				.active {
+					p {
+						color: #fff;
+					}
+				}
+				&:nth-of-type(1) {
+					img {
+						transform: rotate(-90deg) scale(1.04);
+						top: -18px;
+						left: 439px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(-90deg);
+					}
+				}
+				&:nth-of-type(2) {
+					transform: rotate(46.1deg);
+					img {
+						transform: rotate(-66deg) scale(1.02);
+						top: -40px;
+						left: 424px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(-67deg);
+					}
+				}
+				&:nth-of-type(3) {
+					transform: rotate(23.4deg);
+					img {
+						transform: rotate(-45deg) scale(1.02);
+						top: -40px;
+						left: 431px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(-46deg);
+					}
+				}
+				&:nth-of-type(4) {
+					transform: rotate(0.7deg);
+					img {
+						transform: rotate(-23deg) scale(1.04);
+						top: -11px;
+						left: 456px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(-20deg);
+					}
+				}
+				&:nth-of-type(5) {
+					transform: rotate(-22.2deg);
+					img {
+						transform: rotate(-1deg) scale(1.01);
+						top: 3px;
+						left: 422px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(0deg);
+					}
+				}
+				&:nth-of-type(6) {
+					transform: rotate(-44.8deg);
+					img {
+						transform: rotate(22deg) scale(1.01);
+						top: -36px;
+						left: 411px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(24deg);
+					}
+				}
+				&:nth-of-type(7) {
+					transform: rotate(-67.5deg);
+					img {
+						transform: rotate(45deg) scale(0.99);
+						top: -49px;
+						left: 426px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(47deg);
+					}
+				}
+				&:nth-of-type(8) {
+					transform: rotate(-90deg);
+					img {
+						position: absolute;
+						z-index: 99;
+						transform: rotate(67deg) scale(0.95);
+						top: -32px;
+						left: 463px;
+					}
+					.text {
+						left: 567px;
+						top: 227px;
+						transform: rotate(69deg);
+					}
+				}
+			}
+			.content {
+				overflow: hidden;
+				// width: 976px;
+				// height: 976px;
+				width: 1329px;
+				height: 1329px;
+				/* background: lightcoral; */
+				position: absolute;
+				// z-index: 999;
+				z-index: -1;
+				clip: rect(0px, 1329px, 1329px, 664.5px);
+
+				border-radius: 50%;
+			}
+			.container {
+				// width: 976px;
+				// height: 976px;
+				width: 1329px;
+				height: 1329px;
+				background: #eeeeee;
+				// background: red;
+				position: absolute;
+				border-radius: 50%;
+				clip: rect(0px, 664.5px, 1329px, 0);
+				transform: rotate(21deg);
+				// cursor: pointer;
+				overflow: hidden;
+				z-index: -1;
+			}
 		}
 	}
 	.page4 {
@@ -1017,10 +1215,10 @@ export default CheckPick;
 					img {
 						max-width: 100%;
 						transform: rotate(-45deg);
-						transition: .3s;
+						transition: 0.3s;
 					}
-					&:hover{
-						img{
+					&:hover {
+						img {
 							transform: rotate(-45deg) scale(1.06);
 						}
 					}
@@ -1133,54 +1331,53 @@ export default CheckPick;
 					}
 				}
 			}
-			.swiper-button-wrap{
+			.swiper-button-wrap {
 				position: absolute;
-			  bottom: -82px;
+				bottom: -82px;
 				height: 10px;
 				width: 100%;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				.swiper-pagination2{
+				.swiper-pagination2 {
 					display: flex;
 					margin: 0 30px;
-					.swiper-pagination-bullet{
+					.swiper-pagination-bullet {
 						cursor: pointer;
 						border-radius: 0;
 						width: 12px;
 						height: 12px;
 						background: transparent;
-						border: 2px solid #ABABAB;
-						&.swiper-pagination-bullet-active{
-							border: 2px solid #EB551D!important;
+						border: 2px solid #ababab;
+						&.swiper-pagination-bullet-active {
+							border: 2px solid #eb551d !important;
 						}
-						&:not(:first-child){
+						&:not(:first-child) {
 							margin-left: 15px;
 						}
 					}
 				}
-			.prev2{
-				cursor: pointer;
-				width: 16px;
-				height: 16px;
-				background: #f7f7f7 url('~assets/icons/ic_e2_left1.png') no-repeat center center;
-				transition: .3s;
-				&:hover{
-							transform: scale(1.2);
+				.prev2 {
+					cursor: pointer;
+					width: 16px;
+					height: 16px;
+					background: #f7f7f7 url('~assets/icons/ic_e2_left1.png') no-repeat center center;
+					transition: 0.3s;
+					&:hover {
+						transform: scale(1.2);
+					}
+				}
+				.next2 {
+					width: 16px;
+					cursor: pointer;
+					height: 16px;
+					background: #f7f7f7 url('~assets/icons/ic_e2_right1.png') no-repeat center center;
+					transition: 0.3s;
+					&:hover {
+						transform: scale(1.2);
+					}
 				}
 			}
-			.next2{
-				width: 16px;
-				cursor: pointer;
-				height: 16px;
-				background: #f7f7f7 url('~assets/icons/ic_e2_right1.png') no-repeat center center;
-				transition: .3s;
-				&:hover{
-							transform: scale(1.2);
-				}
-			}
-			}
-
 		}
 	}
 }
