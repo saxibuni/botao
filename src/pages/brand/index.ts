@@ -37,7 +37,7 @@ export default class Brand extends Vue {
 	offset = 0.03;
 	path: SVGPathElement;
 	plane: HTMLElement;
-
+	playFlag: boolean = false;
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	times: '';
 	historyScroll: HTMLElement;
@@ -231,19 +231,32 @@ export default class Brand extends Vue {
 			disableOnInteraction: false
 		}
 	};
+	textShow:boolean=true;
 	mounted() {
 		this.createDragger();
 		this.createTrigger();
 		this.initPathTarget();
-
-		let number = this.$route.params.number;
-		if (number) {
-			setTimeout(() => {
-				this.jump(number);
-			});
-		}
+		this.initVideo();
+		this.jump(this.$route.params.number);
 		this.onResize();
 		this.$bus.$on(Events.RESIZE, this.onResize);
+	}
+
+	initVideo() {
+		const v1 = document.querySelector<HTMLElement>('#v1');
+		v1.addEventListener('play', () => {
+			this.playFlag = true;
+			this.textShow=false;
+		});
+		v1.addEventListener('pause', () => {
+			this.playFlag = false;
+		});
+	}
+
+	play() {
+		const v1 = document.querySelector<HTMLVideoElement>('#v1');
+		v1.play();
+		this.playFlag = !this.playFlag;
 	}
 
 	createDragger() {
@@ -281,7 +294,7 @@ export default class Brand extends Vue {
 				this.progressIndex = i;
 				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
 				times[i].style.opacity = '1';
-				this.isShow = i
+				this.isShow = i;
 			} else {
 				const times = this.$el.querySelectorAll<HTMLElement>('.yearTime');
 				times[i].style.opacity = '0';
@@ -296,6 +309,7 @@ export default class Brand extends Vue {
 	}
 
 	jump(i) {
+		if (typeof i === 'undefined') return;
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.brand');
 		const item = brand.querySelector<HTMLElement>(`.select${i}`);
