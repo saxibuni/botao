@@ -351,6 +351,7 @@ export default class Search extends Vue {
 						}
 						.button-wrap {
 							margin-top: 39px;
+							width: 170px;
 							.btn {
 								margin: 0;
 							}
