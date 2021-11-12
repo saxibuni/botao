@@ -92,7 +92,10 @@
 						<div class="container">
 							<div class="imgBox">
 								<img :src="item.imgUrl" alt="" />
-								<div class="mask"></div>
+								<div class="mask" :class="activeIndex == i ? 'active3' : ''">
+									<p>层层鉴定</p>
+									<p>货真价实</p>
+								</div>
 							</div>
 							<div class="text" :class="activeIndex == i ? 'active' : ''">
 								<p>{{ item.text }}</p>
@@ -497,6 +500,7 @@ export default CheckPick;
 		opacity: 0;
 		animation: slide-down-in 1s, fade-in 1s;
 		animation-fill-mode: forwards;
+		overflow: hidden;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
@@ -519,7 +523,7 @@ export default CheckPick;
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
-			bottom: -1px;
+			bottom: -2px;
 			clip-path: ellipse(330px 330px at 50% 100%);
 		}
 		.circle {
@@ -588,7 +592,7 @@ export default CheckPick;
 				// height: 976px;
 				width: 1329px;
 				height: 1329px;
-				transform: rotate(68.8deg);
+				transform: rotate(68.3deg);
 				/* background: lightgoldenrodyellow; */
 				position: absolute;
 				overflow: hidden;
@@ -607,7 +611,7 @@ export default CheckPick;
 					justify-content: center;
 					align-items: center;
 					transition: all 0.3s;
-					z-index: 23;
+					z-index: 24;
 					p {
 						font-size: 22px;
 						color: #000000;
@@ -623,121 +627,164 @@ export default CheckPick;
 						color: #fff;
 					}
 				}
+
 				&:nth-of-type(1) {
 					img {
-						transform: rotate(-90deg) scale(1.04);
-						top: -18px;
-						left: 439px;
+						transform: rotate(-90deg);
+						top: -22px;
+						left: 404px;
+					}
+					.mask {
+						left: 408px;
+						top: -62px;
+						transform: rotate(-90deg);
 					}
 					.text {
-						left: 449px;
+						left: 415px;
 						top: 124px;
 						transform: rotate(-90deg);
+						clip-path: ellipse(510px 510px at -117% 100%);
 						p {
-							left: 90px;
-							top: 110px;
+							left: 96px;
+							top: 144px;
 						}
 					}
 				}
 				&:nth-of-type(2) {
-					transform: rotate(46.1deg);
+					transform: rotate(45.7deg);
 					img {
-						transform: rotate(-66deg) scale(1.02);
+						transform: rotate(-13deg);
 						top: -40px;
 						left: 424px;
 					}
+					.mask {
+						left: 406px;
+						top: -62px;
+						transform: rotate(-68deg);
+					}
 					.text {
-						left: 478px;
-						top: 145px;
+						left: 458px;
+						top: 130px;
 						transform: rotate(-67deg);
+						clip-path: ellipse(510px 510px at -86% 152%);
 						p {
 							left: 102px;
-							top: 78px;
+							top: 98px;
 						}
 					}
 				}
 				&:nth-of-type(3) {
-					transform: rotate(23.4deg);
+					transform: rotate(23.1deg);
 					img {
-						transform: rotate(-45deg) scale(1.02);
-						top: -40px;
-						left: 431px;
+						transform: rotate(-12deg);
+						top: -43px;
+						left: 424px;
+					}
+					.mask {
+						left: 406px;
+						top: -58px;
+						transform: rotate(-45deg);
 					}
 					.text {
 						left: 478px;
-						top: 145px;
+						top: 120px;
 						transform: rotate(-46deg);
+						clip-path: ellipse(510px 510px at -58% 187%);
 						p {
-							left: 98px;
-							top: 78px;
+							left: 82px;
+							top: 86px;
 						}
 					}
 				}
 				&:nth-of-type(4) {
-					transform: rotate(0.7deg);
+					transform: rotate(0.5deg);
 					img {
-						transform: rotate(-23deg) scale(1.04);
-						top: -11px;
-						left: 456px;
+						transform: rotate(-23deg);
+						top: -34px;
+						left: 435px;
+					}
+					.mask {
+						left: 406px;
+						top: -58px;
+						transform: rotate(-22deg);
 					}
 					.text {
 						left: 478px;
-						top: 146px;
+						top: 130px;
 						transform: rotate(-20deg);
+						clip-path: ellipse(510px 510px at 9% 213%);
 						p {
-							left: 92px;
+							left: 86px;
 							top: 90px;
 						}
 					}
 				}
 				&:nth-of-type(5) {
-					transform: rotate(-22.2deg);
+					transform: rotate(-22.1deg);
 					img {
-						transform: rotate(-1deg) scale(1.01);
-						top: 3px;
-						left: 422px;
+						transform: rotate(-1deg);
+						top: -32px;
+						left: 415px;
+					}
+					.mask {
+						left: 406px;
+						top: -58px;
+						transform: rotate(0deg);
 					}
 					.text {
 						left: 477px;
-						top: 148px;
+						top: 130px;
 						transform: rotate(0deg);
+						clip-path: ellipse(510px 510px at 76% 214%);
 						p {
-							left: 96px;
-							top: 88px;
+							left: 90px;
+							top: 92px;
 						}
 					}
 				}
 				&:nth-of-type(6) {
-					transform: rotate(-44.8deg);
+					transform: rotate(-44.7deg);
 					img {
-						transform: rotate(22deg) scale(1.01);
-						top: -36px;
-						left: 411px;
+						transform: rotate(-7deg);
+						top: -40px;
+						left: 417px;
+					}
+					.mask {
+						left: 404px;
+						top: -62px;
+						transform: rotate(22deg);
 					}
 					.text {
 						left: 460px;
-						top: 146px;
+						top: 130px;
 						transform: rotate(24deg);
+						clip-path: ellipse(510px 510px at 145% 188%);
 						p {
-							left: 110px;
-							top: 82px;
+							left: 104px;
+							top: 88px;
 						}
 					}
 				}
 				&:nth-of-type(7) {
-					transform: rotate(-67.5deg);
+					transform: rotate(-67.3deg);
 					img {
-						transform: rotate(45deg) scale(0.99);
+						transform: rotate(79deg);
 						top: -49px;
-						left: 426px;
+						left: 421px;
+					}
+					.mask {
+						left: 404px;
+						top: -62px;
+						transform: rotate(46deg);
 					}
 					.text {
 						left: 460px;
-						top: 146px;
+						top: 130px;
 						transform: rotate(47deg);
+						clip-path: ellipse(510px 510px at 190% 141%);
 						p {
-							left: 100px;
-							top: 80px;
+							left: 94px;
+							top: 88px;
 						}
 					}
 				}
@@ -746,19 +793,24 @@ export default CheckPick;
 					img {
 						position: absolute;
 						z-index: 22;
-						transform: rotate(67deg) scale(0.95);
+						transform: rotate(69deg);
 						top: -32px;
-						left: 463px;
+						left: 444px;
+					}
+					.mask {
+						left: 405px;
+						top: -64px;
+						transform: rotate(68deg);
 					}
 					.text {
-						left: 519px;
+						left: 510px;
 						top: 134px;
 						border-radius: 0 !important;
 						transform: rotate(69deg);
 						clip-path: ellipse(510px 510px at 204% 100%);
 						p {
-							left: 82px;
-							top: 142px;
+							left: 76px;
+							top: 138px;
 						}
 					}
 				}
@@ -787,19 +839,39 @@ export default CheckPick;
 				position: absolute;
 				border-radius: 50%;
 				clip: rect(0px, 664.5px, 1329px, 0);
-				transform: rotate(21deg);
+				transform: rotate(21.6deg);
 				.imgBox {
 					overflow: hidden;
-					img {
-						width:  300px;
-						height: 300px;
-					}
+
 					.mask {
 						position: absolute;
-						width: 200px;
-						height: 200px;
-						background-color: red;
-						z-index: 999999;
+						width: 300px;
+						height: 300px;
+						background-color: rgba(0, 0, 0, 0);
+						z-index: 23;
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						// opacity: 0;
+						// display: none;
+						transition: all 0.3s;
+						p {
+							font-size: 18px;
+							color: transparent;
+							font-weight: 400;
+							transition: all 0.3s;
+							&:nth-of-type(1) {
+								margin-bottom: 10px;
+							}
+						}
+					}
+					.active3 {
+						// opacity: 1;
+						background-color: rgba(0, 0, 0, 0.8);
+						p {
+							color: #fff !important;
+						}
 					}
 				}
 			}
@@ -937,32 +1009,32 @@ export default CheckPick;
 						width: 416px;
 						height: 410px;
 						margin-right: 10px;
-						animation-delay: .1s;
+						animation-delay: 0.1s;
 					}
 					&:nth-child(2) {
 						width: 834px;
 						height: 410px;
-						animation-delay: .2s;
+						animation-delay: 0.2s;
 					}
 					&:nth-child(3) {
 						width: 416px;
 						height: 410px;
 						margin-top: 10px;
 						margin-right: 10px;
-						animation-delay: .3s;
+						animation-delay: 0.3s;
 					}
 					&:nth-child(4) {
 						width: 412px;
 						margin-right: 10px;
 						margin-top: 10px;
 						height: 410px;
-						animation-delay: .4s;
+						animation-delay: 0.4s;
 					}
 					&:nth-child(5) {
 						width: 412px;
 						height: 410px;
 						margin-top: 10px;
-						animation-delay: .5s;
+						animation-delay: 0.5s;
 					}
 				}
 			}
