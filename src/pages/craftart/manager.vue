@@ -29,9 +29,11 @@
 					<img src="~assets/s_3.jpg" alt="" />
 					<div class="circle wow">
 						<div class="imgBox">
-							<div class="img">
-								<img src="~assets/bg_d3_part3.png" alt="" v-show="active1Index == index" v-for="(item, index) in 8" :key="index" />
-							</div>
+							<transition-group name="toggle-image">
+								<div class="img" v-for="(item, index) in 8" v-show="active1Index == index" :key="index">
+									<img src="~assets/bg_d3_part3.png" :key="index" />
+								</div>
+							</transition-group>
 							<ul class="left">
 								<li v-for="(v, i) in page2Data.left" :key="i" :class="active1Index == i ? 'active1' : ''" @click="active1Index = i">
 									{{ v }}
@@ -192,7 +194,11 @@
 					</div>
 					<div class="right">
 						<img src="~assets/bg_d3_part6_right.jpg" alt="" />
-						<img class="clrcleimg" src="~assets/bg_d3_part6_roll.png" alt="" v-for="(v, i) in 4" :key="i" v-show="i + 1 == Number(activeName)" />
+						<div class="img">
+							<transition-group name="toggle-image">
+								<img class="clrcleimg" src="~assets/bg_d3_part6_roll.png" alt="" v-for="(v, i) in 4" :key="i" v-show="i + 1 == Number(activeName)" />
+							</transition-group>
+						</div>
 						<div class="text">
 							<p class="wow">7 HEAVY QUALITY</p>
 							<p class="wow">INSPECTION</p>
@@ -445,6 +451,9 @@ export default Manager;
 						height: 596px;
 						position: relative;
 						.img {
+							position: absolute;
+							opacity: 1;
+							top: 0;
 							width: 596px;
 							height: 596px;
 							border-radius: 50%;
@@ -452,13 +461,14 @@ export default Manager;
 							display: flex;
 							justify-content: center;
 							align-items: center;
+							@include toggle-image();
 							&:hover {
 								img {
 									transform: scale($imgScale);
 								}
 							}
 							img {
-								animation: fade-ine 1s ease forwards;
+								// animation: fade-ine 1s ease forwards;
 								transition: transform 0.3s;
 							}
 						}
@@ -957,11 +967,19 @@ export default Manager;
 						left: 0;
 						top: 0;
 					}
-					.clrcleimg {
-						top: 57px;
-						transform: translateX(-50%);
-						z-index: 2;
-						animation: fade-ine 1s ease forwards;
+					.img {
+						display: flex;
+						position: relative;
+						.clrcleimg {
+							@include toggle-image();
+							position: absolute;
+							top: 57px;
+							left: -50%;
+							// transform: translateX(-50%);
+							z-index: 2;
+							// animation: fade-ine 1s ease forwards;
+							// @include toggle-image();
+						}
 					}
 					.text {
 						text-align: right;
