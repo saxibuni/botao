@@ -1358,6 +1358,9 @@ html {
 				margin-top: 58px;
 				height: 491px;
 				background-color: #fff;
+				i{
+					background-size:100%;
+				}
 				ul {
 					li {
 						display: flex;
@@ -1462,6 +1465,10 @@ html {
 								}
 							}
 						}
+						.img-box{
+							width: 136px;
+							height: 136px;
+						}
 					}
 				}
 			}
@@ -1471,6 +1478,9 @@ html {
 			height: 100%;
 			.bm-view {
 				height: 100%;
+				 .anchorBL{
+					 display: none;
+				 }
 			}
 		}
 	}
