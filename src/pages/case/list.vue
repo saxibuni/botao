@@ -51,7 +51,7 @@
 							<p>15年</p>
 						</div>
 					</div>
-					<Button :text="'找TA设计'" />
+					<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true" />
 				</div>
 			</div>
 			<swiper :options="bannerSwiperOptions1">
@@ -154,8 +154,10 @@ export default CaseList;
 					height: 18px;
 					background: url('~assets/icons/bg_b1_part1_search.png') no-repeat;
 					background-size: 100% 100%;
+					transition: transform 0.3s;
 					&:hover {
 						cursor: pointer;
+						transform: scale(1.1);
 					}
 				}
 			}

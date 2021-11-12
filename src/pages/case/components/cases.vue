@@ -20,9 +20,11 @@
 							<p>2000个喜欢</p>
 						</div>
 					</div>
-					<div class="bottom">
+					<div class="bottom" @click.stop="$router.push('/design/detail')">
 						<div class="bottomLeft">
-							<img src="~assets/bg_b1_part3_user4.png" alt="" />
+							<div class="imgBox2">
+								<img src="~assets/bg_b1_part3_user4.png" alt="" />
+							</div>
 							<div class="text">
 								<p>米航</p>
 								<p>首席设计师</p>
@@ -167,9 +169,28 @@ export default class Caese extends Vue {
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					&:hover {
+						.imgBox2 {
+							img {
+								transform: scale(1.1);
+							}
+						}
+					}
 					.bottomLeft {
 						display: flex;
 						align-items: center;
+						.imgBox2 {
+							width: 75px;
+							height: 75px;
+							border-radius: 50%;
+							display: flex;
+							align-items: center;
+							overflow: hidden;
+							img {
+								transition: all 0.3s;
+							}
+						}
+
 						.text {
 							margin-left: 20px;
 							p {
