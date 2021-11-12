@@ -170,8 +170,9 @@
 			</div>
 			<div class="right wow">
 				<ul>
-					<li v-for="(item, i) in portraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`">
+					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`" :class="{'do-flip': applyFlip}">
 						<img :src="item" alt="" />
+						<img v-if="nextPortraitList[i]" :src="nextPortraitList[i]" alt="" >
 					</li>
 				</ul>
 
@@ -184,8 +185,8 @@
 				<i></i>
 			</div>
 			<div class="control">
-				<i></i>
-				<i></i>
+				<i @click="onPortraitListPrev"></i>
+				<i @click="onPortraitListNext"></i>
 			</div>
 		</div>
 		<div class="page4 wow">
@@ -1184,7 +1185,26 @@ export default home;
 					img {
 						width: 100%;
 						height: 100%;
+						position: absolute;
+						top: 0;
+						left: 0;
+						transform: rotateY(0deg);
+						backface-visibility: hidden;
+						&:nth-child(2) {
+							transform: rotateY(180deg);
+						}
 					}
+					&.do-flip {
+						img {
+							transform: rotateY(180deg);
+							transition:  transform .5s ease-in-out;
+							&:nth-child(2) {
+								transform: rotateY(0deg);
+							}
+						}
+
+					}
+
 					&:nth-child(1) {
 						left: 0;
 						top: -6px;
