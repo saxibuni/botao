@@ -300,7 +300,7 @@
 				<div class="text">
 					<h2>
 						<transition-group name="toggle-image">
-							<img src="~assets/portrait/bg_home_b3_pic01.jpg" alt="" v-if="textActive" key="a" />
+							<img src="~assets/bg_d3_part6_roll.png" alt="" v-if="textActive" key="a" />
 							<img src="~assets/bg_home_b4_roll.png" alt="" v-if="!textActive" key="b" />
 						</transition-group>
 					</h2>
@@ -2185,6 +2185,9 @@ export default home;
 				color: #000;
 				span {
 					color: #ec5400;
+					font-family: 'Gilroy-Bold';
+					width: 95px;
+					display: inline-block;
 				}
 			}
 			div {

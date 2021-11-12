@@ -187,7 +187,7 @@ html {
 					margin: 0 10px;
 					width: 18px;
 					height: 18px;
-					cursor: pointer;
+					// cursor: pointer;
 					background: url(~assets/icons/iconlist.png) no-repeat;
 					&:nth-child(1) {
 						position: relative;
@@ -198,6 +198,7 @@ html {
 					}
 					&:nth-child(2) {
 						position: relative;
+						cursor: pointer;
 						width: 28px;
 						height: 25px;
 						margin-left: 40px;
@@ -208,6 +209,8 @@ html {
 						}
 					}
 					&:nth-child(3) {
+						cursor: pointer;
+
 						position: relative;
 						width: 28px;
 						height: 25px;
@@ -238,6 +241,7 @@ html {
 						}
 					}
 					&:nth-child(4) {
+						cursor: pointer;
 						display: flex;
 						width: 28px;
 						height: 25px;

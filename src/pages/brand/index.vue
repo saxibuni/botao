@@ -1,7 +1,7 @@
 <template>
 	<div class="brand">
 		<div class="banner-box">
-			<video id="v1" controls preload="true" width="100%" poster="../../assets/bg_g1_banner.jpg">
+			<video id="v1" controls preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
 				<source :src="'./botao.mp4'" type="video/mp4" />
 			</video>
 			<div class="banner-text" v-show="textShow">
@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<ul class="aside-nav">
-			<li v-for="(v, i) in asideNav" :class="i==0?'active':''" :key="i" @click="jump(i)">
+			<li v-for="(v, i) in asideNav" :class="i == 0 ? 'active' : ''" :key="i" @click="jump(i)">
 				<span @click="jump(i)" :class="'item' + i">{{ v }}</span>
 			</li>
 		</ul>
@@ -381,7 +381,14 @@ html {
 	}
 }
 .brand {
+	display: flex;
+	flex-direction: column;
 	box-sizing: border-box;
+	video {
+		width: 100%;
+		height: 100%;
+		object-fit: fill;
+	}
 	@keyframes fade-ine {
 		from {
 			opacity: 0;
@@ -437,6 +444,9 @@ html {
 	.banner-box {
 		display: flex;
 		position: relative;
+		video {
+			vertical-align: middle;
+		}
 		.banner {
 			height: 970px;
 			img {
@@ -543,7 +553,7 @@ html {
 			&:last-child {
 				border: none;
 			}
-			&.active{
+			&.active {
 				color: #eb551c;
 			}
 			&:hover {
@@ -1358,8 +1368,8 @@ html {
 				margin-top: 58px;
 				height: 491px;
 				background-color: #fff;
-				i{
-					background-size:100%;
+				i {
+					background-size: 100%;
 				}
 				ul {
 					li {
@@ -1465,7 +1475,7 @@ html {
 								}
 							}
 						}
-						.img-box{
+						.img-box {
 							width: 136px;
 							height: 136px;
 						}
@@ -1478,9 +1488,9 @@ html {
 			height: 100%;
 			.bm-view {
 				height: 100%;
-				 .anchorBL{
-					 display: none;
-				 }
+				.anchorBL {
+					display: none;
+				}
 			}
 		}
 	}

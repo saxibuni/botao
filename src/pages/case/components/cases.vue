@@ -22,7 +22,7 @@
 							<p>{{ loveNum }}个喜欢</p>
 						</div>
 					</div>
-					<div class="bottom" @click.stop="$router.push('/design/detail')">
+					<div class="bottom" >
 						<div class="bottomLeft">
 							<div class="imgBox2">
 								<img src="~assets/bg_b1_part3_user4.png" alt="" />

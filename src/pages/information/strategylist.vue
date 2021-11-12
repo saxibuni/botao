@@ -196,6 +196,7 @@ html {
 					padding: 49px 40px 54px 40px;
 					background-color: #112033;
 					color: #fff;
+					cursor: pointer;
 					@include info();
 				}
 			}
@@ -214,6 +215,7 @@ html {
 					.info-box {
 						flex: 1;
 						color: #8e8e8e;
+						cursor: pointer;
 						@include info();
 						h4 {
 							color: #000;
@@ -274,6 +276,7 @@ html {
 					box-sizing: border-box;
 					padding: 41px 0 50px 39px;
 					width: 100%;
+					cursor: pointer;
 					.title{
 						transition: all .3s;
 					}

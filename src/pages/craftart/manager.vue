@@ -29,8 +29,12 @@
 					<img src="~assets/s_3.jpg" alt="" />
 					<div class="circle wow">
 						<div class="imgBox">
-							<div class="img">
-								<img src="~assets/bg_d3_part3.png" alt="" v-show="active1Index == index" v-for="(item, index) in 8" :key="index" />
+							<div class="img-box">
+								<transition-group name="toggle-image">
+									<div class="img" v-for="(item, index) in imgList" v-show="active1Index == index" :key="index">
+										<img :src="item" />
+									</div>
+								</transition-group>
 							</div>
 							<ul class="left">
 								<li v-for="(v, i) in page2Data.left" :key="i" :class="active1Index == i ? 'active1' : ''" @click="active1Index = i">
@@ -192,7 +196,13 @@
 					</div>
 					<div class="right">
 						<img src="~assets/bg_d3_part6_right.jpg" alt="" />
-						<img class="clrcleimg" src="~assets/bg_d3_part6_roll.png" alt="" v-for="(v, i) in 4" :key="i" v-show="i + 1 == Number(activeName)" />
+						<div class="img">
+							<transition-group name="toggle-image">
+								<div class="img-box" v-for="(v, i) in imgList" :key="i" v-show="i + 1 == Number(activeName)">
+									<img class="clrcleimg" :src="v" alt="" />
+								</div>
+							</transition-group>
+						</div>
 						<div class="text">
 							<p class="wow">7 HEAVY QUALITY</p>
 							<p class="wow">INSPECTION</p>
@@ -441,10 +451,21 @@ export default Manager;
 					border-top: 1px solid transparent;
 					border-bottom: 1px solid transparent;
 					.imgBox {
-						width: 596px;
+						display: flex;
+						// width: 596px;
 						height: 596px;
 						position: relative;
+						// overflow: hidden;
+						.img-box {
+							position: relative;
+							border-radius: 50%;
+							width: 596px;
+							overflow: hidden;
+						}
 						.img {
+							position: absolute;
+							opacity: 1;
+							top: 0;
 							width: 596px;
 							height: 596px;
 							border-radius: 50%;
@@ -452,13 +473,15 @@ export default Manager;
 							display: flex;
 							justify-content: center;
 							align-items: center;
+							@include toggle-image();
 							&:hover {
 								img {
 									transform: scale($imgScale);
 								}
 							}
 							img {
-								animation: fade-ine 1s ease forwards;
+								width: 100%;
+								height: 100%;
 								transition: transform 0.3s;
 							}
 						}
@@ -472,11 +495,19 @@ export default Manager;
 								display: flex;
 								align-items: center;
 								cursor: pointer;
+								transition: all 0.3s;
 								span {
 									width: 12px;
 									height: 12px;
 									border: 2px solid #eb551d;
 									border-radius: 50%;
+									transition: all .3s;
+								}
+								&:hover {
+									color: #eb551d;
+								}
+								&:hover span{
+									background: #ec5a24;
 								}
 							}
 							.active1 {
@@ -676,6 +707,14 @@ export default Manager;
 								color: #aaaaaa;
 								font-size: 18px;
 								margin-top: 14px;
+								transition: all 0.3s;
+							}
+							&:hover p {
+								color: #ec5a24;
+							}
+							&:hover span {
+								background-color: #eb551d;
+								border: 2px solid #eb551d;
 							}
 						}
 						.active2 {
@@ -957,11 +996,37 @@ export default Manager;
 						left: 0;
 						top: 0;
 					}
-					.clrcleimg {
+					.img {
+						display: flex;
+						position: relative;
 						top: 57px;
-						transform: translateX(-50%);
-						z-index: 2;
-						animation: fade-ine 1s ease forwards;
+						left: -50%;
+						overflow: hidden;
+						width: 501px;
+						height: 501px;
+						border-radius: 50%;
+						.img-box {
+							position: absolute;
+							// top: 57px;
+							// left: -50%;
+							width: 501px;
+							height: 501px;
+							overflow: hidden;
+							z-index: 2;
+
+							@include toggle-image();
+							.clrcleimg {
+								display: flex;
+								> span {
+									width: 501px;
+								}
+								// overflow: hidden;
+
+								// transform: translateX(-50%);
+								// animation: fade-ine 1s ease forwards;
+								// @include toggle-image();
+							}
+						}
 					}
 					.text {
 						text-align: right;
