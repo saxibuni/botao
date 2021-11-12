@@ -441,7 +441,7 @@
 				与您分享最新资讯
 			</h3>
 			<div class="title wow">
-				<span>News information</span>
+				<span>NEWS INFORMATION</span>
 				<div @click="$router.push({ name: 'owner-voice' })">
 					全部新闻
 					<i></i>
@@ -2132,7 +2132,7 @@ export default home;
 					cursor: pointer;
 					width: 45px;
 					height: 45px;
-					border: 2px solid rgba(255, 255, 255, 1.12);
+					border: 2px solid rgba(255, 255, 255, 0.12);
 					border-radius: 50%;
 					display: flex;
 					align-items: center;
@@ -2356,7 +2356,7 @@ export default home;
 							cursor: pointer;
 							position: absolute;
 							left: 50%;
-							top: 50%;
+							top: 38.5%;
 							transform: translate(-50%, -50%);
 							width: 90px;
 							height: 90px;
@@ -2380,6 +2380,9 @@ export default home;
 						.top {
 							height: 325px;
 							border-bottom: 1px solid #ed5400;
+							h4 {
+								font-weight: bold;
+							}
 							&:hover {
 								img {
 									transform: scale($imgScale);
@@ -2431,7 +2434,6 @@ export default home;
 
 						h4 {
 							font-size: 20px;
-							font-weight: 700;
 							color: #000000;
 							margin-bottom: 12px;
 							padding-top: 50px;
