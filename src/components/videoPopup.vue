@@ -42,6 +42,8 @@ export default class videoPopup extends Vue {
 			z-index: 11111;
 			video{
 				width: 100%;
+				width: 960px;
+				height: 540px;
 			}
 				.close {
 				position: absolute;
