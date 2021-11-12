@@ -6,7 +6,7 @@
 		<Sidebar v-if="$store.state.footData" />
 		<CapitalRetention/>
 		<MakeAppointment />
-		<Dialog />
+		<DialogTip />
 
 	</div>
 </template>

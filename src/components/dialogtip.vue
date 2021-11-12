@@ -34,7 +34,7 @@ import Popup from './popup.vue';
 		Popup
 	}
 })
-export default class dialog extends Vue {
+export default class DialogTip extends Vue {
 	time = null;
 	@Watch('$store.state.dialog.state')
   dialogState() {

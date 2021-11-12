@@ -64,19 +64,21 @@
 							</swiper-slide>
 						</swiper>
 					</div>
-					<div class="text wow" :class="{ active: page2Ani }">
-						<h3>上海东方颐城</h3>
-						<h4>
-							<span>现代风格</span>
-							<span>120㎡</span>
-						</h4>
-						<p>
-							地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
-						</p>
-						<div class="btn-box">
-							<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
+					<transition>
+						<div class="text wow" v-if="page2Ani">
+							<h3>上海东方颐城</h3>
+							<h4>
+								<span>现代风格</span>
+								<span>120㎡</span>
+							</h4>
+							<p>
+								地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
+							</p>
+							<div class="btn-box">
+								<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
+							</div>
 						</div>
-					</div>
+					</transition>
 				</div>
 
 				<div class="swiper-wrap wow">
@@ -132,30 +134,57 @@
 						<p>荣获设计奖项</p>
 					</li>
 				</ul>
+				<img class="bgtext" src="~assets/bg_home_b3_left_text.png" alt="" />
+
 				<div class="left-text wow">
-					<div class="text">
-						<h4>于一</h4>
-						<span>设计总监</span>
-						<h5>从业年限：</h5>
-						<b>15年</b>
-						<h5>所获荣誉</h5>
-						<p>
-							国家注册室内设计师 （证号：ZLY20102013）
-							<br />
-							上海市注册高级设计师（证号：XH090129）
-							<br />
-							上海市装饰装修行业协会会员
-							<br />
-							第二届中国国际空间环境艺术设计大赛优秀奖
-							<br />
-						</p>
-						<h5>代表作品</h5>
-						<p>嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
-						<div class="btn-box">
-							<Button @click.native="$router.push({name:'design-detail'})" text="TA的作品"></Button>
+						<div class="text">
+								<transition-group name="slide-fade" mode="in-out">
+										<div class="box" v-if="showProfile" key="a1">
+													<h4>于一</h4>
+													<span>设计总监</span>
+													<h5>从业年限：</h5>
+													<b>15年</b>
+													<h5>所获荣誉</h5>
+													<p>
+														国家注册室内设计师 （证号：ZLY20102013）
+														<br />
+														上海市注册高级设计师（证号：XH090129）
+														<br />
+														上海市装饰装修行业协会会员
+														<br />
+														第二届中国国际空间环境艺术设计大赛优秀奖
+														<br />
+													</p>
+													<h5>代表作品</h5>
+													<p>嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
+													<div class="btn-box">
+														<Button @click.native="$router.push({name:'design-detail'})" text="TA的作品"></Button>
+													</div>
+										</div>
+											<div class="box" v-if="!showProfile" key="b1">
+													<h4>于莎莎</h4>
+													<span>设计总监</span>
+													<h5>从业年限：</h5>
+													<b>5年</b>
+													<h5>所获荣誉</h5>
+													<p>
+														国家注册室内设计师 （证号：ZLY20102013）
+														<br />
+														上海市注册高级设计师（证号：XH090129）
+														<br />
+														上海市装饰装修行业协会会员
+														<br />
+														第二届中国国际空间环境艺术设计大赛优秀奖
+														<br />
+													</p>
+													<h5>代表作品</h5>
+													<p>嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
+													<div class="btn-box">
+														<Button @click.native="$router.push({name:'design-detail'})" text="TA的作品"></Button>
+													</div>
+										</div>
+								</transition-group>
 						</div>
-						<img src="~assets/bg_home_b3_left_text.png" alt="" />
-					</div>
 					<div class="img-wrap">
 						<transition-group name="toggle-image">
 							<img :src="imgSrc" alt="" v-if="showProfile" key="a" />
@@ -172,11 +201,11 @@
 				<ul>
 					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`" :class="{'do-flip': applyFlip}">
 						<img :src="item" alt="" />
-						<img v-if="nextPortraitList[i]" :src="nextPortraitList[i]" alt="" >
+						<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" >
 					</li>
 				</ul>
 
-				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }">
+				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }" v-if="isShowLightImg">
 					<img :src="imgSrc" alt="" />
 				</div>
 			</div>
@@ -834,7 +863,7 @@ export default home;
 						margin-right: 16px;
 						opacity: 0;
 						margin: 21px 0 51px 0;
-						animation: slide-down-in 1s 1.3s forwards, fade-in 1s 1.3s forwards;
+						animation: slide-down-in 1s .2s forwards, fade-in 1s .2s forwards;
 					}
 					p {
 						width: 354px;
@@ -845,14 +874,14 @@ export default home;
 						line-height: 30px;
 						@include line-clamp(3);
 						max-height: 90px;
-						animation: slide-down-in 1s 1.6s forwards, fade-in 1s 1.6s forwards;
+						animation: slide-down-in 1s .4s forwards, fade-in 1s .4s forwards;
 					}
 					.btn-box {
 						width: 170px;
 						opacity: 0;
 						height: 53px;
 						margin-top: 60px;
-						animation: slide-down-in 1s 1.9s forwards, fade-in 1s 1.9s forwards;
+						animation: slide-down-in 1s .6s forwards, fade-in 1s .6s forwards;
 						/deep/.btn {
 							&::after,
 							&::before {
@@ -1067,6 +1096,13 @@ export default home;
 				.text {
 					flex: 1;
 					padding-top: 18px;
+					position: relative;
+					height: 700px;
+					.box{
+						position: absolute;
+						left: 0;
+						top: 0;
+					}
 					h4 {
 						height: 38px;
 						font-size: 46px;
@@ -1115,11 +1151,38 @@ export default home;
 						opacity: 0.4;
 					}
 				}
+				.slide-fade-enter-active {
+					animation: in 1s forwards;
+				}
+				.slide-fade-leave-active {
+					animation: out .4s forwards;
+				}
+				@keyframes in {
+					0%{
+						transform: translateX(-60px);
+						opacity: 0;
+					}
+					100%{
+						transform: translateX(0);
+						opacity: 1;
+					}
+				}
+				@keyframes out {
+					0%{
+						opacity: 1;
+						/* transform: translateX(60px); */
+					}
+					100%{
+						opacity: 0;
+						/* transform: translateX(0); */
+					}
+				}
 				.img-wrap {
 					width: 540px;
 					height: 658px;
 					position: relative;
 					overflow: hidden;
+					z-index: 2;
 					img {
 						position: absolute;
 						left: 0;
@@ -1156,9 +1219,17 @@ export default home;
 				}
 			}
 		}
+		.bgtext{
+			position: absolute;
+			left: 80px;
+			top: 319px;
+			width: 878px;
+			height: 220px;
+			opacity: 0.6;
+		}
 		.right {
 			opacity: 0;
-			animation: slide-down-in 2.6s, fade-in 1s;
+			animation: slide-right-in 2.6s, fade-in 1s;
 			animation-fill-mode: forwards;
 			flex: 1;
 			height: 1142px;
@@ -1196,13 +1267,12 @@ export default home;
 					}
 					&.do-flip {
 						img {
-							transform: rotateY(180deg);
 							transition:  transform .5s ease-in-out;
+							transform: rotateY(180deg);
 							&:nth-child(2) {
 								transform: rotateY(0deg);
 							}
 						}
-
 					}
 
 					&:nth-child(1) {

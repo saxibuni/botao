@@ -4,7 +4,7 @@ import Footer from "./footer.vue";
 import Sidebar from "./sidebar.vue";
 import CapitalRetention from "../components/CapitalRetention.vue";
 import MakeAppointment from "../components/makeAppointment.vue";
-import Dialog from "../components/dialog.vue";
+import DialogTip from "../components/dialogtip.vue";
 
 @Component({
 	components:{
@@ -12,7 +12,7 @@ import Dialog from "../components/dialog.vue";
 		Footer,
 		Sidebar,
 		CapitalRetention,
-		Dialog,
+		DialogTip,
 		MakeAppointment
 	}
 })
