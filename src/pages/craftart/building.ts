@@ -39,4 +39,7 @@ export default class Building extends Vue {
 		if (e.target.nodeName == 'VIDEO') return;
 		this.isPop = false;
 	}
+	mounted(){
+		this.restartWow();
+	}
 }

@@ -51,4 +51,7 @@ export default class CaseList extends Vue {
 		suffix: '+',
 		useEasing: true
 	};
+	mounted(){
+		this.restartWow();
+	}
 }

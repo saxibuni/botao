@@ -26,4 +26,7 @@ export default class DesignDetail extends Vue {
 		},
 
 	};
+	mounted(){
+		this.restartWow();
+	}
 }
