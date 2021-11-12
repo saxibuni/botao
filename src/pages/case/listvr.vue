@@ -156,8 +156,10 @@ export default CaseListVr;
 					color: #333333;
 					margin-right: 20px;
 					// font-weight: 600;
+					transition: color 0.3s;
 					&:hover {
 						cursor: pointer;
+						color: #ed5400;
 					}
 				}
 			}
