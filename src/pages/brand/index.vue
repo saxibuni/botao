@@ -384,6 +384,11 @@ html {
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
+	video {
+		width: 100%;
+		height: 100%;
+		object-fit: fill;
+	}
 	@keyframes fade-ine {
 		from {
 			opacity: 0;
@@ -439,7 +444,7 @@ html {
 	.banner-box {
 		display: flex;
 		position: relative;
-		video{
+		video {
 			vertical-align: middle;
 		}
 		.banner {
