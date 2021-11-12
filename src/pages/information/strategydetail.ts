@@ -80,6 +80,6 @@ export default class StrategyDetail extends Vue {
 		}
 	}
 	openQQ() {
-		window.open(`https://connect.qq.com/widget/shareqq/index.html?${window.location.href}`);
+		window.open(`https://connect.qq.com/widget/shareqq/index.html?${window.location.href}`,'_blank','height=100');
 	}
 }
