@@ -263,8 +263,11 @@ export default CaseList;
 			position: absolute;
 			z-index: 99;
 			left: 0px;
+			height: 740px;
 			> img {
 				position: relative;
+				width: 618px;
+				height: 740px;
 			}
 			.text {
 				position: absolute;
