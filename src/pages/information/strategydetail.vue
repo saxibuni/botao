@@ -24,7 +24,7 @@
 					<i>
 						<div><img src="~assets/bg_home_footer_qa.jpg" alt="" /></div>
 					</i>
-					<i></i>
+					<i><a target="_black" href="tencent://Message/?Uin=2048395400&Menu=yes"></a></i>
 				</div>
 			</div>
 			<p class="wow">
@@ -195,20 +195,20 @@ html {
 					}
 					&:nth-child(2) {
 						position: relative;
-						width: 24px;
-						height: 22px;
+						width: 28px;
+						height: 25px;
 						margin-left: 40px;
-						background-position: -42px -13px;
+						background-position: 48% 20%;
 						transition: all 0.3s;
 						&:hover {
-							background-position: -42px -44px;
+							background-position: 48% 80%;
 						}
 					}
 					&:nth-child(3) {
 						position: relative;
-						width: 24px;
-						height: 21px;
-						background-position: -11px -13px;
+						width: 28px;
+						height: 25px;
+						background-position: 9% 19%;
 						transition: all 0.3s;
 						> div {
 							transition: opacity 0.5s, transform 0.5s;
@@ -227,7 +227,7 @@ html {
 							}
 						}
 						&:hover {
-							background-position: -11px -43px;
+							background-position: 9% 80%;
 							> div {
 								opacity: 1;
 								transform: translateX(-50%) translateX(0);
@@ -235,10 +235,17 @@ html {
 						}
 					}
 					&:nth-child(4) {
-						width: 16px;
-						height: 18px;
-						background: url(~assets/icons/ic_f3_part2_qq.png) no-repeat;
-						background-size: 100%;
+						display: flex;
+						width: 28px;
+						height: 25px;
+						background-position: 83% 20%;
+						transition: all .3s;
+						a{
+							width: 100%;
+						}
+						&:hover{
+							background-position: 83% 80%;
+						}
 					}
 				}
 			}
