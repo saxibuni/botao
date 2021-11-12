@@ -4,7 +4,7 @@
 		<Banner :data="BannerData" />
 		<div class="owner-vioce">
 			<h2>业主心声</h2>
-			<h3>Owner's voice</h3>
+			<h3>OWNER'S VOICE</h3>
 			<div class="swiper-box wow">
 				<swiper :options="ownerBannerOptions">
 					<swiper-slide v-for="(v, i) in ownerArr" :key="i">
@@ -36,7 +36,7 @@
 										装修方案老人家看了都很满意，以复古风装修为主家里的墙纸大多是暖色调，满满的温馨祥祥和
 										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
-									<Button :text="'定制我的方案'"></Button>
+									<Button :text="'定制我的装修方案'"></Button>
 									<div class="img-box">
 										<img src="~assets/ic_f1_part2_dou.png" />
 									</div>
@@ -56,7 +56,7 @@
 		</div>
 		<div class="flag-honer">
 			<h2 class="wow">荣誉锦旗</h2>
-			<h3 class="wow">Flag of honor</h3>
+			<h3 class="wow">FLAG OF HONOR</h3>
 			<div class="swiper-box wow">
 				<swiper :options="fhBannerOptions">
 					<swiper-slide v-for="(v, i) in fhArr" :key="i">
@@ -100,7 +100,7 @@
 		</div>
 		<div class="dian-ping">
 			<h2 class="wow">业主点评</h2>
-			<h3 class="wow">owner reviews</h3>
+			<h3 class="wow">OWNER REVIEWS</h3>
 			<div class="swiper-box wow">
 				<swiper :options="dpBannerOptions">
 					<swiper-slide v-for="(v, i) in dpArr" :key="i">
@@ -527,7 +527,7 @@ html {
 			.close {
 				position: absolute;
 				top: -70px;
-				right: 0;
+				right: -10px;
 				width: 65px;
 				height: 65px;
 				border-radius: 50%;
@@ -537,6 +537,7 @@ html {
 				background-repeat: no-repeat;
 				background-position: center;
 				transition: all .3s;
+				transform: scale(0.6);
 				&:hover{
 					background-color: #fff;
 					background-image: url(~assets/icons/ic_home_menu_close.png);

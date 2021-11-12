@@ -153,7 +153,8 @@ export default class Header extends Vue {
 			en: 'latest information',
 			active:false,
 			son: [
-				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
+				{ title: '业主心声', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
+				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
 				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
 				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
 				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'join-us' }

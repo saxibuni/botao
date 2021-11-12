@@ -73,7 +73,7 @@
 		</div>
 		<div class="recommended-news">
 			<h2 class="wow">推荐新闻</h2>
-			<h3 class="wow">Recommended news</h3>
+			<h3 class="wow">RECOMMENDED NEWS</h3>
 			<div class="item-list">
 				<div class="item wow" v-for="(v, i) in newsList" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<div class="img-box">
