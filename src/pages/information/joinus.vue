@@ -513,8 +513,11 @@ html {
 						vertical-align: middle;
 						width: 20px;
 						height: 20px;
-						background: url(~assets/icons/ic_clock.png) no-repeat;
+						background: url(~assets/icons/ic_f4_time.png) no-repeat;
 						background-size: 100%;
+						&:nth-of-type(2){
+							background-image: url(~assets/icons/ic_f4_user.png);
+						}
 					}
 					span {
 						font-size: 18px;
