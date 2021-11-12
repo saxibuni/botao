@@ -64,19 +64,21 @@
 							</swiper-slide>
 						</swiper>
 					</div>
-					<div class="text wow" :class="{ active: page2Ani }">
-						<h3>上海东方颐城</h3>
-						<h4>
-							<span>现代风格</span>
-							<span>120㎡</span>
-						</h4>
-						<p>
-							地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
-						</p>
-						<div class="btn-box">
-							<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
+					<transition>
+						<div class="text wow" v-if="page2Ani">
+							<h3>上海东方颐城</h3>
+							<h4>
+								<span>现代风格</span>
+								<span>120㎡</span>
+							</h4>
+							<p>
+								地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
+							</p>
+							<div class="btn-box">
+								<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
+							</div>
 						</div>
-					</div>
+					</transition>
 				</div>
 
 				<div class="swiper-wrap wow">
