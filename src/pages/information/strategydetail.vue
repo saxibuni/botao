@@ -75,15 +75,15 @@
 			<h2 class="wow">推荐新闻</h2>
 			<h3 class="wow">RECOMMENDED NEWS</h3>
 			<div class="item-list">
-				<div class="item wow" v-for="(v, i) in newsList" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i<newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<div class="img-box">
-						<img :src="v.imgUrl" alt="" />
+						<img :src="v.imgUrl" alt="" @click="$router.push({ name: 'strategy-detail' })"/>
 					</div>
 					<div class="bottom">
 						<div class="date">{{ v.date }}</div>
 						<div class="title">{{ v.title }}</div>
 						<div class="text">{{ v.text }}</div>
-						<div class="more" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
+						<div class="more" @click="getMore" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
 							More
 							<span></span>
 						</div>
@@ -340,6 +340,7 @@ html {
 						width: 100%;
 						height: 100%;
 						transition: all 0.3s;
+						cursor: pointer;
 						&:hover {
 							transform: scale($imgScale);
 						}
@@ -387,6 +388,9 @@ html {
 							margin-left: 20px;
 							transform: rotate(-45deg) scale(1.1);
 						}
+					}
+					&:hover .title{
+						color: #ed5300;
 					}
 				}
 				&.hover {

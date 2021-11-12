@@ -41,7 +41,7 @@
 		<div class="list-box">
 			<ul class="list wow">
 				<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i">
-					<div class="img-box">
+					<div class="img-box" @click="$router.push({ name: 'strategy-detail' })">
 						<img :src="v.imgUrl" alt="" />
 					</div>
 					<div class="info-box">
