@@ -259,6 +259,7 @@ export default class Header extends Vue {
 </script>
 <style scoped lang="scss">
 .header {
+	min-width: 1440PX;
 	img {
 		display: block;
 	}
