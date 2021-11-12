@@ -81,7 +81,7 @@
 						<div class="date">{{ v.date }}</div>
 						<div class="title">{{ v.title }}</div>
 						<div class="text">{{ v.text }}</div>
-						<div class="more" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i,'.item-list')">
+						<div class="more" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
 							More
 							<span></span>
 						</div>
@@ -183,38 +183,51 @@ html {
 					width: 18px;
 					height: 18px;
 					cursor: pointer;
-					background: url(~assets/icons/ic_home_footer_weibo1.png) no-repeat;
+					background: url(~assets/icons/iconlist.png) no-repeat;
 					&:nth-child(1) {
+						position: relative;
 						width: 17px;
 						height: 17px;
 						background: url(~assets/icons/ic_f3_part2_share.png) no-repeat;
-						background-size: 100%;
+						// background-size: 100%;
+						&::after {
+							position: absolute;
+							top: -161px;
+							left: 54px;
+							content: '';
+							width: 132px;
+							height: 132px;
+							background-image: url(~assets/bg_home_footer_qa.jpg);
+							&:hover {
+								width: 0;
+								height: 0;
+							}
+						}
 					}
 					&:nth-child(2) {
-						width: 20px;
-						height: 18px;
+						width: 24px;
+						height: 22px;
 						margin-left: 40px;
-						background-size: 100%;
+						background-position: -42px -13px;
+						transition: all 0.3s;
 						&:hover {
-							background-image: url(~assets/icons/ic_home_footer_weibo2.png);
+							background-position: -42px -44px;
 						}
 					}
 					&:nth-child(3) {
-						width: 20px;
-						height: 17px;
-						background: url(~assets/icons/ic_home_footer_wechat1.png) no-repeat;
-						background-size: 100%;
+						width: 24px;
+						height: 21px;
+						background-position: -11px -13px;
+						transition: all 0.3s;
+						&:hover {
+							background-position: -11px -43px;
+						}
 					}
 					&:nth-child(4) {
 						width: 16px;
 						height: 18px;
 						background: url(~assets/icons/ic_f3_part2_qq.png) no-repeat;
 						background-size: 100%;
-					}
-					&:nth-child(3) {
-						&:hover {
-							background-image: url(~assets/icons/ic_home_footer_wechat2.png);
-						}
 					}
 				}
 			}
@@ -324,7 +337,7 @@ html {
 						font-size: 26px;
 						color: #000000;
 						line-height: 1;
-						transition: all .3s;
+						transition: all 0.3s;
 					}
 					.text {
 						margin-top: 26px;

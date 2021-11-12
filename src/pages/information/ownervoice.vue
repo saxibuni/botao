@@ -545,6 +545,8 @@ html {
 				&::before {
 					transform: rotate(-45deg);
 				}
+				&:hover{
+				}
 			}
 }
 </style>
