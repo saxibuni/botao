@@ -1,11 +1,11 @@
 <template>
-	<div class="header" :class="navBgColor||$route.name=='search' ? 'active' : ''">
+	<div class="header" :class="navBgColor || $route.name == 'search' ? 'active' : ''">
 		<div class="box">
 			<div class="logo">
-				<img v-if="!navBgColor&&$route.name!='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo.png" alt="" />
-				<img v-if="navBgColor&&$route.name!='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
+				<img v-if="!navBgColor && $route.name != 'search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo.png" alt="" />
+				<img v-if="navBgColor && $route.name != 'search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
 
-				<img v-if="$route.name=='search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
+				<img v-if="$route.name == 'search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
 				<div>
 					<h3>我们，让空间更美好</h3>
 					<p>BETTER SPACE,BETTER LIFE</p>
@@ -14,16 +14,23 @@
 
 			<div class="nav">
 				<ul>
-					<li v-for="(item, index) in navList" :key="index" :class="rouertName == item.url ? 'active' : ''" @mouseover="item.active = true" @mouseout="item.active = false" @click="$router.push({ name: item.url })">
+					<li
+						v-for="(item, index) in navList"
+						:key="index"
+						:class="rouertName == item.url ? 'active' : ''"
+						@mouseover="item.active = true"
+						@mouseout="item.active = false"
+						@click="$router.push({ name: item.url })"
+					>
 						{{ item.title }}
 						<b></b>
-						<div class="nav-son" :class="{active: item.active}"  @click.stop>
-							<div v-for="(it, i) in item.son" :key="i"  @click.stop=" (item.active = false),$router.push({name:it.url,params:{number:it.query}})" :style="{ 'animation-delay': 0.08 * i + 0.09 + 's' }">
+						<div class="nav-son" :class="{ active: item.active }" @click.stop>
+							<div v-for="(it, i) in item.son" :key="i" @click.stop="onRoute(item, it)" :style="{ 'animation-delay': 0.08 * i + 0.09 + 's' }">
 								<span>
 									<i>
-										<img :src="it.icon" alt="">
+										<img :src="it.icon" alt="" />
 									</i>
-									{{it.title}}
+									{{ it.title }}
 								</span>
 							</div>
 						</div>
@@ -70,7 +77,6 @@ import Search from './search.vue';
 import NavLists from './navLists.vue';
 gsap.registerPlugin(MorphSVGPlugin);
 
-
 const warps = [
 	[
 		'M2,8.4C5.2,6,8,5.2,10.3,5.3c3,0.1,7,2.1,8.3,2.8c1.2,0.7,3.1,0.7,3.1,0.7',
@@ -108,71 +114,71 @@ export default class Header extends Vue {
 			title: '精选案例',
 			url: 'case',
 			en: 'Selected case',
-			active:false,
+			active: false,
 			son: [
-				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'case-list' },
-				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'case-listvr' }
+				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'case-list' },
+				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'), url: 'case-listvr' }
 			]
 		},
 		{
 			title: '设计名人堂',
 			url: 'design',
 			en: 'Design Hall of Fame',
-			active:false,
+			active: false,
 			son: [
-				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
-				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
-				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' }
+				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'design-list' },
+				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'design-list' },
+				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'design-list' }
 			]
 		},
 		{
 			title: '精工匠艺',
 			url: 'craft-building',
 			en: 'fine craftsmen skill',
-			active:false,
+			active: false,
 			son: [
-				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-building' },
-				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-team' },
-				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-manager' }
+				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'craft-building' },
+				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'craft-team' },
+				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'craft-manager' }
 			]
 		},
 		{
 			title: '全案服务',
 			url: 'whole-decoration',
 			en: 'A whole service',
-			active:false,
+			active: false,
 			son: [
-				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
-				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'soft-decoration' },
-				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'whole-decoration' }
+				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'cherry-pick' },
+				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'soft-decoration' },
+				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'whole-decoration' }
 			]
 		},
 		{
 			title: '最新资讯',
 			url: 'information',
 			en: 'latest information',
-			active:false,
+			active: false,
 			son: [
-				{ title: '业主心声', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
-				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
-				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
-				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
-				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'join-us' }
+				{ title: '业主心声', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'owner-voice' },
+				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'strategy-list' },
+				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'strategy-list' },
+				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'strategy-list' },
+				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'join-us' }
 			]
 		},
 		{
 			title: '波涛品牌',
 			url: 'brand',
 			en: 'botao brand',
-			active:false,
+			active: false,
 			son: [
-				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:0 },
-				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:1 },
-				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:2},
-				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:3 },
-				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:4 },
-				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:5 },
-				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:6}
+				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 0 },
+				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 1 },
+				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 2 },
+				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 3 },
+				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 4 },
+				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 5 },
+				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 6 }
 			]
 		}
 	];
@@ -180,7 +186,7 @@ export default class Header extends Vue {
 	rouertName = '';
 	@Watch('$route', { immediate: true })
 	routeChange() {
-			this.rouertName = this.$route.meta.title
+		this.rouertName = this.$route.meta.title;
 	}
 	mounted() {
 		window.addEventListener('scroll', this.handleScroll, true);
@@ -237,8 +243,17 @@ export default class Header extends Vue {
 	searchFun() {
 		(this.$refs.mySearch as any).searchShow = true;
 	}
-	myNavFun(){
+	myNavFun() {
 		(this.$refs.myNav as any).navShow = true;
+	}
+
+	onRoute(item, it) {
+		item.active = false;
+		if (it.url == this.$route.name && it.url == 'brand') {
+			this.$bus.$emit('params-change', it.query);
+		} else {
+			this.$router.push({ name: it.url, params: { number: it.query } });
+		}
 	}
 }
 </script>
@@ -345,7 +360,7 @@ export default class Header extends Vue {
 						border-left: none;
 					}
 
-					&.active{
+					&.active {
 						color: #fff;
 						&::after,
 						&::before {
@@ -379,7 +394,7 @@ export default class Header extends Vue {
 							border-left: none;
 						}
 					}
-					.nav-son{
+					.nav-son {
 						display: flex;
 						position: fixed;
 						cursor: auto;
@@ -388,27 +403,27 @@ export default class Header extends Vue {
 						top: 111px;
 						width: 1920px;
 						height: 110px;
-						background: rgba(18, 33, 51, .85);
+						background: rgba(18, 33, 51, 0.85);
 						align-items: center;
 						justify-content: center;
 						opacity: 0;
-						transition: opacity .3s;
+						transition: opacity 0.3s;
 						pointer-events: none;
 						&.active {
 							opacity: 1;
 							pointer-events: auto;
-							>div{
-									opacity: 0;
-									animation: fade-in 1.5s;
-									animation-fill-mode: forwards;
+							> div {
+								opacity: 0;
+								animation: fade-in 1.5s;
+								animation-fill-mode: forwards;
 							}
 						}
-						div{
+						div {
 							overflow: hidden;
-							&:not(:first-child){
+							&:not(:first-child) {
 								margin-left: 90px;
 							}
-							span{
+							span {
 								color: #fff;
 								font-size: 18px;
 								display: block;
@@ -416,28 +431,28 @@ export default class Header extends Vue {
 								text-align: center;
 								cursor: pointer;
 								line-height: 1;
-								transition: color .3s;
-								i{
+								transition: color 0.3s;
+								i {
 									display: block;
 									margin: 0 auto;
 									width: 48px;
 									height: 35px;
 									margin-bottom: 15px;
 									text-align: center;
-									img{
+									img {
 										max-width: 48px;
 										margin: 0 auto;
 									}
 								}
 							}
-							&:hover{
-									span{
-										color: #ed5400;
-									}
+							&:hover {
+								span {
+									color: #ed5400;
+								}
 							}
 						}
 					}
-					b{
+					b {
 						position: absolute;
 						width: 130%;
 						height: 125px;
@@ -467,26 +482,27 @@ export default class Header extends Vue {
 					background: url('~assets/icons/ic_home_top_phone.png');
 					background-size: 100% 100%;
 					margin-right: 3px;
-					transition: all .4s;
-    			animation: bounce-up 1.5s linear infinite;
+					transition: all 0.4s;
+					animation: bounce-up 1.5s linear infinite;
 				}
-				 @keyframes bounce-up {
-            10% {
-                transform: rotate(20deg);
-              }
-              20% {
-                transform: rotate(-10deg);
-              }
-              30% {
-                transform: rotate(5deg);
-              }
-              40% {
-                transform: rotate(-5deg);
-              }
-              50%,100% {
-                transform: rotate(0deg);
-              }
-         }
+				@keyframes bounce-up {
+					10% {
+						transform: rotate(20deg);
+					}
+					20% {
+						transform: rotate(-10deg);
+					}
+					30% {
+						transform: rotate(5deg);
+					}
+					40% {
+						transform: rotate(-5deg);
+					}
+					50%,
+					100% {
+						transform: rotate(0deg);
+					}
+				}
 			}
 			.search {
 				width: 24px;
@@ -495,8 +511,8 @@ export default class Header extends Vue {
 				background-size: 100% 100%;
 				margin-left: 46px;
 				cursor: pointer;
-				transition:transform .3s;
-				&:hover{
+				transition: transform 0.3s;
+				&:hover {
 					transform: scale(1.1);
 				}
 			}
@@ -535,10 +551,10 @@ export default class Header extends Vue {
 			}
 			.nav {
 				li {
-					color: #000000!important;
+					color: #000000 !important;
 					&.active,
 					&:hover {
-						color: #ed5400!important;
+						color: #ed5400 !important;
 					}
 				}
 			}

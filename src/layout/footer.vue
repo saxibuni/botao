@@ -30,7 +30,7 @@
 				<ul>
 					<li v-for="(item,i) in navList" :key="i">
 						<h5>{{item.title}}</h5>
-						<p @click="$router.push({name:it.url,params:{number:it.query}})" v-for="(it,index) in item.son" :key="index">{{it.title}}</p>
+						<p @click="onRoute(it)" v-for="(it,index) in item.son" :key="index">{{it.title}}</p>
 					</li>
 				</ul>
 			</div>
@@ -201,6 +201,14 @@ export default class Footer extends Vue {
 	}
 	wbJump(){
 		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 https://www.baidu.com`)
+	}
+
+	onRoute(it) {
+		if (it.url == this.$route.name && it.url == 'brand') {
+			this.$bus.$emit('params-change', it.query);
+		} else {
+			this.$router.push({name:it.url,params:{number:it.query}})
+		}
 	}
 }
 </script>
