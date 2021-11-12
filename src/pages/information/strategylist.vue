@@ -14,7 +14,7 @@
 						<div class="date">2021,Auguset,10</div>
 						<h4 class="title">看见这些灯，又想折腾折腾我家客厅了！</h4>
 						<p>优秀的灯光照明，赋予视觉上舒适体验瞬间提升整个居住空间的档次。不论是有主灯设计还是无主灯设计，通过照明方式与空间的相互配合,即可打造宜居温馨的家居氛围。</p>
-						<div class="more">
+						<div class="more" >
 							More
 							<span></span>
 						</div>

@@ -157,7 +157,7 @@ export default CaseList;
 					transition: transform 0.3s;
 					&:hover {
 						cursor: pointer;
-						transform: scale(1.1);
+						transform: scale(1.1) translateY(-50%);
 					}
 				}
 			}

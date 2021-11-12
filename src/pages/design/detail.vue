@@ -351,6 +351,12 @@ export default DesignDetail;
 						width: 20px;
 						&::after {
 							font-size: 16px;
+							transition: color 0.3s;
+						}
+						&:hover {
+							&::after {
+								color: #eb551d;
+							}
 						}
 					}
 					.swiper-button-prev {
