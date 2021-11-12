@@ -1,6 +1,6 @@
 <template>
 	<div class="design-list">
-		<div class="title">
+		<div class="title wow">
 			<div class="left">
 				<h3>
 					<ICountUp :endVal="100" :options="options1" ref="countup1"></ICountUp>
@@ -8,7 +8,7 @@
 				</h3>
 				<p>VILLA MANSION DESIGN TYCOON</p>
 			</div>
-			<div class="right">
+			<div class="right wow">
 				<div class="search">
 					<input type="text" />
 					<i></i>
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="tabs">
-			<div class="tabsList">
+			<div class="tabsList wow">
 				<p>设计师级别</p>
 				<ul>
 					<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
@@ -32,7 +32,7 @@
 		</div>
 		<div class="content">
 			<ul>
-				<li v-for="i in 12" :key="i" @click="$router.push('/design/detail')">
+				<li class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" v-for="i in 12" :key="i" @click="$router.push('/design/detail')">
 					<div class="imgBox">
 						<img src="~assets/bg_c1_pic01.jpg" alt="" />
 						<div class="text">
@@ -58,6 +58,36 @@ export default DesignList;
 </script>
 
 <style lang="scss">
+.design-list {
+	.title {
+		.left {
+			opacity: 0;
+			animation: slide-left-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.right {
+			opacity: 0;
+			animation: slide-right-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	.tabs {
+		.tabsList {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	> .content {
+		ul {
+			li {
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
 .design-list {
 	padding: 0 80px;
 	.title {
@@ -109,9 +139,9 @@ export default DesignList;
 					background: url('~assets/icons/bg_b1_part1_search.png') no-repeat;
 					background-size: 100% 100%;
 					cursor: pointer;
-					transition: transform .3s;
+					transition: transform 0.3s;
 					&:hover {
-					 transform: translateY(-50%) scale(1.1);
+						transform: translateY(-50%) scale(1.1);
 					}
 				}
 			}
@@ -124,8 +154,8 @@ export default DesignList;
 					margin-right: 20px;
 					// font-weight: 600;
 					cursor: pointer;
-					transition: color .3s;
-					&:hover{
+					transition: color 0.3s;
+					&:hover {
 						color: #ed5400;
 					}
 				}

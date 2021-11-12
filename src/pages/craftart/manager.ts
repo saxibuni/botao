@@ -104,4 +104,7 @@ export default class Manager extends Vue {
 		if(Number(this.activeName)+i<1) return
 		this.activeName=String(Number(this.activeName)+i)
 	}
+	mounted(){
+		this.restartWow();
+	}
 }

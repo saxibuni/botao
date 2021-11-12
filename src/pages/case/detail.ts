@@ -43,4 +43,7 @@ export default class CaseDetail extends Vue {
 			prevEl: '.prev2'
 		}
 	};
+	mounted(){
+		this.restartWow();
+	}
 }

@@ -1,6 +1,6 @@
 <template>
 	<div class="case-listvr">
-		<div class="title">
+		<div class="title wow">
 			<div class="left">
 				<h3>
 					<span>VR体验</span>
@@ -8,7 +8,7 @@
 				</h3>
 				<p>TRAVEL TO YOUR IDEAL HOME</p>
 			</div>
-			<div class="right">
+			<div class="right wow">
 				<div class="search">
 					<input type="text" />
 					<i></i>
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="tabs">
-			<div class="tabsList" v-for="(item, index) in tabList" :key="index">
+			<div class="tabsList wow" v-for="(item, index) in tabList" :key="index">
 				<p>{{ item.title }}</p>
 				<ul>
 					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
@@ -31,7 +31,7 @@
 		</div>
 		<div class="list">
 			<ul>
-				<li v-for="i in 6" :key="i">
+				<li v-for="i in 6" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<a href="https://vr.justeasy.cn/view/aaf955dd50e59970-1598584621.html" target="_blank">
 						<div class="imgBox">
 							<img src="~assets/bg_b3_part2_vr1.jpg" alt="" />
@@ -63,6 +63,36 @@ export default CaseListVr;
 </script>
 
 <style lang="scss">
+.case-listvr {
+	> .title {
+		.left {
+			opacity: 0;
+			animation: slide-left-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.right {
+			opacity: 0;
+			animation: slide-right-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	> .tabs {
+		.tabsList {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	> .list {
+		ul {
+			li {
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
 .case-listvr {
 	padding: 0 80px;
 	.title {

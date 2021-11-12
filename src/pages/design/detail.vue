@@ -10,10 +10,10 @@
 			<p><span>周芳乐</span></p>
 		</div>
 		<div class="content">
-			<div class="left">
-				<h3>周芳乐</h3>
-				<p>设计师总监</p>
-				<div class="info">
+			<div class="left wow">
+				<h3 class="wow">周芳乐</h3>
+				<p class="wow">设计师总监</p>
+				<div class="info wow">
 					<ul>
 						<li>
 							<i></i>
@@ -38,14 +38,14 @@
 						</li>
 					</ul>
 				</div>
-				<div class="idea">
+				<div class="idea wow">
 					<i></i>
 					<div>
 						<p>设计理念</p>
 						<p>不为设计而设计,所有的设计一定是基于最舒适的体验感!</p>
 					</div>
 				</div>
-				<div class="honor">
+				<div class="honor wow">
 					<div class="title">
 						<i></i>
 						<p>所获荣誉</p>
@@ -64,7 +64,7 @@
 				</div>
 				<Button :text="'找TA设计'" />
 			</div>
-			<div class="right">
+			<div class="right wow">
 				<div class="swiperBox">
 					<div class="swiper">
 						<swiper :options="swiperOptions">
@@ -83,13 +83,13 @@
 		</div>
 		<div class="video"></div>
 		<div class="works">
-			<h3>TA的作品</h3>
-			<div class="list">
+			<h3 class="wow">TA的作品</h3>
+			<div class="list wow">
 				<Cases />
 				<Cases />
 				<Cases />
 			</div>
-			<div class="more">更多案例</div>
+			<div class="more" @click="$router.push('/case/list')">更多案例</div>
 		</div>
 	</div>
 </template>
@@ -100,6 +100,41 @@ export default DesignDetail;
 </script>
 
 <style lang="scss">
+.design-detail {
+	> .content {
+		.left {
+			opacity: 0;
+			animation: slide-left-in 2s, fade-in 2s;
+			animation-fill-mode: forwards;
+			h3,
+			p,
+			.info,
+			.idea,
+			.honor {
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.right {
+			opacity: 0;
+			animation: slide-right-in 2s, fade-in 2s;
+			animation-fill-mode: forwards;
+		}
+	}
+	.works {
+		h3 {
+			opacity: 0;
+			animation: slide-up-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.list {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+}
 .design-detail {
 	padding: 0 80px;
 	.crumbs {
@@ -381,8 +416,10 @@ export default DesignDetail;
 			justify-content: center;
 			align-items: center;
 			// font-weight: 600;
+			transition: all 0.3s;
 			&:hover {
 				cursor: pointer;
+				transform: translateY(-3px);
 			}
 			&::after,
 			&::before {

@@ -1,14 +1,14 @@
 <template>
 	<div class="case-list">
 		<div class="title">
-			<div class="left">
+			<div class="left wow">
 				<h3>
 					<ICountUp :endVal="1000" :options="options1" ref="countup1"></ICountUp>
 					经典案例 筑梦幸福家
 				</h3>
 				<p>BUILD A HAPPY HOME</p>
 			</div>
-			<div class="right">
+			<div class="right wow">
 				<div class="search">
 					<input type="text" />
 					<i></i>
@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="tabs">
-			<div class="tabsList" v-for="(item, index) in tabList" :key="index">
+			<div class="tabsList wow" v-for="(item, index) in tabList" :key="index">
 				<p>{{ item.title }}</p>
 				<ul>
 					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
@@ -32,7 +32,7 @@
 		<div class="swiper">
 			<div class="content">
 				<img src="~assets/bg_b1_part2_mask1.png" alt="" />
-				<div class="text">
+				<div class="text wow">
 					<p>锦华花园</p>
 					<p>
 						<span>新中式</span>
@@ -62,7 +62,7 @@
 			<div class="swiper-pagination3"></div>
 		</div>
 		<div class="cases">
-			<Cases v-for="i in 6" :key="i" />
+			<Cases v-for="i in 6" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" />
 		</div>
 		<Pagination :data="paginationData" />
 	</div>
@@ -74,6 +74,36 @@ export default CaseList;
 </script>
 
 <style lang="scss">
+.case-list {
+	.title {
+		.left {
+			opacity: 0;
+			animation: slide-left-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.right {
+			opacity: 0;
+			animation: slide-right-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	.tabs {
+		.tabsList {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	.swiper {
+		.content {
+			.text {
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+}
 .case-list {
 	padding: 0 80px;
 	.title {

@@ -1,5 +1,5 @@
 <template>
-	<div class="cases">
+	<div class="cases wow">
 		<ul>
 			<li>
 				<div class="imgBox" @click.stop="$router.push('/case/detail')">
@@ -50,11 +50,17 @@ export default class Caese extends Vue {
 		default: () => {}
 	})
 	data!: any;
+	mounted() {
+		this.restartWow();
+	}
 }
 </script>
 <style lang="scss" scoped>
 .cases {
 	margin-bottom: 40px;
+	opacity: 0;
+	animation: fade-in 1s;
+	animation-fill-mode: forwards;
 	ul {
 		li {
 			display: flex;
