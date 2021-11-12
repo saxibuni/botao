@@ -9,7 +9,6 @@ PIXI.utils.skipHello();
 import utils from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
 import ICountUp from 'root/components/countup.vue';
-import { TimeSelect } from 'element-ui';
 import VideoPopup from 'root/components/videoPopup.vue';
 
 @Component({
@@ -43,6 +42,7 @@ export default class home extends Vue {
 	page2Index = 0;
 	page3Index = 17;
 	page2Ani = true;
+
 	portraitList = [
 		require('../assets/portrait/bg_home_b3_pic01.jpg'),
 		require('../assets/portrait/bg_home_b3_pic02.jpg'),
@@ -78,8 +78,64 @@ export default class home extends Vue {
 		require('../assets/portrait/bg_home_b3_pic32.jpg'),
 		require('../assets/portrait/bg_home_b3_pic34.jpg'),
 		require('../assets/portrait/bg_home_b3_pic35.jpg'),
-		require('../assets/portrait/bg_home_b3_pic09.jpg')
+		require('../assets/portrait/bg_home_b3_pic09.jpg'),
+
+		require('../assets/portrait/bg_home_b3_pic22.jpg'),
+		require('../assets/portrait/bg_home_b3_pic23.jpg'),
+		require('../assets/portrait/bg_home_b3_pic24.jpg'),
+		require('../assets/portrait/bg_home_b3_pic25.jpg'),
+		require('../assets/portrait/bg_home_b3_pic26.jpg'),
+		require('../assets/portrait/bg_home_b3_pic27.jpg'),
+		require('../assets/portrait/bg_home_b3_pic28.jpg'),
+		require('../assets/portrait/bg_home_b3_pic29.jpg'),
+		require('../assets/portrait/bg_home_b3_pic30.jpg'),
+		require('../assets/portrait/bg_home_b3_pic31.jpg'),
+		require('../assets/portrait/bg_home_b3_pic32.jpg'),
+		require('../assets/portrait/bg_home_b3_pic34.jpg'),
+		require('../assets/portrait/bg_home_b3_pic35.jpg'),
+		require('../assets/portrait/bg_home_b3_pic09.jpg'),
+		require('../assets/portrait/bg_home_b3_pic01.jpg'),
+		require('../assets/portrait/bg_home_b3_pic02.jpg'),
+		require('../assets/portrait/bg_home_b3_pic03.jpg'),
+		require('../assets/portrait/bg_home_b3_pic04.jpg'),
+		require('../assets/portrait/bg_home_b3_pic05.jpg'),
+		require('../assets/portrait/bg_home_b3_pic06.jpg'),
+		require('../assets/portrait/bg_home_b3_pic07.jpg'),
+		require('../assets/portrait/bg_home_b3_pic08.jpg'),
+		require('../assets/portrait/bg_home_b3_pic09.jpg'),
+		require('../assets/portrait/bg_home_b3_pic10.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic12.jpg'),
+		require('../assets/portrait/bg_home_b3_pic13.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+
+
+		require('../assets/portrait/bg_home_b3_pic05.jpg'),
+		require('../assets/portrait/bg_home_b3_pic06.jpg'),
+		require('../assets/portrait/bg_home_b3_pic07.jpg'),
+		require('../assets/portrait/bg_home_b3_pic08.jpg'),
+		require('../assets/portrait/bg_home_b3_pic09.jpg'),
+		require('../assets/portrait/bg_home_b3_pic10.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic12.jpg'),
+		require('../assets/portrait/bg_home_b3_pic13.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		require('../assets/portrait/bg_home_b3_pic11.jpg'),
 	];
+	currentPortraitList = [];
+	nextPortraitList = [];
+	portraitListSize = 35;
+	portraitListIndex = 0;
+	portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
+	applyFlip: boolean = false;
+
 	page5List = [
 		{
 			imgSrc: [require('../assets/bg_home_b5_a1.jpg'), require('../assets/bg_home_b5_a2.jpg'), require('../assets/bg_home_b5_a3.jpg'), require('../assets/bg_home_b5_a4.jpg')]
@@ -182,6 +238,7 @@ export default class home extends Vue {
 		this.restartWow();
 		this.initSpineAni();
 		this.initScrollTrigger();
+		this.getCurrentPortraitList();
 		setTimeout(() => {
 			this.onResize();
 		});
@@ -295,5 +352,39 @@ export default class home extends Vue {
 			phone: '',
 			area: ''
 		};
+	}
+
+
+	onPortraitListPrev() {
+		if (this.portraitListIndex == 0) return;
+
+		this.applyFlip = true;
+		setTimeout(() => {
+			this.applyFlip = false;
+			this.portraitListIndex--;
+			this.getCurrentPortraitList();
+		}, 600);
+	}
+
+	onPortraitListNext() {
+		if (this.portraitListIndex == this.portraitTotalPages) return;
+
+		this.applyFlip = true;
+		setTimeout(() => {
+			this.applyFlip = false;
+			this.portraitListIndex++;
+			this.getCurrentPortraitList();
+		}, 600);
+	}
+
+	getCurrentPortraitList() {
+		let start = this.portraitListIndex * this.portraitListSize;
+		let end = (this.portraitListIndex + 1) * this.portraitListSize;
+		this.currentPortraitList = this.portraitList.slice(start, end);
+		if (this.portraitListIndex < this.portraitTotalPages) {
+			this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
+		} else {
+			this.nextPortraitList = [];
+		}
 	}
 }
