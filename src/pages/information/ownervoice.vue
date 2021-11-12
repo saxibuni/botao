@@ -34,7 +34,7 @@
 										<br />
 										<br />
 										装修方案老人家看了都很满意，以复古风装修为主家里的墙纸大多是暖色调，满满的温馨祥祥和
-										<span @click="$router.push({name:'strategy-detail'})">[详情]</span>
+										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
 									<Button :text="'定制我的方案'"></Button>
 									<div class="img-box">
@@ -300,7 +300,7 @@ html {
 						.inner-box {
 							transition: all 1s 0.5s;
 							left: 0px;
-							span{
+							span {
 								cursor: pointer;
 							}
 						}
@@ -326,9 +326,9 @@ html {
 				}
 			}
 		}
-	.swiper-pagination-bullet{
-				border: 2px solid #dcdcdc !important;
-			}
+		.swiper-pagination-bullet {
+			border: 2px solid #dcdcdc !important;
+		}
 	}
 	.dian-ping {
 		@include title();
@@ -520,33 +520,23 @@ html {
 			transform: scale(1.2);
 		}
 	}
-		.close {
-				position: absolute;
-				top: -34px;
-				right: 0;
-				width: 25px;
-				height: 25px;
-				border-radius: 50%;
-				background-color: #878787;
-				cursor: pointer;
-				&::after,
-				&::before {
-					position: absolute;
-					content: '';
-					top: 12px;
-					left: 4px;
-					width: 18px;
-					height: 2px;
-					background-color: #525151;
-				}
-				&::after {
-					transform: rotate(45deg);
-				}
-				&::before {
-					transform: rotate(-45deg);
-				}
-				&:hover{
-				}
-			}
+	.close {
+		position: absolute;
+		top: -40px;
+		right: 0;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background-color: #878787;
+		cursor: pointer;
+		background-image: url(~assets/icons/ic_home_popup_close.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		transition: all 0.3s;
+		&:hover {
+			background-color: #ed5400;
+			background-image: url(~assets/icons/ic_home_popup_close2.png);
+		}
+	}
 }
 </style>
