@@ -4,13 +4,13 @@
 		<div class="content">
 			<div class="page1">
 				<div class="title">
-					<h3>施工流程</h3>
-					<p>CONSTRUCTION PROCESS</p>
+					<h3 class="wow">施工流程</h3>
+					<p class="wow">CONSTRUCTION PROCESS</p>
 				</div>
 				<div>
 					<img src="~assets/bg_d3_part2.png" alt="" />
 					<ul>
-						<li v-for="(item, i) in page1Data" :key="i">
+						<li v-for="(item, i) in page1Data" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 							<p>0{{ i + 1 }}</p>
 							<p>{{ item.desc1 }}</p>
 							<p>{{ item.desc2 }}</p>
@@ -22,12 +22,12 @@
 			</div>
 			<div class="page2">
 				<div class="title">
-					<h3>场容标准</h3>
-					<p>FIELD CAPACITY STANDARD</p>
+					<h3 class="wow">场容标准</h3>
+					<p class="wow">FIELD CAPACITY STANDARD</p>
 				</div>
 				<div class="main">
 					<img src="~assets/s_3.jpg" alt="" />
-					<div class="circle">
+					<div class="circle wow">
 						<div class="imgBox">
 							<img src="~assets/bg_d3_part3.png" alt="" v-show="active1Index == index" v-for="(item, index) in 8" :key="index" />
 							<ul class="left">
@@ -48,12 +48,12 @@
 			</div>
 			<div class="page3">
 				<div class="title">
-					<h3>土建工艺标准</h3>
-					<p>STANDARD OF CIVIL ENGINEERING</p>
+					<h3 class="wow">土建工艺标准</h3>
+					<p class="wow">STANDARD OF CIVIL ENGINEERING</p>
 				</div>
 				<div class="main">
 					<ul>
-						<li v-for="(item, index) in page3Data" :key="index">
+						<li v-for="(item, index) in page3Data" :key="index" class="wow" :style="{ 'animation-delay': 0.08 * index + 0.03 + 's' }">
 							<img :src="item.imgUrl" alt="" />
 							<div class="text">
 								<p>0{{ index + 1 }}</p>
@@ -66,12 +66,12 @@
 			</div>
 			<div class="page4">
 				<div class="title">
-					<h3>土建工艺标准</h3>
-					<p>STANDARD OF CIVIL ENGINEERING</p>
+					<h3 class="wow">质量验收</h3>
+					<p class="wow">QUALITY ACCEPTANCE</p>
 				</div>
 				<img src="~assets/bg_d3_part5.jpg" alt="" />
 				<div class="main">
-					<div class="tab">
+					<div class="tab wow">
 						<ul>
 							<li v-for="(item, index) in page4Data" :key="index" :class="active2Index == index ? 'active2' : ''" @click="active2Index = index">
 								<span></span>
@@ -79,7 +79,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="swiper">
+					<div class="swiper wow">
 						<swiper :options="swiperOptions1">
 							<swiper-slide v-for="(item, index) in 9" :key="index">
 								<div class="imgBox">
@@ -99,8 +99,8 @@
 			</div>
 			<div class="page5">
 				<div class="title">
-					<h3>质检体系</h3>
-					<p>QUALITY INSPECTION SYSTEM</p>
+					<h3 class="wow">质检体系</h3>
+					<p class="wow">QUALITY INSPECTION SYSTEM</p>
 				</div>
 				<div class="main">
 					<div class="left">
@@ -115,7 +115,7 @@
 									</span>
 									<div class="content">
 										<ul>
-											<li v-for="(v, i) in 7" :key="i">
+											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 												<p>
 													<span></span>
 													项目经理
@@ -134,7 +134,7 @@
 									</span>
 									<div class="content">
 										<ul>
-											<li v-for="(v, i) in 7" :key="i">
+											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 												<p>
 													<span></span>
 													项目经理
@@ -153,7 +153,7 @@
 									</span>
 									<div class="content">
 										<ul>
-											<li v-for="(v, i) in 7" :key="i">
+											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 												<p>
 													<span></span>
 													项目经理
@@ -172,7 +172,7 @@
 									</span>
 									<div class="content">
 										<ul>
-											<li v-for="(v, i) in 7" :key="i">
+											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 												<p>
 													<span></span>
 													项目经理
@@ -189,8 +189,8 @@
 						<img src="~assets/bg_d3_part6_right.jpg" alt="" />
 						<img src="~assets/bg_d3_part6_roll.png" alt="" />
 						<div class="text">
-							<p>7 HEAVY QUALITY</p>
-							<p>INSPECTION</p>
+							<p class="wow">7 HEAVY QUALITY</p>
+							<p class="wow">INSPECTION</p>
 						</div>
 						<div class="choice">
 							<img src="~assets/icons/ic_d3_part6_left.png" alt="" @click="choice(-1)" />
@@ -209,6 +209,80 @@ export default Manager;
 </script>
 
 <style lang="scss" scoped>
+.craft-manager {
+	.title {
+		h3,
+		p {
+			opacity: 0;
+			animation: slide-up-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	.page1 {
+		ul {
+			li {
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+	.page2 {
+		.main {
+			.circle {
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+	}
+	.page3 {
+		.main {
+			ul {
+				li {
+					opacity: 0;
+					animation: fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
+	}
+	.page4 {
+		.tab {
+			opacity: 0;
+			animation: slide-up-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.swiper {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	.page5 {
+		.main {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+			.right {
+				p {
+					opacity: 0;
+					animation: slide-down-in 1s, fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
+		.content {
+			ul {
+				li {
+					opacity: 0;
+					animation: fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
+	}
+}
 .craft-manager {
 	@keyframes fade-ine {
 		from {
@@ -353,7 +427,8 @@ export default Manager;
 					position: absolute;
 					left: 50%;
 					top: 87px;
-					transform: translateX(-50%);
+					// transform: translateX(-50%) !important;
+					margin-left: -470px;
 					width: 940px;
 					height: 940px;
 					border: 1px solid rgba(225, 225, 225, 0.2);

@@ -243,7 +243,8 @@ html {
 				}
 			}
 			> h4,
-			p,.out-box {
+			p,
+			.out-box {
 				opacity: 0;
 				animation: slide-up-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
@@ -486,6 +487,7 @@ html {
 			> li {
 				padding: 49px 28px 50px;
 				background-color: #fff;
+				transition: all 0.3s;
 				h2 {
 					text-align: start;
 					font-size: 30px;
@@ -559,6 +561,10 @@ html {
 				}
 				&:not(:nth-last-child(-n + 3)) {
 					margin-bottom: 30px;
+				}
+				&:hover {
+					box-shadow: 0px 0px 35px 0px rgba(8, 18, 29, 0.15);
+					transform: translateY(-10px);
 				}
 			}
 		}

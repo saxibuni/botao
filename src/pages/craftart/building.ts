@@ -5,6 +5,7 @@ import Button from 'root/components/button.vue';
 import ShangHaiMap from 'root/components/shanghaimap.vue';
 import ICountUp from 'root/components/countup.vue';
 import Prop from 'root/components/popup.vue';
+import VideoPopup from 'root/components/videoPopup.vue';
 @Component({
 	components: {
 		Banner,
@@ -12,11 +13,14 @@ import Prop from 'root/components/popup.vue';
 		Button,
 		ShangHaiMap,
 		ICountUp,
-		Prop
+		Prop,
+		VideoPopup
 	}
 })
 export default class Building extends Vue {
-	isPop: boolean = false;
+	videoPop = {
+		isPop: false
+	};
 	paginationData = { size: 100, total: 1000 };
 	bannerData = { cn: '在建工地', en: 'THE CONSTRUCTION SITE', imgUrl: require('root/assets/bg_d1_banner.jpg') };
 	tabList = [
@@ -33,10 +37,9 @@ export default class Building extends Vue {
 		this.currentSelectId = v;
 	}
 	playVideo(i) {
-		this.isPop = true;
+		this.videoPop.isPop = true;
 	}
-	show(e) {
-		if (e.target.nodeName == 'VIDEO') return;
-		this.isPop = false;
+	mounted() {
+		this.restartWow();
 	}
 }

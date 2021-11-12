@@ -17,4 +17,7 @@ export default class DesignList extends Vue {
 		suffix: '+',
 		useEasing: true
 	};
+	mounted(){
+		this.restartWow();
+	}
 }

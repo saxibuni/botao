@@ -3,7 +3,7 @@
 		<Banner :data="bannerData" />
 		<div class="main">
 			<div class="tabs">
-				<div class="tabsList" v-for="(item, index) in tabList" :key="index">
+				<div class="tabsList wow" v-for="(item, index) in tabList" :key="index">
 					<p>{{ item.title }}</p>
 					<ul>
 						<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
@@ -11,8 +11,8 @@
 				</div>
 			</div>
 			<div class="mapInfo">
-				<ShangHaiMap @data="fn" />
-				<div class="leftContent">
+				<ShangHaiMap @data="fn" class="wow" />
+				<div class="leftContent wow">
 					<div>
 						<p>
 							<ICountUp :endVal="20" :options="options1" ref="countup1"></ICountUp>
@@ -63,7 +63,7 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li v-for="(item, i) in 9" :key="i">
+					<li v-for="(item, i) in 9" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="imgBox">
 							<img src="~assets/bg_d1_pic01.jpg" alt="" />
 							<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
@@ -86,18 +86,8 @@
 				</ul>
 			</div>
 			<Pagination :data="paginationData" />
+			<VideoPopup :videoPop='videoPop'></VideoPopup>
 		</div>
-		<transition name="slideFadeIn">
-			<Prop class="buldingProp" v-if="isPop" @click.native="show">
-				<div class="mask"></div>
-				<div class="img-box">
-					<video controls preload="true">
-						<source :src="'./botao.mp4'" type="video/mp4" />
-					</video>
-					<div class="close"></div>
-				</div>
-			</Prop>
-		</transition>
 	</div>
 </template>
 
@@ -107,6 +97,38 @@ export default Building;
 </script>
 
 <style lang="scss" scoped>
+.craft-building {
+	.main {
+		> .tabs {
+			.tabsList {
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		.mapInfo {
+			.leftContent {
+				opacity: 0;
+				animation: slide-down-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+			.shanghai-map-wrapper {
+				opacity: 0;
+				animation: fade-in 1s;
+				animation-fill-mode: forwards;
+			}
+		}
+		> .list {
+			ul {
+				li {
+					opacity: 0;
+					animation: fade-in 1s;
+					animation-fill-mode: forwards;
+				}
+			}
+		}
+	}
+}
 .craft-building {
 	@keyframes fade-ine {
 		from {
@@ -435,38 +457,6 @@ export default Building;
 		}
 		.pagination-box {
 			margin: 45px 0 100px 0;
-		}
-	}
-	.buldingProp {
-		.img-box {
-			position: absolute;
-			z-index: 11111;
-			.close {
-				position: absolute;
-				top: -40px;
-				right: 0;
-				width: 30px;
-				height: 30px;
-				border-radius: 50%;
-				background-color: #878787;
-				cursor: pointer;
-				&::after,
-				&::before {
-					position: absolute;
-					content: '';
-					top: 15px;
-					left: 6px;
-					width: 20px;
-					height: 2px;
-					background-color: #525151;
-				}
-				&::after {
-					transform: rotate(45deg);
-				}
-				&::before {
-					transform: rotate(-45deg);
-				}
-			}
 		}
 	}
 }

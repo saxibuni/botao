@@ -227,16 +227,19 @@
 							<div>
 								<span>Phone number</span>
 								<span>400-920-2982</span>
+								<i></i>
 							</div>
 							<div>
 								<span>E-mail</span>
 								<span>botaogroup@BTcom</span>
+								<i></i>
 							</div>
 						</li>
 						<li>
 							<div>
 								<span>Address</span>
 								<span>上海徐汇区中山西路2331号</span>
+								<i></i>
 							</div>
 						</li>
 						<li>
@@ -807,7 +810,7 @@ html {
 				overflow: hidden;
 				img {
 					transition: all 0.3s;
-				transform: scale(1.02);
+					transform: scale(1.02);
 				}
 				&:hover img {
 					transform: scale(1.06);
@@ -1355,7 +1358,24 @@ html {
 					li {
 						display: flex;
 						justify-content: space-between;
-
+						@keyframes bounce-up {
+							10% {
+								transform: rotate(20deg);
+							}
+							20% {
+								transform: rotate(-10deg);
+							}
+							30% {
+								transform: rotate(5deg);
+							}
+							40% {
+								transform: rotate(-5deg);
+							}
+							50%,
+							100% {
+								transform: rotate(0deg);
+							}
+						}
 						> div {
 							position: relative;
 							display: flex;
@@ -1374,17 +1394,25 @@ html {
 									color: #132132;
 								}
 							}
-							&::before {
+							&:first-child:hover i:last-child {
+								animation: bounce-up 1.5s linear infinite;
+							}
+							&:first-child i:last-child {
 								position: absolute;
 								left: -75px;
 								top: 11px;
-								content: '';
 								width: 34px;
 								height: 34px;
 								background: url(~assets/icons/ic_g1_part8_phone.png) no-repeat;
 								background-size: 100%;
 							}
-							&:nth-child(2)::before {
+							&:nth-child(2):hover i:last-child {
+								animation: bounce-up 1.5s linear infinite;
+							}
+							&:nth-child(2) i:last-child {
+								position: absolute;
+								left: -75px;
+								top: 11px;
 								width: 40px;
 								height: 28px;
 								background-image: url(~assets/icons/ic_g1_part8_email.png);
@@ -1398,8 +1426,10 @@ html {
 						}
 						&:nth-child(2) {
 							> div {
+								position: relative;
 								&:nth-child(1) {
-									&::before {
+									i:last-child {
+										position: absolute;
 										width: 34px;
 										height: 42px;
 										background-image: url(~assets/icons/ic_g1_part8_position.png);
