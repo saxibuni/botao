@@ -172,7 +172,7 @@
 				<ul>
 					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`" :class="{'do-flip': applyFlip}">
 						<img :src="item" alt="" />
-						<img v-if="nextPortraitList[i]" :src="nextPortraitList[i]" alt="" >
+						<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" >
 					</li>
 				</ul>
 
@@ -1196,13 +1196,12 @@ export default home;
 					}
 					&.do-flip {
 						img {
-							transform: rotateY(180deg);
 							transition:  transform .5s ease-in-out;
+							transform: rotateY(180deg);
 							&:nth-child(2) {
 								transform: rotateY(0deg);
 							}
 						}
-
 					}
 
 					&:nth-child(1) {

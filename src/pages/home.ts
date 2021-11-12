@@ -357,6 +357,7 @@ export default class home extends Vue {
 
 	onPortraitListPrev() {
 		if (this.portraitListIndex == 0) return;
+		this.getPreparePortraitList(false);
 
 		this.applyFlip = true;
 		setTimeout(() => {
@@ -368,6 +369,7 @@ export default class home extends Vue {
 
 	onPortraitListNext() {
 		if (this.portraitListIndex == this.portraitTotalPages) return;
+		this.getPreparePortraitList();
 
 		this.applyFlip = true;
 		setTimeout(() => {
@@ -381,10 +383,24 @@ export default class home extends Vue {
 		let start = this.portraitListIndex * this.portraitListSize;
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
 		this.currentPortraitList = this.portraitList.slice(start, end);
-		if (this.portraitListIndex < this.portraitTotalPages) {
-			this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
+
+	}
+
+	getPreparePortraitList(toNext: boolean = true) {
+		let start = this.portraitListIndex * this.portraitListSize;
+		let end = (this.portraitListIndex + 1) * this.portraitListSize;
+		if (toNext) {
+			if (this.portraitListIndex < this.portraitTotalPages) {
+				this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
+			} else {
+				this.nextPortraitList = [];
+			}
 		} else {
-			this.nextPortraitList = [];
+			if (this.portraitListIndex > 0) {
+				this.nextPortraitList = this.portraitList.slice(start - this.portraitListSize, end - this.portraitListSize);
+			} else {
+				this.nextPortraitList = [];
+			}
 		}
 	}
 }
