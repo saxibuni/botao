@@ -24,7 +24,7 @@
 					<i>
 						<div><img src="~assets/bg_home_footer_qa.jpg" alt="" /></div>
 					</i>
-					<i><a target="_black" href="tencent://Message/?Uin=2048395400&Menu=yes"></a></i>
+					<i @click="openQQ"></i>
 				</div>
 			</div>
 			<p class="wow">
@@ -75,22 +75,22 @@
 			<h2 class="wow">推荐新闻</h2>
 			<h3 class="wow">RECOMMENDED NEWS</h3>
 			<div class="item-list">
-				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i<newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-					<div class="img-box">
-						<img :src="v.imgUrl" alt="" @click="$router.push({ name: 'strategy-detail' })"/>
+				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i < newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<div class="img-box" @click="$router.push({ name: 'strategy-list' })">
+						<img :src="v.imgUrl" alt=""  />
 					</div>
 					<div class="bottom">
 						<div class="date">{{ v.date }}</div>
 						<div class="title">{{ v.title }}</div>
 						<div class="text">{{ v.text }}</div>
-						<div class="more" @click="getMore" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
+						<div class="more"  @click="$router.push({ name: 'strategy-list'})" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
 							More
 							<span></span>
 						</div>
 					</div>
 				</div>
 			</div>
-			<Button :text="'更多新闻'"></Button>
+			<Button @click.native="getMore" :text="'更多新闻'"></Button>
 		</div>
 	</div>
 </template>
@@ -312,7 +312,7 @@ html {
 		}
 	}
 	.recommended-news {
-		padding: 100px 80px 129px;
+		padding: 100px 70px 129px;
 		background-color: #f6f6f6;
 		h2 {
 			font-size: 48px;
@@ -330,6 +330,8 @@ html {
 			margin-top: 110px;
 			margin-bottom: 72px;
 			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
 			.item {
 				width: 570px;
 				.img-box {
@@ -389,7 +391,7 @@ html {
 							transform: rotate(-45deg) scale(1.1);
 						}
 					}
-					&:hover .title{
+					&:hover .title {
 						color: #ed5300;
 					}
 				}
@@ -403,12 +405,15 @@ html {
 						color: #ed5300 !important;
 					}
 				}
+			&:not(:nth-last-child(-n+3)){
+				margin-bottom: 30px;
 			}
-			> div {
-				&:nth-of-type(2) {
-					margin: 0 25px;
-				}
 			}
+			// > div {
+			// 	&:nth-of-type(2) {
+			// 		margin: 0 25px;
+			// 	}
+			// }
 		}
 	}
 }

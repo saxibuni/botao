@@ -303,12 +303,23 @@ html {
 			// overflow: visible !important;
 			padding: 60px;
 		}
+		.swiper-wrapper{
+			>div{
+				transition: all .3s;
+				>div{
+				transition: all .3s;
+				}
+			}
+		}
 		.swiper-slide {
 			transition: all 0.3s;
 			overflow: inherit;
+			transform: scale(1);
+
 		}
 		.swiper-slide-active {
 			transform: scale(1.1);
+			transition: all .3s;
 			.img-box {
 				position: relative;
 				img {

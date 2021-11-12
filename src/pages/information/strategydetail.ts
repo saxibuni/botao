@@ -62,7 +62,8 @@ export default class StrategyDetail extends Vue {
 	}
 
 	getMore() {
-		// this.newListFlag = 6;
+		this.newListFlag = 6;
+		console.log(this.newListFlag);
 	}
 	addClass(i, dom) {
 		const father = document.querySelector<HTMLElement>(dom);
@@ -77,5 +78,8 @@ export default class StrategyDetail extends Vue {
 		for (let i = 0; i < lis.length; i++) {
 			lis[i].classList.remove('hover');
 		}
+	}
+	openQQ() {
+		window.open(`https://connect.qq.com/widget/shareqq/index.html?${window.location.href}`);
 	}
 }

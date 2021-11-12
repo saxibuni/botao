@@ -19,6 +19,41 @@ export default class JoinUs extends Vue {
 		require('../../assets/bg_f4_pic2.jpg'),
 		require('../../assets/bg_f4_pic3.jpg'),
 		require('../../assets/bg_f4_pic4.jpg'),
+		require('../../assets/bg_f4_pic5.jpg'),
+		require('../../assets/bg_f4_pic1.jpg'),
+		require('../../assets/bg_f4_pic2.jpg'),
+		require('../../assets/bg_f4_pic3.jpg'),
+		require('../../assets/bg_f4_pic4.jpg'),
+		require('../../assets/bg_f4_pic5.jpg'),
+		require('../../assets/bg_f4_pic1.jpg'),
+		require('../../assets/bg_f4_pic2.jpg'),
+		require('../../assets/bg_f4_pic3.jpg'),
+		require('../../assets/bg_f4_pic4.jpg'),
+		require('../../assets/bg_f4_pic5.jpg'),
+		require('../../assets/bg_f4_pic1.jpg'),
+		require('../../assets/bg_f4_pic2.jpg'),
+		require('../../assets/bg_f4_pic3.jpg'),
+		require('../../assets/bg_f4_pic4.jpg'),
+		require('../../assets/bg_f4_pic5.jpg'),
+		require('../../assets/bg_f4_pic1.jpg'),
+		require('../../assets/bg_f4_pic2.jpg'),
+		require('../../assets/bg_f4_pic3.jpg'),
+		require('../../assets/bg_f4_pic4.jpg'),
+		require('../../assets/bg_f4_pic5.jpg'),
+		require('../../assets/bg_f4_pic1.jpg'),
+		require('../../assets/bg_f4_pic2.jpg'),
+		require('../../assets/bg_f4_pic3.jpg'),
+		require('../../assets/bg_f4_pic4.jpg'),
+		require('../../assets/bg_f4_pic5.jpg'),
+		require('../../assets/bg_f4_pic1.jpg'),
+		require('../../assets/bg_f4_pic2.jpg'),
+		require('../../assets/bg_f4_pic3.jpg'),
+		require('../../assets/bg_f4_pic4.jpg'),
+		require('../../assets/bg_f4_pic5.jpg'),
+		require('../../assets/bg_f4_pic1.jpg'),
+		require('../../assets/bg_f4_pic2.jpg'),
+		require('../../assets/bg_f4_pic3.jpg'),
+		require('../../assets/bg_f4_pic4.jpg'),
 		require('../../assets/bg_f4_pic5.jpg')
 	];
 	jobList = [
@@ -129,14 +164,12 @@ export default class JoinUs extends Vue {
 			prevEl: '.ju-pre',
 			nextEl: '.ju-next'
 		},
-		autoplay: {
-			delay: 3000,
-			disableOnInteraction: false
-		}
+		// autoplay: {
+		// 	delay: 3000,
+		// 	disableOnInteraction: false
+		// }
 	};
 	getMore() {
 		this.jobShowFlag=9
-		console.log(this.jobShowFlag);
-
 	}
 }
