@@ -48,7 +48,7 @@
 							<div>
 								<h3>
 									您的装修预算
-									<span>258238</span>
+									<span>{{count}}</span>
 									元
 								</h3>
 								<ul>
@@ -98,6 +98,25 @@ export default class CapitalRetention extends Vue {
 		phone: '',
 		area: ''
 	};
+	t:any;
+	count:any=0;
+	created() {
+    this.transCountFun(5000)
+  }
+	transCountFun(max){
+    let stepNumber = 0
+    this.t = setInterval(()=>{
+      stepNumber = 2000 + Math.floor((Math.random()*1000)+1)
+      if(stepNumber >= max){
+        stepNumber = 0
+      }
+      let currentNumber = stepNumber
+			this.count = currentNumber;
+    }, 300)
+  }
+	destroyed() {
+		clearInterval(this.t)
+	}
 	onSubmit() {
 		if (!this.form.userName) {
 			this.$store.state.dialog={
