@@ -90,8 +90,8 @@
 		<transition name="slideFadeIn">
 			<Prop class="buldingProp" v-if="isPop" @click.native="show">
 				<div class="mask"></div>
-				<div class="img-box">
-					<video controls preload="true">
+				<div class="video-box">
+					<video controls preload="true" width="100%">
 						<source :src="'./botao.mp4'" type="video/mp4" />
 					</video>
 					<div class="close"></div>
@@ -470,7 +470,7 @@ export default Building;
 		}
 	}
 	.buldingProp {
-		.img-box {
+		.video-box {
 			position: absolute;
 			z-index: 11111;
 			.close {
@@ -482,21 +482,13 @@ export default Building;
 				border-radius: 50%;
 				background-color: #878787;
 				cursor: pointer;
-				&::after,
-				&::before {
-					position: absolute;
-					content: '';
-					top: 15px;
-					left: 6px;
-					width: 20px;
-					height: 2px;
-					background-color: #525151;
-				}
-				&::after {
-					transform: rotate(45deg);
-				}
-				&::before {
-					transform: rotate(-45deg);
+				background-image: url(~assets/icons/ic_home_popup_close.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				transition: all .3s;
+				&:hover{
+					background-color: #ed5400;
+					background-image: url(~assets/icons/ic_home_popup_close2.png);
 				}
 			}
 		}

@@ -20,8 +20,10 @@
 				<div class="right">
 					<i></i>
 					分享 :
-					<i></i>
-					<i></i>
+					<i @click="wbJump"></i>
+					<i>
+						<div><img src="~assets/bg_home_footer_qa.jpg" alt="" /></div>
+					</i>
 					<i></i>
 				</div>
 			</div>
@@ -190,21 +192,9 @@ html {
 						height: 17px;
 						background: url(~assets/icons/ic_f3_part2_share.png) no-repeat;
 						// background-size: 100%;
-						&::after {
-							position: absolute;
-							top: -161px;
-							left: 54px;
-							content: '';
-							width: 132px;
-							height: 132px;
-							background-image: url(~assets/bg_home_footer_qa.jpg);
-							&:hover {
-								width: 0;
-								height: 0;
-							}
-						}
 					}
 					&:nth-child(2) {
+						position: relative;
 						width: 24px;
 						height: 22px;
 						margin-left: 40px;
@@ -215,12 +205,33 @@ html {
 						}
 					}
 					&:nth-child(3) {
+						position: relative;
 						width: 24px;
 						height: 21px;
 						background-position: -11px -13px;
 						transition: all 0.3s;
+						> div {
+							transition: opacity 0.5s, transform 0.5s;
+							opacity: 0;
+							pointer-events: none;
+							background: #fff;
+							position: absolute;
+							left: 50%;
+							transform: translateX(-50%) translateY(-10%);
+							bottom: 150%;
+							width: 150px;
+							height: 150px;
+							img {
+								width: 150px;
+								height: 150px;
+							}
+						}
 						&:hover {
 							background-position: -11px -43px;
+							> div {
+								opacity: 1;
+								transform: translateX(-50%) translateX(0);
+							}
 						}
 					}
 					&:nth-child(4) {
