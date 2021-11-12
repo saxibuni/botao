@@ -98,7 +98,7 @@ export default class Caese extends Vue {
 				img {
 					width: 100%;
 					height: 100%;
-					// transition: transform 0.3s;
+					transition: transform 0.3s;
 				}
 			}
 			.content {
