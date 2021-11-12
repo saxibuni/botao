@@ -10,16 +10,20 @@ import utils from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
 import ICountUp from 'root/components/countup.vue';
 import { TimeSelect } from 'element-ui';
+import VideoPopup from 'root/components/videoPopup.vue';
 
 @Component({
 	components: {
 		Button,
-		ICountUp
+		ICountUp,
+		VideoPopup
 	}
 })
 export default class home extends Vue {
 	showProfile: boolean = true;
-
+	videoPop = {
+		 isPop:false
+	};
 	pixiView: PIXI.Application; //开始不能赋值，不然就会变成vue监测属性
 	activeIndex: number = -1;
 
