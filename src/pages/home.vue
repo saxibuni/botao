@@ -58,13 +58,12 @@
 				<div class="img-wrap">
 
 					<div class="imgs-wrap">
-						<transition-group name="fade" tag="div">
-							<template v-for="(item, i) in page2ImgSrcList">
-								<img class="imgs" v-if="i == page2Index" :key="i" :src="item" alt="" />
-							</template>
-						</transition-group>
+						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
+							<swiper-slide v-for="(item, i) in page2ImgSrcList" :key="i">
+								<img :src="item" alt="" />
+							</swiper-slide>
+						</swiper>
 					</div>
-					<!-- <img :class="{ active: page2Ani }" :src="page2ImgSrcList[page2Index]" alt="" /> -->
 					<div class="text wow" :class="{ active: page2Ani }">
 						<h3>上海东方颐城</h3>
 						<h4>
@@ -783,6 +782,7 @@ export default home;
 			height: 910px;
 			margin: 0 auto;
 			position: relative;
+			overflow: hidden;
 			.img-wrap {
 				position: absolute;
 				width: 100%;
@@ -790,16 +790,17 @@ export default home;
 				left: 0;
 				top: 0;
 				z-index: 1;
+				box-sizing: border-box;
 				.imgs-wrap{
 					width: 1770px;
 					height: 910px;
 					position: relative;
 					background: #fff;
+					box-sizing: border-box;
 					.imgs{
-						position: absolute;
-						left: 0;
-						top:0;
-						@include fade-out-in(0.25);
+						width: 100%;
+						height: 100%;
+						display: block;
 					}
 				}
 
@@ -815,14 +816,14 @@ export default home;
 					top: 206px;
 					left: 100px;
 					transition: opacity 0.83s;
-					opacity: 0;
-					animation: slide-down-in 1s, fade-in 1s;
-					animation-fill-mode: forwards;
+					z-index: 50;
 					h3 {
 						height: 32px;
 						font-size: 34px;
 						font-weight: 400;
 						color: #ffffff;
+						opacity: 0;
+						animation: slide-down-in 1s forwards, fade-in 1s forwards;
 					}
 					h4 {
 						height: 17px;
@@ -830,21 +831,27 @@ export default home;
 						font-weight: 400;
 						color: #ffffff;
 						margin-right: 16px;
+						opacity: 0;
 						margin: 21px 0 51px 0;
+						animation: slide-down-in 1s 1.3s forwards, fade-in 1s 1.3s forwards;
 					}
 					p {
 						width: 354px;
 						font-size: 18px;
 						font-weight: 400;
+						opacity: 0;
 						color: #ffffff;
 						line-height: 30px;
 						@include line-clamp(3);
 						max-height: 90px;
+						animation: slide-down-in 1s 1.6s forwards, fade-in 1s 1.6s forwards;
 					}
 					.btn-box {
 						width: 170px;
+						opacity: 0;
 						height: 53px;
 						margin-top: 60px;
+						animation: slide-down-in 1s 1.9s forwards, fade-in 1s 1.9s forwards;
 						/deep/.btn {
 							&::after,
 							&::before {

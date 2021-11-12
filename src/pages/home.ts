@@ -108,6 +108,10 @@ export default class home extends Vue {
 		},
 		preventClicks: false
 	};
+	swiperOptions:any = {
+		speed: 500,
+		effect : 'fade',
+	}
 	bannerSwiperOptions2: any = {
 		speed: 500,
 		loop: true,
@@ -152,6 +156,7 @@ export default class home extends Vue {
 		},
 		autoplay: {
 			delay: 6000,
+			loop: true,
 			disableOnInteraction: false
 		},
 		navigation: {
@@ -182,6 +187,7 @@ export default class home extends Vue {
 		});
 		utils.emitter.$on(Events.RESIZE, this.onResize);
 		utils.emitter.$on('page2IndexFun', (introductionIndex: number) => {
+			(this.$refs.mSwiper as any).$swiper.slideTo(introductionIndex, 600, true);
 			this.page2Index = introductionIndex;
 			this.page2Ani = false;
 			setTimeout(() => {
