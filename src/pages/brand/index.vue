@@ -120,7 +120,7 @@
 			<div class="img-box history-scroll wow">
 				<div class="gray-img wow">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
-					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" v-show="progressIndex >= i" :key="i">
+					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" v-show="progressIndex >= i" :key="i">
 						<span>{{ item.time }}</span>
 					</div>
 				</div>
@@ -177,7 +177,7 @@
 		</div>
 		<div class="social-response select5">
 			<h2 class="wow">社会责任</h2>
-			<h3 class="wow">social responsibility</h3>
+			<h3 class="wow">SOCIAL RESPONSIBILITY</h3>
 			<div class="content-box">
 				<div class="svg-box">
 					<svg
@@ -905,6 +905,7 @@ html {
 					border: 1px solid #132132;
 					background-color: #fff;
 					transition: all 0.3s;
+					cursor: pointer;
 					span {
 						position: absolute;
 						width: 200px;
