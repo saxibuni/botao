@@ -220,6 +220,10 @@ export default class home extends Vue {
 			nextEl: '.next3'
 		},
 		on: {
+			slideChangeTransitionStart: function() {
+				let tag = this.realIndex < 10 ? '0' + (this.realIndex + 1) : this.realIndex + 1;
+				document.querySelector('.banner-tag').innerHTML = tag;
+			},
 			slideChangeTransitionEnd: function() {
 				for (let i = 0; i <= this.slides.length - 1; i++) {
 					this.slides[i].classList.remove('active');
@@ -228,6 +232,7 @@ export default class home extends Vue {
 			}
 		}
 	};
+
 	options1 = {
 		suffix: '+',
 		useGrouping: false

@@ -367,7 +367,7 @@
 				<div class="swiper-pagination3"></div>
 				<div class="bgimg">
 					<div>
-						<p>01</p>
+						<p class="banner-tag">01</p>
 						<h5>软装</h5>
 						<h6>Soft outfit</h6>
 						<i class="next3"></i>
@@ -2098,8 +2098,8 @@ export default home;
 				z-index: 3;
 				width: 431px;
 				height: 100%;
-				background: url('~assets/bg_home_b5_mask2.png') center;
-				background-size: cover;
+				background: url('~assets/bg_home_b5_mask2.png') no-repeat;
+				background-size: 100% 100%;
 				color: #fff;
 				padding-left: 225px;
 				padding-top: 295px;
