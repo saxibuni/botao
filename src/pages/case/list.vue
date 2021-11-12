@@ -57,6 +57,7 @@
 			<swiper :options="bannerSwiperOptions1">
 				<swiper-slide v-for="(item, i) in 3" :key="i">
 					<img src="~assets/bg_b1_part2_right.jpg" alt="" />
+					<img src="~assets/bg_b1_part2_mask2.png" alt="" />
 				</swiper-slide>
 			</swiper>
 			<div class="swiper-pagination3"></div>
@@ -346,6 +347,13 @@ export default CaseList;
 			width: 1220px;
 			height: 740px;
 			margin: 0;
+			img {
+				&:nth-of-type(2) {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+				}
+			}
 		}
 		.swiper-pagination3 {
 			position: absolute;
