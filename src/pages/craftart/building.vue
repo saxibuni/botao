@@ -459,5 +459,7 @@ export default Building;
 			margin: 45px 0 100px 0;
 		}
 	}
+	.close{
+	}
 }
 </style>

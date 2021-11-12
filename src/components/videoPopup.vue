@@ -2,7 +2,7 @@
 	<transition name="slideFadeIn">
 		<Popup class="video-popup" v-if="videoPop.isPop" @click.native="show">
 				<div class="mask"></div>
-				<div class="img-box">
+				<div class="video-box">
 					<video controls preload="true">
 						<source :src="'./botao.mp4'" type="video/mp4" />
 					</video>
@@ -37,7 +37,7 @@ export default class videoPopup extends Vue {
 </script>
 <style scoped lang="scss">
 .video-popup {
-		.img-box {
+		.video-box {
 			position: absolute;
 			z-index: 11111;
 			video{
@@ -45,7 +45,7 @@ export default class videoPopup extends Vue {
 			}
 				.close {
 				position: absolute;
-				top: -110px;
+				top: -120px;
 				right: 0;
 				width: 90px;
 				height: 90px;
