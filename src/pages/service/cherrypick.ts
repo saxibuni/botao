@@ -4,7 +4,7 @@ import { Vue, Component } from 'vue-property-decorator';
 export default class CheckPick extends Vue {
 	iconIndex = 4;
 	bannerSwiperOptions: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		autoplay: {
 			delay: 8000,

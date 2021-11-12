@@ -8,7 +8,7 @@ import Button from "../../components/button.vue";
 })
 export default class SoftDecoration extends Vue {
 	bannerSwiperOptions: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		slidesPerView: 4,
 		slidesPerGroup: 1,

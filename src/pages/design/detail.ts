@@ -9,7 +9,7 @@ import Cases from '../case/components/cases.vue'
 })
 export default class DesignDetail extends Vue {
 	swiperOptions: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		slideToClickedSlide: true,
 		pagination: {

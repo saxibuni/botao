@@ -156,7 +156,7 @@ export default class JoinUs extends Vue {
 	];
 	jsBannerOptions: any = {
 		centeredSlides: true,
-		speed: 500,
+		speed: 1000,
 		spaceBetween: 19,
 		slidesPerView: 4,
 		loop: true,
