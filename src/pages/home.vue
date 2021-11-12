@@ -10,9 +10,9 @@
 							年专注别墅大宅 全案引领者
 						</h3>
 						<div>
-							Focus on villa
+							FOCUS ON VILLA
 							<br />
-							mansions
+							MANSIONS
 						</div>
 						<div>
 							<Button text="走进波涛"></Button>
@@ -64,7 +64,7 @@
 							</swiper-slide>
 						</swiper>
 					</div>
-					<transition>
+					<transition name="fade">
 						<div class="text wow" v-if="page2Ani">
 							<h3>上海东方颐城</h3>
 							<h4>
@@ -96,6 +96,11 @@
 					<img :src="page2ImgSrcList[page2Index]" alt="" />
 				</div>
 				<div class="mask2"></div>
+			</div>
+
+			<div class="next">
+				全部案例
+				<i></i>
 			</div>
 		</div>
 		<div class="page3">
@@ -191,7 +196,7 @@
 							<img :src="imgSrc" alt="" v-if="!showProfile" key="b" />
 						</transition-group>
 						<div>
-							<p>Design concept</p>
+							<p>DESIGN CONCEPT</p>
 							<b>细节决定成败</b>
 						</div>
 					</div>
@@ -711,6 +716,7 @@ export default home;
 	}
 	.page2 {
 		padding: 100px 0;
+		position: relative;
 		background: url('~assets/bg_home_b2.jpg');
 		> h2 {
 			height: 53px;
@@ -847,6 +853,7 @@ export default home;
 					left: 100px;
 					transition: opacity 0.83s;
 					z-index: 50;
+					@include fade(0.25);
 					h3 {
 						height: 32px;
 						font-size: 34px;
@@ -1000,6 +1007,33 @@ export default home;
 				top: initial;
 				bottom: 0;
 				opacity: 0.8;
+			}
+		}
+
+		.next {
+			height: 18px;
+			font-size: 18px;
+			font-weight: 400;
+			color: #ffffff;
+			right: 180px;
+			bottom: 150px;
+			position: absolute;
+			display: flex;
+			align-items: center;
+			z-index: 2;
+			cursor: pointer;
+			&:hover {
+				i {
+					transform: translateX(4px);
+				}
+			}
+			i {
+				width: 8px;
+				height: 14px;
+				transition: transform 0.3s;
+				background: url('~assets/icons/ic_home_b2_enter.png') no-repeat;
+				background-size: 100% 100%;
+				margin-left: 19px;
 			}
 		}
 	}
@@ -1244,7 +1278,7 @@ export default home;
 				top: 0;
 				left: 0;
 				z-index: 1;
-				background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+				background: linear-gradient(to bottom, rgba(23, 38, 57, 0.9), rgba(23, 38, 57, 0.5), rgba(23, 38, 57, 0.9));
 				pointer-events: none;
 			}
 			ul {
@@ -1564,19 +1598,19 @@ export default home;
 			&::before {
 				content: '';
 				position: absolute;
-				border: 2px solid #eb5518;
-				width: 8px;
-				height: 8px;
+				border: 3px solid #eb5518;
+				width: 14px;
+				height: 14px;
 			}
 			&::after {
-				left: 4px;
-				top: 4px;
+				left: 9px;
+				top: 9px;
 				border-right: none;
 				border-bottom: none;
 			}
 			&::before {
-				right: 4px;
-				bottom: 4px;
+				right: 9px;
+				bottom: 9px;
 				border-top: none;
 				border-left: none;
 			}

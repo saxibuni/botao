@@ -4,7 +4,7 @@
 		<div class="page1">
 			<img src="~assets/bg_e1_banner_right.jpg" alt="" />
 			<div class="text">
-				<h2>全案整改</h2>
+				<h2>全案整装</h2>
 				<p>Whole case assembly</p>
 			</div>
 			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
@@ -625,8 +625,7 @@ export default WholeDecoration;
 			flex-wrap: wrap;
 			margin-top: 68px;
 			padding: 0 0 0 80px;
-			background: url('~assets/bg_e1_part3.png') no-repeat 0 center;
-			background: 100% auto;
+			position: relative;
 			li {
 				display: flex;
 				height: 305px;
@@ -736,6 +735,18 @@ export default WholeDecoration;
 						line-height: 34px;
 					}
 				}
+			}
+
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: url('~assets/bg_e1_part3.png') no-repeat 0 center;
+				background: 100% auto;
+				pointer-events: none;
 			}
 		}
 	}
@@ -946,7 +957,7 @@ export default WholeDecoration;
 					opacity: 0;
 					animation: slide-down-in 1s, fade-in 1s;
 					animation-fill-mode: forwards;
-					padding: 90px 0 0 102px;
+					padding: 90px 0 0 95px;
 					h1 {
 						font-size: 36px;
 						font-weight: 400;
@@ -962,11 +973,12 @@ export default WholeDecoration;
 						display: flex;
 						align-items: center;
 						&::before {
-							content: 'x';
-							opacity: 0.2;
-							color: rgba(19, 33, 50, 1);
+							content: '';
 							margin-right: 22px;
-							font-size: 12px;
+							width: 12px;
+							height: 12px;
+							background: url('~assets/icons/ic_home_popup_close.png') no-repeat;
+							background-size: 100% 100%;
 						}
 					}
 					h3 {
