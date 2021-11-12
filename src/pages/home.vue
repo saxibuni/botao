@@ -586,7 +586,7 @@ export default home;
 			justify-content: space-between;
 			height: 50px;
 			z-index: 99;
-			padding: 0 50px;
+			padding: 0 80px;
 			.prev,
 			.next {
 				cursor: pointer;

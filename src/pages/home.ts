@@ -153,7 +153,7 @@ export default class home extends Vue {
 	picIndex = 0;
 	anIndex = 0;
 	bannerSwiperOptions: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		autoplay: {
 			delay: 8000,
@@ -166,11 +166,11 @@ export default class home extends Vue {
 		preventClicks: false
 	};
 	swiperOptions:any = {
-		speed: 500,
+		speed: 1000,
 		effect : 'fade',
 	}
 	bannerSwiperOptions2: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		slidesPerView: 6,
 		slidesPerGroup: 1,
@@ -192,7 +192,7 @@ export default class home extends Vue {
 		}
 	};
 	bannerSwiperOptions3: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		slideToClickedSlide: true,
 		pagination: {
