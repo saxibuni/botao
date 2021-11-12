@@ -328,6 +328,10 @@ html {
 		}
 		.swiper-pagination-bullet {
 			border: 2px solid #dcdcdc !important;
+			opacity: 1 !important;
+		}
+		.swiper-pagination-bullet-active{
+			border-color: #ed5400 !important;
 		}
 	}
 	.dian-ping {

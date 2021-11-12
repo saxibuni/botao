@@ -103,13 +103,16 @@ export default StrategyDetail;
 <style lang="scss">
 html {
 	.strategy-detail {
-		h2,
-		p,
-		h3,
-		.title-info {
-			opacity: 0;
-			animation: slide-up-in 1s, fade-in 1s;
-			animation-fill-mode: forwards;
+		.article,
+		.recommended-news {
+			h2,
+			p,
+			h3,
+			.title-info {
+				opacity: 0;
+				animation: slide-up-in 1s, fade-in 1s;
+				animation-fill-mode: forwards;
+			}
 		}
 		.article {
 			.img-box {
@@ -239,11 +242,11 @@ html {
 						width: 28px;
 						height: 25px;
 						background-position: 83% 20%;
-						transition: all .3s;
-						a{
+						transition: all 0.3s;
+						a {
 							width: 100%;
 						}
-						&:hover{
+						&:hover {
 							background-position: 83% 80%;
 						}
 					}

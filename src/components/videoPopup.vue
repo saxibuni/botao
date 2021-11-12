@@ -43,30 +43,22 @@ export default class videoPopup extends Vue {
 			video{
 				width: 100%;
 			}
-			.close {
+				.close {
 				position: absolute;
-				top: -40px;
+				top: -110px;
 				right: 0;
-				width: 30px;
-				height: 30px;
+				width: 90px;
+				height: 90px;
 				border-radius: 50%;
-				background-color: #878787;
+				background-color:#ed5400;
 				cursor: pointer;
-				&::after,
-				&::before {
-					position: absolute;
-					content: '';
-					top: 15px;
-					left: 6px;
-					width: 20px;
-					height: 2px;
-					background-color: #525151;
-				}
-				&::after {
-					transform: rotate(45deg);
-				}
-				&::before {
-					transform: rotate(-45deg);
+				background-image: url(~assets/icons/ic_home_popup_close2.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				transition: all .3s;
+				&:hover{
+					background-color: #fff;
+					background-image: url(~assets/icons/ic_home_menu_close.png);
 				}
 			}
 		}

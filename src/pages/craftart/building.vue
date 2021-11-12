@@ -86,18 +86,8 @@
 				</ul>
 			</div>
 			<Pagination :data="paginationData" />
+			<VideoPopup :videoPop='videoPop'></VideoPopup>
 		</div>
-		<transition name="slideFadeIn">
-			<Prop class="buldingProp" v-if="isPop" @click.native="show">
-				<div class="mask"></div>
-				<div class="video-box">
-					<video controls preload="true" width="100%">
-						<source :src="'./botao.mp4'" type="video/mp4" />
-					</video>
-					<div class="close"></div>
-				</div>
-			</Prop>
-		</transition>
 	</div>
 </template>
 
@@ -467,30 +457,6 @@ export default Building;
 		}
 		.pagination-box {
 			margin: 45px 0 100px 0;
-		}
-	}
-	.buldingProp {
-		.video-box {
-			position: absolute;
-			z-index: 11111;
-			.close {
-				position: absolute;
-				top: -110px;
-				right: 0;
-				width: 90px;
-				height: 90px;
-				border-radius: 50%;
-				background-color:#ed5400;
-				cursor: pointer;
-				background-image: url(~assets/icons/ic_home_popup_close2.png);
-				background-repeat: no-repeat;
-				background-position: center;
-				transition: all .3s;
-				&:hover{
-					background-color: #fff;
-					background-image: url(~assets/icons/ic_home_menu_close.png);
-				}
-			}
 		}
 	}
 }
