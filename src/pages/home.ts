@@ -361,6 +361,9 @@ export default class home extends Vue {
 		};
 	}
 
+	onRoute(name: string, query?: any) {
+		this.$router.push({name: name, query: query})
+	}
 
 	onPortraitListPrev() {
 		if (this.applyFlip) return;
