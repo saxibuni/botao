@@ -47,8 +47,8 @@ export default class videoPopup extends Vue {
 			}
 				.close {
 				position: absolute;
-				top: -100px;
-				right: -20px;
+				top: -90px;
+				right: -10px;
 				width: 90px;
 				height: 90px;
 				border-radius: 50%;

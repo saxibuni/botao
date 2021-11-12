@@ -341,6 +341,7 @@ export default CheckPick;
 						border: 1px solid rgba(235, 85, 29, 0);
 						margin-right: 28px;
 						cursor: pointer;
+						transition: all .3s;
 						&::before {
 							content: '';
 							width: 44px;
@@ -369,6 +370,7 @@ export default CheckPick;
 					color: #000000;
 					&:hover,
 					&.active {
+						color:#eb551d;
 						i {
 							background: transparent;
 							border: 1px solid rgba(235, 85, 29, 0.3);

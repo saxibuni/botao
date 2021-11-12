@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				<Button :text="'找TA设计'" />
+				<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true"/>
 			</div>
 			<div class="right wow">
 				<div class="swiperBox">
