@@ -292,7 +292,6 @@ export default class Header extends Vue {
 				h3 {
 					height: 17px;
 					font-size: 17px;
-					font-family: AlibabaPuHuiTiR;
 					font-weight: 400;
 					margin-bottom: 5px;
 				}
@@ -312,7 +311,6 @@ export default class Header extends Vue {
 				li {
 					color: #ccc;
 					font-size: 18px;
-					font-family: Alibaba PuHuiTi;
 					font-weight: 400;
 					width: 110px;
 					height: 30px;

@@ -330,7 +330,6 @@ export default SoftDecoration;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
-			font-family: AlibabaPuHuiTiM;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;
@@ -509,7 +508,6 @@ export default SoftDecoration;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
-			font-family: AlibabaPuHuiTiM;
 			font-weight: 400;
 			color: #fff;
 			text-align: center;
@@ -677,7 +675,6 @@ export default SoftDecoration;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
-			font-family: AlibabaPuHuiTiM;
 			font-weight: 400;
 			color: #000;
 			text-align: center;
@@ -831,7 +828,6 @@ export default SoftDecoration;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
-			font-family: AlibabaPuHuiTiM;
 			font-weight: 400;
 			color: #000;
 			text-align: center;
@@ -953,7 +949,6 @@ export default SoftDecoration;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
-			font-family: AlibabaPuHuiTiM;
 			font-weight: 400;
 			color: #000;
 			text-align: center;

@@ -260,7 +260,7 @@
 							<p>金牌项目经理</p>
 						</li>
 					</ul>
-					<img src="~assets/icons/ic_home_b3_play.png" alt="" />
+					<img @click="videoPop.isPop=true" src="~assets/icons/ic_home_b3_play.png" alt="" />
 				</div>
 			</div>
 			<div class="right">
@@ -419,7 +419,7 @@
 						<div>
 							<img src="~assets/bg_home_b6_1.jpg" alt="" />
 						</div>
-						<i></i>
+						<i @click="videoPop.isPop=true"></i>
 						<div class="text">
 							<p>客户评价</p>
 							<div>温暖家｜多面客厅，一种舒适</div>
@@ -486,6 +486,7 @@
 				</ul>
 			</div>
 		</div>
+		<VideoPopup :videoPop='videoPop'></VideoPopup>
 	</div>
 </template>
 <script lang="ts">
@@ -646,7 +647,6 @@ export default home;
 						height: 48px;
 						justify-content: center;
 						font-size: 18px;
-						font-family: AlibabaPuHuiTiR;
 						font-weight: 400;
 						color: #ffffff;
 						border: 2px solid #ed5400;
@@ -722,7 +722,6 @@ export default home;
 			animation-fill-mode: forwards;
 			> div {
 				font-size: 18px;
-				font-family: Alibaba PuHuiTi;
 				font-weight: 400;
 				color: #666;
 				min-width: 122px;
