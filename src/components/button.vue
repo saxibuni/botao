@@ -24,7 +24,6 @@ export default class aboutInstructor extends Vue {
 		height: 53px;
 		background: #ed5400;
 		font-size: 18px;
-		font-family: AlibabaPuHuiTiR;
 		font-weight: 400;
 		color: #ffffff;
 		line-height: 53px;

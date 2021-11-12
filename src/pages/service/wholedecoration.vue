@@ -291,7 +291,6 @@ export default WholeDecoration;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
-			font-family: AlibabaPuHuiTiM;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;
@@ -600,7 +599,6 @@ export default WholeDecoration;
 		> h2 {
 			height: 46px;
 			font-size: 48px;
-			font-family: AlibabaPuHuiTiM;
 			font-weight: 400;
 			color: #000000;
 			text-align: center;

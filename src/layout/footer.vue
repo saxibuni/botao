@@ -227,7 +227,6 @@ export default class Footer extends Vue {
 				h2 {
 					height: 21px;
 					font-size: 22px;
-					font-family: AlibabaPuHuiTiR;
 					font-weight: 400;
 					color: #ffffff;
 					margin-bottom: 40px;
@@ -290,7 +289,6 @@ export default class Footer extends Vue {
 						height: 48px;
 						justify-content: center;
 						font-size: 18px;
-						font-family: AlibabaPuHuiTiR;
 						font-weight: 400;
 						color: #ffffff;
 						text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
@@ -309,7 +307,6 @@ export default class Footer extends Vue {
 					h5 {
 						height: 21px;
 						font-size: 22px;
-						font-family: AlibabaPuHuiTiR;
 						font-weight: 400;
 						color: #ffffff;
 						margin-bottom: 41px;
@@ -319,7 +316,6 @@ export default class Footer extends Vue {
 						white-space: nowrap;
 						height: 38px;
 						font-size: 18px;
-						font-family: Alibaba PuHuiTi;
 						font-weight: 400;
 						color: #999999;
 						transition: color 0.3s;
@@ -398,7 +394,6 @@ export default class Footer extends Vue {
 				display: flex;
 				align-items: center;
 				font-size: 18px;
-				font-family: Alibaba PuHuiTi;
 				font-weight: 400;
 				color: #FFFFFF;
 				img{
@@ -418,7 +413,6 @@ export default class Footer extends Vue {
 			.link{
 					height: 49px;
 					font-size: 18px;
-					font-family: Alibaba PuHuiTi;
 					font-weight: 400;
 					color: #666666;
 					line-height: 30px;

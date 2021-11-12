@@ -142,7 +142,6 @@ export default class navLists extends Vue {
 					h3 {
 						height: 17px;
 						font-size: 17px;
-						font-family: AlibabaPuHuiTiR;
 						font-weight: 400;
 						margin-bottom: 5px;
 					}

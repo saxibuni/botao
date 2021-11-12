@@ -646,7 +646,6 @@ export default home;
 						height: 48px;
 						justify-content: center;
 						font-size: 18px;
-						font-family: AlibabaPuHuiTiR;
 						font-weight: 400;
 						color: #ffffff;
 						border: 2px solid #ed5400;
@@ -722,7 +721,6 @@ export default home;
 			animation-fill-mode: forwards;
 			> div {
 				font-size: 18px;
-				font-family: Alibaba PuHuiTi;
 				font-weight: 400;
 				color: #666;
 				min-width: 122px;

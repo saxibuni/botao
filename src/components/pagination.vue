@@ -58,7 +58,6 @@ html {
 	align-items: center;
 	/deep/.el-pagination {
 		padding: 0 5px;
-		font-family: AlibabaPuHuiTiR;
 		button {
 			margin: 0px 20px;
 			width: 40px;
@@ -115,7 +114,6 @@ html {
 					border-radius: 0;
 					border-bottom: 1px solid #b6bbc1;
 					background-color: #fff;
-					font-family: AlibabaPuHuiTiR;
 					font-size: 14px;
 					font-weight: bold;
 				}
