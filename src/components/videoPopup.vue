@@ -47,8 +47,8 @@ export default class videoPopup extends Vue {
 			}
 				.close {
 				position: absolute;
-				top: -120px;
-				right: 0;
+				top: -100px;
+				right: -20px;
 				width: 90px;
 				height: 90px;
 				border-radius: 50%;
@@ -58,6 +58,7 @@ export default class videoPopup extends Vue {
 				background-repeat: no-repeat;
 				background-position: center;
 				transition: all .3s;
+				transform: scale(0.6);
 				&:hover{
 					background-color: #fff;
 					background-image: url(~assets/icons/ic_home_menu_close.png);

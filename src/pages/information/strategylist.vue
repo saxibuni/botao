@@ -7,14 +7,14 @@
 			<h3>DECORATION STRATIEGY</h3>
 			<div class="strategy-box">
 				<div class="strategy-left wow">
-					<div class="img-box">
+					<div class="img-box" @click="$router.push({ name: 'strategy-detail' })">
 						<img src="~assets/strategy1.jpg" />
 					</div>
 					<div class="info-box">
 						<div class="date">2021,Auguset,10</div>
 						<h4 class="title">看见这些灯，又想折腾折腾我家客厅了！</h4>
 						<p>优秀的灯光照明，赋予视觉上舒适体验瞬间提升整个居住空间的档次。不论是有主灯设计还是无主灯设计，通过照明方式与空间的相互配合,即可打造宜居温馨的家居氛围。</p>
-						<div class="more" >
+						<div class="more" @click="$router.push({ name: 'strategy-detail' })">
 							More
 							<span></span>
 						</div>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="list-box">
 			<ul class="list wow">
-				<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.3* i + 0.5+ 's' }" :key="i">
+				<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i">
 					<div class="img-box">
 						<img :src="v.imgUrl" alt="" />
 					</div>
@@ -146,6 +146,7 @@ html {
 			font-size: 18px;
 			font-weight: 700;
 			cursor: pointer;
+			transition: all .3s;
 			span {
 				top: 50%;
 				margin-left: 10px;
@@ -156,6 +157,9 @@ html {
 				border-right: 1px solid #ed5300;
 				transform: rotate(-45deg);
 				transition: all.3s;
+			}
+			&:hover {
+				color: #eb551c;
 			}
 			&:hover span {
 				margin-left: 20px;
@@ -169,6 +173,7 @@ html {
 			width: 100%;
 			height: 100%;
 			transition: all 0.3s;
+			cursor: pointer;
 		}
 		&:hover img {
 			transform: scale($imgScale);
@@ -219,7 +224,11 @@ html {
 							color: #000;
 							transition: all 0.3s;
 						}
+							&:hover .title {
+						color: #eb551c;
 					}
+					}
+
 					&:not(:last-child) {
 						padding-bottom: 40px;
 						border-bottom: 2px solid #ed5300;
@@ -265,6 +274,9 @@ html {
 					box-sizing: border-box;
 					padding: 41px 0 50px 39px;
 					width: 100%;
+					.title{
+						transition: all .3s;
+					}
 					.date {
 						color: #888;
 					}
@@ -275,6 +287,9 @@ html {
 					p {
 						width: 490px;
 						color: #666;
+					}
+					&:hover .title{
+						color: #ed5300;
 					}
 				}
 				&:nth-child(n + 4) {
