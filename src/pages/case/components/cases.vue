@@ -6,8 +6,8 @@
 					<img src="~assets/bg_b1_part3_pic1.jpg" alt="" />
 				</div>
 				<div class="content">
-					<div class="top" @click.stop="$router.push('/case/detail')">
-						<div class="topLeft">
+					<div class="top">
+						<div class="topLeft" @click.stop="$router.push('/case/detail')">
 							<p>上海东方颐城</p>
 							<p>
 								<span>现代风格</span>
@@ -16,8 +16,10 @@
 							</p>
 						</div>
 						<div class="topRight">
-							<i></i>
-							<p>2000个喜欢</p>
+							<!-- <i @click="fn"></i> -->
+							<img src="~assets/icons/ic_b1_part3_like1.png" alt="" v-if="flag" @click="(flag = !flag), loveNum++" />
+							<img src="~assets/icons/ic_b1_part3_like2.png" alt="" v-else @click="(flag = !flag), loveNum--" />
+							<p>{{ loveNum }}个喜欢</p>
 						</div>
 					</div>
 					<div class="bottom" @click.stop="$router.push('/design/detail')">
@@ -46,6 +48,8 @@ import Button from 'root/components/button.vue';
 	}
 })
 export default class Caese extends Vue {
+	loveNum = 2000;
+	flag = true;
 	@Prop({
 		required: false,
 		type: Object,
@@ -94,7 +98,7 @@ export default class Caese extends Vue {
 				img {
 					width: 100%;
 					height: 100%;
-					transition: transform 0.3s;
+					// transition: transform 0.3s;
 				}
 			}
 			.content {
@@ -144,17 +148,10 @@ export default class Caese extends Vue {
 						flex-direction: column;
 						align-items: center;
 						margin-top: 5px;
-						i {
-							display: block;
+						img {
 							width: 26px;
 							height: 23px;
-							background: url('~assets/icons/ic_b1_part3_like1.png') no-repeat;
-							background-size: 100% 100%;
-							&:hover {
-								cursor: pointer;
-								background: url('~assets/icons/ic_b1_part3_like2.png') no-repeat;
-								transition: all 0.3s;
-							}
+							transition: all 0.3s;
 						}
 						p {
 							margin-top: 10px;

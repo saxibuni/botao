@@ -1,4 +1,4 @@
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/Draggable';
 import { InertiaPlugin } from 'gsap/InertiaPlugin';
@@ -265,10 +265,13 @@ export default class Brand extends Vue {
 		this.createTrigger();
 		this.initPathTarget();
 		this.initVideo();
-		this.jump(this.$route.params.number);
+		setTimeout(() => {
+			this.jump(this.$route.params.number);
+		}, 100);
 		this.onResize();
 		this.restartWow();
 		this.$bus.$on(Events.RESIZE, this.onResize);
+		this.$bus.$on('params-change', this.jump);
 	}
 
 	initVideo() {
@@ -408,6 +411,7 @@ export default class Brand extends Vue {
 
 	beforeDestroy() {
 		this.$bus.$off(Events.RESIZE, this.onResize);
+		this.$bus.$off('params-change', this.jump);
 		this.draggerTarget1.kill();
 		this.draggerTarget1 = null;
 		ScrollTrigger.getAll().forEach(child => child.kill());

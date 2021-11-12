@@ -137,6 +137,16 @@ export default Team;
 							@include line-clamp(2);
 							line-height: 35px;
 						}
+						span {
+							margin-left: 6px;
+							margin-right: 4px;
+							display: inline-block;
+							width: 1px;
+							height: 16px;
+							background-color: #ffffff;
+							opacity: 0.2;
+							transform: translateY(2px);
+						}
 					}
 					.line {
 						width: 310px;

@@ -63,6 +63,7 @@
 								<p>0{{ index + 1 }}</p>
 								<p>{{ item.desc1 }}</p>
 								<p v-if="item.desc2">{{ item.desc2 }}</p>
+								<div class="line"></div>
 							</div>
 						</li>
 					</ul>
@@ -549,6 +550,10 @@ export default Manager;
 							.imgBox {
 								clip-path: polygon(100% 39.5%, 100% 100%, 0 100%, 0 0);
 							}
+							.line {
+								bottom: 0px;
+								top: -305px;
+							}
 						}
 						&:last-of-type {
 							.text {
@@ -560,6 +565,9 @@ export default Manager;
 										margin-top: 8px;
 									}
 								}
+							}
+							.line {
+								display: none;
 							}
 						}
 						.imgBox {
@@ -602,6 +610,16 @@ export default Manager;
 									font-size: 18px;
 									color: #666666;
 								}
+							}
+							.line {
+								position: absolute;
+								right: -3px;
+								bottom: -140px;
+								height: 875px;
+								width: 1px;
+								background-image: linear-gradient(to bottom, #e7e7e7 0%, #e7e7e7 50%, transparent 70%);
+								background-size: 1px 8px;
+								background-repeat: repeat-y;
 							}
 						}
 					}

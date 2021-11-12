@@ -404,6 +404,8 @@ export default Building;
 						overflow: hidden;
 						img {
 							&:nth-of-type(2) {
+								width: 60px;
+								height: 60px;
 								position: absolute;
 								left: 50%;
 								top: 50%;
@@ -459,7 +461,7 @@ export default Building;
 			margin: 45px 0 100px 0;
 		}
 	}
-	.close{
+	.close {
 	}
 }
 </style>
