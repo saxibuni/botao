@@ -116,7 +116,7 @@ export default class navLists extends Vue {
 	height: 970px;
 	transform: translateX(-50%) translateY(0);
 	padding: 0 11px;
-	transition: clip-path 0.3s;
+	transition: clip-path .6s;
 	clip-path: ellipse(0 0 at 100% 0);
 	.logo {
 		display: flex;
