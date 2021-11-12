@@ -2185,6 +2185,9 @@ export default home;
 				color: #000;
 				span {
 					color: #ec5400;
+					font-family: 'Gilroy-Bold';
+					width: 95px;
+					display: inline-block;
 				}
 			}
 			div {
