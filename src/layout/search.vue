@@ -66,7 +66,7 @@ export default class search extends Vue {
 	z-index: 999;
 	transform: translateX(-50%) translateY(-100%);
 	transition: transform .3s;
-	padding: 31px 87px 0 0;
+	padding: 50px 87px 0 0;
 	h2 {
 		display: flex;
 		justify-content: flex-end;

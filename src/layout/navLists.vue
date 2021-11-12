@@ -123,8 +123,9 @@ export default class navLists extends Vue {
 		align-items: center;
 		justify-content: space-between;
 		border-bottom: 1px solid #e8e8e8;
-		height: 92px;
-		padding: 0 70px;
+		height: 112px;
+		padding: 0 60px;
+		padding-right: 5px;
 		> div {
 			&:nth-child(1) {
 				display: flex;
