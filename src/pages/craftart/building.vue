@@ -80,13 +80,13 @@
 								<span></span>
 								项目经理：江新生
 							</p>
-							<Button :text="'预约参观工地'" />
+							<Button :text="'预约参观工地'" @click.native="$store.state.dialogDesign.design = true" />
 						</div>
 					</li>
 				</ul>
 			</div>
 			<Pagination :data="paginationData" />
-			<VideoPopup :videoPop='videoPop'></VideoPopup>
+			<VideoPopup :videoPop="videoPop"></VideoPopup>
 		</div>
 	</div>
 </template>

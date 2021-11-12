@@ -29,7 +29,9 @@
 					<img src="~assets/s_3.jpg" alt="" />
 					<div class="circle wow">
 						<div class="imgBox">
-							<img src="~assets/bg_d3_part3.png" alt="" v-show="active1Index == index" v-for="(item, index) in 8" :key="index" />
+							<div class="img">
+								<img src="~assets/bg_d3_part3.png" alt="" v-show="active1Index == index" v-for="(item, index) in 8" :key="index" />
+							</div>
 							<ul class="left">
 								<li v-for="(v, i) in page2Data.left" :key="i" :class="active1Index == i ? 'active1' : ''" @click="active1Index = i">
 									{{ v }}
@@ -54,7 +56,9 @@
 				<div class="main">
 					<ul>
 						<li v-for="(item, index) in page3Data" :key="index" class="wow" :style="{ 'animation-delay': 0.08 * index + 0.03 + 's' }">
-							<img :src="item.imgUrl" alt="" />
+							<div class="imgBox">
+								<img :src="item.imgUrl" alt="" />
+							</div>
 							<div class="text">
 								<p>0{{ index + 1 }}</p>
 								<p>{{ item.desc1 }}</p>
@@ -187,7 +191,7 @@
 					</div>
 					<div class="right">
 						<img src="~assets/bg_d3_part6_right.jpg" alt="" />
-						<img src="~assets/bg_d3_part6_roll.png" alt="" />
+						<img class="clrcleimg" src="~assets/bg_d3_part6_roll.png" alt="" v-for="(v, i) in 4" :key="i" v-show="i + 1 == Number(activeName)" />
 						<div class="text">
 							<p class="wow">7 HEAVY QUALITY</p>
 							<p class="wow">INSPECTION</p>
@@ -439,8 +443,23 @@ export default Manager;
 						width: 596px;
 						height: 596px;
 						position: relative;
-						> img {
-							animation: fade-ine 1s ease forwards;
+						.img {
+							width: 596px;
+							height: 596px;
+							border-radius: 50%;
+							overflow: hidden;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							&:hover {
+								img {
+									transform: scale($imgScale);
+								}
+							}
+							img {
+								animation: fade-ine 1s ease forwards;
+								transition: transform 0.3s;
+							}
 						}
 						ul {
 							position: absolute;
@@ -521,10 +540,14 @@ export default Manager;
 					li {
 						position: relative;
 						height: 430px;
+						width: 294px;
 						&:nth-child(even) {
 							.text {
 								bottom: auto;
 								top: 0;
+							}
+							.imgBox {
+								clip-path: polygon(100% 39.5%, 100% 100%, 0 100%, 0 0);
 							}
 						}
 						&:last-of-type {
@@ -537,6 +560,21 @@ export default Manager;
 										margin-top: 8px;
 									}
 								}
+							}
+						}
+						.imgBox {
+							width: 294px;
+							height: 430px;
+							position: absolute;
+							clip-path: polygon(100% 0, 100% 60.5%, 0 100%, 0 0);
+							overflow: hidden;
+							&:hover {
+								img {
+									transform: scale($imgScale);
+								}
+							}
+							img {
+								transition: transform 0.3s;
 							}
 						}
 						.text {
@@ -900,11 +938,12 @@ export default Manager;
 						position: absolute;
 						left: 0;
 						top: 0;
-						&:nth-of-type(2) {
-							top: 57px;
-							transform: translateX(-50%);
-							z-index: 2;
-						}
+					}
+					.clrcleimg {
+						top: 57px;
+						transform: translateX(-50%);
+						z-index: 2;
+						animation: fade-ine 1s ease forwards;
 					}
 					.text {
 						text-align: right;

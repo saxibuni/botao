@@ -141,8 +141,10 @@ export default CaseListVr;
 					height: 18px;
 					background: url('~assets/icons/bg_b1_part1_search.png') no-repeat;
 					background-size: 100% 100%;
+					transition: transform 0.3s;
 					&:hover {
 						cursor: pointer;
+						transform: scale(1.1) translateY(-50%);
 					}
 				}
 			}
