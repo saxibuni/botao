@@ -520,23 +520,23 @@ html {
 			transform: scale(1.2);
 		}
 	}
-	.close {
-		position: absolute;
-		top: -40px;
-		right: 0;
-		width: 30px;
-		height: 30px;
-		border-radius: 50%;
-		background-color: #878787;
-		cursor: pointer;
-		background-image: url(~assets/icons/ic_home_popup_close.png);
-		background-repeat: no-repeat;
-		background-position: center;
-		transition: all 0.3s;
-		&:hover {
-			background-color: #ed5400;
-			background-image: url(~assets/icons/ic_home_popup_close2.png);
-		}
-	}
+			.close {
+				position: absolute;
+				top: -70px;
+				right: 0;
+				width: 65px;
+				height: 65px;
+				border-radius: 50%;
+				background-color:#ed5400;
+				cursor: pointer;
+				background-image: url(~assets/icons/ic_home_popup_close2.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				transition: all .3s;
+				&:hover{
+					background-color: #fff;
+					background-image: url(~assets/icons/ic_home_menu_close.png);
+				}
+			}
 }
 </style>

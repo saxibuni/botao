@@ -475,20 +475,20 @@ export default Building;
 			z-index: 11111;
 			.close {
 				position: absolute;
-				top: -40px;
+				top: -110px;
 				right: 0;
-				width: 30px;
-				height: 30px;
+				width: 90px;
+				height: 90px;
 				border-radius: 50%;
-				background-color: #878787;
+				background-color:#ed5400;
 				cursor: pointer;
-				background-image: url(~assets/icons/ic_home_popup_close.png);
+				background-image: url(~assets/icons/ic_home_popup_close2.png);
 				background-repeat: no-repeat;
 				background-position: center;
 				transition: all .3s;
 				&:hover{
-					background-color: #ed5400;
-					background-image: url(~assets/icons/ic_home_popup_close2.png);
+					background-color: #fff;
+					background-image: url(~assets/icons/ic_home_menu_close.png);
 				}
 			}
 		}
