@@ -3,7 +3,7 @@
 		<Banner :data="bannerData" />
 		<div class="list">
 			<ul>
-				<li v-for="(item, i) in 16" :key="i">
+				<li v-for="(item, i) in 16" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<img src="~assets/bg_d2_pic01.jpg" alt="" />
 					<div class="text">
 						<p>郜加新</p>
@@ -39,6 +39,15 @@ export default Team;
 </script>
 
 <style lang="scss" scoped>
+.craft-team {
+	ul {
+		li {
+			opacity: 0;
+			animation: fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+}
 .list {
 	padding: 0 80px;
 	margin-top: 90px;

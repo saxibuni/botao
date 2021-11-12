@@ -10,8 +10,8 @@
 			<p><span>上海东方颐城</span></p>
 		</div>
 		<div class="title">
-			<h3>上海东方颐城</h3>
-			<div class="content">
+			<h3 class="wow">上海东方颐城</h3>
+			<div class="content wow">
 				<div class="contentLeft">
 					<ul>
 						<li>
@@ -56,7 +56,7 @@
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-button-next"></div>
 			</div>
-			<div class="content">
+			<div class="content wow">
 				<img src="~assets/bg_b2_part2_user.png" alt="" />
 				<p>谷晓云</p>
 				<p>首席设计师</p>
@@ -66,11 +66,11 @@
 			</div>
 		</div>
 		<div class="other">
-			<h3>为您推荐其他筑梦案例</h3>
-			<ul>
+			<h3 class="wow">为您推荐其他筑梦案例</h3>
+			<ul class="wow">
 				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
 			</ul>
-			<div class="otherSwiper">
+			<div class="otherSwiper wow">
 				<swiper :options="swiperOptions2">
 					<swiper-slide v-for="(item, index) in 9" :key="index">
 						<Cases />
@@ -90,6 +90,36 @@ export default CaseDetail;
 </script>
 
 <style lang="scss">
+.case-detail {
+	> .title {
+		h3,
+		.content {
+			opacity: 0;
+			animation: slide-down-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	> .swiper {
+		.content {
+			opacity: 0;
+			animation: fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+	.other {
+		h3,
+		ul {
+			opacity: 0;
+			animation: slide-up-in 1s, fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+		.otherSwiper {
+			opacity: 0;
+			animation: fade-in 1s;
+			animation-fill-mode: forwards;
+		}
+	}
+}
 .case-detail {
 	// padding: 0 80px;
 	.crumbs {
