@@ -272,7 +272,6 @@ export default class Header extends Vue {
 	left: 0;
 	top: 0;
 	width: 100%;
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
 	transition: background 0.6s;
 	&::after {
 		position: absolute;
