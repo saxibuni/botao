@@ -205,7 +205,7 @@
 					</li>
 				</ul>
 
-				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }">
+				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }" v-if="isShowLightImg">
 					<img :src="imgSrc" alt="" />
 				</div>
 			</div>
@@ -1229,7 +1229,7 @@ export default home;
 		}
 		.right {
 			opacity: 0;
-			animation: slide-down-in 2.6s, fade-in 1s;
+			animation: slide-right-in 2.6s, fade-in 1s;
 			animation-fill-mode: forwards;
 			flex: 1;
 			height: 1142px;

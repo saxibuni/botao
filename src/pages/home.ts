@@ -135,6 +135,7 @@ export default class home extends Vue {
 	portraitListIndex = 0;
 	portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 	applyFlip: boolean = false;
+	isShowLightImg: boolean = true;
 
 	page5List = [
 		{
@@ -306,6 +307,7 @@ export default class home extends Vue {
 		this.top = this.$refs[items][0].offsetTop;
 		this.width = this.$refs[items][0].clientWidth;
 		this.height = this.$refs[items][0].clientHeight;
+		this.isShowLightImg = true;
 	}
 
 	textActiveFun(i) {
@@ -356,6 +358,7 @@ export default class home extends Vue {
 
 
 	onPortraitListPrev() {
+		if (this.applyFlip) return;
 		if (this.portraitListIndex == 0) return;
 		this.getPreparePortraitList(false);
 
@@ -365,10 +368,13 @@ export default class home extends Vue {
 			this.portraitListIndex--;
 			this.getCurrentPortraitList();
 		}, 600);
+
+		this.isShowLightImg = false;
 	}
 
 	onPortraitListNext() {
-		if (this.portraitListIndex == this.portraitTotalPages) return;
+		if (this.applyFlip) return;
+		if (this.portraitListIndex == this.portraitTotalPages - 1) return;
 		this.getPreparePortraitList();
 
 		this.applyFlip = true;
@@ -377,13 +383,14 @@ export default class home extends Vue {
 			this.portraitListIndex++;
 			this.getCurrentPortraitList();
 		}, 600);
+
+		this.isShowLightImg = false;
 	}
 
 	getCurrentPortraitList() {
 		let start = this.portraitListIndex * this.portraitListSize;
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
 		this.currentPortraitList = this.portraitList.slice(start, end);
-
 	}
 
 	getPreparePortraitList(toNext: boolean = true) {
