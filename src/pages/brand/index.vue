@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<ul class="aside-nav">
-			<li v-for="(v, i) in asideNav" :key="i" @click="jump(i)">
+			<li v-for="(v, i) in asideNav" :class="i==0?'active':''" :key="i" @click="jump(i)">
 				<span @click="jump(i)" :class="'item' + i">{{ v }}</span>
 			</li>
 		</ul>
@@ -542,6 +542,9 @@ html {
 			}
 			&:last-child {
 				border: none;
+			}
+			&.active{
+				color: #eb551c;
 			}
 			&:hover {
 				color: #eb5518;
