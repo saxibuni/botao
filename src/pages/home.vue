@@ -2096,12 +2096,12 @@ export default home;
 				right: 0;
 				top: 0;
 				z-index: 3;
-				width: 431px;
+				width: 317px;
 				height: 100%;
-				background: url('~assets/bg_home_b5_mask2.png') no-repeat;
+				background: url('~assets/bg_home_b5_mask_a.png') no-repeat;
 				background-size: 100% 100%;
 				color: #fff;
-				padding-left: 225px;
+				padding-left: 138px;
 				padding-top: 295px;
 				p {
 					font-size: 32px;
@@ -2144,9 +2144,10 @@ export default home;
 					}
 					&::after {
 						content: '';
-						width: 7px;
-						height: 11px;
-						background: url('~assets/icons/ic_home_banner_right.png') center;
+						width: 11px;
+						height: 7px;
+						background: url('~assets/icons/ic_home_banner_down.png') center;
+						transform: rotate(-90deg);
 						background-size: 100% 100%;
 					}
 				}
