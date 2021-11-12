@@ -69,7 +69,7 @@ export default class OwnerVoice extends Vue {
 	///banner1
 	ownerBannerOptions: any = {
 		centeredSlides: true,
-		speed: 500,
+		speed: 1000,
 		spaceBetween: 30,
 		slidesPerView: 2,
 		loop: true,
@@ -96,7 +96,7 @@ export default class OwnerVoice extends Vue {
 	};
 	// banner2
 	dpBannerOptions: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		navigation: {
 			nextEl: '.dp-next',
@@ -122,7 +122,7 @@ export default class OwnerVoice extends Vue {
 	};
 	// banner3
 	fhBannerOptions: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		autoplay: {
 			delay: 3000,

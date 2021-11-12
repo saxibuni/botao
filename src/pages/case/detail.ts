@@ -11,7 +11,7 @@ export default class CaseDetail extends Vue {
 	activeIndex=0
 	tabs=['同风格案例','同设计师案例']
 	swiperOptions1: any = {
-		speed: 500,
+		speed: 1000,
 		loop: true,
 		slideToClickedSlide: true,
 		pagination: {
@@ -29,7 +29,7 @@ export default class CaseDetail extends Vue {
 
 	};
 	swiperOptions2: any = {
-		speed: 500,
+		speed: 1000,
 		spaceBetween: 5,
 		slidesPerView: 3,
 		slidesPerGroup: 3,

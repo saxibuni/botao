@@ -237,7 +237,7 @@ export default class Brand extends Vue {
 	hoverBannerOptions = {
 		observer: true,
 		observeParents: true,
-		speed: 500,
+		speed: 1000,
 		spaceBetween: 77,
 		slidesPerView: 4,
 		loop: true,
@@ -253,7 +253,7 @@ export default class Brand extends Vue {
 	researchBannerOptions = {
 		observer: true,
 		observeParents: true,
-		speed: 500,
+		speed: 1000,
 		spaceBetween: 77,
 		slidesPerView: 4,
 		loop: true,

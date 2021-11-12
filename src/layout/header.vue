@@ -259,6 +259,7 @@ export default class Header extends Vue {
 </script>
 <style scoped lang="scss">
 .header {
+	min-width: 1440PX;
 	img {
 		display: block;
 	}
@@ -316,6 +317,7 @@ export default class Header extends Vue {
 					font-family: Gilroy;
 					font-weight: 400;
 					letter-spacing: 1px;
+					white-space: nowrap;
 				}
 			}
 		}
@@ -406,7 +408,7 @@ export default class Header extends Vue {
 						align-items: center;
 						justify-content: center;
 						opacity: 0;
-						transition: opacity 0.3s;
+						// transition: opacity 0.3s;
 						pointer-events: none;
 						&.active {
 							opacity: 1;

@@ -85,7 +85,7 @@ export default class Manager extends Vue {
 	active2Index=0
 	activeName='1'
 	swiperOptions1: any = {
-		speed: 500,
+		speed: 1000,
 		spaceBetween: 22,
 		slidesPerView: 3,
 		slidesPerGroup: 3,

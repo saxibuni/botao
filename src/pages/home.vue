@@ -586,7 +586,7 @@ export default home;
 			justify-content: space-between;
 			height: 50px;
 			z-index: 99;
-			padding: 0 50px;
+			padding: 0 80px;
 			.prev,
 			.next {
 				cursor: pointer;
@@ -2185,6 +2185,9 @@ export default home;
 				color: #000;
 				span {
 					color: #ec5400;
+					font-family: 'Gilroy-Bold';
+					width: 95px;
+					display: inline-block;
 				}
 			}
 			div {

@@ -2,6 +2,13 @@ $designWidth: 1920;
 
 html {
   font-size: calc(100vw / #{$designWidth} * 100);
+	min-width: 1440px;
+}
+
+@media (max-width: 1440px) {
+	html {
+		font-size: 75px;
+	}
 }
 
 ///超过1920px使用1920适配
