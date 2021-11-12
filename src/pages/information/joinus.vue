@@ -250,6 +250,17 @@ html {
 				animation-fill-mode: forwards;
 			}
 		}
+		.xr,.yongr,.yur,.lr,.info{
+			.img-box{
+				overflow: hidden;
+				img{
+					transition:all .3s;
+				}
+				&:hover img{
+					transform: scale($imgScale);
+				}
+			}
+		}
 	}
 }
 .join-us {

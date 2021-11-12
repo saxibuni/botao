@@ -46,11 +46,6 @@ export default class Brand extends Vue {
 	height: number = 0;
 	isActive = 7;
 	bannerActive = 0;
-	BannerData = {
-		imgUrl: require('../../assets/bg_g1_banner.jpg'),
-		cn: '波涛品牌',
-		en: 'ABOUT BOTAOGROUP'
-	};
 	asideNav = ['波涛品牌', '品牌数据', '核心价值观', '发展历程', '荣誉资质', '社会责任', '联系我们'];
 	nav = ['荣誉证书', '研发专利'];
 	btBrandArr = ['壹澜建材', '九衡堂', '锦沁建筑劳务', '繁构国际设计', '汇海船舶', '锦悦建设', '波涛家庭装饰', '波澜管理', '波涛装饰家居', '波涛简嘉公寓', '波涛商学院', '波涛软装'];
