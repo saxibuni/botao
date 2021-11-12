@@ -387,7 +387,6 @@ export default CaseList;
 						left: 0;
 						width: 50px;
 						height: 50px;
-						transform: rotate(180deg);
 					}
 				}
 			}
