@@ -4,7 +4,6 @@ import Pagination from 'root/components/pagination.vue';
 import Button from 'root/components/button.vue';
 import ShangHaiMap from 'root/components/shanghaimap.vue';
 import ICountUp from 'root/components/countup.vue';
-import Prop from 'root/components/popup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
 
 @Component({
@@ -14,7 +13,6 @@ import VideoPopup from 'root/components/videoPopup.vue';
 		Button,
 		ShangHaiMap,
 		ICountUp,
-		Prop,
 		VideoPopup
 	}
 })

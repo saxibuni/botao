@@ -6,7 +6,7 @@
 				<h2>SEARCH RESULTS</h2>
 				<div>
 					<i @click="onSearch()"></i>
-					<input type="text" @keyup.13="onSearch()" placeholder="请输入搜索内容" />
+					<input type="text" v-model="keyword" @keyup.13="onSearch()" placeholder="请输入搜索内容" />
 				</div>
 				<p>
 					以为您找到

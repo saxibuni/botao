@@ -94,7 +94,7 @@
 								<div class="imgBox">
 									<img src="~assets/bg_d3_part5_pic1.jpg" alt="" />
 									<div>
-										<img src="~assets/ic_c2_play.png" alt="" />
+										<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
 										<p>电验收-导线铺设</p>
 									</div>
 								</div>
@@ -214,6 +214,7 @@
 					</div>
 				</div>
 			</div>
+			<VideoPopup :videoPop="videoPop"></VideoPopup>
 		</div>
 	</div>
 </template>
@@ -501,12 +502,12 @@ export default Manager;
 									height: 12px;
 									border: 2px solid #eb551d;
 									border-radius: 50%;
-									transition: all .3s;
+									transition: all 0.3s;
 								}
 								&:hover {
 									color: #eb551d;
 								}
-								&:hover span{
+								&:hover span {
 									background: #ec5a24;
 								}
 							}
@@ -747,6 +748,11 @@ export default Manager;
 							img {
 								width: 60px;
 								height: 60px;
+								transition: all 0.3s;
+								&:hover {
+									cursor: pointer;
+									transform: scale($imgScale);
+								}
 							}
 							p {
 								font-size: 18px;

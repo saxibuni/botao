@@ -34,8 +34,10 @@ export default class search extends Vue {
 	onSearchFUn() {
 		if (this.searchShow) {
 			(<any>this.$refs)['search'].focus();
+			document.querySelector('body').setAttribute('class', 'over-hide');
 		} else {
 			(<any>this.$refs)['search'].blur();
+			document.querySelector('body').removeAttribute('class');
 		}
 	}
 	keyword='';
