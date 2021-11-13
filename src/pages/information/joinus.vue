@@ -8,7 +8,7 @@
 					<br />
 					任人唯贤有为有位
 				</h2>
-				<h4>Talent concept</h4>
+				<h4>TANLENT CONCEPT</h4>
 			</div>
 			<div class="right wow">
 				<p>选贤举能，贤者必上进,能者有前途。波涛引进德才兼备的贤者，为每一位真正能为企业发展做出贡献的员工提供尽情发挥的舞台,个人的付出和收获、能力和地位必定成正比</p>
@@ -250,13 +250,17 @@ html {
 				animation-fill-mode: forwards;
 			}
 		}
-		.xr,.yongr,.yur,.lr,.info{
-			.img-box{
+		.xr,
+		.yongr,
+		.yur,
+		.lr,
+		.info {
+			.img-box {
 				overflow: hidden;
-				img{
-					transition:all .3s;
+				img {
+					transition: all 0.3s;
 				}
-				&:hover img{
+				&:hover img {
 					transform: scale($imgScale);
 				}
 			}
@@ -303,11 +307,11 @@ html {
 			// overflow: visible !important;
 			padding: 60px;
 		}
-		.swiper-wrapper{
-			>div{
-				transition: all .3s;
-				>div{
-				transition: all .3s;
+		.swiper-wrapper {
+			> div {
+				transition: all 0.3s;
+				> div {
+					transition: all 0.3s;
 				}
 			}
 		}
@@ -315,11 +319,10 @@ html {
 			transition: all 0.3s;
 			overflow: inherit;
 			transform: scale(1);
-
 		}
 		.swiper-slide-active {
 			transform: scale(1.1);
-			transition: all .3s;
+			transition: all 0.3s;
 			.img-box {
 				position: relative;
 				img {
@@ -345,6 +348,10 @@ html {
 					transform: rotate(180deg);
 				}
 			}
+		}
+		.swiper-slide-next {
+			position: relative;
+			z-index: -1 !important;
 		}
 		.img-box {
 			position: relative;
@@ -526,7 +533,7 @@ html {
 						height: 20px;
 						background: url(~assets/icons/ic_f4_time.png) no-repeat;
 						background-size: 100%;
-						&:nth-of-type(2){
+						&:nth-of-type(2) {
 							background-image: url(~assets/icons/ic_f4_user.png);
 						}
 					}

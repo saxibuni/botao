@@ -107,7 +107,7 @@
 					<div class="box" v-for="(item, i) in page3Data" :key="i" @mouseover="fn(i)" @mouseout="fn(-1)"></div>
 				</div>
 			</div>
-			<!-- <img src="~assets/bg_e2_part3_00.png" alt="" /> -->
+			<img src="~assets/bg_e2_part3_00.png" alt="" />
 		</div>
 
 		<div class="page4">
@@ -566,25 +566,32 @@ export default CheckPick;
 					}
 					transform: rotate(-68.5deg) skewY(68.5deg);
 					&:nth-of-type(2) {
-						transform: rotate(-47.9deg) skewY(69.2deg);
+						transform: rotate(-45.8deg) skewY(68.2deg);
+						transform-origin: 652px 702px;
 					}
 					&:nth-of-type(3) {
-						transform: rotate(-25.9deg) skewY(69deg);
+						transform: rotate(-23.4deg) skewY(68.5deg);
+						transform-origin: 646px 730px;
 					}
 					&:nth-of-type(4) {
-						transform: rotate(-3.5deg) skewY(68.5deg);
+						transform: rotate(-1deg) skewY(68.5deg);
+						transform-origin: 645px 1845px;
 					}
 					&:nth-of-type(5) {
-						transform: rotate(19.6deg) skewY(68.5deg);
+						transform-origin: 643px 632px;
+						transform: rotate(22deg) skewY(68.5deg);
 					}
 					&:nth-of-type(6) {
-						transform: rotate(43deg) skewY(68deg);
+						transform-origin: 641px 663px;
+						transform: rotate(44.7deg) skewY(68.5deg);
 					}
 					&:nth-of-type(7) {
-						transform: rotate(66.5deg) skewY(68deg);
+						transform-origin: 641px 674px;
+						transform: rotate(67.4deg) skewY(68.3deg);
 					}
 					&:nth-of-type(8) {
-						transform: rotate(89.8deg) skewY(68.2deg);
+						transform-origin: 641px 680px;
+						transform: rotate(90deg) skewY(68.3deg);
 					}
 				}
 			}
@@ -836,7 +843,7 @@ export default CheckPick;
 				// height: 976px;
 				width: 1329px;
 				height: 1329px;
-				background: #eeeeee;
+				// background: #eeeeee;
 				// background: #eb551d;
 				position: absolute;
 				border-radius: 50%;
@@ -1148,7 +1155,6 @@ export default CheckPick;
 						transition: 0.3s;
 						z-index: -1;
 						animation: scale 2s infinite;
-
 					}
 					&::after {
 						content: '';
@@ -1164,7 +1170,6 @@ export default CheckPick;
 						z-index: -2;
 						border-radius: 50%;
 						animation: scale2 2s infinite;
-
 					}
 
 					@keyframes animated-background {
@@ -1177,8 +1182,26 @@ export default CheckPick;
 							height: 70px;
 						}
 					}
-					@keyframes scale{0%{ transform:translate(-50%, -50%) scale(1) ; opacity:.9}100%{ transform:translate(-50%, -50%) scale(4); opacity: 0;}}
-					@keyframes scale2{0%{ transform:translate(-50%, -50%) scale(1) ;opacity:.9;}100%{ transform:translate(-50%, -50%) scale(6);opacity:0;}}
+					@keyframes scale {
+						0% {
+							transform: translate(-50%, -50%) scale(1);
+							opacity: 0.9;
+						}
+						100% {
+							transform: translate(-50%, -50%) scale(4);
+							opacity: 0;
+						}
+					}
+					@keyframes scale2 {
+						0% {
+							transform: translate(-50%, -50%) scale(1);
+							opacity: 0.9;
+						}
+						100% {
+							transform: translate(-50%, -50%) scale(6);
+							opacity: 0;
+						}
+					}
 				}
 				> p {
 					font-size: 18px;

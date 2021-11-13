@@ -49,6 +49,7 @@
 					<swiper-slide v-for="(item, i) in 3" :key="i">
 						<img src="~assets/bg_b2_part2.jpg" alt="" />
 						<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
+						<img src="~assets/bg_b2_part2_mask.png" alt="" />
 					</swiper-slide>
 				</swiper>
 				<div class="swiper-pagination"></div>
@@ -239,10 +240,16 @@ export default CaseDetail;
 					left: 50%;
 					transform: translate(-50%, -80%);
 					transition: all 0.3s;
+					z-index: 1;
 					&:hover {
 						cursor: pointer;
 						transform: translate(-50%, -80%) scale($imgScale);
 					}
+				}
+				&:nth-of-type(3) {
+					position: absolute;
+					top: 0;
+					left: 0;
 				}
 			}
 			.swiper-container {
@@ -315,6 +322,7 @@ export default CaseDetail;
 					font-size: 22px;
 					color: #ea551c;
 					margin-top: 15px;
+					z-index: 1;
 				}
 				&:nth-of-type(3) {
 					font-size: 18px;
