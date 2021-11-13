@@ -7,7 +7,6 @@
 		<ul class="data-list">
 			<li class="item" v-for="item in data" :class="[item.id, {'active': item.id == currentSelectId}]" :key="item.id">
 				<i></i>
-				<img src="" alt="">
 				<span class="county">{{ item.name }}</span>
 				<span class="info">{{ `（在建${item.value}套）` }}</span>
 			</li>
@@ -57,6 +56,7 @@ export default ShangHaiMap;
 				height: 40px;
 				background: url('~assets/icons/ic_d2_house1.png') no-repeat;
 				background-size: 100% 100%;
+				flex-shrink: 1;
 			}
 			.county {
 				margin-top: 8px;
