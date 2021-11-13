@@ -107,7 +107,7 @@
 					<div class="box" v-for="(item, i) in page3Data" :key="i" @mouseover="fn(i)" @mouseout="fn(-1)"></div>
 				</div>
 			</div>
-			<img src="~assets/bg_e2_part3_00.png" alt="" />
+			<!-- <img src="~assets/bg_e2_part3_00.png" alt="" /> -->
 		</div>
 
 		<div class="page4">
@@ -344,7 +344,7 @@ export default CheckPick;
 						border: 1px solid rgba(235, 85, 29, 0);
 						margin-right: 28px;
 						cursor: pointer;
-						transition: all .3s;
+						transition: all 0.3s;
 						&::before {
 							content: '';
 							width: 44px;
@@ -373,7 +373,7 @@ export default CheckPick;
 					color: #000000;
 					&:hover,
 					&.active {
-						color:#eb551d;
+						color: #eb551d;
 						i {
 							background: transparent;
 							border: 1px solid rgba(235, 85, 29, 0.3);
@@ -560,11 +560,11 @@ export default CheckPick;
 					background-color: transparent;
 					margin-top: -20px;
 					margin-left: 42px;
-					transform-origin: right bottom;
+					transform-origin: 655px bottom;
 					&:hover {
 						cursor: pointer;
 					}
-					transform: rotate(-69.5deg) skewY(69.5deg);
+					transform: rotate(-68.5deg) skewY(68.5deg);
 					&:nth-of-type(2) {
 						transform: rotate(-47.9deg) skewY(69.2deg);
 					}
@@ -836,7 +836,7 @@ export default CheckPick;
 				// height: 976px;
 				width: 1329px;
 				height: 1329px;
-				// background: #eeeeee;
+				background: #eeeeee;
 				// background: #eb551d;
 				position: absolute;
 				border-radius: 50%;
