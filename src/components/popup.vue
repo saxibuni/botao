@@ -65,7 +65,7 @@ export default class popup extends Vue {
 		top: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.1);
 		z-index: 999;
 	}
 	display: flex;

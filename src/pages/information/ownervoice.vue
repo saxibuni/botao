@@ -511,7 +511,7 @@ html {
 		}
 	}
 	.popup {
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0.1);
 		.text {
 			width: 500px;
 			height: 500px;
