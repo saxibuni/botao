@@ -134,7 +134,7 @@ export default class home extends Vue {
 	portraitListSize = 35;
 	portraitListIndex = 0;
 	portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
-	applyFlip: boolean = false;
+	applyFlipType: number = 0;
 	isShowLightImg: boolean = true;
 
 	page5List = [
@@ -366,13 +366,13 @@ export default class home extends Vue {
 	}
 
 	onPortraitListPrev() {
-		if (this.applyFlip) return;
+		if (this.applyFlipType) return;
 		if (this.portraitListIndex == 0) return;
 		this.getPreparePortraitList(false);
 
-		this.applyFlip = true;
+		this.applyFlipType = 2;
 		setTimeout(() => {
-			this.applyFlip = false;
+			this.applyFlipType = 0;
 			this.portraitListIndex--;
 			this.getCurrentPortraitList();
 		}, 600);
@@ -381,13 +381,13 @@ export default class home extends Vue {
 	}
 
 	onPortraitListNext() {
-		if (this.applyFlip) return;
+		if (this.applyFlipType) return;
 		if (this.portraitListIndex == this.portraitTotalPages - 1) return;
 		this.getPreparePortraitList();
 
-		this.applyFlip = true;
+		this.applyFlipType = 1;
 		setTimeout(() => {
-			this.applyFlip = false;
+			this.applyFlipType = 0;
 			this.portraitListIndex++;
 			this.getCurrentPortraitList();
 		}, 600);

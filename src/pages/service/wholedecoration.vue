@@ -378,7 +378,7 @@ export default WholeDecoration;
 					p {
 						width: 100%;
 						font-size: 18px;
-						font-weight: 400;
+						font-weight: 700;
 						color: #ffffff;
 						line-height: 1;
 						text-align: center;
@@ -723,7 +723,7 @@ export default WholeDecoration;
 				.text {
 					h4 {
 						font-size: 24px;
-						font-weight: 400;
+						font-weight: 700;
 						color: #000000;
 						margin-bottom: 18px;
 						margin-top: 10px;

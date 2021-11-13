@@ -12,7 +12,7 @@ export default class JoinUs extends Vue {
 	BannerData = {
 		imgUrl: require('../../assets/bg_f4_banner.jpg'),
 		cn: '招贤纳士',
-		en: 'JOIn US'
+		en: 'JOIN US'
 	};
 	imgList = [
 		require('../../assets/bg_f4_pic1.jpg'),
@@ -164,10 +164,10 @@ export default class JoinUs extends Vue {
 			prevEl: '.ju-pre',
 			nextEl: '.ju-next'
 		},
-		// autoplay: {
-		// 	delay: 3000,
-		// 	disableOnInteraction: false
-		// }
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		}
 	};
 	getMore() {
 		this.jobShowFlag=9

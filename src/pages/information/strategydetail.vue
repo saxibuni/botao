@@ -185,22 +185,22 @@ html {
 				font-size: 16px;
 				i {
 					margin: 0 10px;
-					width: 18px;
-					height: 18px;
+					width: 18Px;
+					height: 18Px;
 					// cursor: pointer;
 					background: url(~assets/icons/iconlist.png) no-repeat;
 					&:nth-child(1) {
 						position: relative;
-						width: 17px;
-						height: 17px;
+						width: 17Px;
+						height: 17Px;
 						background: url(~assets/icons/ic_f3_part2_share.png) no-repeat;
 						// background-size: 100%;
 					}
 					&:nth-child(2) {
 						position: relative;
 						cursor: pointer;
-						width: 28px;
-						height: 25px;
+						width: 28Px;
+						height: 25Px;
 						margin-left: 40px;
 						background-position: 48% 20%;
 						transition: all 0.3s;
@@ -212,8 +212,8 @@ html {
 						cursor: pointer;
 
 						position: relative;
-						width: 28px;
-						height: 25px;
+						width: 28Px;
+						height: 25Px;
 						background-position: 9% 19%;
 						transition: all 0.3s;
 						> div {
@@ -243,8 +243,8 @@ html {
 					&:nth-child(4) {
 						cursor: pointer;
 						display: flex;
-						width: 28px;
-						height: 25px;
+						width: 28Px;
+						height: 25Px;
 						background-position: 83% 20%;
 						transition: all 0.3s;
 						a {
@@ -261,7 +261,7 @@ html {
 			margin-top: 60px;
 			margin-bottom: 111px;
 			text-align: center;
-			line-height: 36px;
+			line-height: 44px;
 			font-size: 22px;
 			font-weight: 400;
 			color: #666666;
@@ -303,13 +303,14 @@ html {
 		}
 		h3 {
 			font-size: 32px;
-			font-weight: 400;
+			font-weight: 600;
 			color: #000000;
 			line-height: 1;
 			&:nth-of-type(2) {
 				margin-bottom: 16px;
 			}
 			&:nth-of-type(3) {
+				font-weight: 400;
 				font-size: 22px;
 				font-family: Athene;
 			}

@@ -117,7 +117,7 @@
 		</div>
 		<div class="info">
 			<h2 class="wow">招聘信息</h2>
-			<h3 class="wow">recruitment information</h3>
+			<h3 class="wow">RECREITMENT INFORMATION</h3>
 			<ul>
 				<li class="wow" v-for="(v, i) in jobList" v-show="i < jobShowFlag" :key="i" :style="{ 'animation-delay': 0.03 * i + 0.03 + 's' }">
 					<h2>{{ v.name }}</h2>
@@ -139,7 +139,7 @@
 			<h4 class="wow">人力资源部</h4>
 			<p class="wow">
 				<i></i>
-				13681921483（微信同号）
+				 <span>13681921483</span> （微信同号）
 			</p>
 			<p class="wow">
 				<i></i>
@@ -147,7 +147,7 @@
 			</p>
 			<div class="out-box wow">
 				<div class="img-box">
-					<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+					<img src="~assets/ic_f4_part8_qa.jpg" alt="" />
 				</div>
 			</div>
 			<p class="wow">扫码咨询</p>
@@ -278,6 +278,7 @@ html {
 				font-size: 69px;
 				color: #000000;
 				line-height: 82px;
+				font-weight: 600;
 			}
 			h4 {
 				margin-top: 46px;
@@ -502,6 +503,7 @@ html {
 			line-height: 1;
 		}
 		h2 {
+			font-weight: 600;
 			font-size: 48px;
 		}
 		h3 {
@@ -606,6 +608,7 @@ html {
 		h4 {
 			margin-top: 103px;
 			text-align: center;
+			font-weight: 600;
 			font-size: 34px;
 			line-height: 1;
 		}
@@ -624,7 +627,8 @@ html {
 				background-size: 100%;
 			}
 			&:nth-of-type(1) {
-				i {
+				span{
+					font-family: AlibabaPuHuiTiR;
 				}
 			}
 			&:nth-of-type(2) {

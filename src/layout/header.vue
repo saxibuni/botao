@@ -441,9 +441,14 @@ export default class Header extends Vue {
 									height: 35px;
 									margin-bottom: 15px;
 									text-align: center;
+									position: relative;
 									img {
 										max-width: 48px;
 										margin: 0 auto;
+										position: absolute;
+										left: 50%;
+										top: 50%;
+										transform: translate(-50%,-50%);
 									}
 								}
 							}

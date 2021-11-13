@@ -128,7 +128,7 @@
 								</div>
 							</div>
 							<div class="text">
-								<p>“</p>
+								<p><i></i></p>
 								<h5>设计源于生活，细节成就品质，人为的设计生活方式，创造更美好的生活状态。</h5>
 								<Button text="了解设计师" @click.native="$router.push({name:'design-detail'})"></Button>
 							</div>
@@ -764,6 +764,15 @@ export default SoftDecoration;
 						font-weight: 400;
 						color: #dbdbdb;
 						line-height: 1;
+						margin: 0 0 23px 0;
+						i{
+							display: block;
+							margin: 0 auto;
+							width: 17px;
+							height: 15px;
+							background: url('~assets/icons/ic_e3_part4_yin.png') no-repeat center center;
+							background-size: 17px auto;
+						}
 					}
 					h5 {
 						font-size: 18px;
@@ -1005,14 +1014,17 @@ export default SoftDecoration;
 				position: absolute;
 				background: rgba(0, 0, 0, 0.2);
 				pointer-events: none;
+				z-index: 1;
 			}
 			ul {
 				display: flex;
+
 				li {
 					width: calc(100% / 6);
 					border-right: 2px solid rgba(255, 255, 255, 0.2);
 					height: 735px;
 					position: relative;
+						z-index: 20;
 					cursor: pointer;
 					opacity: 0;
 					animation:slide-down-in 2s, fade-in 2s;

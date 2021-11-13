@@ -13,7 +13,7 @@ export default class StrategyDetail extends Vue {
 	BannerData = {
 		imgUrl: require('../../assets/strategybg.jpg'),
 		cn: '最新资讯',
-		en: 'Construction management'
+		en: 'CONSTRUCTION MANAGEMENT'
 	};
 	newsList = [
 		{

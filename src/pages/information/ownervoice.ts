@@ -16,7 +16,7 @@ export default class OwnerVoice extends Vue {
 	BannerData = {
 		imgUrl: require('../../assets/ownerbg.jpg'),
 		cn: '业主心声 ',
-		en: "Owner's voice"
+		en: "OWNER'S VOICE"
 	};
 	fhArr = [
 		{
