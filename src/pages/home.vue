@@ -2131,7 +2131,7 @@ export default home;
 					text-align: center;
 					cursor: pointer;
 					&.swiper-pagination-bullet-active {
-						border: none;
+						border: 2px solid transparent;
 						background: url('~assets/icons/bg_home_b5_half.png') no-repeat;
 						background-size: 100% 100%;
 					}

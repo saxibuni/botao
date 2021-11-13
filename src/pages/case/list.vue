@@ -382,7 +382,7 @@ export default CaseList;
 				cursor: pointer;
 				opacity: 1;
 				&.swiper-pagination-bullet-active {
-					border: none;
+					border: 2px solid transparent;
 					color: rgba(255, 255, 255, 1);
 					position: relative;
 					&::after {
