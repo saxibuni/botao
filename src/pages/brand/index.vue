@@ -473,12 +473,6 @@ html {
 				line-height: 1;
 			}
 		}
-		// 		>h2,>h3{
-		// 			font-size: 56px;
-		// font-weight: 400;
-		// color: #FFFFFF;
-		// line-height: 55px;
-		// 		}
 		.text {
 			position: absolute;
 			bottom: 323px;

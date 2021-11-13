@@ -19,7 +19,7 @@ export default class SoftDecoration extends Vue {
 		},
 		pagination: {
 			el: '.swiper-pagination2',
-			clickable: true
+			clickable: true,
 		},
 		navigation: {
 			nextEl: '.next',

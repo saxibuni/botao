@@ -2,13 +2,18 @@ import { Vue, Component } from 'vue-property-decorator';
 import Banner from 'root/components/banner.vue';
 import utils from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
+import VideoPopup from 'root/components/videoPopup.vue';
 @Component({
 	components: {
-		Banner
+		Banner,
+		VideoPopup
 	}
 })
 export default class Manager extends Vue {
 	bannerData = { cn: '施工管理', en: 'CONSTRUCTION MANAGEMENT', imgUrl: require('root/assets/bg_d3_banner.jpg') };
+	videoPop = {
+		isPop: false
+	};
 	page1Data = [
 		{
 			desc1: '开工前准备',
@@ -114,6 +119,9 @@ export default class Manager extends Vue {
 		if (Number(this.activeName) + i > 4) return;
 		if (Number(this.activeName) + i < 1) return;
 		this.activeName = String(Number(this.activeName) + i);
+	}
+	playVideo(i) {
+		this.videoPop.isPop = true;
 	}
 	mounted() {
 		this.restartWow();

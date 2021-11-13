@@ -241,6 +241,7 @@ export default class Footer extends Vue {
 					span {
 						color: #ed5400;
 						margin: 0 8px;
+						font-weight: 700;
 					}
 				}
 				li {

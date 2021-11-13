@@ -54,23 +54,23 @@
 								<ul>
 									<li>
 										<b>材料费：</b>
-										<span>54544</span>
+										<span>{{cost1}}</span>
 										<b>元</b>
 									</li>
 
 									<li>
 										<b>人工费：</b>
-										<span>15255</span>
+										<span>{{cost2}}</span>
 										<b>元</b>
 									</li>
 									<li>
 										<b>设计费：</b>
-										<span>5115</span>
+										<span>{{cost3}}</span>
 										<b>元</b>
 									</li>
 									<li>
 										<b>质检费：</b>
-										<span>3216</span>
+										<span>{{cost4}}</span>
 										<b>元</b>
 									</li>
 								</ul>
@@ -99,21 +99,66 @@ export default class CapitalRetention extends Vue {
 		area: ''
 	};
 	t:any;
-	count:any=0;
+	cost1:any=54544;
+	cost2:any=15255;
+	cost3:any=5115;
+	cost4:any=3216;
+
 	created() {
-    this.transCountFun(5000)
+		this.cost1Fun(54544)
+		this.cost2Fun(15255)
+		this.cost3Fun(6000)
+		this.cost4Fun(5000)
   }
-	transCountFun(max){
-    let stepNumber = 0
+	get count(){
+		return this.cost1+this.cost2+this.cost3+this.cost4
+	}
+	cost1Fun(max){
+		let stepNumber = 0
     this.t = setInterval(()=>{
-      stepNumber = 2000 + Math.floor((Math.random()*1000)+1)
+      stepNumber = stepNumber + 10000 + Math.floor((Math.random()*10000)+1)
       if(stepNumber >= max){
-        stepNumber = 0
+        stepNumber = 10156
       }
       let currentNumber = stepNumber
-			this.count = currentNumber;
+			this.cost1 = currentNumber;
     }, 300)
-  }
+	}
+	cost2Fun(max){
+		let stepNumber = 0
+    this.t = setInterval(()=>{
+      stepNumber = stepNumber + 800 + Math.floor((Math.random()*100)+1)
+      if(stepNumber >= max){
+        stepNumber = 4562
+      }
+      let currentNumber = stepNumber
+			this.cost2 = currentNumber;
+    }, 600)
+	}
+
+	cost3Fun(max){
+		let stepNumber = 0
+    this.t = setInterval(()=>{
+      stepNumber = stepNumber + 78 + Math.floor((Math.random()*100)+1)
+      if(stepNumber >= max){
+        stepNumber = 1199
+      }
+      let currentNumber = stepNumber
+			this.cost3 = currentNumber;
+    }, 600)
+	}
+	cost4Fun(max){
+		let stepNumber = 0
+    this.t = setInterval(()=>{
+      stepNumber = stepNumber + 70 + Math.floor((Math.random()*100)+1)
+      if(stepNumber >= max){
+        stepNumber = 50
+      }
+      let currentNumber = stepNumber
+			this.cost4 = currentNumber;
+    }, 600)
+	}
+
 	destroyed() {
 		clearInterval(this.t)
 	}
@@ -269,6 +314,8 @@ export default class CapitalRetention extends Vue {
 						span {
 							font-size: 35px;
 							color: rgba(237, 84, 0, 1);
+							width: 120px;
+							display: inline-block;
 						}
 					}
 					ul {
