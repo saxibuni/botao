@@ -1,6 +1,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Banner from 'root/components/banner.vue';
-
+import utils from 'root/utils';
+import { Events } from 'root/utils/EnumUtils';
 @Component({
 	components: {
 		Banner
@@ -116,5 +117,34 @@ export default class Manager extends Vue {
 	}
 	mounted() {
 		this.restartWow();
+
+		utils.emitter.$on(Events.RESIZE, this.onResize);
+	}
+
+	handleClick(tab, event) {
+		this.activeName = String(tab.index * 1 + 1);
+	}
+
+	///修复el-tab下环线位置
+	onResize() {
+		let underline = this.$el.querySelector<HTMLElement>('.el-tabs__active-bar');
+		let activeTab = this.$el.querySelector<HTMLElement>(`#tab-${this.activeName}`);
+		let offsetLeft = activeTab.offsetLeft;
+		let tabWidth = activeTab.clientWidth;
+
+		let tabStyles = window.getComputedStyle(activeTab);
+		let width = tabWidth - parseFloat(tabStyles.paddingLeft) - parseFloat(tabStyles.paddingRight);
+		let offsetX = offsetLeft + parseFloat(tabStyles.paddingLeft);
+		underline.style.transitionDuration = '0s';
+		underline.style.transform = `translateX(${offsetX}px)`;
+		underline.style.width = `${width}px`;
+
+		setTimeout(() => {
+			underline.style.transitionDuration = '';
+		});
+	}
+
+	beforeDestroy() {
+		utils.emitter.$off(Events.RESIZE, this.onResize);
 	}
 }

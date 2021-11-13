@@ -114,7 +114,7 @@
 				<div class="main">
 					<div class="left">
 						<div class="tab">
-							<el-tabs v-model="activeName">
+							<el-tabs v-model="activeName" @tab-click="handleClick">
 								<el-tab-pane name="1">
 									<span slot="label">
 										<img src="~assets/icons/ic_d3_part6_a2.png" alt="" v-if="activeName == 1" />
