@@ -91,10 +91,7 @@ export default class CheckPick extends Vue {
 	}
 	activeIndex=9
 	fn(i){
-		console.log(i);
-
 		this.activeIndex=7-i
-		console.log(this.activeIndex);
 
 	}
 	mounted() {
