@@ -87,12 +87,12 @@
 			<h2>绿色建材让家越住越健康</h2>
 			<p>Green building materials</p>
 			<div class="circle">
-				<div class="father" v-for="(item, i) in page3Data" :key="i">
+				<div class="father" v-for="(item, i) in page3Data" :key="i" :class="activeIndex == i ? 'active' + i : ''">
 					<div class="content">
 						<div class="container">
 							<div class="imgBox">
 								<img :src="item.imgUrl" alt="" />
-								<div class="mask" :class="activeIndex == i ? 'active3' : ''">
+								<div class="mask" :class="activeIndex == i ? 'activetext' : ''">
 									<p>层层鉴定</p>
 									<p>货真价实</p>
 								</div>
@@ -610,6 +610,7 @@ export default CheckPick;
 				overflow: hidden;
 				border-radius: 50%;
 				z-index: -1;
+				transition: all 0.3s;
 				img {
 					position: absolute;
 					z-index: 22;
@@ -653,11 +654,11 @@ export default CheckPick;
 					}
 					.text {
 						left: 415px;
-						top: 124px;
+						top: 130px;
 						transform: rotate(-90deg);
-						clip-path: ellipse(510px 510px at -117% 100%);
+						clip-path: ellipse(510px 510px at -116% 100%);
 						p {
-							left: 96px;
+							left: 100px;
 							top: 144px;
 						}
 					}
@@ -676,12 +677,12 @@ export default CheckPick;
 					}
 					.text {
 						left: 458px;
-						top: 130px;
+						top: 132px;
 						transform: rotate(-67deg);
 						clip-path: ellipse(510px 510px at -86% 152%);
 						p {
-							left: 102px;
-							top: 98px;
+							left: 104px;
+							top: 97px;
 						}
 					}
 				}
@@ -698,13 +699,14 @@ export default CheckPick;
 						transform: rotate(-45deg);
 					}
 					.text {
-						left: 478px;
-						top: 120px;
+						left: 464px;
+						top: 132px;
 						transform: rotate(-46deg);
-						clip-path: ellipse(510px 510px at -58% 187%);
+						clip-path: ellipse(510px 510px at -54% 185%);
+
 						p {
-							left: 82px;
-							top: 86px;
+							left: 102px;
+							top: 90px;
 						}
 					}
 				}
@@ -790,13 +792,14 @@ export default CheckPick;
 						transform: rotate(46deg);
 					}
 					.text {
-						left: 460px;
-						top: 130px;
-						transform: rotate(47deg);
-						clip-path: ellipse(510px 510px at 190% 141%);
+						left: 456px;
+						top: 133px;
+						transform: rotate(-3deg);
+						clip-path: ellipse(510px 510px at 76% 214%);
 						p {
-							left: 94px;
-							top: 88px;
+							transform: rotate(49deg);
+							left: 112px;
+							top: 82px;
 						}
 					}
 				}
@@ -826,6 +829,30 @@ export default CheckPick;
 						}
 					}
 				}
+			}
+			.active0 {
+				transform: rotate(68.3deg) scale(1.06);
+			}
+			.active1 {
+				transform: rotate(45.7deg) scale(1.06) !important;
+			}
+			.active2 {
+				transform: rotate(23.1deg) scale(1.06) !important;
+			}
+			.active3 {
+				transform: rotate(0.5deg) scale(1.06) !important;
+			}
+			.active4 {
+				transform: rotate(-22.1deg) scale(1.06) !important;
+			}
+			.active5 {
+				transform: rotate(-44.7deg) scale(1.06) !important;
+			}
+			.active6 {
+				transform: rotate(-67.3deg) scale(1.06) !important;
+			}
+			.active7 {
+				transform: rotate(-90deg) scale(1.06) !important;
 			}
 			.content {
 				overflow: hidden;
@@ -878,7 +905,7 @@ export default CheckPick;
 							}
 						}
 					}
-					.active3 {
+					.activetext {
 						// opacity: 1;
 						background-color: rgba(0, 0, 0, 0.8);
 						p {
@@ -1476,7 +1503,7 @@ export default CheckPick;
 					width: 131px;
 					height: 131px;
 					overflow: hidden;
-					box-shadow: 0 0 10px 1px rgba(19,33,50,.1) ;
+					box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 					img {
 						max-width: 100%;
 						transform: rotate(-45deg);
@@ -1613,7 +1640,7 @@ export default CheckPick;
 						width: 12px;
 						height: 12px;
 						background: transparent;
-						border: 2px solid #ACACAC;
+						border: 2px solid #acacac;
 						opacity: 1;
 						&.swiper-pagination-bullet-active {
 							border: 2px solid #eb551d !important;
@@ -1629,7 +1656,7 @@ export default CheckPick;
 					height: 16px;
 					background: url('~assets/icons/ic_e2_part7_left.png') no-repeat center center;
 					background-size: 9px 16px;
-					transition:transform 0.3s;
+					transition: transform 0.3s;
 					&:hover {
 						transform: scale(1.1);
 						background: url('~assets/icons/ic_e2_left2.png') no-repeat center center;
@@ -1642,7 +1669,7 @@ export default CheckPick;
 					height: 16px;
 					background: url('~assets/icons/ic_e2_part7_right.png') no-repeat center center;
 					background-size: 9px 16px;
-					transition:transform 0.3s;
+					transition: transform 0.3s;
 					&:hover {
 						transform: scale(1.1);
 						background: url('~assets/icons/ic_e2_right2.png') no-repeat center center;
