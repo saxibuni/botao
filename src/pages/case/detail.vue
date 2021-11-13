@@ -315,6 +315,7 @@ export default CaseDetail;
 					font-size: 22px;
 					color: #ea551c;
 					margin-top: 15px;
+					z-index: 1;
 				}
 				&:nth-of-type(3) {
 					font-size: 18px;
