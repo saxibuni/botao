@@ -105,7 +105,7 @@ export default class navLists extends Vue {
 </script>
 <style scoped lang="scss">
 .nav-list-wrap {
-	position: fixed;
+	position: absolute;
 	max-width: 1920px;
 	top: 0;
 	left: 50%;
