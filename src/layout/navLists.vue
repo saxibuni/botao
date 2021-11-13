@@ -126,7 +126,7 @@ export default class navLists extends Vue {
 	clip-path: ellipse(0 0 at 100% 0);
 
 	&.ie {
-		transform: translateX(-50%) translateY(-100%);
+		transform: translateX(-50%) translateY(-110%);
 		transition: transform .3s;
 	}
 	.logo {

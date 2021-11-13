@@ -4,11 +4,12 @@
 	</div>
 </template>
 <script lang="ts">
+import { device } from 'root/utils';
 import { Vue, Component } from 'vue-property-decorator';
 @Component
 export default class popup extends Vue {
 	created() {
-		document.querySelector('body').setAttribute('class', 'over-hide');
+		document.querySelector('body').setAttribute('class', 'over-hide' + (device.browser.ie ? 'ie' : ''));
 	}
 	destroyed() {
 		document.querySelector('body').removeAttribute('class');

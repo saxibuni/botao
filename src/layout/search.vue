@@ -26,6 +26,7 @@
 </template>
 
 <script lang="ts">
+import { device } from 'root/utils';
 import { Vue, Component, Watch } from 'vue-property-decorator';
 
 @Component
@@ -34,7 +35,7 @@ export default class search extends Vue {
 	onSearchFUn() {
 		if (this.searchShow) {
 			(<any>this.$refs)['search'].focus();
-			document.querySelector('body').setAttribute('class', 'over-hide');
+			document.querySelector('body').setAttribute('class', 'over-hide' + (device.browser.ie ? 'ie' : ''));
 		} else {
 			(<any>this.$refs)['search'].blur();
 			document.querySelector('body').removeAttribute('class');

@@ -54,18 +54,20 @@ html {
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		}
 		&.over-hide{
-				overflow: hidden;
-				padding-right: 4px;
-				.sidebar{
-					/* right: 4px; */
-					margin-left: 886px;
+			overflow: hidden;
+			padding-right: 4px;
+			.sidebar{
+				margin-left: 886px;
+			}
+			.header, .popup{
+				width: calc(100% - 4px);
+			}
+			&.ie {
+				padding-right: 0;
+				.header, .popup{
+					width: 100%;
 				}
-				.header{
-				  width: calc(100% - 4px);
-				}
-				.popup{
-				  width: calc(100% - 4px);
-				}
+			}
 		}
 	}
 
