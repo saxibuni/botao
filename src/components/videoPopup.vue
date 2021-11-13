@@ -39,8 +39,10 @@ export default class videoPopup extends Vue {
 .video-popup {
 	.video-box {
 		position: relative;
+		display: flex;
 		z-index: 11111;
 		opacity: 1;
+		background-color: #000;
 		video {
 			width: 958px;
 			height: 540px;

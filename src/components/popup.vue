@@ -55,7 +55,6 @@ export default class popup extends Vue {
 			transition: transform 0.3s ease, opacity 0.3s ease;
 		}
 		.img-box {
-			transform: translate(-50%, -50%) scale(1.2);
 			transition: transform 0.3s ease, opacity 0.3s ease;
 		}
 	}

@@ -156,32 +156,33 @@ export default class Brand extends Vue {
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
 			text: ['捐资援建中国最北部希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
-			time: '2009',
-			text: ['捐资援建中国最北部希望尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
-			time: '2009',
-			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
-			time: '2009',
-			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
-			time: '2009',
-			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
-			time: '2009',
-			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		}
+		,
+		// {
+		// 	imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+		// 	time: '2009',
+		// 	text: ['捐资援建中国最北部希望尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		// },
+		// {
+		// 	imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+		// 	time: '2009',
+		// 	text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		// },
+		// {
+		// 	imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+		// 	time: '2009',
+		// 	text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		// },
+		// {
+		// 	imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+		// 	time: '2009',
+		// 	text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		// },
+		// {
+		// 	imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
+		// 	time: '2009',
+		// 	text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
+		// }
 	];
 	devolopeList = [
 		{ time: '2001-2005', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },

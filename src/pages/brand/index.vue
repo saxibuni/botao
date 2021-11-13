@@ -1275,8 +1275,14 @@ html {
 						width: 327px;
 						height: 203px;
 						.inner {
+							position: relative;
+							display: flex;
+								width: 327px;
+								height: 203px;
 							overflow: hidden;
 							img {
+								position: absolute;
+								z-index: 111;
 								width: 327px;
 								height: 203px;
 								transition: all 0.3s;
