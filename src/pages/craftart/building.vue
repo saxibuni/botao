@@ -326,10 +326,14 @@ export default Building;
 					}
 				}
 				.line {
+					width: 1000px;
 					position: absolute;
-					right: 288px;
-					top: 117px;
+					right: 0px;
+					// left: -229px;
+					top: 118px;
 					display: flex;
+					justify-content: flex-end;
+					transform: translateX(-288px);
 					div {
 						height: 1px;
 						background-color: #eb551d;
