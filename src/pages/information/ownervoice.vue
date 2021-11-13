@@ -36,7 +36,7 @@
 										装修方案老人家看了都很满意，以复古风装修为主家里的墙纸大多是暖色调，满满的温馨祥祥和
 										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
-									<Button :text="'定制我的装修方案'"></Button>
+									<Button :text="'定制我的装修方案'" @click.native="$store.state.dialogVisible=true"></Button>
 									<div class="img-box">
 										<img src="~assets/ic_f1_part2_dou.png" />
 									</div>
@@ -542,6 +542,13 @@ html {
 					background-color: #fff;
 					background-image: url(~assets/icons/ic_home_menu_close.png);
 				}
+			}
+			.swiper-pagination-bullet{
+				background-color: transparent !important;
+				border-color: #ABABAB !important;
+			}
+			.swiper-pagination-bullet-active{
+				border-color: #ed5400 !important;
 			}
 }
 </style>

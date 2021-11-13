@@ -81,10 +81,10 @@ export default class OwnerVoice extends Vue {
 			clickable: true,
 			el: '.swiper-pagination'
 		},
-		// autoplay: {
-		// 	delay: 3000,
-		// 	disableOnInteraction: false
-		// },
+		autoplay: {
+			delay: 3000,
+			disableOnInteraction: false
+		},
 		on: {
 			slideChangeTransitionEnd: function() {
 				for (let i = 0; i <= this.slides.length - 1; i++) {
