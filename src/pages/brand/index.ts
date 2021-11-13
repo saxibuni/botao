@@ -294,8 +294,10 @@ export default class Brand extends Vue {
 
 	play() {
 		const v1 = document.querySelector<HTMLVideoElement>('#v1');
-		v1.play();
-		this.playFlag = !this.playFlag;
+		// console.dir(v1);
+
+		// v1.play();
+		// this.playFlag = !this.playFlag;
 	}
 
 	createDragger() {

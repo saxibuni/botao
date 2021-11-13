@@ -1061,6 +1061,7 @@ html {
 				background: #132132;
 				p {
 					line-height: 1;
+					@include line-clamp(2);
 					&:first-of-type {
 						font-size: 22px;
 					}
@@ -1523,6 +1524,9 @@ html {
 				}
 			}
 		}
+	}
+	#clickToPlay{
+		display: none !important;
 	}
 }
 </style>
