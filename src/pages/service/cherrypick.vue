@@ -1102,8 +1102,6 @@ export default CheckPick;
 							background: #ed6a38;
 							position: absolute;
 							left: 50%;
-							width: 40px;
-							height: 40px;
 							top: 50%;
 							transform: translate(-50%, -50%);
 							opacity: 0.2;
@@ -1115,14 +1113,11 @@ export default CheckPick;
 							background: #ed6a38;
 							position: absolute;
 							left: 50%;
-							width: 70px;
-							height: 70px;
 							top: 50%;
 							transform: translate(-50%, -50%);
 							opacity: 0.1;
 							z-index: -2;
 							border-radius: 50%;
-							animation: animated-background 1.5s infinite;
 						}
 					}
 					> div {
@@ -1144,29 +1139,32 @@ export default CheckPick;
 						background: #ffffff;
 						position: absolute;
 						left: 50%;
-						width: 40px;
-						height: 40px;
+						width: 10px;
+						height: 10px;
 						top: 50%;
 						transform: translate(-50%, -50%);
 						opacity: 0.2;
 						border-radius: 50%;
 						transition: 0.3s;
 						z-index: -1;
+						animation: scale 2s infinite;
+
 					}
 					&::after {
 						content: '';
 						background: #ffffff;
 						position: absolute;
 						left: 50%;
-						width: 70px;
-						height: 70px;
+						width: 10px;
+						height: 10px;
 						top: 50%;
 						transform: translate(-50%, -50%);
 						transition: 0.3s;
 						opacity: 0.1;
 						z-index: -2;
 						border-radius: 50%;
-						animation: animated-background 2.5s infinite;
+						animation: scale2 2s infinite;
+
 					}
 
 					@keyframes animated-background {
@@ -1179,6 +1177,8 @@ export default CheckPick;
 							height: 70px;
 						}
 					}
+					@keyframes scale{0%{ transform:translate(-50%, -50%) scale(1) ; opacity:.9}100%{ transform:translate(-50%, -50%) scale(4); opacity: 0;}}
+					@keyframes scale2{0%{ transform:translate(-50%, -50%) scale(1) ;opacity:.9;}100%{ transform:translate(-50%, -50%) scale(6);opacity:0;}}
 				}
 				> p {
 					font-size: 18px;

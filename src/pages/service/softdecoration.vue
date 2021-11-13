@@ -861,7 +861,6 @@ export default SoftDecoration;
 				display: flex;
 				position: relative;
 				flex-wrap: wrap;
-				cursor: pointer;
 				opacity: 0;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
