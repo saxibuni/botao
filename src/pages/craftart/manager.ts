@@ -121,7 +121,7 @@ export default class Manager extends Vue {
 		utils.emitter.$on(Events.RESIZE, this.onResize);
 	}
 
-	handleClick(tab, event) {
+	handleClick(tab) {
 		this.activeName = String(tab.index * 1 + 1);
 	}
 
