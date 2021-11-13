@@ -382,6 +382,7 @@ html {
 }
 .brand {
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	box-sizing: border-box;
 	video {
@@ -448,6 +449,7 @@ html {
 			vertical-align: middle;
 		}
 		.banner {
+			position: relative;
 			height: 970px;
 			img {
 				height: 100%;
@@ -521,8 +523,8 @@ html {
 	.aside-nav {
 		z-index: 99;
 		position: absolute;
-		top: 252px;
-		right: 80px;
+		right: 5%;
+		top: 3%;
 		font-size: 14px;
 		color: #fff;
 		line-height: 1;
