@@ -1041,6 +1041,7 @@ export default home;
 		background: #132234;
 		height: 1142px;
 		position: relative;
+		overflow: hidden;
 		> .left {
 			background: url('~assets/bg_home_b3_left.jpg') no-repeat;
 			background-size: cover;
@@ -1551,7 +1552,7 @@ export default home;
 			position: absolute;
 			z-index: 2;
 			top: 50%;
-			right: 73px;
+			right: 80px;
 			transform: translateY(-50%);
 			i {
 				display: block;
@@ -1855,32 +1856,22 @@ export default home;
 							&::before {
 								position: absolute;
 								content: '';
-								width: 30px;
-								height: 30px;
-								border: 1px solid #ed5400;
-								opacity: 0.3;
+								width: 8px;
+								height: 8px;
 								border-radius: 50%;
 								top: 50%;
 								left: 50%;
 								transform: translate(-50%, -50%);
+								animation: scale 2s infinite;
+								background: #ed5400;
 							}
 							&::before {
-								width: 30px;
-								height: 30px;
-								opacity: 0.13;
-								animation: animated-width 2.5s infinite;
+								animation: scale2 2s infinite;
 							}
 						}
-						@keyframes animated-width {
-							0% {
-								width: 30px;
-								height: 30px;
-							}
-							100% {
-								width: 65px;
-								height: 65px;
-							}
-						}
+ 						@keyframes scale{0%{ transform:translate(-50%, -50%) scale(1) ; opacity:.9}100%{ transform:translate(-50%, -50%) scale(3); opacity: 0;}}
+      		  @keyframes scale2{0%{ transform:translate(-50%, -50%) scale(1) ;opacity:.9;}100%{ transform:translate(-50%, -50%) scale(5);opacity:0;}}
+
 					}
 				}
 				.div1 {
