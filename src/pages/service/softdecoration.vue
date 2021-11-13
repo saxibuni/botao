@@ -104,7 +104,7 @@
 						<h2>莱茵半岛</h2>
 						<h3>现代风格 153㎡</h3>
 						<p>家庭氛围活泼友爱，收纳空间多，房屋整 洁干净，楼上空间是以居住为主，地下室 空间主要是活动娱乐空间。</p>
-						<Button text="案例详情"></Button>
+						<Button text="案例详情" @click.native="$router.push({name:'case-detail'})"></Button>
 					</div>
 				</div>
 				<div class="right wow">
@@ -118,7 +118,7 @@
 
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions">
-					<swiper-slide class="wow" v-for="(item, i) in 5" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<swiper-slide class="wow" v-for="(item, i) in 8" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="box" >
 							<div class="img-wrap">
 								<img src="~assets/bg_e3_part4_04.jpg" alt="" />
@@ -130,7 +130,7 @@
 							<div class="text">
 								<p>“</p>
 								<h5>设计源于生活，细节成就品质，人为的设计生活方式，创造更美好的生活状态。</h5>
-								<Button text="了解设计师"></Button>
+								<Button text="了解设计师" @click.native="$router.push({name:'design-detail'})"></Button>
 							</div>
 						</div>
 					</swiper-slide>
@@ -598,6 +598,12 @@ export default SoftDecoration;
 						margin-left: -25px;
 						background: url('~assets/icons/ic_home_b3_top_white.png') no-repeat center center;
 						background-size: 26px auto;
+						transition: transform .3s;
+						&:hover{
+							background: url('~assets/icons/ic_home_b3_top_orange.png') no-repeat center center;
+							background-size: 26px auto;
+							transform:scale(1.2)
+						}
 					}
 					.swiper2-button-next {
 						position: absolute;
@@ -605,10 +611,15 @@ export default SoftDecoration;
 						left: 50%;
 						width: 50px;
 						height: 50px;
-						background: url('~assets/icons/ic_home_b3_top_white.png') no-repeat center center;
+						background: url('~assets/icons/ic_home_b3_down_white.png') no-repeat center center;
 						margin-left: -25px;
 						background-size: 26px auto;
-						transform: rotate(180deg);
+						transition: transform .3s;
+						&:hover{
+							background: url('~assets/icons/ic_home_b3_down_orange.png') no-repeat center center;
+							background-size: 26px auto;
+							transform: scale(1.2)
+						}
 					}
 				}
 				.text {
@@ -776,13 +787,16 @@ export default SoftDecoration;
 				justify-content: center;
 				.swiper-pagination2 {
 					display: flex;
+						box-sizing: border-box;
 					margin: 0 30px;
 					.swiper-pagination-bullet {
+						box-sizing: border-box;
 						cursor: pointer;
 						border-radius: 0;
 						width: 12px;
 						height: 12px;
 						background: transparent;
+						opacity: 1;
 						border: 2px solid #ababab;
 						&.swiper-pagination-bullet-active {
 							border: 2px solid #eb551d !important;
@@ -796,24 +810,30 @@ export default SoftDecoration;
 					cursor: pointer;
 					width: 16px;
 					height: 16px;
-					background: url('~assets/icons/ic_e2_left1.png') no-repeat center center;
-					transition: 0.3s;
 					position: absolute;
 					left: 0;
+					background: url('~assets/icons/ic_e2_part7_left.png') no-repeat center center;
+					background-size: 9px 16px;
+					transition:transform 0.3s;
 					&:hover {
-						transform: scale(1.2);
+						transform: scale(1.1);
+						background: url('~assets/icons/ic_e2_left2.png') no-repeat center center;
+						background-size: 9px 16px;
 					}
 				}
 				.next {
 					width: 16px;
 					cursor: pointer;
 					height: 16px;
-					background: url('~assets/icons/ic_e2_right1.png') no-repeat center center;
-					transition: 0.3s;
 					position: absolute;
 					right: 0;
+					background: url('~assets/icons/ic_e2_part7_right.png') no-repeat center center;
+					background-size: 9px 16px;
+					transition:transform 0.3s;
 					&:hover {
-						transform: scale(1.2);
+						transform: scale(1.1);
+						background: url('~assets/icons/ic_e2_right2.png') no-repeat center center;
+						background-size: 9px 16px;
 					}
 				}
 			}

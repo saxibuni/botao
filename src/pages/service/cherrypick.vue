@@ -1583,7 +1583,8 @@ export default CheckPick;
 						width: 12px;
 						height: 12px;
 						background: transparent;
-						border: 2px solid #ababab;
+						border: 2px solid #ACACAC;
+						opacity: 1;
 						&.swiper-pagination-bullet-active {
 							border: 2px solid #eb551d !important;
 						}
@@ -1596,20 +1597,26 @@ export default CheckPick;
 					cursor: pointer;
 					width: 16px;
 					height: 16px;
-					background: #f7f7f7 url('~assets/icons/ic_e2_left1.png') no-repeat center center;
-					transition: 0.3s;
+					background: url('~assets/icons/ic_e2_part7_left.png') no-repeat center center;
+					background-size: 9px 16px;
+					transition:transform 0.3s;
 					&:hover {
-						transform: scale(1.2);
+						transform: scale(1.1);
+						background: url('~assets/icons/ic_e2_left2.png') no-repeat center center;
+						background-size: 9px 16px;
 					}
 				}
 				.next2 {
 					width: 16px;
 					cursor: pointer;
 					height: 16px;
-					background: #f7f7f7 url('~assets/icons/ic_e2_right1.png') no-repeat center center;
-					transition: 0.3s;
+					background: url('~assets/icons/ic_e2_part7_right.png') no-repeat center center;
+					background-size: 9px 16px;
+					transition:transform 0.3s;
 					&:hover {
-						transform: scale(1.2);
+						transform: scale(1.1);
+						background: url('~assets/icons/ic_e2_right2.png') no-repeat center center;
+						background-size: 9px 16px;
 					}
 				}
 			}

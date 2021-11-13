@@ -403,6 +403,7 @@ export default class Header extends Vue {
 						transform: translateX(-50%);
 						top: 111px;
 						width: 1920px;
+						min-width: 1440px;
 						height: 110px;
 						background: rgba(18, 33, 51, 0.85);
 						align-items: center;
@@ -460,6 +461,7 @@ export default class Header extends Vue {
 						top: 50%;
 						transform: translateY(-50%);
 						left: 0;
+						z-index: 999;
 					}
 				}
 			}
