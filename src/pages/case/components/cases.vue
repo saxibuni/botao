@@ -17,8 +17,10 @@
 						</div>
 						<div class="topRight">
 							<!-- <i @click="fn"></i> -->
-							<img src="~assets/icons/ic_b1_part3_like1.png" alt="" v-if="flag" @click="(flag = !flag), loveNum++" />
-							<img src="~assets/icons/ic_b1_part3_like2.png" alt="" v-else @click="(flag = !flag), loveNum--" />
+							<div>
+								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" @click="(flag = !flag), loveNum++" />
+								<img class="img" :class="{img2:!flag}" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), loveNum--" />
+							</div>
 							<p>{{ loveNum }}个喜欢</p>
 						</div>
 					</div>
@@ -148,11 +150,31 @@ export default class Caese extends Vue {
 						flex-direction: column;
 						align-items: center;
 						margin-top: 5px;
-						img {
+						div{
 							width: 26px;
 							height: 23px;
-							transition: all 0.3s;
+							position: relative;
+							transition: transform 0.3s;
+							img {
+								position: absolute;
+								left: 0;
+								top: 0;
+								width: 26px;
+								height: 23px;
+								transition: all 0.3s;
+								&.img{
+									clip-path: ellipse(0% 0% at 0% 100%);
+									z-index: 3;
+								}
+								&.img2{
+									clip-path: ellipse(140% 141% at 0% 100%);
+								}
+							}
+							&:hover{
+								transform: scale(1.1);
+							}
 						}
+
 						p {
 							margin-top: 10px;
 							font-size: 16px;

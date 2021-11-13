@@ -9,7 +9,7 @@
 					<input type="text" v-model="keyword" @keyup.13="onSearch()" placeholder="请输入搜索内容" />
 				</div>
 				<p>
-					以为您找到
+					已为您找到
 					<span>8</span>
 					条符合的结果
 				</p>
