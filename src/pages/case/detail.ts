@@ -1,10 +1,14 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Button from 'root/components/button.vue'
 import Cases from './components/cases.vue'
+import Prop from 'root/components/popup.vue';
+import VideoPopup from 'root/components/videoPopup.vue';
 @Component({
 	components: {
 		Button,
-		Cases
+		Cases,
+		Prop,
+		VideoPopup
 	}
 })
 export default class CaseDetail extends Vue {
@@ -43,6 +47,12 @@ export default class CaseDetail extends Vue {
 			prevEl: '.prev2'
 		}
 	};
+	videoPop = {
+		isPop: false
+	};
+	playVideo(i) {
+		this.videoPop.isPop = true;
+	}
 	mounted(){
 		this.restartWow();
 	}
