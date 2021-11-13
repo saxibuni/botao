@@ -530,6 +530,10 @@ html {
 			left: 50%;
 			transform: translate(-50%,-50%) scale(1.2);
 			z-index: 11111;
+			img{
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 	.close {
