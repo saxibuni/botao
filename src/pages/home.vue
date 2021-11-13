@@ -596,16 +596,25 @@ export default home;
 				width: 17px;
 				height: 34px;
 				background: url('~assets/icons/ic_home_banner_left.png') center center;
-				background-size: cover;
+				background-size: 17px 34px;
 				outline: none;
 				transition: transform 0.3s;
-				&:hover {
+			}
+			.prev{
+				&:hover{
+					background: url('~assets/icons/ic_f4_left2.png') center center;
+					background-size: 17px 34px;
 					transform: scale(1.2);
 				}
 			}
 			.next {
 				background: url('~assets/icons/ic_home_banner_right.png') center center;
-				background-size: cover;
+				background-size: 17px 34px;
+				&:hover {
+					background: url('~assets/icons/ic_f4_right2.png') center center;
+					background-size: 17px 34px;
+					transform: scale(1.2);
+				}
 			}
 		}
 		.form {
@@ -907,18 +916,25 @@ export default home;
 					width: 13px;
 					height: 25px;
 					background: url('~assets/icons/ic_home_banner_left.png') center center;
-					background-size: cover;
+					background-size: 13px 25px;
 					outline: none;
 					transition: transform 0.3s;
 					z-index: 2;
 					pointer-events: auto;
 					&:hover {
+						background: url('~assets/icons/ic_f4_left2.png') center center;
+						background-size: 13px 25px;
 						transform: scale(1.2);
 					}
 				}
 				.next2 {
 					background: url('~assets/icons/ic_home_banner_right.png') center center;
-					background-size: cover;
+					background-size: 13px 25px;
+					&:hover {
+						background: url('~assets/icons/ic_f4_right2.png') center center;
+						background-size: 13px 25px;
+						transform: scale(1.2);
+					}
 				}
 			}
 			.mask {
@@ -1024,7 +1040,9 @@ export default home;
 			align-items: center;
 			z-index: 2;
 			cursor: pointer;
+			transition: color .3s;
 			&:hover {
+				color: #ed5400;
 				i {
 					transform: translateX(4px);
 				}
@@ -1590,7 +1608,9 @@ export default home;
 			align-items: center;
 			z-index: 2;
 			cursor: pointer;
+			transition: color .3s;
 			&:hover {
+				color: #ed5400;
 				i {
 					transform: translateX(4px);
 				}
@@ -1746,7 +1766,9 @@ export default home;
 					align-items: center;
 					z-index: 1;
 					cursor: pointer;
+					transition: color .3s;
 					&:hover {
+						color: #ed5400;
 						i {
 							transform: translateX(4px);
 						}
@@ -2186,7 +2208,13 @@ export default home;
 					outline: none;
 					transition: transform 0.3s;
 					&:hover {
-						transform: scale(1.1);
+							transform: rotate(-90deg);
+							transform: scale(1.1);
+							&::after {
+							/* background: url('~assets/icons/ic_home_b3_down_orange.png') center; */
+							background-size: 100% 100%;
+							transform: rotate(-90deg);
+					}
 					}
 					&::after {
 						content: '';
@@ -2349,7 +2377,9 @@ export default home;
 				font-weight: bold;
 				color: #000000;
 				cursor: pointer;
+				transition: color .3s;
 				&:hover {
+					color: #ed5400;
 					i {
 						transform: translateX(4px);
 					}

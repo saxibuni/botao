@@ -338,8 +338,8 @@ export default CaseDetail;
 				}
 			}
 			.button-wrap {
-				// position: absolute;
-				// top: 558px;
+				width: 170px;
+				height: 53px;
 			}
 		}
 	}
@@ -458,6 +458,12 @@ export default CaseDetail;
 				&::after {
 					color: #aaaaaa;
 					font-size: 34px;
+					transition: all 0.3s;
+				}
+				&:hover {
+					&::after {
+						color: #eb551d !important;
+					}
 				}
 			}
 			.swiper-button-prev {
