@@ -262,6 +262,12 @@ export default CaseListVr;
 					width: 855px;
 					height: 520px;
 					overflow: hidden;
+					img {
+						transition: all 0.3s;
+						&:hover {
+							transform: scale($imgScale);
+						}
+					}
 				}
 				.content {
 					display: flex;
