@@ -2,7 +2,7 @@
 	<div class="case-detail">
 		<div class="crumbs">
 			<p>
-				<span>精选案例</span>
+				<span @click="$router.push('/case/list')">精选案例</span>
 				&nbsp;
 				<i></i>
 				&nbsp;
@@ -143,8 +143,10 @@ export default CaseDetail;
 				background-size: 100% 100%;
 			}
 			span {
+				transition: all 0.3s;
 				&:hover {
 					cursor: pointer;
+					color: #eb5518;
 				}
 			}
 		}
