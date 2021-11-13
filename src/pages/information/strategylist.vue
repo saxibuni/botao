@@ -6,22 +6,22 @@
 			<h2>装修攻略</h2>
 			<h3>DECORATION STRATIEGY</h3>
 			<div class="strategy-box">
-				<div class="strategy-left wow">
-					<div class="img-box" @click="$router.push({ name: 'strategy-detail' })">
+				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail' })">
+					<div class="img-box">
 						<img src="~assets/strategy1.jpg" />
 					</div>
 					<div class="info-box">
 						<div class="date">2021,Auguset,10</div>
 						<h4 class="title">看见这些灯，又想折腾折腾我家客厅了！</h4>
 						<p>优秀的灯光照明，赋予视觉上舒适体验瞬间提升整个居住空间的档次。不论是有主灯设计还是无主灯设计，通过照明方式与空间的相互配合,即可打造宜居温馨的家居氛围。</p>
-						<div class="more" @click="$router.push({ name: 'strategy-detail' })">
+						<div class="more">
 							More
 							<span></span>
 						</div>
 					</div>
 				</div>
 				<ul class="strategy-right wow">
-					<li v-for="(v, i) in stratiegyArr" :key="i">
+					<li v-for="(v, i) in stratiegyArr" :key="i" @click="$router.push({ name: 'strategy-detail' })">
 						<div class="img-box">
 							<img :src="v.imgUrl" />
 						</div>
@@ -29,7 +29,7 @@
 							<div class="date">{{ v.date }}</div>
 							<h4 class="title">{{ v.title }}</h4>
 							<p>{{ v.text }}</p>
-							<div class="more" @click="$router.push({ name: 'strategy-detail' })" @mouseenter="addClass(i, '.strategy-right')" @mouseleave="removeClass(i, '.strategy-right')">
+							<div class="more" @mouseenter="addClass(i, '.strategy-right')" @mouseleave="removeClass(i, '.strategy-right')">
 								More
 								<span></span>
 							</div>
@@ -40,15 +40,15 @@
 		</div>
 		<div class="list-box">
 			<ul class="list wow">
-				<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i">
-					<div class="img-box" @click="$router.push({ name: 'strategy-detail' })">
+				<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i" @click="$router.push({ name: 'strategy-detail' })" >
+					<div class="img-box">
 						<img :src="v.imgUrl" alt="" />
 					</div>
 					<div class="info-box">
 						<div class="date">{{ v.date }}</div>
 						<h4 class="title">{{ v.title }}</h4>
 						<p>{{ v.text }}</p>
-						<div class="more" @click="$router.push({ name: 'strategy-detail' })" @mouseenter="addClass(i, '.list')" @mouseleave="removeClass(i, '.list')">
+						<div class="more" @mouseenter="addClass(i, '.list')" @mouseleave="removeClass(i, '.list')">
 							More
 							<span></span>
 						</div>
