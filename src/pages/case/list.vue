@@ -76,6 +76,7 @@ export default CaseList;
 
 <style lang="scss">
 .case-list {
+	max-width: 1920px;
 	.title {
 		.left {
 			opacity: 0;
@@ -257,6 +258,7 @@ export default CaseList;
 		justify-content: flex-end;
 		width: 100%;
 		position: relative;
+		overflow: hidden;
 		> img {
 		}
 		.content {
