@@ -104,7 +104,7 @@ export default class navLists extends Vue {
 		}
 	];
 
-	mounted() {
+	created() {
 		this.isIE = device.browser.ie;
 	}
 }
