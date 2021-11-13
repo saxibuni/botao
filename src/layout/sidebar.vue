@@ -13,7 +13,7 @@
 				<i></i>
 				<p>预约设计</p>
 			</div>
-			<div @click="backUp">
+			<div @click="backUp" @mouseover="onBackUpMouseOver($event)">
 				<i></i>
 				<p>返回顶部</p>
 			</div>
@@ -24,6 +24,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { device } from 'root/utils';
+import { gsap } from "gsap";
 
 @Component
 export default class sidebar extends Vue {
@@ -39,6 +40,20 @@ export default class sidebar extends Vue {
 	}
 	created() {
 		this.isIE = device.browser.ie;
+	}
+
+	onBackUpMouseOver(event: MouseEvent) {
+		let target = (<HTMLElement>event.currentTarget).querySelector('i');
+		gsap.to(target, {
+      duration: 0.8,
+      overwrite: true,
+      keyframes: [
+        { y: -3 },
+        { y: 0 },
+        { y: -3 },
+				{ y: 0 }
+      ]
+    });
 	}
 }
 </script>
@@ -127,10 +142,12 @@ export default class sidebar extends Vue {
 				background: url('~assets/icons/ic_e1_part2_07.png') no-repeat center center;
 				background-size: auto 100%;
 				margin-bottom: 10px;
+				pointer-events: none;
 			}
 			p {
 				width: 100%;
 				text-align: center;
+				pointer-events: none;
 			}
 			&:nth-child(1) {
 				i {
