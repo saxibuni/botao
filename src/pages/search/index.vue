@@ -211,8 +211,6 @@ export default class Search extends Vue {
 			margin: 24px 0 40px 0;
 		}
 		div{
-			margin: 0 auto;
-			width: 600px;
 			position: relative;
 			input {
 				display: block;

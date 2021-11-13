@@ -2,7 +2,7 @@
 	<div class="case-detail">
 		<div class="crumbs">
 			<p>
-				<span>精选案例</span>
+				<span @click="$router.push('/case/list')">精选案例</span>
 				&nbsp;
 				<i></i>
 				&nbsp;
@@ -143,8 +143,10 @@ export default CaseDetail;
 				background-size: 100% 100%;
 			}
 			span {
+				transition: all 0.3s;
 				&:hover {
 					cursor: pointer;
+					color: #eb5518;
 				}
 			}
 		}
@@ -170,7 +172,7 @@ export default CaseDetail;
 						i {
 							width: 23px;
 							height: 23px;
-							background-size: 100% 100%;
+							background-size: 100% 100% !important;
 							margin: 5px 28px 0 0;
 						}
 						&:nth-of-type(1) {
@@ -213,7 +215,7 @@ export default CaseDetail;
 				i {
 					width: 33px;
 					height: 29px;
-					background-size: 100% 100%;
+					background-size: 100% 100% !important;
 					background: url('~assets/icons/ic_b2_part2_like2.png') no-repeat;
 				}
 				p {
@@ -274,7 +276,7 @@ export default CaseDetail;
 				margin-right: 40px;
 			}
 			.swiper-pagination {
-				width: 66px;
+				width: 70px;
 				height: 12px;
 				position: absolute;
 				left: 50%;

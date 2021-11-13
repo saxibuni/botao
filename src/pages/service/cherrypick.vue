@@ -1105,6 +1105,7 @@ export default CheckPick;
 				height: 100px;
 				cursor: pointer;
 				&:hover {
+					z-index: 999;
 					i {
 						background: #eb551d !important;
 						&::before {
@@ -1213,6 +1214,7 @@ export default CheckPick;
 					white-space: nowrap;
 					text-align: center;
 					margin-top: 25px;
+					position: relative;
 				}
 				> div {
 					opacity: 0;
@@ -1225,7 +1227,7 @@ export default CheckPick;
 					top: -28px;
 					min-height: 180px;
 					padding: 30px 37px;
-					background: #ffffff;
+					background: #fff;
 					&::before {
 						position: absolute;
 						width: 30px;

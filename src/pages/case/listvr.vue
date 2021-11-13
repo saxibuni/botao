@@ -103,7 +103,7 @@ export default CaseListVr;
 			h3 {
 				font-family: Gilroy-Bold;
 				font-size: 56px;
-				font-weight: bold;
+				font-weight: 400;
 				span {
 					color: #ed5400;
 				}
