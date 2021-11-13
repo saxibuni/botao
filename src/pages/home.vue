@@ -203,9 +203,12 @@
 			</div>
 			<div class="right wow">
 				<ul>
-					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`" :class="{ 'do-flip': applyFlip }">
-						<img :src="item" alt="" />
-						<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
+					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`" >
+						<div class="flip-box" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }">
+							<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
+							<img :src="item" alt="" />
+							<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
+						</div>
 					</li>
 				</ul>
 
@@ -1263,7 +1266,7 @@ export default home;
 		}
 		.right {
 			opacity: 0;
-			animation: slide-right-in 2.6s, fade-in 1s;
+			animation: slide-right-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 			flex: 1;
 			height: 1142px;
@@ -1287,24 +1290,46 @@ export default home;
 					cursor: pointer;
 					width: 134px;
 					height: 152px;
-					img {
+					// perspective: 1500px;
+					transform: rotateY(0);
+					.flip-box {
 						width: 100%;
 						height: 100%;
-						position: absolute;
-						top: 0;
-						left: 0;
-						transform: rotateY(0deg);
-						backface-visibility: hidden;
-						&:nth-child(2) {
-							transform: rotateY(180deg);
+						transform-style: preserve-3d;
+						img {
+							width: 100%;
+							height: 100%;
+							position: absolute;
+							top: 0;
+							left: 0;
+							transform: translateZ(67px);
+							backface-visibility: hidden;
+							&:nth-child(1) {
+								transform: rotateY(90deg) translateZ(67px);
+							}
+							&:nth-child(3) {
+								transform: rotateY(-90deg) translateZ(67px);
+							}
+						}
+
+						&.do-flip {
+							transition: transform .5s ease-in-out;
+							transform: rotateY(-90deg);
+						}
+						&.do-flip-reverse {
+							transition: transform .5s ease-in-out;
+							transform: rotateY(90deg);
 						}
 					}
-					&.do-flip {
+
+					@mixin flip-box($axis, $deg: 90deg) {
 						img {
-							transition: transform 0.5s ease-in-out;
-							transform: rotateY(180deg);
-							&:nth-child(2) {
-								transform: rotateY(0deg);
+							transform: translateZ($axis);
+							&:nth-child(1) {
+								transform: rotateY(90deg) translateZ($axis);
+							}
+							&:nth-child(3) {
+								transform: rotateY(-90deg) translateZ($axis);
 							}
 						}
 					}
@@ -1339,6 +1364,7 @@ export default home;
 						width: 134px;
 						height: 162px;
 					}
+
 					&:nth-child(6) {
 						left: 0;
 						top: 844px;
@@ -1351,6 +1377,10 @@ export default home;
 						width: 160px;
 						height: 195px;
 					}
+					&:nth-child(6), &:nth-child(7) {
+						@include flip-box(80px);
+					}
+
 					&:nth-child(8) {
 						top: -106px;
 						left: 144px;
@@ -1375,6 +1405,10 @@ export default home;
 						width: 187px;
 						height: 227px;
 					}
+					&:nth-child(8),&:nth-child(9),&:nth-child(10),&:nth-child(11) {
+						@include flip-box(93.5px);
+					}
+
 					&:nth-child(12) {
 						top: 844px;
 						left: 170px;
@@ -1387,6 +1421,10 @@ export default home;
 						width: 161px;
 						height: 195px;
 					}
+					&:nth-child(12),&:nth-child(13) {
+						@include flip-box(93.5px);
+					}
+
 					&:nth-child(14) {
 						top: -78px;
 						left: 341px;
@@ -1435,6 +1473,10 @@ export default home;
 						width: 124px;
 						height: 152px;
 					}
+					&:nth-child(14),&:nth-child(15),&:nth-child(16),&:nth-child(17),&:nth-child(18),&:nth-child(19),&:nth-child(20),&:nth-child(21) {
+						@include flip-box(62px);
+					}
+
 					&:nth-child(22) {
 						top: -104px;
 						left: 475px;
@@ -1471,11 +1513,15 @@ export default home;
 						width: 117px;
 						height: 142px;
 					}
+					&:nth-child(22),&:nth-child(23),&:nth-child(24),&:nth-child(25),&:nth-child(26),&:nth-child(27) {
+						@include flip-box(58.5px);
+					}
+
 					&:nth-child(28) {
 						top: 808px;
 						left: 475px;
-						width: 189px;
-						height: 231px;
+						width: 188px;
+						height: 230px;
 					}
 					&:nth-child(29) {
 						top: 1049px;
@@ -1483,6 +1529,10 @@ export default home;
 						width: 188px;
 						height: 230px;
 					}
+					&:nth-child(28),&:nth-child(29) {
+						@include flip-box(94px);
+					}
+
 					&:nth-child(30) {
 						top: 9px;
 						left: 602px;
@@ -1507,17 +1557,23 @@ export default home;
 						width: 178px;
 						height: 195px;
 					}
+					&:nth-child(28),&:nth-child(29),&:nth-child(30),&:nth-child(31) {
+						@include flip-box(89px);
+					}
+
 					&:nth-child(34) {
 						top: 808px;
 						width: 170px;
 						left: 674px;
 						height: 231px;
+						@include flip-box(85);
 					}
 					&:nth-child(35) {
 						top: 1049px;
 						width: 140px;
 						left: 674px;
 						height: 231px;
+						@include flip-box(70);
 					}
 				}
 			}
