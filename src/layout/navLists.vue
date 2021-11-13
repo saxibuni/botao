@@ -261,6 +261,10 @@ export default class navLists extends Vue {
 					transition: 0.3s;
 					cursor: pointer;
 					line-height: 46px;
+					transition: color .3s;
+					&:hover{
+						color: #ed5400;
+					}
 				}
 			}
 			b {
