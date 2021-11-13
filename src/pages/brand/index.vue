@@ -526,7 +526,7 @@ html {
 		z-index: 99;
 		position: absolute;
 		right: 5%;
-		top: 3%;
+		top: 20%;
 		font-size: 14px;
 		color: #fff;
 		line-height: 1;
