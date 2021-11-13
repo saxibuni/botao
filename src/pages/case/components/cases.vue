@@ -19,7 +19,11 @@
 							<!-- <i @click="fn"></i> -->
 							<div>
 								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" @click="(flag = !flag), loveNum++" />
-								<img class="img" :class="{img2:!flag}" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), loveNum--" />
+
+
+								<img v-if="!isIE" class="img" :class="{img2:!flag}" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), loveNum--" />
+								<img v-if="isIE&&!flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), loveNum--" />
+
 							</div>
 							<p>{{ loveNum }}个喜欢</p>
 						</div>
@@ -44,6 +48,8 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import Button from 'root/components/button.vue';
+import { device } from 'root/utils';
+
 @Component({
 	components: {
 		Button
@@ -52,6 +58,10 @@ import Button from 'root/components/button.vue';
 export default class Caese extends Vue {
 	loveNum = 2000;
 	flag = true;
+	isIE:boolean = false;
+	created() {
+		this.isIE = device.browser.ie;
+	}
 	@Prop({
 		required: false,
 		type: Object,

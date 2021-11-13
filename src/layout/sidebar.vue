@@ -1,5 +1,5 @@
 <template>
-	<div class="sidebar">
+	<div class="sidebar" :class="{sidebarie:isIE}">
 		<div>
 			<div>
 				<i></i>
@@ -23,9 +23,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { device } from 'root/utils';
 
 @Component
 export default class sidebar extends Vue {
+	isIE:boolean = false;
 	backUp() {
 		let top = document.documentElement.scrollTop || document.body.scrollTop;
 		const timeTop = setInterval(() => {
@@ -35,14 +37,15 @@ export default class sidebar extends Vue {
 			}
 		}, 10);
 	}
+	created() {
+		this.isIE = device.browser.ie;
+	}
 }
 </script>
 <style scoped lang="scss">
 @media (max-width: 1440px) {
 
 	body {
-
-
 		.sidebar{
 			right: 0;
 			left: auto!important;
@@ -66,6 +69,9 @@ export default class sidebar extends Vue {
 	z-index: 99;
 	left: 50%;
 	margin-left: 888px;
+	&.sidebarie{
+		margin-left: 890px!important;
+	}
 	> div {
 		div {
 			height: 85px;
