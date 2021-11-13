@@ -38,14 +38,34 @@ export default class sidebar extends Vue {
 }
 </script>
 <style scoped lang="scss">
+@media (max-width: 1440px) {
+
+	body {
+
+
+		.sidebar{
+			right: 0;
+			left: auto!important;
+			margin-left: 0!important;
+		}
+		&.over-hide{
+			.sidebar{
+				margin-left: 0;
+				right: 4px;
+			}
+		}
+	}
+
+}
 .sidebar {
 	position: fixed;
 	top: 50%;
-	right: 0;
 	transform: translateY(-50%);
 	width: 70px;
 	background: #122133;
 	z-index: 99;
+	left: 50%;
+	margin-left: 888px;
 	> div {
 		div {
 			height: 85px;

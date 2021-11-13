@@ -57,7 +57,8 @@ html {
 				overflow: hidden;
 				padding-right: 4px;
 				.sidebar{
-					right: 4px;
+					/* right: 4px; */
+					margin-left: 886px;
 				}
 				.header{
 				  width: calc(100% - 4px);
