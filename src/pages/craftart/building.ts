@@ -6,6 +6,7 @@ import ShangHaiMap from 'root/components/shanghaimap.vue';
 import ICountUp from 'root/components/countup.vue';
 import Prop from 'root/components/popup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
+
 @Component({
 	components: {
 		Banner,
@@ -41,5 +42,9 @@ export default class Building extends Vue {
 	}
 	mounted() {
 		this.restartWow();
+
 	}
+
+
+
 }
