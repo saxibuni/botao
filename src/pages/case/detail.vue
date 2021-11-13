@@ -338,8 +338,8 @@ export default CaseDetail;
 				}
 			}
 			.button-wrap {
-				// position: absolute;
-				// top: 558px;
+				width: 170px;
+				height: 53px;
 			}
 		}
 	}
