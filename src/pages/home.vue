@@ -63,6 +63,8 @@
 							</swiper-slide>
 						</swiper>
 					</div>
+
+				</div>
 					<transition name="fade">
 						<div class="text wow" v-if="page2Ani">
 							<h3>上海东方颐城</h3>
@@ -78,8 +80,6 @@
 							</div>
 						</div>
 					</transition>
-				</div>
-
 				<div class="swiper-wrap wow">
 					<swiper class="dswiper" :options="bannerSwiperOptions2">
 						<swiper-slide v-for="(item, i) in page2ImgSrcList" :key="i">
@@ -830,8 +830,8 @@ export default home;
 				z-index: 1;
 				box-sizing: border-box;
 				.imgs-wrap {
-					width: 1770px;
-					height: 910px;
+					width: 100%;
+					height: 100%;
 					position: relative;
 					background: #fff;
 					box-sizing: border-box;
@@ -849,65 +849,7 @@ export default home;
 						opacity: 1;
 					}
 				}
-				.text {
-					position: absolute;
-					top: 206px;
-					left: 100px;
-					transition: opacity 0.83s;
-					z-index: 50;
-					@include fade(0.25);
-					h3 {
-						height: 32px;
-						font-size: 34px;
-						font-weight: 400;
-						color: #ffffff;
-						opacity: 0;
-						animation: slide-down-in 1s forwards, fade-in 1s forwards;
-					}
-					h4 {
-						height: 17px;
-						font-size: 18px;
-						font-weight: 400;
-						color: #ffffff;
-						margin-right: 16px;
-						opacity: 0;
-						margin: 21px 0 51px 0;
-						animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
-					}
-					p {
-						width: 354px;
-						font-size: 18px;
-						font-weight: 400;
-						opacity: 0;
-						color: #ffffff;
-						line-height: 30px;
-						@include line-clamp(3);
-						max-height: 90px;
-						animation: slide-down-in 1s 0.4s forwards, fade-in 1s 0.4s forwards;
-					}
-					.btn-box {
-						width: 170px;
-						opacity: 0;
-						height: 53px;
-						margin-top: 60px;
-						animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
-						/deep/.btn {
-							&::after,
-							&::before {
-								width: 10px;
-								height: 10px;
-							}
-							&::after {
-								left: 5px;
-								top: 5px;
-							}
-							&::before {
-								right: 5px;
-								bottom: 5px;
-							}
-						}
-					}
-				}
+
 			}
 			.swiper-wrap {
 				position: absolute;
@@ -1011,7 +953,65 @@ export default home;
 				opacity: 0.8;
 			}
 		}
-
+	.text {
+					position: absolute;
+					top: 206px;
+					left: 100px;
+					transition: opacity 0.83s;
+					z-index: 50;
+					@include fade(0.25);
+					h3 {
+						height: 32px;
+						font-size: 34px;
+						font-weight: 400;
+						color: #ffffff;
+						opacity: 0;
+						animation: slide-down-in 1s forwards, fade-in 1s forwards;
+					}
+					h4 {
+						height: 17px;
+						font-size: 18px;
+						font-weight: 400;
+						color: #ffffff;
+						margin-right: 16px;
+						opacity: 0;
+						margin: 21px 0 51px 0;
+						animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
+					}
+					p {
+						width: 354px;
+						font-size: 18px;
+						font-weight: 400;
+						opacity: 0;
+						color: #ffffff;
+						line-height: 30px;
+						@include line-clamp(3);
+						max-height: 90px;
+						animation: slide-down-in 1s 0.4s forwards, fade-in 1s 0.4s forwards;
+					}
+					.btn-box {
+						width: 170px;
+						opacity: 0;
+						height: 53px;
+						margin-top: 60px;
+						animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
+						/deep/.btn {
+							&::after,
+							&::before {
+								width: 10px;
+								height: 10px;
+							}
+							&::after {
+								left: 5px;
+								top: 5px;
+							}
+							&::before {
+								right: 5px;
+								bottom: 5px;
+							}
+						}
+					}
+				}
 		.next {
 			height: 18px;
 			font-size: 18px;
