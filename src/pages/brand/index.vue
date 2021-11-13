@@ -23,6 +23,13 @@
 		</ul>
 		<div class="botao-brand select0">
 			<div class="left wow">
+				<div class="title-box">
+					<h2>
+						<span>12</span>
+						家集团子公司
+					</h2>
+					<p>100亿年产值目标  100年企业愿景</p>
+				</div>
 				<div class="img-box">
 					<img src="~assets/bg_g1_part2_logo.png" alt="" />
 				</div>
@@ -471,6 +478,7 @@ html {
 				margin-top: 24px;
 				font-size: 24px;
 				line-height: 1;
+				font-family: Athene;
 			}
 		}
 		.text {
@@ -551,6 +559,9 @@ html {
 			}
 			&.active {
 				color: #eb551c;
+				&::before{
+					background-color: #eb551c;
+				}
 			}
 			&:hover {
 				color: #eb5518;
@@ -566,8 +577,31 @@ html {
 		background: url(~assets/bg_g1_part2.jpg) no-repeat;
 		background-size: 100%;
 		.left {
+			position: relative;
 			display: flex;
 			align-items: center;
+			.title-box {
+				position: absolute;
+				top: 0px;
+				h2 {
+					font-size: 48px;
+					font-weight: bold;
+					color: rgba(0, 0, 0, 1);
+					line-height: 1;
+					span {
+						font-weight: Regular;
+						font-size: 50px;
+						color: rgba(235, 85, 29, 1);
+					}
+				}
+				p {
+					margin-top: 25px;
+					font-size: 24px;
+					font-weight: 400;
+					color: #000000;
+					line-height: 1;
+				}
+			}
 			.img-box {
 				margin-right: 250px;
 				margin-left: 156px;

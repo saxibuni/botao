@@ -127,7 +127,7 @@ html {
 		h4 {
 			margin-top: 14px;
 			font-size: 26px;
-			font-weight: 400;
+			font-weight: 600;
 			color: #eb551c;
 			line-height: 1;
 		}
@@ -251,6 +251,7 @@ html {
 							color: #eb551c !important;
 						}
 					}
+
 				}
 			}
 		}

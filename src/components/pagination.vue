@@ -1,15 +1,7 @@
 <template>
 	<div class="pagination-box">
 		<!-- 分页组件 -->
-		<el-pagination
-			@size-change="handleSizeChange"
-			@current-change="handleCurrentChange"
-			:current-page.sync="currentPage"
-			:page-size="data.size"
-			layout="prev, pager, next, jumper"
-			:total="data.total"
-			class="wow"
-		></el-pagination>
+		<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="data.size" layout="prev, pager, next, jumper" :total="data.total" class="wow"></el-pagination>
 		<button class="wow">确定</button>
 	</div>
 </template>
@@ -17,6 +9,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component
 export default class pagination extends Vue {
+	input__inner = null;
 	@Prop({
 		required: false,
 		type: Object,
@@ -25,6 +18,7 @@ export default class pagination extends Vue {
 	data!: any;
 	mounted() {
 		this.restartWow();
+		this.input__inner = document.querySelector<HTMLElement>('.el-input__inner');
 	}
 	currentPage = 1;
 	handleSizeChange(val) {
@@ -33,6 +27,7 @@ export default class pagination extends Vue {
 
 	handleCurrentChange(val) {
 		console.log(`当前页: ${val}`);
+		console.dir((this.input__inner.value = ''));
 	}
 }
 </script>

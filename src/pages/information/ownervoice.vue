@@ -36,7 +36,7 @@
 										装修方案老人家看了都很满意，以复古风装修为主家里的墙纸大多是暖色调，满满的温馨祥祥和
 										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
-									<Button :text="'定制我的装修方案'" @click.native="$store.state.dialogVisible=true"></Button>
+									<Button :text="'定制我的装修方案'" @click.native="$store.state.dialogVisible = true"></Button>
 									<div class="img-box">
 										<img src="~assets/ic_f1_part2_dou.png" />
 									</div>
@@ -224,7 +224,7 @@ html {
 						.top {
 							display: flex;
 							padding-bottom: 33px;
-							border-bottom: 1px solid #d2d2d2;
+							border-bottom: 1px solid rgba(210, 210, 210, 0.3);
 							> div {
 								display: flex;
 								flex-direction: column;
@@ -330,7 +330,7 @@ html {
 			border: 2px solid #dcdcdc !important;
 			opacity: 1 !important;
 		}
-		.swiper-pagination-bullet-active{
+		.swiper-pagination-bullet-active {
 			border-color: #ed5400 !important;
 		}
 	}
@@ -524,31 +524,31 @@ html {
 			transform: scale(1.2);
 		}
 	}
-			.close {
-				position: absolute;
-				top: -70px;
-				right: -10px;
-				width: 65px;
-				height: 65px;
-				border-radius: 50%;
-				background-color:#ed5400;
-				cursor: pointer;
-				background-image: url(~assets/icons/ic_home_popup_close2.png);
-				background-repeat: no-repeat;
-				background-position: center;
-				transition: all .3s;
-				transform: scale(0.6);
-				&:hover{
-					background-color: #fff;
-					background-image: url(~assets/icons/ic_home_menu_close.png);
-				}
-			}
-			.swiper-pagination-bullet{
-				background-color: transparent !important;
-				border-color: #ABABAB !important;
-			}
-			.swiper-pagination-bullet-active{
-				border-color: #ed5400 !important;
-			}
+	.close {
+		position: absolute;
+		top: -70px;
+		right: -10px;
+		width: 65px;
+		height: 65px;
+		border-radius: 50%;
+		background-color: #ed5400;
+		cursor: pointer;
+		background-image: url(~assets/icons/ic_home_popup_close2.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		transition: all 0.3s;
+		transform: scale(0.6);
+		&:hover {
+			background-color: #fff;
+			background-image: url(~assets/icons/ic_home_menu_close.png);
+		}
+	}
+	.swiper-pagination-bullet {
+		background-color: transparent !important;
+		border-color: #ababab !important;
+	}
+	.swiper-pagination-bullet-active {
+		border-color: #ed5400 !important;
+	}
 }
 </style>
