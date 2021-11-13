@@ -413,6 +413,7 @@ export default Manager;
 								font-size: 24px !important;
 								color: #000000 !important;
 								margin: 12px 0;
+								font-weight: 600;
 							}
 						}
 					}
@@ -948,6 +949,7 @@ export default Manager;
 												p {
 													font-size: 20px;
 													// color: #000000;
+													font-weight: 600;
 													margin-top: 10px;
 												}
 											}
@@ -986,6 +988,7 @@ export default Manager;
 											color: #132132;
 											margin-left: 24px;
 											margin-top: 10px;
+											font-weight: 600;
 										}
 									}
 								}

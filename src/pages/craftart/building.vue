@@ -404,7 +404,7 @@ export default Building;
 						overflow: hidden;
 						img {
 							&:nth-of-type(2):hover {
-								transform:translate(-50%, -50%) scale($imgScale);
+								transform: translate(-50%, -50%) scale($imgScale);
 							}
 							&:nth-of-type(2) {
 								width: 60px;
@@ -413,7 +413,7 @@ export default Building;
 								left: 50%;
 								top: 50%;
 								transform: translate(-50%, -50%);
-								transition: all .3s;
+								transition: all 0.3s;
 							}
 						}
 					}
@@ -428,7 +428,7 @@ export default Building;
 							color: #888888;
 							&:nth-of-type(1) {
 								font-size: 24px;
-								font-weight: 400;
+								font-weight: 600;
 								color: #000000;
 								margin-top: 40px;
 								transition: all 0.3s;

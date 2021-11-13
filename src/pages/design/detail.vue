@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true"/>
+				<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true" />
 			</div>
 			<div class="right wow">
 				<div class="swiperBox">
@@ -70,6 +70,7 @@
 						<swiper :options="swiperOptions">
 							<swiper-slide v-for="(item, i) in 3" :key="i">
 								<img src="~assets/bg_c1_pic11.jpg" alt="" />
+								<img src="~assets/bg_c2_part2_mask.png" alt="" />
 							</swiper-slide>
 						</swiper>
 						<div class="swiper-pagination"></div>
@@ -192,16 +193,19 @@ export default DesignDetail;
 							i {
 								background: url('~assets/icons/ic_c2_part2_time.png') no-repeat;
 								margin-left: 0;
+								background-size: 100% 100%;
 							}
 						}
 						&:nth-of-type(2) {
 							i {
+								background-size: 100% 100% !important;
 								width: 28px;
 								background: url('~assets/icons/ic_c2_part2_school.png') no-repeat;
 							}
 						}
 						&:nth-of-type(3) {
 							i {
+								background-size: 100% 100% !important;
 								background: url('~assets/icons/ic_c2_part2_pay.png') no-repeat;
 							}
 							> div {
@@ -221,7 +225,7 @@ export default DesignDetail;
 								font-size: 22px;
 								&:nth-of-type(1) {
 									color: #000000;
-									// font-weight: 600;
+									font-weight: 600;
 								}
 								&:nth-of-type(2) {
 									margin-top: 10px;
@@ -239,7 +243,7 @@ export default DesignDetail;
 				i {
 					width: 22px;
 					height: 22px;
-					background-size: 100% 100%;
+					background-size: 100% 100% !important;
 					background: url('~assets/icons/ic_c2_part2_design.png') no-repeat;
 					margin: 5px 8px 0 0;
 				}
@@ -248,6 +252,7 @@ export default DesignDetail;
 						font-size: 18px;
 						&:nth-of-type(1) {
 							color: #000000;
+							font-weight: 600;
 							// font-weight: 600;
 						}
 						&:nth-of-type(2) {
@@ -265,13 +270,13 @@ export default DesignDetail;
 					i {
 						width: 19px;
 						height: 23px;
-						background-size: 100% 100%;
+						background-size: 100% 100% !important;
 						background: url('~assets/icons/ic_c2_part2_honor.png') no-repeat;
 						margin: 2px 10px 0 0;
 					}
 					p {
 						color: #000000;
-						// font-weight: 600;
+						font-weight: 600;
 						font-size: 18px;
 					}
 				}
@@ -287,6 +292,19 @@ export default DesignDetail;
 					&::-webkit-scrollbar-thumb {
 						background: #eb5518;
 						border-radius: 2px;
+					}
+					// -ms-overflow-style: none;
+					overflow: -moz-scrollbars-none;
+					scrollbar-width: 2px;
+					@-moz-document url-prefix() {
+						&::-moz-scrollbar {
+							width: 2px;
+							background: #d6d6d8;
+						}
+						&::-moz-scrollbar-thumb {
+							background: #eb5518;
+							border-radius: 2px;
+						}
 					}
 					.text {
 						p {
@@ -316,6 +334,11 @@ export default DesignDetail;
 						width: 590px;
 						height: 720px;
 						margin: 0;
+						&:nth-of-type(2) {
+							position: absolute;
+							left: 0;
+							top: 0;
+						}
 					}
 					.swiper-container {
 						width: 590px;
