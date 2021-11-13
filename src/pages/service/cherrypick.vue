@@ -363,6 +363,7 @@ export default CheckPick;
 							transform: translate(-50%, -50%);
 							transition: 0.3s;
 							opacity: 1;
+							width: 25px;
 							&:nth-child(2) {
 								opacity: 0;
 							}
@@ -526,6 +527,8 @@ export default CheckPick;
 			left: 50%;
 			transform: translateX(-50%);
 			bottom: -2px;
+			width: 660px;
+			height: 324px;
 			clip-path: ellipse(330px 330px at 50% 100%);
 		}
 		.circle {
@@ -1292,6 +1295,7 @@ export default CheckPick;
 		padding: 100px 0;
 		height: 1060px;
 		background: url('~assets/bg_e2_part6a.png') no-repeat center 293px;
+		background-size: 977px 604px;
 		position: relative;
 		> h2 {
 			height: 46px;
@@ -1351,7 +1355,7 @@ export default CheckPick;
 				}
 				h2 {
 					font-size: 24px;
-					font-weight: 400;
+					font-weight: 700;
 					color: #eb551d;
 					border-bottom: 1px solid #eee;
 					padding-bottom: 20px;
@@ -1470,6 +1474,7 @@ export default CheckPick;
 					width: 131px;
 					height: 131px;
 					overflow: hidden;
+					box-shadow: 0 0 10px 1px rgba(19,33,50,.1) ;
 					img {
 						max-width: 100%;
 						transform: rotate(-45deg);
