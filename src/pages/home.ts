@@ -418,4 +418,8 @@ export default class home extends Vue {
 			}
 		}
 	}
+	beforeDestroy() {
+		utils.emitter.$off(Events.RESIZE, this.onResize);
+		utils.emitter.$off('page2IndexFun');
+	}
 }
