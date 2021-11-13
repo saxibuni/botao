@@ -2,7 +2,7 @@
 	<div class="design-detail">
 		<div class="crumbs">
 			<p>
-				<span>设计名人堂</span>
+				<span @click="$router.push('/design/list')">设计名人堂</span>
 				&nbsp;
 				<i></i>
 				&nbsp;
@@ -156,8 +156,10 @@ export default DesignDetail;
 				background-size: 100% 100%;
 			}
 			span {
+				transition: all 0.3s;
 				&:hover {
 					cursor: pointer;
+					color: #eb5518;
 				}
 			}
 		}
@@ -292,19 +294,6 @@ export default DesignDetail;
 					&::-webkit-scrollbar-thumb {
 						background: #eb5518;
 						border-radius: 2px;
-					}
-					// -ms-overflow-style: none;
-					overflow: -moz-scrollbars-none;
-					scrollbar-width: 2px;
-					@-moz-document url-prefix() {
-						&::-moz-scrollbar {
-							width: 2px;
-							background: #d6d6d8;
-						}
-						&::-moz-scrollbar-thumb {
-							background: #eb5518;
-							border-radius: 2px;
-						}
 					}
 					.text {
 						p {

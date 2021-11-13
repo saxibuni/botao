@@ -270,7 +270,7 @@ html {
 			}
 			&:nth-of-type(2) {
 				margin-top: 56px;
-				margin-bottom: 170px;
+				margin-bottom: 187px !important;
 			}
 			&:nth-of-type(3) {
 				margin-top: 42px;

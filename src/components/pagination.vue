@@ -18,7 +18,6 @@ export default class pagination extends Vue {
 	data!: any;
 	mounted() {
 		this.restartWow();
-		this.input__inner = document.querySelector<HTMLElement>('.el-input__inner');
 	}
 	currentPage = 1;
 	handleSizeChange(val) {
@@ -27,7 +26,6 @@ export default class pagination extends Vue {
 
 	handleCurrentChange(val) {
 		console.log(`当前页: ${val}`);
-		console.dir((this.input__inner.value = ''));
 	}
 }
 </script>

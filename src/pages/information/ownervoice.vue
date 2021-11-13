@@ -516,12 +516,20 @@ html {
 			width: 500px;
 			height: 500px;
 		}
+		.img-box {
+			transform-origin: center;
+		}
 	}
 	.ownerProp {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		.img-box {
 			position: absolute;
+			top:50%;
+			left: 50%;
+			transform: translate(-50%,-50%) scale(1.2);
 			z-index: 11111;
-			transform: scale(1.2);
 		}
 	}
 	.close {
