@@ -1,5 +1,5 @@
 <template>
-	<div class="nav-list-wrap" :class="{ active: navShow }">
+	<div class="nav-list-wrap" :class="{ active: navShow, ie: isIE }">
 		<div class="logo">
 			<div>
 				<img src="~assets/ic_home_banner_logo2.png" alt="" />
@@ -30,10 +30,12 @@
 </template>
 
 <script lang="ts">
+import { device } from 'root/utils';
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
 export default class navLists extends Vue {
+	isIE: boolean = false;
 	navShow = false;
 	navList = [
 		{
@@ -101,6 +103,10 @@ export default class navLists extends Vue {
 			]
 		}
 	];
+
+	mounted() {
+		this.isIE = device.browser.ie;
+	}
 }
 </script>
 <style scoped lang="scss">
@@ -118,6 +124,11 @@ export default class navLists extends Vue {
 	padding: 0 11px;
 	transition: clip-path .6s;
 	clip-path: ellipse(0 0 at 100% 0);
+
+	&.ie {
+		transform: translateX(-50%) translateY(-100%);
+		transition: transform .3s;
+	}
 	.logo {
 		display: flex;
 		align-items: center;
@@ -281,7 +292,7 @@ export default class navLists extends Vue {
 		}
 	}
 	&.active {
-		// transform: translateX(-50%) translateY(0);
+		transform: translateX(-50%) translateY(0);
 		clip-path: ellipse(141% 141% at 100% 0%);
 	}
 }
