@@ -516,6 +516,9 @@ html {
 			width: 500px;
 			height: 500px;
 		}
+		.img-box {
+			transform-origin: center;
+		}
 	}
 	.ownerProp {
 		display: flex;

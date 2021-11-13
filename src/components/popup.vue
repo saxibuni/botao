@@ -26,15 +26,15 @@ export default class popup extends Vue {
 	&.slideFadeIn-enter,
 	&.slideFadeIn-leave-to {
 		background: rgba(0, 0, 0, 0);
-		.body,
-		.img-box {
+		.body{
 			transform: translateY(80px);
 			opacity: 0;
 		}
 		.mask {
 			opacity: 0;
 		}
-		.video-box {
+		.video-box,
+		.img-box  {
 			opacity: 0;
 			transform: scale(0);
 		}
@@ -45,11 +45,11 @@ export default class popup extends Vue {
 		.mask {
 			transition: opacity 0.3s ease;
 		}
-		.body,
-		.img-box {
+		.body {
 			transition: transform 0.3s ease, opacity 0.3s ease;
 		}
-		.video-box {
+		.video-box,
+		.img-box {
 			transition: transform .3s ease, opacity .3s ease;
 		}
 	}

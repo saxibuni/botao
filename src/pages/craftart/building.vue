@@ -421,8 +421,6 @@ export default Building;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
-
-						height: 100%;
 						p {
 							font-size: 18px;
 							color: #888888;

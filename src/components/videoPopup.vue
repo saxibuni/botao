@@ -38,6 +38,7 @@ export default class videoPopup extends Vue {
 <style scoped lang="scss">
 .video-popup {
 	.video-box {
+		position: relative;
 		z-index: 11111;
 		opacity: 1;
 		video {
@@ -46,6 +47,7 @@ export default class videoPopup extends Vue {
 		}
 		.close {
 			position: absolute;
+			z-index: 222222;
 			top: -90px;
 			right: -10px;
 			width: 90px;
