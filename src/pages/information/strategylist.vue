@@ -162,8 +162,8 @@ html {
 				color: #eb551c;
 			}
 			&:hover span {
-				margin-left: 20px;
-				transform: rotate(-45deg) scale(1.1);
+				margin-left: 15px;
+				transform: rotate(-45deg) ;
 			}
 		}
 	}

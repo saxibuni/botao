@@ -48,7 +48,7 @@
 				<swiper :options="swiperOptions1">
 					<swiper-slide v-for="(item, i) in 3" :key="i">
 						<img src="~assets/bg_b2_part2.jpg" alt="" />
-						<img src="~assets/ic_c2_play.png" alt="" />
+						<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
 					</swiper-slide>
 				</swiper>
 				<div class="swiper-pagination"></div>
@@ -62,7 +62,7 @@
 				<p>首席设计师</p>
 				<p>从业年限：10 年</p>
 				<p>ta的作品：东方颐城 、城云开外 、玖玺合院...</p>
-				<Button :text="'找TA设计'" />
+				<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
 			</div>
 		</div>
 		<div class="other">
@@ -81,6 +81,7 @@
 				<div class="swiper-button-next next2"></div>
 			</div>
 		</div>
+		<VideoPopup :videoPop="videoPop"></VideoPopup>
 	</div>
 </template>
 
@@ -237,6 +238,11 @@ export default CaseDetail;
 					top: 50%;
 					left: 50%;
 					transform: translate(-50%, -80%);
+					transition: all 0.3s;
+					&:hover {
+						cursor: pointer;
+						transform: translate(-50%, -80%) scale($imgScale);
+					}
 				}
 			}
 			.swiper-container {
@@ -320,6 +326,10 @@ export default CaseDetail;
 					margin-bottom: 57px;
 					@include line-clamp(1);
 				}
+			}
+			.button-wrap {
+				// position: absolute;
+				// top: 558px;
 			}
 		}
 	}
