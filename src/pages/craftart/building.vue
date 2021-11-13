@@ -451,6 +451,8 @@ export default Building;
 							}
 						}
 						.button-wrap {
+							width: 170px;
+							height: 48px;
 							/deep/.btn {
 								width: 170px;
 								height: 48px;

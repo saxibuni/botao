@@ -339,6 +339,8 @@ export default CaseList;
 				}
 				.button-wrap {
 					margin-top: 60px;
+					width: 150px;
+					height: 53px;
 					.btn {
 						margin: 0;
 						width: 150px;

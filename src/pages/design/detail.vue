@@ -305,6 +305,8 @@ export default DesignDetail;
 				}
 			}
 			.button-wrap {
+				width: 170px;
+				height: 53px;
 				.btn {
 					margin: 0;
 				}
