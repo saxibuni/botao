@@ -388,10 +388,10 @@ html {
 	}
 }
 .brand {
-	display: flex;
-	position: relative;
-	flex-direction: column;
-	box-sizing: border-box;
+	// display: flex;
+	// position: relative;
+	// flex-direction: column;
+	// box-sizing: border-box;
 	video {
 		width: 100%;
 		height: 100%;
@@ -1215,11 +1215,12 @@ html {
 		}
 	}
 	.social-response {
-		overflow: hidden;
+		// overflow: hidden;
 		padding-bottom: 60px;
 		@include title();
 
 		.content-box {
+			height: 674px;
 			@include scrollbar-beautify(0);
 			> div {
 				display: flex !important;
@@ -1258,11 +1259,11 @@ html {
 			}
 
 			ul {
-				position: relative;
+				position: absolute;
 				height: 537px;
 				display: flex;
 				margin: 137px 0 0 140px;
-				width: auto;
+				width: auto ;
 				li {
 					position: relative;
 					top: -25px;
@@ -1342,9 +1343,14 @@ html {
 						top: 86px;
 						flex-direction: column-reverse;
 						.text-box {
+							position: relative;
+							top: -92px;
 							display: flex;
 							flex-direction: column-reverse;
-							margin-bottom: 115px;
+							// margin-bottom: 115px;
+						}
+						.img-box{
+							// margin-top: 115px;
 						}
 						p {
 							margin-top: 0;
