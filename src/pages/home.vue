@@ -140,16 +140,17 @@
 				</ul>
 				<img class="bgtext" src="~assets/bg_home_b3_left_text.png" alt="" />
 
-				<div class="left-text wow">
+				<div class="left-text">
 					<div class="text">
-						<transition-group name="slide-fade" mode="in-out">
-							<div class="box" v-if="showProfile" key="a1">
-								<h4>于一</h4>
-								<span>设计总监</span>
-								<h5>从业年限：</h5>
-								<b>15年</b>
-								<h5>所获荣誉</h5>
-								<p>
+
+					<transition name="fade">
+							<div class="box wow" v-if="page3Ani">
+								<h4 class="an1">于一</h4>
+								<span class="an2">设计总监</span>
+								<h5 class="an3">从业年限：</h5>
+								<b class="an4">15年</b>
+								<h5 class="an5">所获荣誉</h5>
+								<p class="an6">
 									国家注册室内设计师 （证号：ZLY20102013）
 									<br />
 									上海市注册高级设计师（证号：XH090129）
@@ -159,45 +160,32 @@
 									第二届中国国际空间环境艺术设计大赛优秀奖
 									<br />
 								</p>
-								<h5>代表作品</h5>
-								<p>嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
-								<div class="btn-box">
+								<h5 class="an7">代表作品</h5>
+								<p class="an8">嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
+								<div class="btn-box an9">
 									<Button @click.native="$router.push({ name: 'design-detail' })" text="TA的作品"></Button>
 								</div>
 							</div>
-							<div class="box" v-if="!showProfile" key="b1">
-								<h4>于莎莎</h4>
-								<span>设计总监</span>
-								<h5>从业年限：</h5>
-								<b>5年</b>
-								<h5>所获荣誉</h5>
-								<p>
-									国家注册室内设计师 （证号：ZLY20102013）
-									<br />
-									上海市注册高级设计师（证号：XH090129）
-									<br />
-									上海市装饰装修行业协会会员
-									<br />
-									第二届中国国际空间环境艺术设计大赛优秀奖
-									<br />
-								</p>
-								<h5>代表作品</h5>
-								<p>嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
-								<div class="btn-box">
-									<Button @click.native="$router.push({ name: 'design-detail' })" text="TA的作品"></Button>
-								</div>
-							</div>
-						</transition-group>
+					</transition>
+
 					</div>
 					<div class="img-wrap">
 						<transition-group name="toggle-image">
 							<img :src="imgSrc" alt="" v-if="showProfile" key="a" />
 							<img :src="imgSrc" alt="" v-if="!showProfile" key="b" />
 						</transition-group>
-						<div>
-							<p>DESIGN CONCEPT</p>
-							<b>细节决定成败</b>
-						</div>
+
+						<transition-group name="fade">
+							<div v-if="showProfile" key="c" >
+								<p>DESIGN CONCEPT</p>
+								<b>细节决定成败</b>
+							</div>
+							<div v-if="!showProfile"  key="d">
+								<p>CONCEPT DESIGN</p>
+								<b>细节决定成败细节决定成败</b>
+							</div>
+						</transition-group>
+
 					</div>
 				</div>
 			</div>
@@ -213,11 +201,18 @@
 					</li>
 				</ul>
 
-				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }" v-if="isShowLightImg">
-					<img :src="imgSrc" alt="" />
-				</div>
-				<div class="img-box2" @click="onClick(item.src, i)" v-for="(item, i) in listwidth" :key='i' :style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }">
-				</div>
+
+				<template v-if="isShowImg">
+					<div class="img-box2" @click="onClick(item.src, i)" v-for="(item, i) in listwidth" :key='i' :style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }">
+						<img :src="item.src" alt="" />
+					</div>
+				</template>
+
+				<template v-if="listwidth.length!=0">
+						<div class="img-box" :style="{ top: `${listwidth[page3Index].top}px`, left: `${listwidth[page3Index].left}px`, width: `${listwidth[page3Index].width}px`, height: `${listwidth[page3Index].height}px` }" v-if="isShowLightImg">
+							<img :src="listwidth[page3Index].src" alt="" />
+						</div>
+				</template>
 			</div>
 			<div class="next" @click="onRoute('design-list')">
 				设计名人堂
@@ -554,36 +549,40 @@ export default home;
 				.text {
 					position: absolute;
 					left: 50%;
-					top: 208px;
+					top: 268px;
 					transform: translateX(-50%);
 					color: #ffffff;
-					h3 {
-						font-size: 34px;
-						height: 34px;
-						font-family: Gilroy;
-						font-weight: 400;
-						text-align: center;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						span {
-							&:nth-child(1){
-								font-size: 41px;
-								margin-right: 4px;
-								font-weight: bold;
+					.text-content {
+						h3 {
+							font-size: 34px;
+							height: 34px;
+							font-family: Gilroy;
+							font-weight: 400;
+							text-align: center;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							span {
+								&:nth-child(1){
+									font-size: 41px;
+									margin-right: 4px;
+									font-weight: bold;
+								}
 							}
 						}
+						div {
+							font-size: 97px;
+							font-family: Athene;
+							font-weight: 400;
+							color: #ffffff;
+							line-height: 103px;
+							text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.23);
+							text-align: center;
+							margin: 62px 0 100px 0;
+						}
+						opacity: 0;
 					}
-					div {
-						font-size: 97px;
-						font-family: Athene;
-						font-weight: 400;
-						color: #ffffff;
-						line-height: 103px;
-						text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.23);
-						text-align: center;
-						margin: 62px 0 100px 0;
-					}
+
 				}
 			}
 		}
@@ -1154,9 +1153,6 @@ export default home;
 			.left-text {
 				display: flex;
 				justify-content: space-between;
-				opacity: 0;
-				animation: slide-down-in 1s, fade-in 1s;
-				animation-fill-mode: forwards;
 				.text {
 					flex: 1;
 					padding-top: 18px;
@@ -1166,6 +1162,43 @@ export default home;
 						position: absolute;
 						left: 0;
 						top: 0;
+						animation: slide-down-in 1s forwards, fade-in .3s forwards;
+						.an1{
+							opacity: 0;
+							animation: slide-down-in 1s forwards, fade-in 1s forwards;
+						}
+						.an2{
+							opacity: 0;
+							animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
+						}
+						.an3{
+							opacity: 0;
+							animation: slide-down-in 1s 0.3s forwards, fade-in 1s 0.3s forwards;
+						}
+						.an4{
+							opacity: 0;
+							animation: slide-down-in 1s 0.4s forwards, fade-in 1s 0.4s forwards;
+						}
+						.an5{
+							opacity: 0;
+							animation: slide-down-in 1s 0.5s forwards, fade-in 1s 0.5s forwards;
+						}
+						.an6{
+							opacity: 0;
+							animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
+						}
+						.an7{
+							opacity: 0;
+							animation: slide-down-in 1s 0.7s forwards, fade-in 1s 0.7s forwards;
+						}
+						.an8{
+							opacity: 0;
+							animation: slide-down-in 1s 0.8s forwards, fade-in 1s 0.8s forwards;
+						}
+						.an9{
+							opacity: 0;
+							animation: slide-down-in 1s 0.9s forwards, fade-in 1s 0.9s forwards;
+						}
 					}
 					h4 {
 						height: 38px;
@@ -1234,11 +1267,9 @@ export default home;
 				@keyframes out {
 					0% {
 						opacity: 1;
-						/* transform: translateX(60px); */
 					}
 					100% {
 						opacity: 0;
-						/* transform: translateX(0); */
 					}
 				}
 				.img-wrap {
@@ -1257,7 +1288,6 @@ export default home;
 						&:hover {
 							transform: scale($imgScale);
 						}
-
 						@include toggle-image();
 					}
 					div {
@@ -1265,6 +1295,7 @@ export default home;
 						bottom: 67px;
 						left: 52px;
 						z-index: 2;
+						@include fade-out-in();
 						p {
 							font-size: 20px;
 							font-family: Gilroy;
@@ -1318,6 +1349,7 @@ export default home;
 					width: 134px;
 					height: 152px;
 					// perspective: 1500px;
+					overflow: hidden;
 					transform: rotateY(0);
 					.flip-box {
 						width: 100%;
@@ -1702,11 +1734,17 @@ export default home;
 			}
 		}
 		.img-box2 {
-			width: 124px;
-			height: 151px;
 			position: absolute;
 			z-index: 3;
 			cursor: pointer;
+			img{
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				transition:opacity .3s;
+				position: relative;
+				z-index: 1;
+			}
 			&::after,
 			&::before {
 				content: '';
@@ -1714,7 +1752,8 @@ export default home;
 				border: 3px solid transparent;
 				width: 0;
 				height: 0;
-				transition: border .3s,width .3s,height .3s;
+				z-index: 22;
+				transition: border .1s,width .3s,height .3s;
 			}
 			&::after {
 				left: 9px;
@@ -1729,6 +1768,9 @@ export default home;
 				border-left: none;
 			}
 			&:hover{
+				img{
+					opacity: .5;
+				}
 				&::after,
 				&::before {
 					border: 3px solid #eb5518;

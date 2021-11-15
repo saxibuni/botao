@@ -43,6 +43,7 @@ export default class home extends Vue {
 	page2Index = 0;
 	page3Index = 17;
 	page2Ani = true;
+	page3Ani = true;
 
 	portraitList = [
 		require('../assets/portrait/bg_home_b3_pic01.jpg'),
@@ -169,7 +170,7 @@ export default class home extends Vue {
 			init: function() {
 				setTimeout(() => {
 					let activeSlide = this.slides[this.activeIndex] as HTMLElement;
-					emitter.$emit('chars-ani', activeSlide)
+					emitter.$emit('chars-ani', activeSlide, true);
 				}, 100);
 			},
 			slideChangeTransitionStart: function() {
@@ -281,24 +282,7 @@ export default class home extends Vue {
 		});
 	}
 	onResize() {
-		let items = `item${this.page3Index}`;
-		this.left = this.$refs[items][0].offsetLeft;
-		this.top = this.$refs[items][0].offsetTop;
-		this.width = this.$refs[items][0].clientWidth;
-		this.height = this.$refs[items][0].clientHeight;
-
-		let listwidth = []
-		this.currentPortraitList.forEach((e,i)=>{
-			let items = `item${i}`;
-			let left = this.$refs[items][0].offsetLeft;
-			let top = this.$refs[items][0].offsetTop;
-			let width = this.$refs[items][0].clientWidth;
-			let height = this.$refs[items][0].clientHeight;
-			let src = e;
-			listwidth.push({left,top,width,height,src})
-		})
-		this.listwidth=listwidth;
-		console.log(111,listwidth);
+		this.getCurrentPortraitList();
 	}
 	initSpineAni() {
 		let loader = PIXI.loader;
@@ -332,22 +316,17 @@ export default class home extends Vue {
 		spine.state.setAnimation(0, 'enter', false);
 		ScrollTrigger.getAll().forEach(child => child.kill());
 	}
-	left = 0;
-	top = 0;
-	width = 0;
-	height = 0;
 	listwidth = [];
 	textActive2 = true;
 	onClick(item, i) {
 		this.showProfile = !this.showProfile;
 		this.imgSrc = item;
-		let items = `item${i}`;
 		this.page3Index = i;
-		this.left = this.$refs[items][0].offsetLeft;
-		this.top = this.$refs[items][0].offsetTop;
-		this.width = this.$refs[items][0].clientWidth;
-		this.height = this.$refs[items][0].clientHeight;
 		this.isShowLightImg = true;
+		this.page3Ani = false;
+		setTimeout(() => {
+			this.page3Ani = true;
+		},300);
 	}
 	textActiveFun(i) {
 		this.picIndex = i;
@@ -433,11 +412,30 @@ export default class home extends Vue {
 		let start = this.portraitListIndex * this.portraitListSize;
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
 		this.currentPortraitList = this.portraitList.slice(start, end);
-	}
 
+		let listwidth = []
+		setTimeout(()=>{
+			this.currentPortraitList.forEach((e,i)=>{
+				let items = `item${i}`;
+				let left = this.$refs[items][0].offsetLeft;
+				let top = this.$refs[items][0].offsetTop;
+				let width = this.$refs[items][0].clientWidth;
+				let height = this.$refs[items][0].clientHeight;
+				let src = e;
+				listwidth.push({left,top,width,height,src})
+			})
+			this.listwidth=listwidth;
+		})
+
+	}
+	isShowImg = true;
 	getPreparePortraitList(toNext: boolean = true) {
 		let start = this.portraitListIndex * this.portraitListSize;
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
+		this.isShowImg = false;
+		setTimeout(()=>{
+			this.isShowImg = true;
+		},1000)
 		if (toNext) {
 			if (this.portraitListIndex < this.portraitTotalPages) {
 				this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
@@ -455,7 +453,7 @@ export default class home extends Vue {
 
 
 	initTextChars() {
-		let textContents = this.$el.querySelectorAll('.text-content');
+		let textContents = this.$el.querySelectorAll<HTMLElement>('.text-content');
 		textContents.forEach(item => {
 			new SplitText(item, {
 				charsClass: 'char',
@@ -464,7 +462,10 @@ export default class home extends Vue {
 		});
 	}
 
-	onCharsEnter(slide: HTMLElement) {
+	onCharsEnter(slide: HTMLElement, isInit: boolean = false) {
+
+		console.log(1111111,slide,isInit);
+
 		let chars = slide.querySelectorAll('.char');
 		gsap.timeline()
 			.fromTo(chars, {
@@ -478,6 +479,11 @@ export default class home extends Vue {
 				rotate: 0,
 				y: 0
 			});
+
+			if (isInit) {
+				let textContents = this.$el.querySelectorAll<HTMLElement>('.text-content');
+				textContents.forEach(item => item.style.opacity = "1");
+			}
 	}
 
 	beforeDestroy() {

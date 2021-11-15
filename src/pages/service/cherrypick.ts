@@ -1,5 +1,9 @@
 import { Vue, Component } from 'vue-property-decorator';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
+import gsap from 'gsap';
 
+gsap.registerPlugin(ScrollTrigger, SplitText);
 @Component
 export default class CheckPick extends Vue {
 	iconIndex = 4;
@@ -96,5 +100,32 @@ export default class CheckPick extends Vue {
 	}
 	mounted() {
 		this.restartWow();
+		this.initTextChars();
+	}
+	initTextChars() {
+		let textContents = this.$el.querySelectorAll<HTMLElement>('.page1 .text');
+		textContents.forEach(item => {
+			new SplitText(item, {
+				charsClass: 'char',
+				type: 'chars'
+			}).chars;
+		});
+		this.onCharsEnter();
+	}
+	onCharsEnter(isInit: boolean = false) {
+		let slide = document.querySelector('.page1 .text')
+		let chars = slide.querySelectorAll('.char');
+		gsap.timeline()
+			.fromTo(chars, {
+				duration: 1,
+				rotate: -10,
+				y: "random(100, 200)",
+				ease: "power3",
+				opacity: 0
+			}, {
+				opacity: 1,
+				rotate: 0,
+				y: 0
+			});
 	}
 }

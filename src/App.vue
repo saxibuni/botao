@@ -69,6 +69,9 @@ html {
 				}
 			}
 		}
+		&.over-hideie{
+			overflow: hidden;
+		}
 	}
 
 	.el-dialog {
