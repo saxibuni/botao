@@ -43,6 +43,7 @@ export default class home extends Vue {
 	page2Index = 0;
 	page3Index = 17;
 	page2Ani = true;
+	page3Ani = true;
 
 	portraitList = [
 		require('../assets/portrait/bg_home_b3_pic01.jpg'),
@@ -322,6 +323,10 @@ export default class home extends Vue {
 		this.imgSrc = item;
 		this.page3Index = i;
 		this.isShowLightImg = true;
+		this.page3Ani = false;
+		setTimeout(() => {
+			this.page3Ani = true;
+		},300);
 	}
 	textActiveFun(i) {
 		this.picIndex = i;
@@ -458,6 +463,9 @@ export default class home extends Vue {
 	}
 
 	onCharsEnter(slide: HTMLElement, isInit: boolean = false) {
+
+		console.log(1111111,slide,isInit);
+
 		let chars = slide.querySelectorAll('.char');
 		gsap.timeline()
 			.fromTo(chars, {
