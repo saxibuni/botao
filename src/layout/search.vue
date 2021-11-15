@@ -52,7 +52,7 @@ export default class search extends Vue {
 			return;
 		}
 		this.searchShow = false;
-		this.$router.push({name:'search'})
+	  this.$router.push({ name: 'search', query: { keyword: encodeURI(this.keyword) } });
 	}
 }
 </script>

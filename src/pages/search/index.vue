@@ -6,7 +6,7 @@
 				<h2>SEARCH RESULTS</h2>
 				<div>
 					<i @click="onSearch()"></i>
-					<input type="text" v-model="keyword" @keyup.13="onSearch()" placeholder="请输入搜索内容" />
+					<input type="text" v-model="keywords" @keyup.13="onSearch()" placeholder="请输入搜索内容" />
 				</div>
 				<p>
 					已为您找到
@@ -79,6 +79,7 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import Cases from '../case/components/cases.vue';
 import Button from 'root/components/button.vue';
+import utils from "root/utils";
 
 @Component({
 	components: {
@@ -87,7 +88,17 @@ import Button from 'root/components/button.vue';
 	}
 })
 export default class Search extends Vue {
-	keyword='';
+	keywords:any='';
+	mounted() {
+		this.queryList()
+	}
+	queryList(){
+		this.keywords =decodeURI((this.$route.query.keyword as string));
+	}
+	@Watch('$route.query')
+	demandIdChange() {
+		this.queryList()
+	}
 	list = [
 		{
 			imgUrl: require('../../assets/s_1.jpg'),
