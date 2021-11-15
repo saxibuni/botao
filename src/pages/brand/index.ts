@@ -343,6 +343,14 @@ export default class Brand extends Vue {
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
+		this.rotate(str);
+		gsap.to('.history-scroll', {
+			duration: 0.5,
+			scrollTop: this.calcDistance(progressIndex)
+		});
+	}
+
+	rotate(str) {
 		const time_box = document.querySelector<HTMLElement>('.time-box');
 		const text_box = document.querySelector<HTMLElement>('.text-boxs');
 		if (str == 'next') {
@@ -353,17 +361,14 @@ export default class Brand extends Vue {
 		}
 		time_box.style.transform = `rotateX(-${this.deg}deg)`;
 		text_box.style.transform = `rotateX(-${this.deg}deg)`;
-		this.rotateFlag=false
+		this.rotateFlag = false;
 		setTimeout(() => {
-				this,this.rotateFlag=true
+			this, (this.rotateFlag = true);
 		}, 1000);
-		gsap.to('.history-scroll', {
-			duration: 0.5,
-			scrollTop: this.calcDistance(progressIndex)
-		});
 	}
 
 	changeTime(i) {
+		this.rotate('pre');
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(i)
