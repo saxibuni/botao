@@ -218,8 +218,10 @@
 			<div class="swipers">
 					<div class="swiper-slides">
 						<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }" v-for="(item, i) in currentPortraitList" :key="i">
-							<img :src="item" alt="" />
-							<img :src="item" alt="" />
+							<div>
+								<img :src="item" alt="" />
+								<img :src="item" alt="" />
+							</div>
 						</div>
 					</div>
 				<div class="swiper-button-wrap">
@@ -1505,9 +1507,7 @@ export default CheckPick;
 					top: 28px;
 					position: absolute;
 					background: #fff;
-					display: flex;
-					align-items: center;
-					justify-content: center;
+
 					transform: rotate(45deg) rotateX(0);
 					width: 131px;
 					height: 131px;
@@ -1525,21 +1525,25 @@ export default CheckPick;
 						transition: transform 1.5s ease-in-out;
 						transform:rotate(45deg) rotateX(-180deg);
 					}
-					img{
-						/* position: absolute;
-						left: 2%;
-						top: 28%; */
-						max-width: 93%;
-						backface-visibility: hidden;
+					>div{
+						width: 100%;
+						height: 100%;
 						transform:rotate(-45deg);
-						&:nth-child(2){
-							transform:rotate(45deg) rotateX(180deg);
-							border: 1px solid red;
-							display: none;
+						position: relative;
+						img{
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							transform: translate(-50%,-50%);
+							max-width: 93%;
+							backface-visibility: hidden;
+							&:nth-child(2){
+								transform:rotateX(180deg);
+								border: 1px solid red;
+							}
+
 						}
-
 					}
-
 					&:hover {
 						/* img {
 							transform: rotate(-45deg) scale(1.06);
