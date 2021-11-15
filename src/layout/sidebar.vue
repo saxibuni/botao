@@ -41,7 +41,7 @@
 				<i>
 					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 						viewBox="0 0 710.2 722.3" style="enable-background:new 0 0 710.2 722.3;" xml:space="preserve">
-						<path class="st0" d="M4.1,478.1v223.6c0,11.4,9.2,20.6,20.6,20.6h660.7c5.5,0,10.7-2.2,14.6-6c3.8-3.8,6.1-9.1,6-14.6V478.2
+						<path class="st0 ruler" d="M4.1,478.1v223.6c0,11.4,9.2,20.6,20.6,20.6h660.7c5.5,0,10.7-2.2,14.6-6c3.8-3.8,6.1-9.1,6-14.6V478.2
 							c0-5.7-2.3-10.9-6-14.6s-8.9-6.1-14.6-6.1H24.7c-5.5,0-10.7,2.2-14.6,6.1C6.3,467.4,4.1,472.6,4.1,478.1L4.1,478.1z M662.4,678.5
 							h-41.6v-53.2c0-5.7-2.3-10.9-6.1-14.6c-3.7-3.7-8.9-6.1-14.6-6.1c-11.4,0-20.6,9.2-20.6,20.6v53.2h-36.1v-53.2
 							c0-5.7-2.3-10.9-6.1-14.6c-3.7-3.7-8.9-6.1-14.6-6.1c-11.4,0-20.6,9.2-20.6,20.6v53.2H466V574.1c0-5.7-2.3-10.9-6.1-14.6
@@ -49,11 +49,11 @@
 							c-11.4,0-20.6,9.2-20.6,20.6v53.2h-36.1v-53.2c0-5.7-2.3-10.9-6.1-14.6c-3.7-3.7-8.9-6-14.6-6c-11.4,0-20.6,9.2-20.6,20.6v53.2
 							h-36.1V573.9c0-5.7-2.3-10.8-6-14.6c-3.7-3.7-8.9-6-14.6-6c-11.4,0-20.6,9.2-20.6,20.6v104.2h-36.1v-53.2c0-5.7-2.3-10.8-6-14.6
 							c-3.7-3.7-8.9-6-14.6-6c-11.4,0-20.6,9.2-20.6,20.6v53.2H48V501.3l614.4-0.1L662.4,678.5z"/>
-						<path class="st0" d="M696.7,118.7L584.5,29.5c-10.7-8.5-26.2-6.7-34.7,4L385.1,240.3c-2.3,2.9-4,6.4-4.8,10l-29.8,134.1
+						<path class="st0 pencil" d="M696.7,118.7L584.5,29.5c-10.7-8.5-26.2-6.7-34.7,4L385.1,240.3c-2.3,2.9-4,6.4-4.8,10l-29.8,134.1
 							c-4,18.2,12.8,34.2,30.8,29.2l137.5-38.5c5-1.4,9.5-4.4,12.7-8.4l169.1-213.3C709.2,142.7,707.4,127.2,696.7,118.7L696.7,118.7z
 							M500.4,331.7l-95.7,27l20.1-94.1L571.9,78.5l79.9,62.4L500.4,331.7z"/>
-						<polyline class="st1" points="26.2,24.1 26.2,398.5 308.2,398.5 "/>
-						<line class="st1" x1="177.2" y1="247.7" x2="45" y2="379.9"/>
+						<polyline class="st1 axis" points="26.2,24.1 26.2,398.5 308.2,398.5 "/>
+						<line class="st1 line" x1="177.2" y1="247.7" x2="45" y2="379.9"/>
 					</svg>
 				</i>
 				<p>预约设计</p>
@@ -113,6 +113,31 @@ export default class sidebar extends Vue {
 
 	onDesignMouseOver(event: MouseEvent) {
 		let target = (<HTMLElement>event.currentTarget).querySelector('i');
+		let pencil = target.querySelector('.pencil');
+		let axis = target.querySelector('.axis');
+		let line = target.querySelector('.line');
+		gsap.timeline()
+			.fromTo(axis, {
+				duration: 1,
+				strokeDashoffset: 660
+			}, {
+				strokeDashoffset: 0
+			})
+			.fromTo(line, {
+				duration: 0.4,
+				strokeDashoffset: -187
+			}, {
+				strokeDashoffset: 0
+			}, '-=0.4')
+			// .fromTo(pencil, {
+			// 	duration: 1,
+			// 	x: -280,
+			// 	y: -374
+			// }, {
+			// 	x: 0,
+			// 	y: 0
+			// })
+
 	}
 
 	onBackUpMouseOver(event: MouseEvent) {
@@ -247,8 +272,16 @@ export default class sidebar extends Vue {
 			}
 			&:nth-child(3) {
 				i {
-						width: 22px;
-						height: 22px;
+					width: 22px;
+					height: 22px;
+					svg {
+						.axis {
+							stroke-dasharray: 660;
+						}
+						.line {
+							stroke-dasharray: 187;
+						}
+					}
 					.st0{fill:#FFFFFF;}
 					.st1{fill:none;stroke:#FFFFFF;stroke-width:43;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:10;}
 				}
