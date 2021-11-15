@@ -59,7 +59,6 @@ export default Team;
 			width: 410px;
 			height: 500px;
 			position: relative;
-			cursor: pointer;
 			margin-bottom: 40px;
 			&:hover {
 				.text {

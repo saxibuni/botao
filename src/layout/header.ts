@@ -1,9 +1,10 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import gsap from 'gsap';
 import { MorphSVGPlugin } from 'gsap/MorphSVGPlugin';
+import { SplitText } from 'gsap/SplitText';
 import Search from './search.vue';
 import NavLists from './navLists.vue';
-gsap.registerPlugin(MorphSVGPlugin);
+gsap.registerPlugin(MorphSVGPlugin, SplitText);
 
 const warps = [
 	[
@@ -116,6 +117,7 @@ export default class Header extends Vue {
 		this.rouertName = this.$route.meta.title;
 	}
 	mounted() {
+		this.summaryAni();
 		window.addEventListener('scroll', this.handleScroll, true);
 	}
 	handleScroll() {
@@ -167,9 +169,30 @@ export default class Header extends Vue {
 			if (i === 0) this.tl = tl;
 		}
 	}
+
+	summaryAni() {
+		let text = new SplitText('.summary-title >h3, .summary-title >p', {
+			type: 'chars'
+		}).chars;
+
+		gsap.timeline({
+				repeatDelay: 3,
+				repeat: -1,
+				yoyo: true
+			})
+			.fromTo(text, {
+				opacity: 0
+			}, {
+				duration: 0.3,
+				opacity: 1,
+				stagger: 0.1
+			})
+	}
+
 	searchFun() {
 		(this.$refs.mySearch as any).searchShow = true;
 	}
+
 	myNavFun() {
 		(this.$refs.myNav as any).navShow = true;
 	}
