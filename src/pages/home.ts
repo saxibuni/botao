@@ -166,6 +166,18 @@ export default class home extends Vue {
 		},
 		preventClicks: false,
 		on: {
+			init: function() {
+				setTimeout(() => {
+					let activeSlide = this.slides[this.activeIndex] as HTMLElement;
+					emitter.$emit('chars-ani', activeSlide)
+				}, 100);
+			},
+			slideChangeTransitionStart: function() {
+				let chars = (<HTMLElement>this.slides[this.activeIndex]).querySelectorAll<HTMLElement>('.char');
+				chars.forEach(item => {
+					item.style.opacity = "0";
+				});
+			},
 			slideChangeTransitionEnd: function() {
 				let activeSlide = this.slides[this.activeIndex] as HTMLElement;
 				emitter.$emit('chars-ani', activeSlide)
@@ -442,19 +454,18 @@ export default class home extends Vue {
 
 	onCharsEnter(slide: HTMLElement) {
 		let chars = slide.querySelectorAll('.char');
-
-		let tl = gsap.timeline()
-			.from(chars, {
+		gsap.timeline()
+			.fromTo(chars, {
 				duration: 1,
 				rotate: -10,
 				y: "random(100, 200)",
 				ease: "power3",
 				opacity: 0
-			})
-	}
-
-	onCharsLeave(index) {
-
+			}, {
+				opacity: 1,
+				rotate: 0,
+				y: 0
+			});
 	}
 
 	beforeDestroy() {
