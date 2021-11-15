@@ -257,8 +257,10 @@ getPreparePortraitList(toNext: boolean = true) {
 	paginationFun(i){
 		if(i==this.portraitListIndex) return
 		if(i>this.portraitListIndex){
+			this.portraitListIndex = i;
 			this.onPortraitListNext()
 		}else{
+			this.portraitListIndex = i;
 			this.onPortraitListPrev()
 		}
 	}

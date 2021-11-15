@@ -1,6 +1,5 @@
 <template>
 	<div class="cherry-pick">
-
 		<div class="page1">
 			<img src="~assets/bg_e2_banner_right.jpg" alt="" />
 			<div class="text">
@@ -210,24 +209,40 @@
 			</ul>
 		</div>
 
-
-
 		<div class="page7">
 			<h2 class="wow">高端品牌直采</h2>
-			<p class="wow">High-end brands {{portraitListIndex}}</p>
+			<p class="wow">High-end brands {{ portraitListIndex }}</p>
 			<div class="swipers">
-					<div class="swiper-slides">
-						<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }" v-for="(item, i) in currentPortraitList" :key="i">
-							<div>
+				<div class="swiper-slides">
+					<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
+						<!-- <div>
+								<div :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }">
 								<img :src="item" alt="" />
 								<img :src="item" alt="" />
+								</div>
+							</div> -->
+						<div class="one">
+							<div class="inner-one">
+								<div class="box"><img :src="item" alt="" /></div>
+							</div>
+						</div>
+						<div class="two">
+							<div class="inner-two">
+								<div class="box"><img :src="item" alt="" /></div>
 							</div>
 						</div>
 					</div>
+				</div>
 				<div class="swiper-button-wrap">
 					<div class="prev prev2" @click="onPortraitListPrev()"></div>
 					<div class="swiper-pagination2">
-						<span class="swiper-pagination-bullet" :class="{'swiper-pagination-bullet-active':portraitListIndex==i}"  @click="paginationFun(i)" v-for="(item,i) in portraitTotalPages" :key="i"></span>
+						<span
+							class="swiper-pagination-bullet"
+							:class="{ 'swiper-pagination-bullet-active': portraitListIndex == i }"
+							@click="paginationFun(i)"
+							v-for="(item, i) in portraitTotalPages"
+							:key="i"
+						></span>
 					</div>
 					<div class="next next2" @click="onPortraitListNext()"></div>
 				</div>
@@ -249,8 +264,6 @@ export default CheckPick;
 	img {
 		display: block;
 	}
-
-
 
 	.page1 {
 		height: 970px;
@@ -1506,30 +1519,84 @@ export default CheckPick;
 					left: 28px;
 					top: 28px;
 					position: absolute;
-					background: #fff;
-
-					transform: rotate(45deg) rotateX(0);
 					width: 131px;
 					height: 131px;
-					box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 
-					/* transition: .3s; */
-					transform-style: preserve-3d;
-					transform-origin: center center;
+					/* transform-style: preserve-3d; */
 
 					&.do-flip {
 						transition: transform 1.5s ease-in-out;
-						transform:rotate(45deg) rotateX(180deg);
+						transform: rotateX(180deg);
 					}
 					&.do-flip-reverse {
 						transition: transform 1.5s ease-in-out;
-						transform:rotate(45deg) rotateX(-180deg);
+						transform: rotateX(-180deg);
 					}
-					>div{
+					/* transition: .3s; */
+					/* &:hover{
+						transform: rotateX(180deg);
+					} */
+					> div {
+						width: 131px;
+						height: 131px;
+						backface-visibility: hidden;
+						position: absolute;
+						left: 0;
+						top: 0;
+						img {
+							width: 100%;
+						}
+						&.one {
+							transform: rotateX(180deg);
+						}
+						.inner-one,
+						.inner-two {
+							width: 100%;
+							height: 100%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							transform: rotate(45deg);
+							background: #fff;
+							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
+						}
+						.inner-one .box {
+							border: 1px solid red;
+							transform: rotate(-45deg);
+										img {
+								transform: rotateX(180deg);
+							}
+						}
+
+						.inner-two .box {
+							border: 1px solid blue;
+							transform: rotate(-45deg);
+
+						}
+					}
+
+
+
+					/* >div{
 						width: 100%;
 						height: 100%;
-						transform:rotate(-45deg);
+						transform-style: preserve-3d;
+						transform-origin: center center;
 						position: relative;
+						>div{
+						width: 100%;
+						height: 100%;
+						transform: rotate(-45deg) ;
+						&::before{
+							content: '';
+							width: 100%;
+							height: 100%;
+							display: block;
+							background: #fff;
+							transform: rotate(45deg) ;
+							position: relative;
+							z-index: -1;
+						}
 						img{
 							position: absolute;
 							left: 50%;
@@ -1537,13 +1604,29 @@ export default CheckPick;
 							transform: translate(-50%,-50%);
 							max-width: 93%;
 							backface-visibility: hidden;
+							&:nth-child(1){
+									z-index: 2;
+							}
 							&:nth-child(2){
-								transform:rotateX(180deg);
+								z-index: 30;
+								transform:translate(-50%,-50%) rotateX(180deg);
 								border: 1px solid red;
 							}
+						}
+
+					&.do-flip {
+						transition: transform 1.5s ease-in-out;
+						transform:rotate(-45deg) rotateX(180deg);
+					}
+					&.do-flip-reverse {
+						transition: transform 1.5s ease-in-out;
+						transform:rotate(-45deg) rotateX(-180deg);
+					}
 
 						}
-					}
+
+					} */
+
 					&:hover {
 						/* img {
 							transform: rotate(-45deg) scale(1.06);
