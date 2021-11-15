@@ -253,4 +253,13 @@ getPreparePortraitList(toNext: boolean = true) {
 				y: 0
 			});
 	}
+
+	paginationFun(i){
+		if(i==this.portraitListIndex) return
+		if(i>this.portraitListIndex){
+			this.onPortraitListNext()
+		}else{
+			this.onPortraitListPrev()
+		}
+	}
 }

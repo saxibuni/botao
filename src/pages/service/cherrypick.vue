@@ -214,21 +214,18 @@
 
 		<div class="page7">
 			<h2 class="wow">高端品牌直采</h2>
-			<p class="wow">High-end brands</p>
+			<p class="wow">High-end brands {{portraitListIndex}}</p>
 			<div class="swipers">
 					<div class="swiper-slides">
-
 						<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }" v-for="(item, i) in currentPortraitList" :key="i">
 							<img :src="item" alt="" />
 							<img :src="item" alt="" />
 						</div>
-
-
 					</div>
 				<div class="swiper-button-wrap">
 					<div class="prev prev2" @click="onPortraitListPrev()"></div>
 					<div class="swiper-pagination2">
-						<span class="swiper-pagination-bullet"></span>
+						<span class="swiper-pagination-bullet" :class="{'swiper-pagination-bullet-active':portraitListIndex==i}"  @click="paginationFun(i)" v-for="(item,i) in portraitTotalPages" :key="i"></span>
 					</div>
 					<div class="next next2" @click="onPortraitListNext()"></div>
 				</div>
@@ -1516,7 +1513,7 @@ export default CheckPick;
 					height: 131px;
 					box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 
-					transition: .3s;
+					/* transition: .3s; */
 					transform-style: preserve-3d;
 					transform-origin: center center;
 
@@ -1529,15 +1526,16 @@ export default CheckPick;
 						transform:rotate(45deg) rotateX(-180deg);
 					}
 					img{
-						position: absolute;
+						/* position: absolute;
 						left: 2%;
-						top: 28%;
+						top: 28%; */
 						max-width: 93%;
 						backface-visibility: hidden;
 						transform:rotate(-45deg);
 						&:nth-child(2){
 							transform:rotate(45deg) rotateX(180deg);
 							border: 1px solid red;
+							display: none;
 						}
 
 					}
