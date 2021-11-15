@@ -390,7 +390,6 @@ export default class Brand extends Vue {
 
 		let isForward = index - this.prePathIndex > 0 ? true : false;
 		let start = this.prePathIndex == -1 ? 0 : this.offset + this.unit * this.prePathIndex;
-		console.log(start,'start');
 
 		let end = this.offset + this.unit * index + (isForward ? 0 : -0.0095);
 		let duration = immediate ? 0 : Math.abs(end - start) * 15;
