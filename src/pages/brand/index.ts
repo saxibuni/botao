@@ -25,6 +25,10 @@ Vue.use(BaiduMap, {
 	}
 })
 export default class Brand extends Vue {
+	addFlag = true;
+	show1 = 0;
+	show2 = 1;
+	show3 = 3;
 	draggerTarget1: any;
 	draggerTarget2: any;
 	distance: number = 0;
@@ -34,6 +38,7 @@ export default class Brand extends Vue {
 	deg: number = 0;
 	isPlayingPath: boolean = false;
 	prePathIndex: number = -1; //前一次的路径点
+	clickFlag: boolean = true;
 	pathTween: any;
 	unit = 0.06148;
 	offset = 0.03;
@@ -340,13 +345,36 @@ export default class Brand extends Vue {
 
 	@Watch('progressIndex')
 	getProgressIndex(newVal, oldVal) {
+		if (!this.clickFlag) {
+			this.clickFlag = true;
+			return;
+		}
 		newVal > oldVal ? this.calcRotate('next') : this.calcRotate('pre');
 	}
 
 	change(str) {
+		// if((progressIndex == 0 && str == 'pre')){}
+		if (this.addFlag) {
+			if (str == 'pre') {
+				this.show2 = this.progressIndex - 1;
+			} else {
+				this.show2 = this.progressIndex + 1;
+			}
+		} else {
+			if (str == 'pre') {
+				this.show1 = this.progressIndex - 1;
+			} else {
+				this.show1 = this.progressIndex + 1;
+			}
+		}
+		this.addFlag = !this.addFlag;
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
+		this.clickFlag = false;
+		if (!this.clickFlag) {
+			this.calcRotate(str);
+		}
 
 		gsap.to('.history-scroll', {
 			duration: 0.5,

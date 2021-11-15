@@ -136,20 +136,24 @@
 			<div class="info-box wow">
 				<div class="time-box">
 					<div class="time">
-						<p>{{ devolopeList[progressIndex].time }}</p>
-						<h2>{{ devolopeList[progressIndex].name }}</h2>
+						<!-- behidn -->
+						<p>{{ devolopeList[show1].time }}</p>
+						<h2>{{ devolopeList[show1].name }}</h2>
 					</div>
 					<div class="time">
-						<p>{{ devolopeList[progressIndex].time }}</p>
-						<h2>{{ devolopeList[progressIndex].name }}</h2>
+						<!-- top -->
+						<p>{{ devolopeList[show2].time }}</p>
+						<h2>{{ devolopeList[show2].name }}</h2>
 					</div>
 					<div class="time">
-						<p>{{ devolopeList[progressIndex].time }}</p>
-						<h2>{{ devolopeList[progressIndex].name }}</h2>
+						<!-- bottom -->
+						<p>{{ devolopeList[show2].time }}</p>
+						<h2>{{ devolopeList[show2].name }}</h2>
 					</div>
 					<div class="time">
-						<p>{{ devolopeList[progressIndex].time }}</p>
-						<h2>{{ devolopeList[progressIndex].name }}</h2>
+						<!-- front -->
+						<p>{{ devolopeList[show1].time }}</p>
+						<h2>{{ devolopeList[show1].name }}</h2>
 					</div>
 				</div>
 				<div class="text-boxs">
