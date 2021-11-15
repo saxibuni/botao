@@ -194,10 +194,18 @@
 							<img :src="imgSrc" alt="" v-if="showProfile" key="a" />
 							<img :src="imgSrc" alt="" v-if="!showProfile" key="b" />
 						</transition-group>
-						<div>
-							<p>DESIGN CONCEPT</p>
-							<b>细节决定成败</b>
-						</div>
+
+						<transition-group name="fade">
+							<div v-if="showProfile" key="c" >
+								<p>DESIGN CONCEPT</p>
+								<b>细节决定成败</b>
+							</div>
+							<div v-if="!showProfile"  key="d">
+								<p>CONCEPT DESIGN</p>
+								<b>细节决定成败细节决定成败</b>
+							</div>
+						</transition-group>
+
 					</div>
 				</div>
 			</div>
@@ -213,11 +221,18 @@
 					</li>
 				</ul>
 
-				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }" v-if="isShowLightImg">
-					<img :src="imgSrc" alt="" />
-				</div>
-				<div class="img-box2" @click="onClick(item.src, i)" v-for="(item, i) in listwidth" :key='i' :style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }">
-				</div>
+
+				<template v-if="isShowImg">
+					<div class="img-box2" @click="onClick(item.src, i)" v-for="(item, i) in listwidth" :key='i' :style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }">
+						<img :src="item.src" alt="" />
+					</div>
+				</template>
+
+				<template v-if="listwidth.length!=0">
+						<div class="img-box" :style="{ top: `${listwidth[page3Index].top}px`, left: `${listwidth[page3Index].left}px`, width: `${listwidth[page3Index].width}px`, height: `${listwidth[page3Index].height}px` }" v-if="isShowLightImg">
+							<img :src="listwidth[page3Index].src" alt="" />
+						</div>
+				</template>
 			</div>
 			<div class="next" @click="onRoute('design-list')">
 				设计名人堂
@@ -1238,11 +1253,9 @@ export default home;
 				@keyframes out {
 					0% {
 						opacity: 1;
-						/* transform: translateX(60px); */
 					}
 					100% {
 						opacity: 0;
-						/* transform: translateX(0); */
 					}
 				}
 				.img-wrap {
@@ -1261,7 +1274,6 @@ export default home;
 						&:hover {
 							transform: scale($imgScale);
 						}
-
 						@include toggle-image();
 					}
 					div {
@@ -1269,6 +1281,7 @@ export default home;
 						bottom: 67px;
 						left: 52px;
 						z-index: 2;
+						@include fade-out-in();
 						p {
 							font-size: 20px;
 							font-family: Gilroy;
@@ -1322,6 +1335,7 @@ export default home;
 					width: 134px;
 					height: 152px;
 					// perspective: 1500px;
+					overflow: hidden;
 					transform: rotateY(0);
 					.flip-box {
 						width: 100%;
@@ -1706,11 +1720,17 @@ export default home;
 			}
 		}
 		.img-box2 {
-			width: 124px;
-			height: 151px;
 			position: absolute;
 			z-index: 3;
 			cursor: pointer;
+			img{
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				transition:opacity .3s;
+				position: relative;
+				z-index: 1;
+			}
 			&::after,
 			&::before {
 				content: '';
@@ -1718,7 +1738,8 @@ export default home;
 				border: 3px solid transparent;
 				width: 0;
 				height: 0;
-				transition: border .3s,width .3s,height .3s;
+				z-index: 22;
+				transition: border .1s,width .3s,height .3s;
 			}
 			&::after {
 				left: 9px;
@@ -1733,6 +1754,9 @@ export default home;
 				border-left: none;
 			}
 			&:hover{
+				img{
+					opacity: .5;
+				}
 				&::after,
 				&::before {
 					border: 3px solid #eb5518;
