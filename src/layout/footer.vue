@@ -28,9 +28,9 @@
 					</ul>
 				</div>
 				<ul>
-					<li v-for="(item,i) in navList" :key="i">
-						<h5>{{item.title}}</h5>
-						<p @click="onRoute(it)" v-for="(it,index) in item.son" :key="index">{{it.title}}</p>
+					<li v-for="(item, i) in navList" :key="i">
+						<h5>{{ item.title }}</h5>
+						<p @click="onRoute(it)" v-for="(it, index) in item.son" :key="index">{{ it.title }}</p>
 					</li>
 				</ul>
 			</div>
@@ -75,16 +75,27 @@
 			</div>
 			<div class="copyright">
 				<div class="link">
-					<p>Copyright @ 2012-2018 沪ICP备11042317号-8 BOTAO All Rights Reserved    技术支持：<a href="">逐鹿科技</a></p>
-					 友情链接：<a href="">波涛公装</a> | <a href="">波涛装饰</a>
+					<p>
+						Copyright @ 2012-2018 沪ICP备11042317号-8 BOTAO All Rights Reserved 技术支持：
+						<a href="">逐鹿科技</a>
+					</p>
+					友情链接：
+					<a href="">波涛公装</a>
+					|
+					<a href="">波涛装饰</a>
 				</div>
 				<div class="icons">
-					<i>
+					<div class="wx">
 						<div>
 							<img src="~assets/bg_home_footer_qa.jpg" alt="" />
 						</div>
-					</i>
-					<i @click="wbJump()"></i>
+						<i></i>
+						<i></i>
+					</div>
+					<div class="wb">
+						<i @click="wbJump()"></i>
+						<i @click="wbJump()"></i>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -97,18 +108,18 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component
 export default class Footer extends Vue {
 	form = {
-		userName:'',
-		phone:'',
-		area:'',
-	}
+		userName: '',
+		phone: '',
+		area: ''
+	};
 	navList = [
 		{
 			title: '精选案例',
 			en: 'Selected case',
 			url: 'case',
 			son: [
-				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'case-list' },
-				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'case-listvr' }
+				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'case-list' },
+				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'), url: 'case-listvr' }
 			]
 		},
 		{
@@ -116,9 +127,9 @@ export default class Footer extends Vue {
 			url: 'design',
 			en: 'Design Hall of Fame',
 			son: [
-				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
-				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
-				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' }
+				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'design-list' },
+				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'design-list' },
+				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'design-list' }
 			]
 		},
 		{
@@ -126,9 +137,9 @@ export default class Footer extends Vue {
 			url: 'craft-building',
 			en: 'fine craftsmen skill',
 			son: [
-				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-building' },
-				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-team' },
-				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-manager' }
+				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'craft-building' },
+				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'craft-team' },
+				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'craft-manager' }
 			]
 		},
 		{
@@ -136,9 +147,9 @@ export default class Footer extends Vue {
 			url: 'whole-decoration',
 			en: 'A whole service',
 			son: [
-				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
-				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'soft-decoration' },
-				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'whole-decoration' }
+				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'cherry-pick' },
+				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'soft-decoration' },
+				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'whole-decoration' }
 			]
 		},
 		{
@@ -146,10 +157,10 @@ export default class Footer extends Vue {
 			url: 'information',
 			en: 'latest information',
 			son: [
-				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
-				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
-				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
-				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'join-us' }
+				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'owner-voice' },
+				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'strategy-list' },
+				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'strategy-list' },
+				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'join-us' }
 			]
 		},
 		{
@@ -157,57 +168,57 @@ export default class Footer extends Vue {
 			url: 'brand',
 			en: 'botao brand',
 			son: [
-				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:0 },
-				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:1 },
-				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:2},
-				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:3 },
-				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:4 },
-				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:5 },
-				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:6}
+				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 0 },
+				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 1 },
+				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 2 },
+				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 3 },
+				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 4 },
+				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 5 },
+				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'), url: 'brand', query: 6 }
 			]
 		}
 	];
 	onSubmit() {
 		if (!this.form.userName) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入您的姓名'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入您的姓名'
+			};
 			return;
 		}
 		if (this.form.phone.length != 11) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入正确的联系电话'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入正确的联系电话'
+			};
 			return;
 		}
 		if (!this.form.area) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入您的装修面积'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入您的装修面积'
+			};
 			return;
 		}
-		this.$store.state.dialog={
-			state:1,
-			text:'提交成功'
-		}
+		this.$store.state.dialog = {
+			state: 1,
+			text: '提交成功'
+		};
 		this.form = {
 			userName: '',
 			phone: '',
 			area: ''
 		};
 	}
-	wbJump(){
-		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 https://www.baidu.com`)
+	wbJump() {
+		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 https://www.baidu.com`);
 	}
 
 	onRoute(it) {
 		if (it.url == this.$route.name && it.url == 'brand') {
 			this.$bus.$emit('params-change', it.query);
 		} else {
-			this.$router.push({name:it.url,params:{number:it.query}})
+			this.$router.push({ name: it.url, params: { number: it.query } });
 		}
 	}
 }
@@ -345,29 +356,30 @@ export default class Footer extends Vue {
 				display: flex;
 				color: #fff;
 				li {
-					 &:hover{
-							i{
-									transition: all .4s;
-									animation: bounce-up 1.5s linear infinite;
-							}
+					&:hover {
+						i {
+							transition: all 0.4s;
+							animation: bounce-up 1.5s linear infinite;
 						}
-						@keyframes bounce-up {
-								10% {
-										transform: rotate(20deg);
-									}
-									20% {
-										transform: rotate(-10deg);
-									}
-									30% {
-										transform: rotate(5deg);
-									}
-									40% {
-										transform: rotate(-5deg);
-									}
-									50%,100% {
-										transform: rotate(0deg);
-									}
+					}
+					@keyframes bounce-up {
+						10% {
+							transform: rotate(20deg);
 						}
+						20% {
+							transform: rotate(-10deg);
+						}
+						30% {
+							transform: rotate(5deg);
+						}
+						40% {
+							transform: rotate(-5deg);
+						}
+						50%,
+						100% {
+							transform: rotate(0deg);
+						}
+					}
 					> div {
 						height: 13px;
 						font-size: 16px;
@@ -393,71 +405,71 @@ export default class Footer extends Vue {
 						color: #ffffff;
 						margin-top: 16px;
 					}
-					&:nth-child(2){
+					&:nth-child(2) {
 						margin-left: 313px;
 						margin-right: 267px;
 					}
 				}
 			}
-			>div{
+			> div {
 				display: flex;
 				align-items: center;
 				font-size: 18px;
 				font-weight: 400;
-				color: #FFFFFF;
-				img{
-				 width: 132px;
-				 height: 132px;
-				 margin-right: 45px;
+				color: #ffffff;
+				img {
+					width: 132px;
+					height: 132px;
+					margin-right: 45px;
 				}
-				div{
+				div {
 					line-height: 25px;
 				}
 			}
 		}
-		.copyright{
+		.copyright {
 			display: flex;
 			justify-content: space-between;
 			margin-top: 49px;
-			.link{
-					height: 49px;
-					font-size: 18px;
-					font-weight: 400;
+			.link {
+				height: 49px;
+				font-size: 18px;
+				font-weight: 400;
+				color: #666666;
+				line-height: 30px;
+				a {
 					color: #666666;
-					line-height: 30px;
-					a{
-						color: #666666;
-						text-decoration: none;
-						transition: .3s;
-						&:hover{
-							color: #fff;
-						}
+					text-decoration: none;
+					transition: 0.3s;
+					&:hover {
+						color: #fff;
 					}
+				}
 			}
-			.icons{
+			.icons {
 				display: flex;
 				align-items: center;
-				i{
-					width: 26PX;
-					height: 26PX;
+				i {
+					width: 26px;
+					height: 26px;
 					background: url('~assets/icons/iconlist.png') no-repeat;
-					background-position: -11PX -11PX;
+					background-position: -11px -11px;
 					margin-left: 21px;
 					cursor: pointer;
 					position: relative;
-					transition: .3s;
-					&:nth-child(2){
-						background-position: -41PX -11PX;
+					transition: 0.3s;
+					&:nth-child(2) {
+						background-position: -41px -11px;
 					}
-					&:hover{
-						background-position-y: -43PX;
-						>div{
+					&:hover {
+						background-position-y: -43px;
+						> div {
 							opacity: 1;
 							transform: translateX(-50%) translateX(0);
 						}
 					}
-					>div{
-						transition:opacity .5s,transform .5s;
+					> div {
+						transition: opacity 0.5s, transform 0.5s;
 						opacity: 0;
 						pointer-events: none;
 						background: #fff;
@@ -467,10 +479,75 @@ export default class Footer extends Vue {
 						bottom: 150%;
 						width: 150px;
 						height: 150px;
-						img{
+						img {
 							width: 150px;
 							height: 150px;
 						}
+					}
+				}
+				.wx {
+					position: relative;
+					width: 26px;
+					height: 26px;
+					&:hover {
+						background-position-y: -43px;
+						> div {
+							opacity: 1;
+							transform: translateX(-50%) translateX(0);
+						}
+					}
+					> div {
+						transition: opacity 0.5s, transform 0.5s;
+						opacity: 0;
+						pointer-events: none;
+						background: #fff;
+						position: absolute;
+						left: 50%;
+						transform: translateX(-50%) translateY(-10%);
+						bottom: 150%;
+						width: 150px;
+						height: 150px;
+						img {
+							width: 150px;
+							height: 150px;
+						}
+					}
+					i {
+						position: absolute;
+						left: 0;
+						margin-left: 0;
+						top: 0px;
+
+						background: url('~assets/icons/iconlist.png') no-repeat;
+						background-position: -11px -11px;
+						&:nth-last-of-type(2) {
+							opacity: 0;
+							z-index: 11;
+							background-position: -11px -43px;
+						}
+					}
+					&:hover i:nth-last-of-type(2) {
+						opacity: 1 !important;
+					}
+				}
+				.wb {
+					position: relative;
+					width: 26px;
+					height: 26px;
+					i {
+						position: absolute;
+						top: 0;
+						left: 0;
+						background: url('~assets/icons/iconlist.png') no-repeat;
+						background-position: -41px -11px;
+						&:nth-last-of-type(2) {
+							opacity: 0;
+							z-index: 11;
+							background-position: -41px -43px;
+						}
+					}
+					&:hover i:nth-last-of-type(2) {
+						opacity: 1 !important;
 					}
 				}
 			}
