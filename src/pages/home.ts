@@ -2,14 +2,15 @@ import { Vue, Component } from 'vue-property-decorator';
 import * as PIXI from 'pixi.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 import Button from '../components/button.vue';
-require('root/libs/pixi-spine.js');
-gsap.registerPlugin(ScrollTrigger);
-PIXI.utils.skipHello();
-import utils from 'root/utils';
+import utils, { emitter } from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
 import ICountUp from 'root/components/countup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
+require('root/libs/pixi-spine.js');
+gsap.registerPlugin(ScrollTrigger, SplitText);
+PIXI.utils.skipHello();
 
 @Component({
 	components: {
@@ -163,7 +164,13 @@ export default class home extends Vue {
 			nextEl: '.next1',
 			prevEl: '.prev1'
 		},
-		preventClicks: false
+		preventClicks: false,
+		on: {
+			slideChangeTransitionEnd: function() {
+				let activeSlide = this.slides[this.activeIndex] as HTMLElement;
+				emitter.$emit('chars-ani', activeSlide)
+			}
+		}
 	};
 	swiperOptions:any = {
 		speed: 1000,
@@ -242,12 +249,15 @@ export default class home extends Vue {
 	};
 	mounted() {
 		this.restartWow();
+		this.initTextChars();
 		this.initSpineAni();
 		this.initScrollTrigger();
 		this.getCurrentPortraitList();
 		setTimeout(() => {
 			this.onResize();
 		});
+
+		utils.emitter.$on('chars-ani', this.onCharsEnter);
 		utils.emitter.$on(Events.RESIZE, this.onResize);
 		utils.emitter.$on('page2IndexFun', (introductionIndex: number) => {
 			(this.$refs.mSwiper as any).$swiper.slideTo(introductionIndex, 600, true);
@@ -418,7 +428,37 @@ export default class home extends Vue {
 			}
 		}
 	}
+
+
+	initTextChars() {
+		let textContents = this.$el.querySelectorAll('.text-content');
+		textContents.forEach(item => {
+			new SplitText(item, {
+				charsClass: 'char',
+				type: 'chars'
+			}).chars;
+		});
+	}
+
+	onCharsEnter(slide: HTMLElement) {
+		let chars = slide.querySelectorAll('.char');
+
+		let tl = gsap.timeline()
+			.from(chars, {
+				duration: 1,
+				rotate: -10,
+				y: "random(100, 200)",
+				ease: "power3",
+				opacity: 0
+			})
+	}
+
+	onCharsLeave(index) {
+
+	}
+
 	beforeDestroy() {
+		utils.emitter.$off('chars-ani', this.onCharsEnter);
 		utils.emitter.$off(Events.RESIZE, this.onResize);
 		utils.emitter.$off('page2IndexFun');
 	}

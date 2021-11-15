@@ -4,15 +4,16 @@
 			<swiper :options="bannerSwiperOptions">
 				<swiper-slide v-for="(item, i) in 3" :key="i">
 					<img src="~assets/bg_home_banner1.jpg" alt="" />
-					<div class="text" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">
-						<h3>
-							<span>20+</span>
-							年专注别墅大宅 全案引领者
-						</h3>
-						<div>
-							FOCUS ON VILLA
-							<br />
-							MANSIONS
+					<div class="text">
+						<div class="text-content">
+							<h3>
+								<span>20+</span>
+								<span>年专注别墅大宅 全案引领者{{i}}</span>
+							</h3>
+							<div>
+								<p>FOCUS ON VILLA</p>
+								<p>MANSIONS</p>
+							</div>
 						</div>
 						<div>
 							<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
