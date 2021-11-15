@@ -396,7 +396,7 @@ export default class Brand extends Vue {
 		});
 	}
 	calcDistance(i) {
-		let offset = 20;
+		let offset = 25;
 		let height = this.pos[i] + offset;
 		let progress = (height - 290) / (1245 - 290);
 		let totalScroll = 1245 - 716;
