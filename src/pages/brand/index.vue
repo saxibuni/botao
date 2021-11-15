@@ -1270,7 +1270,7 @@ html {
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					width: 327px;
+					// width: 327px;
 					height: 450px;
 					.img-box {
 						width: 327px;
