@@ -58,7 +58,7 @@ export default class videoPopup extends Vue {
 			background-color: #ed5400;
 			cursor: pointer;
 			background-image: url(~assets/icons/ic_home_popup_close2.png);
-			background-size: 40px 40px;
+			background-size: 30px 30px;
 			background-repeat: no-repeat;
 			background-position: center;
 			transition: all 0.3s;
