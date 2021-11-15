@@ -176,9 +176,7 @@ export default class Header extends Vue {
 		}).chars;
 
 		gsap.timeline({
-				repeatDelay: 3,
 				repeat: -1,
-				yoyo: true
 			})
 			.fromTo(text, {
 				opacity: 0
@@ -186,6 +184,12 @@ export default class Header extends Vue {
 				duration: 0.3,
 				opacity: 1,
 				stagger: 0.1
+			})
+			.to(text, {
+				opacity: 0,
+				duration: 0.3,
+				// stagger: -0.1,
+				delay: 5
 			})
 	}
 

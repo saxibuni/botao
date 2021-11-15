@@ -169,7 +169,7 @@ export default class home extends Vue {
 			init: function() {
 				setTimeout(() => {
 					let activeSlide = this.slides[this.activeIndex] as HTMLElement;
-					emitter.$emit('chars-ani', activeSlide)
+					emitter.$emit('chars-ani', activeSlide, true);
 				}, 100);
 			},
 			slideChangeTransitionStart: function() {
@@ -448,7 +448,7 @@ export default class home extends Vue {
 
 
 	initTextChars() {
-		let textContents = this.$el.querySelectorAll('.text-content');
+		let textContents = this.$el.querySelectorAll<HTMLElement>('.text-content');
 		textContents.forEach(item => {
 			new SplitText(item, {
 				charsClass: 'char',
@@ -457,7 +457,7 @@ export default class home extends Vue {
 		});
 	}
 
-	onCharsEnter(slide: HTMLElement) {
+	onCharsEnter(slide: HTMLElement, isInit: boolean = false) {
 		let chars = slide.querySelectorAll('.char');
 		gsap.timeline()
 			.fromTo(chars, {
@@ -471,6 +471,11 @@ export default class home extends Vue {
 				rotate: 0,
 				y: 0
 			});
+
+			if (isInit) {
+				let textContents = this.$el.querySelectorAll<HTMLElement>('.text-content');
+				textContents.forEach(item => item.style.opacity = "1");
+			}
 	}
 
 	beforeDestroy() {
