@@ -5,6 +5,7 @@ import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { SplitText } from 'gsap/SplitText';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
@@ -12,7 +13,7 @@ import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
 import { Events } from 'root/utils/EnumUtils';
 
-gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin);
+gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin, SplitText);
 Vue.use(BaiduMap, {
 	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
 });
@@ -25,20 +26,26 @@ Vue.use(BaiduMap, {
 	}
 })
 export default class Brand extends Vue {
+	addFlag = true;
+	show1 = 0;
+	show2 = 1;
+	show3 = 3;
 	draggerTarget1: any;
 	draggerTarget2: any;
 	distance: number = 0;
+	rotateFlag: boolean = true;
 	progressIndex: number = 0;
 	pos = [257, 443, 535, 630, 851, 1039];
-
+	deg: number = 0;
 	isPlayingPath: boolean = false;
 	prePathIndex: number = -1; //前一次的路径点
+	clickFlag: boolean = true;
 	pathTween: any;
 	unit = 0.06148;
 	offset = 0.03;
 	path: SVGPathElement;
 	plane: HTMLElement;
-
+	preRotate: number = 0;
 	playFlag: boolean = false;
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	times: '';
@@ -156,8 +163,7 @@ export default class Brand extends Vue {
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
 			text: ['捐资援建中国最北部希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		}
-		,
+		},
 		{
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
@@ -172,7 +178,7 @@ export default class Brand extends Vue {
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
 			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		},
+		}
 		// {
 		// 	imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 		// 	time: '2009',
@@ -269,6 +275,7 @@ export default class Brand extends Vue {
 	};
 	textShow: boolean = true;
 	mounted() {
+		this.initTextChars();
 		this.createDragger();
 		this.createTrigger();
 		this.initPathTarget();
@@ -280,6 +287,26 @@ export default class Brand extends Vue {
 		this.restartWow();
 		this.$bus.$on(Events.RESIZE, this.onResize);
 		this.$bus.$on('params-change', this.jump);
+	}
+
+	initTextChars() {
+		let chars = new SplitText('.text-content', {
+			charsClass: 'char',
+			type: 'chars'
+		}).chars;
+
+		gsap.timeline()
+		.fromTo(chars, {
+			duration: 1,
+			rotate: -10,
+			y: "random(100, 200)",
+			ease: "power3",
+			opacity: 0
+		}, {
+			opacity: 1,
+			rotate: 0,
+			y: 0
+		});
 	}
 
 	initVideo() {
@@ -338,15 +365,56 @@ export default class Brand extends Vue {
 		}
 	}
 
+	@Watch('progressIndex')
+	getProgressIndex(newVal, oldVal) {
+		if (!this.clickFlag) {
+			this.clickFlag = true;
+			return;
+		}
+		newVal > oldVal ? this.calcRotate('next') : this.calcRotate('pre');
+	}
+
 	change(str) {
+		// if((progressIndex == 0 && str == 'pre')){}
+		if (this.addFlag) {
+			if (str == 'pre') {
+				this.show2 = this.progressIndex - 1;
+			} else {
+				this.show2 = this.progressIndex + 1;
+			}
+		} else {
+			if (str == 'pre') {
+				this.show1 = this.progressIndex - 1;
+			} else {
+				this.show1 = this.progressIndex + 1;
+			}
+		}
+		this.addFlag = !this.addFlag;
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
+		this.clickFlag = false;
+		if (!this.clickFlag) {
+			this.calcRotate(str);
+		}
 
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(progressIndex)
 		});
+	}
+
+	calcRotate(str) {
+		const time_box = document.querySelector<HTMLElement>('.time-box');
+		const text_box = document.querySelector<HTMLElement>('.text-boxs');
+		if (str == 'next') {
+			this.deg += 90;
+		}
+		if (str == 'pre') {
+			this.deg -= 90;
+		}
+		time_box.style.transform = `rotateX(-${this.deg}deg)`;
+		text_box.style.transform = `rotateX(-${this.deg}deg)`;
 	}
 
 	changeTime(i) {
@@ -356,7 +424,7 @@ export default class Brand extends Vue {
 		});
 	}
 	calcDistance(i) {
-		let offset = 20;
+		let offset = 25;
 		let height = this.pos[i] + offset;
 		let progress = (height - 290) / (1245 - 290);
 		let totalScroll = 1245 - 716;
@@ -365,16 +433,14 @@ export default class Brand extends Vue {
 	}
 
 	jump(i) {
-
 		if (typeof i === 'undefined') return;
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.brand');
 		const item = brand.querySelector<HTMLElement>(`.select${i}`);
 		let top = item.offsetTop - headerHeight;
 		if (i == 3) {
-			const height= document.querySelector<HTMLElement>('.img-list').clientHeight/2;
-			top +=height+2
-
+			const height = document.querySelector<HTMLElement>('.img-list').clientHeight / 2;
+			top += height + 2;
 		}
 		window.scroll({ top, behavior: 'smooth' });
 	}
