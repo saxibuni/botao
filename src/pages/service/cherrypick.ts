@@ -156,32 +156,37 @@ portraitListIndex = 0;
 applyFlipType: number = 0;
 portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 
-
-onPortraitListPrev() {
+onPortraitListPrev(number:number=999) {
 	if (this.applyFlipType) return;
 	if (this.portraitListIndex == 0) return;
 	this.getPreparePortraitList(false);
-
 	this.applyFlipType = 2;
 	setTimeout(() => {
 		this.applyFlipType = 0;
-		this.portraitListIndex--;
+		if(number==999){
+			this.portraitListIndex--;
+		}else{
+			this.portraitListIndex = number;
+		}
 		this.getCurrentPortraitList();
-	}, 1500);
+	}, 1000);
 
 }
 
-onPortraitListNext() {
+onPortraitListNext(number:number=999) {
 	if (this.applyFlipType) return;
 	if (this.portraitListIndex == this.portraitTotalPages - 1) return;
 	this.getPreparePortraitList();
-
 	this.applyFlipType = 1;
 	setTimeout(() => {
 		this.applyFlipType = 0;
-		this.portraitListIndex++;
+		if(number==999){
+			this.portraitListIndex++;
+		}else{
+			this.portraitListIndex = number;
+		}
 		this.getCurrentPortraitList();
-	}, 1500);
+	}, 1000);
 
 }
 
@@ -257,11 +262,9 @@ getPreparePortraitList(toNext: boolean = true) {
 	paginationFun(i){
 		if(i==this.portraitListIndex) return
 		if(i>this.portraitListIndex){
-			this.portraitListIndex = i;
-			this.onPortraitListNext()
+			this.onPortraitListNext(i)
 		}else{
-			this.portraitListIndex = i;
-			this.onPortraitListPrev()
+			this.onPortraitListPrev(i)
 		}
 	}
 }
