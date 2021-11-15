@@ -6,7 +6,7 @@
 				<img v-if="navBgColor && $route.name != 'search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
 
 				<img v-if="$route.name == 'search'" @click="$router.push({ name: 'home' })" src="~assets/ic_home_banner_logo2.png" alt="" />
-				<div>
+				<div class="summary-title">
 					<h3>我们，让空间更美好</h3>
 					<p>BETTER SPACE,BETTER LIFE</p>
 				</div>
