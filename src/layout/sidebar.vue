@@ -45,15 +45,15 @@ export default class sidebar extends Vue {
 	onBackUpMouseOver(event: MouseEvent) {
 		let target = (<HTMLElement>event.currentTarget).querySelector('i');
 		gsap.to(target, {
-      duration: 0.8,
-      overwrite: true,
-      keyframes: [
-        { y: -3 },
-        { y: 0 },
-        { y: -3 },
+			duration: 0.8,
+			overwrite: true,
+			keyframes: [
+				{ y: -4 },
+				{ y: 0 },
+				{ y: -4 },
 				{ y: 0 }
-      ]
-    });
+			]
+		});
 	}
 }
 </script>

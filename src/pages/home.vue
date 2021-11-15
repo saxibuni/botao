@@ -1310,10 +1310,48 @@ export default home;
 					height: 152px;
 					// perspective: 1500px;
 					transform: rotateY(0);
+					&::after,
+						&::before {
+							border: 2px solid #ed5400;
+							width: 8px;
+							height: 8px;
+						}
+						&::after {
+							border-right: none;
+							border-bottom: none;
+						}
+						&::before {
+							border-top: none;
+							border-left: none;
+					}
+
+					&::after,
+					&::before {
+						content: '';
+						position: absolute;
+						border: 3px solid transparent;
+						width: 0px;
+						height: 0px;
+						transition: border 0.3s, width 0.3s, height 0.3s;
+					}
+					&::after {
+						left: 6px;
+						top: 9px;
+						border-right: none;
+						border-bottom: none;
+					}
+					&::before {
+						right: 9px;
+						bottom: 9px;
+						border-top: none;
+						border-left: none;
+					}
+
 					.flip-box {
 						width: 100%;
 						height: 100%;
 						transform-style: preserve-3d;
+						position: relative;
 						img {
 							width: 100%;
 							height: 100%;

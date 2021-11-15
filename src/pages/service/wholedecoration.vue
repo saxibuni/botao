@@ -17,7 +17,7 @@
 					<li v-for="(item, i) in list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<h2 @mouseover="onClick(i)">
 							{{ i + 1 }}
-							<i :class="{active:item.active}">
+							<i :class="{ active: item.active }">
 								<b>
 									<img :src="item.imgUrl" alt="" />
 								</b>
@@ -244,6 +244,41 @@ export default WholeDecoration;
 	max-width: 1920px;
 	overflow: hidden;
 	margin: 0 auto;
+
+	@keyframes bounce {
+		0%,
+		100%,
+		20%,
+		53%,
+		80% {
+			-webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+			transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+			-webkit-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+		}
+		40%,
+		43% {
+			-webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+			transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+			-webkit-transform: translate3d(0, -30px, 0);
+			-ms-transform: translate3d(0, -30px, 0);
+			transform: translate3d(0, -30px, 0);
+		}
+		70% {
+			-webkit-transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+			transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+			-webkit-transform: translate3d(0, -15px, 0);
+			-ms-transform: translate3d(0, -15px, 0);
+			transform: translate3d(0, -15px, 0);
+		}
+		90% {
+			-webkit-transform: translate3d(0, -4px, 0);
+			-ms-transform: translate3d(0, -4px, 0);
+			transform: translate3d(0, -4px, 0);
+		}
+	}
+
 	img {
 		display: block;
 	}
@@ -346,14 +381,14 @@ export default WholeDecoration;
 						cursor: pointer;
 						position: relative;
 						i {
-							&.active{
+							&.active {
 								transform: translate(-50%, -50%) scale(1);
 							}
 							position: absolute;
 							left: 50%;
 							top: 50%;
 							transform: translate(-50%, -50%) scale(0);
-							transition: transform .3s;
+							transition: transform 0.3s;
 							width: 110px;
 							height: 110px;
 							border: 1px solid rgba(235, 85, 29, 0.2);
@@ -382,7 +417,7 @@ export default WholeDecoration;
 						color: #ffffff;
 						line-height: 1;
 						text-align: center;
-						transition: .3s;
+						transition: 0.3s;
 						&.active {
 							font-size: 24px;
 							margin-top: 40px;
@@ -401,10 +436,10 @@ export default WholeDecoration;
 						transform: translateX(-50%) scale(0);
 						overflow: hidden;
 						text-align: center;
-						transition:transform .3s;
+						transition: transform 0.3s;
 						pointer-events: none;
 						transform-origin: top;
-						&.active{
+						&.active {
 							transform: translateX(-50%) scale(1);
 						}
 					}
@@ -414,8 +449,8 @@ export default WholeDecoration;
 						h3 {
 							left: 0;
 							transform: translateX(0) scale(0);
-							&.active{
-									transform: translateX(0) scale(1);
+							&.active {
+								transform: translateX(0) scale(1);
 							}
 						}
 					}
@@ -562,8 +597,8 @@ export default WholeDecoration;
 							right: 0;
 							left: auto;
 							transform: translateX(0) scale(0);
-							&.active{
-									transform: translateX(0) scale(1);
+							&.active {
+								transform: translateX(0) scale(1);
 							}
 						}
 					}
@@ -635,7 +670,7 @@ export default WholeDecoration;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
 				&:nth-child(1) {
-					animation-delay: .1s;
+					animation-delay: 0.1s;
 					width: 480px;
 					padding-top: 10px;
 					.icon {
@@ -646,7 +681,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(2) {
-					animation-delay: .2s;
+					animation-delay: 0.2s;
 					padding-top: 10px;
 					width: 504px;
 					.icon {
@@ -657,7 +692,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(3) {
-					animation-delay: .3s;
+					animation-delay: 0.3s;
 					padding-top: 10px;
 					width: 492px;
 					.icon {
@@ -668,7 +703,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(4) {
-					animation-delay: .4s;
+					animation-delay: 0.4s;
 					padding-top: 10px;
 					width: 350px;
 					.icon {
@@ -679,7 +714,7 @@ export default WholeDecoration;
 					}
 				}
 				&:nth-child(5) {
-					animation-delay: .5s;
+					animation-delay: 0.5s;
 					width: 480px;
 					margin-left: 240px;
 					padding-top: 58px;
@@ -692,7 +727,7 @@ export default WholeDecoration;
 				}
 				&:nth-child(6) {
 					padding-top: 58px;
-					animation-delay: .6s;
+					animation-delay: 0.6s;
 					width: 480px;
 					.icon {
 						background: url('~assets/icons/ic_e1_part3_f1.png') no-repeat center center;
@@ -704,7 +739,7 @@ export default WholeDecoration;
 				&:nth-child(7) {
 					padding-top: 58px;
 					width: 479px;
-					animation-delay: .7s;
+					animation-delay: 0.7s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part3_g1.png') no-repeat center center;
 						&:hover {
@@ -786,6 +821,13 @@ export default WholeDecoration;
 				opacity: 0;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
+				&:hover {
+					div {
+						img{
+							animation: bounce 1s;
+						}
+					}
+				}
 				div {
 					display: flex;
 					align-items: center;
@@ -813,7 +855,7 @@ export default WholeDecoration;
 					top: 251px;
 					left: 0;
 					width: 675px;
-					animation-delay: .2s;
+					animation-delay: 0.2s;
 					div {
 						margin-bottom: 36px;
 						img {
@@ -825,7 +867,7 @@ export default WholeDecoration;
 					top: 461px;
 					width: 675px;
 					left: 0;
-					animation-delay: .6s;
+					animation-delay: 0.6s;
 					div {
 						img {
 							width: 45px;
@@ -851,7 +893,7 @@ export default WholeDecoration;
 					top: 251px;
 					right: 0;
 					width: 622px;
-					animation-delay: .4s;
+					animation-delay: 0.4s;
 					div {
 						margin-bottom: 25px;
 						justify-content: start;
@@ -872,7 +914,7 @@ export default WholeDecoration;
 				&:nth-child(5) {
 					top: 524px;
 					right: 0;
-					animation-delay: .8s;
+					animation-delay: 0.8s;
 					width: 622px;
 					div {
 						margin-bottom: 25px;
@@ -1030,6 +1072,11 @@ export default WholeDecoration;
 				opacity: 0;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
+				&:hover {
+					.icon {
+						animation: bounce 1s;
+					}
+				}
 				.icon {
 					width: 89px;
 					height: 89px;
@@ -1045,35 +1092,35 @@ export default WholeDecoration;
 					line-height: 36px;
 				}
 				&:nth-child(1) {
-					animation-delay: .1s;
+					animation-delay: 0.1s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_1.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(2) {
-					animation-delay: .2s;
+					animation-delay: 0.2s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_2.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(3) {
-					animation-delay: .3s;
+					animation-delay: 0.3s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_3.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(4) {
-					animation-delay: .4s;
+					animation-delay: 0.4s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_4.png') no-repeat center center;
 					}
 				}
 
 				&:nth-child(5) {
-					animation-delay: .5s;
+					animation-delay: 0.5s;
 					.icon {
 						background: url('~assets/icons/ic_e1_part5_5.png') no-repeat center center;
 					}
