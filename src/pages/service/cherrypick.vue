@@ -211,40 +211,19 @@
 
 		<div class="page7">
 			<h2 class="wow">高端品牌直采</h2>
-			<p class="wow">High-end brands {{ portraitListIndex }}</p>
-			<div class="swipers">
-				<div class="swiper-slides">
-					<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
-						<!-- <div>
-								<div :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }">
-								<img :src="item" alt="" />
-								<img :src="item" alt="" />
-								</div>
-							</div> -->
-						<div class="one">
-							<div class="inner-one">
-								<div class="box"><img :src="item" alt="" /></div>
-							</div>
+			<p class="wow">High-end brands</p>
+			<div class="swiper wow">
+				<swiper :options="bannerSwiperOptions2">
+					<swiper-slide v-for="(item, i) in 3" :key="i">
+						<div class="img-wrap" v-for="(item, i) in 26" :key="i">
+							<img src="~assets/bg_e2_part7_b2.png" alt="" />
 						</div>
-						<div class="two">
-							<div class="inner-two">
-								<div class="box"><img :src="item" alt="" /></div>
-							</div>
-						</div>
-					</div>
-				</div>
+					</swiper-slide>
+				</swiper>
 				<div class="swiper-button-wrap">
-					<div class="prev prev2" @click="onPortraitListPrev()"></div>
-					<div class="swiper-pagination2">
-						<span
-							class="swiper-pagination-bullet"
-							:class="{ 'swiper-pagination-bullet-active': portraitListIndex == i }"
-							@click="paginationFun(i)"
-							v-for="(item, i) in portraitTotalPages"
-							:key="i"
-						></span>
-					</div>
-					<div class="next next2" @click="onPortraitListNext()"></div>
+					<div class="prev prev2"></div>
+					<div class="swiper-pagination2"></div>
+					<div class="next next2"></div>
 				</div>
 			</div>
 		</div>
@@ -264,7 +243,6 @@ export default CheckPick;
 	img {
 		display: block;
 	}
-
 	.page1 {
 		height: 970px;
 		position: relative;
@@ -1471,11 +1449,9 @@ export default CheckPick;
 			}
 		}
 	}
-
 	.page7 {
 		padding: 100px 0;
 		height: 967px;
-		position: relative;
 		background: #f7f7f7 url('~assets/bg_e2_part7.jpg') no-repeat center 90px;
 		> h2 {
 			height: 46px;
@@ -1505,7 +1481,7 @@ export default CheckPick;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
-		.swipers {
+		.swiper {
 			width: 1660px;
 			height: 515px;
 			margin: 80px auto;
@@ -1513,124 +1489,30 @@ export default CheckPick;
 			opacity: 0;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
-			.swiper-slides {
+			.swiper-slide {
 				height: 515px;
-				.imgs-wrap {
+				.img-wrap {
 					left: 28px;
 					top: 28px;
 					position: absolute;
+					background: #fff;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					transform: rotate(45deg);
 					width: 131px;
 					height: 131px;
-
-					/* transform-style: preserve-3d; */
-
-					&.do-flip {
-						transition: transform 1.5s ease-in-out;
-						transform: rotateX(180deg);
+					overflow: hidden;
+					box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
+					img {
+						max-width: 100%;
+						transform: rotate(-45deg);
+						transition: 0.3s;
 					}
-					&.do-flip-reverse {
-						transition: transform 1.5s ease-in-out;
-						transform: rotateX(-180deg);
-					}
-					/* transition: .3s; */
-					/* &:hover{
-						transform: rotateX(180deg);
-					} */
-					> div {
-						width: 131px;
-						height: 131px;
-						backface-visibility: hidden;
-						position: absolute;
-						left: 0;
-						top: 0;
-						img {
-							width: 100%;
-						}
-						&.one {
-							transform: rotateX(180deg);
-						}
-						.inner-one,
-						.inner-two {
-							width: 100%;
-							height: 100%;
-							display: flex;
-							justify-content: center;
-							align-items: center;
-							transform: rotate(45deg);
-							background: #fff;
-							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
-						}
-						.inner-one .box {
-							border: 1px solid red;
-							transform: rotate(-45deg);
-										img {
-								transform: rotateX(180deg);
-							}
-						}
-
-						.inner-two .box {
-							border: 1px solid blue;
-							transform: rotate(-45deg);
-
-						}
-					}
-
-
-
-					/* >div{
-						width: 100%;
-						height: 100%;
-						transform-style: preserve-3d;
-						transform-origin: center center;
-						position: relative;
-						>div{
-						width: 100%;
-						height: 100%;
-						transform: rotate(-45deg) ;
-						&::before{
-							content: '';
-							width: 100%;
-							height: 100%;
-							display: block;
-							background: #fff;
-							transform: rotate(45deg) ;
-							position: relative;
-							z-index: -1;
-						}
-						img{
-							position: absolute;
-							left: 50%;
-							top: 50%;
-							transform: translate(-50%,-50%);
-							max-width: 93%;
-							backface-visibility: hidden;
-							&:nth-child(1){
-									z-index: 2;
-							}
-							&:nth-child(2){
-								z-index: 30;
-								transform:translate(-50%,-50%) rotateX(180deg);
-								border: 1px solid red;
-							}
-						}
-
-					&.do-flip {
-						transition: transform 1.5s ease-in-out;
-						transform:rotate(-45deg) rotateX(180deg);
-					}
-					&.do-flip-reverse {
-						transition: transform 1.5s ease-in-out;
-						transform:rotate(-45deg) rotateX(-180deg);
-					}
-
-						}
-
-					} */
-
 					&:hover {
-						/* img {
+						img {
 							transform: rotate(-45deg) scale(1.06);
-						} */
+						}
 					}
 					&:nth-child(1) {
 						left: 28px;
