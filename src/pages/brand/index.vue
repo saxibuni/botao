@@ -1270,7 +1270,6 @@ html {
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
-					// width: 327px;
 					height: 450px;
 					.img-box {
 						width: 327px;
@@ -1299,13 +1298,13 @@ html {
 						min-height: 224px;
 						h2 {
 							margin-top: 108px;
-							text-align: start;
+							text-align: left;
 							margin-bottom: 22px;
 							font-size: 34px;
 							font-weight: bold;
 						}
 						p {
-							width: 359px;
+							width: 327px;
 							font-size: 18px;
 							color: #666666;
 							line-height: 30px;
