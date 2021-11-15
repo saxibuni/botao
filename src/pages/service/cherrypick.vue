@@ -1,5 +1,6 @@
 <template>
 	<div class="cherry-pick">
+
 		<div class="page1">
 			<img src="~assets/bg_e2_banner_right.jpg" alt="" />
 			<div class="text">
@@ -209,21 +210,27 @@
 			</ul>
 		</div>
 
+
+
 		<div class="page7">
 			<h2 class="wow">高端品牌直采</h2>
 			<p class="wow">High-end brands</p>
-			<div class="swiper wow">
-				<swiper :options="bannerSwiperOptions2">
-					<swiper-slide v-for="(item, i) in 3" :key="i">
-						<div class="img-wrap" v-for="(item, i) in 26" :key="i">
-							<img src="~assets/bg_e2_part7_b2.png" alt="" />
+			<div class="swipers">
+					<div class="swiper-slides">
+
+						<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }" v-for="(item, i) in currentPortraitList" :key="i">
+							<img :src="item" alt="" />
+							<img :src="item" alt="" />
 						</div>
-					</swiper-slide>
-				</swiper>
+
+
+					</div>
 				<div class="swiper-button-wrap">
-					<div class="prev prev2"></div>
-					<div class="swiper-pagination2"></div>
-					<div class="next next2"></div>
+					<div class="prev prev2" @click="onPortraitListPrev()"></div>
+					<div class="swiper-pagination2">
+						<span class="swiper-pagination-bullet"></span>
+					</div>
+					<div class="next next2" @click="onPortraitListNext()"></div>
 				</div>
 			</div>
 		</div>
@@ -243,6 +250,9 @@ export default CheckPick;
 	img {
 		display: block;
 	}
+
+
+
 	.page1 {
 		height: 970px;
 		position: relative;
@@ -1449,9 +1459,11 @@ export default CheckPick;
 			}
 		}
 	}
+
 	.page7 {
 		padding: 100px 0;
 		height: 967px;
+		position: relative;
 		background: #f7f7f7 url('~assets/bg_e2_part7.jpg') no-repeat center 90px;
 		> h2 {
 			height: 46px;
@@ -1481,7 +1493,7 @@ export default CheckPick;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
-		.swiper {
+		.swipers {
 			width: 1660px;
 			height: 515px;
 			margin: 80px auto;
@@ -1489,9 +1501,9 @@ export default CheckPick;
 			opacity: 0;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
-			.swiper-slide {
+			.swiper-slides {
 				height: 515px;
-				.img-wrap {
+				.imgs-wrap {
 					left: 28px;
 					top: 28px;
 					position: absolute;
@@ -1499,20 +1511,41 @@ export default CheckPick;
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					transform: rotate(45deg);
+					transform: rotate(45deg) rotateX(0);
 					width: 131px;
 					height: 131px;
-					overflow: hidden;
 					box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
-					img {
-						max-width: 100%;
-						transform: rotate(-45deg);
-						transition: 0.3s;
+
+					transition: .3s;
+					transform-style: preserve-3d;
+					transform-origin: center center;
+
+					&.do-flip {
+						transition: transform 1.5s ease-in-out;
+						transform:rotate(45deg) rotateX(180deg);
 					}
-					&:hover {
-						img {
-							transform: rotate(-45deg) scale(1.06);
+					&.do-flip-reverse {
+						transition: transform 1.5s ease-in-out;
+						transform:rotate(45deg) rotateX(-180deg);
+					}
+					img{
+						position: absolute;
+						left: 2%;
+						top: 28%;
+						max-width: 93%;
+						backface-visibility: hidden;
+						transform:rotate(-45deg);
+						&:nth-child(2){
+							transform:rotate(45deg) rotateX(180deg);
+							border: 1px solid red;
 						}
+
+					}
+
+					&:hover {
+						/* img {
+							transform: rotate(-45deg) scale(1.06);
+						} */
 					}
 					&:nth-child(1) {
 						left: 28px;

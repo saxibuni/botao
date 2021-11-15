@@ -90,6 +90,129 @@ export default class CheckPick extends Vue {
 		},
 
 ]
+portraitList = [
+	require('root/assets/bg_e2_part7_b2.png'),
+	require('root/assets/bg_e2_part7_c2.png'),
+	require('root/assets/bg_e2_part7_d2.png'),
+	require('root/assets/bg_e2_part7_e2.png'),
+	require('root/assets/bg_e2_part7_f2.png'),
+	require('root/assets/bg_e2_part7_g2.png'),
+	require('root/assets/bg_e2_part7_h2.png'),
+	require('root/assets/bg_e2_part7_i2.png'),
+	require('root/assets/bg_e2_part7_j2.png'),
+	require('root/assets/bg_e2_part7_k2.png'),
+	require('root/assets/bg_e2_part7_l2.png'),
+	require('root/assets/bg_e2_part7_m2.png'),
+	require('root/assets/bg_e2_part7_n2.png'),
+	require('root/assets/bg_e2_part7_o2.png'),
+	require('root/assets/bg_e2_part7_p2.png'),
+	require('root/assets/bg_e2_part7_q2.png'),
+	require('root/assets/bg_e2_part7_r2.png'),
+	require('root/assets/bg_e2_part7_s2.png'),
+	require('root/assets/bg_e2_part7_t2.png'),
+	require('root/assets/bg_e2_part7_u2.png'),
+	require('root/assets/bg_e2_part7_v2.png'),
+	require('root/assets/bg_e2_part7_w2.png'),
+	require('root/assets/bg_e2_part7_x2.png'),
+	require('root/assets/bg_e2_part7_y2.png'),
+	require('root/assets/bg_e2_part7_z2.png'),
+	require('root/assets/bg_e2_part7_b1.png'),
+
+	require('root/assets/bg_e2_part7_k2.png'),
+	require('root/assets/bg_e2_part7_l2.png'),
+	require('root/assets/bg_e2_part7_m2.png'),
+	require('root/assets/bg_e2_part7_n2.png'),
+	require('root/assets/bg_e2_part7_o2.png'),
+	require('root/assets/bg_e2_part7_p2.png'),
+	require('root/assets/bg_e2_part7_q2.png'),
+	require('root/assets/bg_e2_part7_r2.png'),
+	require('root/assets/bg_e2_part7_s2.png'),
+	require('root/assets/bg_e2_part7_t2.png'),
+	require('root/assets/bg_e2_part7_u2.png'),
+	require('root/assets/bg_e2_part7_v2.png'),
+	require('root/assets/bg_e2_part7_w2.png'),
+	require('root/assets/bg_e2_part7_x2.png'),
+	require('root/assets/bg_e2_part7_y2.png'),
+	require('root/assets/bg_e2_part7_z2.png'),
+	require('root/assets/bg_e2_part7_b1.png'),
+	require('root/assets/bg_e2_part7_b2.png'),
+	require('root/assets/bg_e2_part7_c2.png'),
+	require('root/assets/bg_e2_part7_d2.png'),
+	require('root/assets/bg_e2_part7_e2.png'),
+	require('root/assets/bg_e2_part7_f2.png'),
+	require('root/assets/bg_e2_part7_g2.png'),
+	require('root/assets/bg_e2_part7_h2.png'),
+	require('root/assets/bg_e2_part7_i2.png'),
+	require('root/assets/bg_e2_part7_j2.png'),
+
+	require('root/assets/bg_e2_part7_b1.png'),
+	require('root/assets/bg_e2_part7_b2.png'),
+	require('root/assets/bg_e2_part7_b2.png'),
+]
+currentPortraitList = [];
+nextPortraitList = [];
+portraitListSize = 26;
+portraitListIndex = 0;
+applyFlipType: number = 0;
+portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
+
+
+onPortraitListPrev() {
+	if (this.applyFlipType) return;
+	if (this.portraitListIndex == 0) return;
+	this.getPreparePortraitList(false);
+
+	this.applyFlipType = 2;
+	setTimeout(() => {
+		this.applyFlipType = 0;
+		this.portraitListIndex--;
+		this.getCurrentPortraitList();
+	}, 1500);
+
+}
+
+onPortraitListNext() {
+	if (this.applyFlipType) return;
+	if (this.portraitListIndex == this.portraitTotalPages - 1) return;
+	this.getPreparePortraitList();
+
+	this.applyFlipType = 1;
+	setTimeout(() => {
+		this.applyFlipType = 0;
+		this.portraitListIndex++;
+		this.getCurrentPortraitList();
+	}, 1500);
+
+}
+
+
+getCurrentPortraitList() {
+	let start = this.portraitListIndex * this.portraitListSize;
+	let end = (this.portraitListIndex + 1) * this.portraitListSize;
+	this.currentPortraitList = this.portraitList.slice(start, end);
+}
+
+getPreparePortraitList(toNext: boolean = true) {
+	let start = this.portraitListIndex * this.portraitListSize;
+	let end = (this.portraitListIndex + 1) * this.portraitListSize;
+
+	if (toNext) {
+		if (this.portraitListIndex < this.portraitTotalPages) {
+			this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
+		} else {
+			this.nextPortraitList = [];
+		}
+	} else {
+		if (this.portraitListIndex > 0) {
+			this.nextPortraitList = this.portraitList.slice(start - this.portraitListSize, end - this.portraitListSize);
+		} else {
+			this.nextPortraitList = [];
+		}
+	}
+}
+
+
+
 	iconClick(i){
 		this.iconIndex = i;
 	}
@@ -101,6 +224,8 @@ export default class CheckPick extends Vue {
 	mounted() {
 		this.restartWow();
 		this.initTextChars();
+		this.getCurrentPortraitList();
+
 	}
 	initTextChars() {
 		let textContents = this.$el.querySelectorAll<HTMLElement>('.page1 .text');
