@@ -20,11 +20,21 @@
 				<div class="right">
 					<i></i>
 					分享 :
-					<i @click="wbJump"></i>
-					<i>
-						<div><img src="~assets/bg_home_footer_qa.jpg" alt="" /></div>
-					</i>
-					<i @click="openQQ"></i>
+					<div class="wx">
+						<div>
+							<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+						</div>
+						<i></i>
+						<i></i>
+					</div>
+					<div class="wb">
+						<i @click="wbJump()"></i>
+						<i @click="wbJump()"></i>
+					</div>
+					<div class="qq">
+						<i @click="openQQ"></i>
+						<i @click="openQQ"></i>
+					</div>
 				</div>
 			</div>
 			<p class="wow">
@@ -77,13 +87,13 @@
 			<div class="item-list">
 				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i < newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<div class="img-box" @click="$router.push({ name: 'strategy-list' })">
-						<img :src="v.imgUrl" alt=""  />
+						<img :src="v.imgUrl" alt="" />
 					</div>
 					<div class="bottom">
 						<div class="date">{{ v.date }}</div>
 						<div class="title">{{ v.title }}</div>
 						<div class="text">{{ v.text }}</div>
-						<div class="more"  @click="$router.push({ name: 'strategy-list'})" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
+						<div class="more" @click="$router.push({ name: 'strategy-list' })" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
 							More
 							<span></span>
 						</div>
@@ -183,76 +193,125 @@ html {
 				height: 100%;
 				color: #666;
 				font-size: 16px;
+
 				i {
-					margin: 0 10px;
-					width: 18Px;
-					height: 18Px;
-					// cursor: pointer;
-					background: url(~assets/icons/iconlist.png) no-repeat;
+					width: 26px;
+					height: 26px;
+					background: url('~assets/icons/iconlist.png') no-repeat;
+					background-position: -11px -11px;
+					cursor: pointer;
+					position: relative;
+					transition: 0.3s;
 					&:nth-child(1) {
-						position: relative;
-						width: 17Px;
-						height: 17Px;
-						background: url(~assets/icons/ic_f3_part2_share.png) no-repeat;
-						// background-size: 100%;
+						margin-right: 10px;
+						background-image: url(~assets/icons/ic_f3_part2_share.png);
+						background-position: center;
 					}
 					&:nth-child(2) {
-						position: relative;
-						cursor: pointer;
-						width: 28Px;
-						height: 25Px;
-						margin-left: 40px;
-						background-position: 48% 20%;
-						transition: all 0.3s;
-						&:hover {
-							background-position: 48% 80%;
-						}
+						background-position: -41px -11px;
 					}
-					&:nth-child(3) {
-						cursor: pointer;
-
-						position: relative;
-						width: 28Px;
-						height: 25Px;
-						background-position: 9% 19%;
-						transition: all 0.3s;
-						> div {
-							transition: opacity 0.5s, transform 0.5s;
-							opacity: 0;
-							pointer-events: none;
-							background: #fff;
-							position: absolute;
-							left: 50%;
-							transform: translateX(-50%) translateY(-10%);
-							bottom: 150%;
+					> div {
+						transition: opacity 0.5s, transform 0.5s;
+						opacity: 0;
+						pointer-events: none;
+						background: #fff;
+						position: absolute;
+						left: 50%;
+						transform: translateX(-50%) translateY(-10%);
+						bottom: 150%;
+						width: 150px;
+						height: 150px;
+						img {
 							width: 150px;
 							height: 150px;
-							img {
-								width: 150px;
-								height: 150px;
-							}
-						}
-						&:hover {
-							background-position: 9% 80%;
-							> div {
-								opacity: 1;
-								transform: translateX(-50%) translateX(0);
-							}
 						}
 					}
-					&:nth-child(4) {
-						cursor: pointer;
-						display: flex;
-						width: 28Px;
-						height: 25Px;
-						background-position: 83% 20%;
-						transition: all 0.3s;
-						a {
-							width: 100%;
+				}
+				.wx {
+					margin-left: 50px;
+					position: relative;
+					width: 26px;
+					height: 26px;
+					&:hover {
+						background-position-y: -43px;
+						> div {
+							opacity: 1;
+							transform: translateX(-50%) translateX(0);
 						}
-						&:hover {
-							background-position: 83% 80%;
+					}
+					> div {
+						transition: opacity 0.5s, transform 0.5s;
+						opacity: 0;
+						pointer-events: none;
+						background: #fff;
+						position: absolute;
+						left: 50%;
+						transform: translateX(-50%) translateY(-10%);
+						bottom: 150%;
+						width: 150px;
+						height: 150px;
+						img {
+							width: 150px;
+							height: 150px;
 						}
+					}
+					i {
+						position: absolute;
+						left: 0;
+						margin-left: 0;
+						top: 0px;
+
+						background: url('~assets/icons/iconlist.png') no-repeat;
+						background-position: -11px -11px;
+						&:nth-last-of-type(2) {
+							opacity: 0;
+							z-index: 11;
+							background-position: -11px -43px;
+						}
+					}
+					&:hover i:nth-last-of-type(2) {
+						opacity: 1 !important;
+					}
+				}
+				.wb {
+					position: relative;
+					width: 26px;
+					height: 26px;
+					margin: 0 20px;
+					i {
+						position: absolute;
+						top: 0;
+						left: 0;
+						background: url('~assets/icons/iconlist.png') no-repeat;
+						background-position: -41px -11px;
+						&:nth-last-of-type(2) {
+							opacity: 0;
+							z-index: 11;
+							background-position: -41px -43px;
+						}
+					}
+					&:hover i:nth-last-of-type(2) {
+						opacity: 1 !important;
+					}
+				}
+				.qq {
+					position: relative;
+					width: 26px;
+					height: 26px;
+					i {
+						position: absolute;
+						top: 0;
+						left: 0;
+						background: url('~assets/icons/iconlist.png') no-repeat;
+						background-position: -80px -11px;
+						&:nth-last-of-type(2) {
+							opacity: 0;
+							z-index: 11;
+							background-position: -80px -43px;
+						}
+					}
+					&:hover i:nth-last-of-type(2) {
+						opacity: 1 !important;
 					}
 				}
 			}
@@ -410,9 +469,9 @@ html {
 						color: #ed5300 !important;
 					}
 				}
-			&:not(:nth-last-child(-n+3)){
-				margin-bottom: 30px;
-			}
+				&:not(:nth-last-child(-n + 3)) {
+					margin-bottom: 30px;
+				}
 			}
 			// > div {
 			// 	&:nth-of-type(2) {
