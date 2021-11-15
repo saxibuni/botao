@@ -25,7 +25,10 @@
 							C573.4,137.3,533.6,97.5,484.6,97.5z M179.8,88.8h33.1l7.2-9.9c13.4-18.5,38.9-30,66.4-30s53,11.5,66.4,30l7.2,9.9h32.7V163h-213
 							L179.8,88.8L179.8,88.8z M525.2,586.6c0,22.4-18.2,40.6-40.6,40.6H89.4c-22.3,0-40.6-18.2-40.6-40.6V186.2
 							c0-22.3,18.2-40.6,40.6-40.6h42.2v65.5H441v-65.5h43.6c22.3,0,40.6,18.2,40.6,40.6V586.6z"/>
-						<path class="st1" d="M398.2,357.2h-59.4l47-47c9.4-9.4,9.4-24.6,0-34.1c-9.4-9.4-24.6-9.4-34.1,0L287,340.8l-64.6-64.6
+					</svg>
+					<svg class="currency" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						viewBox="0 0 574 676" style="enable-background:new 0 0 574 676;" xml:space="preserve">
+						<path class="st1 currency" d="M398.2,357.2h-59.4l47-47c9.4-9.4,9.4-24.6,0-34.1c-9.4-9.4-24.6-9.4-34.1,0L287,340.8l-64.6-64.6
 							c-9.4-9.4-24.6-9.4-34.1,0c-9.4,9.4-9.4,24.6,0,34.1l46.9,47h-59.4c-13.3,0-24.1,10.8-24.1,24.1c0,13.3,10.8,24.1,24.1,24.1h85.7
 							v10.6H210c-13.3,0-24.1,10.8-24.1,24.1c0,13.3,10.8,24.1,24.1,24.1h51.4v64.2c0,13.3,10.8,24.1,24.1,24.1
 							c13.3,0,24.1-10.8,24.1-24.1V464H364c13.3,0,24.1-10.8,24.1-24.1c0.1-13.3-10.7-24.1-24-24.1h-54.5v-10.6h88.6
@@ -85,11 +88,27 @@ export default class sidebar extends Vue {
 	}
 
 	onInfoMouseOver(event: MouseEvent) {
-		console.log(1);
+		let dots = (<HTMLElement>event.currentTarget).querySelectorAll('svg .st1');
+		gsap.fromTo(dots, {
+			opacity: 0,
+		}, {
+			duration: 0.1,
+			opacity: 1,
+			stagger: 0.3,
+			repeat: 1,
+			repeatDelay: 0.3
+		})
 	}
 
 	onPrizeMouseOver(event: MouseEvent) {
-		console.log(2);
+		let currency = (<HTMLElement>event.currentTarget).querySelector('svg.currency');
+		gsap.fromTo(currency, {
+			rotateY: 0,
+		}, {
+			duration: 1.5,
+			overwrite: true,
+			rotateY: 360
+		});
 	}
 
 	onDesignMouseOver(event: MouseEvent) {
@@ -214,10 +233,16 @@ export default class sidebar extends Vue {
 			}
 			&:nth-child(2) {
 				i {
+					position: relative;
 					width: 20px;
 					height: 25px;
-					.st0{fill:#61BFFF;}
-					.st1{fill:#FFFFFF;}
+					svg {
+						position: absolute;
+						left: 0;
+						top: 0;
+						.st0{fill:#61BFFF;}
+						.st1{fill:#FFFFFF;}
+					}
 				}
 			}
 			&:nth-child(3) {
