@@ -28,9 +28,10 @@ export default class Brand extends Vue {
 	draggerTarget1: any;
 	draggerTarget2: any;
 	distance: number = 0;
+	rotateFlag: boolean = true;
 	progressIndex: number = 0;
 	pos = [257, 443, 535, 630, 851, 1039];
-
+	deg: number = 0;
 	isPlayingPath: boolean = false;
 	prePathIndex: number = -1; //前一次的路径点
 	pathTween: any;
@@ -156,8 +157,7 @@ export default class Brand extends Vue {
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
 			text: ['捐资援建中国最北部希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		}
-		,
+		},
 		{
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
@@ -172,7 +172,7 @@ export default class Brand extends Vue {
 			imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 			time: '2009',
 			text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
-		},
+		}
 		// {
 		// 	imgUrl: require('../../assets/bg_g1_part7_pic3.jpg'),
 		// 	time: '2009',
@@ -339,10 +339,24 @@ export default class Brand extends Vue {
 	}
 
 	change(str) {
+		if (!this.rotateFlag) return;
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
-
+		const time_box = document.querySelector<HTMLElement>('.time-box');
+		const text_box = document.querySelector<HTMLElement>('.text-boxs');
+		if (str == 'next') {
+			this.deg += 90;
+		}
+		if (str == 'pre') {
+			this.deg -= 90;
+		}
+		time_box.style.transform = `rotateX(-${this.deg}deg)`;
+		text_box.style.transform = `rotateX(-${this.deg}deg)`;
+		this.rotateFlag=false
+		setTimeout(() => {
+				this,this.rotateFlag=true
+		}, 1000);
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(progressIndex)
@@ -365,16 +379,14 @@ export default class Brand extends Vue {
 	}
 
 	jump(i) {
-
 		if (typeof i === 'undefined') return;
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.brand');
 		const item = brand.querySelector<HTMLElement>(`.select${i}`);
 		let top = item.offsetTop - headerHeight;
 		if (i == 3) {
-			const height= document.querySelector<HTMLElement>('.img-list').clientHeight/2;
-			top +=height+2
-
+			const height = document.querySelector<HTMLElement>('.img-list').clientHeight / 2;
+			top += height + 2;
 		}
 		window.scroll({ top, behavior: 'smooth' });
 	}

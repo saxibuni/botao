@@ -28,7 +28,7 @@
 						<span>12</span>
 						家集团子公司
 					</h2>
-					<p>100亿年产值目标  100年企业愿景</p>
+					<p>100亿年产值目标 100年企业愿景</p>
 				</div>
 				<div class="img-box">
 					<img src="~assets/bg_g1_part2_logo.png" alt="" />
@@ -134,12 +134,37 @@
 				<div class="inner-img"></div>
 			</div>
 			<div class="info-box wow">
-				<div class="time">
-					<p>{{ devolopeList[progressIndex].time }}</p>
-					<h2>{{ devolopeList[progressIndex].name }}</h2>
+				<div class="time-box">
+					<div class="time">
+						<p>{{ devolopeList[progressIndex].time }}</p>
+						<h2>{{ devolopeList[progressIndex].name }}</h2>
+					</div>
+					<div class="time">
+						<p>{{ devolopeList[progressIndex].time }}</p>
+						<h2>{{ devolopeList[progressIndex].name }}</h2>
+					</div>
+					<div class="time">
+						<p>{{ devolopeList[progressIndex].time }}</p>
+						<h2>{{ devolopeList[progressIndex].name }}</h2>
+					</div>
+					<div class="time">
+						<p>{{ devolopeList[progressIndex].time }}</p>
+						<h2>{{ devolopeList[progressIndex].name }}</h2>
+					</div>
 				</div>
-				<div class="info">
-					<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+				<div class="text-boxs">
+					<div class="info">
+						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+					</div>
+					<div class="info">
+						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+					</div>
+					<div class="info">
+						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+					</div>
+					<div class="info">
+						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+					</div>
 				</div>
 				<div class="pre" @click="change('pre')"></div>
 				<div class="next" @click="change('next')"></div>
@@ -423,6 +448,14 @@ html {
 			font-family: Athene;
 		}
 	}
+	// @keyframes rotate {
+	// 	from {
+	// 		transform: rotateX(0deg);
+	// 	}
+	// 	to {
+	// 		transform: rotateX(180deg);
+	// 	}
+	// }
 	.swiper-pre,
 	.swiper-next {
 		position: absolute;
@@ -559,7 +592,7 @@ html {
 			}
 			&.active {
 				color: #eb551c;
-				&::before{
+				&::before {
 					background-color: #eb551c;
 				}
 			}
@@ -1035,41 +1068,97 @@ html {
 			height: 180px;
 			color: #ffffff;
 			text-align: start;
-			.time {
-				box-sizing: border-box;
-				padding-top: 43px;
-				padding-left: 46px;
+			.time-box {
 				width: 240px;
 				height: 100%;
-				background: #eb551d;
-				p {
-					font-size: 30px;
-					font-weight: bold;
-					line-height: 1;
+				transform-style: preserve-3d;
+				transition: all 1s;
+				// overflow: hidden;
+				// transform-origin: bottom;
+				.time {
+					position: absolute;
+					top: 0;
+					box-sizing: border-box;
+					padding-top: 43px;
+					padding-left: 46px;
+					width: 240px;
+					height: 100%;
+					background: #eb551d;
+					transition: all 1s;
+					p {
+						font-size: 30px;
+						font-weight: bold;
+						line-height: 1;
+					}
+					h2 {
+						text-align: start;
+						margin-top: 16px;
+						font-size: 26px;
+						line-height: 1;
+					}
 				}
-				h2 {
-					text-align: start;
-					margin-top: 16px;
-					font-size: 26px;
-					line-height: 1;
+				> div:nth-child(1) {
+					// top: -180px;
+					transform: translateZ(-90px) rotateY(180deg) rotateZ(180deg);
+				}
+				> div:nth-child(2) {
+					top: -180px;
+					transform-origin: bottom;
+					transform: rotateX(90deg) translateY(90px);
+				}
+				> div:nth-child(3) {
+					top: 90px;
+					transform: rotateX(-90deg);
+				}
+				> div:nth-child(4) {
+					transform: translateZ(90px);
 				}
 			}
-			.info {
-				padding: 43px 20px 0 50px;
-				flex: 1;
-				height: 100%;
-				background: #132132;
-				p {
-					line-height: 1;
-					@include line-clamp(2);
-					&:first-of-type {
-						font-size: 22px;
+			.time.active {
+				animation: rotate 1s ease-in-out;
+			}
+			.text-boxs {
+				left: 240px;
+				width: 630px;
+				height: 180px;
+				transform-style: preserve-3d;
+				transition: all 1s;
+				.info {
+					position: absolute;
+					top: 0;
+					padding: 43px 20px 0 50px;
+					flex: 1;
+					height: 100%;
+					background: #132132;
+					p {
+						line-height: 1;
+						@include line-clamp(2);
+						&:first-of-type {
+							font-size: 22px;
+						}
+						&:nth-of-type(2) {
+							margin-top: 12px;
+							font-size: 18px;
+							line-height: 32px;
+						}
 					}
-					&:nth-of-type(2) {
-						margin-top: 12px;
-						font-size: 18px;
-						line-height: 32px;
-					}
+				}
+				> div:nth-child(1) {
+					z-index: 11;
+					// top: -180px;
+					transform: translateZ(-90px) rotateX(180deg) rotateZ(0deg);
+				}
+				> div:nth-child(2) {
+					top: -180px;
+					transform-origin: bottom;
+					transform: rotateX(90deg) translateY(90px);
+				}
+				> div:nth-child(3) {
+					top: 90px;
+					transform: rotateX(-90deg);
+				}
+				> div:nth-child(4) {
+					transform: translateZ(90px) rotateX(0deg);
 				}
 			}
 			.pre,
@@ -1263,7 +1352,7 @@ html {
 				height: 537px;
 				display: flex;
 				margin: 137px 0 0 140px;
-				width: auto ;
+				width: auto;
 				li {
 					position: relative;
 					top: -25px;
@@ -1277,8 +1366,8 @@ html {
 						.inner {
 							position: relative;
 							display: flex;
-								width: 327px;
-								height: 203px;
+							width: 327px;
+							height: 203px;
 							overflow: hidden;
 							img {
 								position: absolute;
@@ -1348,7 +1437,7 @@ html {
 							flex-direction: column-reverse;
 							// margin-bottom: 115px;
 						}
-						.img-box{
+						.img-box {
 							// margin-top: 115px;
 						}
 						p {
@@ -1536,7 +1625,7 @@ html {
 			}
 		}
 	}
-	#clickToPlay{
+	#clickToPlay {
 		display: none !important;
 	}
 }
