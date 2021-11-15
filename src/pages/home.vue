@@ -203,7 +203,8 @@
 			</div>
 			<div class="right wow">
 				<ul>
-					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick($event, item, i)" :ref="`item${i}`" >
+					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick(item, i)" :ref="`item${i}`"
+					>
 						<div class="flip-box" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }">
 							<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
 							<img :src="item" alt="" />
@@ -214,6 +215,8 @@
 
 				<div class="img-box" :style="{ top: `${top}px`, left: `${left}px`, width: `${width}px`, height: `${height}px` }" v-if="isShowLightImg">
 					<img :src="imgSrc" alt="" />
+				</div>
+				<div class="img-box2" @click="onClick(item.src, i)" v-for="(item, i) in listwidth" :key='i' :style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }">
 				</div>
 			</div>
 			<div class="next" @click="onRoute('design-list')">
@@ -1310,43 +1313,6 @@ export default home;
 					height: 152px;
 					// perspective: 1500px;
 					transform: rotateY(0);
-					&::after,
-						&::before {
-							border: 2px solid #ed5400;
-							width: 8px;
-							height: 8px;
-						}
-						&::after {
-							border-right: none;
-							border-bottom: none;
-						}
-						&::before {
-							border-top: none;
-							border-left: none;
-					}
-
-					&::after,
-					&::before {
-						content: '';
-						position: absolute;
-						border: 3px solid transparent;
-						width: 0px;
-						height: 0px;
-						transition: border 0.3s, width 0.3s, height 0.3s;
-					}
-					&::after {
-						left: 6px;
-						top: 9px;
-						border-right: none;
-						border-bottom: none;
-					}
-					&::before {
-						right: 9px;
-						bottom: 9px;
-						border-top: none;
-						border-left: none;
-					}
-
 					.flip-box {
 						width: 100%;
 						height: 100%;
@@ -1727,6 +1693,55 @@ export default home;
 				bottom: 9px;
 				border-top: none;
 				border-left: none;
+			}
+		}
+		.img-box2 {
+			width: 124px;
+			height: 151px;
+			position: absolute;
+			z-index: 3;
+			cursor: pointer;
+			&::after,
+			&::before {
+				content: '';
+				position: absolute;
+				border: 3px solid transparent;
+				width: 0;
+				height: 0;
+				transition: border .3s,width .3s,height .3s;
+			}
+			&::after {
+				left: 9px;
+				top: 9px;
+				border-right: none;
+				border-bottom: none;
+			}
+			&::before {
+				right: 9px;
+				bottom: 9px;
+				border-top: none;
+				border-left: none;
+			}
+			&:hover{
+				&::after,
+				&::before {
+					border: 3px solid #eb5518;
+					content: '';
+					width: 14px;
+					height: 14px;
+				}
+				&::after {
+					left: 9px;
+					top: 9px;
+					border-right: none;
+					border-bottom: none;
+				}
+				&::before {
+					right: 9px;
+					bottom: 9px;
+					border-top: none;
+					border-left: none;
+				}
 			}
 		}
 	}

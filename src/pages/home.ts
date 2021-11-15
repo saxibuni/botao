@@ -264,6 +264,19 @@ export default class home extends Vue {
 		this.top = this.$refs[items][0].offsetTop;
 		this.width = this.$refs[items][0].clientWidth;
 		this.height = this.$refs[items][0].clientHeight;
+
+		let listwidth = []
+		this.currentPortraitList.forEach((e,i)=>{
+			let items = `item${i}`;
+			let left = this.$refs[items][0].offsetLeft;
+			let top = this.$refs[items][0].offsetTop;
+			let width = this.$refs[items][0].clientWidth;
+			let height = this.$refs[items][0].clientHeight;
+			let src = e;
+			listwidth.push({left,top,width,height,src})
+		})
+		this.listwidth=listwidth;
+		console.log(111,listwidth);
 	}
 	initSpineAni() {
 		let loader = PIXI.loader;
@@ -301,11 +314,11 @@ export default class home extends Vue {
 	top = 0;
 	width = 0;
 	height = 0;
+	listwidth = [];
 	textActive2 = true;
-	onClick(event, item, i) {
+	onClick(item, i) {
 		this.showProfile = !this.showProfile;
 		this.imgSrc = item;
-
 		let items = `item${i}`;
 		this.page3Index = i;
 		this.left = this.$refs[items][0].offsetLeft;
@@ -314,7 +327,6 @@ export default class home extends Vue {
 		this.height = this.$refs[items][0].clientHeight;
 		this.isShowLightImg = true;
 	}
-
 	textActiveFun(i) {
 		this.picIndex = i;
 		this.textActive = !this.textActive;
