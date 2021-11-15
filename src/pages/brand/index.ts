@@ -39,7 +39,7 @@ export default class Brand extends Vue {
 	offset = 0.03;
 	path: SVGPathElement;
 	plane: HTMLElement;
-
+	preRotate: number = 0;
 	playFlag: boolean = false;
 	center: any = { lng: 121.437186, lat: 31.188195 };
 	times: '';
@@ -338,13 +338,15 @@ export default class Brand extends Vue {
 		}
 	}
 
+	@Watch('progressIndex')
+	getProgressIndex(newVal, oldVal) {
+		newVal > oldVal ? this.calcRotate('next') : this.calcRotate('pre');
+	}
+
 	change(str) {
-		if (!this.rotateFlag) return;
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
-
-		this.rotate(str);
 
 		gsap.to('.history-scroll', {
 			duration: 0.5,
@@ -352,7 +354,7 @@ export default class Brand extends Vue {
 		});
 	}
 
-	rotate(str) {
+	calcRotate(str) {
 		const time_box = document.querySelector<HTMLElement>('.time-box');
 		const text_box = document.querySelector<HTMLElement>('.text-boxs');
 		if (str == 'next') {
@@ -363,14 +365,9 @@ export default class Brand extends Vue {
 		}
 		time_box.style.transform = `rotateX(-${this.deg}deg)`;
 		text_box.style.transform = `rotateX(-${this.deg}deg)`;
-		this.rotateFlag = false;
-		setTimeout(() => {
-		this.rotateFlag = true;
-		}, 1000);
 	}
 
 	changeTime(i) {
-		this.rotate('pre');
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(i)
