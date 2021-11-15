@@ -5,6 +5,7 @@ import { InertiaPlugin } from 'gsap/InertiaPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+import { SplitText } from 'gsap/SplitText';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import ChinaMap from 'root/components/chinamap.vue';
@@ -12,7 +13,7 @@ import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
 import { Events } from 'root/utils/EnumUtils';
 
-gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin);
+gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin, SplitText);
 Vue.use(BaiduMap, {
 	ak: 'xRnB87lnDWlcyPj4Qa0hvGDy72v3l9HE'
 });
@@ -274,6 +275,7 @@ export default class Brand extends Vue {
 	};
 	textShow: boolean = true;
 	mounted() {
+		this.initTextChars();
 		this.createDragger();
 		this.createTrigger();
 		this.initPathTarget();
@@ -285,6 +287,26 @@ export default class Brand extends Vue {
 		this.restartWow();
 		this.$bus.$on(Events.RESIZE, this.onResize);
 		this.$bus.$on('params-change', this.jump);
+	}
+
+	initTextChars() {
+		let chars = new SplitText('.text-content', {
+			charsClass: 'char',
+			type: 'chars'
+		}).chars;
+
+		gsap.timeline()
+		.fromTo(chars, {
+			duration: 1,
+			rotate: -10,
+			y: "random(100, 200)",
+			ease: "power3",
+			opacity: 0
+		}, {
+			opacity: 1,
+			rotate: 0,
+			y: 0
+		});
 	}
 
 	initVideo() {
@@ -402,7 +424,7 @@ export default class Brand extends Vue {
 		});
 	}
 	calcDistance(i) {
-		let offset = 20;
+		let offset = 25;
 		let height = this.pos[i] + offset;
 		let progress = (height - 290) / (1245 - 290);
 		let totalScroll = 1245 - 716;
