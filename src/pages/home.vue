@@ -7,8 +7,7 @@
 					<div class="text">
 						<div class="text-content">
 							<h3>
-								<span>20+</span>
-								<span>年专注别墅大宅 全案引领者{{i}}</span>
+								<span>20+</span><span>年专注别墅大宅 全案引领者{{i}}</span>
 							</h3>
 							<div>
 								<p>FOCUS ON VILLA</p>
@@ -555,18 +554,24 @@ export default home;
 				.text {
 					position: absolute;
 					left: 50%;
-					top: 268px;
+					top: 208px;
 					transform: translateX(-50%);
 					color: #ffffff;
 					h3 {
 						font-size: 34px;
+						height: 34px;
 						font-family: Gilroy;
 						font-weight: 400;
 						text-align: center;
+						display: flex;
+						align-items: center;
+						justify-content: center;
 						span {
-							font-size: 41px;
-							margin-right: 4px;
-							font-weight: bold;
+							&:nth-child(1){
+								font-size: 41px;
+								margin-right: 4px;
+								font-weight: bold;
+							}
 						}
 					}
 					div {
