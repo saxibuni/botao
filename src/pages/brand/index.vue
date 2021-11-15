@@ -4,13 +4,16 @@
 			<video id="v1" controls preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
 				<source :src="'./botao.mp4'" type="video/mp4" />
 			</video>
-			<div class="banner-text" v-show="textShow">
-				<h3>波涛品牌</h3>
-				<p>ABOUT BOTAOGROUP</p>
+			<div class="text-content">
+				<div class="banner-text" v-show="textShow">
+					<h3>波涛品牌</h3>
+					<p>ABOUT BOTAOGROUP</p>
+				</div>
+				<h6 class="text" v-show="textShow">
+					波涛装饰集团成立于2001年，总部设立于中国上海，经过二十几年的发展，形成了集建筑、工装、家装、软装、加盟、培训、家居建材、供应链、船舶内装、中医健康等为一体的综合性装饰集团公司。
+				</h6>
 			</div>
-			<h6 class="text" v-show="textShow">
-				波涛装饰集团成立于2001年，总部设立于中国上海，经过二十几年的发展，形成了集建筑、工装、家装、软装、加盟、培训、家居建材、供应链、船舶内装、中医健康等为一体的综合性装饰集团公司。
-			</h6>
+
 			<div class="aside-text" v-show="textShow">BOTAOGROUP VIDEO</div>
 			<div class="img-box" @click="play" v-show="!playFlag">
 				<img src="~assets/ic_home_b3_play.png" alt="" />
