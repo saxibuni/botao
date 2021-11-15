@@ -281,24 +281,7 @@ export default class home extends Vue {
 		});
 	}
 	onResize() {
-		let items = `item${this.page3Index}`;
-		this.left = this.$refs[items][0].offsetLeft;
-		this.top = this.$refs[items][0].offsetTop;
-		this.width = this.$refs[items][0].clientWidth;
-		this.height = this.$refs[items][0].clientHeight;
-
-		let listwidth = []
-		this.currentPortraitList.forEach((e,i)=>{
-			let items = `item${i}`;
-			let left = this.$refs[items][0].offsetLeft;
-			let top = this.$refs[items][0].offsetTop;
-			let width = this.$refs[items][0].clientWidth;
-			let height = this.$refs[items][0].clientHeight;
-			let src = e;
-			listwidth.push({left,top,width,height,src})
-		})
-		this.listwidth=listwidth;
-		console.log(111,listwidth);
+		this.getCurrentPortraitList();
 	}
 	initSpineAni() {
 		let loader = PIXI.loader;
@@ -332,21 +315,12 @@ export default class home extends Vue {
 		spine.state.setAnimation(0, 'enter', false);
 		ScrollTrigger.getAll().forEach(child => child.kill());
 	}
-	left = 0;
-	top = 0;
-	width = 0;
-	height = 0;
 	listwidth = [];
 	textActive2 = true;
 	onClick(item, i) {
 		this.showProfile = !this.showProfile;
 		this.imgSrc = item;
-		let items = `item${i}`;
 		this.page3Index = i;
-		this.left = this.$refs[items][0].offsetLeft;
-		this.top = this.$refs[items][0].offsetTop;
-		this.width = this.$refs[items][0].clientWidth;
-		this.height = this.$refs[items][0].clientHeight;
 		this.isShowLightImg = true;
 	}
 	textActiveFun(i) {
@@ -433,11 +407,30 @@ export default class home extends Vue {
 		let start = this.portraitListIndex * this.portraitListSize;
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
 		this.currentPortraitList = this.portraitList.slice(start, end);
-	}
 
+		let listwidth = []
+		setTimeout(()=>{
+			this.currentPortraitList.forEach((e,i)=>{
+				let items = `item${i}`;
+				let left = this.$refs[items][0].offsetLeft;
+				let top = this.$refs[items][0].offsetTop;
+				let width = this.$refs[items][0].clientWidth;
+				let height = this.$refs[items][0].clientHeight;
+				let src = e;
+				listwidth.push({left,top,width,height,src})
+			})
+			this.listwidth=listwidth;
+		})
+
+	}
+	isShowImg = true;
 	getPreparePortraitList(toNext: boolean = true) {
 		let start = this.portraitListIndex * this.portraitListSize;
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
+		this.isShowImg = false;
+		setTimeout(()=>{
+			this.isShowImg = true;
+		},1000)
 		if (toNext) {
 			if (this.portraitListIndex < this.portraitTotalPages) {
 				this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
