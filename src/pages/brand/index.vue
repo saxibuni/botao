@@ -161,16 +161,16 @@
 				</div>
 				<div class="text-boxs">
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
 					</div>
 				</div>
 				<div class="pre" @click="change('pre')"></div>
