@@ -212,18 +212,38 @@
 		<div class="page7">
 			<h2 class="wow">高端品牌直采</h2>
 			<p class="wow">High-end brands</p>
-			<div class="swiper wow">
-				<swiper :options="bannerSwiperOptions2">
-					<swiper-slide v-for="(item, i) in 3" :key="i">
-						<div class="img-wrap" v-for="(item, i) in 26" :key="i">
-							<img src="~assets/bg_e2_part7_b2.png" alt="" />
+			<div class="swipers">
+				<div class="swiper-slides">
+					<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
+						<div class="one">
+							<div class="inner-one">
+								<div class="box">
+										<img :src="item" alt="" />
+								</div>
+							</div>
 						</div>
-					</swiper-slide>
-				</swiper>
+						<div class="two">
+							<div class="inner-two">
+								<div class="box">
+										<img :src="item" alt="" />
+										<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="swiper-button-wrap">
-					<div class="prev prev2"></div>
-					<div class="swiper-pagination2"></div>
-					<div class="next next2"></div>
+					<div class="prev prev2" @click="onPortraitListPrev()"></div>
+					<div class="swiper-pagination2">
+						<span
+							class="swiper-pagination-bullet"
+							:class="{ 'swiper-pagination-bullet-active': portraitListIndex == i }"
+							@click="paginationFun(i)"
+							v-for="(item, i) in portraitTotalPages"
+							:key="i"
+						></span>
+					</div>
+					<div class="next next2" @click="onPortraitListNext()"></div>
 				</div>
 			</div>
 		</div>
@@ -1481,7 +1501,7 @@ export default CheckPick;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
-		.swiper {
+		.swipers {
 			width: 1660px;
 			height: 515px;
 			margin: 80px auto;
@@ -1489,31 +1509,108 @@ export default CheckPick;
 			opacity: 0;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
-			.swiper-slide {
+
+			.swiper-slides {
 				height: 515px;
-				.img-wrap {
+				.imgs-wrap {
 					left: 28px;
 					top: 28px;
 					position: absolute;
-					background: #fff;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					transform: rotate(45deg);
 					width: 131px;
 					height: 131px;
-					overflow: hidden;
-					box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
-					img {
-						max-width: 100%;
-						transform: rotate(-45deg);
-						transition: 0.3s;
+						/* transform: rotateY(-180deg); */
+
+					transform-style: preserve-3d;
+					perspective: 1000px;
+					/* transform: rotateX(180deg); */
+					&.do-flip {
+						transition: transform .5s;
+						transform: rotateY(-180deg);
+					}
+					&.do-flip-reverse {
+						transition: transform .5s;
+						transform: rotateY(180deg);
+					}
+					img{
+						transition: transform .3s;
 					}
 					&:hover {
-						img {
-							transform: rotate(-45deg) scale(1.06);
+						>div{
+							img{
+								transform:scale(1.05);
+							}
 						}
 					}
+					> div {
+						width: 131px;
+						height: 131px;
+						position: absolute;
+						left: 0;
+						top: 0;
+						img {
+							width: 100%;
+						}
+						&.one {
+							transform: rotateX(-0deg);
+						}
+						&.two {
+							transform: rotateY(-180deg);
+						}
+						.inner-one,
+						.inner-two {
+							-webkit-backface-visibility: hidden;
+							backface-visibility: hidden;
+							overflow: hidden;
+							width: 100%;
+							height: 100%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							transform: rotate(45deg);
+						}
+						.inner-one{
+						 background: #fff;
+							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
+						}
+						.inner-two{
+						 background: #fff;
+							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
+						}
+						.inner-one .box {
+							transform: rotate(-45deg);
+							position: relative;
+							width: 110px;
+							height: 63px;
+							overflow: hidden;
+							img{
+								position: absolute;
+								left: 50%;
+								top: 50%;
+								width: 100%;
+								height: 100%;
+								background: #fff;
+								transform: translate(-50%,-50%);
+							}
+						}
+
+						.inner-two .box {
+							transform: rotate(-45deg);
+							position: relative;
+							width: 110px;
+							height: 63px;
+							overflow: hidden;
+							img{
+								position: absolute;
+								left: 50%;
+								top: 50%;
+								width: 100%;
+								height: 100%;
+								transform: translate(-50%,-50%);
+								background: #fff;
+							}
+						}
+					}
+
 					&:nth-child(1) {
 						left: 28px;
 						top: 28px;
