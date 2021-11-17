@@ -26,6 +26,7 @@ Vue.use(BaiduMap, {
 	}
 })
 export default class Brand extends Vue {
+	num = 0;
 	addFlag = true;
 	show1 = 0;
 	show2 = 1;
@@ -295,18 +296,21 @@ export default class Brand extends Vue {
 			type: 'chars'
 		}).chars;
 
-		gsap.timeline()
-		.fromTo(chars, {
-			duration: 1,
-			rotate: -10,
-			y: "random(100, 200)",
-			ease: "power3",
-			opacity: 0
-		}, {
-			opacity: 1,
-			rotate: 0,
-			y: 0
-		});
+		gsap.timeline().fromTo(
+			chars,
+			{
+				duration: 1,
+				rotate: -10,
+				y: 'random(100, 200)',
+				ease: 'power3',
+				opacity: 0
+			},
+			{
+				opacity: 1,
+				rotate: 0,
+				y: 0
+			}
+		);
 	}
 
 	initVideo() {
@@ -347,7 +351,11 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
-				let offset = self.progress * (1245 - 290);
+				const height =document.querySelector('.gray-img').clientHeight
+				// const innerHeight=document.querySelector('.inner-img').cl
+				console.log(height,'heightheightheight');
+
+				let offset = self.progress * (height - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
 
 				this.calcProgressIndex(offset + 290, this.pos);
@@ -372,27 +380,15 @@ export default class Brand extends Vue {
 			return;
 		}
 		newVal > oldVal ? this.calcRotate('next') : this.calcRotate('pre');
+		this.updateText(newVal,'pre');
+
 	}
 
 	change(str) {
-		// if((progressIndex == 0 && str == 'pre')){}
-		if (this.addFlag) {
-			if (str == 'pre') {
-				this.show2 = this.progressIndex - 1;
-			} else {
-				this.show2 = this.progressIndex + 1;
-			}
-		} else {
-			if (str == 'pre') {
-				this.show1 = this.progressIndex - 1;
-			} else {
-				this.show1 = this.progressIndex + 1;
-			}
-		}
-		this.addFlag = !this.addFlag;
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
+		this.updateText(progressIndex, str);
 		this.clickFlag = false;
 		if (!this.clickFlag) {
 			this.calcRotate(str);
@@ -402,6 +398,23 @@ export default class Brand extends Vue {
 			duration: 0.5,
 			scrollTop: this.calcDistance(progressIndex)
 		});
+	}
+
+	updateText(progressIndex, str) {
+		if (this.num % 2 == 0) {
+			if (str == 'pre') {
+				this.show2 = progressIndex;
+			} else {
+				this.show2 = progressIndex;
+			}
+		} else {
+			if (str == 'pre') {
+				this.show1 = progressIndex;
+			} else {
+				this.show1 = progressIndex;
+			}
+		}
+		this.num++;
 	}
 
 	calcRotate(str) {
@@ -417,7 +430,7 @@ export default class Brand extends Vue {
 		text_box.style.transform = `rotateX(-${this.deg}deg)`;
 	}
 
-	changeTime(i) {
+	changeTime(i, str = 'pre') {
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(i)

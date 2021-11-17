@@ -161,16 +161,16 @@
 				</div>
 				<div class="text-boxs">
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+						<p v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
 					</div>
 				</div>
 				<div class="pre" @click="change('pre')"></div>
@@ -233,9 +233,9 @@
 						<path
 							class="st0"
 							d="M0.7,30.2C52.1,14.8,108.5,1,210,1c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
-						c228.5,0,228.5-70,457-70s228.5,70,457,70s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
-						s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70
-						s228.5,70,457,70c228.5,0,228.5-70,457-70"
+                c228.5,0,228.5-70,457-70s228.5,70,457,70s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70s228.5,70,457,70
+                s228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70c228.5,0,228.5,70,457,70c228.5,0,228.5-70,457-70
+                s228.5,70,457,70c228.5,0,228.5-70,457-70"
 						/>
 					</svg>
 					<div class="plane"></div>
@@ -1311,12 +1311,11 @@ html {
 		}
 	}
 	.social-response {
-		// overflow: hidden;
+		overflow: hidden;
 		padding-bottom: 60px;
 		@include title();
 
 		.content-box {
-			height: 674px;
 			@include scrollbar-beautify(0);
 			> div {
 				display: flex !important;
@@ -1355,7 +1354,7 @@ html {
 			}
 
 			ul {
-				position: absolute;
+				position: relative;
 				height: 537px;
 				display: flex;
 				margin: 137px 0 0 140px;
@@ -1366,19 +1365,15 @@ html {
 					display: flex;
 					flex-direction: column;
 					justify-content: space-between;
+					// width: 327px;
 					height: 450px;
 					.img-box {
 						width: 327px;
-						height: 203px;
+						// height: 203px;
 						.inner {
-							position: relative;
 							display: flex;
-							width: 327px;
-							height: 203px;
 							overflow: hidden;
 							img {
-								position: absolute;
-								z-index: 111;
 								width: 327px;
 								height: 203px;
 								transition: all 0.3s;
@@ -1394,13 +1389,13 @@ html {
 						min-height: 224px;
 						h2 {
 							margin-top: 108px;
-							text-align: left;
+							text-align: start;
 							margin-bottom: 22px;
 							font-size: 34px;
 							font-weight: bold;
 						}
 						p {
-							width: 327px;
+							width: 359px;
 							font-size: 18px;
 							color: #666666;
 							line-height: 30px;
@@ -1438,14 +1433,9 @@ html {
 						top: 86px;
 						flex-direction: column-reverse;
 						.text-box {
-							position: relative;
-							top: -92px;
 							display: flex;
 							flex-direction: column-reverse;
-							// margin-bottom: 115px;
-						}
-						.img-box {
-							// margin-top: 115px;
+							margin-bottom: 115px;
 						}
 						p {
 							margin-top: 0;
