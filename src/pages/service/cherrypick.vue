@@ -214,7 +214,7 @@
 			<p class="wow">High-end brands</p>
 			<div class="swipers">
 				<div class="swiper-slides">
-					<div class="imgs-wrap" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
+					<div class="imgs-wrap" :style="{ 'transition-delay': 0.015 * i + 0.03 + 's' }" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
 						<div class="one">
 							<div class="inner-one">
 								<div class="box">
@@ -1519,6 +1519,7 @@ export default CheckPick;
 					width: 131px;
 					height: 131px;
 						/* transform: rotateY(-180deg); */
+						transition: margin-top .3s;
 
 					transform-style: preserve-3d;
 					perspective: 1000px;
@@ -1535,9 +1536,11 @@ export default CheckPick;
 						transition: transform .3s;
 					}
 					&:hover {
+						margin-top: -5px;
 						>div{
-							img{
-								transform:scale(1.05);
+							.inner-one,
+							.inner-two {
+								box-shadow: 0 0 10px 2px rgba(19, 33, 50, 0.3);
 							}
 						}
 					}
@@ -1561,6 +1564,7 @@ export default CheckPick;
 							-webkit-backface-visibility: hidden;
 							backface-visibility: hidden;
 							overflow: hidden;
+							transition: box-shadow .3s;
 							width: 100%;
 							height: 100%;
 							display: flex;
