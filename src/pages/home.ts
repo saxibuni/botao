@@ -412,21 +412,28 @@ export default class home extends Vue {
 		let start = this.portraitListIndex * this.portraitListSize;
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
 		this.currentPortraitList = this.portraitList.slice(start, end);
-
-		let listwidth = []
-		setTimeout(()=>{
-			this.currentPortraitList.forEach((e,i)=>{
+		let currentPortraitListCopy=[...this.currentPortraitList]
+		if (this.currentPortraitList.length > 0 && this.currentPortraitList.length < 35) {
+			setTimeout(() => {
+				let num =35 -this.currentPortraitList.length
+				for (let i = 0; i <num ; i++) {
+					this.currentPortraitList.push(require('../assets/portrait/white.png'));
+				}
+			},200);
+		}
+		let listwidth = [];
+		setTimeout(() => {
+			currentPortraitListCopy.forEach((e, i) => {
 				let items = `item${i}`;
 				let left = this.$refs[items][0].offsetLeft;
 				let top = this.$refs[items][0].offsetTop;
 				let width = this.$refs[items][0].clientWidth;
 				let height = this.$refs[items][0].clientHeight;
 				let src = e;
-				listwidth.push({left,top,width,height,src})
-			})
-			this.listwidth=listwidth;
-		})
-
+				listwidth.push({ left, top, width, height, src });
+			});
+			this.listwidth = listwidth;
+		});
 	}
 	isShowImg = true;
 	getPreparePortraitList(toNext: boolean = true) {
