@@ -527,11 +527,14 @@ export default class Brand extends Vue {
 
 	onResize() {
 		this.getHeight();
+
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
 		svgBox.style.width = ul.clientWidth + 'px';
 
 		setTimeout(() => {
+			this.createDragger();
+			this.createTrigger()
 			if (this.pathTween) {
 				this.pathTween.kill();
 				this.isPlayingPath = false;
