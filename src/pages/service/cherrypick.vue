@@ -7,6 +7,9 @@
 				<p>Construction management</p>
 			</div>
 			<img class="mask" src="~assets/bg_e2_banner_left.png" alt="" />
+			<div class="arrow"></div>
+			<div class="arrow"></div>
+			<div class="arrow"></div>
 		</div>
 
 		<div class="page2">
@@ -213,23 +216,28 @@
 			<h2 class="wow">高端品牌直采</h2>
 			<p class="wow">High-end brands</p>
 			<div class="swipers">
-
-				<div class="swiper-slides" >
-					<div class="imgs-wrap" :style="{ 'transition-delay':delay?0.015 * i + 0.03 + 's':0+'s' }" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
+				<div class="swiper-slides">
+					<div
+						class="imgs-wrap"
+						:style="{ 'transition-delay': delay ? 0.015 * i + 0.03 + 's' : 0 + 's' }"
+						:class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }"
+						v-for="(item, i) in currentPortraitList"
+						:key="i"
+					>
 						<div class="one">
 							<div class="inner-one">
 								<div class="box">
-										<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
-										<img :src="item" alt="" />
+									<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
+									<img :src="item" alt="" />
 								</div>
 							</div>
 						</div>
 						<div class="two">
 							<div class="inner-two">
 								<div class="box">
-										<img :src="item" alt="" />
-										<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
-										<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
+									<img :src="item" alt="" />
+									<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
+									<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
 								</div>
 							</div>
 						</div>
@@ -263,6 +271,42 @@ export default CheckPick;
 	box-sizing: border-box;
 	margin: 0 auto;
 	max-width: 1920px;
+	@keyframes arrow {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		80% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrow1 {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		80% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrow2 {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		40% {
+			opacity: 0;
+		}
+	}
 	img {
 		display: block;
 	}
@@ -300,6 +344,33 @@ export default CheckPick;
 				color: #ffffff;
 				margin-top: 23px;
 				text-transform: uppercase;
+			}
+		}
+		.arrow {
+			box-sizing: border-box;
+			width: 15px;
+			height: 15px;
+			border: 2px solid #fff;
+			position: absolute;
+			bottom: 75px;
+			left: 50%;
+			transform: translateX(-50%) rotate(-45deg);
+			z-index: 10;
+			border-top: transparent;
+			border-right: transparent;
+			opacity: 0;
+			animation: arrow 1.2s linear infinite;
+			&:nth-of-type(2) {
+				opacity: 0;
+				bottom: 62px;
+				animation: arrow1 1.2s linear infinite;
+				animation-delay: 0.4s;
+			}
+			&:nth-of-type(3) {
+				opacity: 0;
+				bottom: 49px;
+				animation: arrow2 1.2s linear infinite;
+				animation-delay: 0.8s;
 			}
 		}
 	}
@@ -1521,25 +1592,25 @@ export default CheckPick;
 					position: absolute;
 					width: 131px;
 					height: 131px;
-					transition: margin-top .3s;
+					transition: margin-top 0.3s;
 
 					transform-style: preserve-3d;
 					perspective: 1000px;
 					&.do-flip {
-						transition: transform .5s;
+						transition: transform 0.5s;
 						transform: rotateY(-180deg);
 					}
 					&.do-flip-reverse {
-						transition: transform .5s;
+						transition: transform 0.5s;
 						transform: rotateY(180deg);
 					}
-					img{
-						transition: transform .3s;
+					img {
+						transition: transform 0.3s;
 					}
 					&:hover {
 						margin-top: -5px;
-						transition-delay: 0!important;
-						>div{
+						transition-delay: 0 !important;
+						> div {
 							.inner-one,
 							.inner-two {
 								box-shadow: 0px 0px 30px 1px rgba(8, 18, 29, 0.15);
@@ -1565,7 +1636,7 @@ export default CheckPick;
 						.inner-two {
 							backface-visibility: hidden;
 							overflow: hidden;
-							transition: box-shadow .3s;
+							transition: box-shadow 0.3s;
 							width: 100%;
 							height: 100%;
 							display: flex;
@@ -1573,12 +1644,12 @@ export default CheckPick;
 							align-items: center;
 							transform: rotate(45deg);
 						}
-						.inner-one{
-							 background: #fff;
+						.inner-one {
+							background: #fff;
 							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 						}
-						.inner-two{
-						 background: #fff;
+						.inner-two {
+							background: #fff;
 							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 						}
 						.inner-one .box {
@@ -1587,14 +1658,14 @@ export default CheckPick;
 							width: 110px;
 							height: 63px;
 							overflow: hidden;
-							img{
+							img {
 								position: absolute;
 								left: 50%;
 								top: 50%;
 								width: 100%;
-								transform: translate(-50%,-50%);
+								transform: translate(-50%, -50%);
 							}
-							.img2{
+							.img2 {
 								width: 100%;
 								height: 100%;
 								background: #fff;
@@ -1607,15 +1678,15 @@ export default CheckPick;
 							width: 110px;
 							height: 63px;
 							overflow: hidden;
-							img{
+							img {
 								position: absolute;
 								left: 50%;
 								top: 50%;
 								width: 100%;
-								transform: translate(-50%,-50%);
+								transform: translate(-50%, -50%);
 								background: #fff;
 							}
-							.img2{
+							.img2 {
 								background: #fff;
 								width: 100%;
 								height: 100%;

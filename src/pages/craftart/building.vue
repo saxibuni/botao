@@ -36,18 +36,10 @@
 					</div>
 				</div>
 				<template v-if="currentSelectId">
-					<div class="rightContent" v-for="(item, i) in mapData" :key="i" v-show="currentSelectId == item.id">
+					<div class="rightContent" v-for="(item, index) in mapData" :key="index" v-show="currentSelectId == item.id">
 						<h4>{{ item.title1 }}</h4>
 						<p>{{ item.title2 }}</p>
-						<p>保利首创颂</p>
-						<p>碧云壹零</p>
-						<p>东方颐城</p>
-						<p>公元2040</p>
-						<p>金地城</p>
-						<p>金融家</p>
-						<p>绿地东上海</p>
-						<p>浦发东悦城</p>
-						<p>同润蓝美俊庭</p>
+						<p v-for="(v, i) in item.desc" :key="i">{{ v }}</p>
 						<div class="line">
 							<div class="line2" v-show="currentSelectId == 'pd'"></div>
 							<div class="line3" v-show="currentSelectId == 'fx'"></div>
