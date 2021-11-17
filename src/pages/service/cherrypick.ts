@@ -145,29 +145,13 @@ portraitList = [
 	require('root/assets/bg_e2_part7_n2.png'),
 	require('root/assets/bg_e2_part7_n2.png'),
 
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
-	// require('root/assets/bg_e2_part7_n2.png'),
+
 ]
 currentPortraitList = [];
 nextPortraitList = [];
 portraitListSize = 26;
 portraitListIndex = 0;
 applyFlipType: number = 0;
-delay = false;
 portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 
 onPortraitListPrev(number:number=999) {
@@ -175,9 +159,7 @@ onPortraitListPrev(number:number=999) {
 	if (this.portraitListIndex == 0) return;
 	this.getPreparePortraitList(false);
 	this.applyFlipType = 2;
-	this.delay = true;
 	setTimeout(() => {
-		this.delay = false;
 		this.applyFlipType = 0;
 		if(number==999){
 			this.portraitListIndex--;
@@ -194,9 +176,7 @@ onPortraitListNext(number:number=999) {
 	if (this.portraitListIndex == this.portraitTotalPages - 1) return;
 	this.getPreparePortraitList();
 	this.applyFlipType = 1;
-	this.delay = true;
 	setTimeout(() => {
-		this.delay = false;
 		this.applyFlipType = 0;
 		if(number==999){
 			this.portraitListIndex++;
@@ -217,9 +197,12 @@ getCurrentPortraitList() {
 
 	if (this.currentPortraitList.length > 0 && this.currentPortraitList.length < 26) {
 			let num =26 -this.currentPortraitList.length
-			for (let i = 0; i <num ; i++) {
-				this.currentPortraitList.push(require('root/assets/portrait/white.png'));
-			}
+			setTimeout(()=>{
+				for (let i = 0; i <num ; i++) {
+					this.currentPortraitList.push(require('root/assets/portrait/white.png'));
+				}
+			},600)
+
 	}
 }
 

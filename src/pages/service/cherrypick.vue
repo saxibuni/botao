@@ -216,23 +216,17 @@
 			<h2 class="wow">高端品牌直采</h2>
 			<p class="wow">High-end brands</p>
 			<div class="swipers">
-				<div class="swiper-slides">
-					<div
-						class="imgs-wrap"
-						:style="{ 'transition-delay': delay ? 0.015 * i + 0.03 + 's' : 0 + 's' }"
-						:class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }"
-						v-for="(item, i) in currentPortraitList"
-						:key="i"
-					>
-						<div class="one">
+
+				<div class="swiper-slides" >
+					<div class="imgs-wrap" :style="{ 'transition-delay':0.015 * i + 0.03 + 's' }" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
+						<div class="one" :style="{ 'opacity': item=='assets/portrait/white.png'?0:1 }">
 							<div class="inner-one">
 								<div class="box">
-									<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
-									<img :src="item" alt="" />
+										<img :src="item" alt="" />
 								</div>
 							</div>
 						</div>
-						<div class="two">
+						<div class="two" :style="{ 'opacity': item=='assets/portrait/white.png'?0:1 }">
 							<div class="inner-two">
 								<div class="box">
 									<img :src="item" alt="" />
@@ -1609,8 +1603,8 @@ export default CheckPick;
 					}
 					&:hover {
 						margin-top: -5px;
-						transition-delay: 0 !important;
-						> div {
+						transition-delay: 0s!important;
+						>div{
 							.inner-one,
 							.inner-two {
 								box-shadow: 0px 0px 30px 1px rgba(8, 18, 29, 0.15);
@@ -1839,7 +1833,7 @@ export default CheckPick;
 					transition: transform 0.3s;
 					&:hover {
 						transform: scale(1.1);
-						background: url('~assets/icons/ic_e2_left2.png') no-repeat center center;
+						background: url('~assets/icons/ic_e2_part7_left_o.png') no-repeat center center;
 						background-size: 9px 16px;
 					}
 				}
@@ -1852,7 +1846,7 @@ export default CheckPick;
 					transition: transform 0.3s;
 					&:hover {
 						transform: scale(1.1);
-						background: url('~assets/icons/ic_e2_right2.png') no-repeat center center;
+						background: url('~assets/icons/ic_e2_part7_right_o.png') no-repeat center center;
 						background-size: 9px 16px;
 					}
 				}
