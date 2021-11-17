@@ -249,10 +249,13 @@ export default WholeDecoration;
 	margin: 0 auto;
 	@keyframes arrow {
 		0% {
+			opacity: 1;
+		}
+		33% {
 			opacity: 0.3;
 		}
 		100% {
-			opacity: 1;
+			opacity: 0.3;
 		}
 	}
 	@keyframes bounce {
@@ -340,15 +343,16 @@ export default WholeDecoration;
 			z-index: 10;
 			border-top: transparent;
 			border-right: transparent;
-			animation: arrow 1s infinite linear alternate;
-			animation-delay: 0.5s;
+			animation: arrow 1.8s linear infinite forwards;
 			&:nth-of-type(2) {
+				opacity: 0.3;
 				bottom: 62px;
-				animation-delay: 1s;
+				animation-delay: 0.6s;
 			}
 			&:nth-of-type(3) {
+				opacity: 0.3;
 				bottom: 49px;
-				animation-delay: 1.5s;
+				animation-delay: 1.2s;
 			}
 		}
 	}
