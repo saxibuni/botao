@@ -1846,7 +1846,7 @@ export default CheckPick;
 					transition: transform 0.3s;
 					&:hover {
 						transform: scale(1.1);
-						background: url('~assets/icons/ic_e2_part7_left_o.png') no-repeat center center;
+						background: url('~assets/icons/ic_e2_part7_right_o.png') no-repeat center center;
 						background-size: 9px 16px;
 					}
 				}
