@@ -464,7 +464,6 @@ export default class home extends Vue {
 
 	onCharsEnter(slide: HTMLElement, isInit: boolean = false) {
 
-		console.log(1111111,slide,isInit);
 
 		let chars = slide.querySelectorAll('.char');
 		gsap.timeline()
