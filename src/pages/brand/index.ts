@@ -360,8 +360,10 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
+
 				let offset = self.progress * (this.grayImgHeight - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
+					console.log(this.$el.querySelector<HTMLElement>('.inner-img').style.height,'this.$el.querySelector');
 
 				this.calcProgressIndex(offset + 290, this.pos);
 			}

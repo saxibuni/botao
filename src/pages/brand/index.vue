@@ -979,7 +979,7 @@ html {
 
 			.gray-img {
 				position: relative;
-				height: 1245px;
+				height: 1245Px;
 				img {
 					position: absolute;
 					top: 6px;
@@ -1072,7 +1072,7 @@ html {
 				top: 0;
 				left: 0;
 				width: 660px;
-				height: 290px;
+				height: 290Px;
 				background: url(~assets/bg_g1_part5_way2.png) no-repeat;
 				background-size: 100%;
 			}
