@@ -1580,6 +1580,8 @@ export default CheckPick;
 
 			.swiper-slides {
 				height: 515px;
+					perspective: 1000px;
+
 				.imgs-wrap {
 					left: 28px;
 					top: 28px;
@@ -1589,7 +1591,6 @@ export default CheckPick;
 					transition: margin-top 0.3s;
 
 					transform-style: preserve-3d;
-					perspective: 1000px;
 					&.do-flip {
 						transition: transform 0.5s;
 						transform: rotateY(-180deg);
@@ -1628,7 +1629,6 @@ export default CheckPick;
 						}
 						.inner-one,
 						.inner-two {
-							backface-visibility: hidden;
 							overflow: hidden;
 							transition: box-shadow 0.3s;
 							width: 100%;
@@ -1652,6 +1652,7 @@ export default CheckPick;
 							width: 110px;
 							height: 63px;
 							overflow: hidden;
+							backface-visibility: hidden;
 							img {
 								position: absolute;
 								left: 50%;
@@ -1672,6 +1673,7 @@ export default CheckPick;
 							width: 110px;
 							height: 63px;
 							overflow: hidden;
+							backface-visibility: hidden;
 							img {
 								position: absolute;
 								left: 50%;

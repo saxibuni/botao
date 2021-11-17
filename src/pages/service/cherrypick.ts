@@ -145,7 +145,6 @@ portraitList = [
 	require('root/assets/bg_e2_part7_n2.png'),
 	require('root/assets/bg_e2_part7_n2.png'),
 
-
 ]
 currentPortraitList = [];
 nextPortraitList = [];
