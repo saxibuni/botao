@@ -8,6 +8,9 @@
 				<p>Whole case assembly</p>
 			</div>
 			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
+			<div class="arrow"></div>
+			<div class="arrow"></div>
+			<div class="arrow"></div>
 		</div>
 		<div class="page2">
 			<h2 class="wow">服务流程</h2>
@@ -244,7 +247,14 @@ export default WholeDecoration;
 	max-width: 1920px;
 	overflow: hidden;
 	margin: 0 auto;
-
+	@keyframes arrow {
+		0% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 1;
+		}
+	}
 	@keyframes bounce {
 		0%,
 		100%,
@@ -316,6 +326,29 @@ export default WholeDecoration;
 				color: #ffffff;
 				margin-top: 23px;
 				text-transform: uppercase;
+			}
+		}
+		.arrow {
+			box-sizing: border-box;
+			width: 15px;
+			height: 15px;
+			border: 2px solid #fff;
+			position: absolute;
+			bottom: 75px;
+			left: 50%;
+			transform: translateX(-50%) rotate(-45deg);
+			z-index: 10;
+			border-top: transparent;
+			border-right: transparent;
+			animation: arrow 1s infinite linear alternate;
+			animation-delay: 0.5s;
+			&:nth-of-type(2) {
+				bottom: 62px;
+				animation-delay: 1s;
+			}
+			&:nth-of-type(3) {
+				bottom: 49px;
+				animation-delay: 1.5s;
 			}
 		}
 	}
@@ -823,7 +856,7 @@ export default WholeDecoration;
 				animation-fill-mode: forwards;
 				&:hover {
 					div {
-						img{
+						img {
 							animation: bounce 1s;
 						}
 					}
