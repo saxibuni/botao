@@ -213,11 +213,13 @@
 			<h2 class="wow">高端品牌直采</h2>
 			<p class="wow">High-end brands</p>
 			<div class="swipers">
-				<div class="swiper-slides">
-					<div class="imgs-wrap" :style="{ 'transition-delay': 0.015 * i + 0.03 + 's' }" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
+
+				<div class="swiper-slides" >
+					<div class="imgs-wrap" :style="{ 'transition-delay':delay?0.015 * i + 0.03 + 's':0+'s' }" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
 						<div class="one">
 							<div class="inner-one">
 								<div class="box">
+										<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
 										<img :src="item" alt="" />
 								</div>
 							</div>
@@ -226,6 +228,7 @@
 							<div class="inner-two">
 								<div class="box">
 										<img :src="item" alt="" />
+										<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
 										<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
 								</div>
 							</div>
@@ -1518,12 +1521,10 @@ export default CheckPick;
 					position: absolute;
 					width: 131px;
 					height: 131px;
-						/* transform: rotateY(-180deg); */
-						transition: margin-top .3s;
+					transition: margin-top .3s;
 
 					transform-style: preserve-3d;
 					perspective: 1000px;
-					/* transform: rotateX(180deg); */
 					&.do-flip {
 						transition: transform .5s;
 						transform: rotateY(-180deg);
@@ -1537,10 +1538,11 @@ export default CheckPick;
 					}
 					&:hover {
 						margin-top: -5px;
+						transition-delay: 0!important;
 						>div{
 							.inner-one,
 							.inner-two {
-								box-shadow: 0 0 10px 2px rgba(19, 33, 50, 0.3);
+								box-shadow: 0px 0px 30px 1px rgba(8, 18, 29, 0.15);
 							}
 						}
 					}
@@ -1561,7 +1563,6 @@ export default CheckPick;
 						}
 						.inner-one,
 						.inner-two {
-							-webkit-backface-visibility: hidden;
 							backface-visibility: hidden;
 							overflow: hidden;
 							transition: box-shadow .3s;
@@ -1573,7 +1574,7 @@ export default CheckPick;
 							transform: rotate(45deg);
 						}
 						.inner-one{
-						 background: #fff;
+							 background: #fff;
 							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 						}
 						.inner-two{
@@ -1591,9 +1592,12 @@ export default CheckPick;
 								left: 50%;
 								top: 50%;
 								width: 100%;
+								transform: translate(-50%,-50%);
+							}
+							.img2{
+								width: 100%;
 								height: 100%;
 								background: #fff;
-								transform: translate(-50%,-50%);
 							}
 						}
 
@@ -1608,9 +1612,13 @@ export default CheckPick;
 								left: 50%;
 								top: 50%;
 								width: 100%;
-								height: 100%;
 								transform: translate(-50%,-50%);
 								background: #fff;
+							}
+							.img2{
+								background: #fff;
+								width: 100%;
+								height: 100%;
 							}
 						}
 					}
