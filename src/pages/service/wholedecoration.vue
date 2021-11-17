@@ -249,13 +249,38 @@ export default WholeDecoration;
 	margin: 0 auto;
 	@keyframes arrow {
 		0% {
-			opacity: 1;
+			opacity: 0;
 		}
 		33% {
-			opacity: 0.3;
+			opacity: 1;
+		}
+		80% {
+			opacity: 1;
 		}
 		100% {
-			opacity: 0.3;
+			opacity: 0;
+		}
+	}
+	@keyframes arrow1 {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		80% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrow2 {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		40% {
+			opacity: 0;
 		}
 	}
 	@keyframes bounce {
@@ -343,16 +368,19 @@ export default WholeDecoration;
 			z-index: 10;
 			border-top: transparent;
 			border-right: transparent;
-			animation: arrow 1.8s linear infinite forwards;
+			opacity: 0;
+			animation: arrow 1.2s linear infinite;
 			&:nth-of-type(2) {
-				opacity: 0.3;
+				opacity: 0;
 				bottom: 62px;
-				animation-delay: 0.6s;
+				animation: arrow1 1.2s linear infinite;
+				animation-delay: 0.4s;
 			}
 			&:nth-of-type(3) {
-				opacity: 0.3;
+				opacity: 0;
 				bottom: 49px;
-				animation-delay: 1.2s;
+				animation: arrow2 1.2s linear infinite;
+				animation-delay: 0.8s;
 			}
 		}
 	}
