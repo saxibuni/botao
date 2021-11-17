@@ -277,12 +277,14 @@ export default class Brand extends Vue {
 		}
 	};
 	textShow: boolean = true;
-
+	grayImgHeight: number;
+	scrollHeight: number;
 	created() {
 		this.isIE = device.browser.ie;
 	}
 
 	mounted() {
+		this.getHeight();
 		this.initTextChars();
 		this.createDragger();
 		this.createTrigger();
@@ -358,9 +360,10 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
-				const height = document.querySelector('.gray-img').clientHeight;
-				let offset = self.progress * (height - 290);
+
+				let offset = self.progress * (this.grayImgHeight - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
+					console.log(this.$el.querySelector<HTMLElement>('.inner-img').style.height,'this.$el.querySelector');
 
 				this.calcProgressIndex(offset + 290, this.pos);
 			}
@@ -453,14 +456,18 @@ export default class Brand extends Vue {
 	calcDistance(i) {
 		let offset = 25;
 		let height = this.pos[i] + offset;
-		let progress = (height - 290) / (1245 - 290);
-		let totalScroll = 1245 - 716;
+		let progress = (height - 290) / (this.grayImgHeight - 290);
+		let totalScroll = this.grayImgHeight - this.scrollHeight;
 		let distance = progress * totalScroll;
 		return distance;
 	}
 
-	jump(i) {
+	getHeight() {
+		this.grayImgHeight = document.querySelector('.gray-img').clientHeight;
+		this.scrollHeight = document.querySelector('.history-scroll').clientHeight;
+	}
 
+	jump(i) {
 		if (typeof i === 'undefined') return;
 
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
@@ -489,7 +496,7 @@ export default class Brand extends Vue {
 		let start = this.prePathIndex == -1 ? 0 : this.offset + this.unit * this.prePathIndex;
 
 		// let end = this.offset + this.unit * index + (isForward ? 0 : -0.0095);
-		let end = this.offset + this.unit * index ;
+		let end = this.offset + this.unit * index;
 
 		let duration = immediate ? 0 : Math.abs(end - start) * 15;
 
@@ -519,6 +526,7 @@ export default class Brand extends Vue {
 	}
 
 	onResize() {
+		this.getHeight();
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
 		svgBox.style.width = ul.clientWidth + 'px';
