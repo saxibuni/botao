@@ -359,9 +359,6 @@ export default class Brand extends Vue {
 			scroller: '.history-scroll',
 			onUpdate: self => {
 				const height = document.querySelector('.gray-img').clientHeight;
-				// const innerHeight=document.querySelector('.inner-img').cl
-				console.log(height, 'heightheightheight');
-
 				let offset = self.progress * (height - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
 
