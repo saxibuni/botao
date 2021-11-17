@@ -176,7 +176,7 @@
 				<div class="pre" @click="change('pre')"></div>
 				<div class="next" @click="change('next')"></div>
 			</div>
-			<div class="ie-info-box wow" v-else>
+			<!-- <div class="ie-info-box wow" v-else>
 				<div class="time-box">
 					<div class="time">
 						<p>{{ devolopeList[progressIndex].time }}</p>
@@ -188,7 +188,7 @@
 						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="hover select4">
 			<h2 class="wow">荣誉资质</h2>
@@ -1209,7 +1209,7 @@ html {
 			}
 		}
 		.ie-info-box{
-			
+
 		}
 	}
 	.hover {
