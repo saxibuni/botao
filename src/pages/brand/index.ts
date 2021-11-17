@@ -42,6 +42,7 @@ export default class Brand extends Vue {
 	isPlayingPath: boolean = false;
 	prePathIndex: number = -1; //前一次的路径点
 	clickFlag: boolean = true;
+	arrowFlag: boolean = false;
 	pathTween: any;
 	unit = 0.06148;
 	offset = 0.03;
@@ -391,6 +392,7 @@ export default class Brand extends Vue {
 	}
 
 	change(str) {
+		if(this.arrowFlag) return
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
@@ -400,10 +402,15 @@ export default class Brand extends Vue {
 			this.calcRotate(str);
 		}
 
+
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(progressIndex)
 		});
+		this.arrowFlag=true;
+		setTimeout(() => {
+			this.arrowFlag=false
+		}, 200);
 	}
 
 	IEchange(str) {

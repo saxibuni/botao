@@ -979,7 +979,7 @@ html {
 
 			.gray-img {
 				position: relative;
-				height: 1245px;
+				height: 1245Px;
 				img {
 					position: absolute;
 					top: 6px;
