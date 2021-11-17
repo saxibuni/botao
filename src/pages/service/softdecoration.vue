@@ -7,6 +7,9 @@
 				<p>Soft outfit life</p>
 			</div>
 			<img class="mask" src="~assets/bg_e3_banner_left.png" alt="" />
+			<div class="arrow"></div>
+			<div class="arrow"></div>
+			<div class="arrow"></div>
 		</div>
 		<div class="page2">
 			<h2 class="wow">软装配饰定制</h2>
@@ -100,15 +103,15 @@
 						<div style="pointer-events:auto; opacity:1;cursor: pointer;" class="swiper2-button-prev" @click="onClick(-1)"></div>
 						<div style="pointer-events:auto; opacity:1;cursor: pointer;" class="swiper2-button-next" @click="onClick(1)"></div>
 					</div>
-					<div class="text" :class="{active:textActive}">
+					<div class="text" :class="{ active: textActive }">
 						<h2>莱茵半岛</h2>
 						<h3>现代风格 153㎡</h3>
 						<p>家庭氛围活泼友爱，收纳空间多，房屋整 洁干净，楼上空间是以居住为主，地下室 空间主要是活动娱乐空间。</p>
-						<Button text="案例详情" @click.native="$router.push({name:'case-detail'})"></Button>
+						<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
 					</div>
 				</div>
 				<div class="right wow">
-					<img src="~assets/bg_e3_part6.jpg" alt="">
+					<img src="~assets/bg_e3_part6.jpg" alt="" />
 				</div>
 			</div>
 		</div>
@@ -119,7 +122,7 @@
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions">
 					<swiper-slide class="wow" v-for="(item, i) in 8" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-						<div class="box" >
+						<div class="box">
 							<div class="img-wrap">
 								<img src="~assets/bg_e3_part4_04.jpg" alt="" />
 								<div>
@@ -130,7 +133,7 @@
 							<div class="text">
 								<p><i></i></p>
 								<h5>设计源于生活，细节成就品质，人为的设计生活方式，创造更美好的生活状态。</h5>
-								<Button text="了解设计师" @click.native="$router.push({name:'design-detail'})"></Button>
+								<Button text="了解设计师" @click.native="$router.push({ name: 'design-detail' })"></Button>
 							</div>
 						</div>
 					</swiper-slide>
@@ -281,6 +284,42 @@ export default SoftDecoration;
 	box-sizing: border-box;
 	margin: 0 auto;
 	max-width: 1920px;
+	@keyframes arrow {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		80% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrow1 {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		80% {
+			opacity: 0;
+		}
+	}
+	@keyframes arrow2 {
+		0% {
+			opacity: 0;
+		}
+		33% {
+			opacity: 1;
+		}
+		40% {
+			opacity: 0;
+		}
+	}
 	img {
 		display: block;
 	}
@@ -320,6 +359,33 @@ export default SoftDecoration;
 				text-transform: uppercase;
 			}
 		}
+		.arrow {
+			box-sizing: border-box;
+			width: 15px;
+			height: 15px;
+			border: 2px solid #fff;
+			position: absolute;
+			bottom: 75px;
+			left: 50%;
+			transform: translateX(-50%) rotate(-45deg);
+			z-index: 10;
+			border-top: transparent;
+			border-right: transparent;
+			opacity: 0;
+			animation: arrow 1.2s linear infinite;
+			&:nth-of-type(2) {
+				opacity: 0;
+				bottom: 62px;
+				animation: arrow1 1.2s linear infinite;
+				animation-delay: 0.4s;
+			}
+			&:nth-of-type(3) {
+				opacity: 0;
+				bottom: 49px;
+				animation: arrow2 1.2s linear infinite;
+				animation-delay: 0.8s;
+			}
+		}
 	}
 	.page2 {
 		padding: 100px 0;
@@ -348,7 +414,7 @@ export default SoftDecoration;
 			text-align: center;
 			margin-top: 24px;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		ul {
@@ -396,13 +462,13 @@ export default SoftDecoration;
 					height: 260px;
 					top: 307px;
 					left: 106px;
-					animation-delay: .1s;
+					animation-delay: 0.1s;
 				}
 				&:nth-child(2) {
 					top: 591px;
 					left: 257px;
 					width: 240px;
-					animation-delay: .2s;
+					animation-delay: 0.2s;
 					height: 240px;
 				}
 
@@ -411,7 +477,7 @@ export default SoftDecoration;
 					left: 575px;
 					width: 361px;
 					height: 361px;
-					animation-delay: .3s;
+					animation-delay: 0.3s;
 					z-index: 3;
 				}
 
@@ -419,7 +485,7 @@ export default SoftDecoration;
 					top: 419px;
 					left: 900px;
 					width: 265px;
-					animation-delay: .4s;
+					animation-delay: 0.4s;
 					height: 265px;
 				}
 
@@ -427,7 +493,7 @@ export default SoftDecoration;
 					top: 661px;
 					left: 789px;
 					width: 187px;
-					animation-delay: .5s;
+					animation-delay: 0.5s;
 					height: 187px;
 				}
 
@@ -435,28 +501,28 @@ export default SoftDecoration;
 					top: 352px;
 					left: 1228px;
 					width: 215px;
-					animation-delay: .6s;
+					animation-delay: 0.6s;
 					height: 215px;
 				}
 				&:nth-child(7) {
 					top: 602px;
 					left: 1322px;
 					width: 196px;
-					animation-delay: .7s;
+					animation-delay: 0.7s;
 					height: 196px;
 				}
 				&:nth-child(8) {
 					top: 359px;
 					left: 1518px;
 					width: 295px;
-					animation-delay: .8s;
+					animation-delay: 0.8s;
 					height: 295px;
 				}
 			}
 		}
 		> div {
 			opacity: 0;
-			animation:  fade-in 3s;
+			animation: fade-in 3s;
 			animation-fill-mode: forwards;
 			p {
 				position: absolute;
@@ -512,7 +578,7 @@ export default SoftDecoration;
 			color: #fff;
 			text-align: center;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		> p {
@@ -526,7 +592,7 @@ export default SoftDecoration;
 			text-align: center;
 			margin-top: 24px;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		> div {
@@ -537,10 +603,10 @@ export default SoftDecoration;
 				position: relative;
 				width: 600px;
 				opacity: 0;
-				animation:slide-down-in 1s, fade-in 1s;
+				animation: slide-down-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
 				z-index: 6;
-				>h2 {
+				> h2 {
 					padding-left: 80px;
 					span {
 						font-size: 62px;
@@ -598,11 +664,11 @@ export default SoftDecoration;
 						margin-left: -25px;
 						background: url('~assets/icons/ic_home_b3_top_white.png') no-repeat center center;
 						background-size: 26px auto;
-						transition: transform .3s;
-						&:hover{
+						transition: transform 0.3s;
+						&:hover {
 							background: url('~assets/icons/ic_home_b3_top_orange.png') no-repeat center center;
 							background-size: 26px auto;
-							transform:scale(1.2)
+							transform: scale(1.2);
 						}
 					}
 					.swiper2-button-next {
@@ -614,11 +680,11 @@ export default SoftDecoration;
 						background: url('~assets/icons/ic_home_b3_down_white.png') no-repeat center center;
 						margin-left: -25px;
 						background-size: 26px auto;
-						transition: transform .3s;
-						&:hover{
+						transition: transform 0.3s;
+						&:hover {
 							background: url('~assets/icons/ic_home_b3_down_orange.png') no-repeat center center;
 							background-size: 26px auto;
-							transform: scale(1.2)
+							transform: scale(1.2);
 						}
 					}
 				}
@@ -631,7 +697,7 @@ export default SoftDecoration;
 					left: 318px;
 					transform: translateX(-40px);
 					padding: 94px 60px;
-					transition: .3s;
+					transition: 0.3s;
 					opacity: 0;
 					h2 {
 						font-size: 36px;
@@ -654,10 +720,10 @@ export default SoftDecoration;
 						margin: 40px 0 70px 0;
 						@include line-clamp(4);
 					}
-					.button-wrap{
+					.button-wrap {
 						width: 170px;
 					}
-					&.active{
+					&.active {
 						transform: translateX(0);
 						opacity: 1;
 					}
@@ -671,7 +737,7 @@ export default SoftDecoration;
 				animation-fill-mode: forwards;
 				position: relative;
 				z-index: 2;
-				img{
+				img {
 					width: 100%;
 					height: 100%;
 				}
@@ -690,7 +756,7 @@ export default SoftDecoration;
 			color: #000;
 			text-align: center;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		> p {
@@ -704,7 +770,7 @@ export default SoftDecoration;
 			text-align: center;
 			margin-top: 24px;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		.swiper {
@@ -712,7 +778,7 @@ export default SoftDecoration;
 			margin: 0 auto;
 			margin-top: 60px;
 			position: relative;
-			.swiper-slide{
+			.swiper-slide {
 				opacity: 0;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
@@ -725,15 +791,15 @@ export default SoftDecoration;
 					background: #000000;
 					position: relative;
 					overflow: hidden;
-					&:hover{
-						img{
+					&:hover {
+						img {
 							transform: scale(#{$imgScale});
 						}
 					}
 					img {
 						width: 100%;
 						height: 100%;
-						transition: .3s;
+						transition: 0.3s;
 					}
 					div {
 						position: absolute;
@@ -765,7 +831,7 @@ export default SoftDecoration;
 						color: #dbdbdb;
 						line-height: 1;
 						margin: 0 0 23px 0;
-						i{
+						i {
 							display: block;
 							margin: 0 auto;
 							width: 17px;
@@ -796,7 +862,7 @@ export default SoftDecoration;
 				justify-content: center;
 				.swiper-pagination2 {
 					display: flex;
-						box-sizing: border-box;
+					box-sizing: border-box;
 					margin: 0 30px;
 					.swiper-pagination-bullet {
 						box-sizing: border-box;
@@ -823,7 +889,7 @@ export default SoftDecoration;
 					left: 0;
 					background: url('~assets/icons/ic_e2_part7_left.png') no-repeat center center;
 					background-size: 9px 16px;
-					transition:transform 0.3s;
+					transition: transform 0.3s;
 					&:hover {
 						transform: scale(1.1);
 						background: url('~assets/icons/ic_e2_left2.png') no-repeat center center;
@@ -838,7 +904,7 @@ export default SoftDecoration;
 					right: 0;
 					background: url('~assets/icons/ic_e2_part7_right.png') no-repeat center center;
 					background-size: 9px 16px;
-					transition:transform 0.3s;
+					transition: transform 0.3s;
 					&:hover {
 						transform: scale(1.1);
 						background: url('~assets/icons/ic_e2_right2.png') no-repeat center center;
@@ -861,7 +927,7 @@ export default SoftDecoration;
 			color: #000;
 			text-align: center;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		> p {
@@ -875,7 +941,7 @@ export default SoftDecoration;
 			text-align: center;
 			margin-top: 24px;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 
@@ -893,7 +959,7 @@ export default SoftDecoration;
 				opacity: 0;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
-				animation-delay: .2s;
+				animation-delay: 0.2s;
 				overflow: hidden;
 				&:hover {
 					> div {
@@ -907,14 +973,14 @@ export default SoftDecoration;
 						color: #eb551d;
 						border: 1px solid #eb551d;
 					}
-					img{
+					img {
 						transform: scale(#{$imgScale});
 					}
 				}
 				> img {
 					width: 100%;
 					height: 356px;
-					transition:transform .3s;
+					transition: transform 0.3s;
 				}
 				> div {
 					display: flex;
@@ -956,7 +1022,7 @@ export default SoftDecoration;
 					z-index: 3;
 				}
 				&:nth-child(2n) {
-					animation-delay: .4s;
+					animation-delay: 0.4s;
 					> div {
 						order: 1;
 					}
@@ -981,7 +1047,7 @@ export default SoftDecoration;
 			color: #000;
 			text-align: center;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		> p {
@@ -995,7 +1061,7 @@ export default SoftDecoration;
 			text-align: center;
 			margin-top: 24px;
 			opacity: 0;
-			animation:slide-down-in 1s, fade-in 1s;
+			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
 		> div {
@@ -1024,10 +1090,10 @@ export default SoftDecoration;
 					border-right: 2px solid rgba(255, 255, 255, 0.2);
 					height: 735px;
 					position: relative;
-						z-index: 20;
+					z-index: 20;
 					cursor: pointer;
 					opacity: 0;
-					animation:slide-down-in 2s, fade-in 2s;
+					animation: slide-down-in 2s, fade-in 2s;
 					animation-fill-mode: forwards;
 					&:hover {
 						div {
@@ -1072,7 +1138,7 @@ export default SoftDecoration;
 						}
 					}
 					&:nth-child(1) {
-						animation-delay: .15s;
+						animation-delay: 0.15s;
 						div {
 							img {
 								width: 52px;
@@ -1081,7 +1147,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(2) {
-						animation-delay: .3s;
+						animation-delay: 0.3s;
 						div {
 							img {
 								width: 46px;
@@ -1090,7 +1156,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(3) {
-						animation-delay: .45s;
+						animation-delay: 0.45s;
 						div {
 							img {
 								width: 33px;
@@ -1099,7 +1165,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(4) {
-						animation-delay: .6s;
+						animation-delay: 0.6s;
 						div {
 							img {
 								width: 55px;
@@ -1108,7 +1174,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(5) {
-						animation-delay: .75s;
+						animation-delay: 0.75s;
 						div {
 							img {
 								width: 39px;
@@ -1117,7 +1183,7 @@ export default SoftDecoration;
 					}
 
 					&:nth-child(1) {
-						animation-delay: .9s;
+						animation-delay: 0.9s;
 						div {
 							img {
 								width: 46px;

@@ -271,7 +271,7 @@ export default class sidebar extends Vue {
 				position: absolute;
 				border: 2px solid transparent;
 				width: 0px;
-				transition: 0.3s;
+				transition: 1s;
 				height: 0px;
 			}
 			&::after {
