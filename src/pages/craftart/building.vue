@@ -35,30 +35,33 @@
 						<p>每年在建工地</p>
 					</div>
 				</div>
-				<div class="rightContent" v-if="currentSelectId">
-					<h4>浦东</h4>
-					<p>在建56套</p>
-					<p>保利首创颂</p>
-					<p>碧云壹零</p>
-					<p>东方颐城</p>
-					<p>公元2040</p>
-					<p>金地城</p>
-					<p>金融家</p>
-					<p>绿地东上海</p>
-					<p>浦发东悦城</p>
-					<p>同润蓝美俊庭</p>
-					<div class="line">
-						<div class="line2" v-show="currentSelectId == 'pd'"></div>
-						<div class="line3" v-show="currentSelectId == 'fx'"></div>
-						<div class="line4" v-show="currentSelectId == 'mh'"></div>
-						<div class="line5" v-show="currentSelectId == 'cm'"></div>
-						<div class="line6" v-show="currentSelectId == 'bs'"></div>
-						<div class="line7" v-show="currentSelectId == 'jd'"></div>
-						<div class="line8" v-show="currentSelectId == 'qp'"></div>
-						<div class="line9" v-show="currentSelectId == 'sj'"></div>
-						<div class="line1" v-show="currentSelectId"></div>
+				<template v-if="currentSelectId">
+					<div class="rightContent" v-for="(item, i) in mapData" :key="i" v-show="currentSelectId == item.id">
+						<h4>{{ item.title1 }}</h4>
+						<p>{{ item.title2 }}</p>
+						<p>保利首创颂</p>
+						<p>碧云壹零</p>
+						<p>东方颐城</p>
+						<p>公元2040</p>
+						<p>金地城</p>
+						<p>金融家</p>
+						<p>绿地东上海</p>
+						<p>浦发东悦城</p>
+						<p>同润蓝美俊庭</p>
+						<div class="line">
+							<div class="line2" v-show="currentSelectId == 'pd'"></div>
+							<div class="line3" v-show="currentSelectId == 'fx'"></div>
+							<div class="line4" v-show="currentSelectId == 'mh'"></div>
+							<div class="line5" v-show="currentSelectId == 'cm'"></div>
+							<div class="line6" v-show="currentSelectId == 'bs'"></div>
+							<div class="line7" v-show="currentSelectId == 'jd'"></div>
+							<div class="line8" v-show="currentSelectId == 'qp'"></div>
+							<div class="line9" v-show="currentSelectId == 'sj'"></div>
+							<div class="line1" v-show="currentSelectId"></div>
+						</div>
 					</div>
-				</div>
+				</template>
+
 				<img src="~assets/bg_d1_part2.jpg" alt="" />
 			</div>
 			<div class="list">
