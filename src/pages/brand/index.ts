@@ -394,14 +394,23 @@ export default class Brand extends Vue {
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
-		if (!this.isIE) this.updateText(progressIndex, str);
+		this.updateText(progressIndex, str);
 		this.clickFlag = false;
-		if (!this.clickFlag && !this.isIE) {
+		if (!this.clickFlag) {
 			this.calcRotate(str);
 		}
-		if (this.isIE) {
-			this.progressIndex = progressIndex;
-		}
+
+		gsap.to('.history-scroll', {
+			duration: 0.5,
+			scrollTop: this.calcDistance(progressIndex)
+		});
+	}
+
+	IEchange(str) {
+		let progressIndex = this.progressIndex;
+		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
+		str == 'pre' ? progressIndex-- : progressIndex++;
+
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(progressIndex)
@@ -454,7 +463,9 @@ export default class Brand extends Vue {
 	}
 
 	jump(i) {
+
 		if (typeof i === 'undefined') return;
+
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.brand');
 		const item = brand.querySelector<HTMLElement>(`.select${i}`);
@@ -463,6 +474,8 @@ export default class Brand extends Vue {
 			const height = document.querySelector<HTMLElement>('.img-list').clientHeight / 2;
 			top += height + 2;
 		}
+		console.log(top);
+
 		window.scroll({ top, behavior: 'smooth' });
 	}
 

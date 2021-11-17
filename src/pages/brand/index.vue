@@ -184,8 +184,8 @@
 				<div class="info">
 					<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
 				</div>
-				<div class="pre" @click="change('pre')"></div>
-				<div class="next" @click="change('next')"></div>
+				<div class="pre" @click="IEchange('pre')"></div>
+				<div class="next" @click="IEchange('next')"></div>
 			</div>
 		</div>
 		<div class="hover select4">
