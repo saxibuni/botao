@@ -12,6 +12,7 @@ import ChinaMap from 'root/components/chinamap.vue';
 import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
 import { Events } from 'root/utils/EnumUtils';
+import { device } from 'root/utils';
 
 gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin, SplitText);
 Vue.use(BaiduMap, {
@@ -57,6 +58,7 @@ export default class Brand extends Vue {
 	asideNav = ['波涛品牌', '品牌数据', '核心价值观', '发展历程', '荣誉资质', '社会责任', '联系我们'];
 	nav = ['荣誉证书', '研发专利'];
 	btBrandArr = ['壹澜建材', '九衡堂', '锦沁建筑劳务', '繁构国际设计', '汇海船舶', '锦悦建设', '波涛家庭装饰', '波澜管理', '波涛装饰家居', '波涛简嘉公寓', '波涛商学院', '波涛软装'];
+	isIE: boolean;
 	btBrandInfoArr = [
 		{
 			title: '波涛家庭装饰',
@@ -275,7 +277,13 @@ export default class Brand extends Vue {
 		}
 	};
 	textShow: boolean = true;
+
+	created() {
+		this.isIE=device.browser.ie;
+	}
+
 	mounted() {
+
 		this.initTextChars();
 		this.createDragger();
 		this.createTrigger();
@@ -351,9 +359,9 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
-				const height =document.querySelector('.gray-img').clientHeight
+				const height = document.querySelector('.gray-img').clientHeight;
 				// const innerHeight=document.querySelector('.inner-img').cl
-				console.log(height,'heightheightheight');
+				console.log(height, 'heightheightheight');
 
 				let offset = self.progress * (height - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
@@ -380,8 +388,7 @@ export default class Brand extends Vue {
 			return;
 		}
 		newVal > oldVal ? this.calcRotate('next') : this.calcRotate('pre');
-		this.updateText(newVal,'pre');
-
+		this.updateText(newVal, 'pre');
 	}
 
 	change(str) {

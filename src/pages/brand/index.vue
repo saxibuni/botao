@@ -136,7 +136,7 @@
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box wow">
+			<div class="info-box wow" v-if="!isIE">
 				<div class="time-box">
 					<div class="time">
 						<!-- behidn -->
@@ -175,6 +175,19 @@
 				</div>
 				<div class="pre" @click="change('pre')"></div>
 				<div class="next" @click="change('next')"></div>
+			</div>
+			<div class="ie-info-box wow" v-else>
+				<div class="time-box">
+					<div class="time">
+						<p>{{ devolopeList[progressIndex].time }}</p>
+						<h2>{{ devolopeList[progressIndex].name }}</h2>
+					</div>
+				</div>
+				<div class="text-boxs">
+					<div class="info">
+						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="hover select4">
@@ -1195,6 +1208,9 @@ html {
 				}
 			}
 		}
+		.ie-info-box{
+			
+		}
 	}
 	.hover {
 		box-sizing: border-box;
@@ -1384,18 +1400,19 @@ html {
 						}
 					}
 					.text-box {
+						width: 327px;
 						position: relative;
 						flex: 1;
 						min-height: 224px;
 						h2 {
 							margin-top: 108px;
-							text-align: start;
+							text-align: left;
 							margin-bottom: 22px;
 							font-size: 34px;
 							font-weight: bold;
 						}
 						p {
-							width: 359px;
+							width: 327px;
 							font-size: 18px;
 							color: #666666;
 							line-height: 30px;
