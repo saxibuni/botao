@@ -1369,8 +1369,9 @@ html {
 					height: 450px;
 					.img-box {
 						width: 327px;
-						height: 203px;
+						// height: 203px;
 						.inner {
+							display: flex;
 							overflow: hidden;
 							img {
 								width: 327px;
