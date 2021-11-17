@@ -176,19 +176,17 @@
 				<div class="pre" @click="change('pre')"></div>
 				<div class="next" @click="change('next')"></div>
 			</div>
-			<!-- <div class="ie-info-box wow" v-else>
-				<div class="time-box">
-					<div class="time">
-						<p>{{ devolopeList[progressIndex].time }}</p>
-						<h2>{{ devolopeList[progressIndex].name }}</h2>
-					</div>
+			<div class="ie-info-box wow" v-else>
+				<div class="time">
+					<p>{{ devolopeList[progressIndex].time }}</p>
+					<h2>{{ devolopeList[progressIndex].name }}</h2>
 				</div>
-				<div class="text-boxs">
-					<div class="info">
-						<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
-					</div>
+				<div class="info">
+					<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
 				</div>
-			</div> -->
+				<div class="pre" @click="change('pre')"></div>
+				<div class="next" @click="change('next')"></div>
+			</div>
 		</div>
 		<div class="hover select4">
 			<h2 class="wow">荣誉资质</h2>
@@ -1208,8 +1206,77 @@ html {
 				}
 			}
 		}
-		.ie-info-box{
-
+		.ie-info-box {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			display: flex;
+			width: 870px;
+			height: 180px;
+			color: #ffffff;
+			text-align: start;
+			.time {
+				box-sizing: border-box;
+				padding-top: 43px;
+				padding-left: 46px;
+				width: 240px;
+				height: 100%;
+				background: #eb551d;
+				p {
+					font-size: 30px;
+					font-weight: bold;
+					line-height: 1;
+				}
+				h2 {
+					text-align: start;
+					margin-top: 16px;
+					font-size: 26px;
+					line-height: 1;
+				}
+			}
+			.info {
+				padding: 43px 20px 0 50px;
+				flex: 1;
+				height: 100%;
+				background: #132132;
+				p {
+					line-height: 1;
+					&:first-of-type {
+						font-size: 22px;
+					}
+					&:nth-of-type(2) {
+						margin-top: 12px;
+						font-size: 18px;
+						line-height: 32px;
+					}
+				}
+			}
+			.pre,
+			.next {
+				position: absolute;
+				z-index: 11;
+				bottom: -50px;
+				width: 13px;
+				height: 26px;
+				cursor: pointer;
+				transition: all 0.3s;
+			}
+			.pre {
+				left: 80px;
+				background: url(~assets/icons/ic_f4_left1.png) no-repeat;
+				background-size: 100%;
+				&:hover {
+					background-image: url(~assets/icons/ic_f4_left2.png);
+				}
+			}
+			.next {
+				right: 80px;
+				background: url(~assets/icons/ic_f4_right1.png) no-repeat;
+				background-size: 100%;
+				&:hover {
+					background-image: url(~assets/icons/ic_f4_right2.png);
+				}
+			}
 		}
 	}
 	.hover {

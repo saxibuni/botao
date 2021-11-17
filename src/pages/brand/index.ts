@@ -279,11 +279,10 @@ export default class Brand extends Vue {
 	textShow: boolean = true;
 
 	created() {
-		this.isIE=device.browser.ie;
+		this.isIE = device.browser.ie;
 	}
 
 	mounted() {
-
 		this.initTextChars();
 		this.createDragger();
 		this.createTrigger();
@@ -395,12 +394,14 @@ export default class Brand extends Vue {
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
-		this.updateText(progressIndex, str);
+		if (!this.isIE) this.updateText(progressIndex, str);
 		this.clickFlag = false;
-		if (!this.clickFlag) {
+		if (!this.clickFlag && !this.isIE) {
 			this.calcRotate(str);
 		}
-
+		if (this.isIE) {
+			this.progressIndex = progressIndex;
+		}
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(progressIndex)
