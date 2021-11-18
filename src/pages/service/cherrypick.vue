@@ -216,21 +216,26 @@
 			<h2 class="wow">高端品牌直采</h2>
 			<p class="wow">High-end brands</p>
 			<div class="swipers">
-
-				<div class="swiper-slides" >
-					<div class="imgs-wrap" :style="{ 'transition-delay':0.015 * i + 0.03 + 's' }" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }" v-for="(item, i) in currentPortraitList" :key="i">
-						<div class="one" :style="{ 'opacity': item=='assets/portrait/white.png'?0:1 }">
-							<div class="inner-one">
+				<div class="swiper-slides">
+					<div
+						class="imgs-wrap"
+						:style="{ 'transition-delay': 0.015 * i + 0.03 + 's' }"
+						:class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }"
+						v-for="(item, i) in currentPortraitList"
+						:key="i"
+					>
+						<div class="one" >
+							<div class="inner-one" :style="{ opacity: item != 'assets/portrait/white.png' ? 1 : 1 }">
 								<div class="box">
-										<img :src="item" alt="" />
+									<img :src="item" alt="" />
 								</div>
 							</div>
 						</div>
-						<div class="two" :style="{ 'opacity': item=='assets/portrait/white.png'?0:1 }">
+						<div class="two" :style="{ opacity: item == 'assets/portrait/white.png' ? 0 : 1 }">
 							<div class="inner-two">
 								<div class="box">
 									<img :src="item" alt="" />
-									<img class="img2" :src="require('assets/portrait/white.png')" alt="" />
+									<img :src="require('assets/portrait/white.png')" alt="" />
 									<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
 								</div>
 							</div>
@@ -1580,7 +1585,7 @@ export default CheckPick;
 
 			.swiper-slides {
 				height: 515px;
-					perspective: 1000px;
+				perspective: 1000px;
 
 				.imgs-wrap {
 					left: 28px;
@@ -1604,8 +1609,8 @@ export default CheckPick;
 					}
 					&:hover {
 						margin-top: -5px;
-						transition-delay: 0s!important;
-						>div{
+						transition-delay: 0s !important;
+						> div {
 							.inner-one,
 							.inner-two {
 								box-shadow: 0px 0px 30px 1px rgba(8, 18, 29, 0.15);
