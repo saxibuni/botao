@@ -12,24 +12,24 @@
 			</div>
 			<div class="mapInfo">
 				<ShangHaiMap @data="fn" class="wow" />
-				<div class="leftContent wow">
+				<div class="leftContent wow" v-if="buildingData.zsgddesc">
 					<div>
 						<p>
-							<ICountUp :endVal="20" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="buildingData.zsgddesc.sgnx" :options="options1" ref="countup1"></ICountUp>
 							年
 						</p>
 						<p>深耕别墅大宅装饰领域</p>
 					</div>
 					<div>
 						<p>
-							<ICountUp :endVal="95" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="buildingData.zsgddesc.fgl" :options="options1" ref="countup1"></ICountUp>
 							%
 						</p>
 						<p>上海高端楼盘覆盖率</p>
 					</div>
 					<div>
 						<p>
-							<ICountUp :endVal="800" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="buildingData.zsgddesc.zjgd" :options="options1" ref="countup1"></ICountUp>
 							+
 						</p>
 						<p>每年在建工地</p>
@@ -58,21 +58,19 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li v-for="(item, i) in 9" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<li v-for="(item, i) in buildingData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="imgBox">
-							<img src="~assets/bg_d1_pic01.jpg" alt="" />
+							<img :src="web_url + item.img" alt="" />
 							<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
 						</div>
 						<div class="text">
-							<p>香格丽花园</p>
+							<p>{{ item.title }}</p>
 							<p>
-								独栋别墅
+								{{ item.gdhxsx }}
 								<span></span>
-								120㎡
+								{{ item.jzmj }}
 							</p>
-							<p>
-								设计师：戴思琦
-							</p>
+							<p>设计师：{{ item.designer }}</p>
 							<Button :text="'预约参观工地'" @click.native="$store.state.dialogDesign.design = true" />
 						</div>
 					</li>
