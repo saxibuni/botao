@@ -29,41 +29,41 @@
 				</ul>
 			</div>
 		</div>
-		<div class="swiper">
+		<div class="swiper" v-if="listData.tjlist[0]">
 			<div class="content">
 				<img src="~assets/bg_b1_part2_mask1.png" alt="" />
 				<div class="text wow">
-					<p>锦华花园</p>
+					<p>{{ listData.tjlist[0].title }}</p>
 					<p>
-						<span>新中式</span>
-						<span>复式</span>
-						<span>300㎡</span>
+						<span>{{ listData.tjlist[0].style }}</span>
+						<span>{{ listData.tjlist[0].hx }}</span>
+						<span>{{ listData.tjlist[0].mj }}</span>
 					</p>
-					<p>利用现代家居装饰理念，将古典美学进行了全新的改良与优化使居住空间呈现出令人痴迷的风雅意境。</p>
+					<p>{{ listData.tjlist[0].des_info.sjln }}</p>
 					<div>
-						<img src="~assets/bg_b1_part2_user0.png" alt="" />
+						<img :src="web_url + listData.tjlist[0].des_info.faceimg" alt="" />
 						<div>
-							<p>米航</p>
-							<p>首席设计师</p>
+							<p>{{ listData.tjlist[0].des_info.author }}</p>
+							<p>{{ listData.tjlist[0].des_info.sjssx }}</p>
 						</div>
 						<div>
 							<p>从业年限</p>
-							<p>15年</p>
+							<p>{{ listData.tjlist[0].des_info.cysj }}年</p>
 						</div>
 					</div>
 					<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true" />
 				</div>
 			</div>
 			<swiper :options="bannerSwiperOptions1">
-				<swiper-slide v-for="(item, i) in 3" :key="i">
-					<img src="~assets/bg_b1_part2_right.jpg" alt="" />
+				<swiper-slide v-for="(item, i) in listData.tjlist[0].imgs.split(',')" :key="i">
+					<img :src="web_url + item" alt="" />
 					<img src="~assets/bg_b1_part2_mask2.png" alt="" />
 				</swiper-slide>
 			</swiper>
 			<div class="swiper-pagination3"></div>
 		</div>
 		<div class="cases">
-			<Cases v-for="i in 6" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" />
+			<Cases v-for="(v, i) in listData.list" :caseData="v" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" />
 		</div>
 		<Pagination :data="paginationData" />
 	</div>
@@ -308,6 +308,7 @@ export default CaseList;
 						line-height: 36px;
 						opacity: 0.6;
 						width: 424px;
+						height: 55px;
 					}
 				}
 				> div {
@@ -315,6 +316,11 @@ export default CaseList;
 					margin-top: 50px;
 					align-items: center;
 					color: #fff;
+					img {
+						border-radius: 50%;
+						width: 100px;
+						height: 100px;
+					}
 					> div {
 						font-size: 20px;
 						&:nth-of-type(1) {
@@ -404,7 +410,7 @@ export default CaseList;
 	.cases {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		margin-right: 29px;
 	}
 	.pagination-box {
 		margin: 40px 0 100px 0;

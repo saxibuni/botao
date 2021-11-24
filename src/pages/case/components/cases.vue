@@ -3,39 +3,37 @@
 		<ul>
 			<li>
 				<div class="imgBox" @click.stop="$router.push('/case/detail')">
-					<img src="~assets/bg_b1_part3_pic1.jpg" alt="" />
+					<img :src="web_url + caseData.img" alt="" />
 				</div>
 				<div class="content">
 					<div class="top">
 						<div class="topLeft" @click.stop="$router.push('/case/detail')">
-							<p>上海东方颐城</p>
+							<p>{{ caseData.title }}</p>
 							<p>
-								<span>现代风格</span>
-								<span>别墅</span>
-								<span>120㎡</span>
+								<span>{{ caseData.style }}</span>
+								<span>{{ caseData.hx }}</span>
+								<span>{{ caseData.mj }}</span>
 							</p>
 						</div>
 						<div class="topRight">
 							<!-- <i @click="fn"></i> -->
 							<div>
-								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" @click="(flag = !flag), loveNum++" />
+								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" @click="(flag = !flag), caseData.click++" />
 
-
-								<img v-if="!isIE" class="img" :class="{img2:!flag}" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), loveNum--" />
-								<img v-if="isIE&&!flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), loveNum--" />
-
+								<img v-if="!isIE" class="img" :class="{ img2: !flag }" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), caseData.click--" />
+								<img v-if="isIE && !flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), caseData.click--" />
 							</div>
-							<p>{{ loveNum }}个喜欢</p>
+							<p>{{ caseData.click }}个喜欢</p>
 						</div>
 					</div>
-					<div class="bottom" >
+					<div class="bottom">
 						<div class="bottomLeft">
 							<div class="imgBox2">
-								<img src="~assets/bg_b1_part3_user4.png" alt="" />
+								<img :src="web_url + caseData.des_info.faceimg" alt="" />
 							</div>
 							<div class="text">
-								<p>米航</p>
-								<p>首席设计师</p>
+								<p>{{ caseData.des_info.author }}</p>
+								<p>{{ caseData.des_info.station }}</p>
 							</div>
 						</div>
 						<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
@@ -56,11 +54,12 @@ import { device } from 'root/utils';
 	}
 })
 export default class Caese extends Vue {
-	loveNum = 2000;
+	web_url = 'http://btgwcs.zhulu76.com/';
 	flag = true;
-	isIE:boolean = false;
+	isIE: boolean = false;
 	created() {
 		this.isIE = device.browser.ie;
+		console.log(111, this.caseData);
 	}
 	@Prop({
 		required: false,
@@ -68,6 +67,12 @@ export default class Caese extends Vue {
 		default: () => {}
 	})
 	data!: any;
+	@Prop({
+		required: false,
+		type: Object,
+		default: () => {}
+	})
+	caseData!: any;
 	mounted() {
 		this.restartWow();
 	}
@@ -160,7 +165,7 @@ export default class Caese extends Vue {
 						flex-direction: column;
 						align-items: center;
 						margin-top: 5px;
-						div{
+						div {
 							width: 26px;
 							height: 23px;
 							position: relative;
@@ -172,15 +177,15 @@ export default class Caese extends Vue {
 								width: 26px;
 								height: 23px;
 								transition: all 0.3s;
-								&.img{
+								&.img {
 									clip-path: ellipse(0% 0% at 0% 100%);
 									z-index: 3;
 								}
-								&.img2{
+								&.img2 {
 									clip-path: ellipse(140% 141% at 0% 100%);
 								}
 							}
-							&:hover{
+							&:hover {
 								transform: scale(1.1);
 							}
 						}

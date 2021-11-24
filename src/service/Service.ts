@@ -31,6 +31,10 @@ export class Service extends EventEmitter {
 	public queryJxCase(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/jxCase', req, callback);
 	}
+	///精选案例详情
+	public queryjxCaseShow(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/jxCaseShow', req, callback);
+	}
 
 
 
