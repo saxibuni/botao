@@ -126,61 +126,6 @@
 							<p>{{item.etitle}}</p>
 						</div>
 					</li>
-<!--
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_2a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_2b.png" alt="" />
-							</i>
-							<h3>儿童房</h3>
-							<p>Children room</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_3a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_3b.png" alt="" />
-							</i>
-							<h3>老人房</h3>
-							<p>Old person room</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_4a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_4b.png" alt="" />
-							</i>
-							<h3>餐厅</h3>
-							<p>restaurant</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_5a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_5b.png" alt="" />
-							</i>
-							<h3>书房</h3>
-							<p>study</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_6a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_6b.png" alt="" />
-							</i>
-							<h3>卧室</h3>
-							<p>bedroom</p>
-						</div>
-					</li> -->
 				</ul>
 			</div>
 		</div>
