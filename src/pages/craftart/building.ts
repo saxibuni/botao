@@ -5,6 +5,7 @@ import Button from 'root/components/button.vue';
 import ShangHaiMap from 'root/components/shanghaimap.vue';
 import ICountUp from 'root/components/countup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
+import utils from 'root/utils'
 
 @Component({
 	components: {
@@ -18,13 +19,15 @@ import VideoPopup from 'root/components/videoPopup.vue';
 })
 export default class Building extends Vue {
 	videoPop = {
-		isPop: false
+		isPop: false,
 	};
+	buildingData={}
+	web_url = 'http://btgwcs.zhulu76.com/'
 	paginationData = { size: 100, total: 1000 };
-	bannerData = { cn: '在建工地', en: 'THE CONSTRUCTION SITE', imgUrl: require('root/assets/bg_d1_banner.jpg') };
+	bannerData = {};
 	tabList = [
-		{ title: '户型', info: ['全部', '独栋别墅', '联排别墅', '大平层', '复式'] },
-		{ title: '面积', info: ['全部', '200㎡以下', '200-500㎡', '500-800㎡', '800㎡以上'] }
+		{ title: '户型', info: [] },
+		{ title: '面积', info: [] }
 	];
 	mapData=[
 		{
@@ -88,6 +91,27 @@ export default class Building extends Vue {
 	playVideo(i) {
 		this.videoPop.isPop = true;
 	}
+	created(){
+		this.getData()
+	}
+		getData() {
+			utils.service.querysiteCase(
+				{
+					// gdmjsx:'工地面积筛选',
+					// gdhxsx:'工地户型筛选'
+				},
+				res => {
+					console.log(res.data);
+					this.buildingData=res.data
+					this.bannerData=res.data.banner
+					res.data.mjsx.unshift('全部')
+					res.data.hxsx.unshift('全部')
+					this.tabList[0].info=res.data.hxsx
+					this.tabList[1].info=res.data.mjsx
+
+				}
+			);
+		}
 	mounted() {
 		this.restartWow();
 

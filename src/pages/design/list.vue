@@ -13,12 +13,9 @@
 					<input type="text" />
 					<i></i>
 				</div>
-				<p>
+				<p v-if="listData.keyw">
 					您可能感兴趣的设计师:&nbsp;
-					<span>陆靖浩</span>
-					<span>周芳乐</span>
-					<span>喻勤</span>
-					<span>于一</span>
+					<span v-for="(v, i) in listData.keyw.split(',')" :key="i">{{ v }}</span>
 				</p>
 			</div>
 		</div>

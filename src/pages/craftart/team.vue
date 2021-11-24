@@ -3,27 +3,27 @@
 		<Banner :data="bannerData" />
 		<div class="list">
 			<ul>
-				<li v-for="(item, i) in 16" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-					<img src="~assets/bg_d2_pic01.jpg" alt="" />
+				<li v-for="(item, i) in teamData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<img :src="web_url + item.img" alt="" />
 					<div class="text">
-						<p>郜加新</p>
+						<p>{{ item.author }}</p>
 						<p>
-							项目经理&nbsp;
+							{{ item.gw }}&nbsp;
 							<span></span>
-							&nbsp; 25年经验
+							&nbsp; {{ item.jingyan }}
 						</p>
 					</div>
 					<div class="mask">
 						<div class="content">
-							<p>范金奇</p>
+							<p>{{ item.author }}</p>
 							<p>
-								项目经理
+								{{ item.gw }}
 								<span></span>
-								20年经验
+								{{ item.jingyan }}
 							</p>
 							<div class="line"></div>
 							<p>服务楼盘</p>
-							<p>新弘墅园、九洲大唐花园、佘山院子、樾山半岛、城开云外</p>
+							<p>{{ item.fwlp }}</p>
 						</div>
 					</div>
 				</li>
@@ -53,13 +53,17 @@ export default Team;
 	margin-top: 90px;
 	ul {
 		display: flex;
-		justify-content: space-between;
+		// justify-content: space-between;
 		flex-wrap: wrap;
 		li {
 			width: 410px;
 			height: 500px;
 			position: relative;
 			margin-bottom: 40px;
+			margin-right: 38px;
+			&:nth-of-type(4n) {
+				margin-right: 0;
+			}
 			&:hover {
 				.text {
 					opacity: 0;
