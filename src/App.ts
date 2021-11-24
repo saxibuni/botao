@@ -20,10 +20,5 @@ export default class App extends Vue {
 		window.addEventListener('scroll', () => {
 			utils.emitter.$emit('scroll');
 		});
-
-
-		// service.queryJxCase({
-
-		// })
 	}
 }
