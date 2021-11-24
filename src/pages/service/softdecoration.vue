@@ -1,12 +1,12 @@
 <template>
 	<div class="soft-decoration">
 		<div class="page1">
-			<img src="~assets/bg_e3_banner_right.jpg" alt="" />
+			<img :src="web_url+banner.litpic" alt="" />
 			<div class="text">
-				<h2>软装生活</h2>
-				<p>Soft outfit life</p>
+				<h2>{{banner.title}}</h2>
+				<p>{{banner.etitle}}</p>
 			</div>
-			<img class="mask" src="~assets/bg_e3_banner_left.png" alt="" />
+			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 			<div class="arrow"></div>
 			<div class="arrow"></div>
 			<div class="arrow"></div>
@@ -16,60 +16,11 @@
 			<p class="wow">Deserve to act the role of custom</p>
 
 			<ul>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_01.png" alt="" />
+				<li class="wow" v-for="(item,i) in psdzList" :key="i">
+					<img :src="web_url+item.img" alt="" />
 					<div>
-						<p>绿植</p>
-						<h6>Green Plant</h6>
-					</div>
-				</li>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_02.png" alt="" />
-					<div>
-						<p>挂画</p>
-						<h6>Hanging Picture</h6>
-					</div>
-				</li>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_03.png" alt="" />
-					<div>
-						<p>家具</p>
-						<h6>Furniture</h6>
-					</div>
-				</li>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_04.png" alt="" />
-					<div>
-						<p>灯具</p>
-						<h6>Lighting</h6>
-					</div>
-				</li>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_05.png" alt="" />
-					<div>
-						<p>饰品</p>
-						<h6>Accessories</h6>
-					</div>
-				</li>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_06.png" alt="" />
-					<div>
-						<p>壁布</p>
-						<h6>Wall Cloth</h6>
-					</div>
-				</li>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_07.png" alt="" />
-					<div>
-						<p>窗帘</p>
-						<h6>Curtain</h6>
-					</div>
-				</li>
-				<li class="wow">
-					<img src="~assets/bg_e3_part2_08.png" alt="" />
-					<div>
-						<p>地毯</p>
-						<h6>Rug</h6>
+						<p>{{item.title}}</p>
+						<h6>{{item.etitle}}</h6>
 					</div>
 				</li>
 			</ul>
@@ -93,9 +44,9 @@
 					</h2>
 					<div class="swiper">
 						<swiper :options="swiperOptions" ref="mywiper">
-							<swiper-slide v-for="(item, i) in list" :key="i">
+							<swiper-slide v-for="(item, i) in rzalList" :key="i">
 								<div :class="{ active: swiperIndex == i }" @click="onSelect(i)">
-									<span>{{ item }}</span>
+									<span>{{ item.title }}</span>
 								</div>
 							</swiper-slide>
 						</swiper>
@@ -103,15 +54,15 @@
 						<div style="pointer-events:auto; opacity:1;cursor: pointer;" class="swiper2-button-prev" @click="onClick(-1)"></div>
 						<div style="pointer-events:auto; opacity:1;cursor: pointer;" class="swiper2-button-next" @click="onClick(1)"></div>
 					</div>
-					<div class="text" :class="{ active: textActive }">
-						<h2>莱茵半岛</h2>
-						<h3>现代风格 153㎡</h3>
-						<p>家庭氛围活泼友爱，收纳空间多，房屋整 洁干净，楼上空间是以居住为主，地下室 空间主要是活动娱乐空间。</p>
+					<div class="text" :class="{ active: textActive }" v-if="rzalList[swiperIndex]">
+						<h2>{{rzalList[swiperIndex].title}}</h2>
+						<h3>{{rzalList[swiperIndex].fgmj}}</h3>
+						<p>{{rzalList[swiperIndex].desc}}</p>
 						<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
 					</div>
 				</div>
 				<div class="right wow">
-					<img src="~assets/bg_e3_part6.jpg" alt="" />
+					<img v-if="rzalList[swiperIndex]" :src="web_url+rzalList[swiperIndex].img" alt="" />
 				</div>
 			</div>
 		</div>
@@ -121,19 +72,19 @@
 
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions">
-					<swiper-slide class="wow" v-for="(item, i) in 8" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<swiper-slide class="wow" v-for="(item, i) in rzsjsList" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="box">
-							<div class="img-wrap">
-								<img src="~assets/bg_e3_part4_04.jpg" alt="" />
+							<div class="img-wrap" @click="$router.push({ name: 'design-detail',query:{id:item.id} })">
+								<img :src="web_url+item.img" alt="" />
 								<div>
-									<h3>夏文涓</h3>
-									<p>软装设计师 丨 10年经验</p>
+									<h3>{{item.title}}</h3>
+									<p>{{item.sjssx}} 丨 {{item.cysj}}经验</p>
 								</div>
 							</div>
 							<div class="text">
 								<p><i></i></p>
-								<h5>设计源于生活，细节成就品质，人为的设计生活方式，创造更美好的生活状态。</h5>
-								<Button text="了解设计师" @click.native="$router.push({ name: 'design-detail' })"></Button>
+								<h5>{{item.sjln}}</h5>
+								<Button text="了解设计师" @click.native="$router.push({ name: 'design-detail',query:{id:item.id} })"></Button>
 							</div>
 						</div>
 					</swiper-slide>
@@ -150,49 +101,11 @@
 			<h2 class="wow">服务流程</h2>
 			<p class="wow">Service process</p>
 			<ul>
-				<li class="wow">
-					<img src="~assets/bg_e3_part5_01.jpg" alt="" />
-					<b>01</b>
+				<li class="wow" v-for="(item,i) in rzfwlcList" :key="i">
+					<img :src="web_url+item.img" alt="" />
+					<b>0{{i+1}}</b>
 					<div>
-						<p>商务洽谈</p>
-						<p>签署设计合同</p>
-					</div>
-				</li>
-
-				<li class="wow">
-					<img src="~assets/bg_e3_part5_02.jpg" alt="" />
-					<b>02</b>
-					<div>
-						<p>概念方案</p>
-						<p>深化方案</p>
-					</div>
-				</li>
-
-				<li class="wow">
-					<img src="~assets/bg_e3_part5_03.jpg" alt="" />
-					<b>03</b>
-					<div>
-						<p>配套执行</p>
-						<p>配套预算</p>
-						<p>签署配套合同</p>
-					</div>
-				</li>
-
-				<li class="wow">
-					<img src="~assets/bg_e3_part5_04.jpg" alt="" />
-					<b>04</b>
-					<div>
-						<p>生产环节</p>
-						<p>质量监控</p>
-					</div>
-				</li>
-
-				<li class="wow">
-					<img src="~assets/bg_e3_part5_05.jpg" alt="" />
-					<b>05</b>
-					<div>
-						<p>现场布置</p>
-						<p>安装及摆放</p>
+						<p>{{item.desc}}</p>
 					</div>
 				</li>
 			</ul>
@@ -203,72 +116,20 @@
 			<p class="wow">Soft assembly elected</p>
 			<div>
 				<ul>
-					<li class="wow">
+					<li class="wow" :class="{active:page6Index==i}" v-for="(item,i) in rzpxList" :key="i" @mouseover="page6Index=i">
 						<div>
 							<i>
-								<img src="~assets/icons/ic_e3_part6_1a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_1b.png" alt="" />
+								<img :src="web_url+item.iconw" alt="" />
+								<img :src="web_url+item.icono" alt="" />
 							</i>
-							<h3>客厅</h3>
-							<p>sitting room</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_2a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_2b.png" alt="" />
-							</i>
-							<h3>儿童房</h3>
-							<p>Children room</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_3a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_3b.png" alt="" />
-							</i>
-							<h3>老人房</h3>
-							<p>Old person room</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_4a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_4b.png" alt="" />
-							</i>
-							<h3>餐厅</h3>
-							<p>restaurant</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_5a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_5b.png" alt="" />
-							</i>
-							<h3>书房</h3>
-							<p>study</p>
-						</div>
-					</li>
-
-					<li class="wow">
-						<div>
-							<i>
-								<img src="~assets/icons/ic_e3_part6_6a.png" alt="" />
-								<img src="~assets/icons/ic_e3_part6_6b.png" alt="" />
-							</i>
-							<h3>卧室</h3>
-							<p>bedroom</p>
+							<h3>{{item.title}}</h3>
+							<p>{{item.etitle}}</p>
 						</div>
 					</li>
 				</ul>
+				<div class="img-wrap" :class="{active:page6Index==i}" v-for="(item,i) in rzpxList" :key="i">
+						<img :src="web_url+item.img" alt="" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -791,6 +652,7 @@ export default SoftDecoration;
 					background: #000000;
 					position: relative;
 					overflow: hidden;
+					cursor: pointer;
 					&:hover {
 						img {
 							transform: scale(#{$imgScale});
@@ -848,6 +710,7 @@ export default SoftDecoration;
 						text-align: center;
 						margin-bottom: 35px;
 						@include line-clamp(2);
+						height: 60px;
 					}
 				}
 			}
@@ -1001,6 +864,7 @@ export default SoftDecoration;
 						width: 100%;
 						transition: 0.3s;
 						margin-top: 3px;
+						white-space: pre-wrap;
 					}
 				}
 				b {
@@ -1064,10 +928,27 @@ export default SoftDecoration;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
+		.img-wrap{
+			width: 1760px;
+			height: 735px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			transition:opacity .3s;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			z-index: 1;
+			&.active{
+				opacity: 1;
+			}
+		}
 		> div {
 			width: 1760px;
 			height: 735px;
-			background: url('~assets/bg_e3_part6.jpg') center center;
+			/* background: url('~assets/bg_e3_part6.jpg') center center; */
 			background-size: cover;
 			margin: 57px auto;
 			position: relative;
@@ -1080,7 +961,7 @@ export default SoftDecoration;
 				position: absolute;
 				background: rgba(0, 0, 0, 0.2);
 				pointer-events: none;
-				z-index: 1;
+				z-index: 2;
 			}
 			ul {
 				display: flex;
@@ -1095,7 +976,8 @@ export default SoftDecoration;
 					opacity: 0;
 					animation: slide-down-in 2s, fade-in 2s;
 					animation-fill-mode: forwards;
-					&:hover {
+					&:hover,
+					&.active {
 						div {
 							transform: translateY(-20px);
 							color: #eb551d;

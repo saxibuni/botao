@@ -31,25 +31,50 @@
 		</div>
 		<div class="list">
 			<ul>
-				<li v-for="i in 6" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-					<a href="https://vr.justeasy.cn/view/aaf955dd50e59970-1598584621.html" target="_blank">
+				<li v-for="(v, i) in vrData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<a :href="v.velink" target="_blank">
 						<div class="imgBox">
-							<img src="~assets/bg_b3_part2_vr1.jpg" alt="" />
-						</div>
-						<div class="content">
-							<div class="left">
-								<p>上海东方颐城</p>
-								<p>
-									<span>现代风格</span>
-									<span>独栋别墅</span>
-									<span>120㎡</span>
-								</p>
-							</div>
-							<div class="right">
-								<Button :text="'VR全景体验'" />
-							</div>
+							<img :src="web_url + v.img" alt="" />
 						</div>
 					</a>
+					<div class="content">
+						<div class="top">
+							<a :href="v.velink" target="_blank">
+								<div class="topLeft">
+									<p>{{ v.title }}</p>
+									<p>
+										<span>{{ v.hx }}</span>
+										<span>{{ v.style }}</span>
+										<span>{{ v.mj }}</span>
+									</p>
+								</div>
+							</a>
+							<div class="topRight">
+								<!-- <i @click="fn"></i> -->
+								<div>
+									<img src="~assets/icons/ic_b1_part3_like1.png" alt="" @click="(flag = !flag), v.click++" />
+
+									<img v-if="!isIE" class="img" :class="{ img2: !flag }" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), v.click--" />
+									<img v-if="isIE && !flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), v.click--" />
+								</div>
+								<p>{{ v.click }}个喜欢</p>
+							</div>
+						</div>
+						<a :href="v.velink" target="_blank">
+							<div class="bottom" v-if="v.des_info">
+								<div class="bottomLeft">
+									<div class="imgBox2">
+										<img :src="web_url + v.des_info.faceimg" alt="" />
+									</div>
+									<div class="text">
+										<p>{{ v.des_info.author }}</p>
+										<p>{{ v.des_info.station }}</p>
+									</div>
+								</div>
+								<Button @click.native="$store.state.dialogDesign.design = true" :text="v.typename" />
+							</div>
+						</a>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -270,43 +295,140 @@ export default CaseListVr;
 					}
 				}
 				.content {
-					display: flex;
-					justify-content: space-between;
-					.left {
-						p {
-							&:nth-of-type(1) {
-								font-size: 30px;
-								color: #000000;
-								margin-top: 39px;
-								transition: all 0.3s;
-							}
-							&:nth-of-type(2) {
-								margin-top: 10px;
-								font-size: 18px;
-								display: flex;
-								align-items: center;
-								span {
+					width: 855px;
+					height: 265px;
+					// box-shadow: 0px 3px 17px 1px rgba(0, 0, 0, 0.05);
+					.top {
+						padding: 35px 0px 30px 0px;
+						// margin: 0 50px;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						// border-bottom: 1px solid #eeeeee;
+						.topLeft {
+							p {
+								&:nth-of-type(1) {
+									font-size: 28px;
+									color: #000000;
+									transition: all 0.3s;
+								}
+								&:nth-of-type(2) {
+									margin-top: 15px;
+									// margin-top: 35px;
+									font-size: 18px;
 									color: #888888;
-									padding: 0 15px;
-									border-right: 1px solid #cccccc;
-									height: 16px;
 									display: flex;
 									align-items: center;
-									&:first-of-type {
-										padding-left: 0;
-									}
-									&:last-of-type {
-										padding-right: 0;
-										border: none;
+									span {
+										padding: 0 15px;
+										border-right: 1px solid #cccccc;
+										height: 16px;
+										display: flex;
+										align-items: center;
+										&:first-of-type {
+											padding-left: 0;
+										}
+										&:last-of-type {
+											padding-right: 0;
+											border: none;
+										}
 									}
 								}
 							}
 						}
+						.topRight {
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							margin-top: 5px;
+							div {
+								width: 26px;
+								height: 23px;
+								position: relative;
+								transition: transform 0.3s;
+								img {
+									position: absolute;
+									left: 0;
+									top: 0;
+									width: 26px;
+									height: 23px;
+									transition: all 0.3s;
+									&.img {
+										clip-path: ellipse(0% 0% at 0% 100%);
+										z-index: 3;
+									}
+									&.img2 {
+										clip-path: ellipse(140% 141% at 0% 100%);
+									}
+								}
+								&:hover {
+									transform: scale(1.1);
+								}
+							}
+
+							p {
+								margin-top: 10px;
+								font-size: 16px;
+								color: #122133;
+								// font-weight: 600;
+							}
+						}
 					}
-					.button-wrap {
-						margin-top: 54px;
-						.btn {
-							margin: 0;
+					.bottom {
+						// padding: 25px 0px 35px 0px;
+						width: 855px;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						&:hover {
+							.imgBox2 {
+								img {
+									transform: scale(1.1);
+								}
+							}
+						}
+						.bottomLeft {
+							display: flex;
+							align-items: center;
+							.imgBox2 {
+								width: 75px;
+								height: 75px;
+								border-radius: 50%;
+								display: flex;
+								align-items: center;
+								overflow: hidden;
+								img {
+									transition: all 0.3s;
+								}
+							}
+
+							.text {
+								margin-left: 20px;
+								p {
+									&:nth-of-type(1) {
+										color: #122133;
+										font-size: 20px;
+										// font-weight: 600;
+									}
+									&:nth-of-type(2) {
+										margin-top: 10px;
+										color: #888888;
+										font-size: 16px;
+									}
+								}
+							}
+						}
+						.button-wrap {
+							width: 170px;
+							height: 53px;
+							/deep/.btn {
+								margin: 0;
+								width: 170px;
+								height: 53px;
+								display: flex;
+								justify-content: center;
+								align-items: center;
+							}
 						}
 					}
 				}

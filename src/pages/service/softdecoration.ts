@@ -3,6 +3,7 @@ import Button from "../../components/button.vue";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
+import utils from "root/utils";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 @Component({
@@ -13,7 +14,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 export default class SoftDecoration extends Vue {
 	bannerSwiperOptions: any = {
 		speed: 1000,
-		loop: true,
+		loop: false,
 		slidesPerView: 4,
 		slidesPerGroup: 1,
 		spaceBetween: 29,
@@ -44,7 +45,6 @@ export default class SoftDecoration extends Vue {
 		}
 	}
 	swiperIndex: number = 0;
-	list = ['金茂府','莱茵半岛','复明珑御','中海汇德里','晶萃名邸','长风瑞士璟庭','锦绣里','凯利海华府','锦绣里','凯利海华府'];
 	textActive = true;
 	onSelect(index) {
 		this.swiperIndex = index;
@@ -54,7 +54,7 @@ export default class SoftDecoration extends Vue {
 		},300)
 	}
 	onClick(e){
-		let length =this.list.length;
+		let length =this.rzalList.length;
 		if(e==1){
 			if(this.swiperIndex<length-1){
 				this.swiperIndex = Number(this.swiperIndex) + e
@@ -81,9 +81,28 @@ export default class SoftDecoration extends Vue {
 			this.textActive = true;
 		},300)
 	}
+	page6Index =0;
+	web_url = 'http://btgwcs.zhulu76.com/';
+	banner = {};
+	psdzList = [];
+	rzalList = [];
+	rzsjsList = [];
+	rzfwlcList = [];
+	rzpxList = [];
 	mounted() {
 		this.restartWow();
 		this.initTextChars();
+		utils.service.queryRzsh({}, res => {
+			if (res.status === 200) {
+				this.banner = res.data.banner;
+				this.psdzList = res.data.psdzList;
+				this.rzalList = res.data.rzalList;
+				this.rzsjsList = res.data.rzsjsList;
+				this.rzfwlcList = res.data.rzfwlcList;
+				this.rzpxList = res.data.rzpxList;
+				console.log(res.data);
+			}
+		});
 	}
 	initTextChars() {
 		let textContents = this.$el.querySelectorAll<HTMLElement>('.page1 .text');

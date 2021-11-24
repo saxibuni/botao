@@ -12,11 +12,6 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 	}
 })
 export default class WholeDecoration extends Vue {
-	banner = {
-		imgUrl: require("../../assets/bg_e1_banner_right.jpg"),
-		cn: '全案整装',
-		en: 'Whole case assembly'
-	}
 	list = [
 		{ title: '初次沟通', imgUrl: require("../../assets/icons/ic_e1_part2_07.png"), active: false, text: '卫浴洁具、厨电、地板、墙地砖、大理石、楼梯、全屋木制品、铝合金门窗几里' },
 		{ title: '前期设计工作', imgUrl: require("../../assets/icons/ic_e1_part2_07.png"), active: false, text: '卫浴洁具、厨电、地板、墙地砖、大理石、楼梯、全屋木制品、铝合金门窗几里' },
@@ -36,8 +31,9 @@ export default class WholeDecoration extends Vue {
 		{ title: '项目整体交付', imgUrl: require("../../assets/icons/ic_e1_part2_07.png"), active: false, text: '卫浴洁具、厨电、地板、墙地砖、大理石、楼梯、全屋木制品、铝合金门窗几里' },
 		{ title: '售后服务', imgUrl: require("../../assets/icons/ic_e1_part2_07.png"), active: false, text: '卫浴洁具、厨电、地板、墙地砖、大理石、楼梯、全屋木制品、铝合金门窗几里' },
 	]
+	web_url = 'http://btgwcs.zhulu76.com/';
 	onClick(i){
-		this.list.forEach((e,index)=>{
+		this.fwlcList.forEach((e,index)=>{
 			if(i==index){
 				e.active=true
 			}else{
@@ -45,12 +41,23 @@ export default class WholeDecoration extends Vue {
 			}
 		})
 	}
+	banner = {};
+	fwlcList = [];
+	fwtdList = [];
+	ghfyList = [];
 	mounted() {
 		this.restartWow();
 		this.initTextChars();
 		utils.service.queryQazz({}, res => {
-			if (res.data.code === 0) {
-
+			if (res.status === 200) {
+				this.banner = res.data.banner;
+				this.fwlcList = res.data.fwlcList.map((item,index) =>{
+					return Object.assign(item,{active:false})
+				});
+				this.fwtdList = res.data.fwtdList;
+				this.ghfyList = res.data.ghfyList;
+				console.log(res.data);
+				console.log(res.data.ghfyList);
 			}
 		});
 	}

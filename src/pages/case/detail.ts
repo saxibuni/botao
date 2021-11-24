@@ -3,6 +3,7 @@ import Button from 'root/components/button.vue'
 import Cases from './components/cases.vue'
 import Prop from 'root/components/popup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
+import utils from 'root/utils'
 @Component({
 	components: {
 		Button,
@@ -12,6 +13,8 @@ import VideoPopup from 'root/components/videoPopup.vue';
 	}
 })
 export default class CaseDetail extends Vue {
+	detailData={}
+	web_url = 'http://btgwcs.zhulu76.com/'
 	activeIndex=0
 	tabs=['同风格案例','同设计师案例']
 	swiperOptions1: any = {
@@ -53,6 +56,21 @@ export default class CaseDetail extends Vue {
 	playVideo(i) {
 		this.videoPop.isPop = true;
 	}
+	created(){
+		this.getData()
+	}
+		getData() {
+			utils.service.queryjxCaseShow(
+				{
+					aid:20
+				},
+				res => {
+					console.log(res.data);
+					this.detailData=res.data
+					utils.emitter.$emit('bannerData', res.data);
+				}
+			);
+		}
 	mounted(){
 		this.restartWow();
 	}

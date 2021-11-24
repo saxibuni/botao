@@ -2,6 +2,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue'
 import Button from 'root/components/button.vue'
 import ICountUp from 'root/components/countup.vue';
+import utils from 'root/utils'
 @Component({
 	components: {
 		Pagination,
@@ -10,13 +11,35 @@ import ICountUp from 'root/components/countup.vue';
 	}
 })
 export default class DesignList extends Vue {
+	web_url = 'http://btgwcs.zhulu76.com/'
+	listData={}
 	paginationData={size:100,total:1000}
-	tabs=['全部','总监设计师','首席设计师','设计师']
+	tabs=[]
 	activeIndex=0
 	options1 = {
 		suffix: '+',
 		useEasing: true
 	};
+	created(){
+		this.getData()
+	}
+		getData() {
+			utils.service.queryDesigner(
+				{
+		// 			page: 1,
+		// sjssx:'总监设计师',
+		// keywords:1,
+				},
+				res => {
+					console.log(res.data);
+					this.listData=res.data
+					res.data.sjssx.unshift('全部')
+					this.tabs=res.data.sjssx
+
+					utils.emitter.$emit('bannerData', res.data);
+				}
+			);
+		}
 	mounted(){
 		this.restartWow();
 	}

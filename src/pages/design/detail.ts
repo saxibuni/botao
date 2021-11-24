@@ -1,6 +1,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Button from 'root/components/button.vue'
 import Cases from '../case/components/cases.vue'
+import utils from 'root/utils'
 @Component({
 	components: {
 		Cases,
@@ -8,6 +9,8 @@ import Cases from '../case/components/cases.vue'
 	}
 })
 export default class DesignDetail extends Vue {
+	web_url = 'http://btgwcs.zhulu76.com/'
+	detailData={}
 	swiperOptions: any = {
 		speed: 1000,
 		loop: true,
@@ -26,6 +29,21 @@ export default class DesignDetail extends Vue {
 		},
 
 	};
+	created(){
+		this.getData()
+	}
+		getData() {
+			utils.service.queryDesignerShow(
+				{
+					aid:240
+				},
+				res => {
+					console.log(res.data);
+					this.detailData=res.data
+					utils.emitter.$emit('bannerData', res.data);
+				}
+			);
+		}
 	mounted(){
 		this.restartWow();
 	}

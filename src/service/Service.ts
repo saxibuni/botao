@@ -7,18 +7,15 @@ axios.defaults.timeout = 60000;
 
 export class Service extends EventEmitter {
 	protected send(url: string, data: any, success: ISuccess, error?: IError) {
-		axios.post(url, qs.stringify(data)).then(
-			(res: AxiosResponse) => {
-				res.data = JSON.parse(res.data);
-				return success(res);
-			},
-			err => {
-				if (err) {
-					console.error('请求出错!');
-				}
-				return error && error(0);
+		axios.post(url, qs.stringify(data)).then((res: AxiosResponse) => {
+			res.data = JSON.parse(res.data);
+			console.log(url, res);
+			return success(res);
+		}, (err) => {
+			if (err) {
+				console.error("请求出错!");
 			}
-		);
+		});
 	}
 
 	public queryFooterData(callback: (res: any) => void) {
@@ -41,6 +38,27 @@ export class Service extends EventEmitter {
 	public queryNews(callback: (res: any) => void) {
 		this.send('api.php/Ajax/news', {}, callback);
 	}
+	public queryjxCaseShow(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/jxCaseShow', req, callback);
+	}
+	public queryvrCase(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/vrCase', req, callback);
+	}
+	public queryDesigner(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/designer', req, callback);
+	}
+	public queryDesignerShow(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/designerShow', req, callback);
+	}
+	public querysiteCase(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/siteCase', req, callback);
+	}
+	public querysgteam(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/sgteam', req, callback);
+	}
+	public querysgmessage(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/sgmessage', req, callback);
+	}
 
 	///新闻详情
 	public queryNewsDetail(aid, callback: (res: any) => void) {
@@ -56,7 +74,23 @@ export class Service extends EventEmitter {
 		this.send('api.php/Ajax/btbrand', {}, callback);
 	}
 
+
+	public queryHome(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/indexInfo', req, callback);
+	}
+	public queryFoot(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/foot', req, callback);
+	}
+	public queryHead(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/head', req, callback);
+	}
 	public queryQazz(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/qazz', req, callback);
+	}
+	public queryYxzc(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/yxzc', req, callback);
+	}
+	public queryRzsh(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/rzsh', req, callback);
 	}
 }

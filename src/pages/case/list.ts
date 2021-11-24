@@ -3,6 +3,7 @@ import Cases from './components/cases.vue'
 import Pagination from '../../components/pagination.vue'
 import Button from 'root/components/button.vue'
 import ICountUp from 'root/components/countup.vue';
+import utils from 'root/utils'
 @Component({
 	components: {
 		Cases,
@@ -12,8 +13,10 @@ import ICountUp from 'root/components/countup.vue';
 	}
 })
 export default class CaseList extends Vue {
+	listData={}
+	web_url = 'http://btgwcs.zhulu76.com/'
 	paginationData={size:100,total:1000}
-	tabList=[{title:'风格',info:['全部','轻奢/现代/港式','中式/新中式','欧式/法式/地中海/美式','日式/侘寂/工业风']},{title:'户型',info:['全部','别墅','复式','大平层','工装']},{title:'面积',info:['全部','200㎡以下','200㎡-500㎡以内','500㎡以上']}]
+	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
 	bannerSwiperOptions1: any = {
 		speed: 1000,
@@ -51,6 +54,32 @@ export default class CaseList extends Vue {
 		suffix: '+',
 		useEasing: true
 	};
+created(){
+	this.getData()
+}
+	getData() {
+		utils.service.queryJxCase(
+			{
+	// 			page: 1,
+	// mjsx:'500㎡以上',
+	// hxsx:'别墅',
+	// stylesx:'轻奢/现代/港式',
+	// keywords:1,
+			},
+			res => {
+				console.log(res.data);
+				this.listData=res.data
+				res.data.stylesx.unshift('全部')
+				res.data.hxsx.unshift('全部')
+				res.data.mjsx.unshift('全部')
+				this.tabList[0].info=res.data.stylesx
+				this.tabList[1].info=res.data.hxsx
+				this.tabList[2].info=res.data.mjsx
+
+				utils.emitter.$emit('bannerData', res.data);
+			}
+		);
+	}
 	mounted(){
 		this.restartWow();
 	}

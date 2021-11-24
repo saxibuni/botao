@@ -1,9 +1,9 @@
 <template>
 	<div class="banner banner-wraps" v-if="data">
-		<img :src="data.imgUrl" alt="" />
+		<img :src="web_url + data.litpic" alt="" />
 		<div class="banner-text">
-			<h3>{{ data.cn }}</h3>
-			<p>{{ data.en }}</p>
+			<h3>{{ data.title }}</h3>
+			<p>{{ data.etitle }}</p>
 		</div>
 	</div>
 </template>
@@ -17,6 +17,7 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 @Component
 export default class banner extends Vue {
+	web_url = 'http://btgwcs.zhulu76.com/';
 	@Prop({
 		required: false,
 		type: Object,
@@ -37,20 +38,23 @@ export default class banner extends Vue {
 		this.onCharsEnter();
 	}
 	onCharsEnter(isInit: boolean = false) {
-		let slide = document.querySelector('.banner-wraps')
+		let slide = document.querySelector('.banner-wraps');
 		let chars = slide.querySelectorAll('.char');
-		gsap.timeline()
-			.fromTo(chars, {
+		gsap.timeline().fromTo(
+			chars,
+			{
 				duration: 1,
 				rotate: -10,
-				y: "random(100, 200)",
-				ease: "power3",
+				y: 'random(100, 200)',
+				ease: 'power3',
 				opacity: 0
-			}, {
+			},
+			{
 				opacity: 1,
 				rotate: 0,
 				y: 0
-			});
+			}
+		);
 	}
 }
 </script>

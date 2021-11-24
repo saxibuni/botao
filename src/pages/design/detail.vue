@@ -1,5 +1,5 @@
 <template>
-	<div class="design-detail">
+	<div class="design-detail" v-if="detailData.designer_info">
 		<div class="crumbs">
 			<p>
 				<span @click="$router.push('/design/list')">设计名人堂</span>
@@ -7,33 +7,35 @@
 				<i></i>
 				&nbsp;
 			</p>
-			<p><span>周芳乐</span></p>
+			<p>
+				<span>{{ detailData.designer_info.author }}</span>
+			</p>
 		</div>
 		<div class="content">
 			<div class="left wow">
-				<h3 class="wow">周芳乐</h3>
-				<p class="wow">设计师总监</p>
+				<h3 class="wow">{{ detailData.designer_info.author }}</h3>
+				<p class="wow">{{ detailData.designer_info.station }}</p>
 				<div class="info wow">
 					<ul>
 						<li>
 							<i></i>
 							<div>
 								<p>从业时间</p>
-								<p>10年</p>
+								<p>{{ detailData.designer_info.cysj }}</p>
 							</div>
 						</li>
 						<li>
 							<i></i>
 							<div>
 								<p>毕业院校</p>
-								<p>中央美术学院</p>
+								<p>{{ detailData.designer_info.byyx }}</p>
 							</div>
 						</li>
 						<li>
 							<i></i>
 							<div>
 								<p>收费标准</p>
-								<p>600-800元/㎡</p>
+								<p>{{ detailData.designer_info.sfbz }}</p>
 							</div>
 						</li>
 					</ul>
@@ -42,7 +44,7 @@
 					<i></i>
 					<div>
 						<p>设计理念</p>
-						<p>不为设计而设计,所有的设计一定是基于最舒适的体验感!</p>
+						<p>{{ detailData.designer_info.sjln }}</p>
 					</div>
 				</div>
 				<div class="honor wow">
@@ -52,13 +54,7 @@
 					</div>
 					<div class="scroll">
 						<div class="text">
-							<p>中国建筑装饰协会高级室内建筑师</p>
-							<p>上海市装饰装修行业协会高级室内设计师</p>
-							<p>亚太酒店設計協會設計高研班14期研修</p>
-							<p>亞太酒店設計協會華東區合作設計師</p>
-							<p>亞太酒店設計協會華東區合作設計師</p>
-							<p>亞太酒店設計協會華東區合作設計師</p>
-							<p>亞太酒店設計協會華東區合作設計師</p>
+							<p v-html="detailData.designer_info.hor"></p>
 						</div>
 					</div>
 				</div>
@@ -68,8 +64,8 @@
 				<div class="swiperBox">
 					<div class="swiper">
 						<swiper :options="swiperOptions">
-							<swiper-slide v-for="(item, i) in 3" :key="i">
-								<img src="~assets/bg_c1_pic11.jpg" alt="" />
+							<swiper-slide v-for="(item, i) in detailData.designer_info.imgs.split(',')" :key="i">
+								<img :src="web_url + item" alt="" />
 								<img src="~assets/bg_c2_part2_mask.png" alt="" />
 							</swiper-slide>
 						</swiper>
@@ -86,9 +82,7 @@
 		<div class="works">
 			<h3 class="wow">TA的作品</h3>
 			<div class="list wow">
-				<Cases />
-				<Cases />
-				<Cases />
+				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList" :key="i" />
 			</div>
 			<div class="more" @click="$router.push('/case/list')">更多案例</div>
 		</div>
@@ -413,7 +407,7 @@ export default DesignDetail;
 		}
 		.list {
 			display: flex;
-			justify-content: space-between;
+			// justify-content: space-between;
 
 			.cases {
 				.content {
