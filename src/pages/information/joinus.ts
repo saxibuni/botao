@@ -224,6 +224,8 @@ export default class JoinUs extends Vue {
 			});
 			this.zpxx = res.data.zpxxList;
 			this.zpxx = this.zpxx
+				.concat(this.zpxx)
+				.concat(this.zpxx);
 		});
 	}
 

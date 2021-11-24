@@ -240,13 +240,12 @@ export default class Brand extends Vue {
 			this.restartWow();
 			this.onResize();
 		});
-		utils.service.queryFooterData(res => {
-			this.footData = res.data;
-
-		});
 	}
 
 	mounted() {
+		// console.log(this.$store.footData,'footData');
+		console.log(this.$store.state.footData,'this.$store.state.footData.web_url');
+
 		this.getHeight();
 		this.initTextChars();
 		this.createDragger();
