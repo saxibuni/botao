@@ -13,7 +13,8 @@ import utils from 'root/utils'
 export default class DesignList extends Vue {
 	web_url = ''
 	listData={}
-	paginationData={size:100,total:1000}
+	inputVal=''
+	paginationData={size:12,total:1000}
 	tabs=[]
 	activeIndex=0
 	options1 = {
@@ -21,23 +22,27 @@ export default class DesignList extends Vue {
 		useEasing: true
 	};
 	created(){
-		this.getData()
+		this.getData(1,'','')
 	}
-		getData() {
+		getData(val1,val2,val3) {
 			utils.service.queryDesigner(
 				{
-		// 			page: 1,
-		// sjssx:'总监设计师',
-		// keywords:1,
+					page: val1,
+					sjssx:val2,
+					keywords:val3,
 				},
 				res => {
 					this.listData=res.data
 					res.data.sjssx.unshift('全部')
 					this.tabs=res.data.sjssx
 					this.web_url = res.data.web_url;
+					this.paginationData.total=res.data.list.length
 					utils.emitter.$emit('bannerData', res.data);
 				}
 			);
+		}
+		choice(v?){
+			this.getData(1,this.tabs[this.activeIndex]=='全部'?'':this.tabs[this.activeIndex],v)
 		}
 	mounted(){
 		this.restartWow();

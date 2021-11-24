@@ -23,7 +23,7 @@ export default class Building extends Vue {
 	};
 	buildingData={}
 	web_url = ''
-	paginationData = { size: 100, total: 1000 };
+	paginationData = { size: 9, total: 1000 };
 	bannerData = {};
 	tabList = [
 		{ title: '户型', info: [] },
@@ -92,13 +92,13 @@ export default class Building extends Vue {
 		this.videoPop.isPop = true;
 	}
 	created(){
-		this.getData()
+		this.getData('','')
 	}
-		getData() {
+		getData(val1,val2) {
 			utils.service.querysiteCase(
 				{
-					// gdmjsx:'工地面积筛选',
-					// gdhxsx:'工地户型筛选'
+					gdhxsx:val1,
+					gdmjsx:val2
 				},
 				res => {
 					console.log(res.data);
@@ -109,8 +109,12 @@ export default class Building extends Vue {
 					this.tabList[0].info=res.data.hxsx
 					this.tabList[1].info=res.data.mjsx
 					this.web_url = res.data.web_url;
+					this.paginationData.total=res.data.list.length
 				}
 			);
+		}
+		choice(){
+			this.getData(this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]])
 		}
 	mounted() {
 		this.restartWow();

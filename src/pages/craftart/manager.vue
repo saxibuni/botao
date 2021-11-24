@@ -930,12 +930,11 @@ export default Manager;
 								margin-top: 80px;
 								display: flex;
 								flex-wrap: wrap;
-								// justify-content: space-between;
+								justify-content: space-between;
 								width: 655px;
 								li {
 									margin-bottom: 35px;
-									// width: 180px;
-									margin-right: 130px;
+									width: 180px;
 									p {
 										font-size: 20px;
 										&:nth-of-type(1) {

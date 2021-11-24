@@ -10,12 +10,12 @@
 			</div>
 			<div class="right wow">
 				<div class="search">
-					<input type="text" />
-					<i></i>
+					<input type="text" v-model="inputVal" />
+					<i @click="choice(inputVal)"></i>
 				</div>
 				<p v-if="listData.keyw">
 					您可能感兴趣的设计师:&nbsp;
-					<span v-for="(v, i) in listData.keyw.split(',')" :key="i">{{ v }}</span>
+					<span v-for="(v, i) in listData.keyw.split(',')" :key="i" @click="choice(v)">{{ v }}</span>
 				</p>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 			<div class="tabsList wow">
 				<p>设计师级别</p>
 				<ul>
-					<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
+					<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="(activeIndex = index), choice()">{{ item }}</li>
 				</ul>
 			</div>
 		</div>
@@ -31,7 +31,7 @@
 			<ul>
 				<li class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" v-for="(v, i) in listData.list" :key="i" @click="$router.push('/design/detail')">
 					<div class="imgBox">
-						<img :src="web_url + v.litpic" alt="" />
+						<img :src="web_url + v.img" alt="" />
 						<div class="text">
 							<p>{{ v.author }}</p>
 							<p>{{ v.station }} &nbsp;|&nbsp; {{ v.cysj }}经验</p>

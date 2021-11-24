@@ -10,12 +10,12 @@
 			</div>
 			<div class="right wow">
 				<div class="search">
-					<input type="text" />
-					<i></i>
+					<input type="text" v-model="inputVal" />
+					<i @click="choice(inputVal)"></i>
 				</div>
 				<p v-if="vrData.keyw">
 					热门搜索：
-					<span v-for="(v, i) in vrData.keyw.split(',')" :key="i">{{ v }}</span>
+					<span v-for="(v, i) in vrData.keyw.split(',')" :key="i" @click="choice(v)">{{ v }}</span>
 				</p>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 			<div class="tabsList wow" v-for="(item, index) in tabList" :key="index">
 				<p>{{ item.title }}</p>
 				<ul>
-					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
+					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i), choice()">{{ v }}</li>
 				</ul>
 			</div>
 		</div>
@@ -58,20 +58,18 @@
 								<p>{{ v.click }}个喜欢</p>
 							</div>
 						</div>
-						<a :href="v.velink" target="_blank">
-							<div class="bottom" v-if="v.des_info">
-								<div class="bottomLeft">
-									<div class="imgBox2">
-										<img :src="web_url + v.des_info.faceimg" alt="" />
-									</div>
-									<div class="text">
-										<p>{{ v.des_info.author }}</p>
-										<p>{{ v.des_info.station }}</p>
-									</div>
+						<div class="bottom" v-if="v.des_info">
+							<div class="bottomLeft">
+								<div class="imgBox2">
+									<img :src="web_url + v.des_info.faceimg" alt="" />
 								</div>
-								<Button @click.native="$store.state.dialogDesign.design = true" :text="v.typename" />
+								<div class="text">
+									<p>{{ v.des_info.author }}</p>
+									<p>{{ v.des_info.station }}</p>
+								</div>
 							</div>
-						</a>
+							<Button @click.native="$store.state.dialogDesign.design = true" :text="v.typename" />
+						</div>
 					</div>
 				</li>
 			</ul>
