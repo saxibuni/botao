@@ -31,7 +31,7 @@ export default class WholeDecoration extends Vue {
 		{ title: '项目整体交付', imgUrl: require("../../assets/icons/ic_e1_part2_07.png"), active: false, text: '卫浴洁具、厨电、地板、墙地砖、大理石、楼梯、全屋木制品、铝合金门窗几里' },
 		{ title: '售后服务', imgUrl: require("../../assets/icons/ic_e1_part2_07.png"), active: false, text: '卫浴洁具、厨电、地板、墙地砖、大理石、楼梯、全屋木制品、铝合金门窗几里' },
 	]
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = 'http://btgwcs.zhulu76.com/';
 	onClick(i){
 		this.fwlcList.forEach((e,index)=>{
 			if(i==index){

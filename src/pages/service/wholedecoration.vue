@@ -1,6 +1,5 @@
 <template>
 	<div class="whole-decoration">
-		<!-- <Banner :data='banner'></Banner> -->
 		<div class="page1">
 			<img :src="web_url+banner.litpic" alt="" />
 			<div class="text">

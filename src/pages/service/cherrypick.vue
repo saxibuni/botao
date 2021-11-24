@@ -1,12 +1,12 @@
 <template>
 	<div class="cherry-pick">
 		<div class="page1">
-			<img src="~assets/bg_e2_banner_right.jpg" alt="" />
+			<img :src="web_url+banner.litpic" alt="" />
 			<div class="text">
-				<h2>严选主材</h2>
-				<p>Construction management</p>
+				<h2>{{banner.title}}</h2>
+				<p>{{banner.etitle}}</p>
 			</div>
-			<img class="mask" src="~assets/bg_e2_banner_left.png" alt="" />
+			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 			<div class="arrow"></div>
 			<div class="arrow"></div>
 			<div class="arrow"></div>
@@ -17,58 +17,28 @@
 			<p class="wow">Service advantages</p>
 			<div>
 				<div class="left wow">
-					<div :class="{ active: iconIndex == 0 }" @click="iconClick(0)">
+					<div :class="{ active: iconIndex == i }" @click="iconClick(i)" v-for="(item,i) in fwysList" :key="i">
 						<i>
-							<img src="~assets/icons/ic_e2_part2_a1.png" alt="" />
-							<img src="~assets/icons/ic_e2_part2_a2.png" alt="" />
+							<img :src="web_url+item.iconc" alt="" />
+							<img :src="web_url+item.iconw" alt="" />
 						</i>
-						<span>产品优势</span>
-					</div>
-					<div :class="{ active: iconIndex == 1 }" @click="iconClick(1)">
-						<i>
-							<img src="~assets/icons/ic_e2_part2_b1.png" alt="" />
-							<img src="~assets/icons/ic_e2_part2_b2.png" alt="" />
-						</i>
-						<span>价格优势</span>
-					</div>
-					<div :class="{ active: iconIndex == 2 }" @click="iconClick(2)">
-						<i>
-							<img src="~assets/icons/ic_e2_part2_c1.png" alt="" />
-							<img src="~assets/icons/ic_e2_part2_c2.png" alt="" />
-						</i>
-						<span>配合优势</span>
-					</div>
-					<div :class="{ active: iconIndex == 3 }" @click="iconClick(3)">
-						<i>
-							<img src="~assets/icons/ic_e2_part2_d1.png" alt="" />
-							<img src="~assets/icons/ic_e2_part2_d2.png" alt="" />
-						</i>
-						<span>退补优势</span>
-					</div>
-					<div :class="{ active: iconIndex == 4 }" @click="iconClick(4)">
-						<i>
-							<img src="~assets/icons/ic_e2_part2_e1.png" alt="" />
-							<img src="~assets/icons/ic_e2_part2_e2.png" alt="" />
-						</i>
-						<span>饰后优势</span>
+						<span>{{item.title}}</span>
 					</div>
 				</div>
 				<div class="right wow">
 					<div class="swiper">
-						<swiper :options="bannerSwiperOptions">
-							<swiper-slide v-for="(item, i) in 3" :key="i">
+						<swiper :options="bannerSwiperOptions" ref="myswiper">
+							<swiper-slide v-for="(item,i) in fwysList" :key="i">
 								<div class="wrap">
 									<div class="text">
-										<h2>饰后优势</h2>
-										<h1>多级售后·服务保障</h1>
+										<h2>{{item.title}}</h2>
+										<h1>{{item.btitle}}</h1>
 										<div>
-											<p>完工后提供材料明细售后服务清单，令售后服务更便捷所购</p>
-											<p>主材享最低二年售后保障服务；</p>
-											<p>客户享有饰后三年私人家装保养服务</p>
+											<p>{{item.desc}}</p>
 										</div>
 									</div>
 									<div class="img-wrap">
-										<img src="~assets/bg_e2_part2.jpg" alt="" />
+										<img :src="web_url+item.img" alt="" />
 									</div>
 								</div>
 							</swiper-slide>
@@ -90,24 +60,23 @@
 			<h2>绿色建材让家越住越健康</h2>
 			<p>Green building materials</p>
 			<div class="circle">
-				<div class="father" v-for="(item, i) in page3Data" :key="i" :class="activeIndex == i ? 'active' + i : ''">
+				<div class="father" v-for="(item, i) in yzyjkList" :key="i" :class="activeIndex == i ? 'active' + i : ''">
 					<div class="content">
 						<div class="container">
 							<div class="imgBox">
-								<img :src="item.imgUrl" alt="" />
+								<img :src="web_url+item.img" alt="" />
 								<div class="mask" :class="activeIndex == i ? 'activetext' : ''">
-									<p>层层鉴定</p>
-									<p>货真价实</p>
+									<p>{{item.desc}}</p>
 								</div>
 							</div>
 							<div class="text" :class="activeIndex == i ? 'active' : ''">
-								<p>{{ item.text }}</p>
+								<p>{{ item.title }}</p>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="circle2">
-					<div class="box" v-for="(item, i) in page3Data" :key="i" @mouseover="fn(i)" @mouseout="fn(-1)"></div>
+					<div class="box" v-for="(item, i) in yzyjkList" :key="i" @mouseover="fn(i)" @mouseout="fn(-1)"></div>
 				</div>
 			</div>
 			<img src="~assets/bg_e2_part3_00.png" alt="" />
@@ -118,60 +87,26 @@
 			<p class="wow">Private garden customization</p>
 			<div class="box">
 				<div class="left wow">
-					<div>
-						<img src="~assets/bg_e2_part4_01.jpg" alt="" />
+					<div v-if="hydzList[0]">
+						<img :src="web_url+hydzList[0].img" alt="" />
 						<b>01</b>
 						<div class="text">
-							<h3>个性设计</h3>
-							<p>Personality design</p>
+							<h3>{{hydzList[0].title}}</h3>
+							<p>{{hydzList[0].etitle}}</p>
 						</div>
 					</div>
 				</div>
 				<div class="right">
-					<div class="wow">
-						<img src="~assets/bg_e2_part4_02.jpg" alt="" />
-						<b>02</b>
-						<div class="text">
-							<h3>专业团队</h3>
-							<p>Professional team</p>
+					<template v-for="(item,i) in hydzList">
+						<div class="wow" :key="i" v-if="i>0">
+							<img :src="web_url+item.img" alt="" />
+							<b>0{{i+1}}</b>
+							<div class="text">
+								<h3>{{item.title}}</h3>
+								<p>{{item.etitle}}</p>
+							</div>
 						</div>
-					</div>
-
-					<div class="wow">
-						<img src="~assets/bg_e2_part4_03.jpg" alt="" />
-						<b>03</b>
-						<div class="text">
-							<h3>匠心工艺</h3>
-							<p>Originality process</p>
-						</div>
-					</div>
-
-					<div class="wow">
-						<img src="~assets/bg_e2_part4_04.jpg" alt="" />
-						<b>04</b>
-						<div class="text">
-							<h3>精选材料</h3>
-							<p>Selection of materials</p>
-						</div>
-					</div>
-
-					<div class="wow">
-						<img src="~assets/bg_e2_part4_05.jpg" alt="" />
-						<b>05</b>
-						<div class="text">
-							<h3>规范施工</h3>
-							<p>Standard construction</p>
-						</div>
-					</div>
-
-					<div class="wow">
-						<img src="~assets/bg_e2_part4_06.jpg" alt="" />
-						<b>06</b>
-						<div class="text">
-							<h3>竣工养护</h3>
-							<p>Completion maintenance</p>
-						</div>
-					</div>
+					</template>
 				</div>
 			</div>
 		</div>
@@ -180,16 +115,16 @@
 			<h2 class="wow">全屋智能</h2>
 			<p class="wow">Whole house intelligence</p>
 			<ul>
-				<li v-for="(item, i) in list" :key="i">
+				<li v-for="(item, i) in qwznList" :key="i">
 					<i></i>
 					<p>{{ item.title }}</p>
 					<div>
 						<h2>
 							<span>{{ item.title }}</span>
-							<img :src="item.imgUrl" alt="" />
+							<img :src="web_url+item.icon" alt="" />
 						</h2>
 						<div class="line"></div>
-						<p>{{ item.text }}</p>
+						<p>{{ item.desc }}</p>
 					</div>
 				</li>
 			</ul>
@@ -202,12 +137,12 @@
 			</h2>
 			<p class="wow">5大主题展厅 10大品质生活体验区</p>
 			<ul class="wow">
-				<li v-for="(item, i) in list2" :key="i">
+				<li v-for="(item, i) in jzgzList" :key="i">
 					<h2>
-						{{ item.tag }}
+						{{ item.title }}
 					</h2>
-					<h3>{{ item.title }}</h3>
-					<p>{{ item.text }}</p>
+					<h3>{{ item.ftitle }}</h3>
+					<p>{{ item.desc }}</p>
 				</li>
 			</ul>
 		</div>
@@ -524,6 +459,7 @@ export default CheckPick;
 									font-weight: 400;
 									color: #cccccc;
 									line-height: 36px;
+									white-space: pre-wrap;
 								}
 							}
 						}
@@ -895,6 +831,9 @@ export default CheckPick;
 							top: 82px;
 						}
 					}
+				}
+				p{
+						white-space: pre-wrap;
 				}
 				&:nth-of-type(8) {
 					transform: rotate(-90deg);
