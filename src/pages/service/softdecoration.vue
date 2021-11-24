@@ -116,7 +116,7 @@
 			<p class="wow">Soft assembly elected</p>
 			<div>
 				<ul>
-					<li class="wow" v-for="(item,i) in rzpxList" :key="i">
+					<li class="wow" :class="{active:page6Index==i}" v-for="(item,i) in rzpxList" :key="i" @mouseover="page6Index=i">
 						<div>
 							<i>
 								<img :src="web_url+item.iconw" alt="" />
@@ -127,6 +127,9 @@
 						</div>
 					</li>
 				</ul>
+				<div class="img-wrap" :class="{active:page6Index==i}" v-for="(item,i) in rzpxList" :key="i">
+						<img :src="web_url+item.img" alt="" />
+				</div>
 			</div>
 		</div>
 	</div>
@@ -925,10 +928,27 @@ export default SoftDecoration;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
+		.img-wrap{
+			width: 1760px;
+			height: 735px;
+			position: absolute;
+			left: 0;
+			top: 0;
+			opacity: 0;
+			transition:opacity .3s;
+			img{
+				width: 100%;
+				height: 100%;
+			}
+			z-index: 1;
+			&.active{
+				opacity: 1;
+			}
+		}
 		> div {
 			width: 1760px;
 			height: 735px;
-			background: url('~assets/bg_e3_part6.jpg') center center;
+			/* background: url('~assets/bg_e3_part6.jpg') center center; */
 			background-size: cover;
 			margin: 57px auto;
 			position: relative;
@@ -941,7 +961,7 @@ export default SoftDecoration;
 				position: absolute;
 				background: rgba(0, 0, 0, 0.2);
 				pointer-events: none;
-				z-index: 1;
+				z-index: 2;
 			}
 			ul {
 				display: flex;
@@ -956,7 +976,8 @@ export default SoftDecoration;
 					opacity: 0;
 					animation: slide-down-in 2s, fade-in 2s;
 					animation-fill-mode: forwards;
-					&:hover {
+					&:hover,
+					&.active {
 						div {
 							transform: translateY(-20px);
 							color: #eb551d;

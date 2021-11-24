@@ -81,6 +81,7 @@ export default class SoftDecoration extends Vue {
 			this.textActive = true;
 		},300)
 	}
+	page6Index =0;
 	web_url = 'http://btgwcs.zhulu76.com/';
 	banner = {};
 	psdzList = [];
