@@ -8,7 +8,7 @@ axios.defaults.timeout = 60000;
 export class Service extends EventEmitter {
 	protected send(url: string, data: any, success: ISuccess, error?: IError) {
 		axios.post(url, qs.stringify(data)).then((res: AxiosResponse) => {
-			res.data = JSON.parse(res.data);
+			// res.data = JSON.parse(res.data)
 			console.log(url, res);
 			return success(res);
 		}, (err) => {

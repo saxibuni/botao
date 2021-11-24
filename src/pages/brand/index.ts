@@ -162,7 +162,7 @@ export default class Brand extends Vue {
 		speed: 1000,
 		spaceBetween: 77,
 		slidesPerView: 4,
-		loop: true,
+		// loop: true,
 		navigation: {
 			nextEl: '.hv-next',
 			prevEl: '.hv-pre'
@@ -198,6 +198,7 @@ export default class Brand extends Vue {
 	hxjzgList = [];
 	fzlcList = [];
 	ryzz=[];
+	shzrList=[]
 	created() {
 		this.isIE = utils.device.browser.ie;
 		this.queryBrand();
@@ -229,6 +230,11 @@ export default class Brand extends Vue {
 			//荣誉资质
 			this.ryzz=res.data.ryzz
 
+			// 社会责任
+			// res.data.shzrList.forEach((v)=>{
+			// 	v.desc=v.descsp
+			// })
+			this.shzrList=res.data.shzrList
 			this.restartWow()
 		});
 	}

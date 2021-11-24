@@ -191,36 +191,22 @@
 				<div v-for="(v, i) in ryzz" :key="i" :class="bannerActive == i ? 'active' : ''" @click="bannerActive = i">{{ v.typename }}</div>
 			</div>
 			<div class="swiper-box wow">
-				<!-- <template v-if="bannerActive == i"> -->
-					<div class="hover-swiper" v-for="(v) in ryzz" :key="v.admin_id">
+				<div class="hover-swiper" v-for="(v, i) in ryzz" :key="i">
+					<template v-if="bannerActive == i">
 						<swiper :options="hoverBannerOptions">
-							<swiper-slide v-for="(value) in v.list" :key="value.aid">
+							<swiper-slide v-for="(value, i) in v.list" :key="i">
 								<div class="img-box">
-									<img :src="web_url+value.img" alt="" />
+									<img :src="web_url + value.img" alt="" />
 								</div>
-								<h2>{{ v.title }}</h2>
+								<h2>{{ value.title }}</h2>
 							</swiper-slide>
 						</swiper>
 						<div class="controal">
 							<div v-if="bannerActive == i" class="swiper-next hv-next"></div>
 							<div v-if="bannerActive == i" class="swiper-pre hv-pre"></div>
 						</div>
-					</div>
-				<!-- </template> -->
-				<!-- <div class="research-swiper" v-if="bannerActive == 1">
-					<swiper :options="researchBannerOptions">
-						<swiper-slide v-for="(v, i) in hvBanner" :key="i">
-							<div class="img-box">
-								<img :src="v.imgUrl" alt="" />
-							</div>
-							<h2>{{ v.title }}</h2>
-						</swiper-slide>
-					</swiper>
-					<div class="controal">
-						<div v-if="bannerActive == 1" class="swiper-next res-next"></div>
-						<div v-if="bannerActive == 1" class="swiper-pre res-pre"></div>
-					</div>
-				</div> -->
+					</template>
+				</div>
 			</div>
 		</div>
 		<div class="social-response select5">
@@ -250,16 +236,16 @@
 					<div class="plane"></div>
 				</div>
 				<ul>
-					<li v-for="(v, i) in socialArr" :key="i" class="wow" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
+					<li v-for="(v, i) in shzrList" :key="i" class="wow" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
 						<div class="img-box">
 							<div class="inner">
-								<img :src="v.imgUrl" alt="" />
+								<img :src="web_url+v.img" alt="" />
 							</div>
 						</div>
 						<div class="text-box">
 							<div class="dosh" @click="doMovePath(i)"></div>
-							<h2>{{ v.time }}</h2>
-							<p v-for="(value, index) in v.text" :key="index">{{ value }}</p>
+							<h2>{{ v.title }}</h2>
+							<p >{{ v.desc }}</p>
 						</div>
 					</li>
 				</ul>
