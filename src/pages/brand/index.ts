@@ -442,7 +442,6 @@ export default class Brand extends Vue {
 			const height = document.querySelector<HTMLElement>('.img-list').clientHeight / 2;
 			top += height + 2;
 		}
-		console.log(top);
 
 		window.scroll({ top, behavior: 'smooth' });
 	}

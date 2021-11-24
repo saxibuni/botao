@@ -28,13 +28,13 @@
 			<div class="left wow">
 				<div class="title-box">
 					<h2>
-						<span>12</span>
+						<span>{{btzgsList.length}}</span>
 						家集团子公司
 					</h2>
 					<p>100亿年产值目标 100年企业愿景</p>
 				</div>
 				<div class="img-box">
-					<img src="~assets/bg_g1_part2_logo.png" alt="" />
+					<img src="~assets/bg_g1_part2_logo.png" alt="" videoUrl='11111' />
 				</div>
 				<ul>
 					<li v-for="(v, i) in btzgsList" :class="isActive == i ? 'active' : ''" @click="isActive = i" :key="i"><Button :text="v.title"></Button></li>

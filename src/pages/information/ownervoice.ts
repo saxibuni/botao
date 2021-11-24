@@ -17,7 +17,7 @@ export default class OwnerVoice extends Vue {
 	isPop: boolean = false;
 	videoPop = {
 		isPop: false,
-		url:''
+		url: ''
 	};
 	imgUrl = '';
 	BannerData = {};
@@ -95,10 +95,8 @@ export default class OwnerVoice extends Vue {
 		},
 		on: {
 			click: function(e) {
-				console.log();
-
 				if (e.target.className == 'pause-btn') {
-					utils.emitter.$emit('showVideo');
+					utils.emitter.$emit('showVideo', e.target.getAttribute('url'));
 				}
 			}
 		}
@@ -181,7 +179,8 @@ export default class OwnerVoice extends Vue {
 			this.isPop = true;
 			this.imgUrl = obj.img.getAttribute('src');
 		});
-		utils.emitter.$on('showVideo', () => {
+		utils.emitter.$on('showVideo', (url) => {
+			if(!url) return
 			this.videoPop.isPop = true;
 		});
 	}
