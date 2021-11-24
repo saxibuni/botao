@@ -13,11 +13,9 @@
 					<input type="text" />
 					<i></i>
 				</div>
-				<p>
+				<p v-if="vrData.keyw">
 					热门搜索：
-					<span>独栋别墅</span>
-					<span>新中式</span>
-					<span>法式</span>
+					<span v-for="(v, i) in vrData.keyw.split(',')" :key="i">{{ v }}</span>
 				</p>
 			</div>
 		</div>
