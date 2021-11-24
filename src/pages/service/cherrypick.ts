@@ -132,6 +132,7 @@ export default class CheckPick extends Vue {
 	jzgzList = [];
 
 	mounted() {
+		this.web_url=this.$store.state.footData.web_url;
 		utils.emitter.$on('bannerIndexFun', (bannerIndex: number) => {
 			this.iconIndex = bannerIndex;
 		});
