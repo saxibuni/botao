@@ -280,6 +280,12 @@ export default class home extends Vue {
 				this.page2Ani = true;
 			},300);
 		});
+		utils.service.queryHome({}, res => {
+			if (res.status === 200) {
+				console.log(res.data);
+			}
+		});
+
 	}
 	onResize() {
 		this.getCurrentPortraitList();

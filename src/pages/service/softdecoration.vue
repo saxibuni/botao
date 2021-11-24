@@ -649,7 +649,6 @@ export default SoftDecoration;
 				margin-bottom: 50px;
 				.img-wrap {
 					height: 510px;
-					background: #000000;
 					position: relative;
 					overflow: hidden;
 					cursor: pointer;
