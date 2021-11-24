@@ -260,25 +260,25 @@
 						<li>
 							<div>
 								<span>Phone number</span>
-								<span>400-920-2982</span>
+								<span>{{$store.state.footData.tel}}</span>
 								<i></i>
 							</div>
 							<div>
 								<span>E-mail</span>
-								<span>botaogroup@BTcom</span>
+								<span>{{$store.state.footData.email}}</span>
 								<i></i>
 							</div>
 						</li>
 						<li>
 							<div>
 								<span>Address</span>
-								<span>上海徐汇区中山西路2331号</span>
+								<span>{{$store.state.footData.address}}</span>
 								<i></i>
 							</div>
 						</li>
 						<li>
 							<div class="img-box">
-								<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+								<img :src="$store.state.footData.web_url+$store.state.footData.watch" alt="" />
 							</div>
 							<div class="info">
 								<span>关注波涛了解</span>

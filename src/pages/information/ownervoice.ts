@@ -3,15 +3,21 @@ import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import Prop from 'root/components/popup.vue';
 import utils from 'root/utils';
+import VideoPopup from 'root/components/videoPopup.vue';
+
 @Component({
 	components: {
 		Banner,
 		Button,
-		Prop
+		Prop,
+		VideoPopup
 	}
 })
 export default class OwnerVoice extends Vue {
 	isPop: boolean = false;
+	videoPop = {
+		isPop: false,
+	};
 	imgUrl = '';
 	BannerData = {
 		imgUrl: '',
@@ -88,6 +94,13 @@ export default class OwnerVoice extends Vue {
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
+		},
+		on:{
+			click:function(e){
+				if(e.target.nodeName=='IMG'){
+					utils.emitter.$emit('showVideo');
+				}
+			}
 		}
 	};
 	// banner2
@@ -162,10 +175,19 @@ export default class OwnerVoice extends Vue {
 		});
 	}
 
+	show(){
+		console.log(111);
+
+	}
+
 	mounted() {
 		utils.emitter.$on('dpIndex', obj => {
 			this.isPop = true;
 			this.imgUrl = obj.img.getAttribute('src');
+		});
+		utils.emitter.$on('showVideo',()=>{
+
+			this.videoPop.isPop=true
 		});
 	}
 }

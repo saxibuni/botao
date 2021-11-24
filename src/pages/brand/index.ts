@@ -197,8 +197,9 @@ export default class Brand extends Vue {
 	brandDataInfo = {};
 	hxjzgList = [];
 	fzlcList = [];
-	ryzz=[];
-	shzrList=[]
+	ryzz = [];
+	shzrList = [];
+	footData = [];
 	created() {
 		this.isIE = utils.device.browser.ie;
 		this.queryBrand();
@@ -228,14 +229,15 @@ export default class Brand extends Vue {
 			this.devolopeList = res.data.fzlcList;
 
 			//荣誉资质
-			this.ryzz=res.data.ryzz
+			this.ryzz = res.data.ryzz;
 
 			// 社会责任
 			// res.data.shzrList.forEach((v)=>{
 			// 	v.desc=v.descsp
 			// })
-			this.shzrList=res.data.shzrList
-			this.restartWow()
+			this.shzrList = res.data.shzrList;
+
+			this.restartWow();
 		});
 	}
 
@@ -253,6 +255,9 @@ export default class Brand extends Vue {
 		this.restartWow();
 		this.$bus.$on(Events.RESIZE, this.onResize);
 		this.$bus.$on('params-change', this.jump);
+		setTimeout(() => {
+			this.onResize();
+		}, 200);
 	}
 
 	initTextChars() {
@@ -490,6 +495,7 @@ export default class Brand extends Vue {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
 		svgBox.style.width = ul.clientWidth + 'px';
+		console.log(ul.clientWidth,'clientWidthclientWidth');
 
 		setTimeout(() => {
 			this.createDragger();

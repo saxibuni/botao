@@ -11,7 +11,7 @@
 				<h4>TANLENT CONCEPT</h4>
 			</div>
 			<div class="right wow">
-				<p>{{desc}}</p>
+				<p>{{ desc }}</p>
 				<Button :text="'加入我们'"></Button>
 			</div>
 		</div>
@@ -64,7 +64,7 @@
 					<Button :text="'立即申请'"></Button>
 				</li>
 			</ul>
-			<Button :text="'更多职位'" @click.native="getMore"></Button>
+			<Button :text="'更多职位'" @click.native="getMore" v-show="zpxx.length - jobShowFlag > 0"></Button>
 			<h4 class="wow">人力资源部</h4>
 			<p class="wow">
 				<i></i>

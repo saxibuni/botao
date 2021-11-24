@@ -3,7 +3,7 @@
 		<ul>
 			<li>
 				<div class="imgBox" @click.stop="$router.push('/case/detail')">
-					<img :src="web_url + caseData.img" alt="" />
+					<img :src="$store.state.footData.web_url + caseData.img" alt="" />
 				</div>
 				<div class="content">
 					<div class="top">
@@ -29,7 +29,7 @@
 					<div class="bottom">
 						<div class="bottomLeft">
 							<div class="imgBox2">
-								<img :src="web_url + caseData.des_info.faceimg" alt="" />
+								<img :src="$store.state.footData.web_url + caseData.des_info.faceimg" alt="" />
 							</div>
 							<div class="text">
 								<p>{{ caseData.des_info.author }}</p>
@@ -54,7 +54,6 @@ import { device } from 'root/utils';
 	}
 })
 export default class Caese extends Vue {
-	web_url = 'http://btgwcs.zhulu76.com/';
 	flag = true;
 	isIE: boolean = false;
 	created() {
