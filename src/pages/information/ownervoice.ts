@@ -1,8 +1,8 @@
 import { Vue, Component } from 'vue-property-decorator';
-import utils from 'root/utils';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import Prop from 'root/components/popup.vue';
+import utils from 'root/utils';
 @Component({
 	components: {
 		Banner,
@@ -137,11 +137,21 @@ export default class OwnerVoice extends Vue {
 			el: '.fh-pagination'
 		}
 	};
+
+	created() {
+		this.queryYzxs();
+	}
+
+	queryYzxs() {
+		utils.service.queryYZXS(res => {
+			console.log(JSON.parse(res.data));
+
+		});
+	}
+
 	mounted() {
 		utils.emitter.$on('dpIndex', obj => {
 			this.isPop = true;
-			// console.log(obj.img);
-			// this.imgDOM = obj.img;
 			this.imgUrl = obj.img.getAttribute('src');
 		});
 	}
