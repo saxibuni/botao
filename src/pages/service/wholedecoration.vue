@@ -2,10 +2,10 @@
 	<div class="whole-decoration">
 		<!-- <Banner :data='banner'></Banner> -->
 		<div class="page1">
-			<img src="~assets/bg_e1_banner_right.jpg" alt="" />
+			<img :src="web_url+banner.litpic" alt="" />
 			<div class="text">
-				<h2>全案整装</h2>
-				<p>Whole case assembly</p>
+				<h2>{{banner.title}}</h2>
+				<p>{{banner.etitle}}</p>
 			</div>
 			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 			<div class="arrow"></div>
@@ -17,17 +17,17 @@
 			<p class="wow">Service process</p>
 			<div class="part">
 				<ul>
-					<li v-for="(item, i) in list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<li v-for="(item, i) in fwlcList" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<h2 @mouseover="onClick(i)">
 							{{ i + 1 }}
 							<i :class="{ active: item.active }">
 								<b>
-									<img :src="item.imgUrl" alt="" />
+									<img :src="web_url+item.icon" alt="" />
 								</b>
 							</i>
 						</h2>
 						<p :class="{ active: item.active }">{{ item.title }}</p>
-						<h3 :class="{ active: item.active }">{{ item.text }}</h3>
+						<h3 :class="{ active: item.active }">{{ item.desc }}</h3>
 					</li>
 				</ul>
 			</div>
@@ -36,78 +36,16 @@
 			<h2 class="wow">服务团队</h2>
 			<p class="wow">Service team</p>
 			<ul>
-				<li class="wow">
+				<li class="wow" v-for="(item,i) in fwtdList" :key="i">
 					<div class="icon">
-						<i></i>
+						<i>
+							<img :src="web_url+item.icono" alt="">
+							<img :src="web_url+item.iconw" alt="">
+						</i>
 					</div>
 					<div class="text">
-						<h4>设计服务</h4>
-						<p>预算师</p>
-						<p>设计师</p>
-						<p>设计助理</p>
-						<p>中心经理</p>
-						<p>效果图设计师</p>
-					</div>
-				</li>
-
-				<li class="wow">
-					<div class="icon"></div>
-					<div class="text">
-						<h4>软装服务</h4>
-						<p>软装设计师</p>
-						<p>软装设计助理</p>
-						<p>软装品控员</p>
-					</div>
-				</li>
-
-				<li class="wow">
-					<div class="icon"></div>
-					<div class="text">
-						<h4>工程服务</h4>
-						<p>施工人员</p>
-						<p>项目经理、土建项目经理</p>
-						<p>施工专员、土建专员</p>
-						<p>工程主管</p>
-						<p>工程总监</p>
-					</div>
-				</li>
-				<li class="wow">
-					<div class="icon"></div>
-					<div class="text">
-						<h4>客服服务</h4>
-						<p>客服总监</p>
-						<p>饰中专员</p>
-						<p>饰后专员</p>
-						<p>维修人员</p>
-					</div>
-				</li>
-				<li class="wow">
-					<div class="icon"></div>
-					<div class="text">
-						<h4>配套服务</h4>
-						<p>预算造价师</p>
-						<p>园林设计师</p>
-						<p>设备工程师</p>
-						<p>灯光设计师</p>
-						<p>智能工程师</p>
-					</div>
-				</li>
-				<li class="wow">
-					<div class="icon"></div>
-					<div class="text">
-						<h4>材料服务</h4>
-						<p>主材材料管家</p>
-						<p>辅材材料管家</p>
-						<p>软装产品管家</p>
-						<p>材料商客户经理</p>
-					</div>
-				</li>
-				<li class="wow">
-					<div class="icon"></div>
-					<div class="text">
-						<h4>质检服务</h4>
-						<p>质检总监</p>
-						<p>质检员</p>
+						<h4>{{item.title}}</h4>
+						<p>{{item.desc}}</p>
 					</div>
 				</li>
 			</ul>
@@ -117,50 +55,16 @@
 			<p class="wow">Villa decoration cost</p>
 
 			<ul>
-				<li class="wow">
-					<div>
-						<span>设计</span>
-						<img src="~assets/icons/ic_e1_part4_01.png" alt="" />
+				<li class="wow" v-for="(item,i) in ghfyList" :key="i">
+					<div v-if="i<=2">
+						<span>{{item.title}}</span>
+						<img :src="web_url+item.icon" alt="" />
 					</div>
-					<p>平面规划、效果图、施工图、设计跟踪、现场交底</p>
-				</li>
-				<li class="wow">
-					<div>
-						<span>土建</span>
-						<img src="~assets/icons/ic_e1_part4_02.png" alt="" />
+					<div v-else>
+						<img :src="web_url+item.icon" alt="" />
+						<span>{{item.title}}</span>
 					</div>
-					<p>外部改造、内部改造</p>
-				</li>
-				<li class="wow">
-					<div>
-						<span>基础装修</span>
-						<img src="~assets/icons/ic_e1_part4_03.png" alt="" />
-					</div>
-					<p>基础功能装修、设计造型装修、管理费用</p>
-				</li>
-				<li class="wow">
-					<div>
-						<img src="~assets/icons/ic_e1_part4_04.png" alt="" />
-						<span>主材</span>
-					</div>
-					<p>
-						卫浴洁具(龙头.花洒、台盆.座便器、淋浴房.浴缸) 厨电、地板、墙地砖、大理石、楼梯 木作(橱柜、衣柜、护墙板.机门窗套、软硬包) 门窗(进户门、阳光房.封窗)
-						其他(集成吊顶.配电箱.空气开关、开关插座、不锈钢)
-					</p>
-				</li>
-				<li class="wow">
-					<div>
-						<img src="~assets/icons/ic_e1_part4_05.png" alt="" />
-						<span>智能/设备</span>
-					</div>
-					<p>中央空调、新风系统、五恒系统、中央水处理、 地采暖、中央吸尘、电梯、光伏系统、电渗透防潮系统、园林 防蚊系统、智能灯光系统、智能安防系统、电器控制系统、 电动窗帘系统、影音系统</p>
-				</li>
-				<li class="wow">
-					<div>
-						<img src="~assets/icons/ic_e1_part4_06.png" alt="" />
-						<span>软装</span>
-					</div>
-					<p>家具、灯具、窗帘、地毯、挂画、饰品、壁布、绿植</p>
+					<p>{{item.desc}}</p>
 				</li>
 			</ul>
 		</div>
@@ -738,79 +642,43 @@ export default WholeDecoration;
 					animation-delay: 0.1s;
 					width: 480px;
 					padding-top: 10px;
-					.icon {
-						background: url('~assets/icons/ic_e1_part3_a1.png') no-repeat center center;
-						&:hover {
-							background: #eb551d url('~assets/icons/ic_e1_part3_a2.png') no-repeat center center;
-						}
-					}
 				}
 				&:nth-child(2) {
 					animation-delay: 0.2s;
 					padding-top: 10px;
 					width: 504px;
-					.icon {
-						background: url('~assets/icons/ic_e1_part3_b1.png') no-repeat center center;
-						&:hover {
-							background: #eb551d url('~assets/icons/ic_e1_part3_b2.png') no-repeat center center;
-						}
-					}
 				}
 				&:nth-child(3) {
 					animation-delay: 0.3s;
 					padding-top: 10px;
 					width: 492px;
-					.icon {
-						background: url('~assets/icons/ic_e1_part3_c1.png') no-repeat center center;
-						&:hover {
-							background: #eb551d url('~assets/icons/ic_e1_part3_c2.png') no-repeat center center;
-						}
-					}
 				}
 				&:nth-child(4) {
 					animation-delay: 0.4s;
 					padding-top: 10px;
 					width: 350px;
-					.icon {
-						background: url('~assets/icons/ic_e1_part3_d1.png') no-repeat center center;
-						&:hover {
-							background: #eb551d url('~assets/icons/ic_e1_part3_d2.png') no-repeat center center;
-						}
-					}
 				}
 				&:nth-child(5) {
 					animation-delay: 0.5s;
 					width: 480px;
 					margin-left: 240px;
 					padding-top: 58px;
-					.icon {
-						background: url('~assets/icons/ic_e1_part3_e1.png') no-repeat center center;
-						&:hover {
-							background: #eb551d url('~assets/icons/ic_e1_part3_e2.png') no-repeat center center;
-						}
-					}
 				}
 				&:nth-child(6) {
 					padding-top: 58px;
 					animation-delay: 0.6s;
 					width: 480px;
-					.icon {
-						background: url('~assets/icons/ic_e1_part3_f1.png') no-repeat center center;
-						&:hover {
-							background: #eb551d url('~assets/icons/ic_e1_part3_f2.png') no-repeat center center;
-						}
-					}
 				}
 				&:nth-child(7) {
 					padding-top: 58px;
 					width: 479px;
 					animation-delay: 0.7s;
-					.icon {
-						background: url('~assets/icons/ic_e1_part3_g1.png') no-repeat center center;
+				}
+				.icon {
+
 						&:hover {
-							background: #eb551d url('~assets/icons/ic_e1_part3_g2.png') no-repeat center center;
+
 						}
-					}
 				}
 				.icon {
 					width: 100px;
@@ -819,6 +687,28 @@ export default WholeDecoration;
 					border-radius: 50%;
 					margin-right: 32px;
 					cursor: pointer;
+					position: relative;
+					&:hover{
+						background: #EB551D;
+						img{
+							opacity: 0;
+							&:nth-child(2){
+								opacity: 1;
+							}
+						}
+					}
+					img{
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						max-width: 40px;
+						transform: translate(-50%,-50%);
+						opacity: 1;
+						transition: .3s;
+						&:nth-child(2){
+							opacity: 0;
+						}
+					}
 				}
 				.text {
 					h4 {
@@ -833,6 +723,7 @@ export default WholeDecoration;
 						font-weight: 400;
 						color: #333333;
 						line-height: 34px;
+						white-space: pre-wrap;
 					}
 				}
 			}
