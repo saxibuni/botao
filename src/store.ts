@@ -15,10 +15,8 @@ export interface State {
 let state: State = {
 	state: ScreenState.PORTRAIT,
 	dialogVisible: false,
-	// footData: null,
-	// menuData: null,
 	footData: null,
-	menuData: {},
+	menuData: null,
 	dialog:{
 		state:0,
 		text: '',

@@ -14,34 +14,36 @@
 
 			<div class="nav">
 				<ul>
+					<template v-for="(item, index) in navList">
 					<li
-						v-for="(item, index) in navList"
+						v-if="item.nav_name!='首页'"
 						:key="index"
 						:class="rouertName == item.url ? 'active' : ''"
-						@mouseover="item.active = true"
-						@mouseout="item.active = false"
-						@click="$router.push({ name: item.url })"
+						@mouseover="item.active=true"
+						@mouseout="item.active=false"
+						@click="onJump(item.nav_id)"
 					>
-						{{ item.title }}
+						{{ item.nav_name }}
 						<b></b>
-						<div class="nav-son" :class="{ active: item.active }" @click.stop>
-							<div v-for="(it, i) in item.son" :key="i" @click.stop="onRoute(item, it)" :style="{ 'animation-delay': 0.08 * i + 0.09 + 's' }">
+						<div class="nav-son" :class="{ active: item.active }" @click.stop v-if="item.children&&item.children.length!=0">
+							<div v-for="(it, i) in item.children" :key="i" @click.stop="item.active = false;onJump(it.nav_id)" :style="{ 'animation-delay': 0.08 * i + 0.09 + 's' }">
 								<span>
 									<i>
-										<img :src="it.icon" alt="" />
+										<img :src="web_url+it.nav_pic" alt="" />
 									</i>
-									{{ it.title }}
+									{{ it.nav_name }}
 								</span>
 							</div>
 						</div>
 					</li>
+					</template>
 				</ul>
 			</div>
 
 			<div class="tel">
 				<div>
 					<i></i>
-					400-920-2982
+					{{$store.state.footData.tel}}
 				</div>
 				<i class="search" @click="searchFun()"></i>
 				<i class="menu" @click="myNavFun()" @mouseenter="onMouseover($event)">

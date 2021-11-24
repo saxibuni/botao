@@ -86,7 +86,7 @@
 			</div>
 			<ul>
 				<li class="wow" v-for="(item,i) in ysList" :key="i">
-					<div class="icon" :style="{background:'url('+web_url+btysInfo.bg+') no-repeat'}">
+					<div class="icon" :style="{background:'url('+web_url+item.icon+') no-repeat'}">
 					</div>
 					<h2 v-html="item.desc">
 					</h2>
