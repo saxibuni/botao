@@ -261,11 +261,12 @@ html {
 						top: 0px;
 
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -11px -11px;
+						background-position: -11Px -11Px;
+						// background-size: 26px 26px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -11px -43px;
+							background-position: -11Px -43Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -282,11 +283,11 @@ html {
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -41px -11px;
+						background-position: -41Px -11Px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -41px -43px;
+							background-position: -41Px -43Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -302,11 +303,11 @@ html {
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -80px -11px;
+						background-position: -80Px -11Px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -80px -43px;
+							background-position: -80Px -43Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
