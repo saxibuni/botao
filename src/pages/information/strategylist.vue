@@ -2,18 +2,18 @@
 	<div class="strategy-list">
 		<banner :data="BannerData"></banner>
 		<!-- 装修攻略列表 -->
-		<div class="decoration-strategy">
+		<div class="decoration-strategy" v-if="topList[1]">
 			<h2>装修攻略</h2>
 			<h3>DECORATION STRATIEGY</h3>
 			<div class="strategy-box">
 				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail' })">
 					<div class="img-box">
-						<img src="~assets/strategy1.jpg" />
+						<img :src="$store.state.footData.web_url+topList[0].img" />
 					</div>
 					<div class="info-box">
-						<div class="date">2021,Auguset,10</div>
-						<h4 class="title">看见这些灯，又想折腾折腾我家客厅了！</h4>
-						<p>优秀的灯光照明，赋予视觉上舒适体验瞬间提升整个居住空间的档次。不论是有主灯设计还是无主灯设计，通过照明方式与空间的相互配合,即可打造宜居温馨的家居氛围。</p>
+						<div class="date">{{ topList[0].show_time | formatTime }}</div>
+						<h4 class="title">{{ topList[0].title }}</h4>
+						<p>{{topList[0].desc}}</p>
 						<div class="more">
 							More
 							<span></span>
@@ -21,7 +21,7 @@
 					</div>
 				</div>
 				<ul class="strategy-right wow">
-					<li v-for="v in topList" :key="v.id" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
+					<li v-for="(v, i) in topList2" :key="v.id"  @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
 						<div class="img-box">
 							<img :src="web_url + v.img" />
 						</div>
@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="list-box">
+		<div class="list-box" v-if="newsList[1]">
 			<ul class="list wow">
 				<li v-for="(v, i) in newsList" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
 					<div class="img-box">

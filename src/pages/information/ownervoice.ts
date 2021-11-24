@@ -17,13 +17,10 @@ export default class OwnerVoice extends Vue {
 	isPop: boolean = false;
 	videoPop = {
 		isPop: false,
+		url:''
 	};
 	imgUrl = '';
-	BannerData = {
-		imgUrl: '',
-		cn: ' ',
-		en: ''
-	};
+	BannerData = {};
 	web_url = '';
 	yzxs = [];
 	ryjq = [];
@@ -83,6 +80,7 @@ export default class OwnerVoice extends Vue {
 		spaceBetween: 30,
 		slidesPerView: 2,
 		loop: true,
+		indexFlag: 0,
 		navigation: {
 			nextEl: '.owner-next',
 			prevEl: '.owner-pre'
@@ -95,9 +93,11 @@ export default class OwnerVoice extends Vue {
 			delay: 3000,
 			disableOnInteraction: false
 		},
-		on:{
-			click:function(e){
-				if(e.target.nodeName=='IMG'){
+		on: {
+			click: function(e) {
+				console.log();
+
+				if (e.target.className == 'pause-btn') {
 					utils.emitter.$emit('showVideo');
 				}
 			}
@@ -153,12 +153,9 @@ export default class OwnerVoice extends Vue {
 	queryYzxs() {
 		utils.service.queryYZXS(res => {
 			console.log(res.data);
-
 			this.web_url = res.data.web_url;
 			//banner
-			this.BannerData.en = res.data.banner.etitle;
-			this.BannerData.cn = res.data.banner.title;
-			this.BannerData.imgUrl = this.web_url + res.data.banner.litpic;
+			this.BannerData = res.data.banner;
 
 			//yzxs
 			this.yzxs = res.data.yzxsList;
@@ -172,22 +169,20 @@ export default class OwnerVoice extends Vue {
 
 			//yzdp
 			this.yzdp = res.data.yzdpList;
+
+			this.restartWow();
 		});
 	}
 
-	show(){
-		console.log(111);
-
-	}
+	show() {}
 
 	mounted() {
 		utils.emitter.$on('dpIndex', obj => {
 			this.isPop = true;
 			this.imgUrl = obj.img.getAttribute('src');
 		});
-		utils.emitter.$on('showVideo',()=>{
-
-			this.videoPop.isPop=true
+		utils.emitter.$on('showVideo', () => {
+			this.videoPop.isPop = true;
 		});
 	}
 }

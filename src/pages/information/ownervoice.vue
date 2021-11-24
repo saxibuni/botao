@@ -11,7 +11,7 @@
 						<div class="img-box">
 							<img :src="web_url + v.img" />
 							<div class="pause">
-								<img src="~assets/ic_home_b3_play.png" alt="" />
+								<img src="~assets/ic_home_b3_play.png" class="pause-btn" alt="" />
 							</div>
 							<div class="left-info">
 								<div class="inner-box">

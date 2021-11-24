@@ -195,9 +195,7 @@ export default class JoinUs extends Vue {
 			console.log(res.data);
 			this.web_url = res.data.web_url;
 			//banner
-			this.BannerData.imgUrl = this.web_url + res.data.banner.litpic;
-			this.BannerData.cn = this.web_url + res.data.banner.title;
-			this.BannerData.en = this.web_url + res.data.banner.etitle;
+			this.BannerData = res.data.banner;
 
 			//人才理念
 			this.rclniList = res.data.rclniList;
@@ -223,9 +221,7 @@ export default class JoinUs extends Vue {
 				v.gwyq = v.gwyq.split('\r\n');
 			});
 			this.zpxx = res.data.zpxxList;
-			this.zpxx = this.zpxx
-				.concat(this.zpxx)
-				.concat(this.zpxx);
+			this.zpxx = this.zpxx.concat(this.zpxx).concat(this.zpxx);
 		});
 	}
 

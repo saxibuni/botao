@@ -85,9 +85,8 @@ export default class StrategyDetail extends Vue {
 
 			//banner
 			this.web_url = res.data.web_url;
-			this.BannerData.imgUrl = this.web_url + res.data.banner.litpic;
-			this.BannerData.cn = this.web_url + res.data.banner.title;
-			this.BannerData.en = this.web_url + res.data.banner.etitle;
+			this.BannerData = res.data.banner;
+
 
 			//text
 			this.archivesInfo = res.data.archivesInfo;
@@ -95,6 +94,8 @@ export default class StrategyDetail extends Vue {
 			//newList
 			this.newsList = res.data.newsTopList;
 			// this.newsList=this.newsList.concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList)
+
+			this.restartWow()
 		});
 	}
 
