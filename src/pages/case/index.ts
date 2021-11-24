@@ -8,7 +8,6 @@ import utils from 'root/utils'
 })
 export default class Case extends Vue {
 	bannerData={}
-	vrbannerData={}
 	created(){
 		utils.emitter.$on('bannerData', item => {
 			this.bannerData=item.banner

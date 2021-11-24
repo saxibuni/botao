@@ -1,5 +1,5 @@
 <template>
-	<div class="case-detail">
+	<div class="case-detail" v-if="detailData.archivesInfo">
 		<div class="crumbs">
 			<p>
 				<span @click="$router.push('/case/list')">精选案例</span>
@@ -7,10 +7,12 @@
 				<i></i>
 				&nbsp;
 			</p>
-			<p><span>上海东方颐城</span></p>
+			<p>
+				<span>{{ detailData.archivesInfo.title }}</span>
+			</p>
 		</div>
 		<div class="title">
-			<h3 class="wow">上海东方颐城</h3>
+			<h3 class="wow">{{ detailData.archivesInfo.title }}</h3>
 			<div class="content wow">
 				<div class="contentLeft">
 					<ul>
@@ -18,36 +20,36 @@
 							<i></i>
 							<div>
 								<p>面积</p>
-								<p>120㎡</p>
+								<p>{{ detailData.archivesInfo.mj }}</p>
 							</div>
 						</li>
 						<li>
 							<i></i>
 							<div>
 								<p>设计风格</p>
-								<p>现代中式</p>
+								<p>{{ detailData.archivesInfo.style }}</p>
 							</div>
 						</li>
 						<li>
 							<i></i>
 							<div>
 								<p>房型</p>
-								<p>复式</p>
+								<p>{{ detailData.archivesInfo.hx }}</p>
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div class="contentRight">
 					<i></i>
-					<p>2000个喜欢</p>
+					<p>{{ detailData.archivesInfo.click }}个喜欢</p>
 				</div>
 			</div>
 		</div>
 		<div class="swiper">
 			<div class="swiperBox">
 				<swiper :options="swiperOptions1">
-					<swiper-slide v-for="(item, i) in 3" :key="i">
-						<img src="~assets/bg_b2_part2.jpg" alt="" />
+					<swiper-slide v-for="(item, i) in detailData.archivesInfo.imgs.split(',')" :key="i">
+						<img :src="web_url + item" alt="" />
 						<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
 						<img src="~assets/bg_b2_part2_mask.png" alt="" />
 					</swiper-slide>
@@ -72,9 +74,12 @@
 				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
 			</ul>
 			<div class="otherSwiper wow">
-				<swiper :options="swiperOptions2">
-					<swiper-slide v-for="(item, index) in 9" :key="index">
-						<Cases />
+				<swiper :options="swiperOptions2" ref="swiper2">
+					<swiper-slide v-for="(item, index) in detailData.styleList.list" :key="index" v-show="activeIndex == 0">
+						<Cases :caseData="item" />
+					</swiper-slide>
+					<swiper-slide v-for="(item, i) in detailData.sjsList.list" :key="i + 1" v-show="activeIndex == 1">
+						<Cases :caseData="item" />
 					</swiper-slide>
 				</swiper>
 				<div class="swiper-pagination pagination2"></div>
@@ -157,6 +162,7 @@ export default CaseDetail;
 		h3 {
 			font-size: 56px;
 			color: #000000;
+			white-space: nowrap;
 		}
 		.content {
 			display: flex;
@@ -201,6 +207,7 @@ export default CaseDetail;
 									margin-top: 10px;
 									font-size: 28px;
 									color: #000000;
+									white-space: nowrap;
 								}
 							}
 						}
@@ -222,6 +229,7 @@ export default CaseDetail;
 					margin-top: 14px;
 					font-size: 18px;
 					color: #122133;
+					white-space: nowrap;
 					// font-weight: 600;
 				}
 			}

@@ -31,18 +31,18 @@
 		</div>
 		<div class="list">
 			<ul>
-				<li v-for="i in 6" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-					<a href="https://vr.justeasy.cn/view/aaf955dd50e59970-1598584621.html" target="_blank">
+				<li v-for="(v, i) in vrData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+					<a :href="v.velink" target="_blank">
 						<div class="imgBox">
-							<img src="~assets/bg_b3_part2_vr1.jpg" alt="" />
+							<img :src="web_url + v.img" alt="" />
 						</div>
 						<div class="content">
 							<div class="left">
-								<p>上海东方颐城</p>
+								<p>{{ v.title }}</p>
 								<p>
-									<span>现代风格</span>
-									<span>独栋别墅</span>
-									<span>120㎡</span>
+									<span>{{ v.hx }}</span>
+									<span>{{ v.style }}</span>
+									<span>{{ v.mj }}</span>
 								</p>
 							</div>
 							<div class="right">

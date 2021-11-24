@@ -410,7 +410,12 @@ export default CaseList;
 	.cases {
 		display: flex;
 		flex-wrap: wrap;
-		margin-right: 29px;
+		.cases {
+			margin-right: 27px;
+			&:nth-of-type(3n) {
+				margin-right: 0;
+			}
+		}
 	}
 	.pagination-box {
 		margin: 40px 0 100px 0;
