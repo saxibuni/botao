@@ -43,6 +43,15 @@ export class Service extends EventEmitter {
 	public queryDesignerShow(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/designerShow', req, callback);
 	}
+	public querysiteCase(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/siteCase', req, callback);
+	}
+	public querysgteam(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/sgteam', req, callback);
+	}
+	public querysgmessage(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/sgmessage', req, callback);
+	}
 
 
 	public queryHome(req, callback: (res: any) => void) {

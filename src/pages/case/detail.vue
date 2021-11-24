@@ -61,10 +61,10 @@
 			</div>
 			<div class="content wow">
 				<img src="~assets/bg_b2_part2_user.png" alt="" />
-				<p>谷晓云</p>
-				<p>首席设计师</p>
-				<p>从业年限：10 年</p>
-				<p>ta的作品：东方颐城 、城云开外 、玖玺合院...</p>
+				<p>{{ detailData.designer_info.author }}</p>
+				<p>{{ detailData.designer_info.station }}</p>
+				<p>从业年限：{{ detailData.designer_info.cysj }}</p>
+				<p>ta的作品：{{ detailData.designer_info.dbz }}</p>
 				<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
 			</div>
 		</div>

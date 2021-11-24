@@ -13,7 +13,7 @@ import utils from 'root/utils'
 	}
 })
 export default class CaseList extends Vue {
-	listData=null
+	listData={}
 	web_url = 'http://btgwcs.zhulu76.com/'
 	paginationData={size:100,total:1000}
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]

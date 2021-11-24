@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div class="bottom">
-						<!-- <div class="bottomLeft">
+						<div class="bottomLeft">
 							<div class="imgBox2">
 								<img :src="web_url + caseData.des_info.faceimg" alt="" />
 							</div>
@@ -35,7 +35,7 @@
 								<p>{{ caseData.des_info.author }}</p>
 								<p>{{ caseData.des_info.station }}</p>
 							</div>
-						</div> -->
+						</div>
 						<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
 					</div>
 				</div>

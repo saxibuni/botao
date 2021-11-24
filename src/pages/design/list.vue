@@ -32,17 +32,17 @@
 		</div>
 		<div class="content">
 			<ul>
-				<li class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" v-for="i in 12" :key="i" @click="$router.push('/design/detail')">
+				<li class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" v-for="(v, i) in listData.list" :key="i" @click="$router.push('/design/detail')">
 					<div class="imgBox">
-						<img src="~assets/bg_c1_pic01.jpg" alt="" />
+						<img :src="web_url + v.litpic" alt="" />
 						<div class="text">
-							<p>于一</p>
-							<p>设计总监 &nbsp;|&nbsp; 15年经验</p>
+							<p>{{ v.author }}</p>
+							<p>{{ v.station }} &nbsp;|&nbsp; {{ v.cysj }}经验</p>
 						</div>
 					</div>
 					<div class="text">
 						<p>代表作品</p>
-						<p>嘉怡水岸、三林新村、华侨城、两河流域...</p>
+						<p>{{ v.dbz }}</p>
 						<Button :text="'了解设计师'" />
 					</div>
 				</li>
@@ -239,11 +239,15 @@ export default DesignList;
 		ul {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
+			// justify-content: space-between;
 			li {
 				margin-bottom: 40px;
 				width: 410px;
 				cursor: pointer;
+				margin-right: 38px;
+				&:nth-of-type(4n) {
+					margin-right: 0;
+				}
 				.imgBox {
 					position: relative;
 					width: 410px;

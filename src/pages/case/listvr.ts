@@ -2,6 +2,7 @@ import { Vue, Component } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue'
 import Button from 'root/components/button.vue'
 import utils from 'root/utils'
+import { device } from 'root/utils';
 @Component({
 	components: {
 		Pagination,
@@ -11,10 +12,13 @@ import utils from 'root/utils'
 export default class CaseListVr extends Vue {
 	web_url = 'http://btgwcs.zhulu76.com/'
 	vrData={}
+	flag = true;
+	isIE: boolean = false;
 	paginationData={size:100,total:1000}
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
 	created(){
+		this.isIE = device.browser.ie;
 		this.getData()
 	}
 		getData() {

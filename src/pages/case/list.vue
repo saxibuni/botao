@@ -29,7 +29,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="swiper" v-if="listData.tjlist[0]">
+		<div class="swiper" v-if="listData.tjlist">
 			<div class="content">
 				<img src="~assets/bg_b1_part2_mask1.png" alt="" />
 				<div class="text wow">
@@ -48,7 +48,7 @@
 						</div>
 						<div>
 							<p>从业年限</p>
-							<p>{{ listData.tjlist[0].des_info.cysj }}年</p>
+							<p>{{ listData.tjlist[0].des_info.cysj }}</p>
 						</div>
 					</div>
 					<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true" />
