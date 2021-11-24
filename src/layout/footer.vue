@@ -215,7 +215,7 @@ export default class Footer extends Vue {
 		};
 	}
 	wbJump() {
-		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 https://www.baidu.com`);
+		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 ${this.web_url}`);
 	}
 
 	onRoute(it) {
