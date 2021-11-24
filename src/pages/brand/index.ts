@@ -197,8 +197,9 @@ export default class Brand extends Vue {
 	brandDataInfo = {};
 	hxjzgList = [];
 	fzlcList = [];
-	ryzz=[];
-	shzrList=[]
+	ryzz = [];
+	shzrList = [];
+	footData = [];
 	created() {
 		this.isIE = utils.device.browser.ie;
 		this.queryBrand();
@@ -228,14 +229,20 @@ export default class Brand extends Vue {
 			this.devolopeList = res.data.fzlcList;
 
 			//荣誉资质
-			this.ryzz=res.data.ryzz
+			this.ryzz = res.data.ryzz;
 
 			// 社会责任
 			// res.data.shzrList.forEach((v)=>{
 			// 	v.desc=v.descsp
 			// })
-			this.shzrList=res.data.shzrList
-			this.restartWow()
+			this.shzrList = res.data.shzrList;
+
+			this.restartWow();
+			this.onResize();
+		});
+		utils.service.queryFooterData(res => {
+			this.footData = res.data;
+
 		});
 	}
 
