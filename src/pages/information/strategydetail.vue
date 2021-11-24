@@ -99,7 +99,7 @@
 					</div>
 				</div>
 			</div>
-			<Button @click.native="getMore" :text="'更多新闻'"></Button>
+			<Button @click.native="getMore" v-show="newListFlag-newsList.length<0" :text="'更多新闻'"></Button>
 		</div>
 	</div>
 </template>

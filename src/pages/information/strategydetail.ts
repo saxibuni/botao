@@ -94,6 +94,7 @@ export default class StrategyDetail extends Vue {
 
 			//newList
 			this.newsList = res.data.newsTopList;
+			// this.newsList=this.newsList.concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList)
 		});
 	}
 
@@ -105,8 +106,7 @@ export default class StrategyDetail extends Vue {
 	}
 
 	getMore() {
-		this.newListFlag = 6;
-		console.log(this.newListFlag);
+		this.newListFlag = this.newsList.length;
 	}
 	addClass(i, dom) {
 		const father = document.querySelector<HTMLElement>(dom);
