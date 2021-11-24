@@ -9,7 +9,7 @@ import utils from 'root/utils'
 	}
 })
 export default class DesignDetail extends Vue {
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = ''
 	detailData={}
 	swiperOptions: any = {
 		speed: 1000,
@@ -41,6 +41,7 @@ export default class DesignDetail extends Vue {
 					console.log(res.data);
 					this.detailData=res.data
 					utils.emitter.$emit('bannerData', res.data);
+					this.web_url = res.data.web_url;
 				}
 			);
 		}

@@ -1,6 +1,6 @@
 <template>
 	<div class="banner banner-wraps" v-if="data">
-		<img :src="web_url + data.litpic" alt="" />
+		<img :src="$store.state.footData.web_url + data.litpic" alt="" />
 		<div class="banner-text">
 			<h3>{{ data.title }}</h3>
 			<p>{{ data.etitle }}</p>
@@ -17,7 +17,6 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 
 @Component
 export default class banner extends Vue {
-	web_url = 'http://btgwcs.zhulu76.com/';
 	@Prop({
 		required: false,
 		type: Object,

@@ -54,7 +54,7 @@
 					</div>
 					<div class="scroll">
 						<div class="text">
-							<p v-html="detailData.designer_info.hor"></p>
+							<p style="white-space: pre-wrap;" v-html="detailData.designer_info.hor"></p>
 						</div>
 					</div>
 				</div>

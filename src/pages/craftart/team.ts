@@ -10,7 +10,7 @@ import utils from 'root/utils'
 })
 export default class Team extends Vue {
 	teamData={}
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = ''
 	paginationData={size:100,total:1000}
 	bannerData={}
 	created(){
@@ -23,7 +23,7 @@ export default class Team extends Vue {
 					console.log(res.data);
 					this.teamData=res.data
 					this.bannerData=res.data.banner
-
+					this.web_url = res.data.web_url;
 				}
 			);
 		}

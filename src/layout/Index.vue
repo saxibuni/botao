@@ -2,7 +2,7 @@
 	<div class="layout">
 		<Header v-if="$store.state.menuData" />
 		<slot />
-		<Footer v-if="$store.state.footData" />
+		<Footer v-if="$store.state.menuData" />
 		<Sidebar v-if="$store.state.footData" />
 		<CapitalRetention/>
 		<MakeAppointment />

@@ -22,7 +22,7 @@ export default class Building extends Vue {
 		isPop: false,
 	};
 	buildingData={}
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = ''
 	paginationData = { size: 100, total: 1000 };
 	bannerData = {};
 	tabList = [
@@ -108,7 +108,7 @@ export default class Building extends Vue {
 					res.data.hxsx.unshift('全部')
 					this.tabList[0].info=res.data.hxsx
 					this.tabList[1].info=res.data.mjsx
-
+					this.web_url = res.data.web_url;
 				}
 			);
 		}

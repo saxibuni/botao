@@ -20,7 +20,7 @@ export default class ResolvePreData {
       if (store.state.menuData) {
         return resolve();
       }
-      utils.service.queryMenuData(res => {
+      utils.service.queryHead({},res => {
         let data = res.data;
         store.state.menuData = data;
         resolve();

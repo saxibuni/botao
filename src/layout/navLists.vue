@@ -14,17 +14,19 @@
 			</div>
 		</div>
 		<ul>
-			<li v-for="(item, index) in navList" :key="index">
-				<h2>{{ item.title }}</h2>
-				<h3>{{ item.en }}</h3>
-				<h4></h4>
-				<div>
-					<h5 v-for="(it, i) in item.son" :key="i" @click="navShow = false;$router.push({name:it.url,params:{number:it.query}})">
-						{{ it.title }}
-					</h5>
-				</div>
-				<b>0{{ index + 1 }}</b>
-			</li>
+			<template v-for="(item, index) in navList">
+				<li :key="index" v-if="item.nav_name!='首页'">
+					<h2>{{ item.nav_name }}</h2>
+					<h3>{{ item.englist_name }}</h3>
+					<h4></h4>
+					<div v-if="item.children">
+						<h5 v-for="(it, i) in item.children" :key="i" @click="navShow = false;onJump(it.nav_id)">
+							{{ it.nav_name }}
+						</h5>
+					</div>
+					<b>0{{ index + 1 }}</b>
+				</li>
+			</template>
 		</ul>
 	</div>
 </template>
@@ -103,9 +105,75 @@ export default class navLists extends Vue {
 			]
 		}
 	];
+	navObj = {
+		73:'case',
+		77:'case-list',
+		78:'case-listvr',
 
+		74:'design',
+		75:'craft-building',
+
+
+		79:'craft-building',
+		80:'craft-team',
+		81:'craft-manager',
+		76:'whole-decoration',
+		82:'whole-decoration',
+		83:'cherry-pick',
+		84:'soft-decoration',
+
+		85:'owner-voice',
+		86:'owner-voice',
+		87:'strategy-list',
+		88:'join-us',
+		90:'strategy-list',
+
+		89:'brand',
+		91:'brand',
+		92:'brand',
+		93:'brand',
+		94:'brand',
+		95:'brand',
+		96:'brand',
+		97:'brand',
+
+	}
+	onJump(navId){
+		console.log(navId);
+		if(navId==89||navId==91){
+			this.$router.push({name:this.navObj[navId],params:{number:'0'}})
+			this.$bus.$emit('params-change', 0);
+		}else if(navId==92){
+			this.$router.push({name:this.navObj[navId],params:{number:'1'}})
+			this.$bus.$emit('params-change', 1);
+		}
+		else if(navId==93){
+			this.$router.push({name:this.navObj[navId],params:{number:'2'}})
+			this.$bus.$emit('params-change', 2);
+		}
+		else if(navId==94){
+			this.$router.push({name:this.navObj[navId],params:{number:'3'}})
+			this.$bus.$emit('params-change', 3);
+		}
+		else if(navId==95){
+			this.$router.push({name:this.navObj[navId],params:{number:'4'}})
+			this.$bus.$emit('params-change', 4);
+		}
+		else if(navId==96){
+			this.$router.push({name:this.navObj[navId],params:{number:'5'}})
+			this.$bus.$emit('params-change', 5);
+		}
+		else if(navId==97){
+			this.$router.push({name:this.navObj[navId],params:{number:'6'}})
+			this.$bus.$emit('params-change', 6);
+		}
+		else{
+			this.$router.push({name:this.navObj[navId]})
+		}
+	}
 	created() {
 		this.isIE = device.browser.ie;
+		this.navList = this.$store.state.menuData.menu_list;
 	}
 }
 </script>

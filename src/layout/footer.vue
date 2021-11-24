@@ -27,11 +27,13 @@
 						<li class="btn" @click="onSubmit()">免费获取报价</li>
 					</ul>
 				</div>
-				<ul>
-					<li v-for="(item, i) in navList" :key="i">
-						<h5>{{ item.title }}</h5>
-						<p @click="onRoute(it)" v-for="(it, index) in item.son" :key="index">{{ it.title }}</p>
+				<ul v-if="navList">
+					<template v-for="(item, index) in navList">
+					<li :key="index" v-if="item.nav_name!='首页'">
+						<h5>{{ item.nav_name }}</h5>
+						<p @click="onJump(it.nav_id)" v-for="(it, index) in item.children" :key="index">{{ it.nav_name }}</p>
 					</li>
+					</template>
 				</ul>
 			</div>
 			<div class="icon-wrap">
@@ -76,8 +78,8 @@
 			<div class="copyright">
 				<div class="link">
 					<p>
-						Copyright @ 2012-2018 沪ICP备11042317号-8 BOTAO All Rights Reserved 技术支持：
-						<a href="https://www.zhulu86.com/">逐鹿科技</a>
+						{{footData.copyright}} 技术支持：
+						<a href="https://www.zhulu86.com/" target='_blank'>逐鹿科技</a>
 					</p>
 					友情链接：
 					<template v-for="(item,i) in footData.link">
@@ -217,7 +219,72 @@ export default class Footer extends Vue {
 	wbJump() {
 		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 ${this.web_url}`);
 	}
+	navObj = {
+		73:'case',
+		77:'case-list',
+		78:'case-listvr',
 
+		74:'design',
+		75:'craft-building',
+
+
+		79:'craft-building',
+		80:'craft-team',
+		81:'craft-manager',
+		76:'whole-decoration',
+		82:'whole-decoration',
+		83:'cherry-pick',
+		84:'soft-decoration',
+
+		85:'owner-voice',
+		86:'owner-voice',
+		87:'strategy-list',
+		88:'join-us',
+		90:'strategy-list',
+
+		89:'brand',
+		91:'brand',
+		92:'brand',
+		93:'brand',
+		94:'brand',
+		95:'brand',
+		96:'brand',
+		97:'brand',
+
+	}
+	onJump(navId){
+		console.log(navId);
+		if(navId==89||navId==91){
+			this.$router.push({name:this.navObj[navId],params:{number:'0'}})
+			this.$bus.$emit('params-change', 0);
+		}else if(navId==92){
+			this.$router.push({name:this.navObj[navId],params:{number:'1'}})
+			this.$bus.$emit('params-change', 1);
+		}
+		else if(navId==93){
+			this.$router.push({name:this.navObj[navId],params:{number:'2'}})
+			this.$bus.$emit('params-change', 2);
+		}
+		else if(navId==94){
+			this.$router.push({name:this.navObj[navId],params:{number:'3'}})
+			this.$bus.$emit('params-change', 3);
+		}
+		else if(navId==95){
+			this.$router.push({name:this.navObj[navId],params:{number:'4'}})
+			this.$bus.$emit('params-change', 4);
+		}
+		else if(navId==96){
+			this.$router.push({name:this.navObj[navId],params:{number:'5'}})
+			this.$bus.$emit('params-change', 5);
+		}
+		else if(navId==97){
+			this.$router.push({name:this.navObj[navId],params:{number:'6'}})
+			this.$bus.$emit('params-change', 6);
+		}
+		else{
+			this.$router.push({name:this.navObj[navId]})
+		}
+	}
 	onRoute(it) {
 		if (it.url == this.$route.name && it.url == 'brand') {
 			this.$bus.$emit('params-change', it.query);
@@ -230,6 +297,12 @@ export default class Footer extends Vue {
 	mounted(){
 			this.footData = this.$store.state.footData;
 			this.web_url = this.$store.state.footData.web_url;
+			if(this.$store.state.menuData&&this.$store.state.menuData.menu_list.length!=0){
+					this.navList = this.$store.state.menuData.menu_list;
+					console.log(123,this.navList);
+			}
+
+
 	}
 }
 </script>
