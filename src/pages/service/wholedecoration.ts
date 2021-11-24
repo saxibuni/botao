@@ -3,6 +3,7 @@ import Banner from "../../components/banner.vue";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
+import utils from "root/utils";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 @Component({
@@ -47,6 +48,11 @@ export default class WholeDecoration extends Vue {
 	mounted() {
 		this.restartWow();
 		this.initTextChars();
+		utils.service.queryQazz({}, res => {
+			if (res.data.code === 0) {
+
+			}
+		});
 	}
 	initTextChars() {
 		let textContents = this.$el.querySelectorAll<HTMLElement>('.page1 .text');
