@@ -1,6 +1,6 @@
 import { Vue, Component } from "vue-property-decorator";
 import Layout from "./layout/Index.vue";
-import utils from "./utils";
+import utils, { service } from "./utils";
 @Component({
 	components: {
 		Layout,
@@ -20,5 +20,10 @@ export default class App extends Vue {
 		window.addEventListener('scroll', () => {
 			utils.emitter.$emit('scroll');
 		});
+
+
+		// service.queryJxCase({
+
+		// })
 	}
 }

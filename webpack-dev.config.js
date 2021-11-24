@@ -19,7 +19,7 @@ module.exports = merge(common, {
 		hot: true,
 		proxy: {
 			"/api.php": {
-				target: 'https://www.zhuohan-edu.com',
+				target: 'http://btgwcs.zhulu76.com',
 				changeOrigin: true
 			}
 		}

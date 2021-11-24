@@ -26,10 +26,9 @@ export class Service extends EventEmitter {
 			this.send('/api.php/datahub/menu', {}, callback);
 		}
 
-		public queryAggregate(typeId: number, callback: (res: any) => void) {
-			this.send(`/api.php/datahub/getaggregate/typeid/${typeId}`, {}, callback);
+		///精选案例列表
+		public queryJxCase(req, callback: (res: any) => void) {
+			this.send('api.php/Ajax/jxCase', req, callback);
 		}
-
-
 
 }
