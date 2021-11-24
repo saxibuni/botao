@@ -7,7 +7,7 @@ export default class ResolvePreData {
       if (store.state.footData) {
         return resolve();
       }
-      utils.service.queryFooterData(res => {
+      utils.service.queryFoot({},res => {
         let data = res.data;
         store.state.footData = data;
         resolve();

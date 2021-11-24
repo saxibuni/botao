@@ -43,7 +43,7 @@
 							</i>
 							Phone number
 						</div>
-						<h3>400-920-2982</h3>
+						<h3>{{ footData.tel}}</h3>
 					</li>
 					<li>
 						<div>
@@ -52,7 +52,7 @@
 							</i>
 							E-mail
 						</div>
-						<h3>botaogroup@BTcom</h3>
+						<h3>{{ footData.email}}</h3>
 					</li>
 					<li>
 						<div>
@@ -61,11 +61,11 @@
 							</i>
 							Address
 						</div>
-						<h3>上海徐汇区中山西路2331号</h3>
+						<h3>{{ footData.address}}</h3>
 					</li>
 				</ul>
 				<div>
-					<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+					<img :src="web_url+footData.watch" alt="" />
 					<div>
 						关注波涛了解
 						<br />
@@ -77,24 +77,28 @@
 				<div class="link">
 					<p>
 						Copyright @ 2012-2018 沪ICP备11042317号-8 BOTAO All Rights Reserved 技术支持：
-						<a href="">逐鹿科技</a>
+						<a href="https://www.zhulu86.com/">逐鹿科技</a>
 					</p>
 					友情链接：
-					<a href="">波涛公装</a>
-					|
-					<a href="">波涛装饰</a>
+					<template v-for="(item,i) in footData.link">
+						<a :href="item.url" target='_blank' :key="i">{{item.title}}</a>
+					</template>
 				</div>
 				<div class="icons">
 					<div class="wx">
 						<div>
-							<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+							<img :src="web_url+footData.watch" alt="" />
 						</div>
-						<i></i>
-						<i></i>
+						<i>
+							<img src="~assets/icons/ic_home_footer_wechat1.png" alt="" />
+							<img src="~assets/icons/ic_home_footer_wechat2.png" alt="" />
+						</i>
 					</div>
 					<div class="wb">
-						<i @click="wbJump()"></i>
-						<i @click="wbJump()"></i>
+						<i @click="wbJump()">
+							<img src="~assets/icons/ic_home_footer_weibo1.png" alt="" />
+							<img src="~assets/icons/ic_home_footer_weibo2.png" alt="" />
+						</i>
 					</div>
 				</div>
 			</div>
@@ -220,6 +224,12 @@ export default class Footer extends Vue {
 		} else {
 			this.$router.push({ name: it.url, params: { number: it.query } });
 		}
+	}
+	footData = '';
+	web_url = '';
+	mounted(){
+			this.footData = this.$store.state.footData;
+			this.web_url = this.$store.state.footData.web_url;
 	}
 }
 </script>
@@ -444,6 +454,15 @@ export default class Footer extends Vue {
 					&:hover {
 						color: #fff;
 					}
+					&::after{
+						content: "  |  ";
+						color: #666666!important;
+					}
+					&:last-child{
+						&::after{
+							 display: none;
+						}
+					}
 				}
 			}
 			.icons {
@@ -452,17 +471,34 @@ export default class Footer extends Vue {
 				i {
 					width: 26px;
 					height: 26px;
-					background: url('~assets/icons/iconlist.png') no-repeat;
-					background-position: -11px -11px;
 					margin-left: 21px;
 					cursor: pointer;
 					position: relative;
 					transition: 0.3s;
+					position: relative;
+					img{
+						width: 100%;
+						height: 100%;
+						display: block;
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%,-50%);
+						transition: .3s;
+						opacity: 1;
+						&:nth-child(2){
+							opacity: 0;
+						}
+					}
 					&:nth-child(2) {
-						background-position: -41px -11px;
 					}
 					&:hover {
-						background-position-y: -43px;
+						img{
+							opacity: 0;
+							&:nth-child(2){
+								opacity: 1;
+							}
+						}
 						> div {
 							opacity: 1;
 							transform: translateX(-50%) translateX(0);
@@ -490,7 +526,6 @@ export default class Footer extends Vue {
 					width: 26px;
 					height: 26px;
 					&:hover {
-						background-position-y: -43px;
 						> div {
 							opacity: 1;
 							transform: translateX(-50%) translateX(0);
@@ -517,14 +552,6 @@ export default class Footer extends Vue {
 						left: 0;
 						margin-left: 0;
 						top: 0px;
-
-						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -11px -11px;
-						&:nth-last-of-type(2) {
-							opacity: 0;
-							z-index: 11;
-							background-position: -11px -43px;
-						}
 					}
 					&:hover i:nth-last-of-type(2) {
 						opacity: 1 !important;
@@ -538,13 +565,6 @@ export default class Footer extends Vue {
 						position: absolute;
 						top: 0;
 						left: 0;
-						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -41px -11px;
-						&:nth-last-of-type(2) {
-							opacity: 0;
-							z-index: 11;
-							background-position: -41px -43px;
-						}
 					}
 					&:hover i:nth-last-of-type(2) {
 						opacity: 1 !important;

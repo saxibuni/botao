@@ -45,7 +45,10 @@ export default class WholeDecoration extends Vue {
 	fwlcList = [];
 	fwtdList = [];
 	ghfyList = [];
+	btysInfo = {};
+	ysList = [];
 	mounted() {
+		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
 		this.initTextChars();
 		utils.service.queryQazz({}, res => {
@@ -56,8 +59,8 @@ export default class WholeDecoration extends Vue {
 				});
 				this.fwtdList = res.data.fwtdList;
 				this.ghfyList = res.data.ghfyList;
-				console.log(res.data);
-				console.log(res.data.ghfyList);
+				this.btysInfo = res.data.btysInfo;
+				this.ysList = res.data.ysList;
 			}
 		});
 	}

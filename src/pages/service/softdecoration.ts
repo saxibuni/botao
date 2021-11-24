@@ -90,6 +90,7 @@ export default class SoftDecoration extends Vue {
 	rzfwlcList = [];
 	rzpxList = [];
 	mounted() {
+		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
 		this.initTextChars();
 		utils.service.queryRzsh({}, res => {

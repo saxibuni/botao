@@ -73,67 +73,26 @@
 				<span>“饰”</span>
 			</h2>
 			<p class="wow">After-sales service</p>
-			<div>
-				<div class="wow">
-					<h1>曾经·你是这样装修的</h1>
-					<p>需要132个人前后打交道</p>
-					<p>需要为联系各自事宜打326个电话</p>
-					<p>需要选购28种辅材、10种大件主材、80余件软装</p>
-					<p>需要去5个装饰城奔波68次</p>
-					<p>需要为可能的5%折扣去低声下气，</p>
-					<p>需要了解35项基础工程</p>
-					<p>需要在工地上待180天</p>
-					<h3>以1敌10! 工期慢! 售后无保障.. ..焦头烂额!</h3>
+			<div :style="{background:'url('+web_url+btysInfo.bg+') no-repeat'}">
+				<div class="wow" v-if="btysInfo.desc">
+					<h1>{{btysInfo.title}}</h1>
+					<p v-for="(item,i) in btysInfo.desc.split('\r\n')" :key="i">{{item}}</p>
+					<h3>{{btysInfo.cjqd}}</h3>
 				</div>
 				<div class="wow">
-					<h1>现在·金管家全程服务</h1>
-					<p>管家式专人服务，替您解决一切问题</p>
+					<h1>{{btysInfo.xztitle}}</h1>
+					<p>{{btysInfo.xzdesc}}</p>
 				</div>
 			</div>
 			<ul>
-				<li class="wow">
-					<div class="icon"></div>
-					<h2>
-						水电隐蔽工程
-						<br />
-						终身免费保修
+				<li class="wow" v-for="(item,i) in ysList" :key="i">
+					<div class="icon" :style="{background:'url('+web_url+btysInfo.bg+') no-repeat'}">
+					</div>
+					<h2 v-html="item.desc">
 					</h2>
 				</li>
 
-				<li class="wow">
-					<div class="icon"></div>
-					<h2>
-						饰后满三年
-						<br />
-						家居免费保养
-					</h2>
-				</li>
 
-				<li class="wow">
-					<div class="icon"></div>
-					<h2>
-						硬装工程
-						<br />
-						2年免费保修
-					</h2>
-				</li>
-
-				<li class="wow">
-					<div class="icon"></div>
-					<h2>
-						24小时
-						<br />
-						解决报修服务
-					</h2>
-				</li>
-				<li class="wow">
-					<div class="icon"></div>
-					<h2>
-						终身定期
-						<br />
-						上门检修回访
-					</h2>
-				</li>
 			</ul>
 		</div>
 	</div>
@@ -941,8 +900,7 @@ export default WholeDecoration;
 			animation-fill-mode: forwards;
 		}
 		> div {
-			background: url('~assets/bg_e1_part5.jpg') center center;
-			background-size: 100% 100%;
+			background-size: 100% 100%!important;
 			display: flex;
 			height: 620px;
 			width: 1760px;
@@ -1037,6 +995,8 @@ export default WholeDecoration;
 					height: 89px;
 					border: 2px solid #ffffff;
 					margin: 0 auto;
+					background-size: 46px auto!important;
+					background-position: center center!important;
 				}
 				h2 {
 					margin-top: 35px;
@@ -1045,40 +1005,31 @@ export default WholeDecoration;
 					font-weight: 400;
 					color: #ffffff;
 					line-height: 36px;
+					white-space: pre-wrap;
 				}
 				&:nth-child(1) {
 					animation-delay: 0.1s;
-					.icon {
-						background: url('~assets/icons/ic_e1_part5_1.png') no-repeat center center;
-					}
+
 				}
 
 				&:nth-child(2) {
 					animation-delay: 0.2s;
-					.icon {
-						background: url('~assets/icons/ic_e1_part5_2.png') no-repeat center center;
-					}
+
 				}
 
 				&:nth-child(3) {
 					animation-delay: 0.3s;
-					.icon {
-						background: url('~assets/icons/ic_e1_part5_3.png') no-repeat center center;
-					}
+
 				}
 
 				&:nth-child(4) {
 					animation-delay: 0.4s;
-					.icon {
-						background: url('~assets/icons/ic_e1_part5_4.png') no-repeat center center;
-					}
+
 				}
 
 				&:nth-child(5) {
 					animation-delay: 0.5s;
-					.icon {
-						background: url('~assets/icons/ic_e1_part5_5.png') no-repeat center center;
-					}
+
 				}
 			}
 		}

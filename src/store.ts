@@ -17,7 +17,7 @@ let state: State = {
 	dialogVisible: false,
 	// footData: null,
 	// menuData: null,
-	footData: {},
+	footData: null,
 	menuData: {},
 	dialog:{
 		state:0,
