@@ -1,16 +1,16 @@
 <template>
 	<div class="brand">
 		<div class="banner-box">
-			<video id="v1" controls preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
-				<source :src="'./botao.mp4'" type="video/mp4" />
+			<video id="v1" :src="web_url + btbrandInfo.video" controls preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
+				<source :src="web_url + btbrandInfo.video" type="video/mp4" />
 			</video>
 			<div class="text-content">
 				<div class="banner-text" v-show="textShow">
-					<h3>波涛品牌</h3>
-					<p>ABOUT BOTAOGROUP</p>
+					<h3>{{ btbrandInfo.title }}</h3>
+					<p>{{ btbrandInfo.etitle }}</p>
 				</div>
 				<h6 class="text" v-show="textShow">
-					波涛装饰集团成立于2001年，总部设立于中国上海，经过二十几年的发展，形成了集建筑、工装、家装、软装、加盟、培训、家居建材、供应链、船舶内装、中医健康等为一体的综合性装饰集团公司。
+					{{ btbrandInfo.desc }}
 				</h6>
 			</div>
 
@@ -37,41 +37,37 @@
 					<img src="~assets/bg_g1_part2_logo.png" alt="" />
 				</div>
 				<ul>
-					<li v-for="(v, i) in btBrandArr" :class="isActive == i ? 'active' : ''" @click="isActive = i" :key="i"><Button :text="v"></Button></li>
+					<li v-for="(v, i) in btzgsList" :class="isActive == i ? 'active' : ''" @click="isActive = i" :key="i"><Button :text="v.title"></Button></li>
 				</ul>
 			</div>
 			<div class="right-box wow">
-				<div class="right" v-show="i == isActive" v-for="(v, i) in btBrandInfoArr" :key="i">
+				<div class="right" v-show="i == isActive" v-for="(v, i) in btzgsList" :key="i">
 					<h3>
 						{{ v.title }}
 					</h3>
 					<p>
-						{{ v.text }}
+						{{ v.desc }}
 					</p>
 					<div class="img-box">
-						<img :src="v.img" alt="" />
+						<img :src="web_url + v.img" alt="" />
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="brand-data select1">
 			<div class="left">
-				<p class="wow">在全国近30个省，开设了300多家分公司</p>
-				<p class="wow">
-					深受20000+高端住宅业主的信赖
-				</p>
-				<p class="wow">建立核心竞争力，巩固市场优势，形成具有长久生命力的商业模式</p>
-				<ul>
+				<p class="wow">{{ brandDataInfo.desc }}</p>
+				<ul v-if="brandDataInfo.yzs">
 					<li>
 						<span>
-							<ICountUp :endVal="20000" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="brandDataInfo.yzs * 1" :options="options1" ref="countup1"></ICountUp>
 							<span class="suffix">+</span>
 						</span>
 						<span>大宅别墅业主选择</span>
 					</li>
 					<li>
 						<span>
-							<ICountUp :endVal="300" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="brandDataInfo.fgs * 1" :options="options1" ref="countup1"></ICountUp>
 							<span class="suffix">+</span>
 							<span class="fs18">家</span>
 						</span>
@@ -79,7 +75,7 @@
 					</li>
 					<li>
 						<span>
-							<ICountUp :endVal="18000" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="brandDataInfo.jcgc * 1" :options="options1" ref="countup1"></ICountUp>
 							<span class="suffix">+</span>
 							<span class="fs18">m²</span>
 						</span>
@@ -87,14 +83,14 @@
 					</li>
 					<li>
 						<span>
-							<ICountUp :endVal="21000" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="brandDataInfo.btdl * 1" :options="options1" ref="countup1"></ICountUp>
 							<span class="fs18">m²</span>
 						</span>
 						<span>波涛大楼</span>
 					</li>
 					<li>
 						<span>
-							<ICountUp :endVal="15000" :options="options1" ref="countup1"></ICountUp>
+							<ICountUp :endVal="brandDataInfo.blgy * 1" :options="options1" ref="countup1"></ICountUp>
 							<span class="suffix">+</span>
 							<span class="fs18">m²</span>
 						</span>
@@ -114,12 +110,12 @@
 			<h2 class="wow">核心价值观</h2>
 			<h3 class="wow">以客户为中心 以员工为中心</h3>
 			<div class="img-list">
-				<div class="img-box wow" v-for="(v, i) in coreList" :key="i" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
-					<img :src="v.imgUrl" alt="" />
+				<div class="img-box wow" v-for="(v, i) in hxjzgList" :key="i" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
+					<img :src="web_url + v.img" alt="" />
 					<div class="text">
-						<h2>{{ v.title1 }}</h2>
-						<h3>{{ v.title2 }}</h3>
-						<div>{{ v.eng }}</div>
+						<h2>{{ v.title }}</h2>
+						<h3>{{ v.ftitle }}</h3>
+						<div>{{ v.etitle }}</div>
 					</div>
 				</div>
 			</div>
@@ -131,32 +127,32 @@
 				<div class="gray-img wow">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
 					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" v-show="progressIndex >= i" :key="i">
-						<span>{{ item.time }}</span>
+						<span>{{ item.nf }}</span>
 					</div>
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box wow" v-if="!isIE">
+			<div class="info-box wow" v-if="!isIE && devolopeList[show1].nf">
 				<div class="time-box">
 					<div class="time">
-						<!-- behidn -->
-						<p>{{ devolopeList[show1].time }}</p>
-						<h2>{{ devolopeList[show1].name }}</h2>
+						<!-- behind -->
+						<p>{{ devolopeList[show1].nf }}</p>
+						<h2>{{ devolopeList[show1].js }}</h2>
 					</div>
 					<div class="time">
 						<!-- top -->
-						<p>{{ devolopeList[show2].time }}</p>
-						<h2>{{ devolopeList[show2].name }}</h2>
+						<p>{{ devolopeList[show2].nf }}</p>
+						<h2>{{ devolopeList[show2].js }}</h2>
 					</div>
 					<div class="time">
 						<!-- bottom -->
-						<p>{{ devolopeList[show2].time }}</p>
-						<h2>{{ devolopeList[show2].name }}</h2>
+						<p>{{ devolopeList[show2].nf }}</p>
+						<h2>{{ devolopeList[show2].js }}</h2>
 					</div>
 					<div class="time">
 						<!-- front -->
-						<p>{{ devolopeList[show1].time }}</p>
-						<h2>{{ devolopeList[show1].name }}</h2>
+						<p>{{ devolopeList[show1].nf }}</p>
+						<h2>{{ devolopeList[show1].js }}</h2>
 					</div>
 				</div>
 				<div class="text-boxs">
@@ -192,36 +188,24 @@
 			<h2 class="wow">荣誉资质</h2>
 			<h3 class="wow">匠心与精耕让我们走在行业发展前沿</h3>
 			<div class="nav wow">
-				<div v-for="(v, i) in nav" :key="i" :class="bannerActive == i ? 'active' : ''" @click="bannerActive = i">{{ v }}</div>
+				<div v-for="(v, i) in ryzz" :key="i" :class="bannerActive == i ? 'active' : ''" @click="bannerActive = i">{{ v.typename }}</div>
 			</div>
 			<div class="swiper-box wow">
-				<div class="hover-swiper" v-if="bannerActive == 0">
-					<swiper :options="hoverBannerOptions">
-						<swiper-slide v-for="(v, i) in hvBanner" :key="i">
-							<div class="img-box">
-								<img :src="v.imgUrl" alt="" />
-							</div>
-							<h2>{{ v.title }}</h2>
-						</swiper-slide>
-					</swiper>
-					<div class="controal">
-						<div v-if="bannerActive == 0" class="swiper-next hv-next"></div>
-						<div v-if="bannerActive == 0" class="swiper-pre hv-pre"></div>
-					</div>
-				</div>
-				<div class="research-swiper" v-if="bannerActive == 1">
-					<swiper :options="researchBannerOptions">
-						<swiper-slide v-for="(v, i) in hvBanner" :key="i">
-							<div class="img-box">
-								<img :src="v.imgUrl" alt="" />
-							</div>
-							<h2>{{ v.title }}</h2>
-						</swiper-slide>
-					</swiper>
-					<div class="controal">
-						<div v-if="bannerActive == 1" class="swiper-next res-next"></div>
-						<div v-if="bannerActive == 1" class="swiper-pre res-pre"></div>
-					</div>
+				<div class="hover-swiper" v-for="(v, i) in ryzz" :key="i">
+					<template v-if="bannerActive == i">
+						<swiper :options="hoverBannerOptions">
+							<swiper-slide v-for="(value, i) in v.list" :key="i">
+								<div class="img-box">
+									<img :src="web_url + value.img" alt="" />
+								</div>
+								<h2>{{ value.title }}</h2>
+							</swiper-slide>
+						</swiper>
+						<div class="controal">
+							<div v-if="bannerActive == i" class="swiper-next hv-next"></div>
+							<div v-if="bannerActive == i" class="swiper-pre hv-pre"></div>
+						</div>
+					</template>
 				</div>
 			</div>
 		</div>
@@ -252,16 +236,16 @@
 					<div class="plane"></div>
 				</div>
 				<ul>
-					<li v-for="(v, i) in socialArr" :key="i" class="wow" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
+					<li v-for="(v, i) in shzrList" :key="i" class="wow" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
 						<div class="img-box">
 							<div class="inner">
-								<img :src="v.imgUrl" alt="" />
+								<img :src="web_url+v.img" alt="" />
 							</div>
 						</div>
 						<div class="text-box">
 							<div class="dosh" @click="doMovePath(i)"></div>
-							<h2>{{ v.time }}</h2>
-							<p v-for="(value, index) in v.text" :key="index">{{ value }}</p>
+							<h2>{{ v.title }}</h2>
+							<p >{{ v.desc }}</p>
 						</div>
 					</li>
 				</ul>
@@ -979,7 +963,7 @@ html {
 
 			.gray-img {
 				position: relative;
-				height: 1245Px;
+				height: 1245px;
 				img {
 					position: absolute;
 					top: 6px;
@@ -1072,7 +1056,7 @@ html {
 				top: 0;
 				left: 0;
 				width: 660px;
-				height: 290Px;
+				height: 290px;
 				background: url(~assets/bg_g1_part5_way2.png) no-repeat;
 				background-size: 100%;
 			}

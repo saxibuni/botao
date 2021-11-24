@@ -1,14 +1,26 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Button from '../../components/button.vue';
 import Banner from '../../components/banner.vue';
+import utils from 'root/utils';
 @Component({
 	components: {
 		Banner,
 		Button
+	},
+	filters: {
+		formatTime(val: number) {
+			const date = new Date(val * 1000);
+			const year = date.getFullYear();
+			const month = date.getMonth() + 1;
+			const day = date.getDate();
+			const newtime = `${year}-${month}-${day}`;
+			return newtime;
+		}
 	}
 })
 export default class JoinUs extends Vue {
-	jobShowFlag=6;
+	jobShowFlag = 6;
+	web_url = '';
 	BannerData = {
 		imgUrl: require('../../assets/bg_f4_banner.jpg'),
 		cn: '招贤纳士',
@@ -154,6 +166,9 @@ export default class JoinUs extends Vue {
 			]
 		}
 	];
+	rclniList = [];
+	rclnList = [];
+	zpxx = [];
 	jsBannerOptions: any = {
 		centeredSlides: true,
 		speed: 1000,
@@ -165,11 +180,53 @@ export default class JoinUs extends Vue {
 			nextEl: '.ju-next'
 		},
 		autoplay: {
-			delay: 3000,
+			delay: 2000,
 			disableOnInteraction: false
 		}
 	};
+	desc='';
+
+	created() {
+		this.queryJS();
+	}
+
+	queryJS() {
+		utils.service.queryJS(res => {
+			console.log(res.data);
+			this.web_url = res.data.web_url;
+			//banner
+			this.BannerData.imgUrl = this.web_url + res.data.banner.litpic;
+			this.BannerData.cn = this.web_url + res.data.banner.title;
+			this.BannerData.en = this.web_url + res.data.banner.etitle;
+
+			//人才理念
+			this.rclniList = res.data.rclniList;
+
+			this.rclnList = res.data.rclnList;
+			this.rclnList.forEach(item => {
+				item.etitle = item.etitle.replace('\r\n', '<br/>');
+				item.desc = item.desc.split('\r\n\r\n');
+				item.desc = item.desc.map(v => {
+					if (v.includes('：')) {
+						v = v.replace('：', '</span>：');
+						v = '<span>' + v;
+					}
+					return v;
+				});
+			});
+
+			//desc
+			this.desc=res.data.desc
+
+			//招聘信息
+			res.data.zpxxList.forEach(v => {
+				v.gwyq = v.gwyq.split('\r\n');
+			});
+			this.zpxx = res.data.zpxxList;
+		});
+	}
+
 	getMore() {
-		this.jobShowFlag=9
+		this.jobShowFlag = 9;
 	}
 }

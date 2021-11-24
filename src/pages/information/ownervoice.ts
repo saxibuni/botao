@@ -1,8 +1,8 @@
 import { Vue, Component } from 'vue-property-decorator';
-import utils from 'root/utils';
 import Banner from 'root/components/banner.vue';
 import Button from 'root/components/button.vue';
 import Prop from 'root/components/popup.vue';
+import utils from 'root/utils';
 @Component({
 	components: {
 		Banner,
@@ -14,10 +14,14 @@ export default class OwnerVoice extends Vue {
 	isPop: boolean = false;
 	imgUrl = '';
 	BannerData = {
-		imgUrl: require('../../assets/ownerbg.jpg'),
-		cn: '业主心声 ',
-		en: "OWNER'S VOICE"
+		imgUrl: '',
+		cn: ' ',
+		en: ''
 	};
+	web_url = '';
+	yzxs = [];
+	ryjq = [];
+	yzdp = [];
 	fhArr = [
 		{
 			img1: require('../../assets/bg_f1_part3_pic01.jpg'),
@@ -69,7 +73,7 @@ export default class OwnerVoice extends Vue {
 	///banner1
 	ownerBannerOptions: any = {
 		centeredSlides: true,
-		speed: 1000,
+		speed: 1200,
 		spaceBetween: 30,
 		slidesPerView: 2,
 		loop: true,
@@ -84,20 +88,12 @@ export default class OwnerVoice extends Vue {
 		autoplay: {
 			delay: 3000,
 			disableOnInteraction: false
-		},
-		on: {
-			slideChangeTransitionEnd: function() {
-				for (let i = 0; i <= this.slides.length - 1; i++) {
-					this.slides[i].classList.remove('active');
-				}
-				this.slides[this.activeIndex].classList.add('active');
-			}
 		}
 	};
 	// banner2
 	dpBannerOptions: any = {
 		speed: 1000,
-		loop: true,
+		// loop: true,
 		navigation: {
 			nextEl: '.dp-next',
 			prevEl: '.dp-pre'
@@ -114,7 +110,6 @@ export default class OwnerVoice extends Vue {
 		},
 		on: {
 			click: function() {
-				if (!this.clickedIndex) return;
 				const img = this.slides[this.clickedIndex].querySelector('img');
 				utils.emitter.$emit('dpIndex', { index: this.clickedIndex, img });
 			}
@@ -134,14 +129,42 @@ export default class OwnerVoice extends Vue {
 		},
 		pagination: {
 			clickable: true,
-			el: '.fh-pagination'
+			el: '.swiper-pagination'
 		}
 	};
+
+	created() {
+		this.queryYzxs();
+	}
+
+	queryYzxs() {
+		utils.service.queryYZXS(res => {
+			console.log(res.data);
+
+			this.web_url = res.data.web_url;
+			//banner
+			this.BannerData.en = res.data.banner.etitle;
+			this.BannerData.cn = res.data.banner.title;
+			this.BannerData.imgUrl = this.web_url + res.data.banner.litpic;
+
+			//yzxs
+			this.yzxs = res.data.yzxsList;
+
+			//ryjq
+			// res.data.ryjqList.img=res.data.ryjqList.img.split(',')
+			this.ryjq = res.data.ryjqList;
+			this.ryjq.forEach(v => {
+				v.img = v.img.split(',');
+			});
+
+			//yzdp
+			this.yzdp = res.data.yzdpList;
+		});
+	}
+
 	mounted() {
 		utils.emitter.$on('dpIndex', obj => {
 			this.isPop = true;
-			// console.log(obj.img);
-			// this.imgDOM = obj.img;
 			this.imgUrl = obj.img.getAttribute('src');
 		});
 	}

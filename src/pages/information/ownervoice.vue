@@ -1,5 +1,5 @@
 <template>
-	<div class="owner">
+	<div class="owner" v-if="yzxs[0]">
 		<!-- 业主心声 -->
 		<Banner :data="BannerData" />
 		<div class="owner-vioce">
@@ -7,9 +7,9 @@
 			<h3>OWNER'S VOICE</h3>
 			<div class="swiper-box wow">
 				<swiper :options="ownerBannerOptions">
-					<swiper-slide v-for="(v, i) in ownerArr" :key="i">
+					<swiper-slide v-for="v in yzxs" :key="v.id">
 						<div class="img-box">
-							<img :src="v.imgUrl" />
+							<img :src="web_url + v.img" />
 							<div class="pause">
 								<img src="~assets/ic_home_b3_play.png" alt="" />
 							</div>
@@ -17,23 +17,20 @@
 								<div class="inner-box">
 									<div class="top">
 										<div class="address">
-											<span class="name">李小姐</span>
-											<span>上海</span>
+											<span class="name">{{ v.title }}</span>
+											<span>{{ v.address }}</span>
 										</div>
 										<div class="area">
-											<span>560m²</span>
+											<span>{{ v.mj }}</span>
 											<span>面积</span>
 										</div>
 										<div class="style">
-											<span>现代风格</span>
+											<span>{{ v.style }}</span>
 											<span>风格</span>
 										</div>
 									</div>
 									<p>
-										和波涛算是第二次合作了，第一次是给自己家的房子装修装修效果非常不错，于是就想着把父母的房子也交给波涛装修。
-										<br />
-										<br />
-										装修方案老人家看了都很满意，以复古风装修为主家里的墙纸大多是暖色调，满满的温馨祥祥和
+										{{ v.desc }}
 										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
 									<Button :text="'定制我的装修方案'" @click.native="$store.state.dialogVisible = true"></Button>
@@ -59,31 +56,31 @@
 			<h3 class="wow">FLAG OF HONOR</h3>
 			<div class="swiper-box wow">
 				<swiper :options="fhBannerOptions">
-					<swiper-slide v-for="(v, i) in fhArr" :key="i">
+					<swiper-slide v-for="v in ryjq" :key="v.aid">
 						<div class="img-box">
 							<div class="left">
 								<div class="top">
-									<div class="img-box"><img :src="v.img1" alt="" /></div>
-									<div class="img-box"><img :src="v.img4" alt="" /></div>
-									<div class="img-box"><img :src="v.img5" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
 								</div>
 								<div class="bottom">
 									<div class="left">
-										<div class="img-box"><img :src="v.img2" alt="" /></div>
-										<div class="img-box"><img :src="v.img3" alt="" /></div>
+										<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+										<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
 									</div>
 									<div class="right">
-										<div class="img-box"><img :src="v.img6" alt="" /></div>
+										<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
 									</div>
 								</div>
 							</div>
 							<div class="out-right">
 								<div class="top">
-									<div class="img-box"><img :src="v.img7" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
 								</div>
 								<div class="bottom">
-									<div class="img-box"><img :src="v.img8" alt="" /></div>
-									<div class="img-box"><img :src="v.img9" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
 								</div>
 							</div>
 						</div>
@@ -94,7 +91,7 @@
 				<div class="controals">
 					<div class="swiper-next wow fh-next"></div>
 					<div class="swiper-pre wow fh-pre"></div>
-					<div class="swiper-pagination wow fh-pagination"></div>
+					<div class="swiper-pagination"></div>
 				</div>
 			</div>
 		</div>
@@ -103,9 +100,9 @@
 			<h3 class="wow">OWNER REVIEWS</h3>
 			<div class="swiper-box wow">
 				<swiper :options="dpBannerOptions">
-					<swiper-slide v-for="(v, i) in dpArr" :key="i">
+					<swiper-slide v-for="(v) in yzdp" :key="v.id">
 						<div class="img-box">
-							<img :src="v" alt="" />
+							<img :src="web_url+v.img" alt="" />
 							<div class="mask"></div>
 						</div>
 					</swiper-slide>
@@ -220,7 +217,7 @@ html {
 						height: 100%;
 						background-color: #122133;
 						color: #fff;
-						transition: all 1s;
+						transition: all 0.8s;
 						.top {
 							display: flex;
 							padding-bottom: 33px;
@@ -288,17 +285,14 @@ html {
 					}
 				}
 			}
-			/deep/.swiper {
-				display: none;
-			}
-			.active {
+			.swiper-slide-active {
 				.img-box {
 					opacity: 1;
 					transition: all 1s;
 					.left-info {
 						width: 450px;
 						.inner-box {
-							transition: all 1s 0.5s;
+							// transition: all 1s 0.5s;
 							left: 0px;
 							span {
 								cursor: pointer;
@@ -344,6 +338,9 @@ html {
 			// min-height: 700px;
 			.swiper-container {
 				padding: 20px;
+			}
+			img{
+				min-height: 488px;
 			}
 			.img-box {
 				position: relative;
@@ -519,6 +516,9 @@ html {
 		.img-box {
 			transform-origin: center;
 		}
+		.mask{
+			height: 100vh;
+		}
 	}
 	.ownerProp {
 		display: flex;
@@ -526,11 +526,11 @@ html {
 		align-items: center;
 		.img-box {
 			position: absolute;
-			top:50%;
+			top: 50%;
 			left: 50%;
-			transform: translate(-50%,-50%) scale(1.2);
+			transform: translate(-50%, -50%) scale(1.2);
 			z-index: 11111;
-			img{
+			img {
 				width: 100%;
 				height: 100%;
 			}

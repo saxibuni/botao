@@ -1,15 +1,35 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Button from '../../components/button.vue';
 import Banner from '../../components/banner.vue';
-
+import utils from 'root/utils';
 @Component({
 	components: {
 		Button,
 		Banner
+	},
+	filters: {
+		formatTime(val: number) {
+			const date = new Date(val * 1000);
+			const year = date.getFullYear();
+			const month = date.getMonth() + 1;
+			const day = date.getDate();
+			const newtime = `${year}-${month}-${day}`;
+			return newtime;
+		},
+		formatTime2(val: number) {
+			const date = new Date(val * 1000);
+			const year = date.getFullYear();
+			const month = date.getMonth();
+			const day = date.getDate();
+			const eMonh = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+			const newtime = `${year},${eMonh[month]},${day}`;
+			return newtime;
+		}
 	}
 })
 export default class StrategyDetail extends Vue {
 	newListFlag: number = 3;
+	web_url = '';
 	BannerData = {
 		imgUrl: require('../../assets/strategybg.jpg'),
 		cn: '最新资讯',
@@ -54,6 +74,29 @@ export default class StrategyDetail extends Vue {
 		}
 	];
 
+	archivesInfo = {};
+	created() {
+		this.queryDetail();
+	}
+
+	queryDetail() {
+		utils.service.queryNewsDetail(this.$route.query.aid, res => {
+			console.log(res.data);
+
+			//banner
+			this.web_url = res.data.web_url;
+			this.BannerData.imgUrl = this.web_url + res.data.banner.litpic;
+			this.BannerData.cn = this.web_url + res.data.banner.title;
+			this.BannerData.en = this.web_url + res.data.banner.etitle;
+
+			//text
+			this.archivesInfo = res.data.archivesInfo;
+
+			//newList
+			this.newsList = res.data.newsTopList;
+		});
+	}
+
 	mounted() {
 		this.restartWow();
 	}
@@ -80,6 +123,6 @@ export default class StrategyDetail extends Vue {
 		}
 	}
 	openQQ() {
-		window.open(`https://connect.qq.com/widget/shareqq/index.html?${window.location.href}`,'_blank','height=100');
+		window.open(`https://connect.qq.com/widget/shareqq/index.html?${window.location.href}`, '_blank', 'height=100');
 	}
 }
