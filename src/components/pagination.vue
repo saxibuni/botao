@@ -68,7 +68,7 @@ html {
 		ul {
 			display: flex;
 			justify-content: space-between;
-			width: 374px;
+			// width: 374px;
 			li {
 				width: auto;
 				padding: 0;

@@ -12,7 +12,7 @@ import ChinaMap from 'root/components/chinamap.vue';
 import BaiduMap from 'vue-baidu-map';
 import ICountUp from 'root/components/countup.vue';
 import { Events } from 'root/utils/EnumUtils';
-import { device } from 'root/utils';
+import utils from 'root/utils';
 
 gsap.registerPlugin(Draggable, InertiaPlugin, ScrollTrigger, DrawSVGPlugin, MotionPathPlugin, SplitText);
 Vue.use(BaiduMap, {
@@ -54,86 +54,11 @@ export default class Brand extends Vue {
 	times: '';
 	historyScroll: HTMLElement;
 	height: number = 0;
-	isActive = 7;
+	isActive = 0;
 	bannerActive = 0;
 	asideNav = ['波涛品牌', '品牌数据', '核心价值观', '发展历程', '荣誉资质', '社会责任', '联系我们'];
 	nav = ['荣誉证书', '研发专利'];
-	btBrandArr = ['壹澜建材', '九衡堂', '锦沁建筑劳务', '繁构国际设计', '汇海船舶', '锦悦建设', '波涛家庭装饰', '波澜管理', '波涛装饰家居', '波涛简嘉公寓', '波涛商学院', '波涛软装'];
 	isIE: boolean;
-	btBrandInfoArr = [
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		},
-		{
-			title: '波涛家庭装饰',
-			text:
-				'上海波涛家庭装饰有限公司以下简称【波涛家庭装饰公司】是波涛集团旗下专业为高端住宅提供建筑规划、土建改造、室内外设计、装饰施工、主材选购、智能设备、家具软装配套、园林景观以及饰后服务于一体的全案整装定制服务机构，具有国家一级施工资质和国家乙级设计资质，致力于为高端需求的业主打造“极致·个性·品位”的高品质生活空间。',
-			img: require('../../assets/bg_g1_part2_pic.jpg')
-		}
-	];
 	hvBanner = [
 		{
 			imgUrl: require('../../assets/bg_g1_part6_honer1.jpg'),
@@ -194,21 +119,7 @@ export default class Brand extends Vue {
 		// 	text: ['捐资援建中国最北部希望小学-齐齐哈尔希望小学', '波涛集团每年定期组织无偿公益献血活动']
 		// }
 	];
-	devolopeList = [
-		{ time: '2001-2005', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-		{ time: '2006-2010', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-		{ time: '2011-2014', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-		{
-			time: '2015-2016',
-			name: '起航·发展',
-			text: [
-				'波涛装饰正式成立，披荆斩棘，砥砺前行',
-				'波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场成立波涛家居建材广场。'
-			]
-		},
-		{ time: '2017-2018', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] },
-		{ time: '2019-2020', name: '起航·发展', text: ['波涛装饰正式成立，披荆斩棘，砥砺前行', '波涛装饰注册成立，率先推出工厂化施工，推出“家装一站式购齐”服务，成立波涛家居建材广场。'] }
-	];
+	devolopeList = [{}];
 	coreList = [
 		{
 			imgUrl: require('../../assets/bg_g1_part4_pic1.jpg'),
@@ -280,8 +191,46 @@ export default class Brand extends Vue {
 	textShow: boolean = true;
 	grayImgHeight: number;
 	scrollHeight: number;
+	web_url = '';
+	btbrandInfo = {};
+	btzgsList = {};
+	brandDataInfo = {};
+	hxjzgList = [];
+	fzlcList = [];
+	ryzz=[];
 	created() {
-		this.isIE = device.browser.ie;
+		this.isIE = utils.device.browser.ie;
+		this.queryBrand();
+	}
+
+	queryBrand() {
+		utils.service.queryBrand(res => {
+			console.log(res.data);
+			this.web_url = res.data.web_url;
+
+			this.btbrandInfo = res.data.btbrandInfo;
+
+			//botao子公司
+			this.btzgsList = res.data.btzgsList;
+
+			// botao品牌数据
+			this.brandDataInfo = res.data.brandDataInfo;
+
+			//核心价值观
+			this.hxjzgList = res.data.hxjzgList;
+
+			// 发展历程
+			res.data.fzlcList.forEach(v => {
+				v.text = [v.title];
+				v.text.push(v.desc);
+			});
+			this.devolopeList = res.data.fzlcList;
+
+			//荣誉资质
+			this.ryzz=res.data.ryzz
+
+			this.restartWow()
+		});
 	}
 
 	mounted() {
@@ -361,10 +310,8 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
-
 				let offset = self.progress * (this.grayImgHeight - 290);
 				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
-					console.log(this.$el.querySelector<HTMLElement>('.inner-img').style.height,'this.$el.querySelector');
 
 				this.calcProgressIndex(offset + 290, this.pos);
 			}
@@ -392,7 +339,7 @@ export default class Brand extends Vue {
 	}
 
 	change(str) {
-		if(this.arrowFlag) return
+		if (this.arrowFlag) return;
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
 		str == 'pre' ? progressIndex-- : progressIndex++;
@@ -402,14 +349,13 @@ export default class Brand extends Vue {
 			this.calcRotate(str);
 		}
 
-
 		gsap.to('.history-scroll', {
 			duration: 0.5,
 			scrollTop: this.calcDistance(progressIndex)
 		});
-		this.arrowFlag=true;
+		this.arrowFlag = true;
 		setTimeout(() => {
-			this.arrowFlag=false
+			this.arrowFlag = false;
 		}, 200);
 	}
 
@@ -541,7 +487,7 @@ export default class Brand extends Vue {
 
 		setTimeout(() => {
 			this.createDragger();
-			this.createTrigger()
+			this.createTrigger();
 			if (this.pathTween) {
 				this.pathTween.kill();
 				this.isPlayingPath = false;

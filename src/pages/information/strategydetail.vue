@@ -4,18 +4,16 @@
 		<!-- 装修攻略详情 -->
 		<div class="article">
 			<h2 class="wow">
-				温暖家
-				<span>|</span>
-				多面餐厅，一种舒适
+			{{archivesInfo.title}}
 			</h2>
 			<div class="title-info wow">
 				<div class="left">
 					<i></i>
 					时间 :
-					<span>2021-09-14</span>
+					<span>{{archivesInfo.show_time | formatTime}}</span>
 					<i></i>
 					浏览量 :
-					<span>5868</span>
+					<span>{{archivesInfo.click}}</span>
 				</div>
 				<div class="right">
 					<i></i>
@@ -37,7 +35,8 @@
 					</div>
 				</div>
 			</div>
-			<p class="wow">
+			<div v-html="archivesInfo.content"></div>
+			<!-- <p class="wow">
 				客厅是一个家的名片,随着需求的变化,客厅也因此变得多元化。
 				<br />
 				所以,客厅的打开方式也可以是这样
@@ -79,7 +78,7 @@
 				整体的设计以木材为主,保留木材原有的纹理,大理石点缀,刚柔并济,
 				<br />
 				勾勒出温暖惬意的家居情调。
-			</p>
+			</p> -->
 		</div>
 		<div class="recommended-news">
 			<h2 class="wow">推荐新闻</h2>
@@ -87,12 +86,12 @@
 			<div class="item-list">
 				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i < newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<div class="img-box" @click="$router.push({ name: 'strategy-list' })">
-						<img :src="v.imgUrl" alt="" />
+						<img :src="web_url+v.img" alt="" />
 					</div>
 					<div class="bottom">
-						<div class="date">{{ v.date }}</div>
+						<div class="date">{{ v.show_time | formatTime2}}</div>
 						<div class="title">{{ v.title }}</div>
-						<div class="text">{{ v.text }}</div>
+						<div class="text">{{ v.desc }}</div>
 						<div class="more" @click="$router.push({ name: 'strategy-list' })" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
 							More
 							<span></span>

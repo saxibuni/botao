@@ -1,14 +1,27 @@
 import { Vue, Component } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue';
 import Banner from '../../components/banner.vue';
+import utils from 'root/utils';
 @Component({
 	components: {
 		Pagination,
 		Banner
+	},
+	filters: {
+		formatTime(val: number) {
+			const date = new Date(val * 1000);
+			const year = date.getFullYear();
+			const month = date.getMonth();
+			const day = date.getDate();
+			const eMonh = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+			const newtime = `${year},${eMonh[month]},${day}`;
+			return newtime;
+		}
 	}
 })
 export default class StrategyList extends Vue {
-	isShow:boolean=false;
+	isShow: boolean = false;
+	web_url = '';
 	paginationData = { size: 100, total: 1000 };
 	BannerData = {
 		imgUrl: require('../../assets/strategybg.jpg'),
@@ -73,14 +86,36 @@ export default class StrategyList extends Vue {
 			text: '俗话说硬装为骨，软装为魂色彩作为软装设计的精髓，就足以让家居空间出彩，客厅作为待客的门面'
 		}
 	];
+	topList = [];
+	newsList = [];
+	created() {
+		this.query();
+	}
 
-	addClass(i,dom) {
+	query() {
+		utils.service.queryNews(res => {
+			console.log(res.data);
+
+			this.web_url = res.data.web_url;
+			//banner
+			this.BannerData.imgUrl = this.web_url + res.data.banner.litpic;
+			this.BannerData.cn = this.web_url + res.data.banner.title;
+			this.BannerData.en = this.web_url + res.data.banner.etitle;
+
+			//toplist
+			this.topList = res.data.newsTopList;
+
+			this.newsList = res.data.newsList;
+		});
+	}
+
+	addClass(i, dom) {
 		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
 
 		lis[i].classList.add('hover');
 	}
-	removeClass(i,dom) {
+	removeClass(i, dom) {
 		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
 		for (let i = 0; i < lis.length; i++) {

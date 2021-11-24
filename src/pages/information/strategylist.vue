@@ -21,14 +21,14 @@
 					</div>
 				</div>
 				<ul class="strategy-right wow">
-					<li v-for="(v, i) in stratiegyArr" :key="i" @click="$router.push({ name: 'strategy-detail' })">
+					<li v-for="v in topList" :key="v.id" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
 						<div class="img-box">
-							<img :src="v.imgUrl" />
+							<img :src="web_url + v.img" />
 						</div>
 						<div class="info-box">
-							<div class="date">{{ v.date }}</div>
+							<div class="date">{{ v.show_time | formatTime }}</div>
 							<h4 class="title">{{ v.title }}</h4>
-							<p>{{ v.text }}</p>
+							<p>{{ v.desc }}</p>
 							<div class="more" @mouseenter="addClass(i, '.strategy-right')" @mouseleave="removeClass(i, '.strategy-right')">
 								More
 								<span></span>
@@ -40,14 +40,14 @@
 		</div>
 		<div class="list-box">
 			<ul class="list wow">
-				<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i" @click="$router.push({ name: 'strategy-detail' })" >
+				<li v-for="(v, i) in newsList" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
 					<div class="img-box">
-						<img :src="v.imgUrl" alt="" />
+						<img :src="web_url + v.img" alt="" />
 					</div>
 					<div class="info-box">
-						<div class="date">{{ v.date }}</div>
+						<div class="date">{{ v.show_time | formatTime }}</div>
 						<h4 class="title">{{ v.title }}</h4>
-						<p>{{ v.text }}</p>
+						<p>{{ v.desc }}</p>
 						<div class="more" @mouseenter="addClass(i, '.list')" @mouseleave="removeClass(i, '.list')">
 							More
 							<span></span>
@@ -146,7 +146,7 @@ html {
 			font-size: 18px;
 			font-weight: 700;
 			cursor: pointer;
-			transition: all .3s;
+			transition: all 0.3s;
 			span {
 				top: 50%;
 				margin-left: 10px;
@@ -163,7 +163,7 @@ html {
 			}
 			&:hover span {
 				margin-left: 15px;
-				transform: rotate(-45deg) ;
+				transform: rotate(-45deg);
 			}
 		}
 	}
@@ -226,9 +226,9 @@ html {
 							color: #000;
 							transition: all 0.3s;
 						}
-							&:hover .title {
-						color: #eb551c;
-					}
+						&:hover .title {
+							color: #eb551c;
+						}
 					}
 
 					&:not(:last-child) {
@@ -251,7 +251,6 @@ html {
 							color: #eb551c !important;
 						}
 					}
-
 				}
 			}
 		}
@@ -278,8 +277,8 @@ html {
 					padding: 41px 0 50px 39px;
 					width: 100%;
 					cursor: pointer;
-					.title{
-						transition: all .3s;
+					.title {
+						transition: all 0.3s;
 					}
 					.date {
 						color: #888;
@@ -292,7 +291,7 @@ html {
 						width: 490px;
 						color: #666;
 					}
-					&:hover .title{
+					&:hover .title {
 						color: #ed5300;
 					}
 				}
