@@ -40,5 +40,7 @@ export class Service extends EventEmitter {
 	public queryYxzc(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/yxzc', req, callback);
 	}
-
+	public queryRzsh(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/rzsh', req, callback);
+	}
 }
