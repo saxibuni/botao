@@ -133,7 +133,7 @@ export default class Search extends Vue {
 		}
 	}
 	onSearch() {
-		if (!this.keyword) {
+		if (!this.keywords) {
 			this.$store.state.dialog={
 				state:2,
 				text:'请输入需要搜索的内容'
