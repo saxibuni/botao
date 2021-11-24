@@ -238,14 +238,10 @@ export default class Brand extends Vue {
 			this.shzrList = res.data.shzrList;
 
 			this.restartWow();
-			this.onResize();
 		});
 	}
 
 	mounted() {
-		// console.log(this.$store.footData,'footData');
-		console.log(this.$store.state.footData,'this.$store.state.footData.web_url');
-
 		this.getHeight();
 		this.initTextChars();
 		this.createDragger();
@@ -259,6 +255,9 @@ export default class Brand extends Vue {
 		this.restartWow();
 		this.$bus.$on(Events.RESIZE, this.onResize);
 		this.$bus.$on('params-change', this.jump);
+		setTimeout(() => {
+			this.onResize();
+		}, 200);
 	}
 
 	initTextChars() {
@@ -496,6 +495,7 @@ export default class Brand extends Vue {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
 		svgBox.style.width = ul.clientWidth + 'px';
+		console.log(ul.clientWidth,'clientWidthclientWidth');
 
 		setTimeout(() => {
 			this.createDragger();
