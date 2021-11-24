@@ -184,6 +184,7 @@ export default class JoinUs extends Vue {
 			disableOnInteraction: false
 		}
 	};
+	desc='';
 
 	created() {
 		this.queryJS();
@@ -213,6 +214,9 @@ export default class JoinUs extends Vue {
 					return v;
 				});
 			});
+
+			//desc
+			this.desc=res.data.desc
 
 			//招聘信息
 			res.data.zpxxList.forEach(v => {

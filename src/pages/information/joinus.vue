@@ -11,7 +11,7 @@
 				<h4>TANLENT CONCEPT</h4>
 			</div>
 			<div class="right wow">
-				<p>选贤举能，贤者必上进,能者有前途。波涛引进德才兼备的贤者，为每一位真正能为企业发展做出贡献的员工提供尽情发挥的舞台,个人的付出和收获、能力和地位必定成正比</p>
+				<p>{{desc}}</p>
 				<Button :text="'加入我们'"></Button>
 			</div>
 		</div>

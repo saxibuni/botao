@@ -22,7 +22,7 @@ import utils from 'root/utils';
 export default class StrategyList extends Vue {
 	isShow: boolean = false;
 	web_url = '';
-	paginationData = { size: 100, total: 1000 };
+	paginationData = { size: 6, total: 1000 };
 	BannerData = {
 		imgUrl: require('../../assets/strategybg.jpg'),
 		cn: '最新资讯',
@@ -102,10 +102,13 @@ export default class StrategyList extends Vue {
 			this.BannerData.cn = this.web_url + res.data.banner.title;
 			this.BannerData.en = this.web_url + res.data.banner.etitle;
 
+
+
 			//toplist
 			this.topList = res.data.newsTopList;
 
 			this.newsList = res.data.newsList;
+			this.paginationData.total=res.data.newsList.length;
 		});
 	}
 
