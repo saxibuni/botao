@@ -11,7 +11,7 @@ import utils from 'root/utils'
 	}
 })
 export default class DesignList extends Vue {
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = ''
 	listData={}
 	paginationData={size:100,total:1000}
 	tabs=[]
@@ -31,11 +31,10 @@ export default class DesignList extends Vue {
 		// keywords:1,
 				},
 				res => {
-					console.log(res.data);
 					this.listData=res.data
 					res.data.sjssx.unshift('全部')
 					this.tabs=res.data.sjssx
-
+					this.web_url = res.data.web_url;
 					utils.emitter.$emit('bannerData', res.data);
 				}
 			);

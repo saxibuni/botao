@@ -10,7 +10,7 @@ import { device } from 'root/utils';
 	}
 })
 export default class CaseListVr extends Vue {
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = ''
 	vrData={}
 	flag = true;
 	isIE: boolean = false;
@@ -39,7 +39,7 @@ export default class CaseListVr extends Vue {
 					this.tabList[0].info=res.data.stylesx
 					this.tabList[1].info=res.data.hxsx
 					this.tabList[2].info=res.data.mjsx
-
+					this.web_url = res.data.web_url;
 					utils.emitter.$emit('bannerData', res.data);
 				}
 			);

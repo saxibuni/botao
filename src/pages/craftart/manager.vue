@@ -10,12 +10,10 @@
 				<div>
 					<img src="~assets/bg_d3_part2.png" alt="" />
 					<ul>
-						<li v-for="(item, i) in page1Data" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-							<p>0{{ i + 1 }}</p>
-							<p>{{ item.desc1 }}</p>
-							<p>{{ item.desc2 }}</p>
-							<p>{{ item.desc3 }}</p>
-							<p v-if="item.desc4">{{ item.desc4 }}</p>
+						<li v-for="(item, i) in managerData.sglcList" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+							<p>0{{ item.status }}</p>
+							<p>{{ item.title }}</p>
+							<p style="white-space: pre-wrap;" v-html="item.desc"></p>
 						</li>
 					</ul>
 				</div>
@@ -25,27 +23,27 @@
 					<h3 class="wow">场容标准</h3>
 					<p class="wow">FIELD CAPACITY STANDARD</p>
 				</div>
-				<div class="main">
+				<div class="main" v-if="managerData.crbzList">
 					<img src="~assets/s_3.jpg" alt="" />
 					<div class="circle wow">
 						<div class="imgBox">
 							<div class="img-box">
 								<transition-group name="toggle-image">
-									<div class="img" v-for="(item, index) in imgList" v-show="active1Index == index" :key="index">
-										<img :src="item" />
+									<div class="img" v-for="(item, index) in 8" v-show="active1Index == index" :key="index">
+										<img :src="web_url + managerData.crbzList[index].img" />
 									</div>
 								</transition-group>
 							</div>
 							<ul class="left">
-								<li v-for="(v, i) in page2Data.left" :key="i" :class="active1Index == i ? 'active1' : ''" @click="active1Index = i">
-									{{ v }}
+								<li v-for="(v, i) in managerData.crbzList.slice(0, 4)" :key="i" :class="active1Index == i ? 'active1' : ''" @click="active1Index = i">
+									{{ v.title }}
 									<span></span>
 								</li>
 							</ul>
 							<ul class="right">
-								<li v-for="(v, i) in page2Data.right" :key="i" :class="active1Index == i + 4 ? 'active1' : ''" @click="active1Index = i + 4">
+								<li v-for="(v, i) in managerData.crbzList.slice(4, 8)" :key="i" :class="active1Index == i + 4 ? 'active1' : ''" @click="active1Index = i + 4">
 									<span></span>
-									{{ v }}
+									{{ v.title }}
 								</li>
 							</ul>
 						</div>
@@ -59,14 +57,14 @@
 				</div>
 				<div class="main">
 					<ul>
-						<li v-for="(item, index) in page3Data" :key="index" class="wow" :style="{ 'animation-delay': 0.08 * index + 0.03 + 's' }">
+						<li v-for="(item, index) in managerData.tjgyList" :key="index" class="wow" :style="{ 'animation-delay': 0.08 * index + 0.03 + 's' }">
 							<div class="imgBox">
-								<img :src="item.imgUrl" alt="" />
+								<img :src="web_url + item.img" alt="" />
 							</div>
 							<div class="text">
-								<p>0{{ index + 1 }}</p>
-								<p>{{ item.desc1 }}</p>
-								<p v-if="item.desc2">{{ item.desc2 }}</p>
+								<p>0{{ item.status }}</p>
+								<p>{{ item.title }}</p>
+								<p v-if="item.desc">{{ item.desc }}</p>
 								<div class="line"></div>
 							</div>
 						</li>
@@ -82,20 +80,20 @@
 				<div class="main">
 					<div class="tab wow">
 						<ul>
-							<li v-for="(item, index) in page4Data" :key="index" :class="active2Index == index ? 'active2' : ''" @click="active2Index = index">
+							<li v-for="(item, index) in managerData.zlys_cate" :key="index" :class="active2Index == index ? 'active2' : ''" @click="active2Index = index">
 								<span></span>
-								<p>{{ item }}</p>
+								<p>{{ item.typename }}</p>
 							</li>
 						</ul>
 					</div>
 					<div class="swiper wow">
-						<swiper :options="swiperOptions1">
-							<swiper-slide v-for="(item, index) in 9" :key="index">
+						<swiper :options="swiperOptions1" v-if="managerData.zlys_cate">
+							<swiper-slide v-for="(item, index) in managerData.zlys_cate[active2Index].list" :key="index">
 								<div class="imgBox">
-									<img src="~assets/bg_d3_part5_pic1.jpg" alt="" />
+									<img :src="web_url + item.img" alt="" />
 									<div>
-										<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
-										<p>电验收-导线铺设</p>
+										<img src="~assets/ic_c2_play.png" @click="playVideo(item.video)" alt="" />
+										<p>{{ item.title }}</p>
 									</div>
 								</div>
 							</swiper-slide>
@@ -115,78 +113,20 @@
 					<div class="left">
 						<div class="tab">
 							<el-tabs v-model="activeName" @tab-click="handleClick">
-								<el-tab-pane name="1">
+								<el-tab-pane :name="String(index + 1)" v-for="(item, index) in managerData.zjtxList" :key="index">
 									<span slot="label">
-										<img src="~assets/icons/ic_d3_part6_a2.png" alt="" v-if="activeName == 1" />
-										<!-- <img src="~assets/icons/ic_d3_part6_a1.png" alt="" v-else /> -->
+										<img :src="web_url + item.icon" alt="" v-if="activeName == String(index + 1)" />
 										<i v-else></i>
-										<p>7重质量巡检</p>
+										<p>{{ item.title }}</p>
 									</span>
-									<div class="content">
+									<div class="content" v-if="item.desc">
 										<ul>
-											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
+											<li v-for="(v, i) in item.desc.split('\r\n')" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 												<p>
 													<span></span>
-													项目经理
+													{{ v.split(';')[0] }}
 												</p>
-												<p>每周3次</p>
-											</li>
-										</ul>
-									</div>
-								</el-tab-pane>
-								<el-tab-pane name="2">
-									<span slot="label">
-										<img src="~assets/icons/ic_d3_part6_b2.png" alt="" v-if="activeName == 2" />
-										<!-- <img src="~assets/icons/ic_d3_part6_b1.png" alt="" v-else /> -->
-										<i v-else></i>
-										<p>董事长投诉热线</p>
-									</span>
-									<div class="content">
-										<ul>
-											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-												<p>
-													<span></span>
-													项目经理
-												</p>
-												<p>每周3次</p>
-											</li>
-										</ul>
-									</div>
-								</el-tab-pane>
-								<el-tab-pane name="3">
-									<span slot="label">
-										<img src="~assets/icons/ic_d3_part6_c2.png" alt="" v-if="activeName == 3" />
-										<!-- <img src="~assets/icons/ic_d3_part6_c1.png" alt="" v-else /> -->
-										<i v-else></i>
-										<p>独立质检部门</p>
-									</span>
-									<div class="content">
-										<ul>
-											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-												<p>
-													<span></span>
-													项目经理
-												</p>
-												<p>每周3次</p>
-											</li>
-										</ul>
-									</div>
-								</el-tab-pane>
-								<el-tab-pane name="4">
-									<span slot="label">
-										<img src="~assets/icons/ic_d3_part6_d2.png" alt="" v-if="activeName == 4" />
-										<!-- <img src="~assets/icons/ic_d3_part6_d1.png" alt="" v-else /> -->
-										<i v-else></i>
-										<p>微信群/工地直播</p>
-									</span>
-									<div class="content">
-										<ul>
-											<li v-for="(v, i) in 7" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-												<p>
-													<span></span>
-													项目经理
-												</p>
-												<p>每周3次</p>
+												<p>{{ v.split(';')[1] }}</p>
 											</li>
 										</ul>
 									</div>
@@ -198,8 +138,8 @@
 						<img src="~assets/bg_d3_part6_right.jpg" alt="" />
 						<div class="img">
 							<transition-group name="toggle-image">
-								<div class="img-box" v-for="(v, i) in imgList" :key="i" v-show="i + 1 == Number(activeName)">
-									<img class="clrcleimg" :src="v" alt="" />
+								<div class="img-box" v-for="(v, i) in managerData.zjtxList" :key="i" v-show="i + 1 == Number(activeName)">
+									<img class="clrcleimg" :src="web_url + v.img" alt="" />
 								</div>
 							</transition-group>
 						</div>
@@ -734,6 +674,7 @@ export default Manager;
 					height: 782px;
 					width: 1760px;
 					// animation: fade-ine 1s ease forwards;
+
 					.imgBox {
 						position: relative;
 						width: 573px;
@@ -864,11 +805,15 @@ export default Manager;
 											// margin-right: 95px;
 											padding-right: 95px;
 											&:nth-child(2) {
+												img {
+													width: 41px;
+													height: 41px;
+												}
 												span {
 													i {
 														display: block;
 														background: url('~assets/icons/ic_d3_part6_a1.png') no-repeat;
-														background-size: 100% 100%;
+														background-size: 100% 100% !important;
 														width: 41px;
 														height: 41px;
 													}
@@ -877,16 +822,22 @@ export default Manager;
 													span {
 														i {
 															background: url('~assets/icons/ic_d3_part6_a2.png') no-repeat;
+															width: 41px;
+															height: 41px;
 														}
 													}
 												}
 											}
 											&:nth-child(3) {
+												img {
+													width: 41px;
+													height: 40px;
+												}
 												span {
 													i {
 														display: block;
 														background: url('~assets/icons/ic_d3_part6_b1.png') no-repeat;
-														background-size: 100% 100%;
+														background-size: 100% 100% !important;
 														width: 41px;
 														height: 40px;
 													}
@@ -895,16 +846,22 @@ export default Manager;
 													span {
 														i {
 															background: url('~assets/icons/ic_d3_part6_b2.png') no-repeat;
+															width: 41px;
+															height: 40px;
 														}
 													}
 												}
 											}
 											&:nth-child(4) {
+												img {
+													width: 47px;
+													height: 46px;
+												}
 												span {
 													i {
 														display: block;
 														background: url('~assets/icons/ic_d3_part6_c1.png') no-repeat;
-														background-size: 100% 100%;
+														background-size: 100% 100% !important;
 														width: 47px;
 														height: 46px;
 													}
@@ -913,16 +870,22 @@ export default Manager;
 													span {
 														i {
 															background: url('~assets/icons/ic_d3_part6_c2.png') no-repeat;
+															width: 47px;
+															height: 46px;
 														}
 													}
 												}
 											}
 											&:nth-child(5) {
+												img {
+													width: 43px;
+													height: 42px;
+												}
 												span {
 													i {
 														display: block;
 														background: url('~assets/icons/ic_d3_part6_d1.png') no-repeat;
-														background-size: 100% 100%;
+														background-size: 100% 100% !important;
 														width: 43px;
 														height: 42px;
 													}
@@ -931,6 +894,8 @@ export default Manager;
 													span {
 														i {
 															background: url('~assets/icons/ic_d3_part6_d2.png') no-repeat;
+															width: 43px;
+															height: 42px;
 														}
 													}
 												}
@@ -965,11 +930,12 @@ export default Manager;
 								margin-top: 80px;
 								display: flex;
 								flex-wrap: wrap;
-								justify-content: space-between;
+								// justify-content: space-between;
 								width: 655px;
 								li {
 									margin-bottom: 35px;
-									width: 180px;
+									// width: 180px;
+									margin-right: 130px;
 									p {
 										font-size: 20px;
 										&:nth-of-type(1) {

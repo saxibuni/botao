@@ -14,7 +14,7 @@ import utils from 'root/utils'
 })
 export default class CaseDetail extends Vue {
 	detailData={}
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = ''
 	activeIndex=0
 	tabs=['同风格案例','同设计师案例']
 	swiperOptions1: any = {
@@ -65,7 +65,7 @@ export default class CaseDetail extends Vue {
 					aid:20
 				},
 				res => {
-					console.log(res.data);
+					this.web_url = res.data.web_url;
 					this.detailData=res.data
 					utils.emitter.$emit('bannerData', res.data);
 				}

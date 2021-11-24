@@ -14,7 +14,7 @@ import utils from 'root/utils'
 })
 export default class CaseList extends Vue {
 	listData={}
-	web_url = 'http://btgwcs.zhulu76.com/'
+	web_url = ''
 	paginationData={size:100,total:1000}
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
@@ -67,7 +67,6 @@ created(){
 	// keywords:1,
 			},
 			res => {
-				console.log(res.data);
 				this.listData=res.data
 				res.data.stylesx.unshift('全部')
 				res.data.hxsx.unshift('全部')
@@ -75,7 +74,7 @@ created(){
 				this.tabList[0].info=res.data.stylesx
 				this.tabList[1].info=res.data.hxsx
 				this.tabList[2].info=res.data.mjsx
-
+				this.web_url = res.data.web_url;
 				utils.emitter.$emit('bannerData', res.data);
 			}
 		);
