@@ -30,40 +30,40 @@
 		<div class="swiper" v-if="listData.tjlist">
 			<div class="content">
 				<img src="~assets/bg_b1_part2_mask1.png" alt="" />
-				<div class="text wow">
-					<p>{{ listData.tjlist[0].title }}</p>
+				<div class="text wow" v-for="(v, i) in listData.tjlist" :key="i" v-show="swiperIndex == i">
+					<p>{{ v.title }}</p>
 					<p>
-						<span>{{ listData.tjlist[0].style }}</span>
-						<span>{{ listData.tjlist[0].hx }}</span>
-						<span>{{ listData.tjlist[0].mj }}</span>
+						<span>{{ v.style }}</span>
+						<span>{{ v.hx }}</span>
+						<span>{{ v.mj }}</span>
 					</p>
-					<p>{{ listData.tjlist[0].des_info.sjln }}</p>
+					<p>{{ v.des_info.sjln }}</p>
 					<div>
-						<img :src="web_url + listData.tjlist[0].des_info.faceimg" alt="" />
+						<img :src="web_url + v.des_info.faceimg" alt="" />
 						<div>
-							<p>{{ listData.tjlist[0].des_info.title }}</p>
-							<p>{{ listData.tjlist[0].des_info.sjssx }}</p>
+							<p>{{ v.des_info.title }}</p>
+							<p>{{ v.des_info.sjssx }}</p>
 						</div>
 						<div>
 							<p>从业年限</p>
-							<p>{{ listData.tjlist[0].des_info.cysj }}</p>
+							<p>{{ v.des_info.cysj }}</p>
 						</div>
 					</div>
 					<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true" />
 				</div>
 			</div>
 			<swiper :options="bannerSwiperOptions1">
-				<swiper-slide v-for="(item, i) in listData.tjlist[0].imgs.split(',')" :key="i">
-					<img :src="web_url + item" alt="" />
+				<swiper-slide v-for="(item, i) in listData.tjlist" :key="i">
+					<img :src="web_url + item.img" alt="" />
 					<img src="~assets/bg_b1_part2_mask2.png" alt="" />
 				</swiper-slide>
 			</swiper>
 			<div class="swiper-pagination3"></div>
 		</div>
 		<div class="cases">
-			<Cases v-for="(v, i) in listData.list" :caseData="v" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" />
+			<Cases v-for="(v, i) in caseList" :caseData="v" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" />
 		</div>
-		<Pagination :data="paginationData" />
+		<Pagination :data="paginationData" @getData="getData1" />
 	</div>
 </template>
 
@@ -361,6 +361,8 @@ export default CaseList;
 			height: 740px;
 			margin: 0;
 			img {
+				width: 100%;
+				height: 100%;
 				&:nth-of-type(2) {
 					position: absolute;
 					bottom: 0;
