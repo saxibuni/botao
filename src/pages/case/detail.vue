@@ -173,7 +173,7 @@ export default CaseDetail;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			margin-left: 320px;
+			// margin-left: 320px;
 			.contentLeft {
 				ul {
 					display: flex;
@@ -445,7 +445,7 @@ export default CaseDetail;
 				}
 			}
 			.swiper-pagination {
-				width: 66px;
+				// width: 66px;
 				height: 12px;
 				position: relative;
 				left: 50%;

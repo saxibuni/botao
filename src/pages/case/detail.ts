@@ -40,8 +40,8 @@ export default class CaseDetail extends Vue {
 		slidesPerView: 3,
 		slidesPerGroup: 3,
 		autoplay: false,
-		observer:true,
-    observeParents:true,
+		// observer:true,
+    // observeParents:true,
 		pagination: {
 			el: '.pagination2',
 			clickable: true
@@ -76,12 +76,13 @@ export default class CaseDetail extends Vue {
 		);
 	}
 	updateSwiper() {
-		console.log(111);
+		setTimeout(() => {
+			let bannerSwiper = (<any>this.$refs)['swiper2'].$swiper;
+			bannerSwiper.update();
+			bannerSwiper.pagination.render();
+			bannerSwiper.pagination.update();
 
-		let bannerSwiper = (<any>this.$refs)['swiper2'].$swiper;
-		bannerSwiper.update();
-		bannerSwiper.pagination.render();
-		bannerSwiper.pagination.update();
+		}, 0);
 	}
 	mounted() {
 		this.restartWow();
