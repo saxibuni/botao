@@ -39,7 +39,7 @@
 			<div>
 				<div class="left wow">
 					<h2>
-						<span>250+</span>
+						<ICountUp :endVal="250" :options="options1"></ICountUp>
 						沪上精装楼盘
 					</h2>
 					<div class="swiper">
@@ -475,6 +475,8 @@ export default SoftDecoration;
 						font-weight: bold;
 						color: #eb551d;
 						margin-right: 21px;
+						display: inline-block;
+						width:145px;
 					}
 					font-size: 42px;
 					font-weight: 400;

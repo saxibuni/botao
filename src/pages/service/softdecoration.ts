@@ -4,14 +4,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
 import utils from "root/utils";
+import ICountUp from 'root/components/countup.vue';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 @Component({
 	components: {
-		Button
+		Button,
+		ICountUp
 	}
 })
 export default class SoftDecoration extends Vue {
+	options1 = {
+		suffix: '+',
+		useGrouping: false
+	};
 	bannerSwiperOptions: any = {
 		speed: 1000,
 		loop: false,
