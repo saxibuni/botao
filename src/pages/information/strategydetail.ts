@@ -85,9 +85,8 @@ export default class StrategyDetail extends Vue {
 
 			//banner
 			this.web_url = res.data.web_url;
-			res.data.banner.etitle=res.data.banner.etitle.toUpperCase()
+			res.data.banner.etitle = res.data.banner.etitle.toUpperCase();
 			this.BannerData = res.data.banner;
-
 
 			//text
 			this.archivesInfo = res.data.archivesInfo;
@@ -96,7 +95,7 @@ export default class StrategyDetail extends Vue {
 			this.newsList = res.data.newsTopList;
 			// this.newsList=this.newsList.concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList)
 
-			this.restartWow()
+			this.restartWow();
 		});
 	}
 
@@ -105,6 +104,11 @@ export default class StrategyDetail extends Vue {
 	}
 	wbJump() {
 		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 https://www.baidu.com`);
+	}
+
+	jump(aid) {
+		window.scroll({ top: 0, behavior: 'smooth' });
+		this.$router.push({ name: 'strategy-detail', query: { aid } });
 	}
 
 	getMore() {

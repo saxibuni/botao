@@ -85,7 +85,7 @@
 			<h3 class="wow">RECOMMENDED NEWS</h3>
 			<div class="item-list">
 				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i < newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-					<div class="img-box" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
+					<div class="img-box" @click="jump(v.aid)">
 						<img :src="web_url+v.img" alt="" />
 					</div>
 					<div class="bottom">

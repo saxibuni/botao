@@ -7,6 +7,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+
 @Component
 export default class pagination extends Vue {
 	input__inner = null;
@@ -18,14 +19,11 @@ export default class pagination extends Vue {
 	data!: any;
 	mounted() {
 		this.restartWow();
-	}
-	currentPage = 1;
-	handleSizeChange(val) {
-		console.log(`每页 ${val} 条`);
+		this.handleCurrentChange(1);
 	}
 
 	handleCurrentChange(val) {
-		console.log(`当前页: ${val}`);
+		this.$emit('getData', val);
 	}
 }
 </script>

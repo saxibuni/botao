@@ -20,40 +20,47 @@ import utils from 'root/utils';
 	}
 })
 export default class StrategyList extends Vue {
-	isShow: boolean = false;
 	web_url = '';
-	paginationData = { size: 6, total: 1000 };
-	BannerData = {
-	};
+	BannerData = {};
+	isShow: boolean = false;
 
 	topList = [];
 	topList2 = [];
 
 	newsList = [];
+	groupList = [];
 	created() {
 		this.query();
+		this.fy();
+		// console.log(this.web_url, 'asdasd');
 	}
+	paginationData = { size: 6, total: 1000, arr: [] };
 
 	query() {
 		utils.service.queryNews(res => {
-			console.log(res.data);
-
-			this.web_url = res.data.web_url;
 			//banner
-			res.data.banner.etitle=res.data.banner.etitle.toUpperCase()
-			this.BannerData=res.data.banner;
+			res.data.banner.etitle = res.data.banner.etitle.toUpperCase();
+			this.BannerData = res.data.banner;
 
 			//toplist
 			this.topList = res.data.newsTopList;
-			this.topList2=[...this.topList]
-			this.topList2.shift()
+			this.topList2 = [...this.topList];
+			this.topList2.shift();
 
 			this.newsList = res.data.newsList;
+			this.newsList = this.newsList.concat(this.newsList[1]);
 
+			this.paginationData.total = this.newsList.length;
+			this.paginationData.arr = this.newsList;
 
-			this.paginationData.total=res.data.newsList.length;
+			this.restartWow();
+		});
+	}
+	fy() {}
 
-			this.restartWow()
+	getData(v) {
+		utils.service.queryZxgl({ page: v }, res => {
+			this.groupList = res.data.newsList;
 		});
 	}
 

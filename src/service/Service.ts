@@ -7,14 +7,17 @@ axios.defaults.timeout = 60000;
 
 export class Service extends EventEmitter {
 	protected send(url: string, data: any, success: ISuccess, error?: IError) {
-		axios.post(url, qs.stringify(data)).then((res: AxiosResponse) => {
-			console.log(url, res);
-			return success(res);
-		}, (err) => {
-			if (err) {
-				console.error("请求出错!");
+		axios.post(url, qs.stringify(data)).then(
+			(res: AxiosResponse) => {
+				console.log(url, res);
+				return success(res);
+			},
+			err => {
+				if (err) {
+					console.error('请求出错!');
+				}
 			}
-		});
+		);
 	}
 
 	public queryFooterData(callback: (res: any) => void) {
@@ -58,6 +61,10 @@ export class Service extends EventEmitter {
 	public querysgmessage(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/sgmessage', req, callback);
 	}
+	///装修攻略分页
+	public queryZxgl(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/news', req, callback);
+	}
 
 	///新闻详情
 	public queryNewsDetail(aid, callback: (res: any) => void) {
@@ -72,7 +79,6 @@ export class Service extends EventEmitter {
 	public queryBrand(callback: (res: any) => void) {
 		this.send('api.php/Ajax/btbrand', {}, callback);
 	}
-
 
 	public queryHome(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/indexInfo', req, callback);
