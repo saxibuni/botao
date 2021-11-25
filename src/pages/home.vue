@@ -906,12 +906,12 @@ export default home;
 							}
 							&.active{
 								img {
-									transform-origin: bottom;
 									border: 1px solid #ffffff;
 									transform: translateY(0px) scaleY(1.2) !important;
 								}
 							}
 							img {
+								transform-origin: bottom;
 								transition: transform 0.3s;
 								width: 100%;
 								height: 103px;
