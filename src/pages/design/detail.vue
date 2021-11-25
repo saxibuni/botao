@@ -52,8 +52,8 @@
 						<i></i>
 						<p>所获荣誉</p>
 					</div>
-					<div class="scroll">
-						<div class="text">
+					<div class="scroll" ref="scroll">
+						<div class="text" ref="text">
 							<p style="white-space: pre-wrap;" v-html="detailData.designer_info.hor"></p>
 						</div>
 					</div>
@@ -84,7 +84,7 @@
 			<div class="list wow">
 				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList" :key="i" />
 			</div>
-			<div class="more" @click="$router.push('/case/list')">更多案例</div>
+			<div class="more" @click="$router.push('/case/list')" v-if="detailData.sjsList.length">更多案例</div>
 		</div>
 	</div>
 </template>
@@ -294,6 +294,7 @@ export default DesignDetail;
 							font-size: 18px;
 							color: #666666;
 							margin-bottom: 15px;
+							line-height: 38px;
 						}
 					}
 				}

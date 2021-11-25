@@ -47,5 +47,11 @@ export default class DesignDetail extends Vue {
 		}
 	mounted(){
 		this.restartWow();
+		setTimeout(() => {
+			if(this.$refs.text.clientHeight<this.$refs.scroll.clientHeight){
+				this.$refs.scroll.style.overflowY="hidden"
+			}
+		}, 500);
+
 	}
 }

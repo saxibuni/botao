@@ -6,7 +6,7 @@
 				<div class="tabsList wow" v-for="(item, index) in tabList" :key="index">
 					<p>{{ item.title }}</p>
 					<ul>
-						<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
+						<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i), choice()">{{ v }}</li>
 					</ul>
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 					<li v-for="(item, i) in buildingData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="imgBox">
 							<img :src="web_url + item.img" alt="" />
-							<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
+							<img src="~assets/ic_c2_play.png" @click="playVideo(item.video)" alt="" />
 						</div>
 						<div class="text">
 							<p>{{ item.title }}</p>
@@ -375,13 +375,17 @@ export default Building;
 		.list {
 			ul {
 				display: flex;
-				justify-content: space-between;
+				// justify-content: space-between;
 				flex-wrap: wrap;
 				li {
 					height: 644px;
 					width: 560px;
 					margin-bottom: 40px;
 					box-shadow: 0px 3px 17px 1px rgba(0, 0, 0, 0.05);
+					margin-right: 38px;
+					&:nth-of-type(3n) {
+						margin-right: 0;
+					}
 					&:hover {
 						cursor: pointer;
 						.text {

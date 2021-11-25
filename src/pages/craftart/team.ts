@@ -11,7 +11,7 @@ import utils from 'root/utils'
 export default class Team extends Vue {
 	teamData={}
 	web_url = ''
-	paginationData={size:100,total:1000}
+	paginationData={size:16,total:1000}
 	bannerData={}
 	created(){
 		this.getData()
@@ -24,6 +24,7 @@ export default class Team extends Vue {
 					this.teamData=res.data
 					this.bannerData=res.data.banner
 					this.web_url = res.data.web_url;
+					this.paginationData.total=res.data.list.length
 				}
 			);
 		}
