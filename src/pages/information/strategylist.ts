@@ -31,13 +31,11 @@ export default class StrategyList extends Vue {
 	groupList = [];
 	created() {
 		this.query();
-		this.fy();
-		// console.log(this.web_url, 'asdasd');
 	}
-	paginationData = { size: 6, total: 1000, arr: [] };
+	paginationData = { size: 6, total: 1000, arr: [], boxName: '.strategy-list .list-box' };
 
 	query() {
-		utils.service.queryNews(res => {
+		utils.service.queryNews({},res => {
 			//banner
 			res.data.banner.etitle = res.data.banner.etitle.toUpperCase();
 			this.BannerData = res.data.banner;
@@ -48,18 +46,16 @@ export default class StrategyList extends Vue {
 			this.topList2.shift();
 
 			this.newsList = res.data.newsList;
-			this.newsList = this.newsList.concat(this.newsList[1]);
 
-			this.paginationData.total = this.newsList.length;
-			this.paginationData.arr = this.newsList;
+			this.paginationData.total = res.data.pages.total;
+			this.paginationData.size = res.data.pages.per_page;
 
 			this.restartWow();
 		});
 	}
-	fy() {}
 
 	getData(v) {
-		utils.service.queryZxgl({ page: v }, res => {
+		utils.service.queryNews({ page: v }, res => {
 			this.groupList = res.data.newsList;
 		});
 	}
@@ -67,7 +63,6 @@ export default class StrategyList extends Vue {
 	addClass(i, dom) {
 		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
-
 		lis[i].classList.add('hover');
 	}
 	removeClass(i, dom) {

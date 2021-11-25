@@ -37,8 +37,8 @@ export class Service extends EventEmitter {
 		this.send('api.php/Ajax/yzxs', {}, callback);
 	}
 	///新闻列表
-	public queryNews(callback: (res: any) => void) {
-		this.send('api.php/Ajax/news', {}, callback);
+	public queryNews(req,callback: (res: any) => void) {
+		this.send('api.php/Ajax/news', req, callback);
 	}
 	public queryjxCaseShow(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/jxCaseShow', req, callback);
@@ -60,10 +60,6 @@ export class Service extends EventEmitter {
 	}
 	public querysgmessage(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/sgmessage', req, callback);
-	}
-	///装修攻略分页
-	public queryZxgl(req, callback: (res: any) => void) {
-		this.send('api.php/Ajax/news', req, callback);
 	}
 
 	///新闻详情

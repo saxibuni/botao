@@ -1,13 +1,13 @@
 <template>
 	<div class="pagination-box">
 		<!-- 分页组件 -->
-		<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :page-size="data.size" layout="prev, pager, next, jumper" :total="data.total" class="wow"></el-pagination>
+		<el-pagination @current-change="handleCurrentChange" :page-size="data.size" layout="prev, pager, next, jumper" :total="data.total" class="wow"></el-pagination>
 		<button class="wow">确定</button>
 	</div>
 </template>
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-
+import gsap from 'gsap';
 @Component
 export default class pagination extends Vue {
 	input__inner = null;
@@ -24,6 +24,10 @@ export default class pagination extends Vue {
 
 	handleCurrentChange(val) {
 		this.$emit('getData', val);
+
+		if (this.data.boxName) {
+			gsap.to(this.data.boxName, { duration: 0.3, alpha: 1, stagger: 0.2 });
+		}
 	}
 }
 </script>
