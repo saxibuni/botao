@@ -47,7 +47,7 @@
 				<div class="controals">
 					<div class="swiper-next owner-next wow"></div>
 					<div class="swiper-pre owner-pre wow"></div>
-					<div class="swiper-pagination wow owener-pagination"></div>
+					<div class="owener-pagination1 swiper-pagination wow "></div>
 				</div>
 			</div>
 		</div>
@@ -91,7 +91,7 @@
 				<div class="controals">
 					<div class="swiper-next wow fh-next"></div>
 					<div class="swiper-pre wow fh-pre"></div>
-					<div class="swiper-pagination"></div>
+					<div class="swiper-pagination fh2"></div>
 				</div>
 			</div>
 		</div>

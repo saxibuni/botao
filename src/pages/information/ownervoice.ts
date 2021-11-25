@@ -40,7 +40,7 @@ export default class OwnerVoice extends Vue {
 		},
 		pagination: {
 			clickable: true,
-			el: '.swiper-pagination'
+			el: '.owener-pagination1'
 		},
 		autoplay: {
 			delay: 3000,
@@ -96,7 +96,7 @@ export default class OwnerVoice extends Vue {
 		},
 		pagination: {
 			clickable: true,
-			el: '.swiper-pagination'
+			el: '.fh2'
 		}
 	};
 
@@ -126,7 +126,6 @@ export default class OwnerVoice extends Vue {
 			this.restartWow();
 		});
 	}
-
 
 	mounted() {
 		utils.emitter.$on('dpIndex', obj => {
