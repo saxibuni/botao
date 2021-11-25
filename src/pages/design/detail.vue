@@ -64,14 +64,16 @@
 				<div class="swiperBox">
 					<div class="swiper">
 						<swiper :options="swiperOptions">
-							<swiper-slide v-for="(item, i) in detailData.designer_info.img.split(',')" :key="i">
+							<swiper-slide v-for="(item, i) in detailData.designer_info.imgs.split(',')" :key="i">
 								<img :src="web_url + item" alt="" />
 								<img src="~assets/bg_c2_part2_mask.png" alt="" />
 							</swiper-slide>
 						</swiper>
-						<div class="swiper-pagination"></div>
-						<div class="swiper-button-prev"></div>
-						<div class="swiper-button-next"></div>
+						<div class="btn">
+							<div class="swiper-pagination"></div>
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+						</div>
 					</div>
 					<div class="box"></div>
 				</div>
@@ -254,6 +256,8 @@ export default DesignDetail;
 						&:nth-of-type(2) {
 							margin-top: 15px;
 							color: #666666;
+							width: 800px;
+							@include line-clamp(1);
 						}
 					}
 				}
@@ -330,13 +334,21 @@ export default DesignDetail;
 						width: 590px;
 						height: 720px;
 					}
+					.btn {
+						position: relative;
+						height: 16px;
+						width: auto;
+						display: flex;
+						justify-content: center;
+					}
 					.swiper-pagination {
-						width: 66px;
+						// width: 66px;
+						width: auto;
 						height: 12px;
 						position: absolute;
 						left: 50%;
-						bottom: 183px;
-						transform: translateX(-80%);
+						bottom: 184px;
+						transform: translateX(-50%);
 						.swiper-pagination-bullet {
 							margin-right: 15px;
 							box-sizing: border-box;
@@ -369,10 +381,10 @@ export default DesignDetail;
 						}
 					}
 					.swiper-button-prev {
-						margin-left: 218px;
+						left: 208px;
 					}
 					.swiper-button-next {
-						margin-right: 258px;
+						right: 208px;
 					}
 				}
 				.box {
@@ -408,7 +420,7 @@ export default DesignDetail;
 		}
 		.list {
 			display: flex;
-			// justify-content: space-between;
+			justify-content: space-between;
 
 			.cases {
 				.content {
