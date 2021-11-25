@@ -29,25 +29,21 @@
 		</div>
 		<div class="list">
 			<ul>
-				<li v-for="(v, i) in vrData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-					<a :href="v.velink" target="_blank">
-						<div class="imgBox">
-							<img :src="web_url + v.img" alt="" />
-							<img src="~assets/ic_b3_part2_vr.png" alt="" />
-						</div>
-					</a>
+				<li v-for="(v, i) in vrData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" @click="push(v.velink, $event)">
+					<div class="imgBox">
+						<img :src="web_url + v.img" alt="" />
+						<img src="~assets/ic_b3_part2_vr.png" alt="" />
+					</div>
 					<div class="content">
 						<div class="top">
-							<a :href="v.velink" target="_blank">
-								<div class="topLeft">
-									<p>{{ v.title }}</p>
-									<p>
-										<span>{{ v.hx }}</span>
-										<span>{{ v.style }}</span>
-										<span>{{ v.mj }}</span>
-									</p>
-								</div>
-							</a>
+							<div class="topLeft">
+								<p>{{ v.title }}</p>
+								<p>
+									<span>{{ v.hx }}</span>
+									<span>{{ v.style }}</span>
+									<span>{{ v.mj }}</span>
+								</p>
+							</div>
 							<div class="topRight">
 								<!-- <i @click="fn"></i> -->
 								<!-- <div>

@@ -68,6 +68,10 @@ export default class CaseListVr extends Vue {
 			}
 		);
 	}
+	push(url,e){
+		if(e.target.className=='btn'||e.target.className=='img img2')return
+		window.open(url)
+	}
 	mounted(){
 		this.restartWow();
 	}

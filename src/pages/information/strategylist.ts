@@ -83,6 +83,7 @@ export default class StrategyList extends Vue {
 		const lis = father.querySelectorAll<HTMLElement>('li');
 		lis[i].classList.add('hover');
 	}
+
 	removeClass(i, dom) {
 		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
