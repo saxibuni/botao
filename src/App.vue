@@ -42,7 +42,7 @@ export default App;
 }
 
 html {
-	@include scrollbar-beautify();
+	@include scrollbar-beautify(3PX);
 	body {
 		-webkit-font-smoothing: antialiased;
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -55,22 +55,19 @@ html {
 		}
 		&.over-hide{
 			overflow: hidden;
-			padding-right: 4px;
-			.sidebar{
-				margin-left: 886px;
-			}
+			padding-right: 0;
 			.header, .popup{
-				width: calc(100% - 4px);
+				width: 100%;
 			}
-			&.ie {
-				padding-right: 0;
+			&.chrome {
+				padding-right: 3PX;
 				.header, .popup{
-					width: 100%;
+					width: calc(100% - 3PX);
+				}
+				.sidebar {
+					right: calc(50vw - 960px + 3PX);
 				}
 			}
-		}
-		&.over-hideie{
-			overflow: hidden;
 		}
 	}
 

@@ -229,13 +229,10 @@ export default class sidebar extends Vue {
 	body {
 		.sidebar {
 			right: 0;
-			left: auto !important;
-			margin-left: 0 !important;
 		}
-		&.over-hide {
+		&.over-hide.chrome {
 			.sidebar {
-				margin-left: 0;
-				right: 4px;
+				right: 3PX;
 			}
 		}
 	}
@@ -247,11 +244,7 @@ export default class sidebar extends Vue {
 	width: 70px;
 	background: #122133;
 	z-index: 99;
-	left: 50%;
-	margin-left: 888px;
-	&.sidebarie {
-		margin-left: 890px !important;
-	}
+	right: calc(50vw - 960px);
 	> div {
 		div {
 			height: 85px;

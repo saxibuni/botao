@@ -35,7 +35,7 @@ export default class search extends Vue {
 	onSearchFUn() {
 		if (this.searchShow) {
 			(<any>this.$refs)['search'].focus();
-			document.querySelector('body').setAttribute('class', 'over-hide' + (device.browser.ie ? 'ie' : ''));
+			document.querySelector('body').setAttribute('class', 'over-hide' + ((device.browser.chrome && !device.mobile.device)  ? ' chrome' : ''));
 		} else {
 			(<any>this.$refs)['search'].blur();
 			document.querySelector('body').removeAttribute('class');
