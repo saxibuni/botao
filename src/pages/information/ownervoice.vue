@@ -61,26 +61,26 @@
 							<div class="left">
 								<div class="top">
 									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
-									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
-									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[1]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[2]" alt="" /></div>
 								</div>
 								<div class="bottom">
 									<div class="left">
-										<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
-										<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+										<div class="img-box"><img :src="web_url + v.img[3]" alt="" /></div>
+										<div class="img-box"><img :src="web_url + v.img[4]" alt="" /></div>
 									</div>
 									<div class="right">
-										<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+										<div class="img-box"><img :src="web_url + v.img[5]" alt="" /></div>
 									</div>
 								</div>
 							</div>
 							<div class="out-right">
 								<div class="top">
-									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[6]" alt="" /></div>
 								</div>
 								<div class="bottom">
-									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
-									<div class="img-box"><img :src="web_url + v.img[0]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[7]" alt="" /></div>
+									<div class="img-box"><img :src="web_url + v.img[8]" alt="" /></div>
 								</div>
 							</div>
 						</div>
