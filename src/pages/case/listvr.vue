@@ -50,13 +50,19 @@
 							</a>
 							<div class="topRight">
 								<!-- <i @click="fn"></i> -->
-								<div>
+								<!-- <div>
 									<img src="~assets/icons/ic_b1_part3_like1.png" alt="" @click="(flag = !flag), v.click++" />
 
 									<img v-if="!isIE" class="img" :class="{ img2: !flag }" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), v.click--" />
 									<img v-if="isIE && !flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), v.click--" />
 								</div>
-								<p>{{ v.click }}个喜欢</p>
+								<p>{{ v.click }}个喜欢</p> -->
+								<div @click="getLove(v.aid, v.is_zan), (v.is_zan = 1)">
+									<img src="~assets/icons/ic_b1_part3_like1.png" alt="" />
+									<img v-if="!isIE" class="img" :class="{ img2: v.is_zan == 1 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
+									<img v-if="isIE && v.is_zan == 1" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
+								</div>
+								<p>{{ love == null ? v.love : love }}个喜欢</p>
 							</div>
 						</div>
 						<div class="bottom" v-if="v.des_info">
@@ -75,7 +81,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination :data="paginationData" @getData="getData1" />
+		<Pagination :data="paginationData" @getData="getData1" v-if="vrData.list" v-show="vrData.list.length" />
 	</div>
 </template>
 

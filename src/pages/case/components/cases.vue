@@ -17,13 +17,12 @@
 						</div>
 						<div class="topRight">
 							<!-- <i @click="fn"></i> -->
-							<div>
-								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" @click="(flag = !flag), caseData.click++" />
-
-								<img v-if="!isIE" class="img" :class="{ img2: !flag }" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), caseData.click--" />
-								<img v-if="isIE && !flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), caseData.click--" />
+							<div @click="getLove(caseData.aid)">
+								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" />
+								<img v-if="!isIE" class="img" :class="{ img2: caseData.is_zan == 1 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
+								<img v-if="isIE && caseData.is_zan == 1" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 							</div>
-							<p>{{ caseData.click }}个喜欢</p>
+							<p>{{ love }}个喜欢</p>
 						</div>
 					</div>
 					<div class="bottom">
@@ -47,6 +46,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import Button from 'root/components/button.vue';
 import { device } from 'root/utils';
+import utils from 'root/utils';
 
 @Component({
 	components: {
@@ -54,10 +54,12 @@ import { device } from 'root/utils';
 	}
 })
 export default class Caese extends Vue {
+	love: number = 0;
 	flag = true;
 	isIE: boolean = false;
 	created() {
 		this.isIE = device.browser.ie;
+		this.love = this.caseData.love;
 	}
 	@Prop({
 		required: false,
@@ -71,6 +73,20 @@ export default class Caese extends Vue {
 		default: () => {}
 	})
 	caseData!: any;
+	getLove(aid) {
+		if (this.caseData.is_zan == 1) return;
+		utils.service.querylove(
+			{
+				aid: aid
+			},
+			res => {
+				if (res.status == 200) {
+					this.love = res.data.num;
+					this.caseData.is_zan = 1;
+				}
+			}
+		);
+	}
 	mounted() {
 		this.restartWow();
 	}

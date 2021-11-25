@@ -29,7 +29,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination :data="paginationData" @getData="getData1" />
+		<Pagination :data="paginationData" @getData="getData1" v-if="teamData.list" v-show="teamData.list.length" />
 	</div>
 </template>
 
