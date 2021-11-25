@@ -1,4 +1,4 @@
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Watch } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue';
 import Banner from '../../components/banner.vue';
 import utils from 'root/utils';
@@ -29,13 +29,18 @@ export default class StrategyList extends Vue {
 
 	newsList = [];
 	groupList = [];
+
+	typeId: string = "";
+	queryMethod: (req, callback: (res: any) => void) => void;
 	created() {
+		this.typeId = this.$route.query.typeId.toString();
+		this.queryMethod = (this.typeId == "90" ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
 		this.query();
 	}
 	paginationData = { size: 6, total: 1000, arr: [], boxName: '.strategy-list .list-box' };
 
 	query() {
-		utils.service.queryNews({},res => {
+		this.queryMethod({},res => {
 			//banner
 			res.data.banner.etitle = res.data.banner.etitle.toUpperCase();
 			this.BannerData = res.data.banner;
@@ -45,6 +50,7 @@ export default class StrategyList extends Vue {
 			this.topList2 = [...this.topList];
 			this.topList2.shift();
 
+			//groupList
 			this.groupList = res.data.newsList;
 
 			this.paginationData.total = res.data.pages.total;
@@ -55,9 +61,17 @@ export default class StrategyList extends Vue {
 	}
 
 	getData(v) {
-		utils.service.queryNews({ page: v }, res => {
+		this.queryMethod({ page: v }, res => {
 			this.groupList = res.data.newsList;
 		});
+	}
+
+	@Watch('$route.query.typeId')
+	typeIdChange(typeId) {
+		console.warn("change ", typeId);
+		this.typeId = typeId;
+		this.queryMethod = (typeId == "90" ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
+		this.query();
 	}
 
 	addClass(i, dom) {

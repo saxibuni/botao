@@ -181,7 +181,12 @@ export default class Header extends Vue {
 			this.$bus.$emit('params-change', 6);
 		}
 		else{
-			this.$router.push({name:this.navObj[navId]})
+			this.$router.push({
+				name:this.navObj[navId],
+				query: {
+					typeId: navId
+				}
+			});
 		}
 	}
 	mounted() {
