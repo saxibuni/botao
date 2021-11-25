@@ -221,7 +221,7 @@ export default class JoinUs extends Vue {
 				v.gwyq = v.gwyq.split('\r\n');
 			});
 			this.zpxx = res.data.zpxxList;
-			this.zpxx = this.zpxx.concat(this.zpxx).concat(this.zpxx);
+			// this.zpxx = this.zpxx.concat(this.zpxx).concat(this.zpxx);
 		});
 	}
 

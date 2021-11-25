@@ -45,7 +45,6 @@ export default class StrategyList extends Vue {
 			this.topList2 = [...this.topList];
 			this.topList2.shift();
 
-			this.newsList = res.data.newsList;
 
 			this.paginationData.total = res.data.pages.total;
 			this.paginationData.size = res.data.pages.per_page;

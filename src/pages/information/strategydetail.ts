@@ -109,6 +109,7 @@ export default class StrategyDetail extends Vue {
 	jump(aid) {
 		window.scroll({ top: 0, behavior: 'smooth' });
 		this.$router.push({ name: 'strategy-detail', query: { aid } });
+		this.queryDetail()
 	}
 
 	getMore() {
