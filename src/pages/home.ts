@@ -28,7 +28,8 @@ export default class home extends Vue {
 	activeIndex: number = -1;
 
 	anList = ['轻奢/现代/港式', '中式/新中式', '欧式/法式/地中海/美式', '日式/侘寂/工业风'];
-	imgSrc = require('../assets/portrait/bg_home_b3_pic17.jpg');
+
+	sjsItem:any = {};
 	page2ImgSrc = require('../assets/bg_home_b2_pic1.jpg');
 	page2ImgSrcList = [
 		require('../assets/bg_home_b2_pic1.jpg'),
@@ -41,95 +42,23 @@ export default class home extends Vue {
 		require('../assets/bg_home_b2_pic2.jpg')
 	];
 	page2Index = 0;
-	page3Index = 17;
+	page3Index = 0;
 	page2Ani = true;
 	page3Ani = true;
-
 	portraitList = [
-		require('../assets/portrait/bg_home_b3_pic01.jpg'),
-		require('../assets/portrait/bg_home_b3_pic02.jpg'),
-		require('../assets/portrait/bg_home_b3_pic03.jpg'),
-		require('../assets/portrait/bg_home_b3_pic04.jpg'),
-		require('../assets/portrait/bg_home_b3_pic05.jpg'),
-		require('../assets/portrait/bg_home_b3_pic06.jpg'),
-		require('../assets/portrait/bg_home_b3_pic07.jpg'),
-		require('../assets/portrait/bg_home_b3_pic08.jpg'),
-		require('../assets/portrait/bg_home_b3_pic09.jpg'),
-		require('../assets/portrait/bg_home_b3_pic10.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic12.jpg'),
-		require('../assets/portrait/bg_home_b3_pic13.jpg'),
-		require('../assets/portrait/bg_home_b3_pic14.jpg'),
-		require('../assets/portrait/bg_home_b3_pic15.jpg'),
-		require('../assets/portrait/bg_home_b3_pic16.jpg'),
-		require('../assets/portrait/bg_home_b3_pic17.jpg'),
-		require('../assets/portrait/bg_home_b3_pic18.jpg'),
-		require('../assets/portrait/bg_home_b3_pic19.jpg'),
-		require('../assets/portrait/bg_home_b3_pic20.jpg'),
-		require('../assets/portrait/bg_home_b3_pic21.jpg'),
-		require('../assets/portrait/bg_home_b3_pic22.jpg'),
-		require('../assets/portrait/bg_home_b3_pic23.jpg'),
-		require('../assets/portrait/bg_home_b3_pic24.jpg'),
-		require('../assets/portrait/bg_home_b3_pic25.jpg'),
-		require('../assets/portrait/bg_home_b3_pic26.jpg'),
-		require('../assets/portrait/bg_home_b3_pic27.jpg'),
-		require('../assets/portrait/bg_home_b3_pic28.jpg'),
-		require('../assets/portrait/bg_home_b3_pic29.jpg'),
-		require('../assets/portrait/bg_home_b3_pic30.jpg'),
-		require('../assets/portrait/bg_home_b3_pic31.jpg'),
-		require('../assets/portrait/bg_home_b3_pic32.jpg'),
-		require('../assets/portrait/bg_home_b3_pic34.jpg'),
-		require('../assets/portrait/bg_home_b3_pic35.jpg'),
-		require('../assets/portrait/bg_home_b3_pic09.jpg'),
-
-		require('../assets/portrait/bg_home_b3_pic22.jpg'),
-		require('../assets/portrait/bg_home_b3_pic23.jpg'),
-		require('../assets/portrait/bg_home_b3_pic24.jpg'),
-		require('../assets/portrait/bg_home_b3_pic25.jpg'),
-		require('../assets/portrait/bg_home_b3_pic26.jpg'),
-		require('../assets/portrait/bg_home_b3_pic27.jpg'),
-		require('../assets/portrait/bg_home_b3_pic28.jpg'),
-		require('../assets/portrait/bg_home_b3_pic29.jpg'),
-		require('../assets/portrait/bg_home_b3_pic30.jpg'),
-		require('../assets/portrait/bg_home_b3_pic31.jpg'),
-		require('../assets/portrait/bg_home_b3_pic32.jpg'),
-		require('../assets/portrait/bg_home_b3_pic34.jpg'),
-		require('../assets/portrait/bg_home_b3_pic35.jpg'),
-		require('../assets/portrait/bg_home_b3_pic09.jpg'),
-		require('../assets/portrait/bg_home_b3_pic01.jpg'),
-		require('../assets/portrait/bg_home_b3_pic02.jpg'),
-		require('../assets/portrait/bg_home_b3_pic03.jpg'),
-		require('../assets/portrait/bg_home_b3_pic04.jpg'),
-		require('../assets/portrait/bg_home_b3_pic05.jpg'),
-		require('../assets/portrait/bg_home_b3_pic06.jpg'),
-		require('../assets/portrait/bg_home_b3_pic07.jpg'),
-		require('../assets/portrait/bg_home_b3_pic08.jpg'),
-		require('../assets/portrait/bg_home_b3_pic09.jpg'),
-		require('../assets/portrait/bg_home_b3_pic10.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic12.jpg'),
-		require('../assets/portrait/bg_home_b3_pic13.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-
-
-		require('../assets/portrait/bg_home_b3_pic05.jpg'),
-		require('../assets/portrait/bg_home_b3_pic06.jpg'),
-		require('../assets/portrait/bg_home_b3_pic07.jpg'),
-		require('../assets/portrait/bg_home_b3_pic08.jpg'),
-		require('../assets/portrait/bg_home_b3_pic09.jpg'),
-		require('../assets/portrait/bg_home_b3_pic10.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic12.jpg'),
-		require('../assets/portrait/bg_home_b3_pic13.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
-		require('../assets/portrait/bg_home_b3_pic11.jpg'),
+		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic02.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic03.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic04.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic05.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic06.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic07.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic08.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic09.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
+		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
 	];
 	currentPortraitList = [];
 	nextPortraitList = [];
@@ -157,10 +86,6 @@ export default class home extends Vue {
 	bannerSwiperOptions: any = {
 		speed: 1000,
 		loop: true,
-		autoplay: {
-			delay: 8000,
-			disableOnInteraction: false
-		},
 		navigation: {
 			nextEl: '.next1',
 			prevEl: '.prev1'
@@ -171,7 +96,7 @@ export default class home extends Vue {
 				setTimeout(() => {
 					let activeSlide = this.slides[this.activeIndex] as HTMLElement;
 					emitter.$emit('chars-ani', activeSlide, true);
-				}, 100);
+				}, 2000);
 			},
 			slideChangeTransitionStart: function() {
 				let chars = (<HTMLElement>this.slides[this.activeIndex]).querySelectorAll<HTMLElement>('.char');
@@ -260,15 +185,17 @@ export default class home extends Vue {
 	options2 = {
 		useGrouping: false
 	};
+	web_url = '';
+	banner = {
+		list:[]
+	};
+	sgzzDesc = {};
+	sggyList = [];
 	mounted() {
+		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
-		this.initTextChars();
 		this.initSpineAni();
 		this.initScrollTrigger();
-		this.getCurrentPortraitList();
-		setTimeout(() => {
-			this.onResize();
-		});
 
 		utils.emitter.$on('chars-ani', this.onCharsEnter);
 		utils.emitter.$on(Events.RESIZE, this.onResize);
@@ -282,10 +209,25 @@ export default class home extends Vue {
 		});
 		utils.service.queryHome({}, res => {
 			if (res.status === 200) {
-				console.log(res.data);
+				this.banner = res.data.banner;
+				this.anList = res.data.icase;
+				this.portraitList = res.data.sjsList;
+				this.sjsItem = res.data.sjsList[0];
+				this.sgzzDesc = res.data.sgzzDesc;
+				this.sggyList = res.data.sggyList;
+				setTimeout(()=>{
+					this.initTextChars();
+					this.onResize();
+				})
+				this.getCurrentPortraitList();
+
+				console.log(1,res.data);
 			}
 		});
 
+	}
+	anIndexFun(){
+		(this.$refs.mSwiper as any).$swiper.slideTo(0, 600, true);
 	}
 	onResize() {
 		this.getCurrentPortraitList();
@@ -325,8 +267,9 @@ export default class home extends Vue {
 	listwidth = [];
 	textActive2 = true;
 	onClick(item, i) {
+		this.sjsItem = this.portraitList[i];
 		this.showProfile = !this.showProfile;
-		this.imgSrc = item;
+		this.sjsItem.imgSrc = item;
 		this.page3Index = i;
 		this.isShowLightImg = true;
 		this.page3Ani = false;
@@ -334,8 +277,10 @@ export default class home extends Vue {
 			this.page3Ani = true;
 		},300);
 	}
-	textActiveFun(i) {
+	picIndex2 = 0;
+	textActiveFun(i,index) {
 		this.picIndex = i;
+		this.picIndex2 = index;
 		this.textActive = !this.textActive;
 		this.textActive2 = false;
 		setTimeout(()=>{
@@ -369,15 +314,31 @@ export default class home extends Vue {
 			}
 			return;
 		}
-		this.$store.state.dialog={
-			state:1,
-			text:'提交成功'
+		let data = {
+			form_id:11,
+			attr_45:this.form.userName,
+			attr_46:this.form.phone,
+			attr_47:this.form.area,
 		}
-		this.form = {
-			userName: '',
-			phone: '',
-			area: ''
-		};
+		utils.service.formSubmit(data, res => {
+			if (res.status === 200) {
+			 		this.$store.state.dialog={
+						state:1,
+						text:'提交成功'
+					}
+					this.form = {
+						userName: '',
+						phone: '',
+						area: ''
+					};
+					this.$store.state.dialogVisible = false;
+			}else{
+				this.$store.state.dialog={
+						state:2,
+						text:'系统错误'
+				}
+			}
+		});
 	}
 
 	onRoute(name: string, query?: any) {
@@ -423,10 +384,13 @@ export default class home extends Vue {
 			setTimeout(() => {
 				let num =35 -this.currentPortraitList.length
 				for (let i = 0; i <num ; i++) {
-					this.currentPortraitList.push(require('../assets/portrait/white.png'));
+					this.currentPortraitList.push(
+						{img:require('../assets/portrait/white.png')}
+					);
 				}
 			},200);
 		}
+
 		let listwidth = [];
 		setTimeout(() => {
 			currentPortraitListCopy.forEach((e, i) => {
@@ -435,7 +399,7 @@ export default class home extends Vue {
 				let top = this.$refs[items][0].offsetTop;
 				let width = this.$refs[items][0].clientWidth;
 				let height = this.$refs[items][0].clientHeight;
-				let src = e;
+				let src = e.img;
 				listwidth.push({ left, top, width, height, src });
 			});
 			this.listwidth = listwidth;
