@@ -103,10 +103,21 @@ export default class home extends Vue {
 				chars.forEach(item => {
 					item.style.opacity = "0";
 				});
+				// var video = document.querySelector("video");
+				// if(video){
+				// 	video.pause();
+				// }
 			},
 			slideChangeTransitionEnd: function() {
 				let activeSlide = this.slides[this.activeIndex] as HTMLElement;
 				emitter.$emit('chars-ani', activeSlide)
+				setTimeout(() => {
+					var video = document.querySelector(".videos");
+					if(video){
+						(video as any).play();
+						(video as any).currentTime = 0;
+					}
+				});
 			}
 		}
 	};

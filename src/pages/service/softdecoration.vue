@@ -58,11 +58,12 @@
 						<h2>{{rzalList[swiperIndex].title}}</h2>
 						<h3>{{rzalList[swiperIndex].fgmj}}</h3>
 						<p>{{rzalList[swiperIndex].desc}}</p>
-						<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
+						<!-- <Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button> -->
 					</div>
 				</div>
 				<div class="right wow">
-					<img v-if="rzalList[swiperIndex]" :src="web_url+rzalList[swiperIndex].img" alt="" />
+					<img  v-for="(item,i) in rzalList" :class="{active:swiperIndex==i}" :key="i" :src="web_url+item.img" alt="" />
+					<!-- <img v-if="rzalList[swiperIndex]" :src="web_url+rzalList[swiperIndex].img" alt="" /> -->
 				</div>
 			</div>
 		</div>
@@ -601,8 +602,16 @@ export default SoftDecoration;
 				position: relative;
 				z-index: 2;
 				img {
+					position: absolute;
+					left: 0;
+					top: 0;
 					width: 100%;
 					height: 100%;
+					opacity: 0;
+					transition: .6s;
+					&.active{
+						opacity: 1;
+					}
 				}
 			}
 		}

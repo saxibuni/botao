@@ -5,7 +5,7 @@
 				<div class="form">
 					<h2>
 						已有
-						<ICountUp :endVal="footData.bj_num" :options="options"></ICountUp>
+						<ICountUp  v-if="footData&&footData.bj_num" :endVal="footData.bj_num" :options="options"></ICountUp>
 						人获取报价
 					</h2>
 					<ul>
