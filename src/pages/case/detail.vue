@@ -48,7 +48,7 @@
 		<div class="swiper">
 			<div class="swiperBox">
 				<swiper :options="swiperOptions1">
-					<swiper-slide v-for="(item, i) in detailData.archivesInfo.imgs.split(',')" :key="i">
+					<swiper-slide v-for="(item, i) in detailData.archivesInfo.imgs.split(',')" :key="item.aid">
 						<img :src="web_url + item" alt="" />
 						<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
 						<img src="~assets/bg_b2_part2_mask.png" alt="" />
@@ -75,10 +75,10 @@
 			</ul>
 			<div class="otherSwiper wow">
 				<swiper :options="swiperOptions2" ref="swiper2">
-					<swiper-slide v-for="(item, index) in detailData.styleList.list" :key="index" v-show="activeIndex == 0">
+					<swiper-slide v-for="(item, index) in detailData.styleList.list" :key="item.id" v-show="activeIndex == 0">
 						<Cases :caseData="item" />
 					</swiper-slide>
-					<swiper-slide v-for="(item, i) in detailData.sjsList.list" :key="i + 1" v-show="activeIndex == 1">
+					<swiper-slide v-for="(item, i) in detailData.sjsList.list" :key="item.click" v-show="activeIndex == 1">
 						<Cases :caseData="item" />
 					</swiper-slide>
 				</swiper>
