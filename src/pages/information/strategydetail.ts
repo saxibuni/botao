@@ -40,7 +40,6 @@ export default class StrategyDetail extends Vue {
 
 	queryDetail(aid) {
 		utils.service.queryNewsDetail(aid, res => {
-			console.log(res.data);
 
 			//banner
 			this.web_url = res.data.web_url;

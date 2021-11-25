@@ -73,7 +73,7 @@
 				<swiper :options="bannerSwiperOptions">
 					<swiper-slide class="wow" v-for="(item, i) in rzsjsList" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="box">
-							<div class="img-wrap" @click="$router.push({ name: 'design-detail', query: { id: item.id } })">
+							<div class="img-wrap" @click="$router.push({ name: 'design-detail', query: { aid: item.aid } })">
 								<img :src="web_url + item.img" alt="" />
 								<div>
 									<h3>{{ item.title }}</h3>
