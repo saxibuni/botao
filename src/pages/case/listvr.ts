@@ -11,7 +11,7 @@ import { device } from 'root/utils';
 })
 export default class CaseListVr extends Vue {
 	web_url = ''
-	vrData={}
+	vrData:any={}
 	flag = true;
 	isIE: boolean = false;
 	paginationData={size:6,total:1000}

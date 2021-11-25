@@ -71,16 +71,20 @@
 		<div class="other">
 			<h3 class="wow">为您推荐其他筑梦案例</h3>
 			<ul class="wow">
-				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
+				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="(activeIndex = index), updateSwiper()">{{ item }}</li>
 			</ul>
 			<div class="otherSwiper wow">
 				<swiper :options="swiperOptions2" ref="swiper2">
-					<swiper-slide v-for="item in detailData.styleList.list" :key="item.id" v-show="activeIndex == 0">
-						<Cases :caseData="item" />
-					</swiper-slide>
-					<swiper-slide v-for="item in detailData.sjsList.list" :key="item.click" v-show="activeIndex == 1">
-						<Cases :caseData="item" />
-					</swiper-slide>
+					<template v-if="activeIndex == 0">
+						<swiper-slide v-for="item in detailData.styleList.list" :key="item.id">
+							<Cases :caseData="item" />
+						</swiper-slide>
+					</template>
+					<template v-if="activeIndex == 1">
+						<swiper-slide v-for="item in detailData.sjsList.list" :key="item.click">
+							<Cases :caseData="item" />
+						</swiper-slide>
+					</template>
 				</swiper>
 				<div class="swiper-pagination pagination2"></div>
 				<div class="swiper-button-prev prev2"></div>
@@ -245,6 +249,10 @@ export default CaseDetail;
 			height: 740px;
 			position: relative;
 			img {
+				&:nth-of-type(1) {
+					height: 100%;
+					width: 100%;
+				}
 				&:nth-of-type(2) {
 					position: absolute;
 					top: 50%;
