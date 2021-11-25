@@ -29,6 +29,7 @@ export default class DesignDetail extends Vue {
 		},
 
 	};
+	video=false
 	created(){
 		this.getData()
 	}
@@ -44,6 +45,13 @@ export default class DesignDetail extends Vue {
 					this.web_url = res.data.web_url;
 				}
 			);
+		}
+		play(e){
+			// console.log(e);
+			this.video=true
+			document.querySelector('.video video').play()
+			document.querySelector('.video video').controls=true
+
 		}
 	mounted(){
 		this.restartWow();

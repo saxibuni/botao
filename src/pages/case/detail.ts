@@ -56,8 +56,9 @@ export default class CaseDetail extends Vue {
 		url:''
 	};
 	playVideo(i) {
-		this.videoPop.isPop = true;
 		this.videoPop.url = i;
+		if(!i)return
+		this.videoPop.isPop = true;
 	}
 	created() {
 		this.getData();

@@ -56,8 +56,9 @@ export default class Manager extends Vue {
 		this.activeName = String(Number(this.activeName) + i);
 	}
 	playVideo(i) {
-		this.videoPop.isPop = true;
 		this.videoPop.url = i;
+		if(!i)return
+		this.videoPop.isPop = true;
 	}
 	mounted() {
 		this.restartWow();
