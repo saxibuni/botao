@@ -1,6 +1,6 @@
 <template>
 	<div class="home">
-		<div class="page1">
+		<div class="page1" v-if="banner.list&&banner.list.length!=0">
 			<swiper :options="bannerSwiperOptions">
 				<swiper-slide v-for="(item, i) in banner.list" :key="i">
 					<img :src="web_url+item.img" alt="" />
@@ -9,8 +9,9 @@
 							<h3>
 								<span></span><span>{{item.title}}</span>
 							</h3>
-							<div>
-								<p v-html="item.etitle"></p>
+							<div v-if="item.etitle">
+								<p>{{item.etitle.split('\n')[0]}}</p>
+								<p>{{item.etitle.split('\n')[1]}}</p>
 							</div>
 						</div>
 						<div>
@@ -219,7 +220,7 @@
 		</div>
 		<div class="page4 wow">
 			<div class="left">
-				<img src="~assets/bg_home_b4_left.jpg" alt="" />
+				<img :src="web_url+sgzzDesc.bg" alt="" />
 				<div class="text">
 					<h2 v-if="sgzzDesc.btitle">
 						<span>{{sgzzDesc.btitle.split('#')[1]}}</span>
@@ -286,7 +287,7 @@
 							<p>金牌项目经理</p>
 						</li>
 					</ul>
-					<img @click="videoPop.isPop = true" src="~assets/icons/ic_home_b3_play.png" alt="" />
+					<img @click="videoPop.isPop = true,videoPop.url=sgzzDesc.video" src="~assets/icons/ic_home_b3_play.png" alt="" />
 				</div>
 			</div>
 			<div class="right">
@@ -318,7 +319,10 @@
 					</div>
 
 					<ul class="pic-box">
-						<li style="font-size:10px;" :class="{ active: picIndex == i }" v-for="(item, i) in picList" :key="i"><img :src="item" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 0 }"><img :src="picList[0]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 1 }" ><img :src="picList[1]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 2 }" ><img :src="picList[2]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 3 }" ><img :src="picList[3]" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
 						<Button text="预约参观工地" @click.native="$store.state.dialogDesign.visit = true"></Button>
@@ -330,20 +334,20 @@
 			<div class="swiper">
 				<swiper :options="bannerSwiperOptions3">
 					<swiper-slide v-for="(item, i) in page5List" class="page5Slide" :key="i">
-						<div class="img-box">
-							<img v-for="(v, i) in item.imgSrc" :key="i" :src="v" alt="" />
+						<div class="img-box" v-if="item.imgs">
+							<img v-for="(v, i) in item.imgs.split(',')" :key="i" :src="web_url+v" alt="" />
 						</div>
-						<div class="text">
+						<div class="text"  v-if="item.title">
 							<h3>
-								<span>全案服务</span>
-								创造精彩生活
+								<span>{{item.title.split('#')[1]}}</span>
+								{{item.title.split('#')[2]}}
 							</h3>
 							<div>
-								Whole case service
+								{{item.etitle}}
 							</div>
-							<h4>园林</h4>
-							<h5>自然惬意 给心灵一份静谧</h5>
-							<p>智能灌溉、灯光照明、智能安防、水景设计、植物种植设计</p>
+							<h4>{{item.ctitle}}</h4>
+							<h5>{{item.cftitle}}</h5>
+							<p>{{item.ccenter}}</p>
 							<div class="btn">
 								<Button text="服务详情" @click.native="onRoute('cherry-pick')"></Button>
 							</div>
@@ -354,8 +358,8 @@
 				<div class="bgimg">
 					<div>
 						<p class="banner-tag">01</p>
-						<h5>软装</h5>
-						<h6>Soft outfit</h6>
+						<h5>{{page5List[page5Index].rtitle}}</h5>
+						<h6>{{page5List[page5Index].retitle}} </h6>
 						<i class="next3"></i>
 					</div>
 				</div>
@@ -366,18 +370,17 @@
 				<canvas></canvas>
 			</div>
 			<div class="text">
-				<h3>
-					<ICountUp :endVal="20" :options="options1"></ICountUp>
-					年专注别墅大宅 全案引领者
+				<h3 v-if="qaylz.title">
+					<ICountUp :endVal="parseInt(qaylz.title.split('#')[1])" :options="options1"></ICountUp>
+					{{qaylz.title.split('#')[2]}}
 				</h3>
 				<div>
-					Brand introduction
+					{{qaylz.etitle}}
 				</div>
-				<h4>我们 让空间更美好</h4>
-				<h5>we Make the space better</h5>
+				<h4>{{qaylz.ctitle}}</h4>
+				<h5>{{qaylz.cetitle}}</h5>
 				<p>
-					波涛装饰是波涛装饰集团旗下专业为高端住宅、豪宅、明星名流居所提供建筑规划、室内设计装饰施工、家具定制、智能设备、软装配套以及景观园林的一站式全案整装定制服务机构。
-					20多年年钻研，只为定制更加完美的高端品质住宅，拥有20000多位高端住宅业主的信赖。
+					{{qaylz.desc}}
 				</p>
 				<div class="btn">
 					<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
@@ -385,36 +388,36 @@
 			</div>
 			<div class="right wow">
 				<div>
-					<h3>
-						<ICountUp :endVal="300" :options="options2"></ICountUp>
+					<h3 v-if="qaylz.dzyz">
+						<ICountUp :endVal="parseInt(qaylz.fgs)" :options="options2"></ICountUp>
 						<b>+</b>
 					</h3>
 					<p>多家分公司全国开设</p>
 				</div>
 				<div>
-					<h3>
-						<ICountUp :endVal="15000" :options="options2"></ICountUp>
+					<h3 v-if="qaylz.dzyz">
+						<ICountUp :endVal="parseInt(qaylz.dzyz)" :options="options2"></ICountUp>
 						<b>+</b>
 					</h3>
 					<p>大宅业主的选择</p>
 				</div>
 				<div>
-					<h3>
-						<ICountUp :endVal="2000" :options="options2"></ICountUp>
+					<h3 v-if="qaylz.dzyz">
+						<ICountUp :endVal="parseInt(qaylz.jjjc)" :options="options2"></ICountUp>
 						<b>㎡</b>
 					</h3>
 					<p>家居建材广场</p>
 				</div>
 				<div>
-					<h3>
-						<ICountUp :endVal="300" :options="options2"></ICountUp>
+					<h3 v-if="qaylz.dzyz">
+						<ICountUp :endVal="parseInt(qaylz.dpgys)" :options="options2"></ICountUp>
 						<b>个</b>
 					</h3>
 					<p>国内外大牌供应商</p>
 				</div>
 				<div>
-					<h3>
-						<ICountUp :endVal="100" :options="options2"></ICountUp>
+					<h3 v-if="qaylz.dzyz">
+						<ICountUp :endVal="parseInt(qaylz.cz)" :options="options2"></ICountUp>
 						<b>亿</b>
 					</h3>
 					<p>产值 100年企业追求</p>
@@ -435,71 +438,71 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li class="wow">
+					<li class="wow" v-if="zxxxList[0]">
 						<div>
-							<img src="~assets/bg_home_b6_1.jpg" alt="" />
+							<img :src="web_url+zxxxList[0].video_img" alt="" />
 						</div>
-						<i @click="videoPop.isPop = true"></i>
+						<i @click="videoPop.isPop = true,videoPop.url=zxxxList[0].video"></i>
 						<div class="text">
-							<p>客户评价</p>
-							<div>温暖家｜多面客厅，一种舒适</div>
+							<p>{{zxxxList[0].tag}}</p>
+							<div>{{zxxxList[0].title}}</div>
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" @click="$router.push({ name: 'strategy-detail' })">
+						<div class="top" v-if="zxxxList[1]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[1].id}})">
 							<div>
-								<img src="~assets/bg_home_b6_2.jpg" alt="" />
+								<img :src="web_url+zxxxList[1].img" alt="" />
 								<div>
-									<p>August</p>
-									<b>28-08</b>
+									<p>{{yue(zxxxList[1].update_time)}}</p>
+									<b>{{format(zxxxList[1].update_time)}}</b>
 								</div>
 							</div>
-							<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
-							<p>近期活动</p>
+							<h4>{{zxxxList[1].title}}</h4>
+							<p>{{zxxxList[1].tag}}</p>
 						</div>
 
-						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
-							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
+						<div class="items" v-if="zxxxList[2]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[2].id}})">
+							<h4>{{zxxxList[2].title}}</h4>
 							<p>
-								<span>装修攻略</span>
-								<span>24-08</span>
+								<span>{{zxxxList[2].tag}}</span>
+								<span>{{format(zxxxList[2].update_time)}}</span>
 							</p>
 						</div>
 
-						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
-							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳&180°</h4>
+						<div class="items" v-if="zxxxList[3]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[3].id} })">
+							<h4>{{zxxxList[3].title}}</h4>
 							<p>
-								<span>近期活动</span>
-								<span>24-08</span>
+								<span>{{zxxxList[3].tag}}</span>
+								<span>{{format(zxxxList[3].update_time)}}</span>
 							</p>
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" @click="$router.push({ name: 'strategy-detail' })">
+						<div class="top" v-if="zxxxList[4]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[4].id}})">
 							<div>
-								<img src="~assets/bg_home_b6_2.jpg" alt="" />
+								<img :src="web_url+zxxxList[2].img" alt="" />
 								<div>
-									<p>August</p>
-									<b>28-08</b>
+									<p>{{yue(zxxxList[4].update_time)}}</p>
+									<b>{{format(zxxxList[4].update_time)}}</b>
 								</div>
 							</div>
-							<h4>当低奢遇到原木，原来也这么不食人间烟火</h4>
-							<p>近期活动</p>
+							<h4>{{zxxxList[4].title}}</h4>
+							<p>{{zxxxList[4].tag}}</p>
 						</div>
 
-						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
-							<h4>二孩时代的三代同堂，学学这个0-60岁的理想家</h4>
+						<div class="items" v-if="zxxxList[5]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[5].id}})">
+							<h4>{{zxxxList[5].title}}</h4>
 							<p>
-								<span>装修攻略</span>
-								<span>24-08</span>
+								<span>{{zxxxList[5].tag}}</span>
+								<span>{{format(zxxxList[5].update_time)}}</span>
 							</p>
 						</div>
 
-						<div class="items" @click="$router.push({ name: 'strategy-detail' })">
-							<h4>又被这个600m²现代独栋装到了—5倍扩容收纳180°</h4>
+						<div class="items" v-if="zxxxList[6]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[6].id} })">
+							<h4>{{zxxxList[6].title}}</h4>
 							<p>
-								<span>近期活动</span>
-								<span>24-08</span>
+								<span>{{zxxxList[6].tag}}</span>
+								<span>{{format(zxxxList[6].update_time)}}</span>
 							</p>
 						</div>
 					</li>
@@ -566,8 +569,8 @@ export default home;
 							text-align: center;
 							margin: 62px 0 100px 0;
 							p{
-								white-space: pre-wrap;
-
+								/* white-space: pre-wrap; */
+								text-transform: uppercase
 							}
 						}
 						opacity: 0;
@@ -886,7 +889,7 @@ export default home;
 								}
 							}
 							img {
-								transition: transform 0.3s;
+								/* transition: transform 0.3s; */
 								width: 100%;
 								height: 103px;
 								margin-top: 20px;
