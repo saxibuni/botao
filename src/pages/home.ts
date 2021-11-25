@@ -116,7 +116,7 @@ export default class home extends Vue {
 	}
 	bannerSwiperOptions2: any = {
 		speed: 1000,
-		loop: true,
+		loop: false,
 		slidesPerView: 6,
 		slidesPerGroup: 1,
 		spaceBetween: 10,

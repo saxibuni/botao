@@ -77,7 +77,7 @@
 									{{anList[anIndex].list[page2Index].desc}}
 								</p>
 								<div class="btn-box">
-									<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' ,query:{id:anList[anIndex].list[page2Index].id}})"></Button>
+									<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' ,query:{aid:anList[anIndex].list[page2Index].aid}})"></Button>
 								</div>
 							</div>
 						</template>
@@ -158,7 +158,7 @@
 								<h5 class="an7">代表作品</h5>
 								<p class="an8">{{sjsItem.dbz}}</p>
 								<div class="btn-box an9">
-									<Button @click.native="$router.push({ name: 'design-detail',query:{id:sjsItem.id} })" text="TA的作品"></Button>
+									<Button @click.native="$router.push({ name: 'design-detail',query:{aid:sjsItem.aid} })" text="TA的作品"></Button>
 								</div>
 							</div>
 					</transition>
@@ -449,7 +449,7 @@
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" v-if="zxxxList[1]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[1].id}})">
+						<div class="top" v-if="zxxxList[1]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[1].aid}})">
 							<div>
 								<img :src="web_url+zxxxList[1].img" alt="" />
 								<div>
@@ -461,7 +461,7 @@
 							<p>{{zxxxList[1].tag}}</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[2]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[2].id}})">
+						<div class="items" v-if="zxxxList[2]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[2].aid}})">
 							<h4>{{zxxxList[2].title}}</h4>
 							<p>
 								<span>{{zxxxList[2].tag}}</span>
@@ -469,7 +469,7 @@
 							</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[3]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[3].id} })">
+						<div class="items" v-if="zxxxList[3]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[3].aid} })">
 							<h4>{{zxxxList[3].title}}</h4>
 							<p>
 								<span>{{zxxxList[3].tag}}</span>
@@ -478,7 +478,7 @@
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" v-if="zxxxList[4]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[4].id}})">
+						<div class="top" v-if="zxxxList[4]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[4].aid}})">
 							<div>
 								<img :src="web_url+zxxxList[2].img" alt="" />
 								<div>
@@ -490,7 +490,7 @@
 							<p>{{zxxxList[4].tag}}</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[5]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[5].id}})">
+						<div class="items" v-if="zxxxList[5]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[5].aid}})">
 							<h4>{{zxxxList[5].title}}</h4>
 							<p>
 								<span>{{zxxxList[5].tag}}</span>
@@ -498,7 +498,7 @@
 							</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[6]" @click="$router.push({ name: 'strategy-detail',query:{id:zxxxList[6].id} })">
+						<div class="items" v-if="zxxxList[6]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[6].aid} })">
 							<h4>{{zxxxList[6].title}}</h4>
 							<p>
 								<span>{{zxxxList[6].tag}}</span>

@@ -10,38 +10,40 @@
 				</div>
 				<p>
 					已为您找到
-					<span>8</span>
+					<span>{{total}}</span>
 					条符合的结果
 				</p>
 			</div>
 		</div>
-		<div class="page1">
+		<div class="page1" v-if="case_list&&case_list.length!=0">
 			<h2>精选案例</h2>
 			<p>经典案例 筑梦幸福家</p>
 			<div class="cases">
-				<Cases v-for="i in 3" :key="i" />
+				<template v-for="(item,i) in case_list">
+					<Cases v-if="item" :caseData="item" :key="i" />
+				</template>
 			</div>
 			<div class="line"></div>
 		</div>
 
-		<div class="page2">
+		<div class="page2" v-if="sjs_list&&sjs_list.length!=0">
 			<h2>设计名人堂</h2>
 			<p>100+ 位别墅大宅设计大咖</p>
 
 			<div class="content">
 				<ul>
-					<li v-for="i in 4" :key="i" @click="$router.push('/design/detail')">
+					<li v-for="(item,i) in sjs_list" :key="i" @click="$router.push({name:'design-detail',query:{aid:item.aid}})">
 						<div class="imgBox">
-							<img src="~assets/bg_c1_pic01.jpg" alt="" />
+							<img :src="web_url+item.img" alt="" />
 							<div class="text">
-								<p>于一</p>
-								<p>设计总监 &nbsp;|&nbsp; 15年经验</p>
+								<p>{{item.title}}</p>
+								<p>{{item.sjssx}} &nbsp;|&nbsp; {{item.cysj}}工作经验</p>
 							</div>
 						</div>
 						<div class="text">
 							<p>代表作品</p>
-							<p>嘉怡水岸、三林新村、华侨城、两河流域...</p>
-							<Button :text="'了解设计师'" />
+							<p>{{item.dbz}}</p>
+							<Button text="了解设计师" />
 						</div>
 					</li>
 				</ul>
@@ -50,20 +52,20 @@
 			<div class="line"></div>
 		</div>
 
-		<div class="page3">
+		<div class="page3" v-if="news_list&&news_list.length!=0">
 			<h2>最新资讯</h2>
 			<p>快速了解最新装修攻略和活动</p>
 			<div class="list-box">
 				<ul class="list wow">
-					<li v-for="(v, i) in list" :style="{ 'animation-delay': 0.5 * i + 1 + 's' }" :key="i">
+					<li v-for="(v, i) in news_list" :style="{ 'animation-delay': 0.5 * i + 1 + 's' }" :key="i">
 						<div class="img-box">
-							<img :src="v.imgUrl" alt="" />
+							<img :src="web_url+v.img" alt="" />
 						</div>
 						<div class="info-box">
-							<div class="date">{{ v.date }}</div>
+							<div class="date">{{format(v.add_time)}},{{yue(v.add_time)}},{{day(v.add_time)}}</div>
 							<h4 class="title">{{ v.title }}</h4>
-							<p>{{ v.text }}</p>
-							<div class="more" @click="$router.push({ name: 'strategy-detail' })" @mouseenter="addClass(i, '.list')" @mouseleave="removeClass(i, '.list')">
+							<p>{{ v.desc }}</p>
+							<div class="more" @click="$router.push({ name: 'strategy-detail',query:{aid:v.aid} })" @mouseenter="addClass(i, '.list')" @mouseleave="removeClass(i, '.list')">
 							More
 							<span></span>
 						</div>
@@ -89,11 +91,28 @@ import utils from "root/utils";
 })
 export default class Search extends Vue {
 	keywords:any='';
+	case_list = [];
+	sjs_list = [];
+	news_list = [];
+	web_url = '';
+	total = '-';
 	mounted() {
+		this.web_url = this.$store.state.footData.web_url;
 		this.queryList()
 	}
 	queryList(){
 		this.keywords =decodeURI((this.$route.query.keyword as string));
+		this.searchList()
+	}
+	searchList(){
+		utils.service.searchList({keywords:this.keywords}, res => {
+			if (res.status === 200) {
+				this.case_list = res.data.case_list;
+				this.sjs_list = res.data.sjs_list;
+				this.news_list = res.data.news_list;
+				this.total = res.data.total;
+			}
+		});
 	}
 	@Watch('$route.query')
 	demandIdChange() {
@@ -119,7 +138,7 @@ export default class Search extends Vue {
 			text: '俗话说硬装为骨，软装为魂色彩作为软装设计的精髓，就足以让家居空间出彩，客厅作为待客的门面'
 		}
 	];
-		addClass(i,dom) {
+	addClass(i,dom) {
 		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
 
@@ -140,6 +159,37 @@ export default class Search extends Vue {
 			}
 			return;
 		}
+		this.searchList();
+	}
+	add0(m){return m<10?'0'+m:m }
+	format(shijianchuo){
+		var time = new Date(shijianchuo*1000);
+		var y = time.getFullYear();
+		return y;
+	}
+	day(shijianchuo){
+		var time = new Date(shijianchuo*1000);
+		var d = time.getDate();
+		return this.add0(d);
+	}
+	eMonh = {
+		1:'January',
+		2:'February',
+		3:'March',
+	  4:'April',
+		5:'May',
+		6:'June',
+		7:'July',
+		8:'August',
+		9:'September',
+		10:'October',
+		11:'November',
+		12:'December',
+	};
+	yue(shijianchuo){
+		var time = new Date(shijianchuo*1000);
+		var m = time.getMonth()+1;
+		return this.eMonh[m];
 	}
 }
 </script>
@@ -148,6 +198,12 @@ export default class Search extends Vue {
 	max-width: 1920px;
 	margin: 0 auto;
 	padding-top: 112px;
+	.nodata{
+		text-align: center;
+		line-height: 250px;
+		font-size: 21px;
+		color: #666;
+	}
 	@mixin info {
 		h4 {
 			margin-top: 14px;
@@ -305,11 +361,14 @@ export default class Search extends Vue {
 			ul {
 				display: flex;
 				flex-wrap: wrap;
-				justify-content: space-between;
 				li {
 					margin-bottom: 40px;
+					margin-right: 40px;
 					width: 410px;
 					cursor: pointer;
+					&:nth-child(4n){
+						margin-right: 0;
+					}
 					.imgBox {
 						position: relative;
 						width: 410px;
@@ -334,6 +393,7 @@ export default class Search extends Vue {
 							bottom: 40px;
 							left: 40px;
 							p {
+
 								&:nth-of-type(1) {
 									font-size: 32px;
 									color: #ffffff;
@@ -355,11 +415,11 @@ export default class Search extends Vue {
 							font-size: 18px;
 							&:nth-of-type(1) {
 								color: #333333;
-								// font-weight: 600;
 							}
 							&:nth-of-type(2) {
 								margin-top: 20px;
 								color: #666666;
+								padding-right: 20px;
 								@include line-clamp(1);
 							}
 						}
@@ -397,12 +457,13 @@ export default class Search extends Vue {
 			.list {
 				display: flex;
 				flex-wrap: wrap;
-				justify-content: space-between;
-
 				li {
 					background-color: #fff;
-
-box-shadow: 0px 3px 17px 1px rgba(0, 0, 0, 0.05);
+					box-shadow: 0px 3px 17px 1px rgba(0, 0, 0, 0.05);
+					margin-right: 25px;
+					&:nth-child(3n){
+						margin-right: 0;
+					}
 					.img-box {
 						width: 570px;
 						height: 362px;
