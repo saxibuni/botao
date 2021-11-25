@@ -68,7 +68,6 @@ export default class StrategyList extends Vue {
 
 	@Watch('$route.query.typeId')
 	typeIdChange(typeId) {
-		console.warn("change ", typeId);
 		this.typeId = typeId;
 		this.queryMethod = (typeId == "90" ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
 		this.query();
