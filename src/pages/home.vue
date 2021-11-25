@@ -896,7 +896,7 @@ export default home;
 								}
 							}
 							img {
-								/* transition: transform 0.3s; */
+								transition: transform 0.3s;
 								width: 100%;
 								height: 103px;
 								margin-top: 20px;
