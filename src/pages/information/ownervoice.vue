@@ -11,7 +11,7 @@
 						<div class="img-box">
 							<img :src="web_url + v.img" />
 							<div class="pause">
-								<img src="~assets/ic_home_b3_play.png" :url='v.video'  class="pause-btn" alt="" />
+								<img src="~assets/ic_home_b3_play.png" :url="v.video" class="pause-btn" alt="" />
 							</div>
 							<div class="left-info">
 								<div class="inner-box">
@@ -34,7 +34,7 @@
 										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
 									<Button :text="'定制我的装修方案'"></Button>
-									<div class="img-box" @click="show">
+									<div class="img-box">
 										<img src="~assets/ic_f1_part2_dou.png" />
 									</div>
 								</div>
@@ -100,9 +100,9 @@
 			<h3 class="wow">OWNER REVIEWS</h3>
 			<div class="swiper-box wow">
 				<swiper :options="dpBannerOptions">
-					<swiper-slide v-for="(v) in yzdp" :key="v.id">
+					<swiper-slide v-for="v in yzdp" :key="v.id">
 						<div class="img-box">
-							<img :src="web_url+v.img" alt="" />
+							<img :src="web_url + v.img" alt="" />
 							<div class="mask"></div>
 						</div>
 					</swiper-slide>
@@ -122,7 +122,7 @@
 				</div>
 			</Prop>
 		</transition>
-			<VideoPopup :videoPop="videoPop"></VideoPopup>
+		<VideoPopup :videoPop="videoPop"></VideoPopup>
 	</div>
 </template>
 
@@ -340,7 +340,7 @@ html {
 			.swiper-container {
 				padding: 20px;
 			}
-			img{
+			img {
 				min-height: 488px;
 			}
 			.img-box {
@@ -517,7 +517,7 @@ html {
 		.img-box {
 			transform-origin: center;
 		}
-		.mask{
+		.mask {
 			height: 100vh;
 		}
 	}
