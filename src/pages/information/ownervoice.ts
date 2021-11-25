@@ -135,6 +135,7 @@ export default class OwnerVoice extends Vue {
 		utils.emitter.$on('showVideo', url => {
 			if (!url) return;
 			this.videoPop.isPop = true;
+			this.videoPop.url = url;
 		});
 		utils.emitter.$on('showD', () => {
 			this.$store.state.dialogVisible = true;
