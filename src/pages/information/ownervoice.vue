@@ -33,7 +33,7 @@
 										{{ v.desc }}
 										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
-									<Button :text="'定制我的装修方案'" @click.native="$store.state.dialogVisible = true"></Button>
+									<Button :text="'定制我的装修方案'"></Button>
 									<div class="img-box" @click="show">
 										<img src="~assets/ic_f1_part2_dou.png" />
 									</div>
@@ -47,7 +47,7 @@
 				<div class="controals">
 					<div class="swiper-next owner-next wow"></div>
 					<div class="swiper-pre owner-pre wow"></div>
-					<div class="swiper-pagination wow owener-pagination"></div>
+					<div class="owener-pagination1 swiper-pagination wow "></div>
 				</div>
 			</div>
 		</div>
@@ -91,7 +91,7 @@
 				<div class="controals">
 					<div class="swiper-next wow fh-next"></div>
 					<div class="swiper-pre wow fh-pre"></div>
-					<div class="swiper-pagination"></div>
+					<div class="swiper-pagination fh2"></div>
 				</div>
 			</div>
 		</div>

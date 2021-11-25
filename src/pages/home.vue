@@ -2,16 +2,15 @@
 	<div class="home">
 		<div class="page1">
 			<swiper :options="bannerSwiperOptions">
-				<swiper-slide v-for="(item, i) in 3" :key="i">
-					<img src="~assets/bg_home_banner1.jpg" alt="" />
+				<swiper-slide v-for="(item, i) in banner.list" :key="i">
+					<img :src="web_url+item.img" alt="" />
 					<div class="text">
 						<div class="text-content">
 							<h3>
-								<span>20+</span><span>年专注别墅大宅 全案引领者{{i}}</span>
+								<span></span><span>{{item.title}}</span>
 							</h3>
 							<div>
-								<p>FOCUS ON VILLA</p>
-								<p>MANSIONS</p>
+								<p v-html="item.etitle"></p>
 							</div>
 						</div>
 						<div>
@@ -52,38 +51,40 @@
 			</h2>
 			<p class="wow">Select cases</p>
 			<div class="tabs wow">
-				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="anIndex = i">{{ item }}</div>
+				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="anIndex = i,page2Index = 0,anIndexFun();">{{ item.typename }}</div>
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
 					<div class="imgs-wrap">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
-							<swiper-slide v-for="(item, i) in page2ImgSrcList" :key="i">
-								<img :src="item" alt="" />
+							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
+								<img :src="web_url+item.img" alt="" />
 							</swiper-slide>
 						</swiper>
 					</div>
 
 				</div>
 					<transition name="fade">
-						<div class="text wow" v-if="page2Ani">
-							<h3>上海东方颐城</h3>
-							<h4>
-								<span>现代风格</span>
-								<span>120㎡</span>
-							</h4>
-							<p>
-								地下室负一层改动较大，增加了使用面积。一层北入户外扩增加厨房使用面积。南面增加晾晒区。二层做了整个大套房，很气派。
-							</p>
-							<div class="btn-box">
-								<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' })"></Button>
+						<template v-if="anList[anIndex].list&&anList[anIndex].list[page2Index]">
+							<div class="text wow" v-if="page2Ani">
+								<h3 v-if="anList[anIndex].list[page2Index]&&anList[anIndex].list[page2Index].title">{{anList[anIndex].list[page2Index].title}}</h3>
+								<h4 v-if="anList[anIndex].list[page2Index]&&anList[anIndex].list[page2Index].title">
+									<span>{{anList[anIndex].list[page2Index].istyle}}</span>
+									<span>{{anList[anIndex].list[page2Index].imj}}</span>
+								</h4>
+								<p v-if="anList[anIndex].list[page2Index]&&anList[anIndex].list[page2Index].title">
+									{{anList[anIndex].list[page2Index].desc}}
+								</p>
+								<div class="btn-box">
+									<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' ,query:{id:anList[anIndex].list[page2Index].id}})"></Button>
+								</div>
 							</div>
-						</div>
+						</template>
 					</transition>
 				<div class="swiper-wrap wow">
 					<swiper class="dswiper" :options="bannerSwiperOptions2">
-						<swiper-slide v-for="(item, i) in page2ImgSrcList" :key="i">
-							<img :src="item" alt="" />
+						<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
+							<img :src="web_url+item.img" alt="" />
 						</swiper-slide>
 					</swiper>
 					<div class="swiper-button-wrap">
@@ -91,8 +92,8 @@
 						<div class="next2"></div>
 					</div>
 				</div>
-				<div class="mask">
-					<img :src="page2ImgSrcList[page2Index]" alt="" />
+				<div class="mask" v-if="anList[anIndex].list&&anList[anIndex].list[page2Index]">
+					<img :src="web_url + anList[anIndex].list[page2Index].img" alt="" />
 				</div>
 				<div class="mask2"></div>
 			</div>
@@ -102,6 +103,7 @@
 				<i></i>
 			</div>
 		</div>
+
 		<div class="page3">
 			<div class="left">
 				<h2>
@@ -111,28 +113,28 @@
 				<ul>
 					<li>
 						<div>
-							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="parseInt(sjsItem.sjhy)||0" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="parseInt(sjsItem.cysj)||0" :options="options2"></ICountUp></b>
 							年
 						</div>
 						<p>以上从业经验</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="parseInt(sjsItem.sjhy)||0" :options="options2"></ICountUp></b>
 							支
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="parseInt(sjsItem.sjjx)||0" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>荣获设计奖项</p>
@@ -145,25 +147,17 @@
 
 					<transition name="fade">
 							<div class="box wow" v-if="page3Ani">
-								<h4 class="an1">于一</h4>
-								<span class="an2">设计总监</span>
+								<h4 class="an1">{{sjsItem.title}}</h4>
+								<span class="an2">{{sjsItem.sjssx}}</span>
 								<h5 class="an3">从业年限：</h5>
-								<b class="an4">15年</b>
+								<b class="an4">{{sjsItem.cysj}}</b>
 								<h5 class="an5">所获荣誉</h5>
-								<p class="an6">
-									国家注册室内设计师 （证号：ZLY20102013）
-									<br />
-									上海市注册高级设计师（证号：XH090129）
-									<br />
-									上海市装饰装修行业协会会员
-									<br />
-									第二届中国国际空间环境艺术设计大赛优秀奖
-									<br />
+								<p class="an6" v-html="sjsItem.hor">
 								</p>
 								<h5 class="an7">代表作品</h5>
-								<p class="an8">嘉怡水岸 浦江华侨城 华侨城 两河流域...</p>
+								<p class="an8">{{sjsItem.dbz}}</p>
 								<div class="btn-box an9">
-									<Button @click.native="$router.push({ name: 'design-detail' })" text="TA的作品"></Button>
+									<Button @click.native="$router.push({ name: 'design-detail',query:{id:sjsItem.id} })" text="TA的作品"></Button>
 								</div>
 							</div>
 					</transition>
@@ -171,18 +165,18 @@
 					</div>
 					<div class="img-wrap">
 						<transition-group name="toggle-image">
-							<img :src="imgSrc" alt="" v-if="showProfile" key="a" />
-							<img :src="imgSrc" alt="" v-if="!showProfile" key="b" />
+							<img :src="web_url+sjsItem.img" alt="" v-if="showProfile" key="a" />
+							<img :src="web_url+sjsItem.img" alt="" v-if="!showProfile" key="b" />
 						</transition-group>
 
 						<transition-group name="fade">
 							<div v-if="showProfile" key="c" >
 								<p>DESIGN CONCEPT</p>
-								<b>细节决定成败</b>
+								<b>{{sjsItem.sjln}}</b>
 							</div>
 							<div v-if="!showProfile"  key="d">
 								<p>CONCEPT DESIGN</p>
-								<b>细节决定成败细节决定成败</b>
+								<b>{{sjsItem.sjln}}</b>
 							</div>
 						</transition-group>
 
@@ -195,7 +189,7 @@
 					>
 						<div class="flip-box" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }">
 							<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
-							<img :src="item" alt="" />
+							<img :src="web_url+item.img" alt="" v-if="item.img!=='assets/portrait/white.png'" />
 							<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
 						</div>
 					</li>
@@ -204,13 +198,13 @@
 
 				<template v-if="isShowImg">
 					<div class="img-box2" @click="onClick(item.src, i)" v-for="(item, i) in listwidth" :key='i' :style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }">
-						<img :src="item.src" alt="" />
+						<img :src="web_url+item.src" alt="" />
 					</div>
 				</template>
 
 				<template v-if="listwidth.length!=0">
 						<div class="img-box" :style="{ top: `${listwidth[page3Index].top}px`, left: `${listwidth[page3Index].left}px`, width: `${listwidth[page3Index].width}px`, height: `${listwidth[page3Index].height}px` }" v-if="isShowLightImg">
-							<img :src="listwidth[page3Index].src" alt="" />
+							<img :src="web_url+listwidth[page3Index].src" alt="" />
 						</div>
 				</template>
 			</div>
@@ -227,13 +221,11 @@
 			<div class="left">
 				<img src="~assets/bg_home_b4_left.jpg" alt="" />
 				<div class="text">
-					<h2>
-						<span>国家一级</span>
-						施工资质
-						<br />
-						隐蔽工程终身免费保修
+					<h2 v-if="sgzzDesc.btitle">
+						<span>{{sgzzDesc.btitle.split('#')[1]}}</span>
+					  <b v-html="sgzzDesc.btitle.split('#')[2]"></b>
 					</h2>
-					<p>build worksite</p>
+					<p>{{sgzzDesc.etitle}}</p>
 					<div @click="onRoute('craft-manager')">
 						了解更多
 						<i></i>
@@ -241,8 +233,8 @@
 					<ul>
 						<li>
 							<div>
-								<b>
-									<ICountUp :endVal="138" :options="options2"></ICountUp>
+								<b v-if="sgzzDesc.gltl">
+									<ICountUp :endVal="parseInt(sgzzDesc.gltl)" :options="options2"></ICountUp>
 								</b>
 								<span>项</span>
 							</div>
@@ -250,8 +242,8 @@
 						</li>
 						<li>
 							<div>
-								<b>
-									<ICountUp :endVal="316" :options="options2"></ICountUp>
+								<b v-if="sgzzDesc.sggy">
+									<ICountUp :endVal="parseInt(sgzzDesc.sggy)" :options="options2"></ICountUp>
 								</b>
 								<span>条</span>
 							</div>
@@ -259,8 +251,8 @@
 						</li>
 						<li>
 							<div>
-								<b>
-									<ICountUp :endVal="14" :options="options2"></ICountUp>
+								<b v-if="sgzzDesc.gcjszl">
+									<ICountUp :endVal="Number(sgzzDesc.gcjszl)" :options="options2"></ICountUp>
 								</b>
 								<span>项</span>
 							</div>
@@ -268,8 +260,8 @@
 						</li>
 						<li>
 							<div>
-								<b>
-									<ICountUp :endVal="259" :options="options2"></ICountUp>
+								<b v-if="sgzzDesc.ysbz">
+									<ICountUp :endVal="Number(sgzzDesc.ysbz)" :options="options2"></ICountUp>
 								</b>
 								<span>条</span>
 							</div>
@@ -277,8 +269,8 @@
 						</li>
 						<li>
 							<div>
-								<b>
-									<ICountUp :endVal="600" :options="options2"></ICountUp>
+								<b v-if="sgzzDesc.zjgdsl">
+									<ICountUp :endVal="Number(sgzzDesc.zjgdsl)" :options="options2"></ICountUp>
 								</b>
 								<span>个</span>
 							</div>
@@ -286,8 +278,8 @@
 						</li>
 						<li>
 							<div>
-								<b>
-									<ICountUp :endVal="100" :options="options2"></ICountUp>
+								<b v-if="sgzzDesc.jpxmjl">
+									<ICountUp :endVal="Number(sgzzDesc.jpxmjl)" :options="options2"></ICountUp>
 								</b>
 								<span>+</span>
 							</div>
@@ -299,35 +291,29 @@
 			</div>
 			<div class="right">
 				<div class="text">
-					<h2>
+					<h2 v-if="sggyList&&sggyList[picIndex2]">
 						<transition-group name="toggle-image">
-							<img src="~assets/bg_d3_part6_roll.png" alt="" v-if="textActive" key="a" />
-							<img src="~assets/bg_home_b4_roll.png" alt="" v-if="!textActive" key="b" />
+							<img :src="web_url+sggyList[picIndex2].img" alt="" v-if="textActive" key="a" />
+							<img :src="web_url+sggyList[picIndex2].img" alt="" v-if="!textActive" key="b" />
 						</transition-group>
 					</h2>
-					<div :class="{ active: textActive2 }">
-						<h5>水电工艺施工标准</h5>
-						<p>
-							先弹线后再开槽，开槽时必须横平竖直；
-							<br />
-							墙地面开槽必须弹单线用切割机开槽；
-							<br />
-							所有线管、水管必须用管卡固定。
-						</p>
+					<div :class="{ active: textActive2 }" v-if="sggyList&&sggyList[picIndex2]">
+						<h5>{{sggyList[picIndex2].title}}</h5>
+						<p v-html="sggyList[picIndex2].desc"></p>
 					</div>
 				</div>
 				<div class="img-wrap">
 					<img src="~assets/bg_home_b4_right.jpg" alt="" />
-					<div class="div1" @click="textActiveFun(2)">
+					<div class="div1" @click="textActiveFun(2,0)">
 						<i></i>
 					</div>
-					<div class="div2" @click="textActiveFun(3)">
+					<div class="div2" @click="textActiveFun(3,1)">
 						<i></i>
 					</div>
-					<div class="div3" @click="textActiveFun(1)">
+					<div class="div3" @click="textActiveFun(1,2)">
 						<i></i>
 					</div>
-					<div class="div4" @click="textActiveFun(0)">
+					<div class="div4" @click="textActiveFun(0,3)">
 						<i></i>
 					</div>
 
@@ -579,6 +565,10 @@ export default home;
 							text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.23);
 							text-align: center;
 							margin: 62px 0 100px 0;
+							p{
+								white-space: pre-wrap;
+
+							}
 						}
 						opacity: 0;
 					}
@@ -1186,6 +1176,7 @@ export default home;
 						.an6{
 							opacity: 0;
 							animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
+							white-space: pre-wrap;
 						}
 						.an7{
 							opacity: 0;
@@ -1295,6 +1286,7 @@ export default home;
 						bottom: 67px;
 						left: 52px;
 						z-index: 2;
+						padding-right: 20px;
 						@include fade-out-in();
 						p {
 							font-size: 20px;
@@ -1846,6 +1838,10 @@ export default home;
 					color: #fff;
 					span {
 						color: #ed5400;
+					}
+					b{
+						font-weight: bold;
+						white-space: pre-wrap;
 					}
 				}
 				> p {

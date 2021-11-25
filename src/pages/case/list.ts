@@ -14,11 +14,13 @@ import utils from 'root/utils'
 })
 export default class CaseList extends Vue {
 	listData={}
+	caseList={}
 	web_url = ''
 	inputVal=''
 	paginationData={size:6,total:1000}
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
+	swiperIndex=0
 	bannerSwiperOptions1: any = {
 		speed: 1000,
 		loop: true,
@@ -49,15 +51,18 @@ export default class CaseList extends Vue {
 			nextEl: '.next3',
 		},
 		on: {
+			slideChangeTransitionStart: function() {
+				utils.emitter.$emit('changeIndex', this.realIndex);
+			},
 		}
 	};
 	options1 = {
 		suffix: '+',
 		useEasing: true
 	};
-created(){
-	this.getData(1,'','','','')
-}
+	created(){
+		this.getData(1,'','','','')
+	}
 	getData(val1,val2,val3,val4,val5) {
 		utils.service.queryJxCase(
 			{
@@ -76,7 +81,9 @@ created(){
 				this.tabList[1].info=res.data.hxsx
 				this.tabList[2].info=res.data.mjsx
 				this.web_url = res.data.web_url;
-				this.paginationData.total=res.data.list.length
+				this.caseList= res.data.list;
+				this.paginationData.total=res.data.pages.total
+				this.paginationData.size=res.data.pages.per_page
 				utils.emitter.$emit('bannerData', res.data);
 			}
 		);
@@ -84,7 +91,24 @@ created(){
 	choice(v?){
 		this.getData(1,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],v)
 	}
+	getData1(v){
+			utils.service.queryJxCase(
+				{
+					page: v,
+					mjsx:this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],
+					hxsx:this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],
+					stylesx:this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],
+					keywords:'',
+				},
+				res => {
+					this.caseList= res.data.list;
+				}
+			);
+	}
 	mounted(){
 		this.restartWow();
+		utils.emitter.$on('changeIndex', i => {
+			this.swiperIndex = i;
+		});
 	}
 }

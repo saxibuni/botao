@@ -3,8 +3,8 @@
 		<Popup class="video-popup" v-if="videoPop.isPop" @click.native="show">
 			<div class="mask"></div>
 			<div class="video-box">
-				<video controls preload="true">
-					<source :src="'./botao.mp4'" type="video/mp4" />
+				<video controls :src="$store.state.footData.web_url + videoPop.url" preload="true">
+					<source :src="$store.state.footData.web_url + videoPop.url" type="video/mp4" />
 				</video>
 				<div class="close"></div>
 			</div>

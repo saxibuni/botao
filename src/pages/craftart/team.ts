@@ -14,19 +14,25 @@ export default class Team extends Vue {
 	paginationData={size:16,total:1000}
 	bannerData={}
 	created(){
-		this.getData()
+		this.getData(1)
 	}
-		getData() {
+		getData(v) {
 			utils.service.querysgteam(
-				{},
+				{
+					page:v
+				},
 				res => {
 					console.log(res.data);
 					this.teamData=res.data
 					this.bannerData=res.data.banner
 					this.web_url = res.data.web_url;
-					this.paginationData.total=res.data.list.length
+					this.paginationData.total=res.data.pages.total
+					this.paginationData.size=res.data.pages.per_page
 				}
 			);
+		}
+		getData1(v){
+			this.getData(v)
 		}
 	mounted(){
 		this.restartWow();

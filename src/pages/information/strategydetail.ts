@@ -76,11 +76,11 @@ export default class StrategyDetail extends Vue {
 
 	archivesInfo = {};
 	created() {
-		this.queryDetail();
+		this.queryDetail(this.$route.query.aid);
 	}
 
-	queryDetail() {
-		utils.service.queryNewsDetail(this.$route.query.aid, res => {
+	queryDetail(aid) {
+		utils.service.queryNewsDetail(aid, res => {
 			console.log(res.data);
 
 			//banner
@@ -95,7 +95,7 @@ export default class StrategyDetail extends Vue {
 			this.newsList = res.data.newsTopList;
 			// this.newsList=this.newsList.concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList)
 
-			this.restartWow();
+			// this.restartWow();
 		});
 	}
 
@@ -107,9 +107,11 @@ export default class StrategyDetail extends Vue {
 	}
 
 	jump(aid) {
-		window.scroll({ top: 0, behavior: 'smooth' });
 		this.$router.push({ name: 'strategy-detail', query: { aid } });
-		this.queryDetail()
+		this.queryDetail(aid);
+		setTimeout(() => {
+			window.scroll({ top: 0, behavior: 'smooth' });
+		}, 20);
 	}
 
 	getMore() {

@@ -36,13 +36,17 @@ export default class DesignList extends Vue {
 					res.data.sjssx.unshift('全部')
 					this.tabs=res.data.sjssx
 					this.web_url = res.data.web_url;
-					this.paginationData.total=res.data.list.length
+					this.paginationData.total=res.data.pages.total
+					this.paginationData.size=res.data.pages.per_page
 					utils.emitter.$emit('bannerData', res.data);
 				}
 			);
 		}
 		choice(v?){
 			this.getData(1,this.tabs[this.activeIndex]=='全部'?'':this.tabs[this.activeIndex],v)
+		}
+		getData1(v){
+			this.getData(v,this.tabs[this.activeIndex]=='全部'?'':this.tabs[this.activeIndex],'')
 		}
 	mounted(){
 		this.restartWow();
