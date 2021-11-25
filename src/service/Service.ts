@@ -92,4 +92,7 @@ export class Service extends EventEmitter {
 	public queryRzsh(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/rzsh', req, callback);
 	}
+	public formSubmit(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/form_submit', req, callback);
+	}
 }

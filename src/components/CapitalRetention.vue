@@ -86,6 +86,7 @@
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import Popup from './popup.vue';
+import utils from "root/utils";
 
 @Component({
 	components:{
@@ -184,16 +185,32 @@ export default class CapitalRetention extends Vue {
 			}
 			return;
 		}
-		this.$store.state.dialog={
-			state:1,
-			text:'提交成功'
+		let data = {
+			form_id:11,
+			attr_45:this.form.userName,
+			attr_46:this.form.phone,
+			attr_47:this.form.area,
 		}
-		this.form = {
-			userName: '',
-			phone: '',
-			area: ''
-		};
-		this.$store.state.dialogVisible = false;
+		utils.service.formSubmit(data, res => {
+			if (res.status === 200) {
+			 		this.$store.state.dialog={
+						state:1,
+						text:'提交成功'
+					}
+					this.form = {
+						userName: '',
+						phone: '',
+						area: ''
+					};
+					this.$store.state.dialogVisible = false;
+			}else{
+				this.$store.state.dialog={
+						state:2,
+						text:'系统错误'
+				}
+			}
+		});
+
 	}
 }
 </script>
