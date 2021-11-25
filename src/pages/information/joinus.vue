@@ -68,16 +68,15 @@
 			<h4 class="wow">人力资源部</h4>
 			<p class="wow">
 				<i></i>
-				<span>13681921483</span>
-				（微信同号）
+				<span>{{rlzytel}}</span>
 			</p>
 			<p class="wow">
 				<i></i>
-				上海市徐汇区中山西路2331号 波涛装饰集团
+				{{rlzyadd}}
 			</p>
 			<div class="out-box wow">
 				<div class="img-box">
-					<img src="~assets/ic_f4_part8_qa.jpg" alt="" />
+					<img :src="$store.state.footData.web_url+rlzyewm" alt="" />
 				</div>
 			</div>
 			<p class="wow">扫码咨询</p>

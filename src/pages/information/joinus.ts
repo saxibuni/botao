@@ -169,6 +169,9 @@ export default class JoinUs extends Vue {
 	rclniList = [];
 	rclnList = [];
 	zpxx = [];
+	rlzytel=''
+	rlzyadd=''
+	rlzyewm=''
 	jsBannerOptions: any = {
 		centeredSlides: true,
 		speed: 1000,
@@ -222,6 +225,11 @@ export default class JoinUs extends Vue {
 			});
 			this.zpxx = res.data.zpxxList;
 			// this.zpxx = this.zpxx.concat(this.zpxx).concat(this.zpxx);
+
+			// 人力资源
+			this.rlzytel=res.data.rlzytel
+			this.rlzyadd=res.data.rlzyadd
+			this.rlzyewm=res.data.rlzyewm
 		});
 	}
 
