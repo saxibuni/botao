@@ -1,6 +1,6 @@
 <template>
 	<div class="join-us">
-		<banner :data="BannerData"></banner>
+		<banner v-if="zpxx[0]" :data="BannerData"></banner>
 		<div class="page1">
 			<div class="left wow">
 				<h2>
@@ -23,7 +23,7 @@
 			<swiper :options="jsBannerOptions">
 				<swiper-slide v-for="(v, i) in rclniList" :key="i">
 					<div class="img-box">
-						<img :src="web_url + v.img" alt="" />
+						<img v-if="zpxx[0]"  :src="web_url + v.img" alt="" />
 					</div>
 				</swiper-slide>
 			</swiper>
@@ -40,7 +40,7 @@
 					<Button :text="'加入我们'"></Button>
 				</div>
 				<div class="img-box wow">
-					<img :src="web_url + v.img" alt="" />
+					<img v-if="zpxx[0]"  :src="web_url + v.img" alt="" />
 				</div>
 			</div>
 		</div>
@@ -76,7 +76,7 @@
 			</p>
 			<div class="out-box wow">
 				<div class="img-box">
-					<img :src="$store.state.footData.web_url+rlzyewm" alt="" />
+					<img :src="$store.state.footData.web_url+rlzyewm" v-if="zpxx[0]" alt="" />
 				</div>
 			</div>
 			<p class="wow">扫码咨询</p>

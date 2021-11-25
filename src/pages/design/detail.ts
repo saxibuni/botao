@@ -10,7 +10,7 @@ import utils from 'root/utils'
 })
 export default class DesignDetail extends Vue {
 	web_url = ''
-	detailData={}
+	detailData:any={}
 	swiperOptions: any = {
 		speed: 1000,
 		loop: true,

@@ -159,7 +159,7 @@ export default class Brand extends Vue {
 	web_url = '';
 	btbrandInfo = {};
 	btzgsList = {};
-	brandDataInfo = {};
+	brandDataInfo = {id:0};
 	hxjzgList = [];
 	fzlcList = [];
 	ryzz = [];
@@ -214,7 +214,6 @@ export default class Brand extends Vue {
 		this.createDragger();
 		this.createTrigger();
 		this.initPathTarget();
-		this.initVideo();
 		setTimeout(() => {
 			this.jump(this.$route.params.number);
 		}, 100);
@@ -223,6 +222,8 @@ export default class Brand extends Vue {
 		this.$bus.$on(Events.RESIZE, this.onResize);
 		this.$bus.$on('params-change', this.jump);
 		setTimeout(() => {
+		this.initVideo();
+
 			this.onResize();
 		}, 800);
 	}
