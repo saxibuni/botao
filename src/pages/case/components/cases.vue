@@ -26,7 +26,7 @@
 						</div>
 					</div>
 					<div class="bottom">
-						<div class="bottomLeft">
+						<div class="bottomLeft" @click.stop="push()">
 							<div class="imgBox2">
 								<img :src="$store.state.footData.web_url + caseData.des_info.faceimg" alt="" />
 							</div>
