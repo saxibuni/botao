@@ -8,7 +8,7 @@
 						<div class="from">
 							<h2>{{$store.state.dialogDesign.design?'预约设计':'参观工地'}}</h2>
 							<h3>
-								今天已有<span>{{$store.state.dialogDesign.design?58:88}}</span>位业主预约了{{$store.state.dialogDesign.design?'设计':'参观工地'}}
+								今天已有<span>{{$store.state.dialogDesign.design?$store.state.footData.sj_num:$store.state.footData.gd_num}}</span>位业主预约了{{$store.state.dialogDesign.design?'设计':'参观工地'}}
 							</h3>
 							<ul>
 								<li>
@@ -50,7 +50,7 @@
 									<p>
 										关注波涛微信公众号<br>了解更多装饰资讯
 									</p>
-									<img src="~/assets/bg_home_footer_qa.jpg" alt="">
+									<img :src="$store.state.footData.web_url+$store.state.footData.watch" alt="">
 								</div>
 						</div>
 				</div>

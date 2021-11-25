@@ -9,7 +9,7 @@
 							<h2>装修报价</h2>
 							<h3>
 								今天已有
-								<span>858</span>
+								<span>{{$store.state.footData.bj_num}}</span>
 								位业主获取了装修预算
 							</h3>
 							<ul>

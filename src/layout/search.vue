@@ -15,11 +15,8 @@
 					<img src="~assets/icons/ic_home_search.png" alt="" />
 				</div>
 			</div>
-			<h5>
-				<span @click="keyword='轻奢/现代/港式'">轻奢/现代/港式</span>
-				<span @click="keyword='中式/新中式'">中式/新中式</span>
-				<span @click="keyword='欧式/法式/地中海/美式'">欧式/法式/地中海/美式</span>
-				<span @click="keyword='日式/侘寂/工业风'">日式/侘寂/工业风</span>
+			<h5 v-if="$store.state.footData&&$store.state.footData.searchhkey">
+				<span v-for="(item,i) in $store.state.footData.searchhkey.split(',')" :key="i" @click="keyword=item">{{item}}</span>
 			</h5>
 		</div>
 	</div>
