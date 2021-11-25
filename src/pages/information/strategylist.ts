@@ -40,6 +40,7 @@ export default class StrategyList extends Vue {
 
 			this.web_url = res.data.web_url;
 			//banner
+			res.data.banner.etitle=res.data.banner.etitle.toUpperCase()
 			this.BannerData=res.data.banner;
 
 			//toplist

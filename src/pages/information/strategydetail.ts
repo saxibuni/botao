@@ -85,6 +85,7 @@ export default class StrategyDetail extends Vue {
 
 			//banner
 			this.web_url = res.data.web_url;
+			res.data.banner.etitle=res.data.banner.etitle.toUpperCase()
 			this.BannerData = res.data.banner;
 
 
