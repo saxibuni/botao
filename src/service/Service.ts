@@ -37,9 +37,14 @@ export class Service extends EventEmitter {
 		this.send('api.php/Ajax/yzxs', {}, callback);
 	}
 	///新闻列表
-	public queryNews(req,callback: (res: any) => void) {
+	public queryNews(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/news', req, callback);
 	}
+	///最新活动
+	public queryNewAct(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/newAct', req, callback);
+	}
+
 	public queryjxCaseShow(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/jxCaseShow', req, callback);
 	}
