@@ -80,7 +80,15 @@
 				<img src="~assets/bg_c2_part2_text.png" alt="" />
 			</div>
 		</div>
-		<div class="video"></div>
+		<div class="video" v-if="detailData.designer_info.video">
+			<video :src="$store.state.footData.web_url + detailData.designer_info.video" preload="true">
+				<source :src="$store.state.footData.web_url + detailData.designer_info.video" type="video/mp4" />
+			</video>
+			<div v-show="!video">
+				<img src="~assets/ic_c2_play.png" alt="" @click="play()" />
+				<p>观看大咖专访视频</p>
+			</div>
+		</div>
 		<div class="works">
 			<h3 class="wow">TA的作品</h3>
 			<div class="list wow">
@@ -133,8 +141,8 @@ export default DesignDetail;
 	}
 }
 .design-detail {
-	padding: 0 80px;
 	.crumbs {
+		padding: 0 80px;
 		display: flex;
 		justify-content: flex-end;
 		margin: 45px 0 45px 0;
@@ -161,8 +169,10 @@ export default DesignDetail;
 		}
 	}
 	.content {
+		padding: 0 80px;
 		display: flex;
 		justify-content: space-between;
+		padding-bottom: 100px;
 		.left {
 			overflow: hidden;
 			> h3 {
@@ -404,12 +414,42 @@ export default DesignDetail;
 			}
 		}
 	}
+	.video {
+		height: 970px;
+		position: relative;
+		video {
+			width: 100%;
+			height: 100%;
+		}
+		> div {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			p {
+				font-size: 18px;
+				color: #ffffff;
+				margin-top: 30px;
+			}
+			img {
+				cursor: pointer;
+				transition: all 0.3s;
+				&:hover {
+					transform: scale($imgScale);
+				}
+			}
+		}
+	}
 	.works {
+		padding: 0 80px;
 		height: 1040px;
 		background-size: 100% 100%;
 		background: url('~assets/bg_c2_part3.jpg') no-repeat;
 		overflow: hidden;
-		margin-top: 100px;
+		// margin-top: 100px;
 		h3 {
 			font-size: 56px;
 			color: #000000;

@@ -5,7 +5,7 @@
 				<div class="form">
 					<h2>
 						已有
-						<ICountUp :endVal="228" :options="options"></ICountUp>
+						<ICountUp :endVal="footData.bj_num" :options="options"></ICountUp>
 						人获取报价
 					</h2>
 					<ul>
