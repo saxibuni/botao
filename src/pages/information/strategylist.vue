@@ -235,6 +235,9 @@ html {
 						&:hover .title {
 							color: #eb551c;
 						}
+						p{
+								@include line-clamp(3);
+						}
 					}
 
 					&:not(:last-child) {
