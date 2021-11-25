@@ -12,7 +12,8 @@ import VideoPopup from 'root/components/videoPopup.vue';
 export default class Manager extends Vue {
 	bannerData = {};
 	videoPop = {
-		isPop: false
+		isPop: false,
+		url:''
 	};
 	managerData={}
 	web_url = ''
@@ -56,6 +57,7 @@ export default class Manager extends Vue {
 	}
 	playVideo(i) {
 		this.videoPop.isPop = true;
+		this.videoPop.url = i;
 	}
 	mounted() {
 		this.restartWow();
