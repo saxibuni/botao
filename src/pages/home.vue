@@ -1153,7 +1153,7 @@ export default home;
 					&:nth-child(3) {
 						div {
 							b {
-								width: 27px;
+								width: 38px;
 							}
 						}
 					}
