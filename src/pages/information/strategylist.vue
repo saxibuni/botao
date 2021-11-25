@@ -226,6 +226,8 @@ html {
 						h4 {
 							color: #000;
 							transition: color 0.3s;
+							@include line-clamp(1);
+
 						}
 						.more {
 							margin-top: 40px;
@@ -236,7 +238,7 @@ html {
 							color: #eb551c;
 						}
 						p {
-							@include line-clamp(3);
+							@include line-clamp(2);
 						}
 					}
 
