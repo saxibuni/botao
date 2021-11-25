@@ -84,7 +84,7 @@
 							<div class="text">
 								<p><i></i></p>
 								<h5>{{item.sjln}}</h5>
-								<Button text="了解设计师" @click.native="$router.push({ name: 'design-detail',query:{id:item.id} })"></Button>
+								<Button text="了解设计师" @click.native="$router.push({ name: 'design-detail',query:{aid:item.id} })"></Button>
 							</div>
 						</div>
 					</swiper-slide>
