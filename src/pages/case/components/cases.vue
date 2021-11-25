@@ -2,12 +2,12 @@
 	<div class="cases wow">
 		<ul>
 			<li>
-				<div class="imgBox" @click.stop="$router.push({ path: '/case/detail', query: { aid: caseData.aid } })">
+				<div class="imgBox" @click.stop="push()">
 					<img :src="$store.state.footData.web_url + caseData.img" alt="" />
 				</div>
 				<div class="content">
 					<div class="top">
-						<div class="topLeft" @click.stop="$router.push({ path: '/case/detail', query: { aid: caseData.aid } })">
+						<div class="topLeft" @click.stop="push()">
 							<p>{{ caseData.title }}</p>
 							<p>
 								<span>{{ caseData.style }}</span>
@@ -86,6 +86,16 @@ export default class Caese extends Vue {
 				}
 			}
 		);
+	}
+	push() {
+		if (this.$route.path == '/case/detail') {
+			this.$router.push({ query: { aid: this.caseData.aid } });
+			setTimeout(() => {
+				window.location.reload();
+			}, 0);
+		} else {
+			this.$router.push({ path: '/case/detail', query: { aid: this.caseData.aid } });
+		}
 	}
 	mounted() {
 		this.restartWow();
@@ -235,6 +245,8 @@ export default class Caese extends Vue {
 							align-items: center;
 							overflow: hidden;
 							img {
+								width: 100%;
+								height: 100%;
 								transition: all 0.3s;
 							}
 						}

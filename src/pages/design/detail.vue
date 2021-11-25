@@ -92,7 +92,7 @@
 		<div class="works">
 			<h3 class="wow">TA的作品</h3>
 			<div class="list wow">
-				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList" :key="i" />
+				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3)" :key="i" />
 			</div>
 			<div class="more" @click="$router.push('/case/list')" v-if="detailData.sjsList.length">更多案例</div>
 		</div>
@@ -168,7 +168,7 @@ export default DesignDetail;
 			}
 		}
 	}
-	.content {
+	> .content {
 		padding: 0 80px;
 		display: flex;
 		justify-content: space-between;
@@ -355,7 +355,7 @@ export default DesignDetail;
 						// width: 66px;
 						width: auto;
 						height: 12px;
-						position: absolute;
+						// position: absolute;
 						left: 50%;
 						bottom: 184px;
 						transform: translateX(-50%);
@@ -391,10 +391,10 @@ export default DesignDetail;
 						}
 					}
 					.swiper-button-prev {
-						left: 208px;
+						left: 198px;
 					}
 					.swiper-button-next {
-						right: 208px;
+						right: 198px;
 					}
 				}
 				.box {
