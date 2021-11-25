@@ -32,7 +32,7 @@
 								<img :src="$store.state.footData.web_url + caseData.des_info.faceimg" alt="" />
 							</div>
 							<div class="text">
-								<p>{{ caseData.des_info.author }}</p>
+								<p>{{ caseData.des_info.title }}</p>
 								<p>{{ caseData.des_info.station }}</p>
 							</div>
 						</div>

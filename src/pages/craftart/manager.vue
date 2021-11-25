@@ -466,7 +466,7 @@ export default Manager;
 									margin-left: 34px;
 								}
 								&:nth-child(1) {
-									margin-left: -245px;
+									margin-left: -222px;
 								}
 								&:nth-child(2) {
 									margin-left: -291px;
@@ -487,16 +487,16 @@ export default Manager;
 									margin-right: 34px;
 								}
 								&:nth-child(1) {
-									left: 222px;
+									left: 246px;
 								}
 								&:nth-child(2) {
-									left: 290px;
+									left: 314px;
 								}
 								&:nth-child(3) {
-									left: 294px;
+									left: 318px;
 								}
 								&:nth-child(4) {
-									left: 237px;
+									left: 263px;
 								}
 							}
 						}

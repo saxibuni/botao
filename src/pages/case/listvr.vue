@@ -64,7 +64,7 @@
 									<img :src="web_url + v.des_info.faceimg" alt="" />
 								</div>
 								<div class="text">
-									<p>{{ v.des_info.author }}</p>
+									<p>{{ v.des_info.title }}</p>
 									<p>{{ v.des_info.station }}</p>
 								</div>
 							</div>
