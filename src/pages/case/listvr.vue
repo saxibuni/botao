@@ -33,6 +33,7 @@
 					<a :href="v.velink" target="_blank">
 						<div class="imgBox">
 							<img :src="web_url + v.img" alt="" />
+							<img src="~assets/ic_b3_part2_vr.png" alt="" />
 						</div>
 					</a>
 					<div class="content">
@@ -283,10 +284,21 @@ export default CaseListVr;
 					width: 855px;
 					height: 520px;
 					overflow: hidden;
+					position: relative;
+					&:hover {
+						img {
+							transform: scale($imgScale);
+						}
+					}
 					img {
 						transition: all 0.3s;
-						&:hover {
-							transform: scale($imgScale);
+						&:nth-of-type(2) {
+							position: absolute;
+							left: 50%;
+							top: 50%;
+							width: 120px;
+							height: 120px;
+							transform: translate(-50%, -50%);
 						}
 					}
 				}

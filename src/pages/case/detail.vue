@@ -284,7 +284,7 @@ export default CaseDetail;
 				margin-right: 40px;
 			}
 			.swiper-pagination {
-				width: 70px;
+				// width: 70px;
 				height: 12px;
 				position: absolute;
 				left: 50%;

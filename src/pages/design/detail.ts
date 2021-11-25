@@ -35,7 +35,7 @@ export default class DesignDetail extends Vue {
 		getData() {
 			utils.service.queryDesignerShow(
 				{
-					aid:240
+					aid:this.$route.query.aid
 				},
 				res => {
 					console.log(res.data);
