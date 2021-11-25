@@ -1,12 +1,12 @@
 <template>
-	<div class="strategy-list" v-if="topList[1]">
+	<div class="strategy-list">
 		<banner :data="BannerData"></banner>
 		<!-- 装修攻略列表 -->
-		<div class="decoration-strategy" v-if="topList[1]">
+		<div class="decoration-strategy">
 			<h2>装修攻略</h2>
 			<h3>DECORATION STRATIEGY</h3>
 			<div class="strategy-box">
-				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail', query: { aid: topList[0].aid }  })">
+				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail', query: { aid: topList[0].aid } })">
 					<div class="img-box">
 						<img :src="$store.state.footData.web_url + topList[0].img" />
 					</div>
@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="list-box" v-if="topList[1]">
+		<div class="list-box">
 			<ul class="list wow">
 				<li
 					v-for="(v, i) in groupList"
