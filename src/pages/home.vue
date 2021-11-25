@@ -58,7 +58,7 @@
 				<div class="img-wrap">
 					<div class="imgs-wrap">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
-							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
+							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i"> 
 								<img :src="web_url+item.img" alt="" />
 							</swiper-slide>
 						</swiper>
