@@ -60,8 +60,8 @@
 				<div class="swiper-button-next"></div>
 			</div>
 			<div class="content wow">
-				<img src="~assets/bg_b2_part2_user.png" alt="" />
-				<p>{{ detailData.designer_info.author }}</p>
+				<img :src="web_url + detailData.designer_info.faceimg" alt="" />
+				<p>{{ detailData.designer_info.title }}</p>
 				<p>{{ detailData.designer_info.station }}</p>
 				<p>从业年限：{{ detailData.designer_info.cysj }}</p>
 				<p>ta的作品：{{ detailData.designer_info.dbz }}</p>

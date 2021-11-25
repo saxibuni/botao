@@ -10,12 +10,12 @@
 			</div>
 			<div class="right wow">
 				<div class="search">
-					<input type="text" />
-					<i></i>
+					<input type="text" v-model="inputVal" />
+					<i @click="choice(inputVal)"></i>
 				</div>
 				<p v-if="listData.keyw">
 					热门搜索：
-					<span v-for="(v, i) in listData.keyw.split(',')" :key="i">{{ v }}</span>
+					<span v-for="(v, i) in listData.keyw.split(',')" :key="i" @click="choice(v)">{{ v }}</span>
 				</p>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 			<div class="tabsList wow" v-for="(item, index) in tabList" :key="index">
 				<p>{{ item.title }}</p>
 				<ul>
-					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i)">{{ v }}</li>
+					<li v-for="(v, i) in item.info" :key="i" :class="activeIndex[index] == i ? 'active' : ''" @click="activeIndex.splice(index, 1, i), choice()">{{ v }}</li>
 				</ul>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 					<div>
 						<img :src="web_url + listData.tjlist[0].des_info.faceimg" alt="" />
 						<div>
-							<p>{{ listData.tjlist[0].des_info.author }}</p>
+							<p>{{ listData.tjlist[0].des_info.title }}</p>
 							<p>{{ listData.tjlist[0].des_info.sjssx }}</p>
 						</div>
 						<div>
@@ -371,7 +371,10 @@ export default CaseList;
 		.swiper-pagination3 {
 			position: absolute;
 			z-index: 99;
-			left: 1553px;
+			// left: 1553px;
+			width: auto;
+			left: auto;
+			right: 60px;
 			bottom: 60px;
 			display: flex;
 			.swiper-pagination-bullet {

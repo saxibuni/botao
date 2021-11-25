@@ -8,12 +8,12 @@
 				&nbsp;
 			</p>
 			<p>
-				<span>{{ detailData.designer_info.author }}</span>
+				<span>{{ detailData.designer_info.title }}</span>
 			</p>
 		</div>
 		<div class="content">
 			<div class="left wow">
-				<h3 class="wow">{{ detailData.designer_info.author }}</h3>
+				<h3 class="wow">{{ detailData.designer_info.title }}</h3>
 				<p class="wow">{{ detailData.designer_info.station }}</p>
 				<div class="info wow">
 					<ul>
