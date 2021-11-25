@@ -1,10 +1,10 @@
 <template>
 	<div class="soft-decoration">
 		<div class="page1">
-			<img :src="web_url+banner.litpic" alt="" />
+			<img :src="web_url + banner.litpic" alt="" />
 			<div class="text">
-				<h2>{{banner.title}}</h2>
-				<p>{{banner.etitle}}</p>
+				<h2>{{ banner.title }}</h2>
+				<p>{{ banner.etitle }}</p>
 			</div>
 			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 			<div class="arrow"></div>
@@ -16,11 +16,11 @@
 			<p class="wow">Deserve to act the role of custom</p>
 
 			<ul>
-				<li class="wow" v-for="(item,i) in psdzList" :key="i">
-					<img :src="web_url+item.img" alt="" />
+				<li class="wow" v-for="(item, i) in psdzList" :key="i">
+					<img :src="web_url + item.img" alt="" />
 					<div>
-						<p>{{item.title}}</p>
-						<h6>{{item.etitle}}</h6>
+						<p>{{ item.title }}</p>
+						<h6>{{ item.etitle }}</h6>
 					</div>
 				</li>
 			</ul>
@@ -55,13 +55,13 @@
 						<div style="pointer-events:auto; opacity:1;cursor: pointer;" class="swiper2-button-next" @click="onClick(1)"></div>
 					</div>
 					<div class="text" :class="{ active: textActive }" v-if="rzalList[swiperIndex]">
-						<h2>{{rzalList[swiperIndex].title}}</h2>
-						<h3>{{rzalList[swiperIndex].fgmj}}</h3>
-						<p>{{rzalList[swiperIndex].desc}}</p>
+						<h2>{{ rzalList[swiperIndex].title }}</h2>
+						<h3>{{ rzalList[swiperIndex].fgmj }}</h3>
+						<p>{{ rzalList[swiperIndex].desc }}</p>
 					</div>
 				</div>
 				<div class="right wow">
-					<img  v-for="(item,i) in rzalList" :class="{active:swiperIndex==i}" :key="i" :src="web_url+item.img" alt="" />
+					<img v-for="(item, i) in rzalList" :class="{ active: swiperIndex == i }" :key="i" :src="web_url + item.img" alt="" />
 				</div>
 			</div>
 		</div>
@@ -73,17 +73,17 @@
 				<swiper :options="bannerSwiperOptions">
 					<swiper-slide class="wow" v-for="(item, i) in rzsjsList" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="box">
-							<div class="img-wrap" @click="$router.push({ name: 'design-detail',query:{id:item.id} })">
-								<img :src="web_url+item.img" alt="" />
+							<div class="img-wrap" @click="$router.push({ name: 'design-detail', query: { id: item.id } })">
+								<img :src="web_url + item.img" alt="" />
 								<div>
-									<h3>{{item.title}}</h3>
-									<p>{{item.sjssx}} 丨 {{item.cysj}}经验</p>
+									<h3>{{ item.title }}</h3>
+									<p>{{ item.sjssx }} 丨 {{ item.cysj }}经验</p>
 								</div>
 							</div>
 							<div class="text">
 								<p><i></i></p>
-								<h5>{{item.sjln}}</h5>
-								<Button text="了解设计师" @click.native="$router.push({ name: 'design-detail',query:{aid:item.id} })"></Button>
+								<h5>{{ item.sjln }}</h5>
+								<Button text="了解设计师" @click.native="$router.push({ name: 'design-detail', query: { aid: item.aid } })"></Button>
 							</div>
 						</div>
 					</swiper-slide>
@@ -100,11 +100,11 @@
 			<h2 class="wow">服务流程</h2>
 			<p class="wow">Service process</p>
 			<ul>
-				<li class="wow" v-for="(item,i) in rzfwlcList" :key="i">
-					<img :src="web_url+item.img" alt="" />
-					<b>0{{i+1}}</b>
+				<li class="wow" v-for="(item, i) in rzfwlcList" :key="i">
+					<img :src="web_url + item.img" alt="" />
+					<b>0{{ i + 1 }}</b>
 					<div>
-						<p>{{item.desc}}</p>
+						<p>{{ item.desc }}</p>
 					</div>
 				</li>
 			</ul>
@@ -115,19 +115,19 @@
 			<p class="wow">Soft assembly elected</p>
 			<div>
 				<ul>
-					<li class="wow" :class="{active:page6Index==i}" v-for="(item,i) in rzpxList" :key="i" @mouseover="page6Index=i">
+					<li class="wow" :class="{ active: page6Index == i }" v-for="(item, i) in rzpxList" :key="i" @mouseover="page6Index = i">
 						<div>
 							<i>
-								<img :src="web_url+item.iconw" alt="" />
-								<img :src="web_url+item.icono" alt="" />
+								<img :src="web_url + item.iconw" alt="" />
+								<img :src="web_url + item.icono" alt="" />
 							</i>
-							<h3>{{item.title}}</h3>
-							<p>{{item.etitle}}</p>
+							<h3>{{ item.title }}</h3>
+							<p>{{ item.etitle }}</p>
 						</div>
 					</li>
 				</ul>
-				<div class="img-wrap" :class="{active:page6Index==i}" v-for="(item,i) in rzpxList" :key="i">
-						<img :src="web_url+item.img" alt="" />
+				<div class="img-wrap" :class="{ active: page6Index == i }" v-for="(item, i) in rzpxList" :key="i">
+					<img :src="web_url + item.img" alt="" />
 				</div>
 			</div>
 		</div>
@@ -475,7 +475,7 @@ export default SoftDecoration;
 						color: #eb551d;
 						margin-right: 21px;
 						display: inline-block;
-						width:145px;
+						width: 145px;
 					}
 					font-size: 42px;
 					font-weight: 400;
@@ -606,8 +606,8 @@ export default SoftDecoration;
 					width: 100%;
 					height: 100%;
 					opacity: 0;
-					transition: .6s;
-					&.active{
+					transition: 0.6s;
+					&.active {
 						opacity: 1;
 					}
 				}
@@ -936,20 +936,20 @@ export default SoftDecoration;
 			animation: slide-down-in 1s, fade-in 1s;
 			animation-fill-mode: forwards;
 		}
-		.img-wrap{
+		.img-wrap {
 			width: 1760px;
 			height: 735px;
 			position: absolute;
 			left: 0;
 			top: 0;
 			opacity: 0;
-			transition:opacity .3s;
-			img{
+			transition: opacity 0.3s;
+			img {
 				width: 100%;
 				height: 100%;
 			}
 			z-index: 1;
-			&.active{
+			&.active {
 				opacity: 1;
 			}
 		}
