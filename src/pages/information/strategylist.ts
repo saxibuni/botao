@@ -30,6 +30,7 @@ export default class StrategyList extends Vue {
 	newsList = [];
 	groupList = [];
 
+	showPagination: boolean = true;
 	typeId: string = "";
 	queryMethod: (req, callback: (res: any) => void) => void;
 	created() {
@@ -71,6 +72,10 @@ export default class StrategyList extends Vue {
 		this.typeId = typeId;
 		this.queryMethod = (typeId == "90" ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
 		this.query();
+		this.showPagination = false;
+		setTimeout(() => {
+			this.showPagination = true;
+		});
 	}
 
 	addClass(i, dom) {

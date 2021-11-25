@@ -61,7 +61,7 @@
 					</div>
 				</li>
 			</ul>
-			<Pagination :data="paginationData" @getData="getData"></Pagination>
+			<Pagination :data="paginationData" @getData="getData" v-if="showPagination"></Pagination>
 		</div>
 	</div>
 </template>
