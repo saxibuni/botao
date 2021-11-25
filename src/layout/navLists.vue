@@ -24,7 +24,7 @@
 							{{ it.nav_name }}
 						</h5>
 					</div>
-					<b>0{{ index + 1 }}</b>
+					<b>0{{ index }}</b>
 				</li>
 			</template>
 		</ul>
