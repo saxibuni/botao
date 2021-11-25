@@ -45,7 +45,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination :data="paginationData" @getData="getData1" />
+		<Pagination :data="paginationData" @getData="getData1" v-if="listData.list" v-show="listData.list.length" />
 	</div>
 </template>
 

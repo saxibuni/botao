@@ -72,6 +72,15 @@ export default class CaseDetail extends Vue {
 			}
 		);
 	}
+	// updateSwiper() {
+	// 	console.log(111);
+
+	// 	let bannerSwiper = (<any>this.$refs)['swiper2'].$swiper;
+	// 	// DataUtils.updateObject(swiper.params, updateOptions);
+	// 	bannerSwiper.update();
+	// 	bannerSwiper.pagination.render();
+	// 	bannerSwiper.pagination.update();
+	// }
 	mounted() {
 		this.restartWow();
 	}

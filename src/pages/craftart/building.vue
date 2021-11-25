@@ -84,7 +84,7 @@
 					</li>
 				</ul>
 			</div>
-			<Pagination :data="paginationData" @getData="getData1" />
+			<Pagination :data="paginationData" @getData="getData1" v-if="buildingData.list" v-show="buildingData.list.length" />
 			<VideoPopup :videoPop="videoPop"></VideoPopup>
 		</div>
 	</div>
