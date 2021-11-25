@@ -20,6 +20,7 @@ import utils from 'root/utils'
 export default class Building extends Vue {
 	videoPop = {
 		isPop: false,
+		url:''
 	};
 	buildingData={}
 	web_url = ''
@@ -90,6 +91,7 @@ export default class Building extends Vue {
 	}
 	playVideo(i) {
 		this.videoPop.isPop = true;
+		this.videoPop.url = i;
 	}
 	created(){
 		this.getData(1,'','')
@@ -120,6 +122,9 @@ export default class Building extends Vue {
 		}
 		getData1(v){
 			this.getData(v,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]])
+		}
+		setDelayTime() {
+			return Math.random() * 0.4 + 0.1;
 		}
 	mounted() {
 		this.restartWow();
