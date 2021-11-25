@@ -77,6 +77,8 @@ export default class OwnerVoice extends Vue {
 		},
 		on: {
 			click: function() {
+				console.log('dpdpdpd');
+
 				const img = this.slides[this.clickedIndex].querySelector('img');
 				utils.emitter.$emit('dpIndex', { index: this.clickedIndex, img });
 			}
@@ -126,7 +128,7 @@ export default class OwnerVoice extends Vue {
 			this.restartWow();
 		});
 	}
-
+	show() {}
 	mounted() {
 		utils.emitter.$on('dpIndex', obj => {
 			this.isPop = true;

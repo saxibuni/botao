@@ -13,7 +13,7 @@ import utils from 'root/utils';
 	}
 })
 export default class CaseDetail extends Vue {
-	detailData = {};
+	detailData:any = {};
 	web_url = '';
 	activeIndex = 0;
 	tabs = ['同风格案例', '同设计师案例'];
