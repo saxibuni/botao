@@ -58,7 +58,7 @@
 				<div class="img-wrap">
 					<div class="imgs-wrap">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
-							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i"> 
+							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
 								<img :src="web_url+item.img" alt="" />
 							</swiper-slide>
 						</swiper>
@@ -358,7 +358,7 @@
 				<div class="bgimg">
 					<div>
 						<p class="banner-tag">01</p>
-						<h5>{{page5List[page5Index].rtitle}}</h5>
+						<h5>{{page5List[page5Index].ctitle}}</h5>
 						<h6>{{page5List[page5Index].retitle}} </h6>
 						<i class="next3"></i>
 					</div>
