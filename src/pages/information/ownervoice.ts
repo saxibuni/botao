@@ -25,54 +25,7 @@ export default class OwnerVoice extends Vue {
 	yzxs = [];
 	ryjq = [];
 	yzdp = [];
-	fhArr = [
-		{
-			img1: require('../../assets/bg_f1_part3_pic01.jpg'),
-			img2: require('../../assets/bg_f1_part3_pic02.jpg'),
-			img3: require('../../assets/bg_f1_part3_pic03.jpg'),
-			img4: require('../../assets/bg_f1_part3_pic04.jpg'),
-			img5: require('../../assets/bg_f1_part3_pic05.jpg'),
-			img6: require('../../assets/bg_f1_part3_pic06.jpg'),
-			img7: require('../../assets/bg_f1_part3_pic07.jpg'),
-			img8: require('../../assets/bg_f1_part3_pic08.jpg'),
-			img9: require('../../assets/bg_f1_part3_pic09.jpg')
-		},
-		{
-			img1: require('../../assets/bg_f1_part3_pic01.jpg'),
-			img2: require('../../assets/bg_f1_part3_pic02.jpg'),
-			img3: require('../../assets/bg_f1_part3_pic03.jpg'),
-			img4: require('../../assets/bg_f1_part3_pic04.jpg'),
-			img5: require('../../assets/bg_f1_part3_pic05.jpg'),
-			img6: require('../../assets/bg_f1_part3_pic06.jpg'),
-			img7: require('../../assets/bg_f1_part3_pic07.jpg'),
-			img8: require('../../assets/bg_f1_part3_pic08.jpg'),
-			img9: require('../../assets/bg_f1_part3_pic09.jpg')
-		},
-		{
-			img1: require('../../assets/bg_f1_part3_pic01.jpg'),
-			img2: require('../../assets/bg_f1_part3_pic02.jpg'),
-			img3: require('../../assets/bg_f1_part3_pic03.jpg'),
-			img4: require('../../assets/bg_f1_part3_pic04.jpg'),
-			img5: require('../../assets/bg_f1_part3_pic05.jpg'),
-			img6: require('../../assets/bg_f1_part3_pic06.jpg'),
-			img7: require('../../assets/bg_f1_part3_pic07.jpg'),
-			img8: require('../../assets/bg_f1_part3_pic08.jpg'),
-			img9: require('../../assets/bg_f1_part3_pic09.jpg')
-		}
-	];
-	colorArr = ['red', 'yellow', 'green'];
-	ownerArr = [
-		{
-			imgUrl: require('../../assets/bg_f1_part2_pic1.jpg')
-		},
-		{
-			imgUrl: require('../../assets/bg_f1_part2_pic2.jpg')
-		},
-		{
-			imgUrl: require('../../assets/bg_f1_part2_pic3.jpg')
-		}
-	];
-	dpArr = [require('../../assets/dp1.jpg'), require('../../assets/dp2.jpg'), require('../../assets/dp3.jpg'), require('../../assets/dp4.jpg')];
+
 	///banner1
 	ownerBannerOptions: any = {
 		centeredSlides: true,
@@ -97,6 +50,9 @@ export default class OwnerVoice extends Vue {
 			click: function(e) {
 				if (e.target.className == 'pause-btn') {
 					utils.emitter.$emit('showVideo', e.target.getAttribute('url'));
+				}
+				if (e.target.className == 'btn') {
+					utils.emitter.$emit('showD');
 				}
 			}
 		}
@@ -159,7 +115,6 @@ export default class OwnerVoice extends Vue {
 			this.yzxs = res.data.yzxsList;
 
 			//ryjq
-			// res.data.ryjqList.img=res.data.ryjqList.img.split(',')
 			this.ryjq = res.data.ryjqList;
 			this.ryjq.forEach(v => {
 				v.img = v.img.split(',');
@@ -172,16 +127,18 @@ export default class OwnerVoice extends Vue {
 		});
 	}
 
-	show() {}
 
 	mounted() {
 		utils.emitter.$on('dpIndex', obj => {
 			this.isPop = true;
 			this.imgUrl = obj.img.getAttribute('src');
 		});
-		utils.emitter.$on('showVideo', (url) => {
-			if(!url) return
+		utils.emitter.$on('showVideo', url => {
+			if (!url) return;
 			this.videoPop.isPop = true;
+		});
+		utils.emitter.$on('showD', () => {
+			this.$store.state.dialogVisible = true;
 		});
 	}
 }

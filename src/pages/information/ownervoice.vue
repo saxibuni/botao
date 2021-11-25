@@ -33,7 +33,7 @@
 										{{ v.desc }}
 										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
 									</p>
-									<Button :text="'定制我的装修方案'" @click.native="$store.state.dialogVisible = true"></Button>
+									<Button :text="'定制我的装修方案'"></Button>
 									<div class="img-box" @click="show">
 										<img src="~assets/ic_f1_part2_dou.png" />
 									</div>

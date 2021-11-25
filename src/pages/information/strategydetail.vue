@@ -36,49 +36,6 @@
 				</div>
 			</div>
 			<div v-html="archivesInfo.content"></div>
-			<!-- <p class="wow">
-				客厅是一个家的名片,随着需求的变化,客厅也因此变得多元化。
-				<br />
-				所以,客厅的打开方式也可以是这样
-			</p>
-			<div class="img-box wow">
-				<img src="~assets/bg_f3_pic1.jpg" alt="" />
-			</div>
-			<h3 class="wow">
-				各种风格的客厅，当空间不被定义
-			</h3>
-			<p class="wow">
-				客厅在整个家庭的利用率上非常的高,因此在客厅设计上,偏向于更加舒适的体验。
-				<br />
-				避免家装“被风格化”,每一种风格都是对生活方式的新解读。
-			</p>
-			<h3 class="wow">新中式</h3>
-			<h3 class="wow">NEW CHINESE STYLE</h3>
-			<p class="wow">
-				业主是六十多岁的老夫妇,生活阅历丰富,喜欢偏沉稳的风格。
-				<br />
-				新中式风格则成为本案的设计主体,基于两人的生活需求之上,优化总体空间布局。
-			</p>
-			<p class="wow">
-				大道至简,祛除浓墨重彩,新中式,亦是传承,亦是创新。
-				<br />
-				设计师为了增加空间的文化底蕴,整体空间中性基调渲染,通过大理石、水墨画连贯空间,
-				<br />
-				彰显国风文化的典雅别致。
-			</p>
-			<div class="img-box mb146 wow">
-				<img src="~assets/bg_f3_pic2.jpg" alt="" />
-			</div>
-			<p class="wow">
-				由于业主对北欧和现代的混搭风格情有独钟,所以本案设计师摒弃繁琐的裝饰,
-				<br />
-				倾向简单&实用的设计,强调空间舒适性,赋予空间大自然的活力与风情魅力。
-			</p>
-			<p class="wow">
-				整体的设计以木材为主,保留木材原有的纹理,大理石点缀,刚柔并济,
-				<br />
-				勾勒出温暖惬意的家居情调。
-			</p> -->
 		</div>
 		<div class="recommended-news">
 			<h2 class="wow">推荐新闻</h2>
