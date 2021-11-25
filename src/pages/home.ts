@@ -103,10 +103,6 @@ export default class home extends Vue {
 				chars.forEach(item => {
 					item.style.opacity = "0";
 				});
-				// var video = document.querySelector("video");
-				// if(video){
-				// 	video.pause();
-				// }
 			},
 			slideChangeTransitionEnd: function() {
 				let activeSlide = this.slides[this.activeIndex] as HTMLElement;
@@ -210,14 +206,6 @@ export default class home extends Vue {
 
 		utils.emitter.$on('chars-ani', this.onCharsEnter);
 		utils.emitter.$on(Events.RESIZE, this.onResize);
-		// utils.emitter.$on('page2IndexFun', (introductionIndex: number) => {
-		// 	(this.$refs.mSwiper as any).$swiper.slideTo(introductionIndex, 600, true);
-		// 	this.page2Index = introductionIndex;
-		// 	this.page2Ani = false;
-		// 	setTimeout(() => {
-		// 		this.page2Ani = true;
-		// 	},300);
-		// });
 		utils.emitter.$on('page5IndexFun', (introductionIndex: number) => {
 			this.page5Index = introductionIndex;
 		});
@@ -545,7 +533,6 @@ export default class home extends Vue {
 	beforeDestroy() {
 		utils.emitter.$off('chars-ani', this.onCharsEnter);
 		utils.emitter.$off(Events.RESIZE, this.onResize);
-		// utils.emitter.$off('page2IndexFun');
 		utils.emitter.$off('page5IndexFun');
 	}
 }
