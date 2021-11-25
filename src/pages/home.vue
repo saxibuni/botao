@@ -174,7 +174,7 @@
 					</transition>
 
 					</div>
-					<div class="img-wrap">
+					<div class="img-wrap" v-if="sjsItem&&sjsItem.img">
 						<transition-group name="toggle-image">
 							<img :src="web_url+sjsItem.img" alt="" v-if="showProfile" key="a" />
 							<img :src="web_url+sjsItem.img" alt="" v-if="!showProfile" key="b" />
@@ -229,8 +229,8 @@
 			</div>
 		</div>
 		<div class="page4 wow">
-			<div class="left">
-				<img :src="web_url+sgzzDesc.bg" alt="" />
+			<div class="left" v-if="sgzzDesc">
+				<img v-if="sgzzDesc&&sgzzDesc.bg" :src="web_url+sgzzDesc.bg" alt="" />
 				<div class="text">
 					<h2 v-if="sgzzDesc.btitle">
 						<span>{{sgzzDesc.btitle.split('#')[1]}}</span>

@@ -10,7 +10,7 @@ import utils from 'root/utils'
 })
 export default class DesignDetail extends Vue {
 	web_url = ''
-	detailData={}
+	detailData:any={}
 	swiperOptions: any = {
 		speed: 1000,
 		loop: true,
@@ -56,6 +56,7 @@ export default class DesignDetail extends Vue {
 	mounted(){
 		this.restartWow();
 		setTimeout(() => {
+			if(!this.detailData.designer_info)return
 			if(this.$refs.text.clientHeight<this.$refs.scroll.clientHeight){
 				this.$refs.scroll.style.overflowY="hidden"
 			}
