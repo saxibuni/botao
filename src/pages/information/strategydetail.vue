@@ -1,6 +1,6 @@
 <template>
-	<div class="strategy-detail">
-		<banner :data="BannerData"></banner>
+	<div class="strategy-detail" >
+		<banner :data="BannerData" v-if="newsList[0]"></banner>
 		<!-- 装修攻略详情 -->
 		<div class="article">
 			<h2 class="wow">
@@ -20,7 +20,7 @@
 					分享 :
 					<div class="wx">
 						<div>
-							<img src="~assets/bg_home_footer_qa.jpg" alt="" />
+							<img src="~assets/bg_home_footer_qa.jpg" v-if="newsList[0]" alt="" />
 						</div>
 						<i></i>
 						<i></i>
@@ -43,7 +43,7 @@
 			<div class="item-list">
 				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i < newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<div class="img-box" @click="jump(v.aid)">
-						<img :src="web_url+v.img" alt="" />
+						<img :src="web_url+v.img" v-if="newsList[0]" alt="" />
 					</div>
 					<div class="bottom">
 						<div class="date">{{ v.show_time | formatTime2}}</div>

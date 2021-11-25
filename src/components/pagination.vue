@@ -19,7 +19,7 @@ export default class pagination extends Vue {
 	data!: any;
 	mounted() {
 		this.restartWow();
-		this.handleCurrentChange(1);
+		// this.handleCurrentChange(1);
 	}
 
 	handleCurrentChange(val) {
