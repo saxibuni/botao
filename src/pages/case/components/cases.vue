@@ -2,12 +2,12 @@
 	<div class="cases wow">
 		<ul>
 			<li>
-				<div class="imgBox" @click.stop="push()">
+				<div class="imgBox" @click.stop="push">
 					<img :src="$store.state.footData.web_url + caseData.img" alt="" />
 				</div>
 				<div class="content">
 					<div class="top">
-						<div class="topLeft" @click.stop="push()">
+						<div class="topLeft" @click.stop="push">
 							<p>{{ caseData.title }}</p>
 							<p>
 								<span>{{ caseData.style }}</span>
@@ -25,8 +25,8 @@
 							<p>{{ love }}个喜欢</p>
 						</div>
 					</div>
-					<div class="bottom">
-						<div class="bottomLeft" @click.stop="push()">
+					<div class="bottom" @click.stop="push">
+						<div class="bottomLeft">
 							<div class="imgBox2">
 								<img :src="$store.state.footData.web_url + caseData.des_info.faceimg" alt="" />
 							</div>
@@ -87,7 +87,8 @@ export default class Caese extends Vue {
 			}
 		);
 	}
-	push() {
+	push(e) {
+		if (e.target.className == 'btn') return;
 		if (this.$route.path == '/case/detail') {
 			this.$router.push({ query: { aid: this.caseData.aid } });
 			setTimeout(() => {
