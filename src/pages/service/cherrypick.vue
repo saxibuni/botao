@@ -132,7 +132,7 @@
 
 		<div class="page6">
 			<h2 class="wow">
-				<span>18000㎡</span>
+				<ICountUp :endVal="18000" :options="options1"></ICountUp>
 				沉浸体验最潮家装逛展
 			</h2>
 			<p class="wow">5大主题展厅 10大品质生活体验区</p>
@@ -1371,6 +1371,8 @@ export default CheckPick;
 			span {
 				color: rgba(235, 85, 29, 1);
 				font-family: Gilroy-Bold;
+				width: 190px;
+				display: inline-block;
 			}
 		}
 		> p {

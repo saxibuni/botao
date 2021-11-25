@@ -8,12 +8,12 @@
 				&nbsp;
 			</p>
 			<p>
-				<span>{{ detailData.designer_info.author }}</span>
+				<span>{{ detailData.designer_info.title }}</span>
 			</p>
 		</div>
 		<div class="content">
 			<div class="left wow">
-				<h3 class="wow">{{ detailData.designer_info.author }}</h3>
+				<h3 class="wow">{{ detailData.designer_info.title }}</h3>
 				<p class="wow">{{ detailData.designer_info.station }}</p>
 				<div class="info wow">
 					<ul>
@@ -64,7 +64,7 @@
 				<div class="swiperBox">
 					<div class="swiper">
 						<swiper :options="swiperOptions">
-							<swiper-slide v-for="(item, i) in detailData.designer_info.imgs.split(',')" :key="i">
+							<swiper-slide v-for="(item, i) in detailData.designer_info.img.split(',')" :key="i">
 								<img :src="web_url + item" alt="" />
 								<img src="~assets/bg_c2_part2_mask.png" alt="" />
 							</swiper-slide>

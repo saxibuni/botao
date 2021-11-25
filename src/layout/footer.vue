@@ -5,7 +5,7 @@
 				<div class="form">
 					<h2>
 						已有
-						<span>228</span>
+						<ICountUp :endVal="228" :options="options"></ICountUp>
 						人获取报价
 					</h2>
 					<ul>
@@ -110,13 +110,21 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import ICountUp from 'root/components/countup.vue';
 
-@Component
+@Component({
+	components:{
+		ICountUp
+	}
+})
 export default class Footer extends Vue {
 	form = {
 		userName: '',
 		phone: '',
 		area: ''
+	};
+	options = {
+		useGrouping: false
 	};
 	navList = [
 		{

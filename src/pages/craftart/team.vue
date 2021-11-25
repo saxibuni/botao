@@ -6,7 +6,7 @@
 				<li v-for="(item, i) in teamData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<img :src="web_url + item.img" alt="" />
 					<div class="text">
-						<p>{{ item.author }}</p>
+						<p>{{ item.title }}</p>
 						<p>
 							{{ item.gw }}&nbsp;
 							<span></span>
@@ -15,7 +15,7 @@
 					</div>
 					<div class="mask">
 						<div class="content">
-							<p>{{ item.author }}</p>
+							<p>{{ item.title }}</p>
 							<p>
 								{{ item.gw }}
 								<span></span>

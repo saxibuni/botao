@@ -3,9 +3,14 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
 import utils from "root/utils";
+import ICountUp from 'root/components/countup.vue';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
-@Component
+@Component({
+	components:{
+		ICountUp
+	}
+})
 export default class CheckPick extends Vue {
 	iconIndex = 0;
 	bannerSwiperOptions: any = {
@@ -189,6 +194,10 @@ export default class CheckPick extends Vue {
 			}
 		);
 	}
+	options1 = {
+		suffix: '㎡',
+		useGrouping: false
+	};
 	paginationFun(i) {
 		if (i == this.portraitListIndex) return;
 		if (i > this.portraitListIndex) {

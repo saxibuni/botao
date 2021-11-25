@@ -15,7 +15,8 @@ import utils from 'root/utils'
 export default class CaseList extends Vue {
 	listData={}
 	web_url = ''
-	paginationData={size:100,total:1000}
+	inputVal=''
+	paginationData={size:6,total:1000}
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
 	bannerSwiperOptions1: any = {
@@ -31,10 +32,10 @@ export default class CaseList extends Vue {
 				for (var i = 0; i < total; i++) {
 					if (i == current - 1) {
 						customPaginationHtml +=
-						`<span class="swiper-pagination-bullet swiper-pagination-bullet-active">${(i<10?'0'+(i+1):i+1)}</span>`;
+						`<span class="swiper-pagination-bullet swiper-pagination-bullet-active">${(i<9?'0'+(i+1):i+1)}</span>`;
 					} else {
 						customPaginationHtml +=
-						`<span class="swiper-pagination-bullet">${(i<10?'0'+(i+1):i+1)}</span>`;
+						`<span class="swiper-pagination-bullet">${(i<9?'0'+(i+1):i+1)}</span>`;
 					}
 				}
 				return customPaginationHtml;
@@ -55,16 +56,16 @@ export default class CaseList extends Vue {
 		useEasing: true
 	};
 created(){
-	this.getData()
+	this.getData(1,'','','','')
 }
-	getData() {
+	getData(val1,val2,val3,val4,val5) {
 		utils.service.queryJxCase(
 			{
-	// 			page: 1,
-	// mjsx:'500㎡以上',
-	// hxsx:'别墅',
-	// stylesx:'轻奢/现代/港式',
-	// keywords:1,
+				page: val1,
+				mjsx:val4,
+				hxsx:val3,
+				stylesx:val2,
+				keywords:val5,
 			},
 			res => {
 				this.listData=res.data
@@ -75,9 +76,13 @@ created(){
 				this.tabList[1].info=res.data.hxsx
 				this.tabList[2].info=res.data.mjsx
 				this.web_url = res.data.web_url;
+				this.paginationData.total=res.data.list.length
 				utils.emitter.$emit('bannerData', res.data);
 			}
 		);
+	}
+	choice(v?){
+		this.getData(1,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],v)
 	}
 	mounted(){
 		this.restartWow();

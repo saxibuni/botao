@@ -2,8 +2,8 @@
 	<div class="banner banner-wraps" v-if="data">
 		<img :src="$store.state.footData.web_url + data.litpic" alt="" />
 		<div class="banner-text">
-			<h3>{{ data.title }}</h3>
-			<p>{{ data.etitle }}</p>
+			<h3 v-if="data.title">{{ data.title }}</h3>
+			<p v-if="data.etitle">{{ data.etitle.toUpperCase() }}</p>
 		</div>
 	</div>
 </template>

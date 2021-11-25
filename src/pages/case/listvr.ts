@@ -14,7 +14,7 @@ export default class CaseListVr extends Vue {
 	vrData={}
 	flag = true;
 	isIE: boolean = false;
-	paginationData={size:100,total:1000}
+	paginationData={size:6,total:1000}
 	inputVal=''
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
@@ -26,9 +26,9 @@ export default class CaseListVr extends Vue {
 			utils.service.queryvrCase(
 				{
 					page: val1,
-					vrmjsx:val2,
+					vrmjsx:val4,
 					vrhxsx:val3,
-					vrstylesx:val4,
+					vrstylesx:val2,
 					keywords:val5,
 				},
 				res => {
@@ -41,6 +41,7 @@ export default class CaseListVr extends Vue {
 					this.tabList[1].info=res.data.hxsx
 					this.tabList[2].info=res.data.mjsx
 					this.web_url = res.data.web_url;
+					this.paginationData.total=res.data.list.length
 					utils.emitter.$emit('bannerData', res.data);
 				}
 			);

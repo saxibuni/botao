@@ -62,7 +62,7 @@ export default class CaseDetail extends Vue {
 		getData() {
 			utils.service.queryjxCaseShow(
 				{
-					aid:20
+					aid:this.$route.query.aid
 				},
 				res => {
 					this.web_url = res.data.web_url;
