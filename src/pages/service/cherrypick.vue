@@ -1569,6 +1569,7 @@ export default CheckPick;
 						}
 						&.one {
 							transform: rotateX(-0deg);
+							z-index: 2;
 						}
 						&.two {
 							transform: rotateY(-180deg);

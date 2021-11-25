@@ -3,21 +3,31 @@
 		<div class="page1" v-if="banner.list&&banner.list.length!=0">
 			<swiper :options="bannerSwiperOptions">
 				<swiper-slide v-for="(item, i) in banner.list" :key="i">
-					<img :src="web_url+item.img" alt="" />
-					<div class="text">
-						<div class="text-content">
-							<h3>
-								<span></span><span>{{item.title}}</span>
-							</h3>
-							<div v-if="item.etitle">
-								<p>{{item.etitle.split('\n')[0]}}</p>
-								<p>{{item.etitle.split('\n')[1]}}</p>
+					<template v-if="item.video">
+						<div class="text">
+							<div class="text-content"></div>
+						</div>
+						<video class="videos" :src="web_url + item.video" controls preload="true" loop="loop" autoplay="autoplay">
+							<source :src="web_url + item.video" type="video/mp4" />
+						</video>
+					</template>
+					<template v-else>
+						<img :src="web_url+item.img" alt="" />
+						<div class="text">
+							<div class="text-content">
+								<h3>
+									<span></span><span>{{item.title}}</span>
+								</h3>
+								<div v-if="item.etitle">
+									<p>{{item.etitle.split('\n')[0]}}</p>
+									<p>{{item.etitle.split('\n')[1]}}</p>
+								</div>
+							</div>
+							<div>
+								<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
 							</div>
 						</div>
-						<div>
-							<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
-						</div>
-					</div>
+					</template>
 				</swiper-slide>
 			</swiper>
 			<div class="swiper-button-wrap">
@@ -76,9 +86,9 @@
 								<p v-if="anList[anIndex].list[page2Index]&&anList[anIndex].list[page2Index].title">
 									{{anList[anIndex].list[page2Index].desc}}
 								</p>
-								<div class="btn-box">
+								<!-- <div class="btn-box">
 									<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' ,query:{aid:anList[anIndex].list[page2Index].aid}})"></Button>
-								</div>
+								</div> -->
 							</div>
 						</template>
 					</transition>
@@ -576,6 +586,12 @@ export default home;
 						opacity: 0;
 					}
 
+				}
+				.videos{
+						width: 100%;
+						height: 100%;
+						object-fit: fill;
+						pointer-events: none;
 				}
 			}
 		}
