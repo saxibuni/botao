@@ -287,7 +287,9 @@ html {
 					width: 100%;
 					cursor: pointer;
 					.title {
+						width: 500px;
 						transition: all 0.3s;
+							@include line-clamp(1);
 					}
 					.date {
 						color: #888;
@@ -299,6 +301,7 @@ html {
 					p {
 						width: 490px;
 						color: #666;
+							@include line-clamp(3);
 					}
 					&:hover .title {
 						color: #ed5300;
