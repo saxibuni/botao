@@ -52,7 +52,7 @@
 			</h2>
 			<p class="wow">Select cases</p>
 			<div class="tabs wow">
-				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="anIndex = i,page2Index = 0,anIndexFun();">{{ item.typename }}</div>
+				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="anIndex = i,page2Index = 0,swiperIndex = 0,anIndexFun();">{{ item.typename }}</div>
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
@@ -83,14 +83,14 @@
 						</template>
 					</transition>
 				<div class="swiper-wrap wow">
-					<swiper class="dswiper" :options="bannerSwiperOptions2">
-						<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
+					<swiper class="dswiper" :options="bannerSwiperOptions2" ref="mySwiper2">
+						<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i" :class="{ active: swiperIndex == i }" @click.native="onSelect(i)">
 							<img :src="web_url+item.img" alt="" />
 						</swiper-slide>
 					</swiper>
 					<div class="swiper-button-wrap">
-						<div class="prev2"></div>
-						<div class="next2"></div>
+						<div class="prev2" @click="onClick3(-1)"></div>
+						<div class="next2" @click="onClick3(1)"></div>
 					</div>
 				</div>
 				<div class="mask" v-if="anList[anIndex].list&&anList[anIndex].list[page2Index]">
@@ -882,6 +882,13 @@ export default home;
 							height: 125px;
 							border: 1px solid transparent;
 							&.swiper-slide-active {
+								/* img {
+									transform-origin: bottom;
+									border: 1px solid #ffffff;
+									transform: translateY(0px) scaleY(1.2) !important;
+								} */
+							}
+							&.active{
 								img {
 									transform-origin: bottom;
 									border: 1px solid #ffffff;

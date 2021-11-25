@@ -363,7 +363,7 @@ export default class Search extends Vue {
 				flex-wrap: wrap;
 				li {
 					margin-bottom: 40px;
-					margin-right: 40px;
+					margin-right: 38px;
 					width: 410px;
 					cursor: pointer;
 					&:nth-child(4n){
@@ -460,7 +460,7 @@ export default class Search extends Vue {
 				li {
 					background-color: #fff;
 					box-shadow: 0px 3px 17px 1px rgba(0, 0, 0, 0.05);
-					margin-right: 25px;
+					margin-right: 22px;
 					&:nth-child(3n){
 						margin-right: 0;
 					}

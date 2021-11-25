@@ -120,11 +120,6 @@ export default class home extends Vue {
 		slidesPerView: 6,
 		slidesPerGroup: 1,
 		spaceBetween: 10,
-		slideToClickedSlide: true,
-		autoplay: {
-			delay: 98000,
-			disableOnInteraction: false
-		},
 		navigation: {
 			nextEl: '.next2',
 			prevEl: '.prev2'
@@ -204,14 +199,14 @@ export default class home extends Vue {
 
 		utils.emitter.$on('chars-ani', this.onCharsEnter);
 		utils.emitter.$on(Events.RESIZE, this.onResize);
-		utils.emitter.$on('page2IndexFun', (introductionIndex: number) => {
-			(this.$refs.mSwiper as any).$swiper.slideTo(introductionIndex, 600, true);
-			this.page2Index = introductionIndex;
-			this.page2Ani = false;
-			setTimeout(() => {
-				this.page2Ani = true;
-			},300);
-		});
+		// utils.emitter.$on('page2IndexFun', (introductionIndex: number) => {
+		// 	(this.$refs.mSwiper as any).$swiper.slideTo(introductionIndex, 600, true);
+		// 	this.page2Index = introductionIndex;
+		// 	this.page2Ani = false;
+		// 	setTimeout(() => {
+		// 		this.page2Ani = true;
+		// 	},300);
+		// });
 		utils.emitter.$on('page5IndexFun', (introductionIndex: number) => {
 			this.page5Index = introductionIndex;
 		});
@@ -498,11 +493,48 @@ export default class home extends Vue {
 				textContents.forEach(item => item.style.opacity = "1");
 			}
 	}
-
+	swiperIndex: number = 0;
+	onSelect(index) {
+		this.swiperIndex = index;
+		(this.$refs.mSwiper as any).$swiper.slideTo(index, 600, true);
+		this.page2Index = index;
+		this.page2Ani = false;
+		setTimeout(() => {
+			this.page2Ani = true;
+		},300);
+	}
+	onClick3(e){
+		let length =(this.anList[this.anIndex] as any).list.length;
+		if(e==1){
+			if(this.swiperIndex<length-1){
+				this.swiperIndex = Number(this.swiperIndex) + e
+			}else{
+				this.swiperIndex = 0;
+				setTimeout(()=>{
+						(this.$refs.mySwiper2 as any).$swiper.slideTo(0, 600, true)
+				},300)
+			}
+		}else{
+			if(this.swiperIndex<=0){
+				this.swiperIndex = length-1;
+				setTimeout(()=>{
+						(this.$refs.mySwiper2 as any).$swiper.slideTo(length, 600, true)
+				},300)
+			}else{
+				this.swiperIndex =  Number(this.swiperIndex) - 1;
+			}
+		}
+		this.page2Index = this.swiperIndex;
+		this.page2Ani = false;
+		(this.$refs.mSwiper as any).$swiper.slideTo(this.swiperIndex, 600, true);
+		setTimeout(() => {
+			this.page2Ani = true;
+		},300);
+	}
 	beforeDestroy() {
 		utils.emitter.$off('chars-ani', this.onCharsEnter);
 		utils.emitter.$off(Events.RESIZE, this.onResize);
-		utils.emitter.$off('page2IndexFun');
+		// utils.emitter.$off('page2IndexFun');
 		utils.emitter.$off('page5IndexFun');
 	}
 }
