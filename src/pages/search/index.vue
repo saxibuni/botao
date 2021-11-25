@@ -18,7 +18,7 @@
 		<div class="page1" v-if="case_list&&case_list.length!=0">
 			<h2>精选案例</h2>
 			<p>经典案例 筑梦幸福家</p>
-			<div class="cases">
+			<div class="cases-wrap">
 				<template v-for="(item,i) in case_list">
 					<Cases v-if="item" :caseData="item" :key="i" />
 				</template>
@@ -332,10 +332,15 @@ export default class Search extends Vue {
 			color: #666666;
 			margin: 20px 0 58px 0;
 		}
-		.cases {
+		.cases-wrap {
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+			&::after{
+				content: '';
+				height: 0;
+				width: 576px;
+			}
 		}
 		.line {
 			margin-top: 100px;
