@@ -28,13 +28,13 @@
 			<div class="left wow">
 				<div class="title-box">
 					<h2>
-						<span>{{btzgsList.length}}</span>
+						<span>{{ btzgsList.length }}</span>
 						家集团子公司
 					</h2>
 					<p>100亿年产值目标 100年企业愿景</p>
 				</div>
 				<div class="img-box">
-					<img src="~assets/bg_g1_part2_logo.png" alt="" videoUrl='11111' />
+					<img src="~assets/bg_g1_part2_logo.png" alt="" videoUrl="11111" />
 				</div>
 				<ul>
 					<li v-for="(v, i) in btzgsList" :class="isActive == i ? 'active' : ''" @click="isActive = i" :key="i"><Button :text="v.title"></Button></li>
@@ -174,8 +174,8 @@
 			</div>
 			<div class="ie-info-box wow" v-else>
 				<div class="time">
-					<p>{{ devolopeList[progressIndex].time }}</p>
-					<h2>{{ devolopeList[progressIndex].name }}</h2>
+					<p>{{ devolopeList[progressIndex].nf }}</p>
+					<h2>{{ devolopeList[progressIndex].js }}</h2>
 				</div>
 				<div class="info">
 					<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
@@ -213,7 +213,7 @@
 			<h2 class="wow">社会责任</h2>
 			<h3 class="wow">SOCIAL RESPONSIBILITY</h3>
 			<div class="content-box">
-				<div class="svg-box">
+				<div class="svg-box" v-if="!isIE">
 					<svg
 						version="1.1"
 						class="svg"
@@ -239,13 +239,13 @@
 					<li v-for="(v, i) in shzrList" :key="i" class="wow" :style="{ 'animation-delay': 0.1 * i + 0.3 + 's' }">
 						<div class="img-box">
 							<div class="inner">
-								<img :src="web_url+v.img" alt="" />
+								<img :src="web_url + v.img" alt="" />
 							</div>
 						</div>
 						<div class="text-box">
 							<div class="dosh" @click="doMovePath(i)"></div>
 							<h2>{{ v.title }}</h2>
-							<p >{{ v.desc }}</p>
+							<p>{{ v.desc }}</p>
 						</div>
 					</li>
 				</ul>
@@ -260,25 +260,25 @@
 						<li>
 							<div>
 								<span>Phone number</span>
-								<span>{{$store.state.footData.tel}}</span>
+								<span>{{ $store.state.footData.tel }}</span>
 								<i></i>
 							</div>
 							<div>
 								<span>E-mail</span>
-								<span>{{$store.state.footData.email}}</span>
+								<span>{{ $store.state.footData.email }}</span>
 								<i></i>
 							</div>
 						</li>
 						<li>
 							<div>
 								<span>Address</span>
-								<span>{{$store.state.footData.address}}</span>
+								<span>{{ $store.state.footData.address }}</span>
 								<i></i>
 							</div>
 						</li>
 						<li>
 							<div class="img-box">
-								<img :src="$store.state.footData.web_url+$store.state.footData.watch" alt="" />
+								<img :src="$store.state.footData.web_url + $store.state.footData.watch" alt="" />
 							</div>
 							<div class="info">
 								<span>关注波涛了解</span>
@@ -1093,7 +1093,7 @@ html {
 						line-height: 1;
 					}
 					h2 {
-						text-align: start;
+						text-align: left;
 						margin-top: 16px;
 						font-size: 26px;
 						line-height: 1;
@@ -1260,6 +1260,11 @@ html {
 				&:hover {
 					background-image: url(~assets/icons/ic_f4_right2.png);
 				}
+			}
+		}
+		.time {
+			h2 {
+				text-align: left;
 			}
 		}
 	}

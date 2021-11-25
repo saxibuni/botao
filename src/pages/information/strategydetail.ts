@@ -93,7 +93,6 @@ export default class StrategyDetail extends Vue {
 
 			//newList
 			this.newsList = res.data.newsTopList;
-			// this.newsList=this.newsList.concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList).concat(this.newsList)
 
 			// this.restartWow();
 		});
@@ -107,7 +106,7 @@ export default class StrategyDetail extends Vue {
 	}
 
 	jump(aid) {
-		this.$router.push({ name: 'strategy-detail', query: { aid } });
+		this.$router.push({ query: { aid } });
 		this.queryDetail(aid);
 		setTimeout(() => {
 			window.scroll({ top: 0, behavior: 'smooth' });
