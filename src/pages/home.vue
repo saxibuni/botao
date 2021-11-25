@@ -305,7 +305,7 @@
 				</div>
 				<div class="img-wrap">
 					<img src="~assets/bg_home_b4_right.jpg" alt="" />
-					<div class="div1" @click="textActiveFun(2,0)">
+					<div class="div1" @click="textActiveFun(0,0)">
 						<i></i>
 					</div>
 					<div class="div2" @click="textActiveFun(3,1)">
@@ -314,14 +314,14 @@
 					<div class="div3" @click="textActiveFun(1,2)">
 						<i></i>
 					</div>
-					<div class="div4" @click="textActiveFun(0,3)">
+					<div class="div4" @click="textActiveFun(2,3)">
 						<i></i>
 					</div>
 
 					<ul class="pic-box">
-						<li style="font-size:10px;" :class="{ active: picIndex == 0 }"><img :src="picList[0]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 2 }"><img :src="picList[0]" alt="" /></li>
 						<li style="font-size:10px;" :class="{ active: picIndex == 1 }" ><img :src="picList[1]" alt="" /></li>
-						<li style="font-size:10px;" :class="{ active: picIndex == 2 }" ><img :src="picList[2]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 0 }" ><img :src="picList[2]" alt="" /></li>
 						<li style="font-size:10px;" :class="{ active: picIndex == 3 }" ><img :src="picList[3]" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
