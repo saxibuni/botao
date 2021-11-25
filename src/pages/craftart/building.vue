@@ -11,7 +11,7 @@
 				</div>
 			</div>
 			<div class="mapInfo">
-				<ShangHaiMap @data="fn" class="wow" />
+				<!-- <ShangHaiMap @data="fn" class="wow" /> -->
 				<div class="leftContent wow" v-if="buildingData.zsgddesc">
 					<div>
 						<p>
@@ -35,7 +35,7 @@
 						<p>每年在建工地</p>
 					</div>
 				</div>
-				<template v-if="currentSelectId">
+				<!-- <template v-if="currentSelectId">
 					<div class="rightContent" v-for="(item, index) in mapData" :key="index" v-show="currentSelectId == item.id">
 						<h4>{{ item.title1 }}</h4>
 						<p>{{ item.title2 }}</p>
@@ -52,8 +52,16 @@
 							<div class="line1" v-show="currentSelectId"></div>
 						</div>
 					</div>
-				</template>
-
+				</template> -->
+				<div class="map">
+					<img src="~assets/bg_c3_part2.png" alt="" />
+					<ul>
+						<li v-for="(v, i) in 15" :key="i">
+							<div class="circle" :style="{ 'animation-delay': setDelayTime() + 's' }"></div>
+							<img src="~assets/icons/ic_d1_part2_house.png" alt="" />
+						</li>
+					</ul>
+				</div>
 				<img src="~assets/bg_d1_part2.jpg" alt="" />
 			</div>
 			<div class="list">
@@ -76,7 +84,7 @@
 					</li>
 				</ul>
 			</div>
-			<Pagination :data="paginationData" @getData="getData1" />
+			<Pagination :data="paginationData" @getData="getData1" v-if="buildingData.list" v-show="buildingData.list.length" />
 			<VideoPopup :videoPop="videoPop"></VideoPopup>
 		</div>
 	</div>
@@ -127,6 +135,19 @@ export default Building;
 		}
 		to {
 			opacity: 1;
+		}
+	}
+	@keyframes scale {
+		0% {
+			transform: scale(0);
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1.5);
+			opacity: 0;
 		}
 	}
 	.main {
@@ -207,6 +228,7 @@ export default Building;
 			height: 860px;
 			margin: 70px 0 80px 0;
 			position: relative;
+			overflow: hidden;
 			> img {
 				position: absolute;
 				left: 0;
@@ -267,107 +289,187 @@ export default Building;
 					}
 				}
 			}
-			.rightContent {
-				pointer-events: none;
-				width: 290px;
-				height: 452px;
-				border: 1px solid #eb551d;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
+
+			.map {
+				height: 948px;
+				// margin-bottom: 50px;
+				// margin-top: 60px;
+				width: 750px;
+				// position: relative;
 				position: absolute;
-				top: 239px;
-				right: 123px;
-				animation: fade-ine 1s ease forwards;
-				&::after,
-				&::before {
-					content: '';
+				top: -130px;
+				left: 50%;
+				transform: translateX(-50%);
+				> img {
+					margin-top: 23px;
+				}
+				ul {
 					position: absolute;
-					border: 1px solid #eb551d;
-					width: 14px;
-					height: 14px;
-				}
-				&::after {
-					left: 13px;
-					top: 13px;
-					border-right: none;
-					border-bottom: none;
-				}
-				&::before {
-					right: 13px;
-					bottom: 13px;
-					border-top: none;
-					border-left: none;
-				}
-				h4 {
-					font-size: 30px;
-					color: #000000;
-					line-height: 31px;
-					margin-top: 42px;
-				}
-				p {
-					color: #666666;
-					font-size: 18px;
-					line-height: 31px;
-					&:first-of-type {
-						font-size: 20px;
-						color: #eb551d;
-						margin-top: 8px;
-						margin-bottom: 10px;
-					}
-				}
-				.line {
-					width: 1000px;
-					position: absolute;
-					right: 0px;
-					// left: -229px;
-					top: 118px;
-					display: flex;
-					justify-content: flex-end;
-					transform: translateX(-288px);
-					div {
-						height: 1px;
-						background-color: #eb551d;
-						transform-origin: right;
-					}
-					.line1 {
-						width: 230px;
-					}
-					.line2 {
-						width: 120px;
-						transform: rotate(-45deg);
-					}
-					.line3 {
-						width: 320px;
-						transform: rotate(-50deg);
-					}
-					.line3 {
-						width: 320px;
-						transform: rotate(-50deg);
-					}
-					.line4 {
-						width: 300px;
-						transform: rotate(-20deg);
-					}
-					.line5 {
-						width: 270px;
-						transform: rotate(63deg);
-					}
-					.line6 {
-						width: 305px;
-						transform: rotate(28deg);
-					}
-					.line7 {
-						width: 400px;
-						transform: rotate(16deg);
-					}
-					.line8 {
-						width: 430px;
-						transform: rotate(-3deg);
-					}
-					.line9 {
-						width: 425px;
-						transform: rotate(-20deg);
+					top: 0;
+					left: 0;
+					li {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						position: absolute;
+						.circle {
+							border-radius: 50%;
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							background: rgba(236, 84, 0, 0.3);
+							animation: scale 2s linear infinite;
+						}
+						&:nth-of-type(1) {
+							width: 143px;
+							height: 143px;
+							top: 147px;
+							left: 364px;
+							img {
+								width: 54px;
+								height: 50px;
+							}
+						}
+						&:nth-of-type(2) {
+							width: 91px;
+							height: 91px;
+							top: 206px;
+							left: 459px;
+							img {
+								width: 35px;
+								height: 32px;
+							}
+						}
+						&:nth-of-type(3) {
+							width: 75px;
+							height: 75px;
+							top: 362px;
+							left: 527px;
+							img {
+								width: 32px;
+								height: 30px;
+							}
+						}
+						&:nth-of-type(4) {
+							width: 121px;
+							height: 121px;
+							top: 371px;
+							left: 577px;
+							img {
+								width: 50px;
+								height: 46px;
+							}
+						}
+						&:nth-of-type(5) {
+							width: 171px;
+							height: 171px;
+							top: 406px;
+							left: 161px;
+							img {
+								width: 67px;
+								height: 62px;
+							}
+						}
+						&:nth-of-type(6) {
+							width: 104px;
+							height: 104px;
+							top: 407px;
+							left: 266px;
+							img {
+								width: 40px;
+								height: 37px;
+							}
+						}
+						&:nth-of-type(7) {
+							width: 177px;
+							height: 177px;
+							top: 377px;
+							left: 337px;
+							img {
+								width: 70px;
+								height: 65px;
+							}
+						}
+						&:nth-of-type(8) {
+							width: 142px;
+							height: 142px;
+							top: 568px;
+							left: 72px;
+							img {
+								width: 52px;
+								height: 48px;
+							}
+						}
+						&:nth-of-type(9) {
+							width: 98px;
+							height: 98px;
+							top: 568px;
+							left: 166px;
+							img {
+								width: 37px;
+								height: 34px;
+							}
+						}
+						&:nth-of-type(10) {
+							width: 172px;
+							height: 172px;
+							top: 552px;
+							left: 232px;
+							img {
+								width: 71px;
+								height: 66px;
+							}
+						}
+						&:nth-of-type(11) {
+							width: 136px;
+							height: 136px;
+							top: 492px;
+							left: 400px;
+							img {
+								width: 42px;
+								height: 39px;
+							}
+						}
+						&:nth-of-type(12) {
+							width: 226px;
+							height: 226px;
+							top: 534px;
+							left: 428px;
+							img {
+								width: 82px;
+								height: 76px;
+							}
+						}
+						&:nth-of-type(13) {
+							width: 162px;
+							height: 162px;
+							top: 638px;
+							left: 139px;
+							img {
+								width: 55px;
+								height: 51px;
+							}
+						}
+						&:nth-of-type(14) {
+							width: 110px;
+							height: 110px;
+							top: 695px;
+							left: 287px;
+							img {
+								width: 42px;
+								height: 39px;
+							}
+						}
+						&:nth-of-type(15) {
+							width: 48px;
+							height: 48px;
+							top: 720px;
+							left: 396px;
+							img {
+								width: 23px;
+								height: 22px;
+							}
+						}
 					}
 				}
 			}

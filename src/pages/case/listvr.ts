@@ -16,6 +16,7 @@ export default class CaseListVr extends Vue {
 	isIE: boolean = false;
 	paginationData={size:6,total:1000}
 	inputVal=''
+	love=null
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
 	created(){
@@ -52,6 +53,20 @@ export default class CaseListVr extends Vue {
 		}
 		getData1(v){
 			this.getData(v,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],'')
+	}
+	getLove(aid,iszan) {
+		if (iszan == 1) return;
+		utils.service.querylove(
+			{
+				aid: aid
+			},
+			res => {
+				if (res.status == 200) {
+					this.love = res.data.num;
+					// iszan = 1;
+				}
+			}
+		);
 	}
 	mounted(){
 		this.restartWow();

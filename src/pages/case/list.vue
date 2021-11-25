@@ -63,7 +63,7 @@
 		<div class="cases">
 			<Cases v-for="(v, i) in caseList" :caseData="v" :key="i" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" />
 		</div>
-		<Pagination :data="paginationData" @getData="getData1" />
+		<Pagination :data="paginationData" @getData="getData1" v-if="caseList.length" />
 	</div>
 </template>
 

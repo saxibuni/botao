@@ -13,7 +13,7 @@ import utils from 'root/utils';
 	}
 })
 export default class CaseDetail extends Vue {
-	detailData = {};
+	detailData:any = {};
 	web_url = '';
 	activeIndex = 0;
 	tabs = ['同风格案例', '同设计师案例'];
@@ -50,10 +50,12 @@ export default class CaseDetail extends Vue {
 		}
 	};
 	videoPop = {
-		isPop: false
+		isPop: false,
+		url:''
 	};
 	playVideo(i) {
 		this.videoPop.isPop = true;
+		this.videoPop.url = i;
 	}
 	created() {
 		this.getData();
@@ -70,6 +72,15 @@ export default class CaseDetail extends Vue {
 			}
 		);
 	}
+	// updateSwiper() {
+	// 	console.log(111);
+
+	// 	let bannerSwiper = (<any>this.$refs)['swiper2'].$swiper;
+	// 	// DataUtils.updateObject(swiper.params, updateOptions);
+	// 	bannerSwiper.update();
+	// 	bannerSwiper.pagination.render();
+	// 	bannerSwiper.pagination.update();
+	// }
 	mounted() {
 		this.restartWow();
 	}

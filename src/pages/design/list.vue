@@ -34,7 +34,7 @@
 						<img :src="web_url + v.img" alt="" />
 						<div class="text">
 							<p>{{ v.title }}</p>
-							<p>{{ v.station }} &nbsp;|&nbsp; {{ v.cysj }}经验</p>
+							<p>{{ v.sjssx }} &nbsp;|&nbsp; {{ v.cysj }}经验</p>
 						</div>
 					</div>
 					<div class="text">
@@ -45,7 +45,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination :data="paginationData" @getData="getData1" />
+		<Pagination :data="paginationData" @getData="getData1" v-if="listData.list" v-show="listData.list.length" />
 	</div>
 </template>
 

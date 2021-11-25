@@ -9,7 +9,7 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component
 export default class popup extends Vue {
 	created() {
-		document.querySelector('body').setAttribute('class', 'over-hide' + (device.browser.ie ? 'ie' : ''));
+		document.querySelector('body').setAttribute('class', 'over-hide' + ((device.browser.chrome && !device.mobile.device)  ? ' chrome' : ''));
 	}
 	destroyed() {
 		document.querySelector('body').removeAttribute('class');

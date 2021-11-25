@@ -85,7 +85,7 @@ export default class home extends Vue {
 	anIndex = 0;
 	bannerSwiperOptions: any = {
 		speed: 1000,
-		loop: true,
+		loop: false,
 		navigation: {
 			nextEl: '.next1',
 			prevEl: '.prev1'
@@ -96,7 +96,7 @@ export default class home extends Vue {
 				setTimeout(() => {
 					let activeSlide = this.slides[this.activeIndex] as HTMLElement;
 					emitter.$emit('chars-ani', activeSlide, true);
-				}, 2000);
+				}, 200);
 			},
 			slideChangeTransitionStart: function() {
 				let chars = (<HTMLElement>this.slides[this.activeIndex]).querySelectorAll<HTMLElement>('.char');
@@ -116,7 +116,7 @@ export default class home extends Vue {
 	}
 	bannerSwiperOptions2: any = {
 		speed: 1000,
-		loop: true,
+		loop: false,
 		slidesPerView: 6,
 		slidesPerGroup: 1,
 		spaceBetween: 10,
@@ -136,6 +136,7 @@ export default class home extends Vue {
 			}
 		}
 	};
+	page5Index = 0;
 	bannerSwiperOptions3: any = {
 		speed: 1000,
 		loop: true,
@@ -168,6 +169,7 @@ export default class home extends Vue {
 			slideChangeTransitionStart: function() {
 				let tag = this.realIndex < 10 ? '0' + (this.realIndex + 1) : this.realIndex + 1;
 				document.querySelector('.banner-tag').innerHTML = tag;
+				utils.emitter.$emit('page5IndexFun', this.realIndex);
 			},
 			slideChangeTransitionEnd: function() {
 				for (let i = 0; i <= this.slides.length - 1; i++) {
@@ -191,6 +193,9 @@ export default class home extends Vue {
 	};
 	sgzzDesc = {};
 	sggyList = [];
+	jbxgList = [];
+	qaylz = {};
+	zxxxList = [];
 	mounted() {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
@@ -207,6 +212,9 @@ export default class home extends Vue {
 				this.page2Ani = true;
 			},300);
 		});
+		utils.emitter.$on('page5IndexFun', (introductionIndex: number) => {
+			this.page5Index = introductionIndex;
+		});
 		utils.service.queryHome({}, res => {
 			if (res.status === 200) {
 				this.banner = res.data.banner;
@@ -215,16 +223,45 @@ export default class home extends Vue {
 				this.sjsItem = res.data.sjsList[0];
 				this.sgzzDesc = res.data.sgzzDesc;
 				this.sggyList = res.data.sggyList;
+				this.page5List = res.data.jbxgList;
+				this.qaylz = res.data.qaylz;
+				this.zxxxList = res.data.zxxxList;
+
 				setTimeout(()=>{
 					this.initTextChars();
 					this.onResize();
 				})
 				this.getCurrentPortraitList();
-
-				console.log(1,res.data);
 			}
 		});
 
+	}
+	add0(m){return m<10?'0'+m:m }
+	format(shijianchuo){
+		var time = new Date(shijianchuo*1000);
+		var y = time.getFullYear();
+		var m = time.getMonth()+1;
+		var d = time.getDate();
+		return this.add0(m)+'-'+this.add0(d);
+	}
+	eMonh = {
+		1:'January',
+		2:'February',
+		3:'March',
+	  4:'April',
+		5:'May',
+		6:'June',
+		7:'July',
+		8:'August',
+		9:'September',
+		10:'October',
+		11:'November',
+		12:'December',
+	};
+	yue(shijianchuo){
+		var time = new Date(shijianchuo*1000);
+		var m = time.getMonth()+1;
+		return this.eMonh[m];
 	}
 	anIndexFun(){
 		(this.$refs.mSwiper as any).$swiper.slideTo(0, 600, true);
@@ -466,5 +503,6 @@ export default class home extends Vue {
 		utils.emitter.$off('chars-ani', this.onCharsEnter);
 		utils.emitter.$off(Events.RESIZE, this.onResize);
 		utils.emitter.$off('page2IndexFun');
+		utils.emitter.$off('page5IndexFun');
 	}
 }

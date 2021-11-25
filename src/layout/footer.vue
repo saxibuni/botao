@@ -307,10 +307,7 @@ export default class Footer extends Vue {
 			this.web_url = this.$store.state.footData.web_url;
 			if(this.$store.state.menuData&&this.$store.state.menuData.menu_list.length!=0){
 					this.navList = this.$store.state.menuData.menu_list;
-					console.log(123,this.navList);
 			}
-
-
 	}
 }
 </script>

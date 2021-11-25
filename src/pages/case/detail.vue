@@ -41,16 +41,16 @@
 				</div>
 				<div class="contentRight">
 					<i></i>
-					<p>{{ detailData.archivesInfo.click }}个喜欢</p>
+					<p>{{ detailData.archivesInfo.love }}个喜欢</p>
 				</div>
 			</div>
 		</div>
 		<div class="swiper">
 			<div class="swiperBox">
 				<swiper :options="swiperOptions1">
-					<swiper-slide v-for="(item, i) in detailData.archivesInfo.imgs.split(',')" :key="item.aid">
+					<swiper-slide v-for="item in detailData.archivesInfo.imgs.split(',')" :key="item.aid">
 						<img :src="web_url + item" alt="" />
-						<img src="~assets/ic_c2_play.png" @click="playVideo(i)" alt="" />
+						<img src="~assets/ic_c2_play.png" @click="playVideo(detailData.archivesInfo.video)" alt="" />
 						<img src="~assets/bg_b2_part2_mask.png" alt="" />
 					</swiper-slide>
 				</swiper>
@@ -75,10 +75,10 @@
 			</ul>
 			<div class="otherSwiper wow">
 				<swiper :options="swiperOptions2" ref="swiper2">
-					<swiper-slide v-for="(item, index) in detailData.styleList.list" :key="item.id" v-show="activeIndex == 0">
+					<swiper-slide v-for="item in detailData.styleList.list" :key="item.id" v-show="activeIndex == 0">
 						<Cases :caseData="item" />
 					</swiper-slide>
-					<swiper-slide v-for="(item, i) in detailData.sjsList.list" :key="item.click" v-show="activeIndex == 1">
+					<swiper-slide v-for="item in detailData.sjsList.list" :key="item.click" v-show="activeIndex == 1">
 						<Cases :caseData="item" />
 					</swiper-slide>
 				</swiper>
@@ -159,6 +159,7 @@ export default CaseDetail;
 	.title {
 		display: flex;
 		padding: 0 80px;
+		justify-content: space-between;
 		h3 {
 			font-size: 56px;
 			color: #000000;
@@ -278,7 +279,8 @@ export default CaseDetail;
 				}
 			}
 			.swiper-button-prev {
-				margin-left: 50px;
+				margin-left: 40px;
+				left: 0;
 			}
 			.swiper-button-next {
 				margin-right: 40px;

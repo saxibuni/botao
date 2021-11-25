@@ -61,6 +61,9 @@ export class Service extends EventEmitter {
 	public querysgmessage(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/sgmessage', req, callback);
 	}
+	public querylove(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/love', req, callback);
+	}
 
 	///新闻详情
 	public queryNewsDetail(aid, callback: (res: any) => void) {
@@ -96,5 +99,8 @@ export class Service extends EventEmitter {
 	}
 	public formSubmit(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/form_submit', req, callback);
+	}
+	public searchList(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/searchList', req, callback);
 	}
 }
