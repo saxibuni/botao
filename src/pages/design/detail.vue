@@ -64,7 +64,7 @@
 				<div class="swiperBox">
 					<div class="swiper">
 						<swiper :options="swiperOptions">
-							<swiper-slide v-for="(item, i) in detailData.designer_info.imgs.split(',')" :key="i">
+							<swiper-slide v-for="(item, i) in detailData.designer_info.img.split(',')" :key="i">
 								<img :src="web_url + item" alt="" />
 								<img src="~assets/bg_c2_part2_mask.png" alt="" />
 							</swiper-slide>

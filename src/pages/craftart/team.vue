@@ -29,7 +29,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination :data="paginationData" />
+		<Pagination :data="paginationData" @getData="getData1" />
 	</div>
 </template>
 

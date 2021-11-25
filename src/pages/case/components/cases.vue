@@ -2,12 +2,12 @@
 	<div class="cases wow">
 		<ul>
 			<li>
-				<div class="imgBox" @click.stop="$router.push('/case/detail')">
+				<div class="imgBox" @click.stop="$router.push({ path: '/case/detail', query: { aid: caseData.aid } })">
 					<img :src="$store.state.footData.web_url + caseData.img" alt="" />
 				</div>
 				<div class="content">
 					<div class="top">
-						<div class="topLeft" @click.stop="$router.push('/case/detail')">
+						<div class="topLeft" @click.stop="$router.push({ path: '/case/detail', query: { aid: caseData.aid } })">
 							<p>{{ caseData.title }}</p>
 							<p>
 								<span>{{ caseData.style }}</span>

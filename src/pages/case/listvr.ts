@@ -41,7 +41,8 @@ export default class CaseListVr extends Vue {
 					this.tabList[1].info=res.data.hxsx
 					this.tabList[2].info=res.data.mjsx
 					this.web_url = res.data.web_url;
-					this.paginationData.total=res.data.list.length
+					this.paginationData.total=res.data.pages.total
+					this.paginationData.size=res.data.pages.per_page
 					utils.emitter.$emit('bannerData', res.data);
 				}
 			);
@@ -49,6 +50,9 @@ export default class CaseListVr extends Vue {
 		choice(v?){
 			this.getData(1,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],v)
 		}
+		getData1(v){
+			this.getData(v,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],'')
+	}
 	mounted(){
 		this.restartWow();
 	}

@@ -7,14 +7,17 @@ axios.defaults.timeout = 60000;
 
 export class Service extends EventEmitter {
 	protected send(url: string, data: any, success: ISuccess, error?: IError) {
-		axios.post(url, qs.stringify(data)).then((res: AxiosResponse) => {
-			console.log(url, res);
-			return success(res);
-		}, (err) => {
-			if (err) {
-				console.error("请求出错!");
+		axios.post(url, qs.stringify(data)).then(
+			(res: AxiosResponse) => {
+				console.log(url, res);
+				return success(res);
+			},
+			err => {
+				if (err) {
+					console.error('请求出错!');
+				}
 			}
-		});
+		);
 	}
 
 	public queryFooterData(callback: (res: any) => void) {
@@ -34,8 +37,8 @@ export class Service extends EventEmitter {
 		this.send('api.php/Ajax/yzxs', {}, callback);
 	}
 	///新闻列表
-	public queryNews(callback: (res: any) => void) {
-		this.send('api.php/Ajax/news', {}, callback);
+	public queryNews(req,callback: (res: any) => void) {
+		this.send('api.php/Ajax/news', req, callback);
 	}
 	public queryjxCaseShow(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/jxCaseShow', req, callback);
@@ -72,7 +75,6 @@ export class Service extends EventEmitter {
 	public queryBrand(callback: (res: any) => void) {
 		this.send('api.php/Ajax/btbrand', {}, callback);
 	}
-
 
 	public queryHome(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/indexInfo', req, callback);

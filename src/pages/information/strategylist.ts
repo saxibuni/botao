@@ -20,47 +20,48 @@ import utils from 'root/utils';
 	}
 })
 export default class StrategyList extends Vue {
-	isShow: boolean = false;
 	web_url = '';
-	paginationData = { size: 6, total: 1000 };
-	BannerData = {
-	};
+	BannerData = {};
+	isShow: boolean = false;
 
 	topList = [];
 	topList2 = [];
 
 	newsList = [];
+	groupList = [];
 	created() {
 		this.query();
 	}
+	paginationData = { size: 6, total: 1000, arr: [], boxName: '.strategy-list .list-box' };
 
 	query() {
-		utils.service.queryNews(res => {
-			console.log(res.data);
-
-			this.web_url = res.data.web_url;
+		utils.service.queryNews({},res => {
 			//banner
-			res.data.banner.etitle=res.data.banner.etitle.toUpperCase()
-			this.BannerData=res.data.banner;
+			res.data.banner.etitle = res.data.banner.etitle.toUpperCase();
+			this.BannerData = res.data.banner;
 
 			//toplist
 			this.topList = res.data.newsTopList;
-			this.topList2=[...this.topList]
-			this.topList2.shift()
-
-			this.newsList = res.data.newsList;
+			this.topList2 = [...this.topList];
+			this.topList2.shift();
 
 
-			this.paginationData.total=res.data.newsList.length;
+			this.paginationData.total = res.data.pages.total;
+			this.paginationData.size = res.data.pages.per_page;
 
-			this.restartWow()
+			this.restartWow();
+		});
+	}
+
+	getData(v) {
+		utils.service.queryNews({ page: v }, res => {
+			this.groupList = res.data.newsList;
 		});
 	}
 
 	addClass(i, dom) {
 		const father = document.querySelector<HTMLElement>(dom);
 		const lis = father.querySelectorAll<HTMLElement>('li');
-
 		lis[i].classList.add('hover');
 	}
 	removeClass(i, dom) {

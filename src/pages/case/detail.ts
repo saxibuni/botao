@@ -1,9 +1,9 @@
 import { Vue, Component } from 'vue-property-decorator';
-import Button from 'root/components/button.vue'
-import Cases from './components/cases.vue'
+import Button from 'root/components/button.vue';
+import Cases from './components/cases.vue';
 import Prop from 'root/components/popup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
-import utils from 'root/utils'
+import utils from 'root/utils';
 @Component({
 	components: {
 		Button,
@@ -13,10 +13,10 @@ import utils from 'root/utils'
 	}
 })
 export default class CaseDetail extends Vue {
-	detailData={}
-	web_url = ''
-	activeIndex=0
-	tabs=['同风格案例','同设计师案例']
+	detailData = {};
+	web_url = '';
+	activeIndex = 0;
+	tabs = ['同风格案例', '同设计师案例'];
 	swiperOptions1: any = {
 		speed: 1000,
 		loop: true,
@@ -31,9 +31,8 @@ export default class CaseDetail extends Vue {
 		},
 		navigation: {
 			nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-		},
-
+			prevEl: '.swiper-button-prev'
+		}
 	};
 	swiperOptions2: any = {
 		speed: 1000,
@@ -56,22 +55,22 @@ export default class CaseDetail extends Vue {
 	playVideo(i) {
 		this.videoPop.isPop = true;
 	}
-	created(){
-		this.getData()
+	created() {
+		this.getData();
 	}
-		getData() {
-			utils.service.queryjxCaseShow(
-				{
-					aid:20
-				},
-				res => {
-					this.web_url = res.data.web_url;
-					this.detailData=res.data
-					utils.emitter.$emit('bannerData', res.data);
-				}
-			);
-		}
-	mounted(){
+	getData() {
+		utils.service.queryjxCaseShow(
+			{
+				aid: this.$route.query.aid
+			},
+			res => {
+				this.web_url = res.data.web_url;
+				this.detailData = res.data;
+				utils.emitter.$emit('bannerData', res.data);
+			}
+		);
+	}
+	mounted() {
 		this.restartWow();
 	}
 }

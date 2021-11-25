@@ -29,7 +29,7 @@
 		</div>
 		<div class="content">
 			<ul>
-				<li class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" v-for="(v, i) in listData.list" :key="i" @click="$router.push('/design/detail')">
+				<li class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" v-for="(v, i) in listData.list" :key="i" @click="$router.push({ path: '/design/detail', query: { aid: v.aid } })">
 					<div class="imgBox">
 						<img :src="web_url + v.img" alt="" />
 						<div class="text">
@@ -45,7 +45,7 @@
 				</li>
 			</ul>
 		</div>
-		<Pagination :data="paginationData" />
+		<Pagination :data="paginationData" @getData="getData1" />
 	</div>
 </template>
 

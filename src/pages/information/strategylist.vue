@@ -1,19 +1,19 @@
 <template>
-	<div class="strategy-list">
+	<div class="strategy-list" v-if="topList[1]">
 		<banner :data="BannerData"></banner>
 		<!-- 装修攻略列表 -->
 		<div class="decoration-strategy" v-if="topList[1]">
 			<h2>装修攻略</h2>
 			<h3>DECORATION STRATIEGY</h3>
 			<div class="strategy-box">
-				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail' })">
+				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail', query: { aid: topList[0].aid }  })">
 					<div class="img-box">
-						<img :src="$store.state.footData.web_url+topList[0].img" />
+						<img :src="$store.state.footData.web_url + topList[0].img" />
 					</div>
 					<div class="info-box">
 						<div class="date">{{ topList[0].show_time | formatTime }}</div>
 						<h4 class="title">{{ topList[0].title }}</h4>
-						<p>{{topList[0].desc}}</p>
+						<p>{{ topList[0].desc }}</p>
 						<div class="more">
 							More
 							<span></span>
@@ -21,9 +21,9 @@
 					</div>
 				</div>
 				<ul class="strategy-right wow">
-					<li v-for="(v, i) in topList2" :key="v.id"  @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
+					<li v-for="(v, i) in topList2" :key="v.id" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
 						<div class="img-box">
-							<img :src="web_url + v.img" />
+							<img :src="$store.state.footData.web_url + v.img" />
 						</div>
 						<div class="info-box">
 							<div class="date">{{ v.show_time | formatTime }}</div>
@@ -38,11 +38,17 @@
 				</ul>
 			</div>
 		</div>
-		<div class="list-box" v-if="newsList[1]">
+		<div class="list-box" v-if="topList[1]">
 			<ul class="list wow">
-				<li v-for="(v, i) in newsList" :style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }" :key="i" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
+				<li
+					v-for="(v, i) in groupList"
+					v-show="i <= paginationData.size - 1"
+					:style="{ 'animation-delay': 0.3 * i + 0.5 + 's' }"
+					:key="i"
+					@click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })"
+				>
 					<div class="img-box">
-						<img :src="web_url + v.img" alt="" />
+						<img :src="$store.state.footData.web_url + v.img" alt="" />
 					</div>
 					<div class="info-box">
 						<div class="date">{{ v.show_time | formatTime }}</div>
@@ -55,7 +61,7 @@
 					</div>
 				</li>
 			</ul>
-			<Pagination :data="paginationData"></Pagination>
+			<Pagination :data="paginationData" @getData="getData"></Pagination>
 		</div>
 	</div>
 </template>
@@ -261,9 +267,12 @@ html {
 		.list {
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: space-between;
+			// justify-content: space-between;
 			margin-bottom: 70px;
 			li {
+				&:not(:nth-child(3n)) {
+					margin-right: 20px;
+				}
 				background-color: #fff;
 				.img-box {
 					width: 570px;

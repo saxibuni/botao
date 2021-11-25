@@ -92,11 +92,12 @@ export default class Building extends Vue {
 		this.videoPop.isPop = true;
 	}
 	created(){
-		this.getData('','')
+		this.getData(1,'','')
 	}
-		getData(val1,val2) {
+		getData(v,val1,val2) {
 			utils.service.querysiteCase(
 				{
+					page:v,
 					gdhxsx:val1,
 					gdmjsx:val2
 				},
@@ -109,12 +110,16 @@ export default class Building extends Vue {
 					this.tabList[0].info=res.data.hxsx
 					this.tabList[1].info=res.data.mjsx
 					this.web_url = res.data.web_url;
-					this.paginationData.total=res.data.list.length
+					this.paginationData.total=res.data.pages.total
+					this.paginationData.size=res.data.pages.per_page
 				}
 			);
 		}
 		choice(){
-			this.getData(this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]])
+			this.getData(1,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]])
+		}
+		getData1(v){
+			this.getData(v,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]])
 		}
 	mounted() {
 		this.restartWow();
