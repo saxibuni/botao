@@ -13,8 +13,8 @@ import utils from 'root/utils'
 	}
 })
 export default class CaseList extends Vue {
-	listData={}
-	caseList={}
+	listData:any={}
+	caseList=[]
 	web_url = ''
 	inputVal=''
 	paginationData={size:6,total:1000}

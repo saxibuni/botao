@@ -41,7 +41,7 @@
 				</div>
 				<div class="contentRight">
 					<i></i>
-					<p>{{ detailData.archivesInfo.click }}个喜欢</p>
+					<p>{{ detailData.archivesInfo.love }}个喜欢</p>
 				</div>
 			</div>
 		</div>
@@ -71,7 +71,7 @@
 		<div class="other">
 			<h3 class="wow">为您推荐其他筑梦案例</h3>
 			<ul class="wow">
-				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="(activeIndex = index), updateSwiper()">{{ item }}</li>
+				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
 			</ul>
 			<div class="otherSwiper wow">
 				<swiper :options="swiperOptions2" ref="swiper2">
@@ -159,6 +159,7 @@ export default CaseDetail;
 	.title {
 		display: flex;
 		padding: 0 80px;
+		justify-content: space-between;
 		h3 {
 			font-size: 56px;
 			color: #000000;
