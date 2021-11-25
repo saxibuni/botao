@@ -31,7 +31,7 @@
 									</div>
 									<p>
 										{{ v.desc }}
-										<span @click="$router.push({ name: 'strategy-detail' })">[详情]</span>
+										<span @click="$router.push({ name: 'strategy-detail' })"></span>
 									</p>
 									<Button :text="'定制我的装修方案'"></Button>
 									<div class="img-box">
