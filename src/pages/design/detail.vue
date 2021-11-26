@@ -81,7 +81,7 @@
 			</div>
 		</div>
 		<div class="video" v-if="detailData.designer_info.video" :class="{ bottom: !detailData.sjsList.length && !detailData.vrList.length }">
-			<video :src="$store.state.footData.web_url + detailData.designer_info.video" preload="true">
+			<video :src="$store.state.footData.web_url + detailData.designer_info.video" muted preload="true" loop="loop">
 				<source :src="$store.state.footData.web_url + detailData.designer_info.video" type="video/mp4" />
 			</video>
 			<div v-show="!video">
@@ -428,6 +428,10 @@ export default DesignDetail;
 		video {
 			width: 100%;
 			height: 100%;
+			object-fit: fill;
+			&::-webkit-media-controls {
+				display: none !important;
+			}
 		}
 		> div {
 			display: flex;
