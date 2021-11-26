@@ -24,9 +24,9 @@ export default class pagination extends Vue {
 	handleCurrentChange(val) {
 		this.$emit('getData', val);
 
-		if (this.data.boxName) {
-			gsap.to(this.data.boxName, { duration: 0.3, alpha: 1, stagger: 0.2 });
-		}
+		// if (this.data.boxName) {
+		// 	gsap.to(this.data.boxName, { duration: 0.3, alpha: 1, stagger: 0.2 });
+		// }
 	}
 }
 </script>
