@@ -125,8 +125,8 @@ html {
 				height: 100%;
 				i {
 					margin-right: 20px;
-					width: 20px;
-					height: 20px;
+					width: 20Px;
+					height: 20Px;
 					background: url(~assets/icons/ic_f3_part2_time.png) no-repeat;
 					background-size: 100%;
 					&:nth-of-type(2) {
@@ -150,10 +150,10 @@ html {
 				font-size: 16px;
 
 				i {
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					background: url('~assets/icons/iconlist.png') no-repeat;
-					background-position: -11px -11px;
+					background-position: -11Px -11Px;
 					cursor: pointer;
 					position: relative;
 					transition: 0.3s;
@@ -163,7 +163,7 @@ html {
 						background-position: center;
 					}
 					&:nth-child(2) {
-						background-position: -41px -11px;
+						background-position: -41Px -11Px;
 					}
 					> div {
 						transition: opacity 0.5s, transform 0.5s;
@@ -185,8 +185,8 @@ html {
 				.wx {
 					margin-left: 50px;
 					position: relative;
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					&:hover {
 						background-position-y: -43px;
 						> div {
@@ -231,15 +231,15 @@ html {
 				}
 				.wb {
 					position: relative;
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					margin: 0 20px;
 					i {
 						position: absolute;
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -41px -11px;
+						background-position: -41Px -11Px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
@@ -252,14 +252,14 @@ html {
 				}
 				.qq {
 					position: relative;
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					i {
 						position: absolute;
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -80px -11px;
+						background-position: -78Px -11Px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
