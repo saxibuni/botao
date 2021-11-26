@@ -297,7 +297,7 @@
 							<p>金牌项目经理</p>
 						</li>
 					</ul>
-					<img @click="videoPop.isPop = true,videoPop.url=sgzzDesc.video" src="~assets/icons/ic_home_b3_play.png" alt="" />
+					<img @click="videoPop.isPop = true,videoPop.url=sgzzDesc.video" src="~assets/icons/ic_c2_play.png" alt="" />
 				</div>
 			</div>
 			<div class="right">
@@ -2563,7 +2563,7 @@ export default home;
 							transform: translate(-50%, -50%);
 							width: 90px;
 							height: 90px;
-							background: url(~assets/icons/ic_home_b3_play.png) no-repeat;
+							background: url(~assets/icons/ic_c2_play.png) no-repeat;
 							background-size: 100% 100%;
 							transition: transform 0.3s;
 							&:hover {

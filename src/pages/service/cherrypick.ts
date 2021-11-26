@@ -46,9 +46,7 @@ export default class CheckPick extends Vue {
 		},
 		preventClicks: false
 	};
-	portraitList = [
-		require('root/assets/bg_e2_part7_b2.png')
-	];
+	portraitList = [];
 	currentPortraitList = [];
 	nextPortraitList = [];
 	portraitListSize = 26;
@@ -128,7 +126,7 @@ export default class CheckPick extends Vue {
 	fn(i) {
 		this.activeIndex = 7 - i;
 	}
-	web_url = 'http://btgwcs.zhulu76.com/';
+	web_url = '';
 	banner = {};
 	fwysList = [];
 	yzyjkList = [];
@@ -163,9 +161,6 @@ export default class CheckPick extends Vue {
 				}, 300);
 			}
 		});
-
-
-
 	}
 	initTextChars() {
 		let textContents = this.$el.querySelectorAll<HTMLElement>('.page1 .text');
