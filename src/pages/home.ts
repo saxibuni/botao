@@ -189,8 +189,10 @@ export default class home extends Vue {
 
 				if(res.data.sjsList.length>=16){
 					this.sjsItem = res.data.sjsList[16];
+					this.page3Index = 16;
 				}else{
 					this.sjsItem = res.data.sjsList[res.data.sjsList.length];
+					this.page3Index = res.data.sjsList.length;
 				}
 
 				this.sgzzDesc = res.data.sgzzDesc;

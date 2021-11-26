@@ -883,7 +883,6 @@ export default home;
 							position: absolute;
 							content: '';
 							z-index: 9;
-							opacity: .9;
 						}
 					}
 					.imgs {
