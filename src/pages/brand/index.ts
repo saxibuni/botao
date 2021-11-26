@@ -136,16 +136,12 @@ export default class Brand extends Vue {
 				v.text.push(v.desc);
 			});
 			this.devolopeList = res.data.fzlcList;
-			console.log(this.devolopeList ,'this.devolopeList this.devolopeList this.devolopeList ');
 
 
 			//荣誉资质
 			this.ryzz = res.data.ryzz;
 
 			// 社会责任
-			// res.data.shzrList.forEach((v)=>{
-			// 	v.desc=v.descsp
-			// })
 			this.shzrList = res.data.shzrList;
 
 			this.restartWow();
