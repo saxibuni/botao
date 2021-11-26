@@ -268,6 +268,7 @@ export default class Header extends Vue {
 	}
 
 	summaryAni() {
+		return;
 		let text = new SplitText('.summary-title >h3, .summary-title >p', {
 			type: 'chars'
 		}).chars;
