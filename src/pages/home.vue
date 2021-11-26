@@ -4,15 +4,14 @@
 			<swiper :options="bannerSwiperOptions" v-if="banner.list&&banner.list.length!=0">
 				<swiper-slide v-for="(item, i) in banner.list" :key="i">
 					<template v-if="item.video">
-						<div class="text">
-							<div class="text-content"></div>
-						</div>
 						<video class="videos" :src="web_url + item.video" controls preload="true" loop="loop" autoplay="autoplay">
 							<source :src="web_url + item.video" type="video/mp4" />
 						</video>
+						<i></i>
 					</template>
 					<template v-else>
 						<img :src="web_url+item.img" alt="" />
+					</template>
 						<div class="text">
 							<div class="text-content">
 								<h3>
@@ -27,14 +26,13 @@
 								<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
 							</div>
 						</div>
-					</template>
 				</swiper-slide>
 			</swiper>
 			<div class="swiper-button-wrap">
 				<div class="prev prev1"></div>
 				<div class="next next1"></div>
 			</div>
-			<div class="form wow">
+			<div class="form wow" v-if="formShow">
 				<ul>
 					<li>
 						<i></i>
@@ -57,7 +55,7 @@
 		</div>
 		<div class="page2">
 			<h2 class="wow">
-				<ICountUp :endVal="1000" :options="options1"></ICountUp>
+				<ICountUp :endVal="1000" :options="options"></ICountUp>
 				经典案例 筑梦幸福家
 			</h2>
 			<p class="wow">Select cases</p>
@@ -315,16 +313,16 @@
 				</div>
 				<div class="img-wrap">
 					<img src="~assets/bg_home_b4_right.jpg" alt="" />
-					<div class="div1" @click="textActiveFun(0,0)">
+					<div class="div1" @mouseover="textActiveFun(0,0)">
 						<i></i>
 					</div>
-					<div class="div2" @click="textActiveFun(3,1)">
+					<div class="div2" @mouseover="textActiveFun(3,1)">
 						<i></i>
 					</div>
-					<div class="div3" @click="textActiveFun(1,2)">
+					<div class="div3" @mouseover="textActiveFun(1,2)">
 						<i></i>
 					</div>
-					<div class="div4" @click="textActiveFun(2,3)">
+					<div class="div4" @mouseover="textActiveFun(2,3)">
 						<i></i>
 					</div>
 
@@ -545,10 +543,22 @@ export default home;
 					width: 100%;
 					height: 100%;
 				}
+				i{
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+					background:url(~assets/bg_home_banner_mask.png) no-repeat;
+					background-size: 100% 100%;
+					z-index: 1;
+					pointer-events: none;
+				}
 				.text {
 					position: absolute;
 					left: 50%;
 					top: 268px;
+					z-index: 3;
 					transform: translateX(-50%);
 					color: #ffffff;
 					.text-content {
@@ -861,6 +871,21 @@ export default home;
 					position: relative;
 					background: #fff;
 					box-sizing: border-box;
+					.swiper-slide{
+						&::after{
+							pointer-events: none;
+							background: url(~assets/bg_home_b2_mask1.png) no-repeat;
+							background-size: 100% 100%;
+							width: 100%;
+							height: 100%;
+							top: 0;
+							left: 0;
+							position: absolute;
+							content: '';
+							z-index: 9;
+							opacity: .9;
+						}
+					}
 					.imgs {
 						width: 100%;
 						height: 100%;
@@ -890,11 +915,14 @@ export default home;
 				animation: slide-down-in 1s, fade-in 1s;
 				animation-fill-mode: forwards;
 				.dswiper {
-					width: 920px;
+					width: 930px;
 					margin: 0;
+					padding-left: 10px;
+					padding-right: 10px;
 					.swiper-wrapper {
 						.swiper-slide {
 							box-sizing: border-box;
+							width: 140px!important;
 							height: 125px;
 							border: 1px solid transparent;
 							&.swiper-slide-active {
@@ -905,9 +933,11 @@ export default home;
 								} */
 							}
 							&.active{
+								margin-left: 10px!important;
+								margin-right: 20px!important;
 								img {
 									border: 1px solid #ffffff;
-									transform: translateY(0px) scaleY(1.2) !important;
+									transform: translateY(0px) scale(1.2) !important;
 								}
 							}
 							img {
@@ -1101,7 +1131,7 @@ export default home;
 				top: 0;
 				left: 0;
 				z-index: 1;
-				background: rgba(0, 0, 0, 0.15);
+				background: rgba(#031428,.07);
 				pointer-events: none;
 			}
 			> h2 {
@@ -1295,6 +1325,15 @@ export default home;
 					position: relative;
 					overflow: hidden;
 					z-index: 2;
+					&::after{
+						content: '';
+						position: absolute;
+						left: 0;
+						top: 0;
+						width: 100%;
+						height: 100%;
+						background: linear-gradient(to bottom, rgba(23, 38, 57, 0), rgba(23, 38, 57, 0.2), rgba(23, 38, 57, 0.5));
+					}
 					img {
 						position: absolute;
 						left: 0;
@@ -1357,7 +1396,10 @@ export default home;
 				top: 0;
 				left: 0;
 				z-index: 1;
-				background: linear-gradient(to bottom, rgba(23, 38, 57, 0.9), rgba(23, 38, 57, 0.5), rgba(23, 38, 57, 0.9));
+				background: url(~assets/bg_home_b2_mask.png) no-repeat;
+				opacity: .95;
+				background-size: 100% 100%;
+				/* background: linear-gradient(to bottom, rgba(23, 38, 57, 0.9), rgba(23, 38, 57, 0.5), rgba(23, 38, 57, 0.9)); */
 				pointer-events: none;
 			}
 			ul {
@@ -2027,10 +2069,11 @@ export default home;
 						margin-bottom: 22px;
 					}
 					p {
-						width: 337px;
+						width: 500px;
 						font-size: 18px;
 						font-weight: 400;
 						color: #888888;
+						white-space: pre-wrap;
 						line-height: 32px;
 						@include line-clamp(4);
 					}

@@ -209,8 +209,8 @@ export default class makeAppointment extends Vue {
 							padding-left: 19px;
 							&::placeholder {
 								font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
-								color: #000;
-								font-weight: bold;
+								color: #999;
+								font-weight: 400;
 							}
 						}
 						&:nth-child(2) {

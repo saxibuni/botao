@@ -147,10 +147,15 @@ export default class home extends Vue {
 			}
 		}
 	};
-
+	options = {
+		suffix: '+',
+		useGrouping: false,
+		duration: 0.5,
+	};
 	options1 = {
 		suffix: '+',
-		useGrouping: false
+		useGrouping: false,
+		duration: 0.5,
 	};
 	options2 = {
 		useGrouping: false
@@ -165,6 +170,7 @@ export default class home extends Vue {
 	qaylz = {};
 	zxxxList = [];
 	mounted() {
+		window.addEventListener('scroll', this.handleScroll, true);
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
 		this.initSpineAni();
@@ -180,7 +186,13 @@ export default class home extends Vue {
 				this.banner = res.data.banner;
 				this.anList = res.data.icase;
 				this.portraitList = res.data.sjsList;
-				this.sjsItem = res.data.sjsList[0];
+
+				if(res.data.sjsList.length>=16){
+					this.sjsItem = res.data.sjsList[16];
+				}else{
+					this.sjsItem = res.data.sjsList[res.data.sjsList.length];
+				}
+
 				this.sgzzDesc = res.data.sgzzDesc;
 				this.sggyList = res.data.sggyList;
 				this.page5List = res.data.jbxgList;
@@ -276,6 +288,9 @@ export default class home extends Vue {
 	}
 	picIndex2 = 0;
 	textActiveFun(i,index) {
+		if(this.picIndex==i){
+			return
+		}
 		this.picIndex = i;
 		this.picIndex2 = index;
 		this.textActive = !this.textActive;
@@ -399,6 +414,8 @@ export default class home extends Vue {
 				let src = e.img;
 				listwidth.push({ left, top, width, height, src });
 			});
+
+
 			this.listwidth = listwidth;
 		});
 	}
@@ -500,5 +517,16 @@ export default class home extends Vue {
 		utils.emitter.$off('chars-ani', this.onCharsEnter);
 		utils.emitter.$off(Events.RESIZE, this.onResize);
 		utils.emitter.$off('page5IndexFun');
+		window.removeEventListener("scroll",this.handleScroll)
+	}
+	formShow = false;
+	handleScroll() {
+		let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
+		let headerHeight = 150;
+		if (scrolltop >= headerHeight) {
+			this.formShow = true;
+		} else {
+			this.formShow = false;
+		}
 	}
 }
