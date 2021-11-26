@@ -111,6 +111,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import ICountUp from 'root/components/countup.vue';
+import utils, { emitter } from 'root/utils';
 
 @Component({
 	components:{
@@ -214,15 +215,31 @@ export default class Footer extends Vue {
 			};
 			return;
 		}
-		this.$store.state.dialog = {
-			state: 1,
-			text: '提交成功'
-		};
-		this.form = {
-			userName: '',
-			phone: '',
-			area: ''
-		};
+	 		let data = {
+			form_id:11,
+			attr_45:this.form.userName,
+			attr_46:this.form.phone,
+			attr_47:this.form.area,
+		}
+		utils.service.formSubmit(data, res => {
+			if (res.status === 200) {
+			 		this.$store.state.dialog={
+						state:1,
+						text:'提交成功'
+					}
+					this.form = {
+						userName: '',
+						phone: '',
+						area: ''
+					};
+					this.$store.state.dialogVisible = false;
+			}else{
+				this.$store.state.dialog={
+						state:2,
+						text:'系统错误'
+				}
+			}
+		});
 	}
 	wbJump() {
 		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 ${this.web_url}`);
