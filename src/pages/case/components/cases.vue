@@ -98,9 +98,6 @@ export default class Caese extends Vue {
 			this.$router.push({ path: '/case/detail', query: { aid: this.caseData.aid } });
 		}
 	}
-	mounted() {
-		this.restartWow();
-	}
 }
 </script>
 <style lang="scss" scoped>
