@@ -9,7 +9,7 @@ export class Service extends EventEmitter {
 	protected send(url: string, data: any, success: ISuccess, error?: IError) {
 		axios.post(url, qs.stringify(data)).then(
 			(res: AxiosResponse) => {
-				console.log(url, res);
+				// console.log(url, res);
 				return success(res);
 			},
 			err => {
