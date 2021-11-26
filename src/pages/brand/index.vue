@@ -424,6 +424,9 @@ html {
 		width: 100%;
 		height: 100%;
 		object-fit: fill;
+		&::-webkit-media-controls {
+			display: none !important;
+		}
 	}
 	@keyframes fade-ine {
 		from {

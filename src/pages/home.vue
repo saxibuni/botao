@@ -585,13 +585,15 @@ export default home;
 						}
 						opacity: 0;
 					}
-
 				}
 				.videos{
-						width: 100%;
-						height: 100%;
-						object-fit: fill;
-						pointer-events: none;
+					width: 100%;
+					height: 100%;
+					object-fit: fill;
+					pointer-events: none;
+					&::-webkit-media-controls {
+						display: none !important;
+					}
 				}
 			}
 		}
