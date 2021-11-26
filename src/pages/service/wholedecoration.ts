@@ -43,9 +43,9 @@ export default class WholeDecoration extends Vue {
 				this.ghfyList = res.data.ghfyList;
 				this.btysInfo = res.data.btysInfo;
 				this.ysList = res.data.ysList;
-				setTimeout(() => {
+				this.$nextTick(() => {
 					this.initTextChars();
-				}, 300);
+				});
 			}
 		});
 	}

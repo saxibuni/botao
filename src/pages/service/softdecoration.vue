@@ -1,15 +1,17 @@
 <template>
 	<div class="soft-decoration">
-		<div class="page1" v-if="banner&&banner.litpic">
-			<img :src="web_url+banner.litpic" alt="" />
-			<div class="text">
-				<h2>{{ banner.title }}</h2>
-				<p>{{ banner.etitle }}</p>
-			</div>
-			<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
-			<div class="arrow"></div>
-			<div class="arrow"></div>
-			<div class="arrow"></div>
+		<div class="page1">
+			<template v-if="banner&&banner.litpic">
+				<img :src="web_url+banner.litpic" alt="" />
+				<div class="text">
+					<h2>{{ banner.title }}</h2>
+					<p>{{ banner.etitle }}</p>
+				</div>
+				<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+				<div class="arrow"></div>
+			</template>
 		</div>
 		<div class="page2">
 			<h2 class="wow">软装配饰定制</h2>

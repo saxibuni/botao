@@ -1,19 +1,19 @@
 <template>
-	<div class="strategy-detail" >
+	<div class="strategy-detail">
 		<banner :data="BannerData" v-if="newsList[0]"></banner>
 		<!-- 装修攻略详情 -->
 		<div class="article">
 			<h2 class="wow">
-			{{archivesInfo.title}}
+				{{ archivesInfo.title }}
 			</h2>
 			<div class="title-info wow">
 				<div class="left">
 					<i></i>
 					时间 :
-					<span>{{archivesInfo.show_time | formatTime}}</span>
+					<span>{{ archivesInfo.show_time | formatTime }}</span>
 					<i></i>
 					浏览量 :
-					<span>{{archivesInfo.click}}</span>
+					<span>{{ archivesInfo.click }}</span>
 				</div>
 				<div class="right">
 					<i></i>
@@ -40,13 +40,13 @@
 		<div class="recommended-news">
 			<h2 class="wow">推荐新闻</h2>
 			<h3 class="wow">RECOMMENDED NEWS</h3>
-			<div class="item-list">
+			<div class="item-list" v-if="newsList[0]">
 				<div class="item wow" v-for="(v, i) in newsList" :key="i" v-show="i < newListFlag" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 					<div class="img-box" @click="jump(v.aid)">
-						<img :src="web_url+v.img" v-if="newsList[0]" alt="" />
+						<img :src="$store.state.footData.web_url + v.img" alt="" />
 					</div>
 					<div class="bottom">
-						<div class="date">{{ v.show_time | formatTime2}}</div>
+						<div class="date">{{ v.show_time | formatTime2 }}</div>
 						<div class="title">{{ v.title }}</div>
 						<div class="text">{{ v.desc }}</div>
 						<div class="more" @click="$router.push({ name: 'strategy-list' })" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
@@ -56,7 +56,7 @@
 					</div>
 				</div>
 			</div>
-			<Button @click.native="getMore" v-show="newListFlag-newsList.length<0" :text="'更多新闻'"></Button>
+			<Button @click.native="getMore" v-show="newListFlag - newsList.length < 0" :text="'更多新闻'"></Button>
 		</div>
 	</div>
 </template>
@@ -151,10 +151,10 @@ html {
 				font-size: 16px;
 
 				i {
-					width: 26Px;
-					height: 26Px;
+					width: 26px;
+					height: 26px;
 					background: url('~assets/icons/iconlist.png') no-repeat;
-					background-position: -11Px -11Px;
+					background-position: -11px -11px;
 					cursor: pointer;
 					position: relative;
 					transition: 0.3s;
@@ -218,12 +218,12 @@ html {
 						top: 0px;
 
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -11Px -11Px;
+						background-position: -11px -11px;
 						// background-size: 26px 26px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -11Px -43Px;
+							background-position: -11px -43px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -240,11 +240,11 @@ html {
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -41Px -11Px;
+						background-position: -41px -11px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -41Px -43Px;
+							background-position: -41px -43px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -260,11 +260,11 @@ html {
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -80Px -11Px;
+						background-position: -80px -11px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -80Px -43Px;
+							background-position: -80px -43px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {

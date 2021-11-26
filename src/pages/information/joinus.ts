@@ -55,7 +55,7 @@ export default class JoinUs extends Vue {
 			console.log(res.data);
 			this.web_url = res.data.web_url;
 			//banner
-			this.BannerData = res.data.banner;
+			utils.emitter.$emit('bannerData', res.data.banner);
 
 			//人才理念
 			this.rclniList = res.data.rclniList;

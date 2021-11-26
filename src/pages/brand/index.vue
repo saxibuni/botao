@@ -1,23 +1,24 @@
 <template>
 	<div class="brand">
-		<div class="banner-box" v-if="btbrandInfo.id">
-			<video id="v1" :src="web_url + btbrandInfo.video" loop="loop" autoplay="autoplay" preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
-				<source :src="web_url + btbrandInfo.video" type="video/mp4" />
-			</video>
-			<div class="text-content">
-				<div class="banner-text" v-show="textShow">
-					<h3>{{ btbrandInfo.title }}</h3>
-					<p>{{ btbrandInfo.etitle }}</p>
+		<div class="banner-box">
+			<template v-if="btbrandInfo.id">
+				<video id="v1" :src="web_url + btbrandInfo.video" preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
+					<source :src="web_url + btbrandInfo.video" type="video/mp4" />
+				</video>
+				<div class="text-content">
+					<div class="banner-text" v-show="textShow">
+						<h3>{{ btbrandInfo.title }}</h3>
+						<p>{{ btbrandInfo.etitle }}</p>
+					</div>
+					<h6 class="text" v-show="textShow">
+						{{ btbrandInfo.desc }}
+					</h6>
 				</div>
-				<h6 class="text" v-show="textShow">
-					{{ btbrandInfo.desc }}
-				</h6>
-			</div>
-
-			<div class="aside-text" v-show="textShow">BOTAOGROUP VIDEO</div>
-			<div class="img-box" @click="play" v-show="!playFlag">
-				<img src="~assets/icons/ic_c2_play.png" alt="" />
-			</div>
+				<div class="aside-text" v-show="textShow">BOTAOGROUP VIDEO</div>
+				<div class="img-box" @click="play" v-show="!playFlag">
+					<img src="~assets/icons/ic_c2_play.png" alt="" />
+				</div>
+			</template>
 		</div>
 		<ul class="aside-nav">
 			<li v-for="(v, i) in asideNav" :class="i == 0 ? 'active' : ''" :key="i" @click="jump(i)">
@@ -487,6 +488,7 @@ html {
 	.banner-box {
 		display: flex;
 		position: relative;
+		min-height: 970px;
 		video {
 			vertical-align: middle;
 		}
