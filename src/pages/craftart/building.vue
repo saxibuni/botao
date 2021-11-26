@@ -35,24 +35,6 @@
 						<p>每年在建工地</p>
 					</div>
 				</div>
-				<!-- <template v-if="currentSelectId">
-					<div class="rightContent" v-for="(item, index) in mapData" :key="index" v-show="currentSelectId == item.id">
-						<h4>{{ item.title1 }}</h4>
-						<p>{{ item.title2 }}</p>
-						<p v-for="(v, i) in item.desc" :key="i">{{ v }}</p>
-						<div class="line">
-							<div class="line2" v-show="currentSelectId == 'pd'"></div>
-							<div class="line3" v-show="currentSelectId == 'fx'"></div>
-							<div class="line4" v-show="currentSelectId == 'mh'"></div>
-							<div class="line5" v-show="currentSelectId == 'cm'"></div>
-							<div class="line6" v-show="currentSelectId == 'bs'"></div>
-							<div class="line7" v-show="currentSelectId == 'jd'"></div>
-							<div class="line8" v-show="currentSelectId == 'qp'"></div>
-							<div class="line9" v-show="currentSelectId == 'sj'"></div>
-							<div class="line1" v-show="currentSelectId"></div>
-						</div>
-					</div>
-				</template> -->
 				<div class="map">
 					<img src="~assets/bg_c3_part2.png" alt="" />
 					<ul>
