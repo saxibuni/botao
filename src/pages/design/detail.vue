@@ -89,7 +89,7 @@
 				<p>观看大咖专访视频</p>
 			</div>
 		</div>
-		<div class="works" v-if="!detailData.vrList.length || !detailData.sjsList.length">
+		<div class="works" v-if="detailData.vrList.length || detailData.sjsList.length">
 			<h3 class="wow">TA的作品</h3>
 			<div class="list wow" v-if="detailData.sjsList.length">
 				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3)" :key="i" />
