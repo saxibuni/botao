@@ -10,7 +10,7 @@
 			</div>
 			<div class="right wow">
 				<div class="search">
-					<input type="text" v-model="inputVal" />
+					<input type="text" v-model="inputVal" @keyup.enter="choice(inputVal)" />
 					<i @click="choice(inputVal)"></i>
 				</div>
 				<p v-if="vrData.keyw">
@@ -53,8 +53,8 @@
 									<img v-if="isIE && !flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), v.click--" />
 								</div>
 								<p>{{ v.click }}个喜欢</p> -->
-								<div @click="getLove(v.aid, v.is_zan), (v.is_zan = 1)">
-									<img src="~assets/icons/ic_b1_part3_like1.png" alt="" />
+								<div @click="getLove(v.aid, v.is_zan), (v.is_zan = 1)" class="love">
+									<img src="~assets/icons/ic_b1_part3_like1.png" alt="" class="love" />
 									<img v-if="!isIE" class="img" :class="{ img2: v.is_zan == 1 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 									<img v-if="isIE && v.is_zan == 1" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 								</div>

@@ -4,7 +4,7 @@
 			<swiper :options="bannerSwiperOptions" v-if="banner.list&&banner.list.length!=0">
 				<swiper-slide v-for="(item, i) in banner.list" :key="i">
 					<template v-if="item.video">
-						<video class="videos" :src="web_url + item.video" controls preload="true" loop="loop" autoplay="autoplay">
+						<video class="videos" :src="web_url + item.video" controls preload="true" loop="loop" muted autoplay="autoplay">
 							<source :src="web_url + item.video" type="video/mp4" />
 						</video>
 						<i></i>

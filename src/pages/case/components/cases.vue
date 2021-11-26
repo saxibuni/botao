@@ -4,6 +4,7 @@
 			<li>
 				<div class="imgBox" @click.stop="push">
 					<img :src="$store.state.footData.web_url + caseData.img" alt="" />
+					<img src="~assets/ic_b3_part2_vr.png" alt="" v-if="caseData.typename == 'VR装修体验'" />
 				</div>
 				<div class="content">
 					<div class="top">
@@ -35,7 +36,8 @@
 								<p>{{ caseData.des_info.station }}</p>
 							</div>
 						</div>
-						<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
+						<Button @click.native="$store.state.dialogDesign.design = true" :text="caseData.typename" v-if="caseData.typename == 'VR装修体验'" />
+						<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" v-else />
 					</div>
 				</div>
 			</li>
@@ -95,7 +97,11 @@ export default class Caese extends Vue {
 				window.location.reload();
 			}, 0);
 		} else {
-			this.$router.push({ path: '/case/detail', query: { aid: this.caseData.aid } });
+			if (this.caseData.typename == 'VR装修体验') {
+				window.open(this.caseData.velink);
+			} else {
+				this.$router.push({ path: '/case/detail', query: { aid: this.caseData.aid } });
+			}
 		}
 	}
 }
@@ -129,6 +135,7 @@ export default class Caese extends Vue {
 				align-items: center;
 				cursor: pointer;
 				overflow: hidden;
+				position: relative;
 				&:hover {
 					img {
 						transform: scale($imgScale);
@@ -138,6 +145,14 @@ export default class Caese extends Vue {
 					width: 100%;
 					height: 100%;
 					transition: transform 0.3s;
+					&:nth-of-type(2) {
+						position: absolute;
+						left: 50%;
+						top: 50%;
+						width: 120px;
+						height: 120px;
+						transform: translate(-50%, -50%);
+					}
 				}
 			}
 			.content {
@@ -152,6 +167,7 @@ export default class Caese extends Vue {
 					align-items: center;
 					border-bottom: 1px solid #eeeeee;
 					.topLeft {
+						padding-right: 150px;
 						p {
 							&:nth-of-type(1) {
 								font-size: 28px;
