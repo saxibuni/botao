@@ -190,7 +190,6 @@ export default class Brand extends Vue {
 		const v1 = document.querySelector<HTMLElement>('#v1');
 		v1.addEventListener('play', () => {
 			this.playFlag = true;
-			this.textShow = false;
 		});
 		v1.addEventListener('pause', () => {
 			this.playFlag = false;
