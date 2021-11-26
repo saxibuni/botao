@@ -85,7 +85,7 @@
 				<source :src="$store.state.footData.web_url + detailData.designer_info.video" type="video/mp4" />
 			</video>
 			<div v-show="!video">
-				<img src="~assets/ic_c2_play.png" alt="" @click="play()" />
+				<img src="~assets/icons/ic_c2_play.png" alt="" @click="play()" />
 				<p>观看大咖专访视频</p>
 			</div>
 		</div>

@@ -160,18 +160,18 @@
 						:key="i"
 					>
 						<div class="one" >
-							<div class="inner-one" :style="{ opacity: item != 'assets/portrait/white.png' ? 1 : 1 }">
+							<div class="inner-one" :style="{ opacity: item != 'assets/white.png' ? 1 : 1 }">
 								<div class="box">
 									<img :src="item" alt="" />
 								</div>
 							</div>
 						</div>
-						<div class="two" :style="{ opacity: item == 'assets/portrait/white.png' ? 0 : 1 }">
+						<div class="two" :style="{ opacity: item == 'assets/white.png' ? 0 : 1 }">
 							<div class="inner-two">
 								<div class="box">
 									<img :src="item" alt="" />
-									<img :src="require('assets/portrait/white.png')" alt="" />
-									<img :src="nextPortraitList[i] || require('assets/portrait/white.png')" alt="" />
+									<img :src="require('assets/white.png')" alt="" />
+									<img :src="nextPortraitList[i] || require('assets/white.png')" alt="" />
 								</div>
 							</div>
 						</div>

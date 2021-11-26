@@ -78,7 +78,9 @@
 			<div class="copyright">
 				<div class="link">
 					<p>
-						{{footData.copyright}} 技术支持：
+						{{footData.copyright}}
+						<span v-html="footData.icp"></span>
+						技术支持：
 						<a href="https://www.zhulu86.com/" target='_blank'>逐鹿科技</a>
 					</p>
 					友情链接：
@@ -111,6 +113,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import ICountUp from 'root/components/countup.vue';
+import utils, { emitter } from 'root/utils';
 
 @Component({
 	components:{
@@ -214,15 +217,31 @@ export default class Footer extends Vue {
 			};
 			return;
 		}
-		this.$store.state.dialog = {
-			state: 1,
-			text: '提交成功'
-		};
-		this.form = {
-			userName: '',
-			phone: '',
-			area: ''
-		};
+	 		let data = {
+			form_id:11,
+			attr_45:this.form.userName,
+			attr_46:this.form.phone,
+			attr_47:this.form.area,
+		}
+		utils.service.formSubmit(data, res => {
+			if (res.status === 200) {
+			 		this.$store.state.dialog={
+						state:1,
+						text:'提交成功'
+					}
+					this.form = {
+						userName: '',
+						phone: '',
+						area: ''
+					};
+					this.$store.state.dialogVisible = false;
+			}else{
+				this.$store.state.dialog={
+						state:2,
+						text:'系统错误'
+				}
+			}
+		});
 	}
 	wbJump() {
 		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 ${this.web_url}`);
@@ -290,16 +309,15 @@ export default class Footer extends Vue {
 			this.$bus.$emit('params-change', 6);
 		}
 		else{
-			this.$router.push({name:this.navObj[navId]})
+			this.$router.push({
+				name:this.navObj[navId],
+				query: {
+					typeId: navId
+				}
+			});
 		}
 	}
-	onRoute(it) {
-		if (it.url == this.$route.name && it.url == 'brand') {
-			this.$bus.$emit('params-change', it.query);
-		} else {
-			this.$router.push({ name: it.url, params: { number: it.query } });
-		}
-	}
+
 	footData = '';
 	web_url = '';
 	mounted(){
@@ -539,6 +557,17 @@ export default class Footer extends Vue {
 					&:last-child{
 						&::after{
 							 display: none;
+						}
+					}
+				}
+				span{
+					/deep/a{
+						transition: 0.3s;
+						font-size: 18px;
+						color: #666666;
+						text-decoration: none;
+						&:hover {
+							color: #fff;
 						}
 					}
 				}

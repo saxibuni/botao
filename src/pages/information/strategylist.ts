@@ -76,6 +76,7 @@ export default class StrategyList extends Vue {
 		setTimeout(() => {
 			this.showPagination = true;
 		});
+		window.scrollTo(0, 0)
 	}
 
 	addClass(i, dom) {

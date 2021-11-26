@@ -16,7 +16,7 @@
 
 			<div class="aside-text" v-show="textShow">BOTAOGROUP VIDEO</div>
 			<div class="img-box" @click="play" v-show="!playFlag">
-				<img src="~assets/ic_home_b3_play.png" alt="" />
+				<img src="~assets/icons/ic_c2_play.png" alt="" />
 			</div>
 		</div>
 		<ul class="aside-nav">
