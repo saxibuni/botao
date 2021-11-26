@@ -1,6 +1,5 @@
 <template>
 	<div class="strategy-list">
-		<banner v-if="topList[0]" :data="BannerData"></banner>
 		<!-- 装修攻略或最新活动列表 -->
 		<div class="decoration-strategy" v-if="topList[0]">
 			<template v-if="typeId == '90'">

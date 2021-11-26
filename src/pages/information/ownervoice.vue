@@ -1,7 +1,7 @@
 <template>
 	<div class="owner" v-if="yzxs[0]">
 		<!-- 业主心声 -->
-		<Banner :data="BannerData" />
+		<!-- <Banner :data="BannerData" /> -->
 		<div class="owner-vioce">
 			<h2>业主心声</h2>
 			<h3>OWNER'S VOICE</h3>

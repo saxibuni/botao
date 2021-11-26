@@ -110,7 +110,7 @@ export default class OwnerVoice extends Vue {
 		utils.service.queryYZXS(res => {
 			this.web_url = res.data.web_url;
 			//banner
-			this.BannerData = res.data.banner;
+			utils.emitter.$emit('bannerData', res.data.banner);
 
 			//yzxs
 			this.yzxs = res.data.yzxsList;

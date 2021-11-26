@@ -1,6 +1,5 @@
 <template>
 	<div class="join-us">
-		<banner v-if="zpxx[0]" :data="BannerData"></banner>
 		<div class="page1">
 			<div class="left wow">
 				<h2>
