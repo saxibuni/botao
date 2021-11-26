@@ -137,6 +137,8 @@ export default Header;
 					font-weight: 400;
 					letter-spacing: 1px;
 					white-space: nowrap;
+					transform: scale(0.83);
+    			transform-origin: left;
 				}
 			}
 		}
