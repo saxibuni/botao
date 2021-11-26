@@ -33,7 +33,6 @@ export default class CaseListVr extends Vue {
 					keywords:val5,
 				},
 				res => {
-					console.log(res.data);
 					this.vrData=res.data
 					res.data.stylesx.unshift('全部')
 					res.data.hxsx.unshift('全部')
@@ -67,6 +66,10 @@ export default class CaseListVr extends Vue {
 				}
 			}
 		);
+	}
+	push(url,e){
+		if(e.target.className=='btn'||e.target.className=='img img2')return
+		window.open(url)
 	}
 	mounted(){
 		this.restartWow();

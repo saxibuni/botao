@@ -57,66 +57,10 @@ export default class Brand extends Vue {
 	isActive = 0;
 	bannerActive = 0;
 	asideNav = ['波涛品牌', '品牌数据', '核心价值观', '发展历程', '荣誉资质', '社会责任', '联系我们'];
-	nav = ['荣誉证书', '研发专利'];
 	isIE: boolean;
-	hvBanner = [
-		{
-			imgUrl: require('../../assets/bg_g1_part6_honer1.jpg'),
-			title: '上海市建设工程白玉兰奖'
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part6_honer2.jpg'),
-			title: '上海市装饰装修行业“十强"企业'
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part6_honer3.jpg'),
-			title: '全国装饰装修行业“百强”企业'
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part6_honer4.jpg'),
-			title: '上海市消保委“装潢”指引企业'
-		}
-	];
-	socialArr = [
-		{
-			imgUrl: require('../../assets/bg_g1_part7_pic1.jpg'),
-			time: '2003',
-			text: ['非典期间捐献物资，与人民群众同心协力，共克时艰', '波涛集团每年定期组织无偿公益献血活动']
-		}
-	];
 	devolopeList = [{}];
-	coreList = [
-		{
-			imgUrl: require('../../assets/bg_g1_part4_pic1.jpg'),
-			title1: '诚信',
-			title2: '立业基础',
-			eng: 'SINCERITY'
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part4_pic2.jpg'),
-			title1: '感恩',
-			title2: '发展源泉',
-			eng: 'GRATITUDE'
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part4_pic3.jpg'),
-			title1: '奋斗',
-			title2: '拼搏精神',
-			eng: 'STRUGGLE'
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part4_pic4.jpg'),
-			title1: '创新',
-			title2: '制胜法宝',
-			eng: 'INNOVATE'
-		},
-		{
-			imgUrl: require('../../assets/bg_g1_part4_pic5.jpg'),
-			title1: '共赢',
-			title2: '价值追求',
-			eng: 'WIN-WIN'
-		}
-	];
+
+
 	options1 = {
 		// suffix: '+',
 		useEasing: true
@@ -192,16 +136,12 @@ export default class Brand extends Vue {
 				v.text.push(v.desc);
 			});
 			this.devolopeList = res.data.fzlcList;
-			console.log(this.devolopeList ,'this.devolopeList this.devolopeList this.devolopeList ');
 
 
 			//荣誉资质
 			this.ryzz = res.data.ryzz;
 
 			// 社会责任
-			// res.data.shzrList.forEach((v)=>{
-			// 	v.desc=v.descsp
-			// })
 			this.shzrList = res.data.shzrList;
 
 			this.restartWow();

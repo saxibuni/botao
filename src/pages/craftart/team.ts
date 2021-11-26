@@ -22,7 +22,6 @@ export default class Team extends Vue {
 					page:v
 				},
 				res => {
-					console.log(res.data);
 					this.teamData=res.data
 					this.bannerData=res.data.banner
 					this.web_url = res.data.web_url;

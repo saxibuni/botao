@@ -1,14 +1,14 @@
 <template>
-	<div class="strategy-list" v-if="topList[1]">
-		<banner :data="BannerData"></banner>
+	<div class="strategy-list">
+		<banner v-if="topList[0]" :data="BannerData"></banner>
 		<!-- 装修攻略列表 -->
-		<div class="decoration-strategy" v-if="topList[1]">
+		<div class="decoration-strategy" v-if="topList[0]">
 			<h2>装修攻略</h2>
 			<h3>DECORATION STRATIEGY</h3>
 			<div class="strategy-box">
-				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail', query: { aid: topList[0].aid }  })">
+				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail', query: { aid: topList[0].aid } })">
 					<div class="img-box">
-						<img :src="$store.state.footData.web_url + topList[0].img" />
+						<img v-if="topList[0]" :src="$store.state.footData.web_url + topList[0].img" />
 					</div>
 					<div class="info-box">
 						<div class="date">{{ topList[0].show_time | formatTime }}</div>
@@ -23,7 +23,7 @@
 				<ul class="strategy-right wow">
 					<li v-for="(v, i) in topList2" :key="v.id" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
 						<div class="img-box">
-							<img :src="$store.state.footData.web_url + v.img" />
+							<img v-if="topList[0]" :src="$store.state.footData.web_url + v.img" />
 						</div>
 						<div class="info-box">
 							<div class="date">{{ v.show_time | formatTime }}</div>
@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 		</div>
-		<div class="list-box" v-if="topList[1]">
+		<div class="list-box">
 			<ul class="list wow">
 				<li
 					v-for="(v, i) in groupList"
@@ -48,7 +48,7 @@
 					@click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })"
 				>
 					<div class="img-box">
-						<img :src="$store.state.footData.web_url + v.img" alt="" />
+						<img v-if="topList[0]" :src="$store.state.footData.web_url + v.img" alt="" />
 					</div>
 					<div class="info-box">
 						<div class="date">{{ v.show_time | formatTime }}</div>
@@ -61,7 +61,7 @@
 					</div>
 				</li>
 			</ul>
-			<Pagination :data="paginationData" @getData="getData"></Pagination>
+			<Pagination :data="paginationData" @getData="getData" v-if="showPagination"></Pagination>
 		</div>
 	</div>
 </template>
@@ -226,6 +226,8 @@ html {
 						h4 {
 							color: #000;
 							transition: color 0.3s;
+							@include line-clamp(1);
+
 						}
 						.more {
 							margin-top: 40px;
@@ -234,6 +236,9 @@ html {
 						}
 						&:hover .title {
 							color: #eb551c;
+						}
+						p {
+							@include line-clamp(2);
 						}
 					}
 
@@ -287,7 +292,9 @@ html {
 					width: 100%;
 					cursor: pointer;
 					.title {
+						width: 500px;
 						transition: all 0.3s;
+						@include line-clamp(1);
 					}
 					.date {
 						color: #888;
@@ -299,6 +306,7 @@ html {
 					p {
 						width: 490px;
 						color: #666;
+						@include line-clamp(3);
 					}
 					&:hover .title {
 						color: #ed5300;
