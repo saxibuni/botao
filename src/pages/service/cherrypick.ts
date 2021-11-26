@@ -156,9 +156,9 @@ export default class CheckPick extends Vue {
 				});
 				this.portraitList = array
 				this.getCurrentPortraitList(this.portraitListIndex);
-				setTimeout(() => {
+				this.$nextTick(() => {
 					this.initTextChars();
-				}, 300);
+				});
 			}
 		});
 	}

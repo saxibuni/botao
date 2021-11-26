@@ -106,9 +106,9 @@ export default class SoftDecoration extends Vue {
 				this.rzsjsList = res.data.rzsjsList;
 				this.rzfwlcList = res.data.rzfwlcList;
 				this.rzpxList = res.data.rzpxList;
-				setTimeout(() => {
+				this.$nextTick(() => {
 					this.initTextChars();
-				}, 300);
+				});
 			}
 		});
 	}
