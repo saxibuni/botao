@@ -227,10 +227,12 @@ export default class navLists extends Vue {
 					}
 					p {
 						height: 10px;
-						font-size: 10px;
+						font-size: 12px;
 						font-family: Gilroy;
 						letter-spacing: 1px;
 						font-weight: 400;
+						transform-origin: left;
+						transform: scale(0.84);
 					}
 				}
 			}
