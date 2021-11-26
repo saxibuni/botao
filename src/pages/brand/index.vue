@@ -1,7 +1,7 @@
 <template>
 	<div class="brand">
 		<div class="banner-box" v-if="btbrandInfo.id">
-			<video id="v1" :src="web_url + btbrandInfo.video" controls preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
+			<video id="v1" :src="web_url + btbrandInfo.video" loop="loop" autoplay="autoplay" preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
 				<source :src="web_url + btbrandInfo.video" type="video/mp4" />
 			</video>
 			<div class="text-content">
