@@ -18,9 +18,9 @@ import utils from 'root/utils'
 export default class Building extends Vue {
 	videoPop = {
 		isPop: false,
-		url:''
+		url: ''
 	};
-	buildingData={}
+	buildingData = {}
 	web_url = ''
 	paginationData = { size: 9, total: 1000 };
 	bannerData = {};
@@ -39,46 +39,42 @@ export default class Building extends Vue {
 	}
 	playVideo(i) {
 		this.videoPop.url = i;
-		if(!i)return
+		if (!i) return
 		this.videoPop.isPop = true;
 	}
-	created(){
-		this.getData(1,'','')
+	created() {
+		this.getData(1, '', '')
 	}
-		getData(v,val1,val2) {
-			utils.service.querysiteCase(
-				{
-					page:v,
-					gdhxsx:val1,
-					gdmjsx:val2
-				},
-				res => {
-					this.buildingData=res.data
-					this.bannerData=res.data.banner
-					res.data.mjsx.unshift('全部')
-					res.data.hxsx.unshift('全部')
-					this.tabList[0].info=res.data.hxsx
-					this.tabList[1].info=res.data.mjsx
-					this.web_url = res.data.web_url;
-					this.paginationData.total=res.data.pages.total
-					this.paginationData.size=res.data.pages.per_page
-				}
-			);
-		}
-		choice(){
-			this.getData(1,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]])
-		}
-		getData1(v){
-			this.getData(v,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]])
-		}
-		setDelayTime() {
-			return Math.random() * 0.4 + 0.1;
-		}
+	getData(v, val1, val2) {
+		utils.service.querysiteCase(
+			{
+				page: v,
+				gdhxsx: val1,
+				gdmjsx: val2
+			},
+			res => {
+				this.buildingData = res.data
+				this.bannerData = res.data.banner
+				res.data.mjsx.unshift('全部')
+				res.data.hxsx.unshift('全部')
+				this.tabList[0].info = res.data.hxsx
+				this.tabList[1].info = res.data.mjsx
+				this.web_url = res.data.web_url;
+				this.paginationData.total = res.data.pages.total
+				this.paginationData.size = res.data.pages.per_page
+			}
+		);
+	}
+	choice() {
+		this.getData(1, this.tabList[0].info[this.activeIndex[0]] == '全部' ? '' : this.tabList[0].info[this.activeIndex[0]], this.tabList[1].info[this.activeIndex[1]] == '全部' ? '' : this.tabList[1].info[this.activeIndex[1]])
+	}
+	getData1(v) {
+		this.getData(v, this.tabList[0].info[this.activeIndex[0]] == '全部' ? '' : this.tabList[0].info[this.activeIndex[0]], this.tabList[1].info[this.activeIndex[1]] == '全部' ? '' : this.tabList[1].info[this.activeIndex[1]])
+	}
+	setDelayTime() {
+		return Math.random() * 0.4 + 0.1;
+	}
 	mounted() {
 		this.restartWow();
-
 	}
-
-
-
 }
