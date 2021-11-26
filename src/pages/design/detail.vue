@@ -80,7 +80,7 @@
 				<img src="~assets/bg_c2_part2_text.png" alt="" />
 			</div>
 		</div>
-		<div class="video" v-if="detailData.designer_info.video">
+		<div class="video" v-if="detailData.designer_info.video" :class="{ bottom: !detailData.sjsList.length && !detailData.vrList.length }">
 			<video :src="$store.state.footData.web_url + detailData.designer_info.video" preload="true">
 				<source :src="$store.state.footData.web_url + detailData.designer_info.video" type="video/mp4" />
 			</video>
@@ -89,12 +89,20 @@
 				<p>观看大咖专访视频</p>
 			</div>
 		</div>
-		<div class="works" v-if="detailData.sjsList&&detailData.sjsList.length!=0">
+		<div class="works" v-if="detailData.sjsList && detailData.sjsList.length != 0">
 			<h3 class="wow">TA的作品</h3>
-			<div class="list wow">
+			<div class="list wow" v-if="detailData.sjsList.length">
 				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3)" :key="i" />
 			</div>
-			<div class="more" @click="$router.push('/case/list')" v-if="detailData.sjsList.length">更多案例</div>
+			<div class="list wow" v-else>
+				<Cases :caseData="v" v-for="(v, i) in detailData.vrList.slice(0, 3)" :key="i" />
+			</div>
+			<template v-if="detailData.sjsList.length">
+				<div class="more" @click="$router.push('/case/list')" v-if="detailData.sjsList.length">更多案例</div>
+			</template>
+			<template v-if="detailData.vrList.length && !detailData.sjsList.length">
+				<div class="more" @click="$router.push('/case/listvr')" v-if="detailData.sjsList.length">更多案例</div>
+			</template>
 		</div>
 	</div>
 </template>
@@ -442,6 +450,9 @@ export default DesignDetail;
 				}
 			}
 		}
+	}
+	.bottom {
+		margin-bottom: 100px;
 	}
 	.works {
 		padding: 0 80px;

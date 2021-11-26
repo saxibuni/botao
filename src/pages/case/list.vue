@@ -10,7 +10,7 @@
 			</div>
 			<div class="right wow">
 				<div class="search">
-					<input type="text" v-model="inputVal" />
+					<input type="text" v-model="inputVal" @keyup.enter="choice(inputVal)" />
 					<i @click="choice(inputVal)"></i>
 				</div>
 				<p v-if="listData.keyw">
