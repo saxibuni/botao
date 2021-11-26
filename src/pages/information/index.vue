@@ -1,5 +1,6 @@
 <template>
 	<div class="information">
+		<Banner  :data="bannerData"></Banner>
 		<router-view />
 	</div>
 </template>

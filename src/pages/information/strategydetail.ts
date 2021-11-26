@@ -42,8 +42,8 @@ export default class StrategyDetail extends Vue {
 		utils.service.queryNewsDetail(aid, res => {
 
 			//banner
-			this.web_url = res.data.web_url;
-			res.data.banner.etitle = res.data.banner.etitle.toUpperCase();
+			utils.emitter.$emit('bannerData', res.data.banner);
+
 			this.BannerData = res.data.banner;
 
 			//text

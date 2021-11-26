@@ -31,20 +31,19 @@ export default class StrategyList extends Vue {
 	groupList = [];
 
 	showPagination: boolean = true;
-	typeId: string = "";
+	typeId: string = '';
 	queryMethod: (req, callback: (res: any) => void) => void;
 	created() {
 		this.typeId = this.$route.query.typeId.toString();
-		this.queryMethod = (this.typeId == "90" ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
+		this.queryMethod = (this.typeId == '90' ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
 		this.query();
 	}
 	paginationData = { size: 6, total: 1000, arr: [], boxName: '.strategy-list .list-box' };
 
 	query() {
-		this.queryMethod({},res => {
+		this.queryMethod({}, res => {
 			//banner
-			res.data.banner.etitle = res.data.banner.etitle.toUpperCase();
-			this.BannerData = res.data.banner;
+			utils.emitter.$emit('bannerData', res.data.banner);
 
 			//toplist
 			this.topList = res.data.newsTopList;
@@ -70,13 +69,13 @@ export default class StrategyList extends Vue {
 	@Watch('$route.query.typeId')
 	typeIdChange(typeId) {
 		this.typeId = typeId;
-		this.queryMethod = (typeId == "90" ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
+		this.queryMethod = (typeId == '90' ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
 		this.query();
 		this.showPagination = false;
 		setTimeout(() => {
 			this.showPagination = true;
 		});
-		window.scrollTo(0, 0)
+		window.scrollTo(0, 0);
 	}
 
 	addClass(i, dom) {
