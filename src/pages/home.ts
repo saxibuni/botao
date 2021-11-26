@@ -170,7 +170,6 @@ export default class home extends Vue {
 	qaylz = {};
 	zxxxList = [];
 	mounted() {
-		window.addEventListener('scroll', this.handleScroll, true);
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
 		this.initSpineAni();
@@ -530,16 +529,5 @@ export default class home extends Vue {
 		utils.emitter.$off('chars-ani', this.onCharsEnter);
 		utils.emitter.$off(Events.RESIZE, this.onResize);
 		utils.emitter.$off('page5IndexFun');
-		window.removeEventListener("scroll",this.handleScroll)
-	}
-	formShow = false;
-	handleScroll() {
-		let scrolltop = document.documentElement.scrollTop || document.body.scrollTop;
-		let headerHeight = 150;
-		if (scrolltop >= headerHeight) {
-			this.formShow = true;
-		} else {
-			this.formShow = false;
-		}
 	}
 }

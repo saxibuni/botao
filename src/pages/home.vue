@@ -32,7 +32,7 @@
 				<div class="prev prev1"></div>
 				<div class="next next1"></div>
 			</div>
-			<div class="form wow" v-if="formShow">
+			<div class="form wow">
 				<ul>
 					<li>
 						<i></i>
