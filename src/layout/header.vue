@@ -132,11 +132,13 @@ export default Header;
 				}
 				p {
 					height: 10px;
-					font-size: 10px;
+					font-size: 12px;
 					font-family: Gilroy;
 					font-weight: 400;
 					letter-spacing: 1px;
 					white-space: nowrap;
+					transform: scale(0.84);
+    			transform-origin: left;
 				}
 			}
 		}

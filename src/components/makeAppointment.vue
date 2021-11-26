@@ -3,56 +3,73 @@
 		<Popup class="make-appointment" v-if="$store.state.dialogDesign.design || $store.state.dialogDesign.visit">
 			<div class="mask"></div>
 			<div class="body">
-					<img @click="$store.state.dialogDesign.design = false;$store.state.dialogDesign.visit = false" class="close" src="~assets/icons/ic_home_popup_close2.png" alt="" />
-					<div :class="{ height: $store.state.dialogDesign.design }">
-						<div class="from">
-							<h2>{{$store.state.dialogDesign.design?'预约设计':'参观工地'}}</h2>
-							<h3>
-								今天已有<span>{{$store.state.dialogDesign.design?$store.state.footData.sj_num:$store.state.footData.gd_num}}</span>位业主预约了{{$store.state.dialogDesign.design?'设计':'参观工地'}}
-							</h3>
-							<ul>
-								<li>
-									<i></i>
-									<input type="text" v-model="form.userName" placeholder="您的称呼" />
-									<b>*</b>
-								</li>
-								<li>
-									<i></i>
-									<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
-									<b>*</b>
-								</li>
-								<li v-if="$store.state.dialogDesign.design">
-									<i></i>
-									<input type="text" v-model="form.area" placeholder="您的户型" />
-									<b>*</b>
-								</li>
-							</ul>
-							<div class="btns">
-								<div @click="onSubmit()">
-									<Button text="提交" />
-								</div>
+				<img
+					@click="
+						$store.state.dialogDesign.design = false;
+						($store.state.dialogDesign.visit = false),
+							(form = {
+								userName: '',
+								phone: '',
+								area: ''
+							});
+					"
+					class="close"
+					src="~assets/icons/ic_home_popup_close2.png"
+					alt=""
+				/>
+				<div :class="{ height: $store.state.dialogDesign.design }">
+					<div class="from">
+						<h2>{{ $store.state.dialogDesign.design ? '预约设计' : '参观工地' }}</h2>
+						<h3>
+							今天已有
+							<span>{{ $store.state.dialogDesign.design ? $store.state.footData.sj_num : $store.state.footData.gd_num }}</span>
+							位业主预约了{{ $store.state.dialogDesign.design ? '设计' : '参观工地' }}
+						</h3>
+						<ul>
+							<li>
+								<i></i>
+								<input type="text" v-model="form.userName" placeholder="您的称呼" />
+								<b>*</b>
+							</li>
+							<li>
+								<i></i>
+								<input type="text" v-model="form.phone" maxlength="11" @input="oninput()" placeholder="您的电话" />
+								<b>*</b>
+							</li>
+							<li v-if="$store.state.dialogDesign.design">
+								<i></i>
+								<input type="text" v-model="form.area" placeholder="您的户型" />
+								<b>*</b>
+							</li>
+						</ul>
+						<div class="btns">
+							<div @click="onSubmit()">
+								<Button text="提交" />
+							</div>
 
-								<div
-									@click="
-										form = {
-											userName: '',
-											phone: '',
-											area: ''
-										}
-									"
-								>
-									<Button text="重置" />
-								</div>
+							<div
+								@click="
+									form = {
+										userName: '',
+										phone: '',
+										area: ''
+									}
+								"
+							>
+								<Button text="重置" />
 							</div>
 						</div>
-						<div class="right" :class="{active:$store.state.dialogDesign.design}">
-								<div>
-									<p>
-										关注波涛微信公众号<br>了解更多装饰资讯
-									</p>
-									<img :src="$store.state.footData.web_url+$store.state.footData.watch" alt="">
-								</div>
+					</div>
+					<div class="right" :class="{ active: $store.state.dialogDesign.design }">
+						<div>
+							<p>
+								关注波涛微信公众号
+								<br />
+								了解更多装饰资讯
+							</p>
+							<img :src="$store.state.footData.web_url + $store.state.footData.watch" alt="" />
 						</div>
+					</div>
 				</div>
 			</div>
 		</Popup>
@@ -63,10 +80,10 @@
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import Popup from './popup.vue';
 import Button from './button.vue';
-import utils from "root/utils";
+import utils from 'root/utils';
 
 @Component({
-	components:{
+	components: {
 		Popup,
 		Button
 	}
@@ -77,75 +94,76 @@ export default class makeAppointment extends Vue {
 		phone: '',
 		area: ''
 	};
+	oninput() {
+		this.form.phone = this.form.phone.replace(/[^\d]/g, '');
+	}
 	onSubmit() {
 		if (!this.form.userName) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入您的姓名'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入您的姓名'
+			};
 			return;
 		}
 		if (this.form.phone.length != 11) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入正确的联系电话'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入正确的联系电话'
+			};
 			return;
 		}
-		if (!this.form.area&&this.$store.state.dialogDesign.design) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入您的户型'
-			}
+		if (!this.form.area && this.$store.state.dialogDesign.design) {
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入您的户型'
+			};
 			return;
 		}
-		let data:any = {
-			form_id:this.$store.state.dialogDesign.design?10:12,
-			attr_45:this.form.userName,
-			attr_46:this.form.phone,
-			attr_47:this.form.area,
-		}
-		if(!this.$store.state.dialogDesign.design){
+		let data: any = {
+			form_id: this.$store.state.dialogDesign.design ? 10 : 12,
+			attr_45: this.form.userName,
+			attr_46: this.form.phone,
+			attr_47: this.form.area
+		};
+		if (!this.$store.state.dialogDesign.design) {
 			data = {
-					form_id:12,
-					attr_48:this.form.userName,
-					attr_49:this.form.phone,
-			}
+				form_id: 12,
+				attr_48: this.form.userName,
+				attr_49: this.form.phone
+			};
 		}
 
 		utils.service.formSubmit(data, res => {
 			if (res.status === 200) {
-			 		this.$store.state.dialog={
-						state:1,
-						text:'提交成功'
-					}
-					this.form = {
-						userName: '',
-						phone: '',
-						area: ''
-					};
-					this.$store.state.dialogDesign.design = false;
-					this.$store.state.dialogDesign.visit = false;
-			}else{
-				this.$store.state.dialog={
-						state:2,
-						text:'系统错误'
-				}
+				this.$store.state.dialog = {
+					state: 1,
+					text: '提交成功'
+				};
+				this.form = {
+					userName: '',
+					phone: '',
+					area: ''
+				};
+				this.$store.state.dialogDesign.design = false;
+				this.$store.state.dialogDesign.visit = false;
+			} else {
+				this.$store.state.dialog = {
+					state: 2,
+					text: '系统错误'
+				};
 			}
 		});
-
-
 	}
 }
 </script>
 <style scoped lang="scss">
 .make-appointment {
-	.body{
-	  height: 470px;
+	.body {
+		height: 470px;
 		background: transparent;
 		> div {
-			&.height{
-				.from{
+			&.height {
+				.from {
 					height: 530px;
 				}
 			}
@@ -153,8 +171,8 @@ export default class makeAppointment extends Vue {
 			.from {
 				width: 585px;
 				padding: 69px 0 0 110px;
-				background: #FFFFFF;
-	  		height: 470px;
+				background: #ffffff;
+				height: 470px;
 				h2 {
 					font-size: 36px;
 					height: 35px;
@@ -209,8 +227,8 @@ export default class makeAppointment extends Vue {
 							padding-left: 19px;
 							&::placeholder {
 								font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
-								color: #000;
-								font-weight: bold;
+								color: #999;
+								font-weight: 400;
 							}
 						}
 						&:nth-child(2) {
@@ -235,12 +253,12 @@ export default class makeAppointment extends Vue {
 					div {
 						width: 168px;
 						height: 45px;
-						/deep/.btn{
+						/deep/.btn {
 							height: 45px;
 							line-height: 45px;
 						}
 						&:nth-child(2) {
-							/deep/.btn{
+							/deep/.btn {
 								height: 45px;
 								line-height: 45px;
 								background: #122133;
@@ -256,19 +274,19 @@ export default class makeAppointment extends Vue {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				&.active{
+				&.active {
 					background: url('~assets/bg_home_popup_design.jpg') no-repeat;
 					background-size: 100% 100%;
 				}
-				>div{
-					p{
+				> div {
+					p {
 						font-size: 24px;
 						font-weight: 400;
-						color: #FFFFFF;
+						color: #ffffff;
 						line-height: 40px;
 						text-align: center;
 					}
-					img{
+					img {
 						width: 132px;
 						height: 132px;
 						display: block;

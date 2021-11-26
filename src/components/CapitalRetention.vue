@@ -1,84 +1,96 @@
 <template>
 	<transition name="slideFadeIn">
 		<Popup class="capital-retention" v-if="$store.state.dialogVisible">
-				<div class="mask"></div>
-				<div class="body">
-					<img @click="$store.state.dialogVisible = false" class="close" src="~assets/icons/ic_home_popup_close.png" alt="" />
-					<div>
-						<div class="from">
-							<h2>装修报价</h2>
+			<div class="mask"></div>
+			<div class="body">
+				<img
+					@click="
+						($store.state.dialogVisible = false),
+							(form = {
+								userName: '',
+								phone: '',
+								area: ''
+							})
+					"
+					class="close"
+					src="~assets/icons/ic_home_popup_close.png"
+					alt=""
+				/>
+				<div>
+					<div class="from">
+						<h2>装修报价</h2>
+						<h3>
+							今天已有
+							<span>{{ $store.state.footData.bj_num }}</span>
+							位业主获取了装修预算
+						</h3>
+						<ul>
+							<li>
+								<i></i>
+								<input type="text" v-model="form.userName" placeholder="您的称呼" />
+								<b>*</b>
+							</li>
+							<li>
+								<i></i>
+								<input type="text" v-model="form.phone" maxlength="11" @input="oninput()" placeholder="您的电话" />
+								<b>*</b>
+							</li>
+							<li>
+								<i></i>
+								<input type="text" v-model="form.area" placeholder="您的面积" />
+								<b>*</b>
+							</li>
+						</ul>
+						<div class="btns">
+							<div @click="onSubmit()">提交</div>
+							<div
+								@click="
+									form = {
+										userName: '',
+										phone: '',
+										area: ''
+									}
+								"
+							>
+								重置
+							</div>
+						</div>
+					</div>
+					<div class="right">
+						<div>
 							<h3>
-								今天已有
-								<span>{{$store.state.footData.bj_num}}</span>
-								位业主获取了装修预算
+								您的装修预算
+								<span>{{ count }}</span>
+								元
 							</h3>
 							<ul>
 								<li>
-									<i></i>
-									<input type="text" v-model="form.userName" placeholder="您的称呼" />
-									<b>*</b>
+									<b>材料费：</b>
+									<span>{{ cost1 }}</span>
+									<b>元</b>
+								</li>
+
+								<li>
+									<b>人工费：</b>
+									<span>{{ cost2 }}</span>
+									<b>元</b>
 								</li>
 								<li>
-									<i></i>
-									<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
-									<b>*</b>
+									<b>设计费：</b>
+									<span>{{ cost3 }}</span>
+									<b>元</b>
 								</li>
 								<li>
-									<i></i>
-									<input type="text" v-model="form.area" placeholder="您的面积" />
-									<b>*</b>
+									<b>质检费：</b>
+									<span>{{ cost4 }}</span>
+									<b>元</b>
 								</li>
 							</ul>
-							<div class="btns">
-								<div @click="onSubmit()">提交</div>
-								<div
-									@click="
-										form = {
-											userName: '',
-											phone: '',
-											area: ''
-										}
-									"
-								>
-									重置
-								</div>
-							</div>
 						</div>
-						<div class="right">
-							<div>
-								<h3>
-									您的装修预算
-									<span>{{count}}</span>
-									元
-								</h3>
-								<ul>
-									<li>
-										<b>材料费：</b>
-										<span>{{cost1}}</span>
-										<b>元</b>
-									</li>
-
-									<li>
-										<b>人工费：</b>
-										<span>{{cost2}}</span>
-										<b>元</b>
-									</li>
-									<li>
-										<b>设计费：</b>
-										<span>{{cost3}}</span>
-										<b>元</b>
-									</li>
-									<li>
-										<b>质检费：</b>
-										<span>{{cost4}}</span>
-										<b>元</b>
-									</li>
-								</ul>
-							</div>
-							<p>*装修价格会根据实际情况上下有所浮动</p>
-						</div>
+						<p>*装修价格会根据实际情况上下有所浮动</p>
 					</div>
 				</div>
+			</div>
 		</Popup>
 	</transition>
 </template>
@@ -86,10 +98,10 @@
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
 import Popup from './popup.vue';
-import utils from "root/utils";
+import utils from 'root/utils';
 
 @Component({
-	components:{
+	components: {
 		Popup
 	}
 })
@@ -99,125 +111,126 @@ export default class CapitalRetention extends Vue {
 		phone: '',
 		area: ''
 	};
-	t:any;
-	cost1:any=54544;
-	cost2:any=15255;
-	cost3:any=5115;
-	cost4:any=3216;
+	oninput() {
+		this.form.phone = this.form.phone.replace(/[^\d]/g, '');
+	}
+	t: any;
+	cost1: any = 54544;
+	cost2: any = 15255;
+	cost3: any = 5115;
+	cost4: any = 3216;
 
 	created() {
-		this.cost1Fun(54544)
-		this.cost2Fun(15255)
-		this.cost3Fun(6000)
-		this.cost4Fun(5000)
-  }
-	get count(){
-		return this.cost1+this.cost2+this.cost3+this.cost4
+		this.cost1Fun(54544);
+		this.cost2Fun(15255);
+		this.cost3Fun(6000);
+		this.cost4Fun(5000);
 	}
-	cost1Fun(max){
-		let stepNumber = 0
-    this.t = setInterval(()=>{
-      stepNumber = stepNumber + 10000 + Math.floor((Math.random()*10000)+1)
-      if(stepNumber >= max){
-        stepNumber = 10156
-      }
-      let currentNumber = stepNumber
+	get count() {
+		return this.cost1 + this.cost2 + this.cost3 + this.cost4;
+	}
+	cost1Fun(max) {
+		let stepNumber = 0;
+		this.t = setInterval(() => {
+			stepNumber = stepNumber + 10000 + Math.floor(Math.random() * 10000 + 1);
+			if (stepNumber >= max) {
+				stepNumber = 10156;
+			}
+			let currentNumber = stepNumber;
 			this.cost1 = currentNumber;
-    }, 300)
+		}, 300);
 	}
-	cost2Fun(max){
-		let stepNumber = 0
-    this.t = setInterval(()=>{
-      stepNumber = stepNumber + 800 + Math.floor((Math.random()*100)+1)
-      if(stepNumber >= max){
-        stepNumber = 4562
-      }
-      let currentNumber = stepNumber
+	cost2Fun(max) {
+		let stepNumber = 0;
+		this.t = setInterval(() => {
+			stepNumber = stepNumber + 800 + Math.floor(Math.random() * 100 + 1);
+			if (stepNumber >= max) {
+				stepNumber = 4562;
+			}
+			let currentNumber = stepNumber;
 			this.cost2 = currentNumber;
-    }, 600)
+		}, 600);
 	}
 
-	cost3Fun(max){
-		let stepNumber = 0
-    this.t = setInterval(()=>{
-      stepNumber = stepNumber + 78 + Math.floor((Math.random()*100)+1)
-      if(stepNumber >= max){
-        stepNumber = 1199
-      }
-      let currentNumber = stepNumber
+	cost3Fun(max) {
+		let stepNumber = 0;
+		this.t = setInterval(() => {
+			stepNumber = stepNumber + 78 + Math.floor(Math.random() * 100 + 1);
+			if (stepNumber >= max) {
+				stepNumber = 1199;
+			}
+			let currentNumber = stepNumber;
 			this.cost3 = currentNumber;
-    }, 600)
+		}, 600);
 	}
-	cost4Fun(max){
-		let stepNumber = 0
-    this.t = setInterval(()=>{
-      stepNumber = stepNumber + 70 + Math.floor((Math.random()*100)+1)
-      if(stepNumber >= max){
-        stepNumber = 50
-      }
-      let currentNumber = stepNumber
+	cost4Fun(max) {
+		let stepNumber = 0;
+		this.t = setInterval(() => {
+			stepNumber = stepNumber + 70 + Math.floor(Math.random() * 100 + 1);
+			if (stepNumber >= max) {
+				stepNumber = 50;
+			}
+			let currentNumber = stepNumber;
 			this.cost4 = currentNumber;
-    }, 600)
+		}, 600);
 	}
 
 	destroyed() {
-		clearInterval(this.t)
+		clearInterval(this.t);
 	}
 	onSubmit() {
 		if (!this.form.userName) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入您的姓名'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入您的姓名'
+			};
 			return;
 		}
 		if (this.form.phone.length != 11) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入正确的联系电话'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入正确的联系电话'
+			};
 			return;
 		}
 		if (!this.form.area) {
-			this.$store.state.dialog={
-				state:2,
-				text:'请输入您的装修面积'
-			}
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请输入您的装修面积'
+			};
 			return;
 		}
 		let data = {
-			form_id:11,
-			attr_45:this.form.userName,
-			attr_46:this.form.phone,
-			attr_47:this.form.area,
-		}
+			form_id: 11,
+			attr_45: this.form.userName,
+			attr_46: this.form.phone,
+			attr_47: this.form.area
+		};
 		utils.service.formSubmit(data, res => {
 			if (res.status === 200) {
-			 		this.$store.state.dialog={
-						state:1,
-						text:'提交成功'
-					}
-					this.form = {
-						userName: '',
-						phone: '',
-						area: ''
-					};
-					this.$store.state.dialogVisible = false;
-			}else{
-				this.$store.state.dialog={
-						state:2,
-						text:'系统错误'
-				}
+				this.$store.state.dialog = {
+					state: 1,
+					text: '提交成功'
+				};
+				this.form = {
+					userName: '',
+					phone: '',
+					area: ''
+				};
+				this.$store.state.dialogVisible = false;
+			} else {
+				this.$store.state.dialog = {
+					state: 2,
+					text: '系统错误'
+				};
 			}
 		});
-
 	}
 }
 </script>
 <style scoped lang="scss">
-
 .capital-retention {
-  .body {
+	.body {
 		> div {
 			display: flex;
 			.from {
@@ -276,8 +289,8 @@ export default class CapitalRetention extends Vue {
 							padding-left: 19px;
 							&::placeholder {
 								font-family: 'Microsoft Yahei', -apple-system, 'PingFang SC', 'Helvetica Neue', STHeiti, Tahoma, Simsun, sans-serif;
-								color: #000;
-								font-weight: bold;
+								color: #999;
+								font-weight: 400;
 							}
 						}
 						&:nth-child(2) {

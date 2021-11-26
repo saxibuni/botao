@@ -156,6 +156,7 @@ export default class CheckPick extends Vue {
 				});
 				this.portraitList = array
 				this.getCurrentPortraitList(this.portraitListIndex);
+				this.portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 				this.$nextTick(() => {
 					this.initTextChars();
 				});

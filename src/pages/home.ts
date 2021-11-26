@@ -40,7 +40,7 @@ export default class home extends Vue {
 	nextPortraitList = [];
 	portraitListSize = 35;
 	portraitListIndex = 0;
-	portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
+	portraitTotalPages = 1;
 	applyFlipType: number = 0;
 	isShowLightImg: boolean = true;
 
@@ -147,10 +147,15 @@ export default class home extends Vue {
 			}
 		}
 	};
-
+	options = {
+		suffix: '+',
+		useGrouping: false,
+		duration: 0.5,
+	};
 	options1 = {
 		suffix: '+',
-		useGrouping: false
+		useGrouping: false,
+		duration: 0.5,
 	};
 	options2 = {
 		useGrouping: false
@@ -180,7 +185,17 @@ export default class home extends Vue {
 				this.banner = res.data.banner;
 				this.anList = res.data.icase;
 				this.portraitList = res.data.sjsList;
-				this.sjsItem = res.data.sjsList[0];
+
+				if(res.data.sjsList.length>=16){
+					this.sjsItem = res.data.sjsList[16];
+					this.page3Index = 16;
+				}else{
+					this.sjsItem = res.data.sjsList[res.data.sjsList.length];
+					this.page3Index = res.data.sjsList.length;
+				}
+
+				this.portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
+
 				this.sgzzDesc = res.data.sgzzDesc;
 				this.sggyList = res.data.sggyList;
 				this.page5List = res.data.jbxgList;
@@ -202,7 +217,7 @@ export default class home extends Vue {
 		var y = time.getFullYear();
 		var m = time.getMonth()+1;
 		var d = time.getDate();
-		return this.add0(m)+'-'+this.add0(d);
+		return this.add0(d)+'-'+this.add0(m);
 	}
 	eMonh = {
 		1:'January',
@@ -276,6 +291,9 @@ export default class home extends Vue {
 	}
 	picIndex2 = 0;
 	textActiveFun(i,index) {
+		if(this.picIndex==i){
+			return
+		}
 		this.picIndex = i;
 		this.picIndex2 = index;
 		this.textActive = !this.textActive;
@@ -288,6 +306,9 @@ export default class home extends Vue {
 		userName: '',
 		phone: '',
 		area: ''
+	};
+	oninput(){
+		this.form.phone=this.form.phone.replace(/[^\d]/g,'')
 	};
 	onSubmit() {
 		if (!this.form.userName) {
@@ -399,6 +420,8 @@ export default class home extends Vue {
 				let src = e.img;
 				listwidth.push({ left, top, width, height, src });
 			});
+
+
 			this.listwidth = listwidth;
 		});
 	}
@@ -412,13 +435,19 @@ export default class home extends Vue {
 		},1000)
 		if (toNext) {
 			if (this.portraitListIndex < this.portraitTotalPages) {
-				this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
+			 let nextPortraitList:any =	this.portraitList.forEach(e=>{
+					e.img=this.web_url + e.img
+				})
+				this.nextPortraitList = nextPortraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
 			} else {
 				this.nextPortraitList = [];
 			}
 		} else {
 			if (this.portraitListIndex > 0) {
-				this.nextPortraitList = this.portraitList.slice(start - this.portraitListSize, end - this.portraitListSize);
+				let nextPortraitList:any =	this.portraitList.forEach(e=>{
+					e.img=this.web_url + e.img
+				})
+				this.nextPortraitList = nextPortraitList.slice(start - this.portraitListSize, end - this.portraitListSize);
 			} else {
 				this.nextPortraitList = [];
 			}

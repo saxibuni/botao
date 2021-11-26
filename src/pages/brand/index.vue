@@ -424,6 +424,9 @@ html {
 		width: 100%;
 		height: 100%;
 		object-fit: fill;
+		&::-webkit-media-controls {
+			display: none !important;
+		}
 	}
 	@keyframes fade-ine {
 		from {
@@ -488,13 +491,14 @@ html {
 	.banner-box {
 		display: flex;
 		position: relative;
-		min-height: 970px;
+		min-height: 937px;
 		video {
 			vertical-align: middle;
+			height: 937px;
 		}
 		.banner {
 			position: relative;
-			height: 970px;
+			height: 937px;
 			img {
 				height: 100%;
 			}

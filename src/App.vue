@@ -53,6 +53,7 @@ html {
 			-webkit-appearance: none;
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		}
+
 		&.over-hide{
 			overflow: hidden;
 			padding-right: 0;

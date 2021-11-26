@@ -16,7 +16,7 @@
 						</li>
 						<li>
 							<i></i>
-							<input type="text" v-model="form.phone" maxlength="11" placeholder="输入您的联系电话" />
+							<input type="text" v-model="form.phone" maxlength="11" @input="oninput()" placeholder="输入您的联系电话" />
 							<b>*</b>
 						</li>
 						<li>
@@ -69,7 +69,7 @@
 				<div>
 					<img :src="web_url+footData.watch" alt="" />
 					<div>
-						关注波涛了解
+						<span>关注波涛了解</span>
 						<br />
 						最新装饰风格
 					</div>
@@ -128,6 +128,9 @@ export default class Footer extends Vue {
 	};
 	options = {
 		useGrouping: false
+	};
+	oninput(){
+		this.form.phone=this.form.phone.replace(/[^\d]/g,'')
 	};
 	navList = [
 		{
@@ -425,7 +428,6 @@ export default class Footer extends Vue {
 				display: flex;
 				flex: 1;
 				justify-content: flex-end;
-				margin-left: 217px;
 				li {
 					&:not(:first-child) {
 						margin-left: 144px;
@@ -520,7 +522,7 @@ export default class Footer extends Vue {
 			> div {
 				display: flex;
 				align-items: center;
-				font-size: 18px;
+				font-size: 20px;
 				font-weight: 400;
 				color: #ffffff;
 				img {
@@ -529,7 +531,10 @@ export default class Footer extends Vue {
 					margin-right: 45px;
 				}
 				div {
-					line-height: 25px;
+					line-height: 32px;
+				}
+				span{
+					font-size: 18px;
 				}
 			}
 		}
