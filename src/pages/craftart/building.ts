@@ -105,7 +105,6 @@ export default class Building extends Vue {
 					gdmjsx:val2
 				},
 				res => {
-					console.log(res.data);
 					this.buildingData=res.data
 					this.bannerData=res.data.banner
 					res.data.mjsx.unshift('全部')

@@ -77,7 +77,6 @@ export default class Manager extends Vue {
 		utils.service.querysgmessage(
 				{},
 				res => {
-					console.log(res.data);
 					this.managerData=res.data
 					this.bannerData=res.data.banner
 					this.web_url = res.data.web_url;
