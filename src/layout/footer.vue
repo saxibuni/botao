@@ -78,7 +78,9 @@
 			<div class="copyright">
 				<div class="link">
 					<p>
-						{{footData.copyright}} 技术支持：
+						{{footData.copyright}}
+						<span v-html="footData.icp"></span>
+						技术支持：
 						<a href="https://www.zhulu86.com/" target='_blank'>逐鹿科技</a>
 					</p>
 					友情链接：
@@ -555,6 +557,17 @@ export default class Footer extends Vue {
 					&:last-child{
 						&::after{
 							 display: none;
+						}
+					}
+				}
+				span{
+					/deep/a{
+						transition: 0.3s;
+						font-size: 18px;
+						color: #666666;
+						text-decoration: none;
+						&:hover {
+							color: #fff;
 						}
 					}
 				}
