@@ -1,6 +1,6 @@
 <template>
 	<div class="whole-decoration">
-		<div class="page1">
+		<div class="page1" v-if="banner&&banner.litpic">
 			<img :src="web_url+banner.litpic" alt="" />
 			<div class="text">
 				<h2>{{banner.title}}</h2>
@@ -73,7 +73,7 @@
 				<span>“饰”</span>
 			</h2>
 			<p class="wow">After-sales service</p>
-			<div :style="{background:'url('+web_url+btysInfo.bg+') no-repeat'}">
+			<div v-if="btysInfo&&btysInfo.bg" :style="{background:'url('+web_url+btysInfo.bg+') no-repeat'}">
 				<div class="wow" v-if="btysInfo.desc">
 					<h1>{{btysInfo.title}}</h1>
 					<p v-for="(item,i) in btysInfo.desc.split('\r\n')" :key="i">{{item}}</p>

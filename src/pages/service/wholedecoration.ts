@@ -50,7 +50,6 @@ export default class WholeDecoration extends Vue {
 	mounted() {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
-		this.initTextChars();
 		utils.service.queryQazz({}, res => {
 			if (res.status === 200) {
 				this.banner = res.data.banner;
@@ -61,6 +60,9 @@ export default class WholeDecoration extends Vue {
 				this.ghfyList = res.data.ghfyList;
 				this.btysInfo = res.data.btysInfo;
 				this.ysList = res.data.ysList;
+				setTimeout(() => {
+					this.initTextChars();
+				}, 300);
 			}
 		});
 	}

@@ -142,7 +142,6 @@ export default class CheckPick extends Vue {
 			this.iconIndex = bannerIndex;
 		});
 		this.restartWow();
-		this.initTextChars();
 		this.getCurrentPortraitList(this.portraitListIndex);
 
 		utils.service.queryYxzc({}, res => {
@@ -159,6 +158,9 @@ export default class CheckPick extends Vue {
 				});
 				this.portraitList = array
 				this.getCurrentPortraitList(this.portraitListIndex);
+				setTimeout(() => {
+					this.initTextChars();
+				}, 300);
 			}
 		});
 
