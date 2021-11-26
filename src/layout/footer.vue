@@ -290,16 +290,15 @@ export default class Footer extends Vue {
 			this.$bus.$emit('params-change', 6);
 		}
 		else{
-			this.$router.push({name:this.navObj[navId]})
+			this.$router.push({
+				name:this.navObj[navId],
+				query: {
+					typeId: navId
+				}
+			});
 		}
 	}
-	onRoute(it) {
-		if (it.url == this.$route.name && it.url == 'brand') {
-			this.$bus.$emit('params-change', it.query);
-		} else {
-			this.$router.push({ name: it.url, params: { number: it.query } });
-		}
-	}
+
 	footData = '';
 	web_url = '';
 	mounted(){
