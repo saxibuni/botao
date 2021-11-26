@@ -152,7 +152,6 @@ export default class Header extends Vue {
 	}
 
 	onJump(navId){
-		console.log(navId);
 		if(navId==89||navId==91){
 			this.$router.push({name:this.navObj[navId],params:{number:'0'}})
 			this.$bus.$emit('params-change', 0);

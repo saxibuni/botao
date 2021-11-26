@@ -116,9 +116,7 @@ export default class Brand extends Vue {
 
 	queryBrand() {
 		utils.service.queryBrand(res => {
-			console.log(res.data);
 			this.web_url = res.data.web_url;
-
 			this.btbrandInfo = res.data.btbrandInfo;
 
 			//botao子公司
@@ -137,7 +135,6 @@ export default class Brand extends Vue {
 			});
 			this.devolopeList = res.data.fzlcList;
 
-
 			//荣誉资质
 			this.ryzz = res.data.ryzz;
 
@@ -145,27 +142,25 @@ export default class Brand extends Vue {
 			this.shzrList = res.data.shzrList;
 
 			this.restartWow();
+
+			this.$nextTick(() => {
+				this.createDragger();
+				this.createTrigger();
+				this.initPathTarget();
+				this.initTextChars();
+				this.initVideo();
+				this.onResize();
+				this.$bus.$on(Events.RESIZE, this.onResize);
+			})
 		});
 	}
 
 	mounted() {
-		this.getHeight();
-		this.initTextChars();
-		this.createDragger();
-		this.createTrigger();
-		this.initPathTarget();
 		setTimeout(() => {
 			this.jump(this.$route.params.number);
 		}, 100);
-		this.onResize();
 		this.restartWow();
-		this.$bus.$on(Events.RESIZE, this.onResize);
 		this.$bus.$on('params-change', this.jump);
-		setTimeout(() => {
-		this.initVideo();
-
-			this.onResize();
-		}, 800);
 	}
 
 	initTextChars() {
@@ -366,8 +361,7 @@ export default class Brand extends Vue {
 		let isForward = index - this.prePathIndex > 0 ? true : false;
 		let start = this.prePathIndex == -1 ? 0 : this.offset + this.unit * this.prePathIndex;
 
-		// let end = this.offset + this.unit * index + (isForward ? 0 : -0.0095);
-		let end = this.offset + this.unit * index;
+		let end = this.offset + this.unit * index + (isForward ? 0 : -0.0095);
 
 		let duration = immediate ? 0 : Math.abs(end - start) * 15;
 
@@ -402,17 +396,12 @@ export default class Brand extends Vue {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
 		svgBox.style.width = ul.clientWidth + 'px';
-		console.log(ul.clientWidth,'clientWidthclientWidth');
 
-		setTimeout(() => {
-			this.createDragger();
-			this.createTrigger();
-			if (this.pathTween) {
-				this.pathTween.kill();
-				this.isPlayingPath = false;
-				this.doMovePath(this.prePathIndex, true);
-			}
-		});
+		if (this.pathTween) {
+			this.pathTween.kill();
+			this.isPlayingPath = false;
+			this.doMovePath(this.prePathIndex, true);
+		}
 	}
 
 	beforeDestroy() {

@@ -2,7 +2,7 @@
 	<div class="banner banner-wraps">
 		<template v-if="data.litpic">
 			<img :src="$store.state.footData.web_url + data.litpic" alt="" />
-			<div class="banner-text">
+			<div class="banner-text" v-if="forceRefresh">
 				<h3>{{ data.title }}</h3>
 				<p v-if="data.etitle">{{ data.etitle.toUpperCase() }}</p>
 			</div>
@@ -19,11 +19,16 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 @Component
 export default class banner extends Vue {
 	@Prop(Object) data!: any;
+	forceRefresh: boolean = true;
 
 	@Watch('data')
 	onDataChange() {
+		this.forceRefresh = false;
 		this.$nextTick(() => {
-			this.initTextChars();
+			this.forceRefresh = true;
+			this.$nextTick(() => {
+				this.initTextChars();
+			})
 		});
 	}
 
