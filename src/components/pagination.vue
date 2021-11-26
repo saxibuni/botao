@@ -10,7 +10,6 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import gsap from 'gsap';
 @Component
 export default class pagination extends Vue {
-	input__inner = null;
 	@Prop({
 		required: false,
 		type: Object,
