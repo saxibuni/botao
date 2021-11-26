@@ -197,9 +197,9 @@
 					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick(item, i)" :ref="`item${i}`"
 					>
 						<div class="flip-box" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }">
-							<img :src="nextPortraitList[i] || require('assets/white.png')" alt="" />
+							<img :src="nextPortraitList[i] ? (web_url+nextPortraitList[i].img) : require('assets/white.png')" alt="" />
 							<img :src="web_url+item.img" alt="" v-if="item.img!=='assets/white.png'" />
-							<img :src="nextPortraitList[i] || require('assets/white.png')" alt="" />
+							<img :src="nextPortraitList[i] ? (web_url+nextPortraitList[i].img) : require('assets/white.png')" alt="" />
 						</div>
 					</li>
 				</ul>

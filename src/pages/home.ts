@@ -40,7 +40,7 @@ export default class home extends Vue {
 	nextPortraitList = [];
 	portraitListSize = 35;
 	portraitListIndex = 0;
-	portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
+	portraitTotalPages = 1;
 	applyFlipType: number = 0;
 	isShowLightImg: boolean = true;
 
@@ -194,6 +194,8 @@ export default class home extends Vue {
 					this.sjsItem = res.data.sjsList[res.data.sjsList.length];
 					this.page3Index = res.data.sjsList.length;
 				}
+
+				this.portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 
 				this.sgzzDesc = res.data.sgzzDesc;
 				this.sggyList = res.data.sggyList;
