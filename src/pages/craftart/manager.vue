@@ -29,8 +29,8 @@
 						<div class="imgBox">
 							<div class="img-box">
 								<transition-group name="toggle-image">
-									<div class="img" v-for="(item, index) in 8" v-show="active1Index == index" :key="index">
-										<img :src="web_url + managerData.crbzList[index].img" />
+									<div class="img" v-for="(item, index) in managerData.crbzList" v-show="active1Index == index" :key="item.id">
+										<img :src="web_url + item.img" />
 									</div>
 								</transition-group>
 							</div>
@@ -138,7 +138,7 @@
 						<img src="~assets/bg_d3_part6_right.jpg" alt="" />
 						<div class="img">
 							<transition-group name="toggle-image">
-								<div class="img-box" v-for="(v, i) in managerData.zjtxList" :key="i" v-show="i + 1 == Number(activeName)">
+								<div class="img-box" v-for="(v, i) in managerData.zjtxList" :key="v.id" v-show="i + 1 == Number(activeName)">
 									<img class="clrcleimg" :src="web_url + v.img" alt="" />
 								</div>
 							</transition-group>
