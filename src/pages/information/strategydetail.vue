@@ -222,7 +222,7 @@ html {
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -11px -43px;
+							background-position: -8Px -41Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -243,7 +243,7 @@ html {
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -41px -43px;
+							background-position: -41Px -43Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -263,7 +263,7 @@ html {
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -80px -43px;
+							background-position: -78Px -43Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
