@@ -51,7 +51,7 @@ export default class home extends Vue {
 	anIndex = 0;
 	bannerSwiperOptions: any = {
 		speed: 1000,
-		loop: false,
+		loop: true,
 		navigation: {
 			nextEl: '.next1',
 			prevEl: '.prev1'

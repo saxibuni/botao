@@ -203,7 +203,7 @@ export default class navLists extends Vue {
 		justify-content: space-between;
 		border-bottom: 1px solid #e8e8e8;
 		height: 112px;
-		padding: 0 62px;
+		padding: 0 63px;
 		padding-right: 5px;
 		> div {
 			&:nth-child(1) {
@@ -227,10 +227,12 @@ export default class navLists extends Vue {
 					}
 					p {
 						height: 10px;
-						font-size: 10px;
+						font-size: 12px;
 						font-family: Gilroy;
 						letter-spacing: 1px;
 						font-weight: 400;
+						transform-origin: left;
+						transform: scale(0.84);
 					}
 				}
 			}

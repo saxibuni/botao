@@ -14,7 +14,7 @@ export default class DesignList extends Vue {
 	web_url = ''
 	listData={}
 	inputVal=''
-	paginationData={size:12,total:1000}
+	paginationData={size:12,total:1000, boxName: '.design-list .content'}
 	tabs=[]
 	activeIndex=0
 	options1 = {

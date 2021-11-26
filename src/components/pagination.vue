@@ -8,9 +8,11 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import gsap from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollToPlugin);
+
 @Component
 export default class pagination extends Vue {
-	input__inner = null;
 	@Prop({
 		required: false,
 		type: Object,
@@ -21,9 +23,18 @@ export default class pagination extends Vue {
 	handleCurrentChange(val) {
 		this.$emit('getData', val);
 
-		// if (this.data.boxName) {
-		// 	gsap.to(this.data.boxName, { duration: 0.3, alpha: 1, stagger: 0.2 });
-		// }
+		if (this.data.boxName) {
+			let offset = document.querySelector(".layout > .header").clientHeight;
+			gsap.to(window, {
+				delay: 0.2,
+				duration: 0.3,
+				ease: "power2",
+				scrollTo: {
+					y: this.data.boxName,
+					offsetY: offset
+				}
+			})
+		}
 	}
 }
 </script>

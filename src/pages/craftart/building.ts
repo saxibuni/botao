@@ -22,7 +22,7 @@ export default class Building extends Vue {
 	};
 	buildingData = {}
 	web_url = ''
-	paginationData = { size: 9, total: 1000 };
+	paginationData = { size: 9, total: 1000, boxName: '.craft-building .list' };
 	bannerData = {};
 	tabList = [
 		{ title: '户型', info: [] },

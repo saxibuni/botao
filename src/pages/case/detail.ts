@@ -81,7 +81,6 @@ export default class CaseDetail extends Vue {
 			bannerSwiper.update();
 			bannerSwiper.pagination.render();
 			bannerSwiper.pagination.update();
-
 		}, 0);
 	}
 	mounted() {
