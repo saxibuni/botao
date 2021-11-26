@@ -216,7 +216,7 @@ export default class home extends Vue {
 		var y = time.getFullYear();
 		var m = time.getMonth()+1;
 		var d = time.getDate();
-		return this.add0(m)+'-'+this.add0(d);
+		return this.add0(d)+'-'+this.add0(m);
 	}
 	eMonh = {
 		1:'January',
@@ -305,6 +305,9 @@ export default class home extends Vue {
 		userName: '',
 		phone: '',
 		area: ''
+	};
+	oninput(){
+		this.form.phone=this.form.phone.replace(/[^\d]/g,'')
 	};
 	onSubmit() {
 		if (!this.form.userName) {
@@ -431,13 +434,19 @@ export default class home extends Vue {
 		},1000)
 		if (toNext) {
 			if (this.portraitListIndex < this.portraitTotalPages) {
-				this.nextPortraitList = this.portraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
+			 let nextPortraitList:any =	this.portraitList.forEach(e=>{
+					e.img=this.web_url + e.img
+				})
+				this.nextPortraitList = nextPortraitList.slice(start + this.portraitListSize, end + this.portraitListSize);
 			} else {
 				this.nextPortraitList = [];
 			}
 		} else {
 			if (this.portraitListIndex > 0) {
-				this.nextPortraitList = this.portraitList.slice(start - this.portraitListSize, end - this.portraitListSize);
+				let nextPortraitList:any =	this.portraitList.forEach(e=>{
+					e.img=this.web_url + e.img
+				})
+				this.nextPortraitList = nextPortraitList.slice(start - this.portraitListSize, end - this.portraitListSize);
 			} else {
 				this.nextPortraitList = [];
 			}

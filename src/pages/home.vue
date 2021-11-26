@@ -41,7 +41,7 @@
 					</li>
 					<li>
 						<i></i>
-						<input type="text" maxlength="11" v-model="form.phone" placeholder="输入您的联系电话" />
+						<input type="text" maxlength="11" @input="oninput()" v-model="form.phone" placeholder="输入您的联系电话" />
 						<b>*</b>
 					</li>
 					<li>
@@ -160,7 +160,7 @@
 								<span class="an2">{{sjsItem.sjssx}}</span>
 								<h5 class="an3">从业年限：</h5>
 								<b class="an4">{{sjsItem.cysj}}</b>
-								<h5 class="an5">所获荣誉</h5>
+								<h5 class="an5" v-if="sjsItem.hor">所获荣誉</h5>
 								<p class="an6" v-html="sjsItem.hor">
 								</p>
 								<h5 class="an7">代表作品</h5>
@@ -534,7 +534,7 @@ export default home;
 		-webkit-user-drag: none;
 	}
 	.page1 {
-		height: 970px;
+		height: 937px;
 		overflow: hidden;
 		position: relative;
 		.swiper-wrapper {

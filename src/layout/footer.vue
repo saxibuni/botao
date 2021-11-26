@@ -16,7 +16,7 @@
 						</li>
 						<li>
 							<i></i>
-							<input type="text" v-model="form.phone" maxlength="11" placeholder="输入您的联系电话" />
+							<input type="text" v-model="form.phone" maxlength="11" @input="oninput()" placeholder="输入您的联系电话" />
 							<b>*</b>
 						</li>
 						<li>
@@ -128,6 +128,9 @@ export default class Footer extends Vue {
 	};
 	options = {
 		useGrouping: false
+	};
+	oninput(){
+		this.form.phone=this.form.phone.replace(/[^\d]/g,'')
 	};
 	navList = [
 		{

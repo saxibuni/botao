@@ -20,7 +20,7 @@
 								</li>
 								<li>
 									<i></i>
-									<input type="text" v-model="form.phone" maxlength="11" placeholder="您的电话" />
+									<input type="text" v-model="form.phone" maxlength="11" @input="oninput()" placeholder="您的电话" />
 									<b>*</b>
 								</li>
 								<li>
@@ -98,6 +98,9 @@ export default class CapitalRetention extends Vue {
 		userName: '',
 		phone: '',
 		area: ''
+	};
+	oninput(){
+		this.form.phone=this.form.phone.replace(/[^\d]/g,'')
 	};
 	t:any;
 	cost1:any=54544;
