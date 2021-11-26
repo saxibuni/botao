@@ -488,7 +488,7 @@
 					<li class="item wow">
 						<div class="top" v-if="zxxxList[4]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[4].aid}})">
 							<div>
-								<img :src="web_url+zxxxList[2].img" alt="" />
+								<img :src="web_url+zxxxList[4].img" alt="" />
 								<div>
 									<p>{{yue(zxxxList[4].update_time)}}</p>
 									<b>{{format(zxxxList[4].update_time)}}</b>
