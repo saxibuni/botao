@@ -51,7 +51,7 @@
 					<li v-for="(item, i) in buildingData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="imgBox">
 							<img :src="web_url + item.img" alt="" />
-							<img src="~assets/ic_c2_play.png" @click="playVideo(item.video)" alt="" />
+							<img src="~assets/icons/ic_c2_play.png" @click="playVideo(item.video)" alt="" />
 						</div>
 						<div class="text">
 							<p>{{ item.title }}</p>

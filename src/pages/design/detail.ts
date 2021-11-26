@@ -47,16 +47,16 @@ export default class DesignDetail extends Vue {
 		}
 		play(e){
 			this.video=true
-			document.querySelector('.video video').play()
-			document.querySelector('.video video').controls=true
+			document.querySelector<HTMLVideoElement>('.video video').play()
+			document.querySelector<HTMLVideoElement>('.video video').controls=true
 
 		}
 	mounted(){
 		this.restartWow();
 		setTimeout(() => {
 			if(!this.detailData.designer_info)return
-			if(this.$refs.text.clientHeight<this.$refs.scroll.clientHeight){
-				this.$refs.scroll.style.overflowY="hidden"
+			if((this.$refs.text as HTMLElement).clientHeight < (this.$refs.scroll as HTMLElement).clientHeight){
+				(this.$refs.scroll as HTMLElement).style.overflowY="hidden"
 			}
 		}, 500);
 

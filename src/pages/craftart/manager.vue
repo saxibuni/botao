@@ -92,7 +92,7 @@
 								<div class="imgBox">
 									<img :src="web_url + item.img" alt="" />
 									<div>
-										<img src="~assets/ic_c2_play.png" @click="playVideo(item.video)" alt="" />
+										<img src="~assets/icons/ic_c2_play.png" @click="playVideo(item.video)" alt="" />
 										<p>{{ item.title }}</p>
 									</div>
 								</div>

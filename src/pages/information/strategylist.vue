@@ -1,10 +1,16 @@
 <template>
 	<div class="strategy-list">
 		<banner v-if="topList[0]" :data="BannerData"></banner>
-		<!-- 装修攻略列表 -->
+		<!-- 装修攻略或最新活动列表 -->
 		<div class="decoration-strategy" v-if="topList[0]">
-			<h2>装修攻略</h2>
-			<h3>DECORATION STRATIEGY</h3>
+			<template v-if="typeId == '90'">
+				<h2>最新活动</h2>
+				<h3>LATEST ACTIVITY</h3>
+			</template>
+			<template v-else>
+				<h2>装修攻略</h2>
+				<h3>DECORATION STRATIEGY</h3>
+			</template>
 			<div class="strategy-box">
 				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail', query: { aid: topList[0].aid } })">
 					<div class="img-box">

@@ -27,39 +27,15 @@ export default class home extends Vue {
 	pixiView: PIXI.Application; //开始不能赋值，不然就会变成vue监测属性
 	activeIndex: number = -1;
 
-	anList = ['轻奢/现代/港式', '中式/新中式', '欧式/法式/地中海/美式', '日式/侘寂/工业风'];
+	// '轻奢/现代/港式', '中式/新中式', '欧式/法式/地中海/美式', '日式/侘寂/工业风'
+	anList = [];
 
 	sjsItem:any = {};
-	page2ImgSrc = require('../assets/bg_home_b2_pic1.jpg');
-	page2ImgSrcList = [
-		require('../assets/bg_home_b2_pic1.jpg'),
-		require('../assets/bg_home_b2_pic2.jpg'),
-		require('../assets/bg_home_b2_pic3.jpg'),
-		require('../assets/bg_home_b2_pic4.jpg'),
-		require('../assets/bg_home_b2_pic5.jpg'),
-		require('../assets/bg_home_b2_pic6.jpg'),
-		require('../assets/bg_home_b2_pic1.jpg'),
-		require('../assets/bg_home_b2_pic2.jpg')
-	];
 	page2Index = 0;
 	page3Index = 0;
 	page2Ani = true;
 	page3Ani = true;
-	portraitList = [
-		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic02.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic03.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic04.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic05.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic06.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic07.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic08.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic09.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
-		{img:require('../assets/portrait/bg_home_b3_pic01.jpg')},
-	];
+	portraitList = [];
 	currentPortraitList = [];
 	nextPortraitList = [];
 	portraitListSize = 35;
@@ -68,17 +44,7 @@ export default class home extends Vue {
 	applyFlipType: number = 0;
 	isShowLightImg: boolean = true;
 
-	page5List = [
-		{
-			imgSrc: [require('../assets/bg_home_b5_a1.jpg'), require('../assets/bg_home_b5_a2.jpg'), require('../assets/bg_home_b5_a3.jpg'), require('../assets/bg_home_b5_a4.jpg')]
-		},
-		{
-			imgSrc: [require('../assets/bg_home_b5_b1.jpg'), require('../assets/bg_home_b5_b2.jpg'), require('../assets/bg_home_b5_b3.jpg'), require('../assets/bg_home_b5_b4.jpg')]
-		},
-		{
-			imgSrc: [require('../assets/bg_home_b5_c1.jpg'), require('../assets/bg_home_b5_c2.jpg'), require('../assets/bg_home_b5_c3.jpg'), require('../assets/bg_home_b5_c3.jpg')]
-		}
-	];
+	page5List = [];
 	picList = [require('../assets/bg_home_b4_right1.png'), require('../assets/bg_home_b4_right2.png'), require('../assets/bg_home_b4_right3.png'), require('../assets/bg_home_b4_right4.png')];
 	textActive = true;
 	picIndex = 0;
@@ -416,7 +382,7 @@ export default class home extends Vue {
 				let num =35 -this.currentPortraitList.length
 				for (let i = 0; i <num ; i++) {
 					this.currentPortraitList.push(
-						{img:require('../assets/portrait/white.png')}
+						{img:require('../assets/white.png')}
 					);
 				}
 			},200);

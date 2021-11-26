@@ -69,14 +69,14 @@ export default class SoftDecoration extends Vue {
 			}else{
 				this.swiperIndex = 0;
 				setTimeout(()=>{
-						this.$refs.mywiper.$swiper.slideTo(0, 0, true)
+						(this.$refs.mywiper as any).$swiper.slideTo(0, 0, true)
 				},300)
 			}
 		}else{
 			if(this.swiperIndex<=0){
 				this.swiperIndex = length-1;
 				setTimeout(()=>{
-						this.$refs.mywiper.$swiper.slideTo(length, 0, true)
+						(this.$refs.mywiper as any).$swiper.slideTo(length, 0, true)
 				},300)
 			}else{
 				this.swiperIndex =  Number(this.swiperIndex) - 1;
@@ -88,7 +88,7 @@ export default class SoftDecoration extends Vue {
 		},300)
 	}
 	page6Index =0;
-	web_url = 'http://btgwcs.zhulu76.com/';
+	web_url = '';
 	banner = {};
 	psdzList = [];
 	rzalList = [];

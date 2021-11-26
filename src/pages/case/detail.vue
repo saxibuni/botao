@@ -50,7 +50,7 @@
 				<swiper :options="swiperOptions1">
 					<swiper-slide v-for="item in detailData.archivesInfo.imgs.split(',')" :key="item.aid">
 						<img :src="web_url + item" alt="" />
-						<img src="~assets/ic_c2_play.png" @click="playVideo(detailData.archivesInfo.video)" alt="" />
+						<img src="~assets/icons/ic_c2_play.png" @click="playVideo(detailData.archivesInfo.video)" alt="" />
 						<img src="~assets/bg_b2_part2_mask.png" alt="" />
 					</swiper-slide>
 				</swiper>
