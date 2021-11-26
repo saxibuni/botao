@@ -758,6 +758,7 @@ html {
 					font-size: 18px;
 					color: #666666;
 					line-height: 36px;
+					@include line-clamp(4);
 				}
 				.img-box {
 					margin: 0 auto;
