@@ -3,7 +3,7 @@
 		<Popup class="video-popup" v-if="videoPop.isPop" @click.native="show">
 			<div class="mask"></div>
 			<div class="video-box">
-				<video controls :src="$store.state.footData.web_url + videoPop.url" preload="true">
+				<video controls :src="$store.state.footData.web_url + videoPop.url" preload="true" muted>
 					<source :src="$store.state.footData.web_url + videoPop.url" type="video/mp4" />
 				</video>
 				<div class="close"></div>
@@ -15,7 +15,6 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import Popup from './popup.vue';
-import Button from './button.vue';
 
 @Component({
 	components: {

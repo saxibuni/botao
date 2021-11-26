@@ -81,7 +81,7 @@
 			</div>
 		</div>
 		<div class="video" v-if="detailData.designer_info.video">
-			<video :src="$store.state.footData.web_url + detailData.designer_info.video" preload="true" loop="loop">
+			<video :src="$store.state.footData.web_url + detailData.designer_info.video" muted preload="true" loop="loop">
 				<source :src="$store.state.footData.web_url + detailData.designer_info.video" type="video/mp4" />
 			</video>
 			<div v-show="!video">
