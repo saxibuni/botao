@@ -1,7 +1,7 @@
 <template>
 	<div class="soft-decoration">
-		<div class="page1">
-			<img :src="web_url + banner.litpic" alt="" />
+		<div class="page1" v-if="banner&&banner.litpic">
+			<img :src="web_url+banner.litpic" alt="" />
 			<div class="text">
 				<h2>{{ banner.title }}</h2>
 				<p>{{ banner.etitle }}</p>

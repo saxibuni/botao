@@ -151,10 +151,10 @@ html {
 				font-size: 16px;
 
 				i {
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					background: url('~assets/icons/iconlist.png') no-repeat;
-					background-position: -11px -11px;
+					background-position: -11Px -11Px;
 					cursor: pointer;
 					position: relative;
 					transition: 0.3s;

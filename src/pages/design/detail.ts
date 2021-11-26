@@ -39,7 +39,6 @@ export default class DesignDetail extends Vue {
 					aid:this.$route.query.aid
 				},
 				res => {
-					console.log(res.data);
 					this.detailData=res.data
 					utils.emitter.$emit('bannerData', res.data);
 					this.web_url = res.data.web_url;
@@ -47,7 +46,6 @@ export default class DesignDetail extends Vue {
 			);
 		}
 		play(e){
-			// console.log(e);
 			this.video=true
 			document.querySelector('.video video').play()
 			document.querySelector('.video video').controls=true

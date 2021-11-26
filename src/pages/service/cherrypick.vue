@@ -1,6 +1,6 @@
 <template>
 	<div class="cherry-pick">
-		<div class="page1">
+		<div class="page1" v-if="banner&&banner.litpic">
 			<img :src="web_url+banner.litpic" alt="" />
 			<div class="text">
 				<h2>{{banner.title}}</h2>

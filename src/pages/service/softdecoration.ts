@@ -98,7 +98,6 @@ export default class SoftDecoration extends Vue {
 	mounted() {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
-		this.initTextChars();
 		utils.service.queryRzsh({}, res => {
 			if (res.status === 200) {
 				this.banner = res.data.banner;
@@ -107,7 +106,9 @@ export default class SoftDecoration extends Vue {
 				this.rzsjsList = res.data.rzsjsList;
 				this.rzfwlcList = res.data.rzfwlcList;
 				this.rzpxList = res.data.rzpxList;
-				console.log(res.data);
+				setTimeout(() => {
+					this.initTextChars();
+				}, 300);
 			}
 		});
 	}
