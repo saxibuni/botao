@@ -139,7 +139,7 @@
 							<b><ICountUp :endVal="parseInt(sjsItem.sjhy)||0" :options="options2"></ICountUp></b>
 							支
 						</div>
-						<p>设计效果还原</p>
+						<p>专业设计团队</p>
 					</li>
 					<li>
 						<div>
