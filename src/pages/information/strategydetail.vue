@@ -1,6 +1,5 @@
 <template>
 	<div class="strategy-detail">
-		<banner :data="BannerData" v-if="newsList[0]"></banner>
 		<!-- 装修攻略详情 -->
 		<div class="article">
 			<h2 class="wow">
