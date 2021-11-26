@@ -425,7 +425,6 @@ export default class Footer extends Vue {
 				display: flex;
 				flex: 1;
 				justify-content: flex-end;
-				margin-left: 217px;
 				li {
 					&:not(:first-child) {
 						margin-left: 144px;
