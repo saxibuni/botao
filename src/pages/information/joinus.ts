@@ -52,7 +52,6 @@ export default class JoinUs extends Vue {
 
 	queryJS() {
 		utils.service.queryJS(res => {
-			console.log(res.data);
 			this.web_url = res.data.web_url;
 			//banner
 			utils.emitter.$emit('bannerData', res.data.banner);
@@ -81,7 +80,6 @@ export default class JoinUs extends Vue {
 				v.gwyq = v.gwyq.split('\r\n');
 			});
 			this.zpxx = res.data.zpxxList;
-			// this.zpxx = this.zpxx.concat(this.zpxx).concat(this.zpxx);
 
 			// 人力资源
 			this.rlzytel = res.data.rlzytel;
