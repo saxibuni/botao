@@ -18,21 +18,21 @@
 							<ICountUp :endVal="buildingData.zsgddesc.sgnx" :options="options1" ref="countup1"></ICountUp>
 							年
 						</p>
-						<p>深耕别墅大宅装饰领域</p>
+						<p class="size">深耕别墅大宅装饰领域</p>
 					</div>
 					<div>
 						<p>
 							<ICountUp :endVal="buildingData.zsgddesc.fgl" :options="options1" ref="countup1"></ICountUp>
 							%
 						</p>
-						<p>上海高端楼盘覆盖率</p>
+						<p class="size">上海高端楼盘覆盖率</p>
 					</div>
 					<div>
 						<p>
 							<ICountUp :endVal="buildingData.zsgddesc.zjgd" :options="options1" ref="countup1"></ICountUp>
 							+
 						</p>
-						<p>每年在建工地</p>
+						<p class="size">每年在建工地</p>
 					</div>
 				</div>
 				<div class="map">
@@ -268,6 +268,9 @@ export default Building;
 							display: inline-block;
 							margin-right: -5px;
 						}
+						&.size{
+							font-size: 28px!important;
+						}
 					}
 				}
 			}
@@ -280,7 +283,7 @@ export default Building;
 				// position: relative;
 				position: absolute;
 				top: -130px;
-				left: 50%;
+				left: 58%;
 				transform: translateX(-50%);
 				> img {
 					margin-top: 23px;
