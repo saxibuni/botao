@@ -11,7 +11,7 @@
 					<img src="~assets/bg_d3_part2.png" alt="" />
 					<ul>
 						<li v-for="(item, i) in managerData.sglcList" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-							<p>0{{ item.status }}</p>
+							<p>0{{ i+1 }}</p>
 							<p>{{ item.title }}</p>
 							<p style="white-space: pre-wrap;" v-html="item.desc"></p>
 						</li>
@@ -35,13 +35,13 @@
 								</transition-group>
 							</div>
 							<ul class="left">
-								<li v-for="(v, i) in managerData.crbzList.slice(0, 4)" :key="i" :class="active1Index == i ? 'active1' : ''" @click="active1Index = i">
+								<li v-for="(v, i) in managerData.crbzList.slice(0, 4)" :key="i" :class="active1Index == i ? 'active1' : ''" @mouseover="active1Index = i">
 									{{ v.title }}
 									<span></span>
 								</li>
 							</ul>
 							<ul class="right">
-								<li v-for="(v, i) in managerData.crbzList.slice(4, 8)" :key="i" :class="active1Index == i + 4 ? 'active1' : ''" @click="active1Index = i + 4">
+								<li v-for="(v, i) in managerData.crbzList.slice(4, 8)" :key="i" :class="active1Index == i + 4 ? 'active1' : ''" @mouseover="active1Index = i + 4">
 									<span></span>
 									{{ v.title }}
 								</li>

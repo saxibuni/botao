@@ -69,7 +69,7 @@
 				<div>
 					<img :src="web_url+footData.watch" alt="" />
 					<div>
-						关注波涛了解
+						<span>关注波涛了解</span>
 						<br />
 						最新装饰风格
 					</div>
@@ -522,7 +522,7 @@ export default class Footer extends Vue {
 			> div {
 				display: flex;
 				align-items: center;
-				font-size: 18px;
+				font-size: 20px;
 				font-weight: 400;
 				color: #ffffff;
 				img {
@@ -531,7 +531,10 @@ export default class Footer extends Vue {
 					margin-right: 45px;
 				}
 				div {
-					line-height: 25px;
+					line-height: 32px;
+				}
+				span{
+					font-size: 18px;
 				}
 			}
 		}
