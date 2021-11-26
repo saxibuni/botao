@@ -15,7 +15,7 @@
 					</h6>
 				</div>
 				<div class="aside-text" v-show="textShow">BOTAOGROUP VIDEO</div>
-				<div class="img-box" @click="play" v-show="!playFlag">
+				<div class="img-box" @click="play(),textShow=false;" v-show="!playFlag">
 					<img src="~assets/icons/ic_c2_play.png" alt="" />
 				</div>
 			</template>
