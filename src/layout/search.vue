@@ -50,6 +50,7 @@ export default class search extends Vue {
 		}
 		this.searchShow = false;
 	  this.$router.push({ name: 'search', query: { keyword: encodeURI(this.keyword) } });
+		this.keyword = '';
 	}
 }
 </script>
