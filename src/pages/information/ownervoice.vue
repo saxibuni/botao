@@ -507,6 +507,12 @@ html {
 				right: 0px;
 			}
 		}
+		.swiper-pagination {
+			span {
+				width: 12px !important;
+				height: 12px !important;
+			}
+		}
 	}
 	.popup {
 		background-color: rgba(0, 0, 0, 0.1);
