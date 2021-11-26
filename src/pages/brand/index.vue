@@ -1,8 +1,8 @@
 <template>
 	<div class="brand">
-		<div class="banner-box">
+		<div class="banner-box select0">
 			<template v-if="btbrandInfo.id">
-				<video id="v1" :src="web_url + btbrandInfo.video" preload="true" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
+				<video id="v1" :src="web_url + btbrandInfo.video" preload="true" loop="loop" width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
 					<source :src="web_url + btbrandInfo.video" type="video/mp4" />
 				</video>
 				<div class="text-content">
@@ -25,7 +25,7 @@
 				<span @click="jump(i)" :class="'item' + i">{{ v }}</span>
 			</li>
 		</ul>
-		<div class="botao-brand select0">
+		<div class="botao-brand">
 			<div class="left wow">
 				<div class="title-box">
 					<h2>
