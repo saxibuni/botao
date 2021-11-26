@@ -1,31 +1,32 @@
 <template>
-	<div class="banner banner-wraps" v-if="data">
-		<img :src="$store.state.footData.web_url + data.litpic" alt="" />
-		<div class="banner-text">
-			<h3 v-if="data.title">{{ data.title }}</h3>
-			<p v-if="data.etitle">{{ data.etitle.toUpperCase() }}</p>
-		</div>
+	<div class="banner banner-wraps">
+		<template v-if="data.litpic">
+			<img :src="$store.state.footData.web_url + data.litpic" alt="" />
+			<div class="banner-text">
+				<h3>{{ data.title }}</h3>
+				<p v-if="data.etitle">{{ data.etitle.toUpperCase() }}</p>
+			</div>
+		</template>
 	</div>
 </template>
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
-
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 @Component
 export default class banner extends Vue {
-	@Prop({
-		required: false,
-		type: Object,
-		default: () => {}
-	})
-	data!: any;
-	mounted() {
-		this.initTextChars();
+	@Prop(Object) data!: any;
+
+	@Watch('data')
+	onDataChange() {
+		this.$nextTick(() => {
+			this.initTextChars();
+		});
 	}
+
 	initTextChars() {
 		let textContents = this.$el.querySelectorAll<HTMLElement>('.banner-text');
 		textContents.forEach(item => {
@@ -36,7 +37,8 @@ export default class banner extends Vue {
 		});
 		this.onCharsEnter();
 	}
-	onCharsEnter(isInit: boolean = false) {
+
+	onCharsEnter() {
 		let slide = document.querySelector('.banner-wraps');
 		let chars = slide.querySelectorAll('.char');
 		gsap.timeline().fromTo(
