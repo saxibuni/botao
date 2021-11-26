@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollToPlugin);
 
 @Component
 export default class pagination extends Vue {
-	input__inner = null;
 	@Prop({
 		required: false,
 		type: Object,

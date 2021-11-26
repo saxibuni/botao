@@ -42,7 +42,7 @@ export default App;
 }
 
 html {
-	@include scrollbar-beautify(3PX);
+	@include scrollbar-beautify(3px);
 	body {
 		-webkit-font-smoothing: antialiased;
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -54,19 +54,21 @@ html {
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		}
 
-		&.over-hide{
+		&.over-hide {
 			overflow: hidden;
 			padding-right: 0;
-			.header, .popup{
+			.header,
+			.popup {
 				width: 100%;
 			}
 			&.chrome {
-				padding-right: 3PX;
-				.header, .popup{
-					width: calc(100% - 3PX);
+				padding-right: 3px;
+				.header,
+				.popup {
+					width: calc(100% - 3px);
 				}
 				.sidebar {
-					right: calc(50vw - 960px + 3PX);
+					right: calc(50vw - 960px + 3px);
 				}
 			}
 		}
@@ -129,7 +131,11 @@ html {
 			}
 		}
 	} */
-
+	.swiper-pagination {
+		.swiper-pagination-bullet {
+			border-width: 2px !important;
+		}
+	}
 	///左右按钮尺寸和hover效果
 	.swiper-button-prev {
 		width: 50px;
