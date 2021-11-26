@@ -222,7 +222,7 @@ html {
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -8Px -41Px;
+							background-position: -9Px -41.5Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
