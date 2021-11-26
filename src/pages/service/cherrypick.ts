@@ -96,7 +96,7 @@ export default class CheckPick extends Vue {
 			if (this.currentPortraitList.length > 0 && this.currentPortraitList.length < 26) {
 				let num = 26 - this.currentPortraitList.length;
 				for (let i = 0; i < num; i++) {
-					this.currentPortraitList.push(require('root/assets/portrait/white.png'));
+					this.currentPortraitList.push(require('root/assets/white.png'));
 				}
 			}
 	}

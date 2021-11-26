@@ -382,7 +382,7 @@ export default class home extends Vue {
 				let num =35 -this.currentPortraitList.length
 				for (let i = 0; i <num ; i++) {
 					this.currentPortraitList.push(
-						{img:require('../assets/portrait/white.png')}
+						{img:require('../assets/white.png')}
 					);
 				}
 			},200);
