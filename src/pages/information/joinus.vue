@@ -11,7 +11,7 @@
 			</div>
 			<div class="right wow">
 				<p>{{ desc }}</p>
-				<Button :text="'加入我们'"></Button>
+				<Button @click.native="rollTo()" :text="'加入我们'"></Button>
 			</div>
 		</div>
 		<div class="swiper-box wow">
