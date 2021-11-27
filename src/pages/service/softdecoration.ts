@@ -138,4 +138,11 @@ export default class SoftDecoration extends Vue {
 				y: 0
 			});
 	}
+	rollTo(){
+		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
+		const brand = document.querySelector<HTMLElement>('.soft-decoration');
+		const item = brand.querySelector<HTMLElement>(`.page2`);
+		let top = item.offsetTop - headerHeight;
+		window.scroll({ top, behavior: 'smooth' });
+	}
 }

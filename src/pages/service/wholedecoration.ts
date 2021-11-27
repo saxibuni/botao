@@ -75,4 +75,11 @@ export default class WholeDecoration extends Vue {
 				y: 0
 			});
 	}
+	rollTo(){
+			const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
+			const brand = document.querySelector<HTMLElement>('.whole-decoration');
+			const item = brand.querySelector<HTMLElement>(`.page2`);
+			let top = item.offsetTop - headerHeight;
+			window.scroll({ top, behavior: 'smooth' });
+	}
 }

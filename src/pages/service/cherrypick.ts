@@ -207,4 +207,11 @@ export default class CheckPick extends Vue {
 	beforeDestroy() {
 		utils.emitter.$off('bannerIndexFun');
 	}
+	rollTo(){
+		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
+		const brand = document.querySelector<HTMLElement>('.cherry-pick');
+		const item = brand.querySelector<HTMLElement>(`.page2`);
+		let top = item.offsetTop - headerHeight;
+		window.scroll({ top, behavior: 'smooth' });
+	}
 }

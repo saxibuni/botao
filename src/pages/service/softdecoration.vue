@@ -8,9 +8,9 @@
 					<p>{{ banner.etitle }}</p>
 				</div>
 				<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
-				<div class="arrow"></div>
-				<div class="arrow"></div>
-				<div class="arrow"></div>
+				<div class="arrow" @click="rollTo()"></div>
+				<div class="arrow" @click="rollTo()"></div>
+				<div class="arrow" @click="rollTo()"></div>
 			</template>
 		</div>
 		<div class="page2">
@@ -229,6 +229,7 @@ export default SoftDecoration;
 			position: absolute;
 			bottom: 75px;
 			left: 50%;
+			cursor: pointer;
 			transform: translateX(-50%) rotate(-45deg);
 			z-index: 10;
 			border-top: transparent;

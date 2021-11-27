@@ -8,9 +8,9 @@
 					<p>{{banner.etitle}}</p>
 				</div>
 				<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
-				<div class="arrow"></div>
-				<div class="arrow"></div>
-				<div class="arrow"></div>
+				<div class="arrow" @click="rollTo()"></div>
+				<div class="arrow" @click="rollTo()"></div>
+				<div class="arrow" @click="rollTo()"></div>
 			</template>
 		</div>
 		<div class="page2">
@@ -234,6 +234,7 @@ export default WholeDecoration;
 			border-right: transparent;
 			opacity: 0;
 			animation: arrow 1.2s linear infinite;
+			cursor: pointer;
 			&:nth-of-type(2) {
 				opacity: 0;
 				bottom: 62px;
