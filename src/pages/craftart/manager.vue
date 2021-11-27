@@ -11,7 +11,7 @@
 					<img src="~assets/bg_d3_part2.png" alt="" />
 					<ul>
 						<li v-for="(item, i) in managerData.sglcList" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
-							<p>0{{ i+1 }}</p>
+							<p>0{{ i + 1 }}</p>
 							<p>{{ item.title }}</p>
 							<p style="white-space: pre-wrap;" v-html="item.desc"></p>
 						</li>
@@ -62,7 +62,7 @@
 								<img :src="web_url + item.img" alt="" />
 							</div>
 							<div class="text">
-								<p>0{{ item.status }}</p>
+								<p>0{{ index + 1 }}</p>
 								<p>{{ item.title }}</p>
 								<p v-if="item.desc">{{ item.desc }}</p>
 								<div class="line"></div>
@@ -466,7 +466,7 @@ export default Manager;
 									margin-left: 34px;
 								}
 								&:nth-child(1) {
-									margin-left: -222px;
+									margin-left: -246px;
 								}
 								&:nth-child(2) {
 									margin-left: -291px;
@@ -487,16 +487,16 @@ export default Manager;
 									margin-right: 34px;
 								}
 								&:nth-child(1) {
-									left: 246px;
+									left: 224px;
 								}
 								&:nth-child(2) {
-									left: 314px;
+									left: 292px;
 								}
 								&:nth-child(3) {
-									left: 318px;
+									left: 296px;
 								}
 								&:nth-child(4) {
-									left: 263px;
+									left: 240px;
 								}
 							}
 						}

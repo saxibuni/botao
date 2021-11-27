@@ -47,7 +47,7 @@
 						<p>{{ detailData.designer_info.sjln }}</p>
 					</div>
 				</div>
-				<div class="honor wow">
+				<div class="honor wow" v-if="detailData.designer_info.hor">
 					<div class="title">
 						<i></i>
 						<p>所获荣誉</p>
