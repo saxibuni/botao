@@ -26,7 +26,8 @@
 						{{ item.nav_name }}
 						<b></b>
 						<div class="nav-son" :class="{ active: item.active }" @click.stop v-if="item.children&&item.children.length!=0">
-							<div v-for="(it, i) in item.children" :key="i" @click.stop="item.active = false;onJump(it.nav_id)" :style="{ 'animation-delay': 0.08 * i + 0.09 + 's' }">
+							<template v-for="(it, i) in item.children">
+							<div v-if="it.nav_id!=104" :key="i" @click.stop="item.active = false;onJump(it.nav_id)" :style="{ 'animation-delay': 0.08 * i + 0.09 + 's' }">
 								<span>
 									<i>
 										<img :src="web_url+it.nav_pic" alt="" />
@@ -34,6 +35,7 @@
 									{{ it.nav_name }}
 								</span>
 							</div>
+							</template>
 						</div>
 					</li>
 					</template>
