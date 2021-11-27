@@ -161,8 +161,7 @@
 								<h5 class="an3">从业年限：</h5>
 								<b class="an4">{{sjsItem.cysj}}</b>
 								<h5 class="an5" v-if="sjsItem.hor">所获荣誉</h5>
-								<p class="an6" v-html="sjsItem.hor">
-								</p>
+								<p class="an6"  v-if="sjsItem.hor" v-html="sjsItem.hor"></p>
 								<h5 class="an7">代表作品</h5>
 								<p class="an8">{{sjsItem.dbz}}</p>
 								<div class="btn-box an9">
@@ -446,11 +445,11 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li class="wow" v-if="zxxxList[0]">
+					<li class="wow" v-if="zxxxList[0]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[4].aid}})">
 						<div>
 							<img :src="web_url+zxxxList[0].video_img" alt="" />
 						</div>
-						<i @click="videoPop.isPop = true,videoPop.url=zxxxList[0].video"></i>
+						<i @click.stop="videoPop.isPop = true,videoPop.url=zxxxList[0].video"></i>
 						<div class="text">
 							<p>{{zxxxList[0].tag}}</p>
 							<div>{{zxxxList[0].title}}</div>
@@ -2578,6 +2577,7 @@ export default home;
 					}
 					&:nth-child(1) {
 						animation: slide-down-in 1s, fade-in 1s;
+						cursor: pointer;
 						div {
 							img {
 								width: 100%;
