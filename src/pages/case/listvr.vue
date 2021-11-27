@@ -71,7 +71,7 @@
 									<p>{{ v.des_info.station }}</p>
 								</div>
 							</div>
-							<Button @click.native="$store.state.dialogDesign.design = true" :text="v.typename" />
+							<Button @click.native="$store.state.dialogDesign.design = true" :text="v.typename=='VR装修体验'?'找TA设计':v.typename" />
 						</div>
 					</div>
 				</li>
