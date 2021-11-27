@@ -287,7 +287,7 @@ export default WholeDecoration;
 			background-size: cover;
 			ul {
 				li {
-					width: 160px;
+					width: 150px;
 					position: absolute;
 					display: flex;
 					justify-content: center;
@@ -374,8 +374,8 @@ export default WholeDecoration;
 						}
 					}
 					&:nth-child(1) {
-						top: 111px;
-						left: 0;
+						top: 116px;
+						left: 40px;
 						h3 {
 							left: 0;
 							transform: translateX(0) scale(0);
@@ -519,10 +519,13 @@ export default WholeDecoration;
 							top: -40px;
 							left: 0;
 						}
+						h3{
+							padding-right: 60px;
+						}
 					}
 					&:nth-child(17) {
-						top: 103px;
-						left: 1761px;
+						top: 83px;
+						left: 1710px;
 						h3 {
 							right: 0;
 							left: auto;
