@@ -135,8 +135,8 @@ export default class home extends Vue {
 		},
 		on: {
 			slideChangeTransitionStart: function() {
-				let tag = this.realIndex < 10 ? '0' + (this.realIndex + 1) : this.realIndex + 1;
-				document.querySelector('.banner-tag').innerHTML = tag;
+				// let tag = this.realIndex < 10 ? '0' + (this.realIndex + 1) : this.realIndex + 1;
+				// document.querySelector('.banner-tag').innerHTML = tag;
 				utils.emitter.$emit('page5IndexFun', this.realIndex);
 			},
 			slideChangeTransitionEnd: function() {
@@ -169,6 +169,7 @@ export default class home extends Vue {
 	jbxgList = [];
 	qaylz = {};
 	zxxxList = [];
+	page5Index2:any = '01';
 	mounted() {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
@@ -178,6 +179,11 @@ export default class home extends Vue {
 		utils.emitter.$on('chars-ani', this.onCharsEnter);
 		utils.emitter.$on(Events.RESIZE, this.onResize);
 		utils.emitter.$on('page5IndexFun', (introductionIndex: number) => {
+			if(this.page5List.length==introductionIndex+1){
+				this.page5Index2 = '01';
+			}else{
+				this.page5Index2 = introductionIndex < 10 ? '0' + (introductionIndex + 2) : introductionIndex + 2;
+			}
 			this.page5Index = introductionIndex;
 		});
 		utils.service.queryHome({}, res => {
@@ -524,6 +530,11 @@ export default class home extends Vue {
 		setTimeout(() => {
 			this.page2Ani = true;
 		},300);
+	}
+	openUrl(url){
+		if(url){
+			window.location.href = url;
+		}
 	}
 	beforeDestroy() {
 		utils.emitter.$off('chars-ani', this.onCharsEnter);

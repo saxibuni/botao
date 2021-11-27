@@ -464,6 +464,9 @@ export default WholeDecoration;
 							top: -40px;
 							left: 0;
 						}
+						h3{
+							width: 450px!important;
+						}
 					}
 					&:nth-child(11) {
 						top: 71px;

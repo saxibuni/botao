@@ -91,4 +91,16 @@ export default class JoinUs extends Vue {
 	getMore() {
 		this.jobShowFlag += 3;
 	}
+	rollTo(){
+		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
+		const brand = document.querySelector<HTMLElement>('.join-us');
+		const item = brand.querySelector<HTMLElement>(`.info`);
+		let top = item.offsetTop - headerHeight;
+		window.scroll({ top, behavior: 'smooth' });
+	}
+	openEmail(jobName) {
+		let who = 'botaogroup@BT.com';
+		let title = jobName;
+		window.location.href = `mailto:${who}?subject=${title}`;
+	}
 }

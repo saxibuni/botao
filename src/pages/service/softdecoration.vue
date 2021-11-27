@@ -48,7 +48,7 @@
 						<swiper :options="swiperOptions" ref="mywiper">
 							<swiper-slide v-for="(item, i) in rzalList" :key="i">
 								<div :class="{ active: swiperIndex == i }" @click="onSelect(i)">
-									<span>{{ item.title }}</span>
+									<span>{{ item.title.length>=8?item.title.substring(0,8)+'...':item.title }}</span>
 								</div>
 							</swiper-slide>
 						</swiper>
@@ -63,7 +63,8 @@
 					</div>
 				</div>
 				<div class="right wow">
-					<img v-for="(item, i) in rzalList" :class="{ active: swiperIndex == i }" :key="i" :src="web_url + item.img" alt="" />
+					<img :src="web_url + rzalList[0].img" alt="" />
+					<!-- <img v-for="(item, i) in rzalList" :class="{ active: swiperIndex == i }" :key="i" :src="web_url + item.img" alt="" /> -->
 				</div>
 			</div>
 		</div>
@@ -293,9 +294,23 @@ export default SoftDecoration;
 				opacity: 0;
 				animation: fade-in 1s;
 				animation-fill-mode: forwards;
+				&::after{
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					content: '';
+					left: 0;
+					top: 0;
+					background: rgba(0, 0, 0, 0.12);
+					z-index: 9;
+					transition: .3s;
+				}
 				&:hover {
 					img {
 						transform: scale(#{$imgScale});
+					}
+					&::after{
+						background: rgba(0, 0, 0, 0);
 					}
 				}
 				img {
@@ -568,7 +583,7 @@ export default SoftDecoration;
 						font-size: 36px;
 						font-weight: 400;
 						color: #000000;
-						line-height: 35px;
+						line-height: 44px;
 					}
 					h3 {
 						font-size: 18px;
@@ -608,8 +623,8 @@ export default SoftDecoration;
 					top: 0;
 					width: 100%;
 					height: 100%;
-					opacity: 0;
-					transition: 0.6s;
+					/* opacity: 0; */
+					/* transition: 0.6s; */
 					&.active {
 						opacity: 1;
 					}
@@ -664,6 +679,15 @@ export default SoftDecoration;
 					position: relative;
 					overflow: hidden;
 					cursor: pointer;
+					&::after{
+						content: '';
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						left: 0;
+						top: 0;
+						background: rgba(0, 0, 0, 0.2);
+					}
 					&:hover {
 						img {
 							transform: scale(#{$imgScale});

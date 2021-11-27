@@ -67,7 +67,7 @@
 					<div class="imgs-wrap" v-if="anList.length > 0">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
 							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
-								<img :src="web_url+item.img" alt="" />
+								<img @click="openUrl(item.link)" :src="web_url+item.img" alt="" />
 							</swiper-slide>
 						</swiper>
 					</div>
@@ -364,8 +364,8 @@
 				<div class="swiper-pagination3"></div>
 				<div class="bgimg">
 					<div>
-						<p class="banner-tag">01</p>
-						<h5>{{page5List[page5Index].ctitle}}</h5>
+						<p class="banner-tag">{{page5Index2}}</p>
+						<h5>{{page5List[page5Index].rtitle}}</h5>
 						<h6>{{page5List[page5Index].retitle}} </h6>
 						<i class="next3"></i>
 					</div>
@@ -445,7 +445,7 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li class="wow" v-if="zxxxList[0]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[4].aid}})">
+					<li class="wow" v-if="zxxxList[0]" @click="$router.push({ name: 'owner-voice',query:{aid:zxxxList[4].aid}})">
 						<div>
 							<img :src="web_url+zxxxList[0].video_img" alt="" />
 						</div>
@@ -872,6 +872,7 @@ export default home;
 					position: relative;
 					background: #fff;
 					box-sizing: border-box;
+					cursor: pointer;
 					.swiper-slide{
 						&::after{
 							pointer-events: none;

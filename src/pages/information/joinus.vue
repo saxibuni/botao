@@ -36,7 +36,7 @@
 					</div>
 					<h3>{{ v.ftitle }}</h3>
 					<p v-for="(value, index) in v.desc" :key="index" v-html="value"></p>
-					<Button :text="'加入我们'"></Button>
+					<Button @click.native="rollTo()" :text="'加入我们'"></Button>
 				</div>
 				<div class="img-box wow">
 					<img v-if="zpxx[0]"  :src="web_url + v.img" alt="" />
@@ -60,7 +60,7 @@
 					<ul>
 						<li v-for="(value, index) in v.gwyq" :key="index">{{ value }}</li>
 					</ul>
-					<Button :text="'立即申请'"></Button>
+					<Button @click.native="openEmail(v.title)" :text="'立即申请'"></Button>
 				</li>
 			</ul>
 			<Button :text="'更多职位'" @click.native="getMore" v-show="zpxx.length - jobShowFlag > 0"></Button>
