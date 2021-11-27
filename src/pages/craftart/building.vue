@@ -61,7 +61,7 @@
 								{{ item.jzmj }}
 							</p>
 							<p>设计师：{{ item.designer }}</p>
-							<Button :text="'预约参观工地'" @click.native="$store.state.dialogDesign.design = true" />
+							<Button :text="'预约参观工地'" @click.native="$store.state.dialogDesign.visit = true" />
 						</div>
 					</li>
 				</ul>
@@ -268,8 +268,8 @@ export default Building;
 							display: inline-block;
 							margin-right: -5px;
 						}
-						&.size{
-							font-size: 28px!important;
+						&.size {
+							font-size: 28px !important;
 						}
 					}
 				}
