@@ -225,10 +225,11 @@ export default class sidebar extends Vue {
 }
 </script>
 <style scoped lang="scss">
-@media (max-width: 1440px) {
+@media (max-width: $minViewWidth) {
 	body {
 		.sidebar {
 			right: 0;
+			width: 60PX;
 		}
 		&.over-hide.chrome {
 			.sidebar {

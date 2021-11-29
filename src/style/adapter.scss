@@ -2,10 +2,10 @@ $designWidth: 1920;
 
 html {
   font-size: calc(100vw / #{$designWidth} * 100);
-	min-width: 1440px;
+	min-width: $minViewWidth;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: $minViewWidth) {
 	html {
 		font-size: 75px;
 	}
