@@ -27,17 +27,17 @@
 						<ul>
 							<li>
 								<i></i>
-								<input type="text" v-model="form.userName" placeholder="您的称呼" />
+								<input type="text" v-model="form.userName" placeholder="您的称呼:" />
 								<b>*</b>
 							</li>
 							<li>
 								<i></i>
-								<input type="text" v-model="form.phone" maxlength="11" @input="oninput()" placeholder="您的电话" />
+								<input type="text" v-model="form.phone" maxlength="11" @input="oninput()" placeholder="您的电话:" />
 								<b>*</b>
 							</li>
 							<li>
 								<i></i>
-								<input type="text" v-model="form.area" placeholder="您的面积" />
+								<input type="text" v-model="form.area" placeholder="您的面积:" />
 								<b>*</b>
 							</li>
 						</ul>
