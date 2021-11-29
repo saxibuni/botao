@@ -517,15 +517,15 @@ export default SoftDecoration;
 					text-align: center;
 					box-sizing: border-box;
 					position: relative;
-					.swiper-container {
+					.swiper-container,
+					.swiper-container-initialized{
 						box-sizing: border-box;
 						height: 500px !important;
 						.swiper-slide {
 							box-sizing: border-box;
 							cursor: pointer;
 							height: 50px;
-							&:nth-child(2n-1){
-							}
+							width: 130px;
 							> div {
 								height: 100%;
 								width: 100%;

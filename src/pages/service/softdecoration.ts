@@ -42,10 +42,10 @@ export default class SoftDecoration extends Vue {
 		speed: 100,
 		mousewheel: true,
 		slidesPerColumnFill : 'row',
-		// direction: 'vertical',
+		direction: 'vertical',
 		slideToClickedSlide: true,
-		slidesPerView: 2,//一行显示3个
-    slidesPerColumn: 8,//显示5行
+		slidesPerView: 8,//一行显示3个
+    slidesPerColumn:2,//显示5行
 		navigation: {
 			nextEl: '.swiper2-button-next',
 			prevEl: '.swiper2-button-prev'
