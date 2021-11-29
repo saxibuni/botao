@@ -413,10 +413,6 @@ export default class home extends Vue {
 		this.currentPortraitList = this.portraitList.slice(start, end);
 		let currentPortraitListCopy=[...this.currentPortraitList]
 
-		setTimeout(()=>{
-			this.isShowLightImg = true;
-		},300)
-
 		if (this.currentPortraitList.length > 0 && this.currentPortraitList.length < 35) {
 			setTimeout(() => {
 				let num =35 -this.currentPortraitList.length
