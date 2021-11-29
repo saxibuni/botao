@@ -412,9 +412,11 @@ export default CaseList;
 	}
 	.cases {
 		display: flex;
+		justify-content: space-between;
 		flex-wrap: wrap;
 		.cases {
-			margin-right: 27px;
+			// margin-right: 27px;
+			// width: 30%;
 			&:nth-of-type(3n) {
 				margin-right: 0;
 			}
