@@ -21,7 +21,7 @@
 					<h4></h4>
 					<div v-if="item.children">
 						<template v-for="(it, i) in item.children">
-							<h5 v-if="it.nav_id!=104" :key="i" @click="navShow = false;onJump(it.nav_id)">
+							<h5 v-if="it.nav_id!=104" :key="i" @click.stop="navShow = false;onJump(it.nav_id)">
 								{{ it.nav_name }}
 							</h5>
 						</template>
@@ -42,70 +42,6 @@ export default class navLists extends Vue {
 	isIE: boolean = false;
 	navShow = false;
 	navList = [
-		{
-			title: '精选案例',
-			en: 'Selected case',
-			url: 'case',
-			son: [
-				{ title: '墅装案例', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'case-list' },
-				{ title: 'VR装修体验', icon: require('../assets/icons/ic_home_drop_experience.png'),url:'case-listvr' }
-			]
-		},
-		{
-			title: '设计名人堂',
-			url: 'design',
-			en: 'Design Hall of Fame',
-			son: [
-				{ title: '擅长户型', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
-				{ title: '擅长风格', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' },
-				{ title: '设计师级别', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'design-list' }
-			]
-		},
-		{
-			title: '精工匠艺',
-			url: 'craft-building',
-			en: 'fine craftsmen skill',
-			son: [
-				{ title: '在施工地', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-building' },
-				{ title: '工艺标准', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-team' },
-				{ title: '管理体系', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'craft-manager' }
-			]
-		},
-		{
-			title: '全案服务',
-			url: 'whole-decoration',
-			en: 'A whole service',
-			son: [
-				{ title: '严选材料', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'cherry-pick' },
-				{ title: '软装生活', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'soft-decoration' },
-				{ title: '无忧售后', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'whole-decoration' }
-			]
-		},
-		{
-			title: '最新资讯',
-			url: 'information',
-			en: 'latest information',
-			son: [
-				{ title: '公司新闻', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'owner-voice' },
-				{ title: '装修攻略', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
-				{ title: '近期活动', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'strategy-list' },
-				{ title: '招贤纳士', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'join-us' }
-			]
-		},
-		{
-			title: '波涛品牌',
-			url: 'brand',
-			en: 'botao brand',
-			son: [
-				{ title: '品牌介绍', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:0 },
-				{ title: '品牌数据', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:1 },
-				{ title: '企业理念', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:2},
-				{ title: '发展历程', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:3 },
-				{ title: '荣誉资质', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:4 },
-				{ title: '社会责任', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:5 },
-				{ title: '联系我们', icon: require('../assets/icons/ic_home_drop_ex.png'),url:'brand',query:6}
-			]
-		}
 	];
 	navObj = {
 		73:'case',
@@ -141,7 +77,6 @@ export default class navLists extends Vue {
 
 	}
 	onJump(navId){
-		console.log(navId);
 		if(navId==89||navId==91){
 			this.$router.push({name:this.navObj[navId],params:{number:'0'}})
 			this.$bus.$emit('params-change', 0);
