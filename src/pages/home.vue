@@ -1363,7 +1363,6 @@ export default home;
 						}
 						b {
 							display: block;
-							height: 20px;
 							font-size: 20px;
 							font-weight: 400;
 							color: #ffffff;
