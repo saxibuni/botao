@@ -17,21 +17,21 @@
 				<p class="wow">{{ detailData.designer_info.station }}</p>
 				<div class="info wow">
 					<ul>
-						<li>
+						<li v-if="detailData.designer_info.cysj">
 							<i></i>
 							<div>
 								<p>从业时间</p>
 								<p>{{ detailData.designer_info.cysj }}</p>
 							</div>
 						</li>
-						<li>
+						<li v-if="detailData.designer_info.byyx">
 							<i></i>
 							<div>
 								<p>毕业院校</p>
 								<p>{{ detailData.designer_info.byyx }}</p>
 							</div>
 						</li>
-						<li>
+						<li v-if="detailData.designer_info.sfbz">
 							<i></i>
 							<div>
 								<p>收费标准</p>
@@ -69,7 +69,6 @@
 								<img src="~assets/bg_c2_part2_mask.png" alt="" />
 							</swiper-slide>
 						</swiper>
-
 					</div>
 					<div class="box"></div>
 				</div>

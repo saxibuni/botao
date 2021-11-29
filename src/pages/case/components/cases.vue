@@ -187,6 +187,7 @@ export default class Caese extends Vue {
 									height: 16px;
 									display: flex;
 									align-items: center;
+									white-space: nowrap;
 									&:first-of-type {
 										padding-left: 0;
 									}
