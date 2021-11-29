@@ -62,7 +62,7 @@ export default class home extends Vue {
 				setTimeout(() => {
 					let activeSlide = this.slides[this.activeIndex] as HTMLElement;
 					emitter.$emit('chars-ani', activeSlide, true);
-				}, 200);
+				});
 			},
 			slideChangeTransitionStart: function() {
 				let chars = (<HTMLElement>this.slides[this.activeIndex]).querySelectorAll<HTMLElement>('.char');
@@ -72,11 +72,10 @@ export default class home extends Vue {
 			},
 			slideChangeTransitionEnd: function() {
 				let activeSlide = this.slides[this.activeIndex] as HTMLElement;
-				emitter.$emit('chars-ani', activeSlide)
 				setTimeout(() => {
-					var video = document.querySelector(".videos");
+					emitter.$emit('chars-ani', activeSlide)
+					let video = document.querySelector(".videos");
 					if(video){
-						(video as any).play();
 						(video as any).currentTime = 0;
 					}
 				});
@@ -174,7 +173,6 @@ export default class home extends Vue {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
 		this.initSpineAni();
-		this.initScrollTrigger();
 
 		utils.emitter.$on('chars-ani', this.onCharsEnter);
 		utils.emitter.$on(Events.RESIZE, this.onResize);
@@ -207,12 +205,12 @@ export default class home extends Vue {
 				this.page5List = res.data.jbxgList;
 				this.qaylz = res.data.qaylz;
 				this.zxxxList = res.data.zxxxList;
-				// (this.$refs.mySwiper3 as any).autoplay.stop();
 
 				setTimeout(()=>{
 					this.initTextChars();
+					this.initScrollTrigger();
 					this.onResize();
-					// (this.$refs.mySwiper3 as any).autoplay.stop();
+					(this.$refs.myswiper3 as any).$swiper.autoplay.stop();
 				})
 				this.getCurrentPortraitList();
 			}
@@ -273,9 +271,12 @@ export default class home extends Vue {
 
 	initScrollTrigger() {
 		ScrollTrigger.create({
+			trigger: this.$el.querySelector('.page5'),
+			onEnter: () => this.onPlayPage5Swiper(),
+		});
+		ScrollTrigger.create({
 			trigger: this.$el.querySelector('.page6'),
-			onEnter: () => this.onTriggerPlaySpine(),
-			onEnterBack: () => this.onTriggerPlaySpine()
+			onEnter: () => this.onTriggerPlaySpine()
 		});
 	}
 
@@ -284,6 +285,12 @@ export default class home extends Vue {
 		spine.state.setAnimation(0, 'enter', false);
 		ScrollTrigger.getAll().forEach(child => child.kill());
 	}
+
+	onPlayPage5Swiper() {
+		let swiper = (this.$refs.myswiper3 as any).$swiper;
+		swiper.autoplay.start();
+	}
+
 	listwidth = [];
 	textActive2 = true;
 	onClick(item, i) {
@@ -474,8 +481,6 @@ export default class home extends Vue {
 	}
 
 	onCharsEnter(slide: HTMLElement, isInit: boolean = false) {
-
-
 		let chars = slide.querySelectorAll('.char');
 		gsap.timeline()
 			.fromTo(chars, {
