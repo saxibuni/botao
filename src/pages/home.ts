@@ -294,9 +294,8 @@ export default class home extends Vue {
 	listwidth = [];
 	textActive2 = true;
 	onClick(item, i) {
-		this.sjsItem = this.portraitList[i];
+		this.sjsItem = this.currentPortraitList[i];
 		this.showProfile = !this.showProfile;
-		this.sjsItem.imgSrc = item;
 		this.page3Index = i;
 		this.isShowLightImg = true;
 		this.page3Ani = false;
@@ -379,8 +378,6 @@ export default class home extends Vue {
 	}
 
 	onPortraitListPrev() {
-		console.log(123,this.currentPortraitList);
-
 		if (this.applyFlipType) return;
 		if (this.portraitListIndex == 0) return;
 		this.getPreparePortraitList(false);
@@ -396,8 +393,6 @@ export default class home extends Vue {
 	}
 
 	onPortraitListNext() {
-		console.log(456,this.currentPortraitList);
-
 		if (this.applyFlipType) return;
 		if (this.portraitListIndex == this.portraitTotalPages - 1) return;
 		this.getPreparePortraitList();
@@ -417,6 +412,11 @@ export default class home extends Vue {
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
 		this.currentPortraitList = this.portraitList.slice(start, end);
 		let currentPortraitListCopy=[...this.currentPortraitList]
+
+		setTimeout(()=>{
+			this.isShowLightImg = true;
+		},300)
+
 		if (this.currentPortraitList.length > 0 && this.currentPortraitList.length < 35) {
 			setTimeout(() => {
 				let num =35 -this.currentPortraitList.length
@@ -429,6 +429,7 @@ export default class home extends Vue {
 		}
 
 		let listwidth = [];
+		this.listwidth = [];
 		setTimeout(() => {
 			currentPortraitListCopy.forEach((e, i) => {
 				let items = `item${i}`;
@@ -439,8 +440,6 @@ export default class home extends Vue {
 				let src = e.img;
 				listwidth.push({ left, top, width, height, src });
 			});
-
-
 			this.listwidth = listwidth;
 		});
 	}
