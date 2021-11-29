@@ -30,7 +30,7 @@
 				<ul v-if="navList">
 					<template v-for="(item, index) in navList">
 					<li :key="index" v-if="item.nav_name!='首页'">
-						<h5>{{ item.nav_name }}</h5>
+						<h5 @click="onJump(item.nav_id)">{{ item.nav_name }}</h5>
 						<template v-for="(it, index) in item.children">
 							<p @click="onJump(it.nav_id)" :key="index" v-if="it.nav_id!=104">{{ it.nav_name }}</p>
 						</template>
@@ -441,6 +441,7 @@ export default class Footer extends Vue {
 						color: #ffffff;
 						margin-bottom: 41px;
 						white-space: nowrap;
+						cursor: pointer;
 					}
 					p {
 						white-space: nowrap;
