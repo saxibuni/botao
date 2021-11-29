@@ -412,6 +412,11 @@ export default class home extends Vue {
 		let end = (this.portraitListIndex + 1) * this.portraitListSize;
 		this.currentPortraitList = this.portraitList.slice(start, end);
 		let currentPortraitListCopy=[...this.currentPortraitList]
+		currentPortraitListCopy.forEach(element => {
+			if(this.sjsItem.aid==element.aid){
+				this.isShowLightImg = true;
+			}
+		});
 
 		if (this.currentPortraitList.length > 0 && this.currentPortraitList.length < 35) {
 			setTimeout(() => {
