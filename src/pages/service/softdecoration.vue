@@ -534,7 +534,8 @@ export default SoftDecoration;
 									line-height: 40px;
 									transition: 0.3s;
 								}
-								&.active {
+								&.active,
+								&:hover {
 									span {
 										color: #eb551d;
 									}
@@ -547,6 +548,7 @@ export default SoftDecoration;
 						top: -60px;
 						left: 38%;
 						width: 50px;
+						cursor: pointer;
 						height: 50px;
 						margin-left: -25px;
 						background: url('~assets/icons/ic_home_b3_top_white.png') no-repeat center center;
@@ -559,6 +561,7 @@ export default SoftDecoration;
 						}
 					}
 					.swiper2-button-next {
+						cursor: pointer;
 						position: absolute;
 						bottom: -60px;
 						left: 38%;
