@@ -344,7 +344,7 @@
 						<div class="img-box" v-if="item.imgs">
 							<img v-for="(v, i) in item.imgs.split(',')" :key="i" :src="web_url+v" alt="" />
 						</div>
-						<div class="text"  v-if="item.title">
+						<div class="text" v-if="item.title">
 							<h3>
 								<span>{{item.title.split('#')[1]}}</span>
 								{{item.title.split('#')[2]}}
