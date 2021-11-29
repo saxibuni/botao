@@ -124,9 +124,9 @@
 											<li v-for="(v, i) in item.desc.split('\r\n')" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 												<p>
 													<span></span>
-													{{ v.split(';')[0] }}
+														 {{ v.split(';')[0] }}
 												</p>
-												<p>{{ v.split(';')[1] }}</p>
+												<p :class="{active: v.split(';')[1]=='微信群承诺20分钟内响应'}">{{ v.split(';')[1] }}</p>
 											</li>
 										</ul>
 									</div>
@@ -937,6 +937,7 @@ export default Manager;
 									width: 180px;
 									p {
 										font-size: 20px;
+										white-space: nowrap;
 										&:nth-of-type(1) {
 											color: #666666;
 											display: flex;
@@ -954,7 +955,11 @@ export default Manager;
 											margin-left: 24px;
 											margin-top: 10px;
 											font-weight: 600;
+											&.active{
+												transform: translateX(-4px);
+											}
 										}
+
 									}
 								}
 							}
