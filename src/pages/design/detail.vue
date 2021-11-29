@@ -63,17 +63,13 @@
 			<div class="right wow">
 				<div class="swiperBox">
 					<div class="swiper">
-						<swiper :options="swiperOptions">
+						<swiper :options="swiperOptions" class="swiper-no-swiping">
 							<swiper-slide v-for="(item, i) in detailData.designer_info.imgs.split(',')" :key="i">
 								<img :src="web_url + item" alt="" />
 								<img src="~assets/bg_c2_part2_mask.png" alt="" />
 							</swiper-slide>
 						</swiper>
-						<div class="btn">
-							<div class="swiper-pagination"></div>
-							<div class="swiper-button-prev"></div>
-							<div class="swiper-button-next"></div>
-						</div>
+
 					</div>
 					<div class="box"></div>
 				</div>
