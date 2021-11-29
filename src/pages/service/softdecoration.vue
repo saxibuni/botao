@@ -509,7 +509,7 @@ export default SoftDecoration;
 				}
 				.swiper {
 					margin-left: 80px;
-					width: 520px;
+					width: 475px;
 					height: 500px;
 					font-size: 18px;
 					color: #fff;
@@ -545,7 +545,7 @@ export default SoftDecoration;
 					.swiper2-button-prev {
 						position: absolute;
 						top: -60px;
-						left: 35%;
+						left: 38%;
 						width: 50px;
 						height: 50px;
 						margin-left: -25px;
@@ -561,7 +561,7 @@ export default SoftDecoration;
 					.swiper2-button-next {
 						position: absolute;
 						bottom: -60px;
-						left: 35%;
+						left: 38%;
 						width: 50px;
 						height: 50px;
 						background: url('~assets/icons/ic_home_b3_down_white.png') no-repeat center center;
