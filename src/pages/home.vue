@@ -122,28 +122,28 @@
 				<ul>
 					<li>
 						<div>
-							<b><ICountUp :endVal="parseInt(sjsItem.sjhy)||0" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="95" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>设计效果还原</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="parseInt(sjsItem.cysj)||0" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
 							年
 						</div>
 						<p>以上从业经验</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="parseInt(sjsItem.sjhy)||0" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="8" :options="options2"></ICountUp></b>
 							支
 						</div>
 						<p>专业设计团队</p>
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="parseInt(sjsItem.sjjx)||0" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="90" :options="options2"></ICountUp></b>
 							%
 						</div>
 						<p>荣获设计奖项</p>

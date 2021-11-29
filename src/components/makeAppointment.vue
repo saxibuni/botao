@@ -23,7 +23,7 @@
 						<h3>
 							今天已有
 							<span>{{ $store.state.dialogDesign.design ? $store.state.footData.sj_num : $store.state.footData.gd_num }}</span>
-							位业主预约了{{ $store.state.dialogDesign.design ? '设计' : '参观工地' }}
+							位业主预约了{{ $store.state.dialogDesign.design ? '设计' : '参观' }}
 						</h3>
 						<ul>
 							<li>

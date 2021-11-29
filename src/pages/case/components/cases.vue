@@ -36,8 +36,8 @@
 								<p>{{ caseData.des_info.station }}</p>
 							</div>
 						</div>
-						<Button @click.native="$store.state.dialogDesign.design = true" :text="caseData.typename" v-if="caseData.typename == 'VR装修体验'" />
-						<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" v-else />
+						<!-- <Button @click.native="$store.state.dialogDesign.design = true" :text="caseData.typename" v-if="caseData.typename == 'VR装修体验'" /> -->
+						<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
 					</div>
 				</div>
 			</li>
