@@ -19,10 +19,6 @@ export default class DesignDetail extends Vue {
 			el: '.swiper-pagination',
 			clickable: true
 		},
-		autoplay: {
-			delay: 98000,
-			disableOnInteraction: false
-		},
 		navigation: {
 			nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
