@@ -945,7 +945,7 @@ html {
 		box-sizing: border-box;
 		height: 1255px;
 		background: url(~assets/bg_g1_part5.jpg) no-repeat;
-		background-size: 100%;
+		background-size: 100% 100%;
 		h2,
 		h3 {
 			text-align: center;
