@@ -73,7 +73,7 @@ export default class home extends Vue {
 			slideChangeTransitionEnd: function() {
 				let activeSlide = this.slides[this.activeIndex] as HTMLElement;
 				setTimeout(() => {
-					emitter.$emit('chars-ani', activeSlide)
+					emitter.$emit('chars-ani', activeSlide);
 					let video = document.querySelector(".videos");
 					if(video){
 						(video as any).currentTime = 0;
