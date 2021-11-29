@@ -194,6 +194,11 @@ export default DesignDetail;
 					display: flex;
 					li {
 						display: flex;
+						&:last-of-type {
+							> div {
+								border: none;
+							}
+						}
 						i {
 							width: 25px;
 							height: 25px;
