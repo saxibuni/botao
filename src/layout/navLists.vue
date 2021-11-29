@@ -15,7 +15,7 @@
 		</div>
 		<ul>
 			<template v-for="(item, index) in navList">
-				<li :key="index" v-if="item.nav_name!='首页'">
+				<li :key="index" v-if="item.nav_name!='首页'" 	@click="navShow = false;onJump(item.nav_id)">
 					<h2>{{ item.nav_name }}</h2>
 					<h3>{{ item.englist_name }}</h3>
 					<h4></h4>
@@ -170,7 +170,12 @@ export default class navLists extends Vue {
 			this.$bus.$emit('params-change', 6);
 		}
 		else{
-			this.$router.push({name:this.navObj[navId]})
+			this.$router.push({
+				name:this.navObj[navId],
+				query: {
+					typeId: navId
+				}
+			});
 		}
 	}
 	created() {
@@ -319,6 +324,7 @@ export default class navLists extends Vue {
 				font-weight: 400;
 				color: #000000;
 				transition: 0.3s;
+				cursor: pointer;
 			}
 			h3 {
 				height: 14px;
