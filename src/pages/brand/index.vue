@@ -973,7 +973,7 @@ html {
 				height: 1245px;
 				img {
 					position: absolute;
-					top: 6px;
+					top: 5px;
 					left: 7px;
 					width: 654px;
 					&:first {
