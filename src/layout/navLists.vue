@@ -20,9 +20,11 @@
 					<h3>{{ item.englist_name }}</h3>
 					<h4></h4>
 					<div v-if="item.children">
-						<h5 v-for="(it, i) in item.children" :key="i" @click="navShow = false;onJump(it.nav_id)">
-							{{ it.nav_name }}
-						</h5>
+						<template v-for="(it, i) in item.children">
+							<h5 v-if="it.nav_id!=104" :key="i" @click="navShow = false;onJump(it.nav_id)">
+								{{ it.nav_name }}
+							</h5>
+						</template>
 					</div>
 					<b>0{{ index }}</b>
 				</li>

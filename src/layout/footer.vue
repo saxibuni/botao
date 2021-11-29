@@ -31,7 +31,9 @@
 					<template v-for="(item, index) in navList">
 					<li :key="index" v-if="item.nav_name!='首页'">
 						<h5>{{ item.nav_name }}</h5>
-						<p @click="onJump(it.nav_id)" v-for="(it, index) in item.children" :key="index">{{ it.nav_name }}</p>
+						<template v-for="(it, index) in item.children">
+							<p @click="onJump(it.nav_id)" :key="index" v-if="it.nav_id!=104">{{ it.nav_name }}</p>
+						</template>
 					</li>
 					</template>
 				</ul>

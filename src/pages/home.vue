@@ -234,7 +234,7 @@
 					  <b v-html="sgzzDesc.btitle.split('#')[2]"></b>
 					</h2>
 					<p>{{sgzzDesc.etitle}}</p>
-					<div @click="onRoute('craft-manager')">
+					<div @click="onRoute('craft-building')">
 						了解更多
 						<i></i>
 					</div>
@@ -282,7 +282,7 @@
 								</b>
 								<span>个</span>
 							</div>
-							<p>改在建工地</p>
+							<p>在建工地</p>
 						</li>
 						<li>
 							<div>
@@ -339,7 +339,7 @@
 		</div>
 		<div class="page5 wow">
 			<div class="swiper" v-if="page5List.length > 0">
-				<swiper :options="bannerSwiperOptions3" >
+				<swiper :options="bannerSwiperOptions3" ref="myswiper3">
 					<swiper-slide v-for="(item, i) in page5List" class="page5Slide" :key="i">
 						<div class="img-box" v-if="item.imgs">
 							<img v-for="(v, i) in item.imgs.split(',')" :key="i" :src="web_url+v" alt="" />

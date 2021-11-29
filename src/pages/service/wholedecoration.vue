@@ -530,7 +530,7 @@ export default WholeDecoration;
 						top: 83px;
 						left: 1710px;
 						h3 {
-							right: 0;
+							right: 25px;
 							left: auto;
 							transform: translateX(0) scale(0);
 							&.active {

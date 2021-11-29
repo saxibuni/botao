@@ -36,9 +36,22 @@ export default class Manager extends Vue {
 		}
 	};
 	choice(i) {
-		if (Number(this.activeName) + i > 4) return;
-		if (Number(this.activeName) + i < 1) return;
-		this.activeName = String(Number(this.activeName) + i);
+
+		// if (Number(this.activeName) + i > 4) return;
+		// if (Number(this.activeName) + i < 1) return;
+		// this.activeName = String(Number(this.activeName) + i);
+
+		if(Number(this.activeName) + i>4){
+			this.activeName = '1';
+		}else if((Number(this.activeName) + i<1)){
+			this.activeName = '4';
+		}else{
+			this.activeName = String(Number(this.activeName) + i);
+		}
+
+		console.log(this.activeName);
+
+
 	}
 	playVideo(i) {
 		this.videoPop.url = i;
