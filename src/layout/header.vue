@@ -80,7 +80,7 @@ export default Header;
 
 <style scoped lang="scss">
 .header {
-	min-width: 1440PX;
+	min-width: $minViewWidth;
 	img {
 		display: block;
 	}
@@ -226,7 +226,7 @@ export default Header;
 						transform: translateX(-50%);
 						top: 111px;
 						width: 1920px;
-						min-width: 1440px;
+						min-width: $minViewWidth;
 						height: 110px;
 						background: rgba(18, 33, 51, 0.85);
 						align-items: center;

@@ -19,7 +19,7 @@ export default index;
 <style lang="scss">
 .layout {
 	max-width: 1920px;
-	min-width: 1440PX;
+	min-width: $minViewWidth;
 	margin: 0 auto;
 	.out-page {
 		min-height: 100vh;
