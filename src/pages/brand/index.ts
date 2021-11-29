@@ -60,7 +60,6 @@ export default class Brand extends Vue {
 	isIE: boolean;
 	devolopeList = [{}];
 
-
 	options1 = {
 		// suffix: '+',
 		useEasing: true
@@ -103,7 +102,7 @@ export default class Brand extends Vue {
 	web_url = '';
 	btbrandInfo = {};
 	btzgsList = {};
-	brandDataInfo = {id:0};
+	brandDataInfo = { id: 0 };
 	hxjzgList = [];
 	fzlcList = [];
 	ryzz = [];
@@ -151,7 +150,7 @@ export default class Brand extends Vue {
 				this.initVideo();
 				this.onResize();
 				this.$bus.$on(Events.RESIZE, this.onResize);
-			})
+			});
 		});
 	}
 
@@ -224,8 +223,7 @@ export default class Brand extends Vue {
 			scroller: '.history-scroll',
 			onUpdate: self => {
 				let offset = self.progress * (this.grayImgHeight - 290);
-				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
-
+				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 90.5 + 'rem';
 				this.calcProgressIndex(offset + 290, this.pos);
 			}
 		});
@@ -325,6 +323,7 @@ export default class Brand extends Vue {
 		let progress = (height - 290) / (this.grayImgHeight - 290);
 		let totalScroll = this.grayImgHeight - this.scrollHeight;
 		let distance = progress * totalScroll;
+
 		return distance;
 	}
 
