@@ -119,6 +119,7 @@ html {
 			border-top: 2px solid #ccc;
 			border-bottom: 2px solid #ccc;
 			color: #666;
+			margin-bottom: 110px;
 			.left {
 				display: flex;
 				align-items: center;
@@ -273,17 +274,17 @@ html {
 			}
 		}
 		p {
-			margin-top: 60px;
-			margin-bottom: 111px;
+			/* margin-top: 60px; */
+			/* margin-bottom: 111px; */
 			text-align: center;
 			line-height: 44px;
 			font-size: 22px;
 			font-weight: 400;
 			color: #666666;
 			&:first-of-type {
-				margin-top: 138px;
+				/* margin-top: 138px; */
 			}
-			&:nth-of-type(2) {
+			/* &:nth-of-type(2) {
 				margin-top: 56px;
 				margin-bottom: 187px !important;
 			}
@@ -303,7 +304,7 @@ html {
 			&:nth-of-type(5),
 			&:nth-of-type(6) {
 				line-height: 40px;
-			}
+			} */
 		}
 		.img-box {
 			margin-top: 100px;

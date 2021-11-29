@@ -207,10 +207,12 @@ export default class home extends Vue {
 				this.page5List = res.data.jbxgList;
 				this.qaylz = res.data.qaylz;
 				this.zxxxList = res.data.zxxxList;
+				// (this.$refs.mySwiper3 as any).autoplay.stop();
 
 				setTimeout(()=>{
 					this.initTextChars();
 					this.onResize();
+					// (this.$refs.mySwiper3 as any).autoplay.stop();
 				})
 				this.getCurrentPortraitList();
 			}
