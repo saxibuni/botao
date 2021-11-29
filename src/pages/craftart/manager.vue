@@ -92,7 +92,7 @@
 								<div class="imgBox">
 									<img :src="web_url + item.img" alt="" />
 									<div>
-										<img src="~assets/icons/ic_c2_play.png" @click="playVideo(item.video)" alt="" />
+										<img src="~assets/icons/ic_c2_play.png" @click="playVideo(item.video)" v-if="item.video" alt="" />
 										<p>{{ item.title }}</p>
 									</div>
 								</div>
@@ -124,9 +124,9 @@
 											<li v-for="(v, i) in item.desc.split('\r\n')" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 												<p>
 													<span></span>
-														 {{ v.split(';')[0] }}
+													{{ v.split(';')[0] }}
 												</p>
-												<p :class="{active: v.split(';')[1]=='微信群承诺20分钟内响应'}">{{ v.split(';')[1] }}</p>
+												<p :class="{ active: v.split(';')[1] == '微信群承诺20分钟内响应' }">{{ v.split(';')[1] }}</p>
 											</li>
 										</ul>
 									</div>
@@ -955,11 +955,10 @@ export default Manager;
 											margin-left: 24px;
 											margin-top: 10px;
 											font-weight: 600;
-											&.active{
+											&.active {
 												transform: translateX(-4px);
 											}
 										}
-
 									}
 								}
 							}

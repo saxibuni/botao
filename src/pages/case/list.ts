@@ -105,6 +105,10 @@ export default class CaseList extends Vue {
 				}
 			);
 	}
+	push(aid,e){
+		if(e.target.className=='btn')return
+		this.$router.push({path:'/case/detail',query:{aid:aid}})
+	}
 	mounted(){
 		this.restartWow();
 		utils.emitter.$on('changeIndex', i => {

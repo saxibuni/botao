@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="swiper" v-if="listData.tjlist">
-			<div class="content">
+			<div class="content" @click="push(listData.tjlist[swiperIndex].aid, $event)">
 				<img src="~assets/bg_b1_part2_mask1.png" alt="" />
 				<div class="text wow" v-for="(v, i) in listData.tjlist" :key="i" v-show="swiperIndex == i">
 					<p>{{ v.title }}</p>
@@ -52,7 +52,7 @@
 					<Button :text="'找TA设计'" @click.native="$store.state.dialogDesign.design = true" />
 				</div>
 			</div>
-			<swiper :options="bannerSwiperOptions1">
+			<swiper :options="bannerSwiperOptions1" @click="push(listData.tjlist[swiperIndex].aid, $event)">
 				<swiper-slide v-for="(item, i) in listData.tjlist" :key="i">
 					<img :src="web_url + item.img" alt="" />
 					<img src="~assets/bg_b1_part2_mask2.png" alt="" />
@@ -257,6 +257,7 @@ export default CaseList;
 		width: 100%;
 		position: relative;
 		overflow: hidden;
+		cursor: pointer;
 		> img {
 		}
 		.content {
@@ -412,9 +413,11 @@ export default CaseList;
 	}
 	.cases {
 		display: flex;
+		justify-content: space-between;
 		flex-wrap: wrap;
 		.cases {
-			margin-right: 27px;
+			// margin-right: 27px;
+			// width: 30%;
 			&:nth-of-type(3n) {
 				margin-right: 0;
 			}
