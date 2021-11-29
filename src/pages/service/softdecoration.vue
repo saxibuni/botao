@@ -289,7 +289,6 @@ export default SoftDecoration;
 				align-items: center;
 				color: #ffffff;
 				border-radius: 100%;
-				cursor: pointer;
 				overflow: hidden;
 				opacity: 0;
 				animation: fade-in 1s;
