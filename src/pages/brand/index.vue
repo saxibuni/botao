@@ -579,7 +579,7 @@ html {
 			cursor: pointer;
 			span {
 				position: absolute;
-				width: 70px;
+				width: 100px;
 				right: 0;
 				top: -5px;
 				margin-right: 22px;
@@ -1364,10 +1364,14 @@ html {
 				display: flex;
 			}
 			h2 {
+				display: flex;
+				max-width: 110%;
+				// width: 330px;
 				margin-top: 35px;
 				font-size: 22px;
 				color: #ffffff;
 				line-height: 1;
+				@include line-clamp(1)
 			}
 			.controal {
 				position: absolute;

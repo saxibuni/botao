@@ -48,23 +48,29 @@
 						<swiper :options="swiperOptions" ref="mywiper">
 							<swiper-slide v-for="(item, i) in rzalList" :key="i">
 								<div :class="{ active: swiperIndex == i }" @click="onSelect(i)">
-									<span>{{ item.title.length>=8?item.title.substring(0,8)+'...':item.title }}</span>
+									<span>{{ item.length>=8?item.substring(0,6)+'...':item }}</span>
 								</div>
 							</swiper-slide>
 						</swiper>
 
-						<div style="pointer-events:auto; opacity:1;cursor: pointer;" class="swiper2-button-prev" @click="onClick(-1)"></div>
-						<div style="pointer-events:auto; opacity:1;cursor: pointer;" class="swiper2-button-next" @click="onClick(1)"></div>
+						<div class="swiper2-button-prev" ></div>
+						<div class="swiper2-button-next" ></div>
 					</div>
-					<div class="text" :class="{ active: textActive }" v-if="rzalList[swiperIndex]">
-						<h2>{{ rzalList[swiperIndex].title }}</h2>
-						<h3>{{ rzalList[swiperIndex].fgmj }}</h3>
-						<p>{{ rzalList[swiperIndex].desc }}</p>
-					</div>
+
 				</div>
 				<div class="right wow">
-					<img :src="web_url + rzalList[0].img" alt="" />
-					<!-- <img v-for="(item, i) in rzalList" :class="{ active: swiperIndex == i }" :key="i" :src="web_url + item.img" alt="" /> -->
+						<swiper :options="bannerSwiperOptions1">
+							<swiper-slide v-for="(item, i) in rzalListImg" :key="i">
+								<div class="box">
+										<img :src="web_url + item" alt="" />
+								</div>
+							</swiper-slide>
+						</swiper>
+				<div class="swiper-button-wrap">
+					<div class="prev3"></div>
+					<div class="swiper-pagination3"></div>
+					<div class="next3"></div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -476,6 +482,7 @@ export default SoftDecoration;
 			margin-top: 58px;
 			display: flex;
 			justify-content: space-between;
+			padding-right: 80px;
 			.left {
 				position: relative;
 				width: 600px;
@@ -501,7 +508,8 @@ export default SoftDecoration;
 					align-items: center;
 				}
 				.swiper {
-					width: 264px;
+					margin-left: 80px;
+					width: 475px;
 					height: 500px;
 					font-size: 18px;
 					color: #fff;
@@ -509,25 +517,25 @@ export default SoftDecoration;
 					text-align: center;
 					box-sizing: border-box;
 					position: relative;
-					.swiper-container-vertical {
+					.swiper-container,
+					.swiper-container-initialized{
 						box-sizing: border-box;
 						height: 500px !important;
 						.swiper-slide {
 							box-sizing: border-box;
 							cursor: pointer;
+							height: 50px;
+							width: 130px;
 							> div {
 								height: 100%;
 								width: 100%;
-								display: flex;
-								align-items: center;
-								justify-content: center;
+								text-align: left;
 								span {
 									line-height: 40px;
 									transition: 0.3s;
 								}
 								&.active {
 									span {
-										border-bottom: 1px solid #eb551d;
 										color: #eb551d;
 									}
 								}
@@ -537,7 +545,7 @@ export default SoftDecoration;
 					.swiper2-button-prev {
 						position: absolute;
 						top: -60px;
-						left: 50%;
+						left: 38%;
 						width: 50px;
 						height: 50px;
 						margin-left: -25px;
@@ -553,7 +561,7 @@ export default SoftDecoration;
 					.swiper2-button-next {
 						position: absolute;
 						bottom: -60px;
-						left: 50%;
+						left: 38%;
 						width: 50px;
 						height: 50px;
 						background: url('~assets/icons/ic_home_b3_down_white.png') no-repeat center center;
@@ -609,25 +617,78 @@ export default SoftDecoration;
 				}
 			}
 			.right {
-				flex: 1;
-				height: 778px;
+				width: 1222px;
+				height: 720px;
 				opacity: 0;
 				animation: fade-in 2s;
 				animation-fill-mode: forwards;
 				position: relative;
 				z-index: 2;
 				img {
-					position: absolute;
-					left: 0;
-					top: 0;
 					width: 100%;
-					height: 100%;
-					/* opacity: 0; */
-					/* transition: 0.6s; */
-					&.active {
+					height: 720px;
+					display: block;
+				}
+	 			.swiper-button-wrap {
+				position: absolute;
+				bottom: 46px;
+				height: 10px;
+				z-index: 33;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				.swiper-pagination3 {
+					display: flex;
+					box-sizing: border-box;
+					margin: 0 30px;
+					.swiper-pagination-bullet {
+						box-sizing: border-box;
+						cursor: pointer;
+						border-radius: 0;
+						width: 12px;
+						height: 12px;
+						background: transparent;
 						opacity: 1;
+						border: 2px solid #ababab;
+						&.swiper-pagination-bullet-active {
+							border: 2px solid #eb551d !important;
+						}
+						&:not(:first-child) {
+							margin-left: 15px;
+						}
 					}
 				}
+				.prev3 {
+					cursor: pointer;
+					width: 16px;
+					height: 16px;
+
+					background: url('~assets/icons/ic_e2_part7_left.png') no-repeat center center;
+					background-size: 9px 16px;
+					transition: transform 0.3s;
+					&:hover {
+						transform: scale(1.1);
+						background: url('~assets/icons/ic_e2_left2.png') no-repeat center center;
+						background-size: 9px 16px;
+					}
+				}
+				.next3 {
+					width: 16px;
+					cursor: pointer;
+					height: 16px;
+
+					background: url('~assets/icons/ic_e2_part7_right.png') no-repeat center center;
+					background-size: 9px 16px;
+					transition: transform 0.3s;
+					&:hover {
+						transform: scale(1.1);
+						background: url('~assets/icons/ic_e2_right2.png') no-repeat center center;
+						background-size: 9px 16px;
+					}
+				}
+			}
+
 			}
 		}
 	}

@@ -41,13 +41,26 @@ export default class SoftDecoration extends Vue {
 		loop: false,
 		speed: 100,
 		mousewheel: true,
-		slidesPerView: 8,
-		slidesPerGroup: 1,
+		slidesPerColumnFill : 'row',
 		direction: 'vertical',
 		slideToClickedSlide: true,
+		slidesPerView: 8,//一行显示3个
+    slidesPerColumn:2,//显示5行
 		navigation: {
 			nextEl: '.swiper2-button-next',
 			prevEl: '.swiper2-button-prev'
+		}
+	}
+	bannerSwiperOptions1: any = {
+		loop: false,
+		speed: 600,
+		pagination: {
+			el: '.swiper-pagination3',
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.next3',
+			prevEl: '.prev3'
 		}
 	}
 	swiperIndex: number = 0;
@@ -92,6 +105,7 @@ export default class SoftDecoration extends Vue {
 	banner = {};
 	psdzList = [];
 	rzalList = [];
+	rzalListImg = [];
 	rzsjsList = [];
 	rzfwlcList = [];
 	rzpxList = [];
@@ -102,7 +116,10 @@ export default class SoftDecoration extends Vue {
 			if (res.status === 200) {
 				this.banner = res.data.banner;
 				this.psdzList = res.data.psdzList;
-				this.rzalList = res.data.rzalList;
+				this.rzalList = res.data.rzalInfo.desc.split('\r\n');
+				this.rzalListImg = res.data.rzalInfo.img.split(',');
+				console.log(123,this.rzalListImg);
+
 				this.rzsjsList = res.data.rzsjsList;
 				this.rzfwlcList = res.data.rzfwlcList;
 				this.rzpxList = res.data.rzpxList;
