@@ -1560,6 +1560,9 @@ export default CheckPick;
 								box-shadow: 0px 0px 30px 1px rgba(8, 18, 29, 0.15);
 							}
 						}
+						img{
+							filter: none;
+						}
 					}
 					> div {
 						width: 131px;
@@ -1567,9 +1570,6 @@ export default CheckPick;
 						position: absolute;
 						left: 0;
 						top: 0;
-						img {
-							width: 100%;
-						}
 						&.one {
 							transform: rotateX(-0deg);
 							z-index: 2;
@@ -1595,6 +1595,11 @@ export default CheckPick;
 						.inner-two {
 							background: #fff;
 							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
+						}
+						img{
+							width: 100%;
+							filter: grayscale(100%);
+							transition: .3s;
 						}
 						.inner-one .box {
 							transform: rotate(-45deg);

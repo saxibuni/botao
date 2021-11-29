@@ -773,6 +773,7 @@ export default WholeDecoration;
 					line-height: 1;
 					text-align: right;
 					padding-right: 65px;
+					white-space: pre-wrap;
 				}
 				&:nth-child(1) {
 					top: 251px;
@@ -830,7 +831,6 @@ export default WholeDecoration;
 						text-align: left;
 						line-height: 34px;
 						padding-left: 54px;
-						width: 490px;
 					}
 				}
 
@@ -852,7 +852,6 @@ export default WholeDecoration;
 						text-align: left;
 						padding-left: 54px;
 						line-height: 34px;
-						width: 520px;
 					}
 				}
 				&:nth-child(6) {
