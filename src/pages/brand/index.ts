@@ -97,8 +97,6 @@ export default class Brand extends Vue {
 		}
 	};
 	textShow: boolean = true;
-	grayImgHeight: number;
-	scrollHeight: number;
 	web_url = '';
 	btbrandInfo = {};
 	btzgsList = {};
@@ -222,12 +220,8 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.history-scroll',
 			onUpdate: self => {
-				let offset = self.progress * (this.grayImgHeight - 290);
-				if (self.progress > 0.7) {
-					this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 90 + 'rem';
-				} else {
-					this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
-				}
+				let offset = self.progress * (1245 - 290);
+				this.$el.querySelector<HTMLElement>('.inner-img').style.height = 2.9 + offset / 100 + 'rem';
 				this.calcProgressIndex(offset + 290, this.pos);
 			}
 		});
@@ -324,16 +318,12 @@ export default class Brand extends Vue {
 	calcDistance(i) {
 		let offset = 25;
 		let height = this.pos[i] + offset;
-		let progress = (height - 290) / (this.grayImgHeight - 290);
-		let totalScroll = this.grayImgHeight - this.scrollHeight;
+		let progress = (height - 290) / (1245 - 290);
+		let totalScroll = 1245 - 716;
+		if (i == this.pos.length - 1) progress = 1;
 		let distance = progress * totalScroll;
 
 		return distance;
-	}
-
-	getHeight() {
-		this.grayImgHeight = document.querySelector('.gray-img').clientHeight;
-		this.scrollHeight = document.querySelector('.history-scroll').clientHeight;
 	}
 
 	jump(i) {
@@ -393,7 +383,7 @@ export default class Brand extends Vue {
 	}
 
 	onResize() {
-		this.getHeight();
+		// this.getHeight();
 
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
