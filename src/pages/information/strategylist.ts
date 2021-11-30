@@ -44,7 +44,7 @@ export default class StrategyList extends Vue {
 		this.queryMethod({}, res => {
 			//banner
 			utils.emitter.$emit('bannerData', res.data.banner);
-
+			this.BannerData=res.data.banner
 			//toplist
 			this.topList = res.data.newsTopList;
 			this.topList2 = [...this.topList];

@@ -36,7 +36,7 @@
 			</div>
 			<div v-html="archivesInfo.content"></div>
 		</div>
-		<div class="recommended-news">
+		<div class="recommended-news" v-if="newsList.length">
 			<h2 class="wow">推荐新闻</h2>
 			<h3 class="wow">RECOMMENDED NEWS</h3>
 			<div class="item-list" v-if="newsList[0]">

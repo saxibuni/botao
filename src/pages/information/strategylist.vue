@@ -2,14 +2,8 @@
 	<div class="strategy-list">
 		<!-- 装修攻略或最新活动列表 -->
 		<div class="decoration-strategy" v-if="topList[0]">
-			<template v-if="typeId == '90'">
-				<h2>近期活动</h2>
-				<h3>RECENT ACTIVITIES</h3>
-			</template>
-			<template v-else>
-				<h2>装修攻略</h2>
-				<h3>DECORATION STRATIEGY</h3>
-			</template>
+			<h2>{{BannerData.title}}</h2>
+			<h3>{{BannerData.etitle}}</h3>
 			<div class="strategy-box">
 				<div class="strategy-left wow" @click="$router.push({ name: 'strategy-detail', query: { aid: topList[0].aid } })">
 					<div class="img-box">
@@ -66,7 +60,7 @@
 					</div>
 				</li>
 			</ul>
-			<Pagination :data="paginationData" @getData="getData" v-if="showPagination"></Pagination>
+			<Pagination :data="paginationData" @getData="getData" ></Pagination>
 		</div>
 	</div>
 </template>
@@ -232,7 +226,6 @@ html {
 							color: #000;
 							transition: color 0.3s;
 							@include line-clamp(1);
-
 						}
 						.more {
 							margin-top: 40px;
