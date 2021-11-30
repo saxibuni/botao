@@ -48,7 +48,7 @@
 						<div class="date">{{ v.show_time | formatTime2 }}</div>
 						<div class="title">{{ v.title }}</div>
 						<div class="text">{{ v.desc }}</div>
-						<div class="more" @click="$router.push({ name: 'strategy-list' })" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
+						<div class="more" @click="jump(v.aid)" @mouseenter="addClass(i, '.item-list')" @mouseleave="removeClass(i, '.item-list')">
 							More
 							<span></span>
 						</div>
@@ -126,8 +126,8 @@ html {
 				height: 100%;
 				i {
 					margin-right: 20px;
-					width: 20Px;
-					height: 20Px;
+					width: 20px;
+					height: 20px;
 					background: url(~assets/icons/ic_f3_part2_time.png) no-repeat;
 					background-size: 100%;
 					&:nth-of-type(2) {
@@ -151,10 +151,10 @@ html {
 				font-size: 16px;
 
 				i {
-					width: 26Px;
-					height: 26Px;
+					width: 26px;
+					height: 26px;
 					background: url('~assets/icons/iconlist.png') no-repeat;
-					background-position: -11Px -11Px;
+					background-position: -11px -11px;
 					cursor: pointer;
 					position: relative;
 					transition: 0.3s;
@@ -164,7 +164,7 @@ html {
 						background-position: center;
 					}
 					&:nth-child(2) {
-						background-position: -41Px -11Px;
+						background-position: -41px -11px;
 					}
 					> div {
 						transition: opacity 0.5s, transform 0.5s;
@@ -186,8 +186,8 @@ html {
 				.wx {
 					margin-left: 50px;
 					position: relative;
-					width: 26Px;
-					height: 26Px;
+					width: 26px;
+					height: 26px;
 					&:hover {
 						background-position-y: -43px;
 						> div {
@@ -223,7 +223,7 @@ html {
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -9Px -41.5Px;
+							background-position: -9px -41.5px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -232,19 +232,19 @@ html {
 				}
 				.wb {
 					position: relative;
-					width: 26Px;
-					height: 26Px;
+					width: 26px;
+					height: 26px;
 					margin: 0 20px;
 					i {
 						position: absolute;
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -41Px -11Px;
+						background-position: -41px -11px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -41Px -43Px;
+							background-position: -41px -43px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -253,18 +253,18 @@ html {
 				}
 				.qq {
 					position: relative;
-					width: 26Px;
-					height: 26Px;
+					width: 26px;
+					height: 26px;
 					i {
 						position: absolute;
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -78Px -11Px;
+						background-position: -78px -11px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -78Px -43Px;
+							background-position: -78px -43px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -372,20 +372,22 @@ html {
 				.bottom {
 					padding: 41px 33px 50px 39px;
 					background-color: #fff;
+					min-height: 319px;
 					.date {
 						font-size: 16px;
 						color: #888888;
 						line-height: 1;
 					}
 					.title {
-						margin-top: 14px;
+						margin-top: 9px;
 						font-size: 26px;
 						color: #000000;
-						line-height: 1;
+						line-height: 36px;
 						transition: all 0.3s;
+						@include line-clamp(2);
 					}
 					.text {
-						margin-top: 26px;
+						margin-top: 21px;
 						width: 488px;
 						font-size: 18px;
 						color: #666666;
@@ -430,6 +432,7 @@ html {
 					margin-bottom: 30px;
 				}
 			}
+
 			// > div {
 			// 	&:nth-of-type(2) {
 			// 		margin: 0 25px;
