@@ -11,7 +11,7 @@
 			</div>
 			<div class="right wow">
 				<p>{{ desc }}</p>
-				<Button @click.native="rollTo()" :text="'加入我们'"></Button>
+				<Button style="visibility: hidden" :text="'加入我们'"></Button>
 			</div>
 		</div>
 		<div class="swiper-box wow">
@@ -36,7 +36,6 @@
 					</div>
 					<h3>{{ v.ftitle }}</h3>
 					<p v-for="(value, index) in v.desc" :key="index" v-html="value"></p>
-					<Button @click.native="rollTo()" :text="'加入我们'"></Button>
 				</div>
 				<div class="img-box wow">
 					<img v-if="zpxx[0]"  :src="web_url + v.img" alt="" />
@@ -60,7 +59,6 @@
 					<ul>
 						<li v-for="(value, index) in v.gwyq" :key="index">{{ value }}</li>
 					</ul>
-					<Button @click.native="openEmail(v.title)" :text="'立即申请'"></Button>
 				</li>
 			</ul>
 			<Button :text="'更多职位'" @click.native="getMore" v-show="zpxx.length - jobShowFlag > 0"></Button>
@@ -447,7 +445,7 @@ html {
 			flex-wrap: wrap;
 			> li {
 				padding: 49px 28px 50px;
-				height: 612px;
+				min-height: 562px;
 				background-color: #fff;
 				transition: all 0.3s;
 				h2 {

@@ -403,4 +403,7 @@ export default class Brand extends Vue {
 		ScrollTrigger.getAll().forEach(child => child.kill());
 		this.pathTween && this.pathTween.kill();
 	}
+	bdJump(){
+		window.open(`http://api.map.baidu.com/marker?location=31.188195,121.437186&title=波涛家居建材&content=上海徐汇区中山西路2331号&output=html&src=webapp.baidu.openAPIdemo`)
+	}
 }

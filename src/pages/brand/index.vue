@@ -291,7 +291,7 @@
 			</div>
 			<div class="right wow">
 				<baidu-map class="bm-view" :zoom="22" :center="center" :scroll-wheel-zoom="true" :pinch-to-zoom="true">
-					<bm-marker :position="center" :icon="{ url: require('assets/icons/ic_g1_part8_bt.png'), size: { width: 181, height: 68 } }"></bm-marker>
+					<bm-marker :position="center" @click="bdJump()" :icon="{ url: require('assets/icons/ic_g1_part8_bt.png'), size: { width: 181, height: 68 } }"></bm-marker>
 					<bm-navigation anchor="BMAP_ANCHOR_TOP_RIGHT"></bm-navigation>
 					<bm-map-type :map-types="['BMAP_NORMAL_MAP', 'BMAP_SATELLITE_MAP']" anchor="BMAP_ANCHOR_TOP_LEFT"></bm-map-type>
 				</baidu-map>
