@@ -294,6 +294,10 @@ export default class home extends Vue {
 	listwidth = [];
 	textActive2 = true;
 	onClick(item, i) {
+		if(item.img == "assets/white.png"){
+			return
+		}
+
 		this.sjsItem = this.currentPortraitList[i];
 		this.showProfile = !this.showProfile;
 		this.page3Index = i;
