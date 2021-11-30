@@ -29,7 +29,7 @@ export default class StrategyList extends Vue {
 
 	newsList = [];
 	groupList = [];
-
+	spFlag=false;
 	showPagination: boolean = false;
 	typeId: string = '';
 	queryMethod: (req, callback: (res: any) => void) => void;
@@ -55,6 +55,8 @@ export default class StrategyList extends Vue {
 
 			this.paginationData.total = res.data.pages.total;
 			this.paginationData.size = res.data.pages.per_page;
+
+			this.spFlag=true;
 
 			this.restartWow();
 		});

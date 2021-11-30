@@ -60,7 +60,7 @@
 					</div>
 				</li>
 			</ul>
-			<Pagination :data="paginationData" @getData="getData" ></Pagination>
+			<Pagination :data="paginationData" @getData="getData" v-show="spFlag"></Pagination>
 		</div>
 	</div>
 </template>
