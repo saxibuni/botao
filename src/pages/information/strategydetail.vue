@@ -372,21 +372,22 @@ html {
 				.bottom {
 					padding: 41px 33px 50px 39px;
 					background-color: #fff;
-					min-height: 309px;
+					min-height: 319px;
 					.date {
 						font-size: 16px;
 						color: #888888;
 						line-height: 1;
 					}
 					.title {
-						margin-top: 14px;
+						margin-top: 9px;
 						font-size: 26px;
 						color: #000000;
-						line-height: 1;
+						line-height: 36px;
 						transition: all 0.3s;
+						@include line-clamp(2);
 					}
 					.text {
-						margin-top: 26px;
+						margin-top: 21px;
 						width: 488px;
 						font-size: 18px;
 						color: #666666;
