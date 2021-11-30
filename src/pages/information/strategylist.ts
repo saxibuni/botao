@@ -30,7 +30,7 @@ export default class StrategyList extends Vue {
 	newsList = [];
 	groupList = [];
 
-	showPagination: boolean = true;
+	showPagination: boolean = false;
 	typeId: string = '';
 	queryMethod: (req, callback: (res: any) => void) => void;
 	created() {
