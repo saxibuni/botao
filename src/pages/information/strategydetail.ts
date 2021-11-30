@@ -60,7 +60,7 @@ export default class StrategyDetail extends Vue {
 		this.restartWow();
 	}
 	wbJump() {
-		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 https://www.baidu.com`);
+		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 ${window.location.href}`);
 	}
 
 	jump(aid) {
