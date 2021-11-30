@@ -17,7 +17,7 @@ export default class CaseList extends Vue {
 	caseList=[]
 	web_url = ''
 	inputVal=''
-	paginationData={size:6,total:1000, boxName: '.case-list .cases'}
+	paginationData={size:0,total:0, boxName: '.case-list .cases'}
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]
 	activeIndex=[0,0,0]
 	swiperIndex=0

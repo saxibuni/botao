@@ -14,7 +14,7 @@ export default class CaseListVr extends Vue {
 	vrData:any={}
 	flag = true;
 	isIE: boolean = false;
-	paginationData={size:6,total:1000, boxName: '.case-listvr .list'}
+	paginationData={size:0,total:0, boxName: '.case-listvr .list'}
 	inputVal=''
 	love=null
 	tabList=[{title:'风格',info:[]},{title:'户型',info:[]},{title:'面积',info:[]}]

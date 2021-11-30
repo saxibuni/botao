@@ -38,7 +38,7 @@ export default class StrategyList extends Vue {
 		this.queryMethod = (this.typeId == '90' ? utils.service.queryNewAct : utils.service.queryNews).bind(utils.service);
 		this.query();
 	}
-	paginationData = { size: 6, total: 1000, arr: [], boxName: '.strategy-list .list-box' };
+	paginationData = { size: 0, total: 0, arr: [], boxName: '.strategy-list .list-box' };
 
 	query() {
 		this.queryMethod({}, res => {
