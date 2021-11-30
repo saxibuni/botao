@@ -1302,6 +1302,7 @@ html {
 			display: flex;
 			justify-content: center;
 			font-size: 18px;
+			outline: none;
 			div {
 				position: relative;
 				display: flex;
