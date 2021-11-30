@@ -129,7 +129,7 @@
 					</li>
 					<li>
 						<div>
-							<b><ICountUp :endVal="10" :options="options2"></ICountUp></b>
+							<b><ICountUp :endVal="12" :options="options2"></ICountUp></b>
 							年
 						</div>
 						<p>以上从业经验</p>
