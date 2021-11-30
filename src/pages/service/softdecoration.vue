@@ -767,6 +767,7 @@ export default SoftDecoration;
 						left: 0;
 						color: #fff;
 						width: 100%;
+						z-index: 4;
 						text-align: center;
 						h3 {
 							font-size: 32px;
