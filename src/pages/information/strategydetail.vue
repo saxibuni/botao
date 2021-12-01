@@ -384,7 +384,7 @@ html {
 						color: #000000;
 						line-height: 36px;
 						transition: all 0.3s;
-						@include line-clamp(2);
+						@include line-clamp(1);
 					}
 					.text {
 						margin-top: 21px;

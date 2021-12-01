@@ -301,10 +301,11 @@ html {
 						color: #000;
 						transition: all 0.3s;
 					}
-					p {
+					>p {
 						width: 490px;
+						height: 60px;
 						color: #666;
-						@include line-clamp(3);
+						@include line-clamp(2);
 					}
 					&:hover .title {
 						color: #ed5300;
