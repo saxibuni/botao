@@ -70,7 +70,7 @@
 				<p>{{ detailData.designer_info.title }}</p>
 				<p>{{ detailData.designer_info.station }}</p>
 				<p>从业年限：{{ detailData.designer_info.cysj }}</p>
-				<p>ta的作品：{{ detailData.designer_info.dbz }}</p>
+				<p>TA的作品：{{ detailData.designer_info.dbz }}</p>
 				<Button @click.native="$store.state.dialogDesign.design = true" :text="'找TA设计'" />
 			</div>
 		</div>
