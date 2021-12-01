@@ -77,8 +77,6 @@ export default class SoftDecoration extends Vue {
 		if(e==1){
 			if(this.swiperIndex<length-1){
 				this.swiperIndex = Number(this.swiperIndex) + e
-				console.log(e);
-
 			}else{
 				this.swiperIndex = 0;
 				setTimeout(()=>{
@@ -118,16 +116,20 @@ export default class SoftDecoration extends Vue {
 				this.psdzList = res.data.psdzList;
 				this.rzalList = res.data.rzalInfo.desc.split('\r\n');
 				this.rzalListImg = res.data.rzalInfo.img.split(',');
-				console.log(123,this.rzalListImg);
-
 				this.rzsjsList = res.data.rzsjsList;
 				this.rzfwlcList = res.data.rzfwlcList;
 				this.rzpxList = res.data.rzpxList;
 				this.$nextTick(() => {
 					this.initTextChars();
+					this.jump(this.$route.params.number)
 				});
 			}
 		});
+
+	}
+	jump(i) {
+		if (typeof i === 'undefined') return;
+		this.rollTo()
 	}
 	initTextChars() {
 		let textContents = this.$el.querySelectorAll<HTMLElement>('.page1 .text');

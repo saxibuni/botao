@@ -117,7 +117,7 @@
 			<div class="left">
 				<h2>
 					<ICountUp :endVal="100" :options="options1"></ICountUp>
-					位别墅大宅设计大咖
+					别墅大宅设计大咖
 				</h2>
 				<ul>
 					<li>
@@ -356,7 +356,7 @@
 							<h5>{{item.cftitle}}</h5>
 							<p>{{item.ccenter}}</p>
 							<div class="btn">
-								<Button text="服务详情" @click.native="onRoute('cherry-pick')"></Button>
+								<Button text="服务详情"></Button>
 							</div>
 						</div>
 					</swiper-slide>
