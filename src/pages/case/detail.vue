@@ -56,6 +56,7 @@
 							@click="playVideo(detailData.archivesInfo.video)"
 							v-if="detailData.archivesInfo.video"
 							alt=""
+							class="play"
 						/>
 						<img src="~assets/bg_b2_part2_mask.png" alt="" />
 					</swiper-slide>
@@ -259,22 +260,22 @@ export default CaseDetail;
 					height: 100%;
 					width: 100%;
 				}
-				&:nth-of-type(2) {
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -80%);
-					transition: all 0.3s;
-					z-index: 1;
-					&:hover {
-						cursor: pointer;
-						transform: translate(-50%, -80%) scale($imgScale);
-					}
-				}
-				&:nth-of-type(3) {
+				&:last-of-type {
 					position: absolute;
 					top: 0;
 					left: 0;
+				}
+			}
+			.play {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -80%);
+				transition: all 0.3s;
+				z-index: 1;
+				&:hover {
+					cursor: pointer;
+					transform: translate(-50%, -80%) scale($imgScale);
 				}
 			}
 			.swiper-container {
