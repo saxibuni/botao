@@ -85,6 +85,7 @@
 			</div>
 		</div>
 		<div class="works" v-if="detailData.vrList.length || detailData.sjsList.length">
+			<img src="~assets/bg_c2_part3.jpg" alt="" />
 			<h3 class="wow">TA的作品</h3>
 			<div class="list wow" v-if="detailData.sjsList.length">
 				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3 * moreIndex)" :key="i" />
@@ -461,10 +462,18 @@ export default DesignDetail;
 	.works {
 		padding: 0 80px;
 		// height: 1040px;
-		background-size: 100% 100%;
-		background: url('~assets/bg_c2_part3.jpg') no-repeat;
+		// background-size: 100% 100%;
+		// background: url('~assets/bg_c2_part3.jpg') no-repeat;
 		overflow: hidden;
 		// margin-top: 100px;
+		position: relative;
+		> img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 		h3 {
 			font-size: 56px;
 			color: #000000;
