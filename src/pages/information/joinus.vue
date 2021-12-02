@@ -444,8 +444,8 @@ html {
 			display: flex;
 			flex-wrap: wrap;
 			> li {
-				padding: 49px 28px 50px;
-				min-height: 562px;
+				padding: 49px 28px 40px;
+				min-height: 482px;
 				background-color: #fff;
 				transition: all 0.3s;
 				h2 {

@@ -3,8 +3,8 @@
 		<!-- 业主心声 -->
 		<!-- <Banner :data="BannerData" /> -->
 		<div class="owner-vioce">
-			<h2>业主心声</h2>
-			<h3>OWNER'S VOICE</h3>
+			<h2>业主访谈</h2>
+			<h3>OWNER'S INTERVIEW</h3>
 			<div class="swiper-box wow">
 				<swiper :options="ownerBannerOptions">
 					<swiper-slide v-for="v in yzxs" :key="v.id">
