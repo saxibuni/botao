@@ -15,7 +15,7 @@
 					</h6>
 				</div>
 				<div class="aside-text" v-show="textShow">BOTAOGROUP VIDEO</div>
-				<div class="img-box" @click="play(),textShow=false;" v-show="!playFlag">
+				<div class="img-box" @click="play(), (textShow = false)" v-show="!playFlag">
 					<img src="~assets/icons/ic_c2_play.png" alt="" />
 				</div>
 			</template>
@@ -250,6 +250,10 @@
 						</div>
 					</li>
 				</ul>
+			</div>
+			<div class="btn-box">
+				<Button :text="'上一个'" :class="nextIndex>=1?'active':''" @click.native="prev"></Button>
+				<Button :text="'下一个'" :class="nextIndex<shzrList.length-1?'active':''" @click.native="next"></Button>
 			</div>
 		</div>
 		<div class="contact-us select6">
@@ -762,8 +766,7 @@ html {
 					text-align: left;
 					max-height: 180px;
 					overflow-y: scroll;
-					@include scrollbar-beautify(2px)
-
+					@include scrollbar-beautify(2px);
 				}
 				.img-box {
 					margin: 0 auto;
@@ -1377,7 +1380,7 @@ html {
 				font-size: 22px;
 				color: #ffffff;
 				line-height: 1;
-				@include line-clamp(1)
+				@include line-clamp(1);
 			}
 			.controal {
 				position: absolute;
@@ -1401,10 +1404,9 @@ html {
 	}
 	.social-response {
 		overflow: hidden;
-		padding-bottom: 60px;
 		@include title();
-
 		.content-box {
+			margin-bottom: 80px;
 			@include scrollbar-beautify(0);
 			> div {
 				display: flex !important;
@@ -1557,6 +1559,26 @@ html {
 					left: -54px;
 					font-size: 18px;
 					color: #eb551d;
+				}
+			}
+		}
+		.btn-box {
+			display: flex;
+			justify-content: center;
+			> div {
+				width: auto;
+				margin: 0 20px;
+				&:nth-child(1) {
+					visibility: hidden;
+					&.active{
+						visibility: initial;
+					}
+				}
+					&:nth-child(2) {
+					visibility: hidden;
+					&.active{
+						visibility: initial;
+					}
 				}
 			}
 		}

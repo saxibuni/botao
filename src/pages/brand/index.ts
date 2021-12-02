@@ -28,6 +28,8 @@ Vue.use(BaiduMap, {
 })
 export default class Brand extends Vue {
 	num = 0;
+	nextIndex=-1;
+	nextFlag=true;
 	addFlag = true;
 	show1 = 0;
 	show2 = 1;
@@ -383,6 +385,28 @@ export default class Brand extends Vue {
 			});
 	}
 
+	next(){
+		if(!this.nextFlag)return
+		this.nextIndex++;
+		if(this.nextIndex>=this.shzrList.length-1) this.nextIndex=this.shzrList.length-1
+		this.doMovePath(this.nextIndex)
+		this.nextFlag=false
+		setTimeout(() => {
+			this.nextFlag=true
+		}, 900);
+	}
+
+	prev(){
+		if(!this.nextFlag) return
+		this.nextIndex--;
+		if(this.nextIndex<=0) this.nextIndex=0;
+		this.doMovePath(this.nextIndex)
+		this.nextFlag=false
+		setTimeout(() => {
+			this.nextFlag=true
+		}, 900);
+	}
+
 	onResize() {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
@@ -403,6 +427,7 @@ export default class Brand extends Vue {
 		ScrollTrigger.getAll().forEach(child => child.kill());
 		this.pathTween && this.pathTween.kill();
 	}
+
 	bdJump(){
 		window.open(`http://api.map.baidu.com/marker?location=31.188195,121.437186&title=波涛家居建材&content=上海徐汇区中山西路2331号&output=html&src=webapp.baidu.openAPIdemo`)
 	}
