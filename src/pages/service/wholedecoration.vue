@@ -1,11 +1,11 @@
 <template>
 	<div class="whole-decoration">
 		<div class="page1">
-			<template v-if="banner&&banner.litpic">
-				<img :src="web_url+banner.litpic" alt="" />
+			<template v-if="banner && banner.litpic">
+				<img :src="web_url + banner.litpic" alt="" />
 				<div class="text">
-					<h2>{{banner.title}}</h2>
-					<p>{{banner.etitle}}</p>
+					<h2>{{ banner.title }}</h2>
+					<p>{{ banner.etitle }}</p>
 				</div>
 				<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 				<div class="arrow" @click="rollTo()"></div>
@@ -23,7 +23,7 @@
 							{{ i + 1 }}
 							<i :class="{ active: item.active }">
 								<b>
-									<img :src="web_url+item.icon" alt="" />
+									<img :src="web_url + item.icon" alt="" />
 								</b>
 							</i>
 						</h2>
@@ -37,16 +37,16 @@
 			<h2 class="wow">服务团队</h2>
 			<p class="wow">Service team</p>
 			<ul>
-				<li class="wow" v-for="(item,i) in fwtdList" :key="i">
+				<li class="wow" v-for="(item, i) in fwtdList" :key="i">
 					<div class="icon">
 						<i>
-							<img :src="web_url+item.icono" alt="">
-							<img :src="web_url+item.iconw" alt="">
+							<img :src="web_url + item.icono" alt="" />
+							<img :src="web_url + item.iconw" alt="" />
 						</i>
 					</div>
 					<div class="text">
-						<h4>{{item.title}}</h4>
-						<p>{{item.desc}}</p>
+						<h4>{{ item.title }}</h4>
+						<p>{{ item.desc }}</p>
 					</div>
 				</li>
 			</ul>
@@ -56,16 +56,16 @@
 			<p class="wow">Villa decoration cost</p>
 
 			<ul>
-				<li class="wow" v-for="(item,i) in ghfyList" :key="i">
-					<div v-if="i<=2">
-						<span>{{item.title}}</span>
-						<img :src="web_url+item.icon" alt="" />
+				<li class="wow" v-for="(item, i) in ghfyList" :key="i">
+					<div v-if="i <= 2">
+						<span>{{ item.title }}</span>
+						<img :src="web_url + item.icon" alt="" />
 					</div>
 					<div v-else>
-						<img :src="web_url+item.icon" alt="" />
-						<span>{{item.title}}</span>
+						<img :src="web_url + item.icon" alt="" />
+						<span>{{ item.title }}</span>
 					</div>
-					<p>{{item.desc}}</p>
+					<p>{{ item.desc }}</p>
 				</li>
 			</ul>
 		</div>
@@ -75,26 +75,22 @@
 				<span>“饰”</span>
 			</h2>
 			<p class="wow">After-sales service</p>
-			<div v-if="btysInfo&&btysInfo.bg" :style="{background:'url('+web_url+btysInfo.bg+') no-repeat'}">
+			<div v-if="btysInfo && btysInfo.bg" :style="{ background: 'url(' + web_url + btysInfo.bg + ') no-repeat' }">
 				<div class="wow" v-if="btysInfo.desc">
-					<h1>{{btysInfo.title}}</h1>
-					<p v-for="(item,i) in btysInfo.desc.split('\r\n')" :key="i">{{item}}</p>
-					<h3>{{btysInfo.cjqd}}</h3>
+					<h1>{{ btysInfo.title }}</h1>
+					<p v-for="(item, i) in btysInfo.desc.split('\r\n')" :key="i">{{ item }}</p>
+					<h3>{{ btysInfo.cjqd }}</h3>
 				</div>
 				<div class="wow">
-					<h1>{{btysInfo.xztitle}}</h1>
-					<p>{{btysInfo.xzdesc}}</p>
+					<h1>{{ btysInfo.xztitle }}</h1>
+					<p>{{ btysInfo.xzdesc }}</p>
 				</div>
 			</div>
 			<ul>
-				<li class="wow" v-for="(item,i) in ysList" :key="i">
-					<div class="icon" :style="{background:'url('+web_url+item.icon+') no-repeat'}">
-					</div>
-					<h2 v-html="item.desc">
-					</h2>
+				<li class="wow" v-for="(item, i) in ysList" :key="i">
+					<div class="icon" :style="{ background: 'url(' + web_url + item.icon + ') no-repeat' }"></div>
+					<h2 v-html="item.desc"></h2>
 				</li>
-
-
 			</ul>
 		</div>
 	</div>
@@ -149,15 +145,15 @@ export default WholeDecoration;
 	}
 	@keyframes bounce {
 		0%,
-		100%,
 		20%,
 		53%,
-		80% {
+		80%,
+		100% {
 			-webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 			transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-			-webkit-transform: translate3d(0, 0, 0);
-			-ms-transform: translate3d(0, 0, 0);
-			transform: translate3d(0, 0, 0);
+			-webkit-transform: translate(0, 0);
+			-ms-transform: translate(0, 0);
+			transform: translate(0, 0);
 		}
 		40%,
 		43% {
@@ -464,8 +460,8 @@ export default WholeDecoration;
 							top: -40px;
 							left: 0;
 						}
-						h3{
-							width: 450px!important;
+						h3 {
+							width: 450px !important;
 						}
 					}
 					&:nth-child(11) {
@@ -522,7 +518,7 @@ export default WholeDecoration;
 							top: -40px;
 							left: 0;
 						}
-						h3{
+						h3 {
 							padding-right: 60px;
 						}
 					}
@@ -642,10 +638,8 @@ export default WholeDecoration;
 					animation-delay: 0.7s;
 				}
 				.icon {
-
-						&:hover {
-
-						}
+					&:hover {
+					}
 				}
 				.icon {
 					width: 100px;
@@ -655,24 +649,24 @@ export default WholeDecoration;
 					margin-right: 32px;
 					cursor: pointer;
 					position: relative;
-					&:hover{
-						background: #EB551D;
-						img{
+					&:hover {
+						background: #eb551d;
+						img {
 							opacity: 0;
-							&:nth-child(2){
+							&:nth-child(2) {
 								opacity: 1;
 							}
 						}
 					}
-					img{
+					img {
 						position: absolute;
 						left: 50%;
 						top: 50%;
 						max-width: 40px;
-						transform: translate(-50%,-50%);
+						transform: translate(-50%, -50%);
 						opacity: 1;
-						transition: .3s;
-						&:nth-child(2){
+						transition: 0.3s;
+						&:nth-child(2) {
 							opacity: 0;
 						}
 					}
@@ -908,7 +902,7 @@ export default WholeDecoration;
 			animation-fill-mode: forwards;
 		}
 		> div {
-			background-size: 100% 100%!important;
+			background-size: 100% 100% !important;
 			display: flex;
 			height: 620px;
 			width: 1760px;
@@ -1003,8 +997,8 @@ export default WholeDecoration;
 					height: 89px;
 					border: 2px solid #ffffff;
 					margin: 0 auto;
-					background-size: 46px auto!important;
-					background-position: center center!important;
+					background-size: 46px auto !important;
+					background-position: center center !important;
 				}
 				h2 {
 					margin-top: 35px;
@@ -1017,27 +1011,22 @@ export default WholeDecoration;
 				}
 				&:nth-child(1) {
 					animation-delay: 0.1s;
-
 				}
 
 				&:nth-child(2) {
 					animation-delay: 0.2s;
-
 				}
 
 				&:nth-child(3) {
 					animation-delay: 0.3s;
-
 				}
 
 				&:nth-child(4) {
 					animation-delay: 0.4s;
-
 				}
 
 				&:nth-child(5) {
 					animation-delay: 0.5s;
-
 				}
 			}
 		}

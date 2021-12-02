@@ -1,7 +1,7 @@
 <template>
 	<div class="home">
 		<div class="page1">
-			<swiper :options="bannerSwiperOptions" v-if="banner.list&&banner.list.length!=0">
+			<swiper :options="bannerSwiperOptions" v-if="banner.list && banner.list.length != 0">
 				<swiper-slide v-for="(item, i) in banner.list" :key="i">
 					<template v-if="item.video">
 						<video class="videos" :src="web_url + item.video" controls preload="true" loop="loop" muted autoplay="autoplay">
@@ -10,22 +10,23 @@
 						<i></i>
 					</template>
 					<template v-else>
-						<img :src="web_url+item.img" alt="" />
+						<img :src="web_url + item.img" alt="" />
 					</template>
-						<div class="text">
-							<div class="text-content">
-								<h3>
-									<span></span><span>{{item.title}}</span>
-								</h3>
-								<div v-if="item.etitle">
-									<p>{{item.etitle.split('\n')[0]}}</p>
-									<p>{{item.etitle.split('\n')[1]}}</p>
-								</div>
-							</div>
-							<div>
-								<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
+					<div class="text">
+						<div class="text-content">
+							<h3>
+								<span></span>
+								<span>{{ item.title }}</span>
+							</h3>
+							<div v-if="item.etitle">
+								<p>{{ item.etitle.split('\n')[0] }}</p>
+								<p>{{ item.etitle.split('\n')[1] }}</p>
 							</div>
 						</div>
+						<div>
+							<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
+						</div>
+					</div>
 				</swiper-slide>
 			</swiper>
 			<div class="swiper-button-wrap">
@@ -60,29 +61,28 @@
 			</h2>
 			<p class="wow">Select cases</p>
 			<div class="tabs wow">
-				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="anIndex = i,page2Index = 0,swiperIndex = 0,anIndexFun();">{{ item.typename }}</div>
+				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="(anIndex = i), (page2Index = 0), (swiperIndex = 0), anIndexFun()">{{ item.typename }}</div>
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
 					<div class="imgs-wrap" v-if="anList.length > 0">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
 							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
-								<img @click="openUrl(item.link)" :src="web_url+item.img" alt="" />
+								<img @click="openUrl(item.link)" :src="web_url + item.img" alt="" />
 							</swiper-slide>
 						</swiper>
 					</div>
-
 				</div>
 				<transition name="fade">
-					<template v-if="anList.length > 0 && anList[anIndex].list&&anList[anIndex].list[page2Index]">
+					<template v-if="anList.length > 0 && anList[anIndex].list && anList[anIndex].list[page2Index]">
 						<div class="text wow" v-if="page2Ani">
-							<h3 v-if="anList[anIndex].list[page2Index]&&anList[anIndex].list[page2Index].title">{{anList[anIndex].list[page2Index].title}}</h3>
-							<h4 v-if="anList[anIndex].list[page2Index]&&anList[anIndex].list[page2Index].title">
-								<span>{{anList[anIndex].list[page2Index].istyle}}</span>
-								<span>{{anList[anIndex].list[page2Index].imj}}</span>
+							<h3 v-if="anList[anIndex].list[page2Index] && anList[anIndex].list[page2Index].title">{{ anList[anIndex].list[page2Index].title }}</h3>
+							<h4 v-if="anList[anIndex].list[page2Index] && anList[anIndex].list[page2Index].title">
+								<span>{{ anList[anIndex].list[page2Index].istyle }}</span>
+								<span>{{ anList[anIndex].list[page2Index].imj }}</span>
 							</h4>
-							<p v-if="anList[anIndex].list[page2Index]&&anList[anIndex].list[page2Index].title">
-								{{anList[anIndex].list[page2Index].desc}}
+							<p v-if="anList[anIndex].list[page2Index] && anList[anIndex].list[page2Index].title">
+								{{ anList[anIndex].list[page2Index].desc }}
 							</p>
 							<!-- <div class="btn-box">
 								<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' ,query:{aid:anList[anIndex].list[page2Index].aid}})"></Button>
@@ -93,7 +93,7 @@
 				<div class="swiper-wrap wow" v-if="anList.length > 0">
 					<swiper class="dswiper" :options="bannerSwiperOptions2" ref="mySwiper2">
 						<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i" :class="{ active: swiperIndex == i }" @click.native="onSelect(i)">
-							<img :src="web_url+item.img" alt="" />
+							<img :src="web_url + item.img" alt="" />
 						</swiper-slide>
 					</swiper>
 					<div class="swiper-button-wrap">
@@ -101,8 +101,8 @@
 						<div class="next2" @click="onClick3(1)"></div>
 					</div>
 				</div>
-				<div class="mask" v-if="anList.length > 0&&anList[anIndex].list&&anList[anIndex].list[page2Index]">
-					<img :src="web_url + anList[anIndex].list[page2Index].img" alt="" />
+				<div class="mask" v-if="anList.length > 0 && anList[anIndex].list && anList[anIndex].list[page2Index]">
+					<img :src="web_url + anList[anIndex].list[page2Index].img" alt="" v-if="!isIE" />
 				</div>
 				<div class="mask2"></div>
 			</div>
@@ -153,67 +153,72 @@
 
 				<div class="left-text">
 					<div class="text">
-
-					<transition name="fade">
+						<transition name="fade">
 							<div class="box wow" v-if="page3Ani">
-								<h4 class="an1">{{sjsItem.title}}</h4>
-								<span class="an2">{{sjsItem.sjssx}}</span>
+								<h4 class="an1">{{ sjsItem.title }}</h4>
+								<span class="an2">{{ sjsItem.sjssx }}</span>
 								<h5 class="an3">从业年限：</h5>
-								<b class="an4">{{sjsItem.cysj}}</b>
+								<b class="an4">{{ sjsItem.cysj }}</b>
 								<h5 class="an5" v-if="sjsItem.hor">所获荣誉</h5>
 								<p class="an6" v-if="sjsItem.hor" v-html="sjsItem.hor"></p>
 								<h5 class="an7" v-if="sjsItem.dbz">代表作品</h5>
-								<p class="an8" v-if="sjsItem.dbz">{{sjsItem.dbz}}</p>
+								<p class="an8" v-if="sjsItem.dbz">{{ sjsItem.dbz }}</p>
 								<div class="btn-box an9">
-									<Button @click.native="$router.push({ name: 'design-detail',query:{aid:sjsItem.aid} })" text="TA的作品"></Button>
+									<Button @click.native="$router.push({ name: 'design-detail', query: { aid: sjsItem.aid } })" text="TA的作品"></Button>
 								</div>
 							</div>
-					</transition>
-
+						</transition>
 					</div>
-					<div class="img-wrap" v-if="sjsItem&&sjsItem.img">
+					<div class="img-wrap" v-if="sjsItem && sjsItem.img">
 						<transition-group name="toggle-image">
-							<img :src="web_url+sjsItem.img" alt="" v-if="showProfile" key="a" />
-							<img :src="web_url+sjsItem.img" alt="" v-if="!showProfile" key="b" />
+							<img :src="web_url + sjsItem.img" alt="" v-if="showProfile" key="a" />
+							<img :src="web_url + sjsItem.img" alt="" v-if="!showProfile" key="b" />
 						</transition-group>
 
 						<transition-group name="fade">
-							<div v-if="showProfile" key="c" >
+							<div v-if="showProfile" key="c">
 								<p>DESIGN CONCEPT</p>
-								<b>{{sjsItem.sjln}}</b>
+								<b>{{ sjsItem.sjln }}</b>
 							</div>
-							<div v-if="!showProfile"  key="d">
+							<div v-if="!showProfile" key="d">
 								<p>CONCEPT DESIGN</p>
-								<b>{{sjsItem.sjln}}</b>
+								<b>{{ sjsItem.sjln }}</b>
 							</div>
 						</transition-group>
-
 					</div>
 				</div>
 			</div>
 			<div class="right wow">
 				<ul>
-					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick(item, i)" :ref="`item${i}`"
-					>
-						<div class="flip-box" :class="{ 'do-flip': applyFlipType==1, 'do-flip-reverse': applyFlipType==2 }">
-							<img :src="nextPortraitList[i] ? (web_url+nextPortraitList[i].img) : require('assets/white.png')" alt="" />
-							<img :src="web_url+item.img" alt="" v-if="item.img!=='assets/white.png'" />
-							<img :src="nextPortraitList[i] ? (web_url+nextPortraitList[i].img) : require('assets/white.png')" alt="" />
+					<li v-for="(item, i) in currentPortraitList" :key="i" @click="onClick(item, i)" :ref="`item${i}`">
+						<div class="flip-box" :class="{ 'do-flip': applyFlipType == 1, 'do-flip-reverse': applyFlipType == 2 }">
+							<img :src="nextPortraitList[i] ? web_url + nextPortraitList[i].img : require('assets/white.png')" alt="" />
+							<img :src="web_url + item.img" alt="" v-if="item.img !== 'assets/white.png'" />
+							<img :src="nextPortraitList[i] ? web_url + nextPortraitList[i].img : require('assets/white.png')" alt="" />
 						</div>
 					</li>
 				</ul>
 
-
 				<template v-if="isShowImg">
-					<div class="img-box2" @click="onClick(item.src, i)" v-for="(item, i) in listwidth" :key='i' :style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }">
-						<img :src="web_url+item.src" alt="" />
+					<div
+						class="img-box2"
+						@click="onClick(item.src, i)"
+						v-for="(item, i) in listwidth"
+						:key="i"
+						:style="{ top: `${item.top}px`, left: `${item.left}px`, width: `${item.width}px`, height: `${item.height}px` }"
+					>
+						<img :src="web_url + item.src" alt="" />
 					</div>
 				</template>
 
-				<template v-if="listwidth.length!=0">
-						<div class="img-box" :style="{ top: `${listwidth[page3Index].top}px`, left: `${listwidth[page3Index].left}px`, width: `${listwidth[page3Index].width}px`, height: `${listwidth[page3Index].height}px` }" v-if="isShowLightImg">
-							<img :src="web_url+listwidth[page3Index].src" alt="" />
-						</div>
+				<template v-if="listwidth.length != 0">
+					<div
+						class="img-box"
+						:style="{ top: `${listwidth[page3Index].top}px`, left: `${listwidth[page3Index].left}px`, width: `${listwidth[page3Index].width}px`, height: `${listwidth[page3Index].height}px` }"
+						v-if="isShowLightImg"
+					>
+						<img :src="web_url + listwidth[page3Index].src" alt="" />
+					</div>
 				</template>
 			</div>
 			<div class="next" @click="onRoute('design-list')">
@@ -227,13 +232,13 @@
 		</div>
 		<div class="page4 wow">
 			<div class="left" v-if="sgzzDesc">
-				<img v-if="sgzzDesc&&sgzzDesc.bg" :src="web_url+sgzzDesc.bg" alt="" />
+				<img v-if="sgzzDesc && sgzzDesc.bg" :src="web_url + sgzzDesc.bg" alt="" />
 				<div class="text">
 					<h2 v-if="sgzzDesc.btitle">
-						<span>{{sgzzDesc.btitle.split('#')[1]}}</span>
-					  <b v-html="sgzzDesc.btitle.split('#')[2]"></b>
+						<span>{{ sgzzDesc.btitle.split('#')[1] }}</span>
+						<b v-html="sgzzDesc.btitle.split('#')[2]"></b>
 					</h2>
-					<p>{{sgzzDesc.etitle}}</p>
+					<p>{{ sgzzDesc.etitle }}</p>
 					<div @click="onRoute('craft-building')">
 						了解更多
 						<i></i>
@@ -294,42 +299,42 @@
 							<p>金牌项目经理</p>
 						</li>
 					</ul>
-					<img @click="videoPop.isPop = true,videoPop.url=sgzzDesc.video" src="~assets/icons/ic_c2_play.png" alt="" />
+					<img @click="(videoPop.isPop = true), (videoPop.url = sgzzDesc.video)" src="~assets/icons/ic_c2_play.png" alt="" />
 				</div>
 			</div>
 			<div class="right">
 				<div class="text">
-					<h2 v-if="sggyList&&sggyList[picIndex2]">
+					<h2 v-if="sggyList && sggyList[picIndex2]">
 						<transition-group name="toggle-image">
-							<img :src="web_url+sggyList[picIndex2].img" alt="" v-if="textActive" key="a" />
-							<img :src="web_url+sggyList[picIndex2].img" alt="" v-if="!textActive" key="b" />
+							<img :src="web_url + sggyList[picIndex2].img" alt="" v-if="textActive" key="a" />
+							<img :src="web_url + sggyList[picIndex2].img" alt="" v-if="!textActive" key="b" />
 						</transition-group>
 					</h2>
-					<div :class="{ active: textActive2 }" v-if="sggyList&&sggyList[picIndex2]">
-						<h5>{{sggyList[picIndex2].title}}</h5>
+					<div :class="{ active: textActive2 }" v-if="sggyList && sggyList[picIndex2]">
+						<h5>{{ sggyList[picIndex2].title }}</h5>
 						<p v-html="sggyList[picIndex2].desc"></p>
 					</div>
 				</div>
 				<div class="img-wrap">
 					<img src="~assets/bg_home_b4_right.jpg" alt="" />
-					<div class="div1" @mouseover="textActiveFun(0,0)">
+					<div class="div1" @mouseover="textActiveFun(0, 0)">
 						<i></i>
 					</div>
-					<div class="div2" @mouseover="textActiveFun(3,1)">
+					<div class="div2" @mouseover="textActiveFun(3, 1)">
 						<i></i>
 					</div>
-					<div class="div3" @mouseover="textActiveFun(1,2)">
+					<div class="div3" @mouseover="textActiveFun(1, 2)">
 						<i></i>
 					</div>
-					<div class="div4" @mouseover="textActiveFun(2,3)">
+					<div class="div4" @mouseover="textActiveFun(2, 3)">
 						<i></i>
 					</div>
 
 					<ul class="pic-box">
 						<li style="font-size:10px;" :class="{ active: picIndex == 2 }"><img :src="picList[0]" alt="" /></li>
-						<li style="font-size:10px;" :class="{ active: picIndex == 1 }" ><img :src="picList[1]" alt="" /></li>
-						<li style="font-size:10px;" :class="{ active: picIndex == 0 }" ><img :src="picList[2]" alt="" /></li>
-						<li style="font-size:10px;" :class="{ active: picIndex == 3 }" ><img :src="picList[3]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 1 }"><img :src="picList[1]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 0 }"><img :src="picList[2]" alt="" /></li>
+						<li style="font-size:10px;" :class="{ active: picIndex == 3 }"><img :src="picList[3]" alt="" /></li>
 					</ul>
 					<div class="btn-wrap">
 						<Button text="预约参观工地" @click.native="$store.state.dialogDesign.visit = true"></Button>
@@ -342,19 +347,19 @@
 				<swiper :options="bannerSwiperOptions3" ref="myswiper3">
 					<swiper-slide v-for="(item, i) in page5List" class="page5Slide" :key="i">
 						<div class="img-box" v-if="item.imgs">
-							<img v-for="(v, i) in item.imgs.split(',')" :key="i" :src="web_url+v" alt="" />
+							<img v-for="(v, i) in item.imgs.split(',')" :key="i" :src="web_url + v" alt="" />
 						</div>
 						<div class="text" v-if="item.title">
 							<h3>
-								<span>{{item.title.split('#')[1]}}</span>
-								{{item.title.split('#')[2]}}
+								<span>{{ item.title.split('#')[1] }}</span>
+								{{ item.title.split('#')[2] }}
 							</h3>
 							<div>
-								{{item.etitle}}
+								{{ item.etitle }}
 							</div>
-							<h4>{{item.ctitle}}</h4>
-							<h5>{{item.cftitle}}</h5>
-							<p>{{item.ccenter}}</p>
+							<h4>{{ item.ctitle }}</h4>
+							<h5>{{ item.cftitle }}</h5>
+							<p>{{ item.ccenter }}</p>
 							<div class="btn">
 								<Button text="服务详情"></Button>
 							</div>
@@ -364,9 +369,9 @@
 				<div class="swiper-pagination3"></div>
 				<div class="bgimg">
 					<div>
-						<p class="banner-tag">{{page5Index2}}</p>
-						<h5>{{page5List[page5Index].rtitle}}</h5>
-						<h6>{{page5List[page5Index].retitle}} </h6>
+						<p class="banner-tag">{{ page5Index2 }}</p>
+						<h5>{{ page5List[page5Index].rtitle }}</h5>
+						<h6>{{ page5List[page5Index].retitle }}</h6>
 						<i class="next3"></i>
 					</div>
 				</div>
@@ -379,15 +384,15 @@
 			<div class="text">
 				<h3 v-if="qaylz.title">
 					<ICountUp :endVal="parseInt(qaylz.title.split('#')[1])" :options="options1"></ICountUp>
-					{{qaylz.title.split('#')[2]}}
+					{{ qaylz.title.split('#')[2] }}
 				</h3>
 				<div>
-					{{qaylz.etitle}}
+					{{ qaylz.etitle }}
 				</div>
-				<h4>{{qaylz.ctitle}}</h4>
-				<h5>{{qaylz.cetitle}}</h5>
+				<h4>{{ qaylz.ctitle }}</h4>
+				<h5>{{ qaylz.cetitle }}</h5>
 				<p>
-					{{qaylz.desc}}
+					{{ qaylz.desc }}
 				</p>
 				<div class="btn">
 					<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
@@ -445,71 +450,71 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li class="wow" v-if="zxxxList[0]" @click="$router.push({ name: 'owner-voice',query:{aid:zxxxList[4].aid}})">
+					<li class="wow" v-if="zxxxList[0]" @click="$router.push({ name: 'owner-voice', query: { aid: zxxxList[4].aid } })">
 						<div>
-							<img :src="web_url+zxxxList[0].video_img" alt="" />
+							<img :src="web_url + zxxxList[0].video_img" alt="" />
 						</div>
-						<i @click.stop="videoPop.isPop = true,videoPop.url=zxxxList[0].video"></i>
+						<i @click.stop="(videoPop.isPop = true), (videoPop.url = zxxxList[0].video)"></i>
 						<div class="text">
-							<p>{{zxxxList[0].tag}}</p>
-							<div>{{zxxxList[0].title}}</div>
+							<p>{{ zxxxList[0].tag }}</p>
+							<div>{{ zxxxList[0].title }}</div>
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" v-if="zxxxList[1]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[1].aid}})">
+						<div class="top" v-if="zxxxList[1]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[1].aid } })">
 							<div>
-								<img :src="web_url+zxxxList[1].img" alt="" />
+								<img :src="web_url + zxxxList[1].img" alt="" />
 								<div>
-									<p>{{yue(zxxxList[1].update_time)}}</p>
-									<b>{{format(zxxxList[1].update_time)}}</b>
+									<p>{{ yue(zxxxList[1].update_time) }}</p>
+									<b>{{ format(zxxxList[1].update_time) }}</b>
 								</div>
 							</div>
-							<h4>{{zxxxList[1].title}}</h4>
-							<p>{{zxxxList[1].tag}}</p>
+							<h4>{{ zxxxList[1].title }}</h4>
+							<p>{{ zxxxList[1].tag }}</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[2]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[2].aid}})">
-							<h4>{{zxxxList[2].title}}</h4>
+						<div class="items" v-if="zxxxList[2]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[2].aid } })">
+							<h4>{{ zxxxList[2].title }}</h4>
 							<p>
-								<span>{{zxxxList[2].tag}}</span>
-								<span>{{format(zxxxList[2].update_time)}}</span>
+								<span>{{ zxxxList[2].tag }}</span>
+								<span>{{ format(zxxxList[2].update_time) }}</span>
 							</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[3]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[3].aid} })">
-							<h4>{{zxxxList[3].title}}</h4>
+						<div class="items" v-if="zxxxList[3]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[3].aid } })">
+							<h4>{{ zxxxList[3].title }}</h4>
 							<p>
-								<span>{{zxxxList[3].tag}}</span>
-								<span>{{format(zxxxList[3].update_time)}}</span>
+								<span>{{ zxxxList[3].tag }}</span>
+								<span>{{ format(zxxxList[3].update_time) }}</span>
 							</p>
 						</div>
 					</li>
 					<li class="item wow">
-						<div class="top" v-if="zxxxList[4]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[4].aid}})">
+						<div class="top" v-if="zxxxList[4]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[4].aid } })">
 							<div>
-								<img :src="web_url+zxxxList[4].img" alt="" />
+								<img :src="web_url + zxxxList[4].img" alt="" />
 								<div>
-									<p>{{yue(zxxxList[4].update_time)}}</p>
-									<b>{{format(zxxxList[4].update_time)}}</b>
+									<p>{{ yue(zxxxList[4].update_time) }}</p>
+									<b>{{ format(zxxxList[4].update_time) }}</b>
 								</div>
 							</div>
-							<h4>{{zxxxList[4].title}}</h4>
-							<p>{{zxxxList[4].tag}}</p>
+							<h4>{{ zxxxList[4].title }}</h4>
+							<p>{{ zxxxList[4].tag }}</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[5]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[5].aid}})">
-							<h4>{{zxxxList[5].title}}</h4>
+						<div class="items" v-if="zxxxList[5]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[5].aid } })">
+							<h4>{{ zxxxList[5].title }}</h4>
 							<p>
-								<span>{{zxxxList[5].tag}}</span>
-								<span>{{format(zxxxList[5].update_time)}}</span>
+								<span>{{ zxxxList[5].tag }}</span>
+								<span>{{ format(zxxxList[5].update_time) }}</span>
 							</p>
 						</div>
 
-						<div class="items" v-if="zxxxList[6]" @click="$router.push({ name: 'strategy-detail',query:{aid:zxxxList[6].aid} })">
-							<h4>{{zxxxList[6].title}}</h4>
+						<div class="items" v-if="zxxxList[6]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[6].aid } })">
+							<h4>{{ zxxxList[6].title }}</h4>
 							<p>
-								<span>{{zxxxList[6].tag}}</span>
-								<span>{{format(zxxxList[6].update_time)}}</span>
+								<span>{{ zxxxList[6].tag }}</span>
+								<span>{{ format(zxxxList[6].update_time) }}</span>
 							</p>
 						</div>
 					</li>
@@ -542,13 +547,13 @@ export default home;
 					width: 100%;
 					height: 100%;
 				}
-				i{
+				i {
 					position: absolute;
 					width: 100%;
 					height: 100%;
 					top: 0;
 					left: 0;
-					background:url(~assets/bg_home_banner_mask.png) no-repeat;
+					background: url(~assets/bg_home_banner_mask.png) no-repeat;
 					background-size: 100% 100%;
 					z-index: 1;
 					pointer-events: none;
@@ -571,7 +576,7 @@ export default home;
 							align-items: center;
 							justify-content: center;
 							span {
-								&:nth-child(1){
+								&:nth-child(1) {
 									font-size: 41px;
 									margin-right: 4px;
 									font-weight: bold;
@@ -587,15 +592,15 @@ export default home;
 							text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.23);
 							text-align: center;
 							margin: 62px 0 100px 0;
-							p{
+							p {
 								/* white-space: pre-wrap; */
-								text-transform: uppercase
+								text-transform: uppercase;
 							}
 						}
 						opacity: 0;
 					}
 				}
-				.videos{
+				.videos {
 					width: 100%;
 					height: 100%;
 					object-fit: fill;
@@ -628,8 +633,8 @@ export default home;
 				outline: none;
 				transition: transform 0.3s;
 			}
-			.prev{
-				&:hover{
+			.prev {
+				&:hover {
 					background: url('~assets/icons/ic_f4_left2.png') center center;
 					background-size: 17px 34px;
 					transform: scale(1.2);
@@ -873,8 +878,8 @@ export default home;
 					background: #fff;
 					box-sizing: border-box;
 					cursor: pointer;
-					.swiper-slide{
-						&::after{
+					.swiper-slide {
+						&::after {
 							pointer-events: none;
 							background: url(~assets/bg_home_b2_mask1.png) no-repeat;
 							background-size: 100% 100%;
@@ -901,7 +906,6 @@ export default home;
 						opacity: 1;
 					}
 				}
-
 			}
 			.swiper-wrap {
 				position: absolute;
@@ -923,7 +927,7 @@ export default home;
 					.swiper-wrapper {
 						.swiper-slide {
 							box-sizing: border-box;
-							width: 140px!important;
+							width: 140px !important;
 							height: 125px;
 							border: 1px solid transparent;
 							&.swiper-slide-active {
@@ -933,9 +937,9 @@ export default home;
 									transform: translateY(0px) scaleY(1.2) !important;
 								} */
 							}
-							&.active{
-								margin-left: 10px!important;
-								margin-right: 20px!important;
+							&.active {
+								margin-left: 10px !important;
+								margin-right: 20px !important;
 								img {
 									border: 1px solid #ffffff;
 									transform: translateY(0px) scale(1.2) !important;
@@ -1024,65 +1028,65 @@ export default home;
 				opacity: 0.8;
 			}
 		}
-	.text {
-					position: absolute;
-					top: 206px;
-					left: 100px;
-					transition: opacity 0.83s;
-					z-index: 50;
-					@include fade(0.25);
-					h3 {
-						height: 32px;
-						font-size: 34px;
-						font-weight: 400;
-						color: #ffffff;
-						opacity: 0;
-						animation: slide-down-in 1s forwards, fade-in 1s forwards;
+		.text {
+			position: absolute;
+			top: 206px;
+			left: 100px;
+			transition: opacity 0.83s;
+			z-index: 50;
+			@include fade(0.25);
+			h3 {
+				height: 32px;
+				font-size: 34px;
+				font-weight: 400;
+				color: #ffffff;
+				opacity: 0;
+				animation: slide-down-in 1s forwards, fade-in 1s forwards;
+			}
+			h4 {
+				height: 17px;
+				font-size: 18px;
+				font-weight: 400;
+				color: #ffffff;
+				margin-right: 16px;
+				opacity: 0;
+				margin: 21px 0 51px 0;
+				animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
+			}
+			p {
+				width: 354px;
+				font-size: 18px;
+				font-weight: 400;
+				opacity: 0;
+				color: #ffffff;
+				line-height: 30px;
+				@include line-clamp(3);
+				max-height: 90px;
+				animation: slide-down-in 1s 0.4s forwards, fade-in 1s 0.4s forwards;
+			}
+			.btn-box {
+				width: 170px;
+				opacity: 0;
+				height: 53px;
+				margin-top: 60px;
+				animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
+				/deep/.btn {
+					&::after,
+					&::before {
+						width: 10px;
+						height: 10px;
 					}
-					h4 {
-						height: 17px;
-						font-size: 18px;
-						font-weight: 400;
-						color: #ffffff;
-						margin-right: 16px;
-						opacity: 0;
-						margin: 21px 0 51px 0;
-						animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
+					&::after {
+						left: 5px;
+						top: 5px;
 					}
-					p {
-						width: 354px;
-						font-size: 18px;
-						font-weight: 400;
-						opacity: 0;
-						color: #ffffff;
-						line-height: 30px;
-						@include line-clamp(3);
-						max-height: 90px;
-						animation: slide-down-in 1s 0.4s forwards, fade-in 1s 0.4s forwards;
-					}
-					.btn-box {
-						width: 170px;
-						opacity: 0;
-						height: 53px;
-						margin-top: 60px;
-						animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
-						/deep/.btn {
-							&::after,
-							&::before {
-								width: 10px;
-								height: 10px;
-							}
-							&::after {
-								left: 5px;
-								top: 5px;
-							}
-							&::before {
-								right: 5px;
-								bottom: 5px;
-							}
-						}
+					&::before {
+						right: 5px;
+						bottom: 5px;
 					}
 				}
+			}
+		}
 		.next {
 			height: 18px;
 			font-size: 18px;
@@ -1095,7 +1099,7 @@ export default home;
 			align-items: center;
 			z-index: 2;
 			cursor: pointer;
-			transition: color .3s;
+			transition: color 0.3s;
 			&:hover {
 				color: #ed5400;
 				i {
@@ -1132,7 +1136,7 @@ export default home;
 				top: 0;
 				left: 0;
 				z-index: 1;
-				background: rgba(#031428,.07);
+				background: rgba(#031428, 0.07);
 				pointer-events: none;
 			}
 			> h2 {
@@ -1209,41 +1213,41 @@ export default home;
 						position: absolute;
 						left: 0;
 						top: 0;
-						animation: slide-down-in 1s forwards, fade-in .3s forwards;
-						.an1{
+						animation: slide-down-in 1s forwards, fade-in 0.3s forwards;
+						.an1 {
 							opacity: 0;
 							animation: slide-down-in 1s forwards, fade-in 1s forwards;
 						}
-						.an2{
+						.an2 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
 						}
-						.an3{
+						.an3 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.3s forwards, fade-in 1s 0.3s forwards;
 						}
-						.an4{
+						.an4 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.4s forwards, fade-in 1s 0.4s forwards;
 						}
-						.an5{
+						.an5 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.5s forwards, fade-in 1s 0.5s forwards;
 						}
-						.an6{
+						.an6 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
 							white-space: pre-wrap;
 						}
-						.an7{
+						.an7 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.7s forwards, fade-in 1s 0.7s forwards;
 						}
-						.an8{
+						.an8 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.8s forwards, fade-in 1s 0.8s forwards;
 						}
-						.an9{
+						.an9 {
 							opacity: 0;
 							animation: slide-down-in 1s 0.9s forwards, fade-in 1s 0.9s forwards;
 						}
@@ -1326,7 +1330,7 @@ export default home;
 					position: relative;
 					overflow: hidden;
 					z-index: 2;
-					&::after{
+					&::after {
 						content: '';
 						position: absolute;
 						left: 0;
@@ -1397,7 +1401,7 @@ export default home;
 				left: 0;
 				z-index: 1;
 				background: url(~assets/bg_home_b2_mask.png) no-repeat;
-				opacity: .95;
+				opacity: 0.95;
 				background-size: 100% 100%;
 				/* background: linear-gradient(to bottom, rgba(23, 38, 57, 0.9), rgba(23, 38, 57, 0.5), rgba(23, 38, 57, 0.9)); */
 				pointer-events: none;
@@ -1433,11 +1437,11 @@ export default home;
 						}
 
 						&.do-flip {
-							transition: transform .5s ease-in-out;
+							transition: transform 0.5s ease-in-out;
 							transform: rotateY(-90deg);
 						}
 						&.do-flip-reverse {
-							transition: transform .5s ease-in-out;
+							transition: transform 0.5s ease-in-out;
 							transform: rotateY(90deg);
 						}
 					}
@@ -1497,7 +1501,8 @@ export default home;
 						width: 160px;
 						height: 195px;
 					}
-					&:nth-child(6), &:nth-child(7) {
+					&:nth-child(6),
+					&:nth-child(7) {
 						@include flip-box(80px);
 					}
 
@@ -1525,7 +1530,10 @@ export default home;
 						width: 187px;
 						height: 227px;
 					}
-					&:nth-child(8),&:nth-child(9),&:nth-child(10),&:nth-child(11) {
+					&:nth-child(8),
+					&:nth-child(9),
+					&:nth-child(10),
+					&:nth-child(11) {
 						@include flip-box(93.5px);
 					}
 
@@ -1541,7 +1549,8 @@ export default home;
 						width: 161px;
 						height: 195px;
 					}
-					&:nth-child(12),&:nth-child(13) {
+					&:nth-child(12),
+					&:nth-child(13) {
 						@include flip-box(93.5px);
 					}
 
@@ -1593,7 +1602,14 @@ export default home;
 						width: 124px;
 						height: 152px;
 					}
-					&:nth-child(14),&:nth-child(15),&:nth-child(16),&:nth-child(17),&:nth-child(18),&:nth-child(19),&:nth-child(20),&:nth-child(21) {
+					&:nth-child(14),
+					&:nth-child(15),
+					&:nth-child(16),
+					&:nth-child(17),
+					&:nth-child(18),
+					&:nth-child(19),
+					&:nth-child(20),
+					&:nth-child(21) {
 						@include flip-box(62px);
 					}
 
@@ -1633,7 +1649,12 @@ export default home;
 						width: 117px;
 						height: 142px;
 					}
-					&:nth-child(22),&:nth-child(23),&:nth-child(24),&:nth-child(25),&:nth-child(26),&:nth-child(27) {
+					&:nth-child(22),
+					&:nth-child(23),
+					&:nth-child(24),
+					&:nth-child(25),
+					&:nth-child(26),
+					&:nth-child(27) {
 						@include flip-box(58.5px);
 					}
 
@@ -1649,7 +1670,8 @@ export default home;
 						width: 188px;
 						height: 230px;
 					}
-					&:nth-child(28),&:nth-child(29) {
+					&:nth-child(28),
+					&:nth-child(29) {
 						@include flip-box(94px);
 					}
 
@@ -1677,7 +1699,10 @@ export default home;
 						width: 178px;
 						height: 195px;
 					}
-					&:nth-child(28),&:nth-child(29),&:nth-child(30),&:nth-child(31) {
+					&:nth-child(28),
+					&:nth-child(29),
+					&:nth-child(30),
+					&:nth-child(31) {
 						@include flip-box(89px);
 					}
 
@@ -1710,7 +1735,7 @@ export default home;
 			align-items: center;
 			z-index: 2;
 			cursor: pointer;
-			transition: color .3s;
+			transition: color 0.3s;
 			&:hover {
 				color: #ed5400;
 				i {
@@ -1797,11 +1822,11 @@ export default home;
 			position: absolute;
 			z-index: 3;
 			cursor: pointer;
-			img{
+			img {
 				width: 100%;
 				height: 100%;
 				opacity: 0;
-				transition:opacity .3s;
+				transition: opacity 0.3s;
 				position: relative;
 				z-index: 1;
 			}
@@ -1813,7 +1838,7 @@ export default home;
 				width: 0;
 				height: 0;
 				z-index: 22;
-				transition: border .1s,width .3s,height .3s;
+				transition: border 0.1s, width 0.3s, height 0.3s;
 			}
 			&::after {
 				left: 9px;
@@ -1827,9 +1852,9 @@ export default home;
 				border-top: none;
 				border-left: none;
 			}
-			&:hover{
-				img{
-					opacity: .5;
+			&:hover {
+				img {
+					opacity: 0.5;
 				}
 				&::after,
 				&::before {
@@ -1907,7 +1932,7 @@ export default home;
 					span {
 						color: #ed5400;
 					}
-					b{
+					b {
 						font-weight: bold;
 						white-space: pre-wrap;
 					}
@@ -1931,7 +1956,7 @@ export default home;
 					align-items: center;
 					z-index: 1;
 					cursor: pointer;
-					transition: color .3s;
+					transition: color 0.3s;
 					&:hover {
 						color: #ed5400;
 						i {
@@ -2113,9 +2138,26 @@ export default home;
 								animation: scale2 2s infinite;
 							}
 						}
- 						@keyframes scale{0%{ transform:translate(-50%, -50%) scale(1) ; opacity:.9}100%{ transform:translate(-50%, -50%) scale(3); opacity: 0;}}
-      		  @keyframes scale2{0%{ transform:translate(-50%, -50%) scale(1) ;opacity:.9;}100%{ transform:translate(-50%, -50%) scale(5);opacity:0;}}
-
+						@keyframes scale {
+							0% {
+								transform: translate(-50%, -50%) scale(1);
+								opacity: 0.9;
+							}
+							100% {
+								transform: translate(-50%, -50%) scale(3);
+								opacity: 0;
+							}
+						}
+						@keyframes scale2 {
+							0% {
+								transform: translate(-50%, -50%) scale(1);
+								opacity: 0.9;
+							}
+							100% {
+								transform: translate(-50%, -50%) scale(5);
+								opacity: 0;
+							}
+						}
 					}
 				}
 				.div1 {
@@ -2374,13 +2416,13 @@ export default home;
 					outline: none;
 					transition: transform 0.3s;
 					&:hover {
-							transform: rotate(-90deg);
-							transform: scale(1.1);
-							&::after {
+						transform: rotate(-90deg);
+						transform: scale(1.1);
+						&::after {
 							/* background: url('~assets/icons/ic_home_b3_down_orange.png') center; */
 							background-size: 100% 100%;
 							transform: rotate(-90deg);
-					}
+						}
 					}
 					&::after {
 						content: '';
@@ -2543,7 +2585,7 @@ export default home;
 				font-weight: bold;
 				color: #000000;
 				cursor: pointer;
-				transition: color .3s;
+				transition: color 0.3s;
 				&:hover {
 					color: #ed5400;
 					i {
