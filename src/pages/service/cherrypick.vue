@@ -1,11 +1,11 @@
 <template>
 	<div class="cherry-pick">
-		<div class="page1" >
-			<template v-if="banner&&banner.litpic">
-				<img :src="web_url+banner.litpic" alt="" />
+		<div class="page1">
+			<template v-if="banner && banner.litpic">
+				<img :src="web_url + banner.litpic" alt="" />
 				<div class="text">
-					<h2>{{banner.title}}</h2>
-					<p>{{banner.etitle}}</p>
+					<h2>{{ banner.title }}</h2>
+					<p>{{ banner.etitle }}</p>
 				</div>
 				<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 				<div class="arrow" @click="rollTo()"></div>
@@ -19,28 +19,28 @@
 			<p class="wow">Service advantages</p>
 			<div>
 				<div class="left wow">
-					<div :class="{ active: iconIndex == i }" @click="iconClick(i)" v-for="(item,i) in fwysList" :key="i">
+					<div :class="{ active: iconIndex == i }" @click="iconClick(i)" v-for="(item, i) in fwysList" :key="i">
 						<i>
-							<img :src="web_url+item.iconc" alt="" />
-							<img :src="web_url+item.iconw" alt="" />
+							<img :src="web_url + item.iconc" alt="" />
+							<img :src="web_url + item.iconw" alt="" />
 						</i>
-						<span>{{item.title}}</span>
+						<span>{{ item.title }}</span>
 					</div>
 				</div>
 				<div class="right wow">
 					<div class="swiper">
 						<swiper :options="bannerSwiperOptions" ref="myswiper">
-							<swiper-slide v-for="(item,i) in fwysList" :key="i">
+							<swiper-slide v-for="(item, i) in fwysList" :key="i">
 								<div class="wrap">
 									<div class="text">
-										<h2>{{item.title}}</h2>
-										<h1>{{item.btitle}}</h1>
+										<h2>{{ item.title }}</h2>
+										<h1>{{ item.btitle }}</h1>
 										<div>
-											<p>{{item.desc}}</p>
+											<p>{{ item.desc }}</p>
 										</div>
 									</div>
 									<div class="img-wrap">
-										<img :src="web_url+item.img" alt="" />
+										<img :src="web_url + item.img" alt="" />
 									</div>
 								</div>
 							</swiper-slide>
@@ -61,14 +61,14 @@
 		<div class="page3 wow">
 			<h2>绿色建材让家越住越健康</h2>
 			<p>Green building materials</p>
-			<div class="circle">
+			<div :class="isIE ? 'ieClass' : 'circle'">
 				<div class="father" v-for="(item, i) in yzyjkList" :key="i" :class="activeIndex == i ? 'active' + i : ''">
 					<div class="content">
 						<div class="container">
 							<div class="imgBox">
-								<img :src="web_url+item.img" alt="" />
-								<div class="mask" :class="activeIndex == i ? 'activetext' : ''">
-									<p>{{item.desc}}</p>
+								<img :src="web_url + item.img" alt="" />
+								<div class="mask" :class="activeIndex == i ? 'activetext' : ''" v-if="!isIE">
+									<p>{{ item.desc }}</p>
 								</div>
 							</div>
 							<div class="text" :class="activeIndex == i ? 'active' : ''">
@@ -81,7 +81,9 @@
 					<div class="box" v-for="(item, i) in yzyjkList" :key="i" @mouseover="fn(i)" @mouseout="fn(-1)"></div>
 				</div>
 			</div>
-			<img src="~assets/bg_e2_part3_00.png" alt="" />
+			<div class="circleMask" v-if="isIE"></div>
+			<img src="~assets/bg_e2_part3_00.png" alt="" class="img" v-if="!isIE" />
+			<img src="~assets/12.png" class="ieImg" alt="" v-if="isIE" />
 		</div>
 
 		<div class="page4">
@@ -90,22 +92,22 @@
 			<div class="box">
 				<div class="left wow">
 					<div v-if="hydzList[0]">
-						<img :src="web_url+hydzList[0].img" alt="" />
+						<img :src="web_url + hydzList[0].img" alt="" />
 						<b>01</b>
 						<div class="text">
-							<h3>{{hydzList[0].title}}</h3>
-							<p>{{hydzList[0].etitle}}</p>
+							<h3>{{ hydzList[0].title }}</h3>
+							<p>{{ hydzList[0].etitle }}</p>
 						</div>
 					</div>
 				</div>
 				<div class="right">
-					<template v-for="(item,i) in hydzList">
-						<div class="wow" :key="i" v-if="i>0">
-							<img :src="web_url+item.img" alt="" />
-							<b>0{{i+1}}</b>
+					<template v-for="(item, i) in hydzList">
+						<div class="wow" :key="i" v-if="i > 0">
+							<img :src="web_url + item.img" alt="" />
+							<b>0{{ i + 1 }}</b>
 							<div class="text">
-								<h3>{{item.title}}</h3>
-								<p>{{item.etitle}}</p>
+								<h3>{{ item.title }}</h3>
+								<p>{{ item.etitle }}</p>
 							</div>
 						</div>
 					</template>
@@ -123,7 +125,7 @@
 					<div>
 						<h2>
 							<span>{{ item.title }}</span>
-							<img :src="web_url+item.icon" alt="" />
+							<img :src="web_url + item.icon" alt="" />
 						</h2>
 						<div class="line"></div>
 						<p>{{ item.desc }}</p>
@@ -161,7 +163,7 @@
 						v-for="(item, i) in currentPortraitList"
 						:key="i"
 					>
-						<div class="one" >
+						<div class="one">
 							<div class="inner-one" :style="{ opacity: item != 'assets/white.png' ? 1 : 1 }">
 								<div class="box">
 									<img :src="item" alt="" />
@@ -554,7 +556,7 @@ export default CheckPick;
 			text-align: center;
 			margin-top: 24px;
 		}
-		> img {
+		> .img {
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
@@ -562,6 +564,14 @@ export default CheckPick;
 			width: 660px;
 			height: 324px;
 			clip-path: ellipse(330px 330px at 50% 100%);
+			z-index: 10;
+		}
+		> .ieImg {
+			width: 1640px;
+			position: absolute;
+			left: 49%;
+			bottom: -0px;
+			transform: translateX(-50%);
 		}
 		.circle {
 			width: 1413px;
@@ -835,8 +845,8 @@ export default CheckPick;
 						}
 					}
 				}
-				p{
-						white-space: pre-wrap;
+				p {
+					white-space: pre-wrap;
 				}
 				&:nth-of-type(8) {
 					transform: rotate(-90deg);
@@ -949,6 +959,89 @@ export default CheckPick;
 					}
 				}
 			}
+		}
+		.ieClass {
+			width: 1413px;
+			height: 1413px;
+			border: 1px solid #ffffff;
+			border-radius: 50%;
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, 50%);
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.container {
+				display: flex;
+				// justify-content: space-between;
+				width: 660px;
+				// height: 150px;
+				.imgBox {
+					img {
+					}
+				}
+				.text {
+					position: relative;
+					flex: 1;
+					background: #eeeeee;
+					p {
+						font-size: 22px;
+						font-family: AlibabaPuHuiTiM;
+						color: #000000;
+						position: absolute;
+						top: 0;
+						left: 0;
+						z-index: 5;
+					}
+				}
+			}
+			.father {
+				position: absolute;
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(8) {
+					left: 24px;
+					top: 458px;
+				}
+			}
+		}
+		.circleMask {
+			width: 975px;
+			height: 975px;
+			background: #eeeeee;
+			border-radius: 50%;
+			// z-index: 9;
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translate(-50%, 50%);
 		}
 	}
 	.page4 {
@@ -1560,7 +1653,7 @@ export default CheckPick;
 								box-shadow: 0px 0px 30px 1px rgba(8, 18, 29, 0.15);
 							}
 						}
-						img{
+						img {
 							filter: none;
 						}
 					}
@@ -1596,10 +1689,10 @@ export default CheckPick;
 							background: #fff;
 							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 						}
-						img{
+						img {
 							width: 100%;
 							filter: grayscale(100%);
-							transition: .3s;
+							transition: 0.3s;
 						}
 						.inner-one .box {
 							transform: rotate(-45deg);
