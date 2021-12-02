@@ -48,13 +48,14 @@
 		<div class="swiper">
 			<div class="swiperBox">
 				<swiper :options="swiperOptions1">
-					<swiper-slide v-for="item in detailData.archivesInfo.imgs.split(',')" :key="item.aid">
+					<swiper-slide v-for="(item, i) in detailData.archivesInfo.imgs.split(',')" :key="item.aid">
 						<img :src="web_url + item" alt="" />
 						<img
 							:style="{ opacity: detailData.archivesInfo.video ? 1 : 0, pointerEvents: detailData.archivesInfo.video ? 'auto' : 'none' }"
 							src="~assets/icons/ic_c2_play.png"
 							@click="playVideo(detailData.archivesInfo.video)"
 							v-if="detailData.archivesInfo.video"
+							v-show="i == 0"
 							alt=""
 							class="play"
 						/>
@@ -66,7 +67,7 @@
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-button-next"></div>
 			</div>
-			<div class="content wow">
+			<div class="content wow" @click="push(detailData.designer_info.aid, $event)">
 				<img :src="web_url + detailData.designer_info.faceimg" alt="" />
 				<p>{{ detailData.designer_info.title }}</p>
 				<p>{{ detailData.designer_info.station }}</p>
@@ -333,6 +334,7 @@ export default CaseDetail;
 			width: 540px;
 			height: 740px;
 			padding: 0 88px;
+			cursor: pointer;
 			img {
 				width: 180px;
 				height: 180px;

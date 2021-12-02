@@ -31,13 +31,13 @@
 								<p>{{ detailData.designer_info.byyx }}</p>
 							</div>
 						</li>
-						<!-- <li v-if="detailData.designer_info.sfbz">
+						<li v-if="detailData.designer_info.sfbz">
 							<i></i>
 							<div>
 								<p>收费标准</p>
 								<p>{{ detailData.designer_info.sfbz }}</p>
 							</div>
-						</li> -->
+						</li>
 					</ul>
 				</div>
 				<div class="idea wow">
@@ -85,18 +85,19 @@
 			</div>
 		</div>
 		<div class="works" v-if="detailData.vrList.length || detailData.sjsList.length">
+			<img src="~assets/bg_c2_part3.jpg" alt="" />
 			<h3 class="wow">TA的作品</h3>
 			<div class="list wow" v-if="detailData.sjsList.length">
-				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3)" :key="i" />
+				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3 * moreIndex)" :key="i" />
 			</div>
 			<div class="list wow" v-else>
-				<Cases :caseData="v" v-for="(v, i) in detailData.vrList.slice(0, 3)" :key="i" />
+				<Cases :caseData="v" v-for="(v, i) in detailData.vrList.slice(0, 3 * moreIndex)" :key="i" />
 			</div>
 			<template v-if="detailData.sjsList.length">
-				<div class="more" @click="$router.push('/case/list')">更多案例</div>
+				<div class="more" @click="moreIndex++" v-show="detailData.sjsList.length > 3 * moreIndex">更多案例</div>
 			</template>
 			<template v-if="detailData.vrList.length && !detailData.sjsList.length">
-				<div class="more" @click="$router.push('/case/listvr')">更多案例</div>
+				<div class="more" @click="moreIndex++" v-show="detailData.vrList.length > 3 * moreIndex">更多案例</div>
 			</template>
 		</div>
 	</div>
@@ -460,11 +461,19 @@ export default DesignDetail;
 	}
 	.works {
 		padding: 0 80px;
-		height: 1040px;
-		background-size: 100% 100%;
-		background: url('~assets/bg_c2_part3.jpg') no-repeat;
+		// height: 1040px;
+		// background-size: 100% 100%;
+		// background: url('~assets/bg_c2_part3.jpg') no-repeat;
 		overflow: hidden;
 		// margin-top: 100px;
+		position: relative;
+		> img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 		h3 {
 			font-size: 56px;
 			color: #000000;
@@ -475,9 +484,14 @@ export default DesignDetail;
 		}
 		.list {
 			display: flex;
-			justify-content: space-between;
+			// justify-content: space-between;
+			flex-wrap: wrap;
 
 			.cases {
+				margin-right: 27px;
+				&:nth-of-type(3n) {
+					margin-right: 0;
+				}
 				.content {
 					display: block;
 					background-color: #fff;
@@ -499,6 +513,7 @@ export default DesignDetail;
 			align-items: center;
 			// font-weight: 600;
 			transition: all 0.3s;
+			margin-bottom: 100px;
 			&:hover {
 				cursor: pointer;
 				transform: translateY(-3px);
