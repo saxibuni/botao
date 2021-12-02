@@ -11,8 +11,8 @@
 						<div class="topLeft" @click.stop="push">
 							<p>{{ caseData.title }}</p>
 							<p>
-								<span>{{ caseData.style }}</span>
-								<span>{{ caseData.hx }}</span>
+								<span v-if="caseData.style">{{ caseData.style }}</span>
+								<span v-if="caseData.hx">{{ caseData.hx }}</span>
 								<span>{{ caseData.mj }}</span>
 							</p>
 						</div>
@@ -167,7 +167,7 @@ export default class Caese extends Vue {
 					align-items: center;
 					border-bottom: 1px solid #eeeeee;
 					.topLeft {
-						padding-right: 150px;
+						padding-right: 120px;
 						p {
 							&:nth-of-type(1) {
 								font-size: 28px;

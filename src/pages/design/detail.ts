@@ -26,6 +26,7 @@ export default class DesignDetail extends Vue {
 
 	};
 	video=false
+	moreIndex=1
 	created(){
 		this.getData()
 	}
@@ -50,7 +51,7 @@ export default class DesignDetail extends Vue {
 	mounted(){
 		this.restartWow();
 		setTimeout(() => {
-			if(!this.detailData.designer_info)return
+			if(!this.detailData.designer_info.hor)return
 			if((this.$refs.text as HTMLElement).clientHeight < (this.$refs.scroll as HTMLElement).clientHeight){
 				(this.$refs.scroll as HTMLElement).style.overflowY="hidden"
 			}

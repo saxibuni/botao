@@ -93,7 +93,7 @@
 									<img :src="web_url + item.img" alt="" />
 									<div>
 										<img src="~assets/icons/ic_c2_play.png" @click="playVideo(item.video)" v-if="item.video" alt="" />
-										<p>{{ item.title }}</p>
+										<!-- <p>{{ item.title }}</p> -->
 									</div>
 								</div>
 							</swiper-slide>
@@ -126,7 +126,7 @@
 													<span></span>
 													{{ v.split(';')[0] }}
 												</p>
-												<p :class="{ active: v.split(';')[1] == '微信群承诺20分钟内响应' }">{{ v.split(';')[1] }}</p>
+												<p :class="{ active: v.split(';')[1] == '微信群承诺20分钟内响应' }" v-html="v.split(';')[1]"></p>
 											</li>
 										</ul>
 									</div>
@@ -687,9 +687,10 @@ export default Manager;
 							display: flex;
 							flex-direction: column;
 							align-items: center;
+							width: 60px;
+							height: 60px;
 							img {
-								width: 60px;
-								height: 60px;
+								width: 100%;
 								transition: all 0.3s;
 								&:hover {
 									cursor: pointer;
