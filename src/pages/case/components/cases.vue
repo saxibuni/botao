@@ -244,8 +244,9 @@ export default class Caese extends Vue {
 					justify-content: space-between;
 					align-items: center;
 					&:hover {
-						.imgBox2 {
+						.bottomLeft {
 							img {
+								border-radius: 50%;
 								transform: scale(1.1);
 							}
 						}
@@ -260,10 +261,12 @@ export default class Caese extends Vue {
 							display: flex;
 							align-items: center;
 							overflow: hidden;
+							-webkit-transform: rotate(0deg);
 							img {
 								width: 100%;
 								height: 100%;
 								transition: all 0.3s;
+								border-radius: 50%;
 							}
 						}
 

@@ -134,6 +134,7 @@ html {
 	.swiper-pagination {
 		.swiper-pagination-bullet {
 			border-width: 2px !important;
+			outline: none;
 		}
 	}
 	///左右按钮尺寸和hover效果

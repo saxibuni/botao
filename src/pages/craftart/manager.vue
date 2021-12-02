@@ -394,15 +394,16 @@ export default Manager;
 					border-bottom: 1px solid transparent;
 					.imgBox {
 						display: flex;
-						// width: 596px;
-						height: 596px;
+						width: 596px;
 						position: relative;
 						// overflow: hidden;
 						.img-box {
 							position: relative;
 							border-radius: 50%;
 							width: 596px;
+							height: 596px;
 							overflow: hidden;
+							transform: rotate(0deg);
 						}
 						.img {
 							position: absolute;
@@ -410,11 +411,13 @@ export default Manager;
 							top: 0;
 							width: 596px;
 							height: 596px;
-							border-radius: 50%;
 							overflow: hidden;
+							border-radius: 50%;
 							display: flex;
 							justify-content: center;
 							align-items: center;
+							transform: rotate(0deg);
+							// -webkit-transform: rotate(0deg);
 							@include toggle-image();
 							&:hover {
 								img {
@@ -487,16 +490,16 @@ export default Manager;
 									margin-right: 34px;
 								}
 								&:nth-child(1) {
-									left: 224px;
+									left: 222px;
 								}
 								&:nth-child(2) {
-									left: 292px;
+									left: 288px;
 								}
 								&:nth-child(3) {
-									left: 296px;
+									left: 293px;
 								}
 								&:nth-child(4) {
-									left: 240px;
+									left: 236px;
 								}
 							}
 						}
@@ -984,6 +987,8 @@ export default Manager;
 						width: 501px;
 						height: 501px;
 						border-radius: 50%;
+						transform: rotate(0deg);
+						z-index: 3;
 						.img-box {
 							position: absolute;
 							// top: 57px;
@@ -992,10 +997,12 @@ export default Manager;
 							height: 501px;
 							overflow: hidden;
 							z-index: 2;
-
+							transform: rotate(0deg);
+							border-radius: 50%;
 							@include toggle-image();
 							.clrcleimg {
 								display: flex;
+								border-radius: 50%;
 								> span {
 									width: 501px;
 								}
