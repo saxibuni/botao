@@ -127,7 +127,7 @@
 			<div class="img-box history-scroll wow">
 				<div class="gray-img wow">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
-					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" :key="i">
+					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" v-show="progressIndex >= i" :key="i">
 						<span>{{ item.nf }}</span>
 					</div>
 				</div>
@@ -252,8 +252,8 @@
 				</ul>
 			</div>
 			<div class="btn-box">
-				<Button :text="'上一个'" :class="nextIndex >= 1 ? 'active' : ''" @click.native="prev"></Button>
-				<Button :text="'下一个'" :class="nextIndex < shzrList.length - 1 ? 'active' : ''" @click.native="next"></Button>
+				<div class="left-arrow" :class="nextIndex >= 1 ? 'active' : ''"  @click="prev">{{nextIndex}}</div>
+				<div class="right-arrow" :class="nextIndex < shzrList.length-1 ? 'active' : ''" @click="next"></div>
 			</div>
 		</div>
 		<div class="contact-us select6">
@@ -1050,13 +1050,12 @@ html {
 					}
 				}
 				.time6 {
-					left: 554px;
-					top: 939px;
+					left: 404px;
+					top: 900px;
 					span {
 						top: -34px;
 						left: 5px;
 					}
-
 				}
 				.time7 {
 					left: 554px;
@@ -1065,7 +1064,6 @@ html {
 						top: -34px;
 						left: -100px;
 					}
-
 				}
 			}
 			.inner-img {
@@ -1489,10 +1487,14 @@ html {
 							font-weight: bold;
 						}
 						p {
+							padding-right: 20px;
 							width: 327px;
 							font-size: 18px;
 							color: #666666;
-							line-height: 30px;
+							line-height: 40px;
+							max-height: 160px;
+							overflow-y: scroll;
+							@include scrollbar-beautify(1px);
 							&:nth-of-type(2) {
 								margin-top: 10px;
 							}
@@ -1533,7 +1535,6 @@ html {
 						}
 						p {
 							margin-top: 0;
-							line-height: 40px;
 						}
 						h2 {
 							margin-bottom: 0;
@@ -1567,19 +1568,28 @@ html {
 		.btn-box {
 			display: flex;
 			justify-content: center;
+			height: 20px;
 			> div {
 				width: auto;
-				margin: 0 20px;
+				margin: 0 200px;
+				width: 15px;
+				height: 15px;
+				border-left: 1px solid #ccc;
+				border-bottom: 1px solid #ccc;
+				cursor: pointer;
+				transition: all 1s;
 				&:nth-child(1) {
-					visibility: hidden;
-					&.active {
-						visibility: initial;
+					transform: rotate(45deg);
+					&.active{
+						border-color: #eb551c;
 					}
 				}
 				&:nth-child(2) {
-					visibility: hidden;
+					transform: rotate(225deg);
 					&.active {
-						visibility: initial;
+						&.active{
+							border-color: #eb551c;
+						}
 					}
 				}
 			}
