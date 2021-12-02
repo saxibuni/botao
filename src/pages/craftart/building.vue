@@ -69,16 +69,19 @@
 			<Pagination :data="paginationData" @getData="getData1" v-if="buildingData.list" v-show="buildingData.list.length" />
 			<VideoPopup :videoPop="videoPop"></VideoPopup>
 			<transition name="slideFadeIn">
-				<Popup class="img-popup" v-if="imgPop.isPop" @click.native="imgPop.isPop = false">
+				<Popup class="img-popup" v-if="imgPop.isPop" @click.native="show2">
 					<div class="mask"></div>
 					<div class="img-box">
 						<swiper :options="swiperOptions">
 							<swiper-slide v-for="(item, index) in imgPop.imgUrl.split(',')" :key="index">
 								<div class="imgBox" @click="$router.push({ path: '/case-detail', query: { aid: item.aid } })">
-									<img :src="web_url + item" alt="" />
+									<img :src="web_url + item" alt="" class="img" />
 								</div>
 							</swiper-slide>
 						</swiper>
+						<div class="swiper-pagination"></div>
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
 						<div class="close"></div>
 					</div>
 				</Popup>
@@ -599,12 +602,58 @@ export default Building;
 						width: 792px !important;
 					}
 				}
+				.swiper-button-prev,
+				.swiper-button-next {
+					bottom: 240px;
+					transform: all 0.3s;
+					&:hover {
+						transform: all 0.3s;
+						&::after {
+							color: #eb551c;
+						}
+					}
+				}
+				.swiper-button-prev {
+					margin-left: 40px;
+					// left: 860px !important;
+				}
+				.swiper-button-next {
+					margin-right: 40px;
+					// right: -720px;
+				}
+				.swiper-pagination {
+					// width: 70px;
+					height: 12px;
+					position: absolute;
+					left: 50%;
+					bottom: 50px;
+					transform: translateX(-50%);
+					display: flex;
+					/deep/.swiper-pagination-bullet {
+						margin-right: 15px;
+						box-sizing: border-box;
+						width: 12px;
+						height: 12px;
+						border: 2px solid #666666;
+						border-radius: 0;
+						background: transparent;
+						opacity: 1;
+						&:last-of-type {
+							margin-right: 0;
+						}
+					}
+					/deep/.swiper-pagination-bullet-active {
+						border: 2px solid #eb551d !important;
+					}
+				}
 				.imgBox {
 					width: 792px;
 					height: 508px;
 					margin: 0 auto;
+					pointer-events: none;
 					img {
 						width: 100%;
+						pointer-events: none;
 					}
 				}
 			}

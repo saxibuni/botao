@@ -31,10 +31,14 @@ export default class Building extends Vue {
 		loop: true,
 		slideToClickedSlide: true,
 		autoplay: false,
-		// pagination: {
-		// 	el: '.swiper-pagination',
-		// 	clickable: true
-		// },
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev'
+		}
 	};
 	buildingData = {}
 	web_url = ''
@@ -95,6 +99,13 @@ export default class Building extends Vue {
 		if(img.split(',').length<=1)return
 		this.imgPop.isPop = true;
 		this.imgPop.imgUrl=img
+	}
+	show2(e){
+		if(e.target.className=='swiper-pagination-bullet swiper-pagination-bullet-active')return
+		if(e.target.className=='swiper-pagination swiper-pagination-clickable swiper-pagination-bullets')return
+		if(e.target.className=='swiper-slide swiper-slide-active')return
+		if(e.target.className=='swiper-button-next'||e.target.className=='swiper-button-prev'||e.target.className=='swiper-pagination'||e.target.className=='swiper-pagination-bullet'||e.target.className=='swiper-slide')return
+		this.imgPop.isPop = false
 	}
 	mounted() {
 		this.restartWow();
