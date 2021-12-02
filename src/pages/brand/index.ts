@@ -39,7 +39,7 @@ export default class Brand extends Vue {
 	distance: number = 0;
 	rotateFlag: boolean = true;
 	progressIndex: number = 0;
-	pos = [257, 443, 535, 630, 851, 1039];
+	pos = [257, 443, 535, 630, 781, 1039,1139];
 	deg: number = 0;
 	isPlayingPath: boolean = false;
 	prePathIndex: number = -1; //前一次的路径点

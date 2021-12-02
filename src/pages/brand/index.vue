@@ -127,7 +127,7 @@
 			<div class="img-box history-scroll wow">
 				<div class="gray-img wow">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
-					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" v-show="progressIndex >= i" :key="i">
+					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" :key="i">
 						<span>{{ item.nf }}</span>
 					</div>
 				</div>
@@ -252,8 +252,8 @@
 				</ul>
 			</div>
 			<div class="btn-box">
-				<Button :text="'上一个'" :class="nextIndex>=1?'active':''" @click.native="prev"></Button>
-				<Button :text="'下一个'" :class="nextIndex<shzrList.length-1?'active':''" @click.native="next"></Button>
+				<Button :text="'上一个'" :class="nextIndex >= 1 ? 'active' : ''" @click.native="prev"></Button>
+				<Button :text="'下一个'" :class="nextIndex < shzrList.length - 1 ? 'active' : ''" @click.native="next"></Button>
 			</div>
 		</div>
 		<div class="contact-us select6">
@@ -1042,8 +1042,8 @@ html {
 					}
 				}
 				.time5 {
-					top: 851px;
-					left: 334px;
+					top: 781px;
+					left: 214px;
 					span {
 						top: -35px;
 						left: 21px;
@@ -1051,19 +1051,21 @@ html {
 				}
 				.time6 {
 					left: 554px;
-					top: 1039px;
+					top: 939px;
 					span {
 						top: -34px;
 						left: 5px;
 					}
-					.time7 {
-						top: 1216px;
-						left: 588px;
-						span {
-							top: 1px;
-							left: -134px;
-						}
+
+				}
+				.time7 {
+					left: 554px;
+					top: 1139px;
+					span {
+						top: -34px;
+						left: -100px;
 					}
+
 				}
 			}
 			.inner-img {
@@ -1570,13 +1572,13 @@ html {
 				margin: 0 20px;
 				&:nth-child(1) {
 					visibility: hidden;
-					&.active{
+					&.active {
 						visibility: initial;
 					}
 				}
-					&:nth-child(2) {
+				&:nth-child(2) {
 					visibility: hidden;
-					&.active{
+					&.active {
 						visibility: initial;
 					}
 				}
