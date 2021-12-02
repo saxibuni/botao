@@ -1581,7 +1581,7 @@ html {
 			height: 20px;
 			> div {
 				width: auto;
-				margin: 0 200px;
+				margin: 0 100px;
 				width: 15px;
 				height: 15px;
 				border-left: 1px solid #ccc;
