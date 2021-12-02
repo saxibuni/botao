@@ -133,7 +133,7 @@
 				</div>
 				<div class="inner-img"></div>
 			</div>
-			<div class="info-box wow" v-if="!isIE && devolopeList[show1].nf">
+			<div class="info-box wow" v-if="!isIE && devolopeList[show1].js">
 				<div class="time-box">
 					<div class="time">
 						<!-- behind -->
@@ -1141,6 +1141,7 @@ html {
 				transform-style: preserve-3d;
 				transition: all 1s;
 				.info {
+					width: 100%;
 					position: absolute;
 					top: 0;
 					padding: 43px 20px 0 50px;
@@ -1553,6 +1554,13 @@ html {
 					}
 					&:not(:last-child) {
 						margin-right: 130px;
+					}
+					&:last-child{
+						.text-box{
+							p{
+								width: 250px;
+							}
+						}
 					}
 				}
 				&::after {

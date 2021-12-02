@@ -298,6 +298,7 @@ html {
 						color: #888;
 					}
 					h4 {
+						@include line-clamp(1);
 						color: #000;
 						transition: all 0.3s;
 					}

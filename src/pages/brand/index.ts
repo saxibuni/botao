@@ -253,6 +253,8 @@ export default class Brand extends Vue {
 		if (this.arrowFlag) return;
 		let progressIndex = this.progressIndex;
 		if ((progressIndex == 0 && str == 'pre') || (progressIndex == this.devolopeList.length - 1 && str == 'next')) return;
+		console.log(2222);
+
 		str == 'pre' ? progressIndex-- : progressIndex++;
 		this.updateText(progressIndex, str);
 		this.clickFlag = false;
@@ -301,6 +303,8 @@ export default class Brand extends Vue {
 	calcRotate(str) {
 		const time_box = document.querySelector<HTMLElement>('.time-box');
 		const text_box = document.querySelector<HTMLElement>('.text-boxs');
+		console.log(time_box);
+
 		if (str == 'next') {
 			this.deg += 90;
 		}
