@@ -362,8 +362,9 @@ export default CaseDetail;
 					margin-top: 20px;
 					margin-bottom: 57px;
 					width: 365px;
-					@include line-clamp(1);
 					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
 				}
 			}
 			.button-wrap {
