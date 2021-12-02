@@ -234,6 +234,7 @@ export default class Caese extends Vue {
 							font-size: 16px;
 							color: #122133;
 							// font-weight: 600;
+							white-space: nowrap;
 						}
 					}
 				}

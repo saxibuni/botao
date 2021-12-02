@@ -11,7 +11,7 @@ import VideoPopup from 'root/components/videoPopup.vue';
 require('root/libs/pixi-spine.js');
 gsap.registerPlugin(ScrollTrigger, SplitText);
 PIXI.utils.skipHello();
-
+let vm = null;
 @Component({
 	components: {
 		Button,
@@ -143,9 +143,27 @@ export default class home extends Vue {
 					this.slides[i].classList.remove('active');
 				}
 				this.slides[this.activeIndex].classList.add('active');
-			}
+			},
+			click: function(event){
+				vm.handleClickSlide(event);
+			},
 		}
 	};
+	handleClickSlide(event){
+ 	 if(event.target.className === 'btn'){
+		   if(this.page5Index==0){
+				this.$router.push({name: 'soft-decoration', params:{number:'1'}})
+			 }else if(this.page5Index==1){
+				this.$router.push({name: 'cherry-pick', params:{number:'5'}})
+			 }else{
+				this.$router.push({name: 'cherry-pick', params:{number:'4'}})
+			 }
+	 }
+
+	}
+	created() {
+		vm = this;
+	}
 	options = {
 		suffix: '+',
 		useGrouping: false,
@@ -380,6 +398,7 @@ export default class home extends Vue {
 	onRoute(name: string, query?: any) {
 		this.$router.push({name: name, query: query})
 	}
+
 
 	onPortraitListPrev() {
 		if (this.applyFlipType) return;

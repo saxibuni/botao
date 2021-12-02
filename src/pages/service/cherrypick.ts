@@ -159,6 +159,7 @@ export default class CheckPick extends Vue {
 				this.portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 				this.$nextTick(() => {
 					this.initTextChars();
+					this.rollTo2(this.$route.params.number)
 				});
 			}
 		});
@@ -211,6 +212,15 @@ export default class CheckPick extends Vue {
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.cherry-pick');
 		const item = brand.querySelector<HTMLElement>(`.page2`);
+		let top = item.offsetTop - headerHeight;
+		window.scroll({ top, behavior: 'smooth' });
+	}
+
+	rollTo2(num){
+		if (typeof num === 'undefined') return;
+		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
+		const brand = document.querySelector<HTMLElement>('.cherry-pick');
+		const item = brand.querySelector<HTMLElement>(`.page${num}`);
 		let top = item.offsetTop - headerHeight;
 		window.scroll({ top, behavior: 'smooth' });
 	}

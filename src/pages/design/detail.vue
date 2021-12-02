@@ -31,13 +31,13 @@
 								<p>{{ detailData.designer_info.byyx }}</p>
 							</div>
 						</li>
-						<li v-if="detailData.designer_info.sfbz">
+						<!-- <li v-if="detailData.designer_info.sfbz">
 							<i></i>
 							<div>
 								<p>收费标准</p>
 								<p>{{ detailData.designer_info.sfbz }}</p>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<div class="idea wow">

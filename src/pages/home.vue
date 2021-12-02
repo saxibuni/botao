@@ -117,7 +117,7 @@
 			<div class="left">
 				<h2>
 					<ICountUp :endVal="100" :options="options1"></ICountUp>
-					位别墅大宅设计大咖
+					别墅大宅设计大咖
 				</h2>
 				<ul>
 					<li>
@@ -161,9 +161,9 @@
 								<h5 class="an3">从业年限：</h5>
 								<b class="an4">{{sjsItem.cysj}}</b>
 								<h5 class="an5" v-if="sjsItem.hor">所获荣誉</h5>
-								<p class="an6"  v-if="sjsItem.hor" v-html="sjsItem.hor"></p>
-								<h5 class="an7">代表作品</h5>
-								<p class="an8">{{sjsItem.dbz}}</p>
+								<p class="an6" v-if="sjsItem.hor" v-html="sjsItem.hor"></p>
+								<h5 class="an7" v-if="sjsItem.dbz">代表作品</h5>
+								<p class="an8" v-if="sjsItem.dbz">{{sjsItem.dbz}}</p>
 								<div class="btn-box an9">
 									<Button @click.native="$router.push({ name: 'design-detail',query:{aid:sjsItem.aid} })" text="TA的作品"></Button>
 								</div>
@@ -356,7 +356,7 @@
 							<h5>{{item.cftitle}}</h5>
 							<p>{{item.ccenter}}</p>
 							<div class="btn">
-								<Button text="服务详情" @click.native="onRoute('cherry-pick')"></Button>
+								<Button text="服务详情"></Button>
 							</div>
 						</div>
 					</swiper-slide>
