@@ -255,7 +255,7 @@
 		<div class="contact-us select6">
 			<div class="left wow">
 				<h2>联系我们</h2>
-				<h3>CONTACTUS</h3>
+				<h3>CONTACT US</h3>
 				<div class="info-box">
 					<ul>
 						<li>
@@ -754,11 +754,16 @@ html {
 					line-height: 1;
 				}
 				p {
+					padding-right: 20px;
 					margin-top: 25px;
 					font-size: 18px;
 					color: #666666;
 					line-height: 36px;
-					@include line-clamp(4);
+					text-align: left;
+					max-height: 180px;
+					overflow-y: scroll;
+					@include scrollbar-beautify(2px)
+
 				}
 				.img-box {
 					margin: 0 auto;

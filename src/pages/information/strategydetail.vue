@@ -151,8 +151,8 @@ html {
 				font-size: 16px;
 
 				i {
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					background: url('~assets/icons/iconlist.png') no-repeat;
 					background-position: -11px -11px;
 					cursor: pointer;
@@ -186,10 +186,10 @@ html {
 				.wx {
 					margin-left: 50px;
 					position: relative;
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					&:hover {
-						background-position-y: -43px;
+						background-position-y: -42px;
 						> div {
 							opacity: 1;
 							transform: translateX(-50%) translateX(0);
@@ -216,14 +216,13 @@ html {
 						left: 0;
 						margin-left: 0;
 						top: 0px;
-
 						background: url('~assets/icons/iconlist.png') no-repeat;
 						background-position: -11px -11px;
 						// background-size: 26px 26px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -9px -41.5px;
+							background-position: -10.2Px -41.9	Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -232,19 +231,19 @@ html {
 				}
 				.wb {
 					position: relative;
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					margin: 0 20px;
 					i {
 						position: absolute;
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -41px -11px;
+						background-position: -41Px -11Px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -41px -43px;
+							background-position: -41Px -43Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
@@ -253,18 +252,18 @@ html {
 				}
 				.qq {
 					position: relative;
-					width: 26px;
-					height: 26px;
+					width: 26Px;
+					height: 26Px;
 					i {
 						position: absolute;
 						top: 0;
 						left: 0;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -78px -11px;
+						background-position: -78Px -11Px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
 							z-index: 11;
-							background-position: -78px -43px;
+							background-position: -78Px -43Px;
 						}
 					}
 					&:hover i:nth-last-of-type(2) {
