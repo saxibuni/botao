@@ -75,6 +75,10 @@ export default class CaseDetail extends Vue {
 			}
 		);
 	}
+	push(aid,e){
+		if(e.target.className=='btn')return
+		this.$router.push({path:'/design/detail',query:{aid:aid}})
+	}
 	updateSwiper() {
 		setTimeout(() => {
 			let bannerSwiper = (<any>this.$refs)['swiper2'].$swiper;

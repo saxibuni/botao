@@ -15,7 +15,7 @@
 					</h6>
 				</div>
 				<div class="aside-text" v-show="textShow">BOTAOGROUP VIDEO</div>
-				<div class="img-box" @click="play(),textShow=false;" v-show="!playFlag">
+				<div class="img-box" @click="play(), (textShow = false)" v-show="!playFlag">
 					<img src="~assets/icons/ic_c2_play.png" alt="" />
 				</div>
 			</template>
@@ -127,7 +127,7 @@
 			<div class="img-box history-scroll wow">
 				<div class="gray-img wow">
 					<img src="~assets/bg_g1_part5_way1.png" alt="" />
-					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" v-show="progressIndex >= i" :key="i">
+					<div v-for="(item, i) in devolopeList" :class="['yearTime', `time${i + 1}`]" @click="changeTime(i)" :key="i">
 						<span>{{ item.nf }}</span>
 					</div>
 				</div>
@@ -250,6 +250,10 @@
 						</div>
 					</li>
 				</ul>
+			</div>
+			<div class="btn-box">
+				<Button :text="'上一个'" :class="nextIndex >= 1 ? 'active' : ''" @click.native="prev"></Button>
+				<Button :text="'下一个'" :class="nextIndex < shzrList.length - 1 ? 'active' : ''" @click.native="next"></Button>
 			</div>
 		</div>
 		<div class="contact-us select6">
@@ -762,8 +766,7 @@ html {
 					text-align: left;
 					max-height: 180px;
 					overflow-y: scroll;
-					@include scrollbar-beautify(2px)
-
+					@include scrollbar-beautify(2px);
 				}
 				.img-box {
 					margin: 0 auto;
@@ -1039,8 +1042,8 @@ html {
 					}
 				}
 				.time5 {
-					top: 851px;
-					left: 334px;
+					top: 781px;
+					left: 214px;
 					span {
 						top: -35px;
 						left: 21px;
@@ -1048,19 +1051,21 @@ html {
 				}
 				.time6 {
 					left: 554px;
-					top: 1039px;
+					top: 939px;
 					span {
 						top: -34px;
 						left: 5px;
 					}
-					.time7 {
-						top: 1216px;
-						left: 588px;
-						span {
-							top: 1px;
-							left: -134px;
-						}
+
+				}
+				.time7 {
+					left: 554px;
+					top: 1139px;
+					span {
+						top: -34px;
+						left: -100px;
 					}
+
 				}
 			}
 			.inner-img {
@@ -1377,7 +1382,7 @@ html {
 				font-size: 22px;
 				color: #ffffff;
 				line-height: 1;
-				@include line-clamp(1)
+				@include line-clamp(1);
 			}
 			.controal {
 				position: absolute;
@@ -1401,10 +1406,9 @@ html {
 	}
 	.social-response {
 		overflow: hidden;
-		padding-bottom: 60px;
 		@include title();
-
 		.content-box {
+			margin-bottom: 80px;
 			@include scrollbar-beautify(0);
 			> div {
 				display: flex !important;
@@ -1557,6 +1561,26 @@ html {
 					left: -54px;
 					font-size: 18px;
 					color: #eb551d;
+				}
+			}
+		}
+		.btn-box {
+			display: flex;
+			justify-content: center;
+			> div {
+				width: auto;
+				margin: 0 20px;
+				&:nth-child(1) {
+					visibility: hidden;
+					&.active {
+						visibility: initial;
+					}
+				}
+				&:nth-child(2) {
+					visibility: hidden;
+					&.active {
+						visibility: initial;
+					}
 				}
 			}
 		}
