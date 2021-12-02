@@ -365,6 +365,7 @@ export default class Brand extends Vue {
 		this.plane = this.$el.querySelector('.plane');
 	}
 
+	currentIndex=-1;
 	doMovePath(index: number, immediate: boolean = false) {
 		if (this.isPlayingPath) return;
 		if (index == this.prePathIndex) return;
@@ -384,6 +385,7 @@ export default class Brand extends Vue {
 
 		this.isPlayingPath = true;
 		this.prePathIndex = index;
+		this.currentIndex=index
 
 		this.pathTween = gsap
 			.timeline({
@@ -445,7 +447,8 @@ export default class Brand extends Vue {
 		if (this.pathTween) {
 			this.pathTween.kill();
 			this.isPlayingPath = false;
-			this.doMovePath(this.prePathIndex, true);
+			this.prePathIndex--
+			this.doMovePath(this.prePathIndex+1, true);
 		}
 	}
 
