@@ -137,37 +137,37 @@
 				<div class="time-box">
 					<div class="time">
 						<!-- behind -->
-						<p>{{ devolopeList[show1].nf }}</p>
+						<p v-if="devolopeList[progressIndex].nf">{{ devolopeList[show1].nf }}</p>
 						<h2>{{ devolopeList[show1].js }}</h2>
 					</div>
 					<div class="time">
 						<!-- top -->
-						<p>{{ devolopeList[show2].nf }}</p>
+						<p v-if="devolopeList[progressIndex].nf">{{ devolopeList[show2].nf }}</p>
 						<h2>{{ devolopeList[show2].js }}</h2>
 					</div>
 					<div class="time">
 						<!-- bottom -->
-						<p>{{ devolopeList[show2].nf }}</p>
+						<p v-if="devolopeList[progressIndex].nf">{{ devolopeList[show2].nf }}</p>
 						<h2>{{ devolopeList[show2].js }}</h2>
 					</div>
 					<div class="time">
 						<!-- front -->
-						<p>{{ devolopeList[show1].nf }}</p>
+						<p v-if="devolopeList[progressIndex].nf">{{ devolopeList[show1].nf }}</p>
 						<h2>{{ devolopeList[show1].js }}</h2>
 					</div>
 				</div>
 				<div class="text-boxs">
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
+						<p :class="progressIndex == devolopeList.length - 1 ? 'active' : ''" v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
+						<p :class="progressIndex == devolopeList.length - 1 ? 'active' : ''" v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
+						<p :class="progressIndex == devolopeList.length - 1 ? 'active' : ''" v-for="(item, index) in devolopeList[show2].text" :key="index">{{ item }}</p>
 					</div>
 					<div class="info">
-						<p v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
+						<p :class="progressIndex == devolopeList.length - 1 ? 'active' : ''" v-for="(item, index) in devolopeList[show1].text" :key="index">{{ item }}</p>
 					</div>
 				</div>
 				<div class="pre" @click="change('pre')"></div>
@@ -175,11 +175,11 @@
 			</div>
 			<div class="ie-info-box wow" v-else>
 				<div class="time">
-					<p>{{ devolopeList[progressIndex].nf }}</p>
+					<p v-if="devolopeList[progressIndex].nf">{{ devolopeList[progressIndex].nf }}</p>
 					<h2>{{ devolopeList[progressIndex].js }}</h2>
 				</div>
 				<div class="info">
-					<p v-for="(item, index) in devolopeList[progressIndex].text" :key="index">{{ item }}</p>
+					<p v-for="(item, index) in devolopeList[progressIndex].text" :class="index == devolopeList.length - 1 ? 'active' : ''" :key="index">{{ item }}</p>
 				</div>
 				<div class="pre" @click="IEchange('pre')"></div>
 				<div class="next" @click="IEchange('next')"></div>
@@ -214,7 +214,7 @@
 			<h2 class="wow">社会责任</h2>
 			<h3 class="wow">SOCIAL RESPONSIBILITY</h3>
 			<div class="content-box">
-				<div class="svg-box" :class="{'is-ie': isIE}">
+				<div class="svg-box" :class="{ 'is-ie': isIE }">
 					<svg
 						version="1.1"
 						class="svg"
@@ -252,8 +252,8 @@
 				</ul>
 			</div>
 			<div class="btn-box">
-				<div class="left-arrow" :class="nextIndex >= 1 ? 'active' : ''"  @click="prev">{{nextIndex}}</div>
-				<div class="right-arrow" :class="nextIndex < shzrList.length-1 ? 'active' : ''" @click="next"></div>
+				<div class="left-arrow" :class="nextIndex >= 1 ? 'active' : ''" @click="prev">{{ nextIndex }}</div>
+				<div class="right-arrow" :class="nextIndex < shzrList.length - 1 ? 'active' : ''" @click="next"></div>
 			</div>
 		</div>
 		<div class="contact-us select6">
@@ -1096,20 +1096,25 @@ html {
 					position: absolute;
 					top: 0;
 					box-sizing: border-box;
-					padding-top: 43px;
-					padding-left: 46px;
+					// padding-top: 43px;
+					// padding-left: 46px;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
 					width: 240px;
 					height: 100%;
 					background: #eb551d;
 					transition: all 1s;
 					p {
+						margin-bottom: 20px;
 						font-size: 30px;
 						font-weight: bold;
 						line-height: 1;
 					}
 					h2 {
 						text-align: left;
-						margin-top: 16px;
+						// margin-top: 16px;
 						font-size: 26px;
 						line-height: 1;
 					}
@@ -1144,18 +1149,27 @@ html {
 					width: 100%;
 					position: absolute;
 					top: 0;
-					padding: 43px 20px 0 50px;
+					// padding: 43px 20px 0 50px;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
 					flex: 1;
 					height: 100%;
 					background: #132132;
+					&.active {
+						text-align: center;
+					}
 					p {
-						line-height: 1;
+						margin: 0 auto;
+						width: 480px;
+						line-height: 40px;
+						text-align: center;
 						@include line-clamp(2);
 						&:first-of-type {
 							font-size: 22px;
 						}
 						&:nth-of-type(2) {
-							margin-top: 12px;
+							// margin-top: 12px;
 							font-size: 18px;
 							line-height: 32px;
 						}
@@ -1570,9 +1584,9 @@ html {
 					&:not(:last-child) {
 						margin-right: 130px;
 					}
-					&:last-child{
-						.text-box{
-							p{
+					&:last-child {
+						.text-box {
+							p {
 								width: 250px;
 							}
 						}
@@ -1604,14 +1618,14 @@ html {
 				user-select: none;
 				&:nth-child(1) {
 					transform: rotate(45deg);
-					&.active{
+					&.active {
 						border-color: #eb551c;
 					}
 				}
 				&:nth-child(2) {
 					transform: rotate(225deg);
 					&.active {
-						&.active{
+						&.active {
 							border-color: #eb551c;
 						}
 					}

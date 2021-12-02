@@ -18,7 +18,7 @@
 									<div class="top">
 										<div class="address">
 											<span class="name">{{ v.title }}</span>
-											<span>{{ v.address }}</span>
+											<!-- <span>{{ v.address }}</span> -->
 										</div>
 										<div class="area">
 											<span>{{ v.mj }}</span>
@@ -233,6 +233,10 @@ html {
 									}
 								}
 								.name {
+									display:flex;
+									margin-top: 8px;
+									align-items: center;
+									height: 100%;
 									font-size: 30px;
 								}
 							}
