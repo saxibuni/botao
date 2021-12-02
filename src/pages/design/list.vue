@@ -38,7 +38,7 @@
 						</div>
 					</div>
 					<div class="text">
-						<p>代表作品</p>
+						<p v-if="v.dbz">代表作品</p>
 						<p>{{ v.dbz }}</p>
 						<Button :text="'了解设计师'" />
 					</div>
@@ -233,6 +233,7 @@ export default DesignList;
 	}
 	.content {
 		margin-top: 80px;
+
 		ul {
 			display: flex;
 			flex-wrap: wrap;
@@ -242,6 +243,7 @@ export default DesignList;
 				width: 410px;
 				cursor: pointer;
 				margin-right: 38px;
+				position: relative;
 				&:nth-of-type(4n) {
 					margin-right: 0;
 				}
@@ -295,13 +297,17 @@ export default DesignList;
 						&:nth-of-type(2) {
 							margin-top: 20px;
 							color: #666666;
-							@include line-clamp(1);
-							// width: 334px;
+							// @include line-clamp(1);
+							width: 334px;
 							white-space: nowrap;
+							text-overflow: ellipsis;
+							overflow: hidden;
 						}
 					}
 					.button-wrap {
-						margin-top: 39px;
+						// margin-top: 39px;
+						position: absolute;
+						bottom: 43px;
 						&:hover {
 							cursor: pointer;
 						}
