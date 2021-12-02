@@ -361,7 +361,9 @@ export default CaseDetail;
 					font-size: 18px;
 					margin-top: 20px;
 					margin-bottom: 57px;
+					width: 365px;
 					@include line-clamp(1);
+					white-space: nowrap;
 				}
 			}
 			.button-wrap {

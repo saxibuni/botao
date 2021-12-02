@@ -404,6 +404,11 @@ export default Manager;
 							height: 596px;
 							overflow: hidden;
 							transform: rotate(0deg);
+							&:hover {
+								img {
+									transform: scale($imgScale);
+								}
+							}
 						}
 						.img {
 							position: absolute;
@@ -419,14 +424,11 @@ export default Manager;
 							transform: rotate(0deg);
 							// -webkit-transform: rotate(0deg);
 							@include toggle-image();
-							&:hover {
-								img {
-									transform: scale($imgScale);
-								}
-							}
+
 							img {
 								width: 100%;
 								height: 100%;
+								border-radius: 50%;
 								transition: transform 0.3s;
 							}
 						}

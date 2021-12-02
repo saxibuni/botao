@@ -296,6 +296,8 @@ export default DesignList;
 							margin-top: 20px;
 							color: #666666;
 							@include line-clamp(1);
+							// width: 334px;
+							white-space: nowrap;
 						}
 					}
 					.button-wrap {
