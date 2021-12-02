@@ -1378,10 +1378,12 @@ html {
 				max-width: 110%;
 				// width: 330px;
 				margin-top: 35px;
-				font-size: 22px;
+				text-align: center;
+				justify-content: center;
+				font-size: 20px;
 				color: #ffffff;
 				line-height: 1;
-				@include line-clamp(1);
+				// @include line-clamp(1);
 			}
 			.controal {
 				position: absolute;
@@ -1596,6 +1598,7 @@ html {
 				border-bottom: 1px solid #ccc;
 				cursor: pointer;
 				transition: all 1s;
+				user-select: none;
 				&:nth-child(1) {
 					transform: rotate(45deg);
 					&.active{
