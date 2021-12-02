@@ -1161,7 +1161,7 @@ html {
 					}
 					p {
 						margin: 0 auto;
-						width: 480px;
+						width: 560px;
 						line-height: 40px;
 						text-align: center;
 						@include line-clamp(2);
