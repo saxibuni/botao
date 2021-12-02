@@ -8,6 +8,7 @@ import utils, { emitter } from 'root/utils';
 import { Events } from 'root/utils/EnumUtils';
 import ICountUp from 'root/components/countup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
+import { device } from 'root/utils';
 require('root/libs/pixi-spine.js');
 gsap.registerPlugin(ScrollTrigger, SplitText);
 PIXI.utils.skipHello();
@@ -43,7 +44,7 @@ export default class home extends Vue {
 	portraitTotalPages = 1;
 	applyFlipType: number = 0;
 	isShowLightImg: boolean = true;
-
+	isIE:boolean=false
 	page5List = [];
 	picList = [require('../assets/bg_home_b4_right1.png'), require('../assets/bg_home_b4_right2.png'), require('../assets/bg_home_b4_right3.png'), require('../assets/bg_home_b4_right4.png')];
 	textActive = true;
@@ -162,6 +163,7 @@ export default class home extends Vue {
 
 	}
 	created() {
+		this.isIE = device.browser.ie;
 		vm = this;
 	}
 	options = {
