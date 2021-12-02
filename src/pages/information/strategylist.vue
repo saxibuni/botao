@@ -198,7 +198,7 @@ html {
 					height: 547px;
 				}
 				.info-box {
-					padding: 49px 40px 54px 40px;
+					padding: 68px 40px 65px 40px;
 					background-color: #112033;
 					color: #fff;
 					cursor: pointer;
@@ -225,6 +225,7 @@ html {
 						h4 {
 							color: #000;
 							transition: color 0.3s;
+							max-height: 28px;
 							@include line-clamp(1);
 						}
 						.more {
