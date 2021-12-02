@@ -213,15 +213,53 @@ export default class CheckPick extends Vue {
 		const brand = document.querySelector<HTMLElement>('.cherry-pick');
 		const item = brand.querySelector<HTMLElement>(`.page2`);
 		let top = item.offsetTop - headerHeight;
-		window.scroll({ top, behavior: 'smooth' });
-	}
+		let bodyTop = document.body.scrollTop || document.documentElement.scrollTop;
 
+    this.scrollTo(top, bodyTop, 300);
+	}
+  isAnimating: boolean = false;
+  animateRaf: number;
+
+	scrollTo(destOffsetTop: number, currentOffsetTop: number, duration: number) {
+    let startTime = +new Date();
+    let destTime = startTime + duration;
+
+    // 由快到慢的缓动函数
+    const circular = (k: number) => {
+      return Math.sqrt(1 - (--k * k));
+    }
+
+    const step = () => {
+      let now = +new Date();
+      if (now >= destTime) {
+        window.scrollTo(0, destOffsetTop);
+
+        setTimeout(() => {
+          this.isAnimating = false;
+        }, 50);
+        return;
+      }
+
+      let progress = (now - startTime) / duration;
+      let offset = (destOffsetTop - currentOffsetTop) * circular(progress) + currentOffsetTop;
+      window.scrollTo(0, offset);
+
+
+      if (this.isAnimating) {
+        this.animateRaf = requestAnimationFrame(step);
+      }
+    }
+
+    this.isAnimating = true;
+    step();
+  }
 	rollTo2(num){
 		if (typeof num === 'undefined') return;
 		const headerHeight = document.querySelector<HTMLElement>('.header').clientHeight;
 		const brand = document.querySelector<HTMLElement>('.cherry-pick');
 		const item = brand.querySelector<HTMLElement>(`.page${num}`);
 		let top = item.offsetTop - headerHeight;
-		window.scroll({ top, behavior: 'smooth' });
+		let bodyTop = document.body.scrollTop || document.documentElement.scrollTop;
+    this.scrollTo(top, bodyTop, 300);
 	}
 }
