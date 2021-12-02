@@ -380,7 +380,7 @@ export default Manager;
 				}
 				.circle {
 					box-sizing: border-box;
-					padding: 172px;
+					// padding: 170px;
 					position: absolute;
 					left: 50%;
 					top: 87px;
@@ -392,6 +392,9 @@ export default Manager;
 					border-radius: 50%;
 					border-top: 1px solid transparent;
 					border-bottom: 1px solid transparent;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					.imgBox {
 						display: flex;
 						width: 596px;
@@ -400,10 +403,10 @@ export default Manager;
 						.img-box {
 							position: relative;
 							border-radius: 50%;
-							width: 596px;
-							height: 596px;
-							overflow: hidden;
-							transform: rotate(0deg);
+							width: 598px;
+							height: 598px;
+							// overflow: hidden;
+							// transform: rotate(0deg);
 							&:hover {
 								img {
 									transform: scale($imgScale);
@@ -414,8 +417,8 @@ export default Manager;
 							position: absolute;
 							opacity: 1;
 							top: 0;
-							width: 596px;
-							height: 596px;
+							width: 598px;
+							height: 598px;
 							overflow: hidden;
 							border-radius: 50%;
 							display: flex;
@@ -424,11 +427,11 @@ export default Manager;
 							transform: rotate(0deg);
 							// -webkit-transform: rotate(0deg);
 							@include toggle-image();
-
 							img {
 								width: 100%;
 								height: 100%;
 								border-radius: 50%;
+								// transform: scale($imgScale);
 								transition: transform 0.3s;
 							}
 						}
