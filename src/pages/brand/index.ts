@@ -108,6 +108,8 @@ export default class Brand extends Vue {
 	ryzz = [];
 	shzrList = [];
 	footData = [];
+	moveDistance=0
+	scrollDistance=0
 	created() {
 		this.isIE = utils.device.browser.ie;
 		this.queryBrand();
@@ -358,6 +360,7 @@ export default class Brand extends Vue {
 	initPathTarget() {
 		this.path = this.$el.querySelector<SVGPathElement>('.svg .st0');
 		this.plane = this.$el.querySelector('.plane');
+		this.moveDistance=this.$el.querySelector('.social-response .content-box ul li').clientWidth
 	}
 
 	doMovePath(index: number, immediate: boolean = false) {
@@ -396,17 +399,17 @@ export default class Brand extends Vue {
 			});
 	}
 
-	distance2=0
 	next(){
 		if(!this.nextFlag)return
 		this.nextIndex++;
 		if(this.nextIndex>=this.shzrList.length-1) this.nextIndex=this.shzrList.length-1
 		this.doMovePath(this.nextIndex)
-		this.distance2+=327
-		// gsap.to('.social-response .content-box', {
-		// 	duration: 0.5,
-		// 	scrollLeft:this.distance2
-		// });
+		this.scrollDistance+=	this.moveDistance
+
+		gsap.to('.social-response .content-box', {
+			duration: 0.8,
+			scrollLeft:this.scrollDistance
+		});
 		this.nextFlag=false
 		setTimeout(() => {
 			this.nextFlag=true
@@ -418,6 +421,13 @@ export default class Brand extends Vue {
 		this.nextIndex--;
 		if(this.nextIndex<=0) this.nextIndex=0;
 		this.doMovePath(this.nextIndex)
+		this.scrollDistance-=	this.moveDistance
+
+
+		gsap.to('.social-response .content-box', {
+			duration: 0.8,
+			scrollLeft:this.scrollDistance
+		});
 		this.nextFlag=false
 		setTimeout(() => {
 			this.nextFlag=true
