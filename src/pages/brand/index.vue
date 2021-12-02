@@ -1447,9 +1447,12 @@ html {
 
 				&.is-ie {
 					top: 214px;
-					.svg path {
-						stroke: #bbbbbb;
-						stroke-width: 1;
+					.svg {
+						transform: scale(1.15, 0.98);
+						path {
+							stroke: #bbbbbb;
+							stroke-width: 1;
+						}
 					}
 					.plane {
 						top: 165px;

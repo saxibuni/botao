@@ -46,7 +46,7 @@ export default class Brand extends Vue {
 	clickFlag: boolean = true;
 	arrowFlag: boolean = false;
 	pathTween: any;
-	unit = 0.06148;
+	unit = 0.06135; //ie  0.06148
 	offset = 0.03;
 	path: SVGPathElement;
 	plane: HTMLElement;
@@ -114,6 +114,7 @@ export default class Brand extends Vue {
 	moveUnit:0;
 	created() {
 		this.isIE = utils.device.browser.ie;
+		if (this.isIE) this.unit = 0.06148;
 		this.queryBrand();
 	}
 
