@@ -5,6 +5,7 @@ import Button from 'root/components/button.vue';
 import ICountUp from 'root/components/countup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
 import utils from 'root/utils'
+import Popup from 'root/components/popup.vue';
 
 @Component({
 	components: {
@@ -12,13 +13,28 @@ import utils from 'root/utils'
 		Pagination,
 		Button,
 		ICountUp,
-		VideoPopup
+		VideoPopup,
+		Popup
 	}
 })
 export default class Building extends Vue {
 	videoPop = {
 		isPop: false,
 		url: ''
+	};
+	imgPop = {
+		isPop: false,
+		imgUrl:''
+	};
+	swiperOptions: any = {
+		speed: 1000,
+		loop: true,
+		slideToClickedSlide: true,
+		autoplay: false,
+		// pagination: {
+		// 	el: '.swiper-pagination',
+		// 	clickable: true
+		// },
 	};
 	buildingData = {}
 	web_url = ''
@@ -73,6 +89,12 @@ export default class Building extends Vue {
 	}
 	setDelayTime() {
 		return Math.random() * 0.4 + 0.1;
+	}
+	show(video,img) {
+		if (video) return;
+		if(img.split(',').length<=1)return
+		this.imgPop.isPop = true;
+		this.imgPop.imgUrl=img
 	}
 	mounted() {
 		this.restartWow();
