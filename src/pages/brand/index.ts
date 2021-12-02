@@ -227,6 +227,15 @@ export default class Brand extends Vue {
 				this.calcProgressIndex(offset + 290, this.pos);
 			}
 		});
+
+		ScrollTrigger.create({
+			scroller: '.social-response .content-box',
+			horizontal:true,
+			onUpdate: self => {
+
+			}
+		});
+
 	}
 
 	calcProgressIndex(height: number, pos: number[]) {

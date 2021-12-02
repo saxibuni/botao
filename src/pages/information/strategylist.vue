@@ -225,7 +225,7 @@ html {
 						h4 {
 							color: #000;
 							transition: color 0.3s;
-							max-height: 28px;
+							max-height: 26px;
 							@include line-clamp(1);
 						}
 						.more {
