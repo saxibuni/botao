@@ -1588,6 +1588,7 @@ html {
 				border-bottom: 1px solid #ccc;
 				cursor: pointer;
 				transition: all 1s;
+				user-select: none;
 				&:nth-child(1) {
 					transform: rotate(45deg);
 					&.active{

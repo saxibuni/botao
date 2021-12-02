@@ -110,7 +110,8 @@ export default class Brand extends Vue {
 	footData = [];
 	moveDistance = 0;
 	scrollDistance = 0;
-	margin=0
+	margin: any;
+	moveUnit:0;
 	created() {
 		this.isIE = utils.device.browser.ie;
 		this.queryBrand();
@@ -152,8 +153,9 @@ export default class Brand extends Vue {
 				this.initTextChars();
 				this.initVideo();
 				this.onResize();
-				// this.moveDistance = this.$el.querySelector('.social-response .content-box ul li').clientWidth+	getComputedStyle(this.$el.querySelector('.social-response .content-box ul li'),null).marginRight*1;
 
+				this.margin = getComputedStyle(this.$el.querySelector('.social-response .content-box ul li'), null).marginRight.replace('px', '');
+				this.moveDistance = this.$el.querySelector('.social-response .content-box ul li').clientWidth + this.margin * 1;
 
 				this.$bus.$on(Events.RESIZE, this.onResize);
 			});
@@ -237,7 +239,6 @@ export default class Brand extends Vue {
 		ScrollTrigger.create({
 			scroller: '.social-response .content-box',
 			horizontal: true,
-			onUpdate: self => {}
 		});
 	}
 
@@ -367,14 +368,14 @@ export default class Brand extends Vue {
 		if (this.isPlayingPath) return;
 		if (index == this.prePathIndex) return;
 		this.nextIndex = index;
-		let isForward =index - this.prePathIndex > 0 ? true : false;
+		let isForward = index - this.prePathIndex > 0 ? true : false;
 		let start = this.prePathIndex == -1 ? 0 : this.offset + this.unit * this.prePathIndex;
 
 		let end = this.offset + this.unit * index + (isForward ? 0 : -0.0095);
-		this.scrollDistance=(this.prePathIndex * this.moveDistance)+(index - this.prePathIndex ) * this.moveDistance
+		this.scrollDistance = this.prePathIndex * this.moveDistance + (index - this.prePathIndex) * this.moveDistance;
 
 		gsap.to('.social-response .content-box', {
-			duration: 0.8,
+			duration:1,
 			scrollLeft: this.scrollDistance
 		});
 
@@ -410,12 +411,7 @@ export default class Brand extends Vue {
 		this.nextIndex++;
 		if (this.nextIndex >= this.shzrList.length - 1) this.nextIndex = this.shzrList.length - 1;
 		this.doMovePath(this.nextIndex);
-		// this.scrollDistance += this.moveDistance;
 
-		// gsap.to('.social-response .content-box', {
-		// 	duration: 0.8,
-		// 	scrollLeft: this.scrollDistance
-		// });
 		this.nextFlag = false;
 		setTimeout(() => {
 			this.nextFlag = true;
@@ -427,11 +423,7 @@ export default class Brand extends Vue {
 		this.nextIndex--;
 		if (this.nextIndex <= 0) this.nextIndex = 0;
 		this.doMovePath(this.nextIndex);
-		// this.scrollDistance -= this.moveDistance;
-		// gsap.to('.social-response .content-box', {
-		// 	duration: 0.8,
-		// 	scrollLeft: this.scrollDistance
-		// });
+
 		this.nextFlag = false;
 		setTimeout(() => {
 			this.nextFlag = true;
@@ -441,7 +433,10 @@ export default class Brand extends Vue {
 	onResize() {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
-		this.moveDistance = this.$el.querySelector('.social-response .content-box ul li').clientWidth+130;
+
+		this.margin = getComputedStyle(this.$el.querySelector('.social-response .content-box ul li'), null).marginRight.replace('px', '');
+		this.moveDistance = this.$el.querySelector('.social-response .content-box ul li').clientWidth + this.margin * 1;
+
 		svgBox.style.width = ul.clientWidth + 'px';
 
 		if (this.pathTween) {
