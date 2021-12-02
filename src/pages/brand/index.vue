@@ -214,7 +214,7 @@
 			<h2 class="wow">社会责任</h2>
 			<h3 class="wow">SOCIAL RESPONSIBILITY</h3>
 			<div class="content-box">
-				<div class="svg-box" v-if="!isIE">
+				<div class="svg-box" :class="{'is-ie': isIE}">
 					<svg
 						version="1.1"
 						class="svg"
@@ -1420,11 +1420,10 @@ html {
 				width: 0;
 				overflow: hidden;
 				.svg {
-					height: 80px;
 					left: 138px;
-					top: 28px;
+					top: 36px;
 					position: absolute;
-					transform: scale(0.89, 0.75);
+					transform: scale(1.19, 0.98);
 					transform-origin: left center;
 					path {
 						fill: none;
@@ -1436,12 +1435,23 @@ html {
 				.plane {
 					position: absolute;
 					left: 122.37px;
-					top: 49.5px;
+					top: 46.5px;
 					width: 37px;
 					height: 31px;
 					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
 					background-size: 100%;
 					transform: rotate(-13.2449deg);
+				}
+
+				&.is-ie {
+					top: 214px;
+					.svg path {
+						stroke: #bbbbbb;
+						stroke-width: 1;
+					}
+					.plane {
+						top: 165px;
+					}
 				}
 			}
 

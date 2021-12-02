@@ -437,7 +437,10 @@ export default class Brand extends Vue {
 	onResize() {
 		let svgBox = this.$el.querySelector<HTMLElement>('.svg-box');
 		let ul = this.$el.querySelector<HTMLElement>('.content-box ul');
-		svgBox.style.width = ul.clientWidth + 'px';
+		let width = ul.clientWidth;
+		if (this.isIE) width = ul.scrollWidth;
+		svgBox.style.width = width + 'px';
+		console.log(width);
 
 		if (this.pathTween) {
 			this.pathTween.kill();
