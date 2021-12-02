@@ -22,7 +22,7 @@ export default class SoftDecoration extends Vue {
 		speed: 1000,
 		loop: false,
 		slidesPerView: 4,
-		slidesPerGroup: 1,
+		slidesPerGroup: 4,
 		spaceBetween: 29,
 		autoplay: {
 			delay: 98000,
