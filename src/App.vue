@@ -139,6 +139,7 @@ html {
 	}
 	///左右按钮尺寸和hover效果
 	.swiper-button-prev {
+		outline: none;
 		width: 50px;
 		height: 35px;
 		left: 0;
@@ -158,6 +159,7 @@ html {
 		}
 	}
 	.swiper-button-next {
+		outline: none;
 		width: 50px;
 		height: 35px;
 		right: 0;

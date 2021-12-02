@@ -50,7 +50,7 @@
 				<ul>
 					<li v-for="(item, i) in buildingData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }">
 						<div class="imgBox">
-							<img :src="web_url + item.img" alt="" />
+							<img :src="web_url + item.img.split(',')[0]" @click="show(item.video, item.img)" alt="" />
 							<img src="~assets/icons/ic_c2_play.png" @click="playVideo(item.video)" v-if="item.video" alt="" />
 						</div>
 						<div class="text">
@@ -68,6 +68,21 @@
 			</div>
 			<Pagination :data="paginationData" @getData="getData1" v-if="buildingData.list" v-show="buildingData.list.length" />
 			<VideoPopup :videoPop="videoPop"></VideoPopup>
+			<transition name="slideFadeIn">
+				<Popup class="img-popup" v-if="imgPop.isPop" @click.native="imgPop.isPop = false">
+					<div class="mask"></div>
+					<div class="img-box">
+						<swiper :options="swiperOptions">
+							<swiper-slide v-for="(item, index) in imgPop.imgUrl.split(',')" :key="index">
+								<div class="imgBox" @click="$router.push({ path: '/case-detail', query: { aid: item.aid } })">
+									<img :src="web_url + item" alt="" />
+								</div>
+							</swiper-slide>
+						</swiper>
+						<div class="close"></div>
+					</div>
+				</Popup>
+			</transition>
 		</div>
 	</div>
 </template>
@@ -549,6 +564,50 @@ export default Building;
 		}
 		.pagination-box {
 			margin: 45px 0 100px 0;
+		}
+		.img-popup {
+			.img-box {
+				position: relative;
+				display: flex;
+				z-index: 11111;
+				opacity: 1;
+				background-color: #000;
+				.close {
+					position: absolute;
+					z-index: 222222;
+					top: -90px;
+					right: -10px;
+					width: 90px;
+					height: 90px;
+					border-radius: 50%;
+					background-color: #ed5400;
+					cursor: pointer;
+					background-image: url(~assets/icons/ic_home_popup_close2.png);
+					background-size: 30px 30px;
+					background-repeat: no-repeat;
+					background-position: center;
+					transition: all 0.3s;
+					transform: scale(0.6);
+					&:hover {
+						background-color: #fff;
+						background-image: url(~assets/icons/ic_home_menu_close.png);
+					}
+				}
+				.swiper-container {
+					width: 792px;
+					.swiper-slide {
+						width: 792px !important;
+					}
+				}
+				.imgBox {
+					width: 792px;
+					height: 508px;
+					margin: 0 auto;
+					img {
+						width: 100%;
+					}
+				}
+			}
 		}
 	}
 	.close {
