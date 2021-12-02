@@ -217,15 +217,18 @@ html {
 						margin-left: 0;
 						top: 0px;
 						background: url('~assets/icons/iconlist.png') no-repeat;
-						background-position: -11px -11px;
+						background-position: -11Px -11Px;
 						// background-size: 26px 26px;
 						&:nth-last-of-type(2) {
 							opacity: 0;
-							z-index: 11;
-							background-position: -10.2Px -41.9	Px;
+							background-position: -11Px -42.3Px;
 						}
 					}
+					&:hover i:nth-last-of-type(1) {
+						// opacity: 0 !important;
+					}
 					&:hover i:nth-last-of-type(2) {
+						z-index: 12;
 						opacity: 1 !important;
 					}
 				}
