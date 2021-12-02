@@ -846,6 +846,7 @@ export default SoftDecoration;
 				.prev {
 					cursor: pointer;
 					width: 16px;
+					outline: none;
 					height: 16px;
 					position: absolute;
 					left: 0;
@@ -863,6 +864,7 @@ export default SoftDecoration;
 					cursor: pointer;
 					height: 16px;
 					position: absolute;
+					outline: none;
 					right: 0;
 					background: url('~assets/icons/ic_e2_part7_right.png') no-repeat center center;
 					background-size: 9px 16px;
@@ -952,7 +954,6 @@ export default SoftDecoration;
 					flex-wrap: wrap;
 					height: 230px;
 					transition: 0.3s;
-					align-content: center;
 					position: relative;
 					z-index: 2;
 					p {
@@ -964,6 +965,9 @@ export default SoftDecoration;
 						transition: 0.3s;
 						margin-top: 3px;
 						white-space: pre-wrap;
+						display: flex;
+						align-items: center;
+						justify-content: center;
 					}
 				}
 				b {
