@@ -401,6 +401,10 @@ export default class Brand extends Vue {
 		this.nextIndex++;
 		if(this.nextIndex>=this.shzrList.length-1) this.nextIndex=this.shzrList.length-1
 		this.doMovePath(this.nextIndex)
+		gsap.to('.social-response .content-box', {
+			duration: 0.5,
+			scrollLeft:200
+		});
 		this.nextFlag=false
 		setTimeout(() => {
 			this.nextFlag=true

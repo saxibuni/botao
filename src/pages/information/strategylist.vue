@@ -300,6 +300,8 @@ html {
 					}
 					h4 {
 						@include line-clamp(1);
+								max-height: 26px;
+								overflow: hidden;
 						color: #000;
 						transition: all 0.3s;
 					}
