@@ -100,7 +100,6 @@
 				</div>
 				<div class="mask" v-if="anList.length">
 					<img :src="web_url + anList[swiperIndex].img" alt="" v-if="!isIE" />
-					{{ anList[swiperIndex].title }}
 				</div>
 				<div class="mask2"></div>
 			</div>
