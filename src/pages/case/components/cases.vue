@@ -18,12 +18,12 @@
 						</div>
 						<div class="topRight">
 							<!-- <i @click="fn"></i> -->
-							<div @click.once="getLove(caseData.aid)">
+							<div @click="getLove(caseData.aid)">
 								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" />
 								<img v-if="!isIE" class="img" :class="{ img2: caseData.love + Number(caseData.likejs) > 0 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 								<img v-if="isIE && caseData.love + Number(caseData.likejs)" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 							</div>
-							<p>{{ caseData.is_zan == 1 ? love : caseData.love + Number(caseData.likejs) }}个喜欢</p>
+							<p>{{ caseData.love + Number(caseData.likejs) }}个喜欢</p>
 						</div>
 					</div>
 					<div class="bottom" @click.stop="push">
@@ -84,11 +84,12 @@ export default class Caese extends Vue {
 			res => {
 				if (res.status == 200) {
 					this.love = res.data.num + Number(this.caseData.likejs);
-					this.caseData.love = res.data.num + Number(this.caseData.likejs);
+					this.caseData.love = res.data.num;
 					this.caseData.is_zan = 1;
 				}
 			}
 		);
+		this.caseData.is_zan = 1;
 	}
 	push(e) {
 		if (e.target.className == 'btn') return;
