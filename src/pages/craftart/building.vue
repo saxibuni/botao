@@ -57,7 +57,7 @@
 							<p>{{ item.title }}</p>
 							<p>
 								{{ item.gdhxsx }}
-								<span></span>
+								<span v-if="item.jzmj && item.gdhxsx"></span>
 								{{ item.jzmj }}
 							</p>
 							<p>设计师：{{ item.designer }}</p>
