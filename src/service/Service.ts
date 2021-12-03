@@ -108,4 +108,8 @@ export class Service extends EventEmitter {
 	public searchList(req, callback: (res: any) => void) {
 		this.send('api.php/Ajax/searchList', req, callback);
 	}
+	public caseStyle(req, callback: (res: any) => void) {
+		this.send('api.php/Ajax/caseStyle', req, callback);
+	}
+
 }

@@ -189,6 +189,7 @@ export default class home extends Vue {
 	qaylz = {};
 	zxxxList = [];
 	page5Index2:any = '01';
+	alTitle = [];
 	mounted() {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
@@ -207,7 +208,7 @@ export default class home extends Vue {
 		utils.service.queryHome({}, res => {
 			if (res.status === 200) {
 				this.banner = res.data.banner;
-				this.anList = res.data.icase;
+				this.alTitle = res.data.stylesx_list;
 				this.portraitList = res.data.sjsList;
 
 				if(res.data.sjsList.length>=16){
@@ -225,7 +226,7 @@ export default class home extends Vue {
 				this.page5List = res.data.jbxgList;
 				this.qaylz = res.data.qaylz;
 				this.zxxxList = res.data.zxxxList;
-
+				this.caseStyle(this.alTitle[this.anIndex]);
 				setTimeout(()=>{
 					this.initTextChars();
 					this.initScrollTrigger();
@@ -266,6 +267,8 @@ export default class home extends Vue {
 	}
 	anIndexFun(){
 		(this.$refs.mSwiper as any).$swiper.slideTo(0, 600, true);
+		this.caseStyle(this.alTitle[this.anIndex])
+
 	}
 	onResize() {
 		this.getCurrentPortraitList();
@@ -536,7 +539,7 @@ export default class home extends Vue {
 		},300);
 	}
 	onClick3(e){
-		let length =(this.anList[this.anIndex] as any).list.length;
+		let length = this.anList.length;
 		if(e==1){
 			if(this.swiperIndex<length-1){
 				this.swiperIndex = Number(this.swiperIndex) + e
@@ -563,10 +566,19 @@ export default class home extends Vue {
 			this.page2Ani = true;
 		},300);
 	}
-	openUrl(url){
-		if(url){
-			window.location.href = url;
+	openUrl(aid){
+		if(aid){
+			// window.location.href = url;
+			this.$router.push({name:'case-detail',query:{aid:aid}})
 		}
+	}
+	caseStyle(stylesx?){
+		utils.service.caseStyle({stylesx:stylesx}, res => {
+			if (res.status === 200) {
+				this.anList = res.data.list;
+			}
+			}
+		)
 	}
 	beforeDestroy() {
 		utils.emitter.$off('chars-ani', this.onCharsEnter);

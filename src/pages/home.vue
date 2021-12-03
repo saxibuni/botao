@@ -61,38 +61,35 @@
 			</h2>
 			<p class="wow">Select cases</p>
 			<div class="tabs wow">
-				<div v-for="(item, i) in anList" :key="i" :class="{ active: i == anIndex }" @click="(anIndex = i), (page2Index = 0), (swiperIndex = 0), anIndexFun()">{{ item.typename }}</div>
+				<div v-for="(item, i) in alTitle" :key="i" :class="{ active: i == anIndex }" @click="(anIndex = i), (page2Index = 0), (swiperIndex = 0), anIndexFun()">{{ item }}</div>
 			</div>
 			<div class="swiper">
 				<div class="img-wrap">
 					<div class="imgs-wrap" v-if="anList.length > 0">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
-							<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i">
-								<img @click="openUrl(item.link)" :src="web_url + item.img" alt="" />
+							<swiper-slide v-for="(item, i) in anList" :key="i">
+								<img @click="openUrl(item.aid)" :src="web_url + item.img" alt="" />
 							</swiper-slide>
 						</swiper>
 					</div>
 				</div>
 				<transition name="fade">
-					<template v-if="anList.length > 0 && anList[anIndex].list && anList[anIndex].list[page2Index]">
+					<template v-if="anList.length > 0 && anList ">
 						<div class="text wow" v-if="page2Ani">
-							<h3 v-if="anList[anIndex].list[page2Index] && anList[anIndex].list[page2Index].title">{{ anList[anIndex].list[page2Index].title }}</h3>
-							<h4 v-if="anList[anIndex].list[page2Index] && anList[anIndex].list[page2Index].title">
-								<span>{{ anList[anIndex].list[page2Index].istyle }}</span>
-								<span>{{ anList[anIndex].list[page2Index].imj }}</span>
+							<h3 v-if="anList[swiperIndex] && anList[swiperIndex].title">{{ anList[swiperIndex].title }}</h3>
+							<h4 v-if="anList[swiperIndex] && anList[swiperIndex].title">
+								<span>{{ anList[swiperIndex].istyle }}</span>
+								<span>{{ anList[swiperIndex].imj }}</span>
 							</h4>
-							<p v-if="anList[anIndex].list[page2Index] && anList[anIndex].list[page2Index].title">
-								{{ anList[anIndex].list[page2Index].desc }}
+							<p v-if="anList[swiperIndex] && anList[swiperIndex].title">
+								{{ anList[swiperIndex].desc }}
 							</p>
-							<!-- <div class="btn-box">
-								<Button text="案例详情" @click.native="$router.push({ name: 'case-detail' ,query:{aid:anList[anIndex].list[page2Index].aid}})"></Button>
-							</div> -->
 						</div>
 					</template>
 				</transition>
 				<div class="swiper-wrap wow" v-if="anList.length > 0">
 					<swiper class="dswiper" :options="bannerSwiperOptions2" ref="mySwiper2">
-						<swiper-slide v-for="(item, i) in anList[anIndex].list" :key="i" :class="{ active: swiperIndex == i }" @click.native="onSelect(i)">
+						<swiper-slide v-for="(item, i) in anList" :key="i" :class="{ active: swiperIndex == i }" @click.native="onSelect(i)">
 							<img :src="web_url + item.img" alt="" />
 						</swiper-slide>
 					</swiper>
@@ -101,8 +98,9 @@
 						<div class="next2" @click="onClick3(1)"></div>
 					</div>
 				</div>
-				<div class="mask" v-if="anList.length > 0 && anList[anIndex].list && anList[anIndex].list[page2Index]">
-					<img :src="web_url + anList[anIndex].list[page2Index].img" alt="" v-if="!isIE" />
+				<div class="mask" v-if="anList.length">
+					<img :src="web_url + anList[swiperIndex].img" alt="" v-if="!isIE" />
+					{{ anList[swiperIndex].title }}
 				</div>
 				<div class="mask2"></div>
 			</div>
@@ -450,7 +448,7 @@
 			</div>
 			<div class="list">
 				<ul>
-					<li class="wow" v-if="zxxxList[0]" @click="$router.push({ name: 'owner-voice', query: { aid: zxxxList[4].aid } })">
+					<li class="wow" v-if="zxxxList[0]" @click="$router.push({ name: 'owner-voice', query: { aid: zxxxList[0].aid } })">
 						<div>
 							<img :src="web_url + zxxxList[0].video_img" alt="" />
 						</div>
