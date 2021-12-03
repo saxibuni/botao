@@ -52,6 +52,7 @@
 						<div class="imgBox">
 							<img :src="web_url + item.img.split(',')[0]" @click="show(item.video, item.img)" alt="" />
 							<img src="~assets/icons/ic_c2_play.png" @click="playVideo(item.video)" v-if="item.video" alt="" />
+							<img src="~assets/icons/tuji.png" v-if="!item.video && item.img.split(',').length > 1" @click="show(item.video, item.img)" alt="" />
 						</div>
 						<div class="text">
 							<p>{{ item.title }}</p>
