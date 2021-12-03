@@ -460,20 +460,20 @@
 					<li class="item wow">
 						<div class="top" v-if="zxxxList[1]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[1].aid } })">
 							<div>
-								<img :src="web_url + zxxxList[1].img" alt="" />
+								<img :src="web_url + zxxxList[1].indeximg" alt="" />
 								<div>
 									<p>{{ yue(zxxxList[1].update_time) }}</p>
 									<b>{{ format(zxxxList[1].update_time) }}</b>
 								</div>
 							</div>
 							<h4>{{ zxxxList[1].title }}</h4>
-							<p>{{ zxxxList[1].tag }}</p>
+							<p>{{ zxxxList[1].typename }}</p>
 						</div>
 
 						<div class="items" v-if="zxxxList[2]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[2].aid } })">
 							<h4>{{ zxxxList[2].title }}</h4>
 							<p>
-								<span>{{ zxxxList[2].tag }}</span>
+								<span>{{ zxxxList[2].typename }}</span>
 								<span>{{ format(zxxxList[2].update_time) }}</span>
 							</p>
 						</div>
@@ -481,7 +481,7 @@
 						<div class="items" v-if="zxxxList[3]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[3].aid } })">
 							<h4>{{ zxxxList[3].title }}</h4>
 							<p>
-								<span>{{ zxxxList[3].tag }}</span>
+								<span>{{ zxxxList[3].typename }}</span>
 								<span>{{ format(zxxxList[3].update_time) }}</span>
 							</p>
 						</div>
@@ -489,20 +489,20 @@
 					<li class="item wow">
 						<div class="top" v-if="zxxxList[4]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[4].aid } })">
 							<div>
-								<img :src="web_url + zxxxList[4].img" alt="" />
+								<img :src="web_url + zxxxList[4].indeximg" alt="" />
 								<div>
 									<p>{{ yue(zxxxList[4].update_time) }}</p>
 									<b>{{ format(zxxxList[4].update_time) }}</b>
 								</div>
 							</div>
 							<h4>{{ zxxxList[4].title }}</h4>
-							<p>{{ zxxxList[4].tag }}</p>
+							<p>{{ zxxxList[4].typename }}</p>
 						</div>
 
 						<div class="items" v-if="zxxxList[5]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[5].aid } })">
 							<h4>{{ zxxxList[5].title }}</h4>
 							<p>
-								<span>{{ zxxxList[5].tag }}</span>
+								<span>{{ zxxxList[5].typename }}</span>
 								<span>{{ format(zxxxList[5].update_time) }}</span>
 							</p>
 						</div>
@@ -510,7 +510,7 @@
 						<div class="items" v-if="zxxxList[6]" @click="$router.push({ name: 'strategy-detail', query: { aid: zxxxList[6].aid } })">
 							<h4>{{ zxxxList[6].title }}</h4>
 							<p>
-								<span>{{ zxxxList[6].tag }}</span>
+								<span>{{ zxxxList[6].typename }}</span>
 								<span>{{ format(zxxxList[6].update_time) }}</span>
 							</p>
 						</div>
