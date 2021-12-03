@@ -315,7 +315,6 @@ export default class Brand extends Vue {
 	calcRotate(str) {
 		const time_box = document.querySelector<HTMLElement>('.time-box');
 		const text_box = document.querySelector<HTMLElement>('.text-boxs');
-		console.log(time_box);
 
 		if (str == 'next') {
 			this.deg += 90;
@@ -337,7 +336,6 @@ export default class Brand extends Vue {
 		let offset = 25;
 		let height = this.pos[i] + offset;
 		let progress = (height - 290) / (1245 - 290);
-		console.warn(progress);
 		let totalScroll = 1245 - 716;
 		if (i == this.pos.length - 1) progress = 1;
 		let distance = progress * totalScroll;
