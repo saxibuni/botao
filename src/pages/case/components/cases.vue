@@ -21,7 +21,7 @@
 							<div @click="getLove(caseData.aid)">
 								<img src="~assets/icons/ic_b1_part3_like1.png" alt="" />
 								<img v-if="!isIE" class="img" :class="{ img2: caseData.love + Number(caseData.likejs) > 0 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
-								<img v-if="isIE && caseData.love + Number(caseData.likejs)" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
+								<img v-if="isIE && caseData.love + Number(caseData.likejs) > 0" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 							</div>
 							<p>{{ caseData.love + Number(caseData.likejs) }}个喜欢</p>
 						</div>
