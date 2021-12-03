@@ -394,6 +394,7 @@ html {
 						font-size: 18px;
 						color: #666666;
 						line-height: 30px;
+						@include line-clamp(2);
 					}
 					.more {
 						margin-top: 56px;
