@@ -161,14 +161,14 @@
 						v-for="(item, i) in currentPortraitList"
 						:key="i"
 					>
-						<div class="one" >
+						<div class="one" v-if="item!='assets/white.png'">
 							<div class="inner-one" :style="{ opacity: item != 'assets/white.png' ? 1 : 1 }">
 								<div class="box">
 									<img :src="item" alt="" />
 								</div>
 							</div>
 						</div>
-						<div class="two" :style="{ opacity: item == 'assets/white.png' ? 0 : 1 }">
+						<div class="two" v-if="item!='assets/white.png'" :style="{ opacity: item == 'assets/white.png' ? 0 : 1 }">
 							<div class="inner-two">
 								<div class="box">
 									<img :src="item" alt="" />
