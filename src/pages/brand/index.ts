@@ -111,7 +111,7 @@ export default class Brand extends Vue {
 	moveDistance = 0;
 	scrollDistance = 0;
 	margin: any;
-	moveUnit:0;
+	moveUnit: 0;
 	created() {
 		this.isIE = utils.device.browser.ie;
 		if (this.isIE) this.unit = 0.06148;
@@ -239,7 +239,7 @@ export default class Brand extends Vue {
 
 		ScrollTrigger.create({
 			scroller: '.social-response .content-box',
-			horizontal: true,
+			horizontal: true
 		});
 	}
 
@@ -374,7 +374,7 @@ export default class Brand extends Vue {
 		this.scrollDistance = this.prePathIndex * this.moveDistance + (index - this.prePathIndex) * this.moveDistance;
 
 		gsap.to('.social-response .content-box', {
-			duration:1,
+			duration: 1,
 			scrollLeft: this.scrollDistance
 		});
 
@@ -443,16 +443,18 @@ export default class Brand extends Vue {
 		if (this.pathTween) {
 			this.pathTween.kill();
 			this.isPlayingPath = false;
-			this.prePathIndex--
-			this.doMovePath(this.prePathIndex+1, true);
+			this.prePathIndex--;
+			this.doMovePath(this.prePathIndex + 1, true);
 		}
 	}
 
 	beforeDestroy() {
 		this.$bus.$off(Events.RESIZE, this.onResize);
 		this.$bus.$off('params-change', this.jump);
-		this.draggerTarget1.kill();
-		this.draggerTarget1 = null;
+		if (this.draggerTarget1) {
+			this.draggerTarget1.kill();
+			this.draggerTarget1 = null;
+		}
 		ScrollTrigger.getAll().forEach(child => child.kill());
 		this.pathTween && this.pathTween.kill();
 	}
