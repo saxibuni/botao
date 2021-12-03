@@ -84,19 +84,19 @@
 				<p>观看大咖专访视频</p>
 			</div>
 		</div>
-		<div class="works" v-if="detailData.vrList.length || detailData.sjsList.length">
+		<div class="works" v-if="(detailData.vrList.length && detailData.designer_info.is_vr == '是') || (detailData.sjsList.length && detailData.designer_info.is_vr != '是')">
 			<img src="~assets/bg_c2_part3.jpg" alt="" />
 			<h3 class="wow">TA的作品</h3>
-			<div class="list wow" v-if="detailData.sjsList.length">
+			<div class="list wow" v-if="detailData.sjsList.length && detailData.designer_info.is_vr != '是'">
 				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3 * moreIndex)" :key="i" />
 			</div>
 			<div class="list wow" v-else>
 				<Cases :caseData="v" v-for="(v, i) in detailData.vrList.slice(0, 3 * moreIndex)" :key="i" />
 			</div>
-			<template v-if="detailData.sjsList.length">
+			<template v-if="detailData.sjsList.length && detailData.designer_info.is_vr != '是'">
 				<div class="more" @click="moreIndex++" v-show="detailData.sjsList.length > 3 * moreIndex">更多案例</div>
 			</template>
-			<template v-if="detailData.vrList.length && !detailData.sjsList.length">
+			<template v-if="detailData.vrList.length && detailData.designer_info.is_vr == '是'">
 				<div class="more" @click="moreIndex++" v-show="detailData.vrList.length > 3 * moreIndex">更多案例</div>
 			</template>
 		</div>

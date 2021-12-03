@@ -508,6 +508,10 @@ export default Building;
 						height: 360px;
 						overflow: hidden;
 						img {
+							&:nth-of-type(1) {
+								// width: 100%;
+								// height: 100%;
+							}
 							&:nth-of-type(2):hover {
 								transform: translate(-50%, -50%) scale($imgScale);
 							}
