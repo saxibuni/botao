@@ -69,9 +69,9 @@
 			<Pagination :data="paginationData" @getData="getData1" v-if="buildingData.list" v-show="buildingData.list.length" />
 			<VideoPopup :videoPop="videoPop"></VideoPopup>
 			<transition name="slideFadeIn">
-				<Popup class="img-popup" v-if="imgPop.isPop" @click.native="show2">
+				<Popup class="video-popup" v-if="imgPop.isPop" @click.native="show2">
 					<div class="mask"></div>
-					<div class="img-box">
+					<div class="video-box">
 						<swiper :options="swiperOptions">
 							<swiper-slide v-for="(item, index) in imgPop.imgUrl.split(',')" :key="index">
 								<div class="imgBox" @click="$router.push({ path: '/case-detail', query: { aid: item.aid } })">
@@ -568,8 +568,8 @@ export default Building;
 		.pagination-box {
 			margin: 45px 0 100px 0;
 		}
-		.img-popup {
-			.img-box {
+		.video-popup {
+			.video-box {
 				position: relative;
 				display: flex;
 				z-index: 11111;
