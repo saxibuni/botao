@@ -23,7 +23,7 @@
 								<img v-if="!isIE" class="img" :class="{ img2: caseData.is_zan == 1 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 								<img v-if="isIE && caseData.is_zan == 1" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 							</div>
-							<p>{{ love }}个喜欢</p>
+							<p>{{ caseData.is_zan == 1 ? love : caseData.love }}个喜欢</p>
 						</div>
 					</div>
 					<div class="bottom" @click.stop="push">
@@ -61,7 +61,7 @@ export default class Caese extends Vue {
 	isIE: boolean = false;
 	created() {
 		this.isIE = device.browser.ie;
-		this.love = this.caseData.love;
+		// this.love = this.caseData.love;
 	}
 	@Prop({
 		required: false,
