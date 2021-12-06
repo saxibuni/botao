@@ -5,7 +5,7 @@
 				<div class="form">
 					<h2>
 						已有
-						<ICountUp  v-if="footData&&footData.bj_num" :endVal="footData.bj_num" :options="options"></ICountUp>
+						<ICountUp v-if="footData && footData.bj_num" :endVal="footData.bj_num" :options="options"></ICountUp>
 						人获取报价
 					</h2>
 					<ul>
@@ -29,12 +29,12 @@
 				</div>
 				<ul v-if="navList">
 					<template v-for="(item, index) in navList">
-					<li :key="index" v-if="item.nav_name!='首页'">
-						<h5 @click="onJump(item.nav_id)">{{ item.nav_name }}</h5>
-						<template v-for="(it, index) in item.children">
-							<p @click="onJump(it.nav_id)" :key="index" v-if="it.nav_id!=104">{{ it.nav_name }}</p>
-						</template>
-					</li>
+						<li :key="index" v-if="item.nav_name != '首页'">
+							<h5 @click="onJump(item.nav_id)">{{ item.nav_name }}</h5>
+							<template v-for="(it, index) in item.children">
+								<p @click="onJump(it.nav_id)" :key="index" v-if="it.nav_id != 104">{{ it.nav_name }}</p>
+							</template>
+						</li>
 					</template>
 				</ul>
 			</div>
@@ -47,16 +47,16 @@
 							</i>
 							Phone number
 						</div>
-						<h3>{{ footData.tel}}</h3>
+						<h3>{{ footData.tel }}</h3>
 					</li>
-					<li>
+					<li v-if="false">
 						<div>
 							<i>
 								<img src="~assets/icons/ic_home_footer_mail.png" alt="" />
 							</i>
 							E-mail
 						</div>
-						<h3>{{ footData.email}}</h3>
+						<h3>{{ footData.email }}</h3>
 					</li>
 					<li>
 						<div>
@@ -65,11 +65,11 @@
 							</i>
 							Address
 						</div>
-						<h3>{{ footData.address}}</h3>
+						<h3>{{ footData.address }}</h3>
 					</li>
 				</ul>
 				<div>
-					<img :src="web_url+footData.watch" alt="" />
+					<img :src="web_url + footData.watch" alt="" />
 					<div>
 						<span>关注波涛了解</span>
 						<br />
@@ -80,20 +80,20 @@
 			<div class="copyright">
 				<div class="link">
 					<p>
-						{{footData.copyright}}
+						{{ footData.copyright }}
 						<span v-html="footData.icp"></span>
 						技术支持：
-						<a href="https://www.zhulu86.com/" target='_blank'>逐鹿科技</a>
+						<a href="https://www.zhulu86.com/" target="_blank">逐鹿科技</a>
 					</p>
 					友情链接：
-					<template v-for="(item,i) in footData.link">
-						<a :href="item.url" target='_blank' :key="i">{{item.title}}</a>
+					<template v-for="(item, i) in footData.link">
+						<a :href="item.url" target="_blank" :key="i">{{ item.title }}</a>
 					</template>
 				</div>
 				<div class="icons">
 					<div class="wx">
 						<div>
-							<img :src="web_url+footData.watch" alt="" />
+							<img :src="web_url + footData.watch" alt="" />
 						</div>
 						<i>
 							<img src="~assets/icons/ic_home_footer_wechat1.png" alt="" />
@@ -118,7 +118,7 @@ import ICountUp from 'root/components/countup.vue';
 import utils, { emitter } from 'root/utils';
 
 @Component({
-	components:{
+	components: {
 		ICountUp
 	}
 })
@@ -131,9 +131,9 @@ export default class Footer extends Vue {
 	options = {
 		useGrouping: false
 	};
-	oninput(){
-		this.form.phone=this.form.phone.replace(/[^\d]/g,'')
-	};
+	oninput() {
+		this.form.phone = this.form.phone.replace(/[^\d]/g, '');
+	}
 	navList = [
 		{
 			title: '精选案例',
@@ -222,29 +222,29 @@ export default class Footer extends Vue {
 			};
 			return;
 		}
-	 		let data = {
-			form_id:11,
-			attr_45:this.form.userName,
-			attr_46:this.form.phone,
-			attr_47:this.form.area,
-		}
+		let data = {
+			form_id: 11,
+			attr_45: this.form.userName,
+			attr_46: this.form.phone,
+			attr_47: this.form.area
+		};
 		utils.service.formSubmit(data, res => {
 			if (res.status === 200) {
-			 		this.$store.state.dialog={
-						state:1,
-						text:'提交成功'
-					}
-					this.form = {
-						userName: '',
-						phone: '',
-						area: ''
-					};
-					this.$store.state.dialogVisible = false;
-			}else{
-				this.$store.state.dialog={
-						state:2,
-						text:'系统错误'
-				}
+				this.$store.state.dialog = {
+					state: 1,
+					text: '提交成功'
+				};
+				this.form = {
+					userName: '',
+					phone: '',
+					area: ''
+				};
+				this.$store.state.dialogVisible = false;
+			} else {
+				this.$store.state.dialog = {
+					state: 2,
+					text: '系统错误'
+				};
 			}
 		});
 	}
@@ -252,70 +252,62 @@ export default class Footer extends Vue {
 		window.open(`https://service.weibo.com/share/share.php?url=波涛装饰集团,我们，让空间更美好 ${this.web_url}`);
 	}
 	navObj = {
-		73:'case',
-		77:'case-list',
-		78:'case-listvr',
+		73: 'case',
+		77: 'case-list',
+		78: 'case-listvr',
 
-		74:'design',
-		75:'craft-building',
+		74: 'design',
+		75: 'craft-building',
 
+		79: 'craft-building',
+		80: 'craft-team',
+		81: 'craft-manager',
+		76: 'whole-decoration',
+		82: 'whole-decoration',
+		83: 'cherry-pick',
+		84: 'soft-decoration',
 
-		79:'craft-building',
-		80:'craft-team',
-		81:'craft-manager',
-		76:'whole-decoration',
-		82:'whole-decoration',
-		83:'cherry-pick',
-		84:'soft-decoration',
+		85: 'owner-voice',
+		86: 'owner-voice',
+		87: 'strategy-list',
+		88: 'join-us',
+		90: 'strategy-list',
 
-		85:'owner-voice',
-		86:'owner-voice',
-		87:'strategy-list',
-		88:'join-us',
-		90:'strategy-list',
-
-		89:'brand',
-		91:'brand',
-		92:'brand',
-		93:'brand',
-		94:'brand',
-		95:'brand',
-		96:'brand',
-		97:'brand',
-
-	}
-	onJump(navId){
+		89: 'brand',
+		91: 'brand',
+		92: 'brand',
+		93: 'brand',
+		94: 'brand',
+		95: 'brand',
+		96: 'brand',
+		97: 'brand'
+	};
+	onJump(navId) {
 		console.log(navId);
-		if(navId==89||navId==91){
-			this.$router.push({name:this.navObj[navId],params:{number:'0'}})
+		if (navId == 89 || navId == 91) {
+			this.$router.push({ name: this.navObj[navId], params: { number: '0' } });
 			this.$bus.$emit('params-change', 0);
-		}else if(navId==92){
-			this.$router.push({name:this.navObj[navId],params:{number:'1'}})
+		} else if (navId == 92) {
+			this.$router.push({ name: this.navObj[navId], params: { number: '1' } });
 			this.$bus.$emit('params-change', 1);
-		}
-		else if(navId==93){
-			this.$router.push({name:this.navObj[navId],params:{number:'2'}})
+		} else if (navId == 93) {
+			this.$router.push({ name: this.navObj[navId], params: { number: '2' } });
 			this.$bus.$emit('params-change', 2);
-		}
-		else if(navId==94){
-			this.$router.push({name:this.navObj[navId],params:{number:'3'}})
+		} else if (navId == 94) {
+			this.$router.push({ name: this.navObj[navId], params: { number: '3' } });
 			this.$bus.$emit('params-change', 3);
-		}
-		else if(navId==95){
-			this.$router.push({name:this.navObj[navId],params:{number:'4'}})
+		} else if (navId == 95) {
+			this.$router.push({ name: this.navObj[navId], params: { number: '4' } });
 			this.$bus.$emit('params-change', 4);
-		}
-		else if(navId==96){
-			this.$router.push({name:this.navObj[navId],params:{number:'5'}})
+		} else if (navId == 96) {
+			this.$router.push({ name: this.navObj[navId], params: { number: '5' } });
 			this.$bus.$emit('params-change', 5);
-		}
-		else if(navId==97){
-			this.$router.push({name:this.navObj[navId],params:{number:'6'}})
+		} else if (navId == 97) {
+			this.$router.push({ name: this.navObj[navId], params: { number: '6' } });
 			this.$bus.$emit('params-change', 6);
-		}
-		else{
+		} else {
 			this.$router.push({
-				name:this.navObj[navId],
+				name: this.navObj[navId],
 				query: {
 					typeId: navId
 				}
@@ -325,12 +317,12 @@ export default class Footer extends Vue {
 
 	footData = '';
 	web_url = '';
-	mounted(){
-			this.footData = this.$store.state.footData;
-			this.web_url = this.$store.state.footData.web_url;
-			if(this.$store.state.menuData&&this.$store.state.menuData.menu_list.length!=0){
-					this.navList = this.$store.state.menuData.menu_list;
-			}
+	mounted() {
+		this.footData = this.$store.state.footData;
+		this.web_url = this.$store.state.footData.web_url;
+		if (this.$store.state.menuData && this.$store.state.menuData.menu_list.length != 0) {
+			this.navList = this.$store.state.menuData.menu_list;
+		}
 	}
 }
 </script>
@@ -536,7 +528,7 @@ export default class Footer extends Vue {
 				div {
 					line-height: 32px;
 				}
-				span{
+				span {
 					font-size: 18px;
 				}
 			}
@@ -558,18 +550,18 @@ export default class Footer extends Vue {
 					&:hover {
 						color: #fff;
 					}
-					&::after{
-						content: "  |  ";
-						color: #666666!important;
+					&::after {
+						content: '  |  ';
+						color: #666666 !important;
 					}
-					&:last-child{
-						&::after{
-							 display: none;
+					&:last-child {
+						&::after {
+							display: none;
 						}
 					}
 				}
-				span{
-					/deep/a{
+				span {
+					/deep/a {
 						transition: 0.3s;
 						font-size: 18px;
 						color: #666666;
@@ -591,26 +583,26 @@ export default class Footer extends Vue {
 					position: relative;
 					transition: 0.3s;
 					position: relative;
-					img{
+					img {
 						width: 100%;
 						height: 100%;
 						display: block;
 						position: absolute;
 						top: 50%;
 						left: 50%;
-						transform: translate(-50%,-50%);
-						transition: .3s;
+						transform: translate(-50%, -50%);
+						transition: 0.3s;
 						opacity: 1;
-						&:nth-child(2){
+						&:nth-child(2) {
 							opacity: 0;
 						}
 					}
 					&:nth-child(2) {
 					}
 					&:hover {
-						img{
+						img {
 							opacity: 0;
-							&:nth-child(2){
+							&:nth-child(2) {
 								opacity: 1;
 							}
 						}
