@@ -174,7 +174,10 @@ export default class Caese extends Vue {
 							&:nth-of-type(1) {
 								font-size: 28px;
 								color: #000000;
-								@include line-clamp(1);
+								white-space: nowrap;
+								text-overflow: ellipsis;
+								width: 250px;
+								overflow: hidden;
 								transition: all 0.3s;
 							}
 							&:nth-of-type(2) {
