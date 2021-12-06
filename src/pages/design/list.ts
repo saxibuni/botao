@@ -1,8 +1,9 @@
-import { Vue, Component } from 'vue-property-decorator';
+import {  Component,Mixins } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue'
 import Button from 'root/components/button.vue'
 import ICountUp from 'root/components/countup.vue';
 import utils from 'root/utils'
+import Com from 'root/components/baseCom'
 @Component({
 	components: {
 		Pagination,
@@ -10,7 +11,7 @@ import utils from 'root/utils'
 		ICountUp
 	}
 })
-export default class DesignList extends Vue {
+export default class DesignList extends Mixins(Com) {
 	web_url = ''
 	listData={}
 	inputVal=''
@@ -25,6 +26,7 @@ export default class DesignList extends Vue {
 		this.getData(1,'','')
 	}
 		getData(val1,val2,val3) {
+			this.clearImgSrc(this.paginationData.boxName)
 			utils.service.queryDesigner(
 				{
 					page: val1,

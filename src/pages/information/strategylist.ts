@@ -1,7 +1,8 @@
-import { Vue, Component, Watch } from 'vue-property-decorator';
+import {  Component, Watch,Mixins } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue';
 import Banner from '../../components/banner.vue';
 import utils from 'root/utils';
+import Com from 'root/components/baseCom'
 @Component({
 	components: {
 		Pagination,
@@ -19,7 +20,7 @@ import utils from 'root/utils';
 		}
 	}
 })
-export default class StrategyList extends Vue {
+export default class StrategyList extends Mixins(Com) {
 	web_url = '';
 	BannerData = {};
 	isShow: boolean = false;
@@ -63,6 +64,7 @@ export default class StrategyList extends Vue {
 	}
 
 	getData(v) {
+		this.clearImgSrc(this.paginationData.boxName)
 		this.queryMethod({ page: v }, res => {
 			this.groupList = res.data.newsList;
 		});

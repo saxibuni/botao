@@ -1,14 +1,15 @@
-import { Vue, Component } from 'vue-property-decorator';
+import {  Component,Mixins} from 'vue-property-decorator';
 import Banner from "root/components/banner.vue";
 import Pagination from '../../components/pagination.vue'
 import utils from 'root/utils'
+import Com from 'root/components/baseCom'
 @Component({
 	components: {
 		Banner,
 		Pagination
 	}
 })
-export default class Team extends Vue {
+export default class Team extends Mixins(Com) {
 	teamData={}
 	web_url = ''
 	paginationData={size:0,total:0, boxName: ".craft-team > .list"}
@@ -17,6 +18,7 @@ export default class Team extends Vue {
 		this.getData(1)
 	}
 		getData(v) {
+			this.clearImgSrc(this.paginationData.boxName)
 			utils.service.querysgteam(
 				{
 					page:v

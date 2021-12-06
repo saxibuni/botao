@@ -1,15 +1,16 @@
-import { Vue, Component } from 'vue-property-decorator';
+import { Component,Mixins } from 'vue-property-decorator';
 import Pagination from '../../components/pagination.vue'
 import Button from 'root/components/button.vue'
 import utils from 'root/utils'
 import { device } from 'root/utils';
+import Com from 'root/components/baseCom'
 @Component({
 	components: {
 		Pagination,
 		Button
 	}
 })
-export default class CaseListVr extends Vue {
+export default class CaseListVr extends Mixins(Com) {
 	web_url = ''
 	vrData:any={}
 	flag = true;
@@ -24,6 +25,7 @@ export default class CaseListVr extends Vue {
 		this.getData(1,'','','','')
 	}
 		getData(val1,val2,val3,val4,val5) {
+			this.clearImgSrc(this.paginationData.boxName);
 			utils.service.queryvrCase(
 				{
 					page: val1,

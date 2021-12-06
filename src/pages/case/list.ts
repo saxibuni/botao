@@ -1,8 +1,9 @@
-import { Vue, Component } from 'vue-property-decorator';
+import {  Component,Mixins } from 'vue-property-decorator';
 import Cases from './components/cases.vue'
 import Pagination from '../../components/pagination.vue'
 import Button from 'root/components/button.vue'
 import ICountUp from 'root/components/countup.vue';
+import Com from 'root/components/baseCom';
 import utils from 'root/utils'
 @Component({
 	components: {
@@ -12,7 +13,7 @@ import utils from 'root/utils'
 		ICountUp
 	}
 })
-export default class CaseList extends Vue {
+export default class CaseList extends Mixins(Com) {
 	listData:any={}
 	caseList=[]
 	web_url = ''
@@ -92,6 +93,7 @@ export default class CaseList extends Vue {
 		this.getData(1,this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],v)
 	}
 	getData1(v){
+		this.clearImgSrc(this.paginationData.boxName);
 			utils.service.queryJxCase(
 				{
 					page: v,
