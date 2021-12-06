@@ -1,4 +1,4 @@
-import { Vue, Component, Watch } from 'vue-property-decorator';
+import { Vue, Component, Watch, Mixins } from 'vue-property-decorator';
 import Banner from 'root/components/banner.vue';
 import Pagination from 'root/components/pagination.vue';
 import Button from 'root/components/button.vue';
@@ -6,6 +6,7 @@ import ICountUp from 'root/components/countup.vue';
 import VideoPopup from 'root/components/videoPopup.vue';
 import utils from 'root/utils'
 import Popup from 'root/components/popup.vue';
+import Com from 'root/components/baseCom';
 
 @Component({
 	components: {
@@ -17,7 +18,7 @@ import Popup from 'root/components/popup.vue';
 		Popup
 	}
 })
-export default class Building extends Vue {
+export default class Building extends Mixins(Com) {
 	videoPop = {
 		isPop: false,
 		url: ''
@@ -66,6 +67,7 @@ export default class Building extends Vue {
 		this.getData(1, '', '')
 	}
 	getData(v, val1, val2) {
+		this.clearImgSrc(this.paginationData.boxName);
 		utils.service.querysiteCase(
 			{
 				page: v,
