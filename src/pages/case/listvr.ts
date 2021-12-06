@@ -61,8 +61,10 @@ export default class CaseListVr extends Vue {
 			},
 			res => {
 				if (res.status == 200) {
-					this.love = res.data.num;
+					// this.love = res.data.num;
 					// iszan = 1;
+					// this.love = res.data.num ;
+					// love = res.data.num;
 				}
 			}
 		);

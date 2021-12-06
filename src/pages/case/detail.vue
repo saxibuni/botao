@@ -16,21 +16,21 @@
 			<div class="content wow">
 				<div class="contentLeft">
 					<ul>
-						<li>
+						<li v-if="detailData.archivesInfo.mj">
 							<i></i>
 							<div>
 								<p>面积</p>
 								<p>{{ detailData.archivesInfo.mj }}</p>
 							</div>
 						</li>
-						<li>
+						<li v-if="detailData.archivesInfo.style">
 							<i></i>
 							<div>
 								<p>设计风格</p>
 								<p>{{ detailData.archivesInfo.style }}</p>
 							</div>
 						</li>
-						<li>
+						<li v-if="detailData.archivesInfo.hx">
 							<i></i>
 							<div>
 								<p>房型</p>
@@ -41,7 +41,7 @@
 				</div>
 				<div class="contentRight">
 					<i></i>
-					<p>{{ detailData.archivesInfo.love }}个喜欢</p>
+					<p>{{ detailData.archivesInfo.love + Number(detailData.archivesInfo.likejs) }}个喜欢</p>
 				</div>
 			</div>
 		</div>
@@ -64,8 +64,8 @@
 				</swiper>
 				<div class="swiper-pagination"></div>
 
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
+				<div class="swiper-button-prev prev1"></div>
+				<div class="swiper-button-next next1"></div>
 			</div>
 			<div class="content wow" @click="push(detailData.designer_info.aid, $event)">
 				<img :src="web_url + detailData.designer_info.faceimg" alt="" />
@@ -205,7 +205,6 @@ export default CaseDetail;
 							}
 						}
 						&:nth-of-type(3) {
-							margin-right: 0px;
 							i {
 								background: url('~assets/icons/ic_b2_part2_shape.png') no-repeat;
 							}
@@ -231,7 +230,7 @@ export default CaseDetail;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				margin-left: 200px;
+				// margin-left: 200px;
 				i {
 					width: 33px;
 					height: 29px;

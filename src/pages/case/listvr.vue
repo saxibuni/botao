@@ -53,12 +53,12 @@
 									<img v-if="isIE && !flag" src="~assets/icons/ic_b1_part3_like2.png" alt="" @click="(flag = !flag), v.click--" />
 								</div>
 								<p>{{ v.click }}个喜欢</p> -->
-								<div @click="getLove(v.aid, v.is_zan), (v.is_zan = 1)" class="love">
+								<div @click="getLove(v.aid, v.is_zan), v.is_zan == 1 ? '' : v.love++, (v.is_zan = 1)" class="love">
 									<img src="~assets/icons/ic_b1_part3_like1.png" alt="" class="love" />
-									<img v-if="!isIE" class="img" :class="{ img2: v.is_zan == 1 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
-									<img v-if="isIE && v.is_zan == 1" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
+									<img v-if="!isIE" class="img" :class="{ img2: v.love + Number(v.likejs) > 0 }" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
+									<img v-if="isIE && v.love + Number(v.likejs)" src="~assets/icons/ic_b1_part3_like2.png" alt="" />
 								</div>
-								<p>{{ love == null ? v.love : love }}个喜欢</p>
+								<p>{{ v.love + Number(v.likejs) }}个喜欢</p>
 							</div>
 						</div>
 						<div class="bottom" v-if="v.des_info">

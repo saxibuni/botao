@@ -30,8 +30,8 @@ export default class CaseDetail extends Vue {
 			disableOnInteraction: false
 		},
 		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev'
+			nextEl: '.next1',
+			prevEl: '.prev1'
 		}
 	};
 	swiperOptions2: any = {
