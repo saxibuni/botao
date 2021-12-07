@@ -405,6 +405,7 @@ export default class Search extends Vue {
 								margin-top: 20px;
 								color: #666666;
 								padding-right: 20px;
+								min-height: 25px;
 								@include line-clamp(1);
 							}
 						}
