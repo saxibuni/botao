@@ -473,6 +473,8 @@ export default class Search extends Vue {
 						p {
 							width: 490px;
 							color: #666;
+							min-height: 60px;
+							@include line-clamp(2);
 						}
 					}
 					&:nth-child(n + 4) {
