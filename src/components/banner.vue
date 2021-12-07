@@ -3,7 +3,7 @@
 		<template v-if="data.litpic">
 			<img :src="$store.state.footData.web_url + data.litpic" alt="" />
 			<div class="banner-text" v-if="forceRefresh">
-				<h3>{{ data.ztitle }}</h3>
+				<h3>{{ data.title }}</h3>
 				<p v-if="data.etitle">{{ data.etitle.toUpperCase() }}</p>
 			</div>
 		</template>
