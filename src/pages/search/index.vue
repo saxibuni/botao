@@ -444,6 +444,7 @@ export default class Search extends Vue {
 				display: flex;
 				flex-wrap: wrap;
 				li {
+					width: 570px;
 					background-color: #fff;
 					box-shadow: 0px 3px 17px 1px rgba(0, 0, 0, 0.05);
 					margin-right: 22px;
@@ -466,6 +467,7 @@ export default class Search extends Vue {
 						}
 						h4 {
 							color: #000;
+							@include line-clamp(1);
 							transition: all 0.3s;
 						}
 						p {
