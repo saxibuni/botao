@@ -2,9 +2,10 @@
 	<div class="brand">
 		<div class="banner-box select0">
 			<template v-if="btbrandInfo.id">
-				<video id="v1" :src="web_url + btbrandInfo.video" preload="true" loop="loop" muted width="100%" height="100%" poster="../../assets/bg_g1_banner.jpg">
+				<video v-if="btbrandInfo.video" id="v1" :src="web_url + btbrandInfo.video" preload="true" loop="loop" muted width="100%" height="100%" :poster="web_url + btbrandInfo.img">
 					<source :src="web_url + btbrandInfo.video" type="video/mp4" />
 				</video>
+				<img v-else :src="web_url + btbrandInfo.img" alt="">
 				<div class="text-content">
 					<div class="banner-text" v-show="textShow">
 						<h3>{{ btbrandInfo.title }}</h3>
