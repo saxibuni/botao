@@ -16,7 +16,7 @@
 						<div class="text-content">
 							<h3>
 								<span></span>
-								<span>{{ item.title }}</span>
+								<span>{{ item.ztitle }}</span>
 							</h3>
 							<div v-if="item.etitle">
 								<p>{{ item.etitle.split('\n')[0] }}</p>
