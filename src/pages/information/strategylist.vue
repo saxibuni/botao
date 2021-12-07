@@ -22,7 +22,7 @@
 				<ul class="strategy-right wow">
 					<li v-for="(v, i) in topList2" :key="v.id" @click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })">
 						<div class="img-box">
-							<img v-if="topList[0]" :src="$store.state.footData.web_url + v.img" />
+							<img  :src="$store.state.footData.web_url + v.img" />
 						</div>
 						<div class="info-box">
 							<div class="date">{{ v.show_time | formatTime }}</div>
@@ -47,7 +47,7 @@
 					@click="$router.push({ name: 'strategy-detail', query: { aid: v.aid } })"
 				>
 					<div class="img-box">
-						<img v-if="topList[0]" :src="$store.state.footData.web_url + v.img" alt="" />
+						<img  v-if="groupList.length" :src="$store.state.footData.web_url + v.img" alt="" />
 					</div>
 					<div class="info-box">
 						<div class="date">{{ v.show_time | formatTime }}</div>
