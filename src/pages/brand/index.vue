@@ -270,9 +270,6 @@
 								<i></i>
 							</div>
 							<div>
-								<span>E-mail</span>
-								<span>{{ $store.state.footData.email }}</span>
-								<i></i>
 							</div>
 						</li>
 						<li>
