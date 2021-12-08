@@ -124,6 +124,7 @@ export default class navLists extends Vue {
 	padding: 0 11px;
 	transition: clip-path .6s;
 	clip-path: ellipse(0 0 at 100% 0);
+	pointer-events: none;
 
 	&.ie {
 		transform: translateX(-50%) translateY(-110%);
@@ -294,6 +295,7 @@ export default class navLists extends Vue {
 	&.active {
 		transform: translateX(-50%) translateY(0);
 		clip-path: ellipse(141% 141% at 100% 0%);
+		pointer-events: auto;
 	}
 }
 </style>
