@@ -100,7 +100,7 @@ export default class CaseList extends Mixins(Com) {
 					mjsx:this.tabList[2].info[this.activeIndex[2]]=='全部'?'':this.tabList[2].info[this.activeIndex[2]],
 					hxsx:this.tabList[1].info[this.activeIndex[1]]=='全部'?'':this.tabList[1].info[this.activeIndex[1]],
 					stylesx:this.tabList[0].info[this.activeIndex[0]]=='全部'?'':this.tabList[0].info[this.activeIndex[0]],
-					keywords:'',
+					keywords:this.inputVal,
 				},
 				res => {
 					this.caseList= res.data.list;

@@ -48,7 +48,7 @@ export default class DesignList extends Mixins(Com) {
 			this.getData(1,this.tabs[this.activeIndex]=='全部'?'':this.tabs[this.activeIndex],v)
 		}
 		getData1(v){
-			this.getData(v,this.tabs[this.activeIndex]=='全部'?'':this.tabs[this.activeIndex],'')
+			this.getData(v,this.tabs[this.activeIndex]=='全部'?'':this.tabs[this.activeIndex],this.inputVal)
 		}
 	mounted(){
 		this.restartWow();
