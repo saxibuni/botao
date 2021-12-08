@@ -44,7 +44,7 @@
 							<p>{{ v.des_info.title }}</p>
 							<p>{{ v.des_info.sjssx }}</p>
 						</div>
-						<div>
+						<div v-if="v.des_info.cysj">
 							<p>从业年限</p>
 							<p>{{ v.des_info.cysj }}</p>
 						</div>
