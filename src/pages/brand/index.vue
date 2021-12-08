@@ -1434,10 +1434,11 @@ html {
 				width: 0;
 				overflow: hidden;
 				.svg {
+					height: 80px;
 					left: 138px;
-					top: 36px;
+					top: 28px;
 					position: absolute;
-					transform: scale(1.19, 0.98);
+					transform: scale(0.89, 0.75);
 					transform-origin: left center;
 					path {
 						fill: none;
@@ -1449,22 +1450,18 @@ html {
 				.plane {
 					position: absolute;
 					left: 122.37px;
-					top: 46.5px;
+					top: 49.5px;
 					width: 37px;
 					height: 31px;
 					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
 					background-size: 100%;
 					transform: rotate(-13.2449deg);
 				}
-
 				&.is-ie {
 					top: 214px;
-					.svg {
-						transform: scale(1.15, 0.98);
-						path {
-							stroke: #bbbbbb;
-							stroke-width: 1;
-						}
+					.svg path {
+						stroke: #bbb;
+						stroke-width: 1;
 					}
 					.plane {
 						top: 165px;
