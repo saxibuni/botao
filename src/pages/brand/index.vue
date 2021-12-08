@@ -215,7 +215,7 @@
 			<h2 class="wow">社会责任</h2>
 			<h3 class="wow">SOCIAL RESPONSIBILITY</h3>
 			<div class="content-box">
-				<div class="svg-box" :class="isIE?'svg-box-ie':'svg-box-chrome'">
+				<div class="svg-box" :class="isIE ? 'svg-box-ie' : 'svg-box-chrome'">
 					<svg
 						version="1.1"
 						class="svg"
@@ -1425,23 +1425,18 @@ html {
 			> div {
 				display: flex !important;
 			}
-			.svg-box-chrome {
+			.svg-box {
 				position: absolute;
 				left: 0;
-				top: 333px;
 				height: 300px;
 				width: 0;
 				overflow: hidden;
 				.svg {
-					height: 80px;
 					left: 138px;
-					top: 28px;
 					position: absolute;
-					transform: scale(0.89, 0.75);
 					transform-origin: left center;
 					path {
 						fill: none;
-						stroke: #dbdbdb;
 						stroke-miterlimit: 10;
 						stroke-dasharray: 4, 4;
 					}
@@ -1449,55 +1444,39 @@ html {
 				.plane {
 					position: absolute;
 					left: 122.37px;
-					top: 49.5px;
 					width: 37px;
 					height: 31px;
 					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
 					background-size: 100%;
 					transform: rotate(-13.2449deg);
 				}
-				&.is-ie {
-					top: 214px;
-					.svg path {
-						stroke: #bbb;
-						stroke-width: 1;
+			}
+			.svg-box-chrome {
+				top: 333px;
+				.svg {
+					height: 80px;
+					top: 28px;
+					transform: scale(0.89, 0.75);
+					path {
+						stroke: #dbdbdb;
 					}
-					.plane {
-						top: 165px;
-					}
+				}
+				.plane {
+					top: 49.5px;
 				}
 			}
 			.svg-box-ie {
-				position: absolute;
-				left: 0;
 				top: 214px;
-				height: 300px;
-				width: 0;
-				overflow: hidden;
 				.svg {
-					left: 138px;
 					top: 36px;
-					position: absolute;
 					transform: scale(1.15, 0.98);
-					transform-origin: left center;
 					path {
-						fill: none;
 						stroke: #bbbbbb;
 						stroke-width: 1;
-						stroke-miterlimit: 10;
-						stroke-dasharray: 4, 4;
 					}
 				}
 				.plane {
-					position: absolute;
-					left: 122.37px;
 					top: 165px;
-
-					width: 37px;
-					height: 31px;
-					background: url(~assets/icons/ic_g1_part7_plane.png) no-repeat;
-					background-size: 100%;
-					transform: rotate(-13.2449deg);
 				}
 			}
 
