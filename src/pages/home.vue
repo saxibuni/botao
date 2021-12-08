@@ -68,7 +68,7 @@
 					<div class="imgs-wrap" v-if="anList.length > 0">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
 							<swiper-slide v-for="(item, i) in anList" :key="i">
-								<img @click="openUrl(item.aid)" :src="web_url + item.img" alt="" />
+								<img @click="openUrl(item.aid)" :src="web_url + item.indexpimg" alt="" />
 							</swiper-slide>
 						</swiper>
 					</div>
@@ -90,7 +90,7 @@
 				<div class="swiper-wrap wow" v-if="anList.length > 0">
 					<swiper class="dswiper" :options="bannerSwiperOptions2" ref="mySwiper2">
 						<swiper-slide v-for="(item, i) in anList" :key="i" :class="{ active: swiperIndex == i }" @click.native="onSelect(i)">
-							<img :src="web_url + item.img" alt="" />
+							<img v-if="item.img" :src="web_url + item.indexpimg" alt="" />
 						</swiper-slide>
 					</swiper>
 					<div class="swiper-button-wrap">
@@ -99,7 +99,7 @@
 					</div>
 				</div>
 				<div class="mask" v-if="anList.length">
-					<img :src="web_url + anList[swiperIndex].img" alt="" v-if="!isIE" />
+					<img :src="web_url + anList[swiperIndex].indexpimg" alt="" v-if="!isIE" />
 				</div>
 				<div class="mask2"></div>
 			</div>
