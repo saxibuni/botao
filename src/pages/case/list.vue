@@ -54,7 +54,7 @@
 			</div>
 			<swiper :options="bannerSwiperOptions1" @click="push(listData.tjlist[swiperIndex].aid, $event)">
 				<swiper-slide v-for="(item, i) in listData.tjlist" :key="i">
-					<img :src="web_url + item.img" alt="" />
+					<img :src="web_url + item.indexpimg" alt="" />
 					<img src="~assets/bg_b1_part2_mask2.png" alt="" />
 				</swiper-slide>
 			</swiper>

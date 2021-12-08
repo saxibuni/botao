@@ -4,7 +4,7 @@ import { SplitText } from 'gsap/SplitText';
 import gsap from 'gsap';
 import utils from "root/utils";
 import ICountUp from 'root/components/countup.vue';
-
+import { device } from 'root/utils';
 gsap.registerPlugin(ScrollTrigger, SplitText);
 @Component({
 	components:{
@@ -54,6 +54,10 @@ export default class CheckPick extends Vue {
 	applyFlipType: number = 0;
 	portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 	index: number = -1;
+	isIE:boolean=false
+	created(){
+		this.isIE = device.browser.ie;
+	}
 	onPortraitListPrev(number: number = 999) {
 		if (this.applyFlipType) return;
 		if (this.portraitListIndex == 0) return;

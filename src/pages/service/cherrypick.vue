@@ -1,11 +1,11 @@
 <template>
 	<div class="cherry-pick">
-		<div class="page1" >
-			<template v-if="banner&&banner.litpic">
-				<img :src="web_url+banner.litpic" alt="" />
+		<div class="page1">
+			<template v-if="banner && banner.litpic">
+				<img :src="web_url + banner.litpic" alt="" />
 				<div class="text">
-					<h2>{{banner.title}}</h2>
-					<p>{{banner.etitle}}</p>
+					<h2>{{ banner.title }}</h2>
+					<p>{{ banner.etitle }}</p>
 				</div>
 				<img class="mask" src="~assets/bg_e1_banner_left.png" alt="" />
 				<div class="arrow" @click="rollTo()"></div>
@@ -19,28 +19,28 @@
 			<p class="wow">Service advantages</p>
 			<div>
 				<div class="left wow">
-					<div :class="{ active: iconIndex == i }" @click="iconClick(i)" v-for="(item,i) in fwysList" :key="i">
+					<div :class="{ active: iconIndex == i }" @click="iconClick(i)" v-for="(item, i) in fwysList" :key="i">
 						<i>
-							<img :src="web_url+item.iconc" alt="" />
-							<img :src="web_url+item.iconw" alt="" />
+							<img :src="web_url + item.iconc" alt="" />
+							<img :src="web_url + item.iconw" alt="" />
 						</i>
-						<span>{{item.title}}</span>
+						<span>{{ item.title }}</span>
 					</div>
 				</div>
 				<div class="right wow">
 					<div class="swiper">
 						<swiper :options="bannerSwiperOptions" ref="myswiper">
-							<swiper-slide v-for="(item,i) in fwysList" :key="i">
+							<swiper-slide v-for="(item, i) in fwysList" :key="i">
 								<div class="wrap">
 									<div class="text">
-										<h2>{{item.title}}</h2>
-										<h1>{{item.btitle}}</h1>
+										<h2>{{ item.title }}</h2>
+										<h1>{{ item.btitle }}</h1>
 										<div>
-											<p>{{item.desc}}</p>
+											<p>{{ item.desc }}</p>
 										</div>
 									</div>
 									<div class="img-wrap">
-										<img :src="web_url+item.img" alt="" />
+										<img :src="web_url + item.img" alt="" />
 									</div>
 								</div>
 							</swiper-slide>
@@ -66,9 +66,9 @@
 					<div class="content">
 						<div class="container">
 							<div class="imgBox">
-								<img :src="web_url+item.img" alt="" />
+								<img :src="web_url + item.img" alt="" />
 								<div class="mask" :class="activeIndex == i ? 'activetext' : ''">
-									<p>{{item.desc}}</p>
+									<p>{{ item.desc }}</p>
 								</div>
 							</div>
 							<div class="text" :class="activeIndex == i ? 'active' : ''">
@@ -81,7 +81,8 @@
 					<div class="box" v-for="(item, i) in yzyjkList" :key="i" @mouseover="fn(i)" @mouseout="fn(-1)"></div>
 				</div>
 			</div>
-			<img src="~assets/bg_e2_part3_00.png" alt="" />
+			<img src="~assets/yxcl2.png" alt="" v-if="isIE" class="img" />
+			<img src="~assets/bg_e2_part3_00.png" alt="" class="img2" />
 		</div>
 
 		<div class="page4">
@@ -90,22 +91,22 @@
 			<div class="box">
 				<div class="left wow">
 					<div v-if="hydzList[0]">
-						<img :src="web_url+hydzList[0].img" alt="" />
+						<img :src="web_url + hydzList[0].img" alt="" />
 						<b>01</b>
 						<div class="text">
-							<h3>{{hydzList[0].title}}</h3>
-							<p>{{hydzList[0].etitle}}</p>
+							<h3>{{ hydzList[0].title }}</h3>
+							<p>{{ hydzList[0].etitle }}</p>
 						</div>
 					</div>
 				</div>
 				<div class="right">
-					<template v-for="(item,i) in hydzList">
-						<div class="wow" :key="i" v-if="i>0">
-							<img :src="web_url+item.img" alt="" />
-							<b>0{{i+1}}</b>
+					<template v-for="(item, i) in hydzList">
+						<div class="wow" :key="i" v-if="i > 0">
+							<img :src="web_url + item.img" alt="" />
+							<b>0{{ i + 1 }}</b>
 							<div class="text">
-								<h3>{{item.title}}</h3>
-								<p>{{item.etitle}}</p>
+								<h3>{{ item.title }}</h3>
+								<p>{{ item.etitle }}</p>
 							</div>
 						</div>
 					</template>
@@ -123,7 +124,7 @@
 					<div>
 						<h2>
 							<span>{{ item.title }}</span>
-							<img :src="web_url+item.icon" alt="" />
+							<img :src="web_url + item.icon" alt="" />
 						</h2>
 						<div class="line"></div>
 						<p>{{ item.desc }}</p>
@@ -161,14 +162,14 @@
 						v-for="(item, i) in currentPortraitList"
 						:key="i"
 					>
-						<div class="one" v-if="item!='assets/white.png'">
+						<div class="one" v-if="item != 'assets/white.png'">
 							<div class="inner-one" :style="{ opacity: item != 'assets/white.png' ? 1 : 1 }">
 								<div class="box">
 									<img :src="item" alt="" />
 								</div>
 							</div>
 						</div>
-						<div class="two" v-if="item!='assets/white.png'" :style="{ opacity: item == 'assets/white.png' ? 0 : 1 }">
+						<div class="two" v-if="item != 'assets/white.png'" :style="{ opacity: item == 'assets/white.png' ? 0 : 1 }">
 							<div class="inner-two">
 								<div class="box">
 									<img :src="item" alt="" />
@@ -554,7 +555,7 @@ export default CheckPick;
 			text-align: center;
 			margin-top: 24px;
 		}
-		> img {
+		> .img2 {
 			position: absolute;
 			left: 50%;
 			transform: translateX(-50%);
@@ -562,6 +563,13 @@ export default CheckPick;
 			width: 660px;
 			height: 324px;
 			clip-path: ellipse(330px 330px at 50% 100%);
+		}
+		> .img {
+			// width: 100%;
+			// height: 100%;
+			position: relative;
+			top: 10px;
+			left: 6px;
 		}
 		.circle {
 			width: 1413px;
@@ -835,8 +843,8 @@ export default CheckPick;
 						}
 					}
 				}
-				p{
-						white-space: pre-wrap;
+				p {
+					white-space: pre-wrap;
 				}
 				&:nth-of-type(8) {
 					transform: rotate(-90deg);
@@ -1560,7 +1568,7 @@ export default CheckPick;
 								box-shadow: 0px 0px 30px 1px rgba(8, 18, 29, 0.15);
 							}
 						}
-						img{
+						img {
 							filter: none;
 						}
 					}
@@ -1596,10 +1604,10 @@ export default CheckPick;
 							background: #fff;
 							box-shadow: 0 0 10px 1px rgba(19, 33, 50, 0.1);
 						}
-						img{
+						img {
 							width: 100%;
 							filter: grayscale(100%);
-							transition: .3s;
+							transition: 0.3s;
 						}
 						.inner-one .box {
 							transform: rotate(-45deg);
