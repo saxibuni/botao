@@ -90,7 +90,7 @@
 				<div class="swiper-wrap wow" v-if="anList.length > 0">
 					<swiper class="dswiper" :options="bannerSwiperOptions2" ref="mySwiper2">
 						<swiper-slide v-for="(item, i) in anList" :key="i" :class="{ active: swiperIndex == i }" @click.native="onSelect(i)">
-							<img v-if="item.img" :src="web_url + item.img" alt="" />
+							<img v-if="item.img" :src="web_url + item.indexpimg" alt="" />
 						</swiper-slide>
 					</swiper>
 					<div class="swiper-button-wrap">
