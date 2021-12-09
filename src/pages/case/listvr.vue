@@ -154,7 +154,8 @@ export default CaseListVr;
 					border: 1px solid #ed5400;
 					outline: none;
 					font-size: 20px;
-					text-indent: 1em;
+					padding-left: 1em;
+					padding-right: 70px;
 				}
 				i {
 					position: absolute;
