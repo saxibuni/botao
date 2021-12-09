@@ -77,11 +77,13 @@
 					<template v-if="anList.length > 0 && anList ">
 						<div class="text wow" v-if="page2Ani">
 							<h3 v-if="anList[swiperIndex] && anList[swiperIndex].title">{{ anList[swiperIndex].title }}</h3>
-							<h4 v-if="anList[swiperIndex] && anList[swiperIndex].title">
-								<span>{{ anList[swiperIndex].istyle }}</span>
-								<span>{{ anList[swiperIndex].imj }}</span>
+							<h4>
+								<span v-if="anList[swiperIndex] && anList[swiperIndex].style">{{ anList[swiperIndex].style }}</span>
+								&nbsp;
+								&nbsp;
+								<span v-if="anList[swiperIndex] && anList[swiperIndex].mj">{{ anList[swiperIndex].mj }}</span>
 							</h4>
-							<p v-if="anList[swiperIndex] && anList[swiperIndex].title">
+							<p v-if="anList[swiperIndex] && anList[swiperIndex].desc">
 								{{ anList[swiperIndex].desc }}
 							</p>
 						</div>
@@ -1047,7 +1049,7 @@ export default home;
 				color: #ffffff;
 				margin-right: 16px;
 				opacity: 0;
-				margin: 21px 0 51px 0;
+				margin: 25px 0 51px 0;
 				animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
 			}
 			p {
