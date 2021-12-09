@@ -87,9 +87,8 @@
 		<div class="works" v-if="detailData.vrList.length || detailData.sjsList.length">
 			<img src="~assets/bg_c2_part3.jpg" alt="" />
 			<h3 class="wow">TA的作品</h3>
-			<ul class="wow" v-if="detailData.vrList.length || detailData.sjsList.length">
-				<li :class="activeIndex == 0 ? 'active' : ''" @click="activeIndex = 0" v-if="detailData.sjsList.length">精选案例</li>
-				<li :class="activeIndex == 1 ? 'active' : ''" @click="activeIndex = 1" v-if="detailData.vrList.length">VR案例</li>
+			<ul class="wow" v-if="detailData.vrList.length && detailData.sjsList.length">
+				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
 			</ul>
 			<div class="list wow" v-show="activeIndex == 0">
 				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3 * moreIndex)" :key="i" />
