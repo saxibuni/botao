@@ -72,6 +72,9 @@ export default class CaseDetail extends Vue {
 				this.web_url = res.data.web_url;
 				this.detailData = res.data;
 				utils.emitter.$emit('bannerData', res.data);
+				if(res.data.styleList.list.length<=0&&res.data.sjsList.list.length>0){
+					this.activeIndex=1
+				}
 			}
 		);
 	}

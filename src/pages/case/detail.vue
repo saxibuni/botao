@@ -78,7 +78,7 @@
 		</div>
 		<div class="other">
 			<h3 class="wow">为您推荐其他筑梦案例</h3>
-			<ul class="wow">
+			<ul class="wow" v-if="detailData.styleList.list.length && detailData.sjsList.list.length">
 				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="(activeIndex = index), updateSwiper()">{{ item }}</li>
 			</ul>
 			<div class="otherSwiper wow">

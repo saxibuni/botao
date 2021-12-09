@@ -32,7 +32,7 @@
 				<li v-for="(v, i) in vrData.list" :key="i" class="wow" :style="{ 'animation-delay': 0.08 * i + 0.03 + 's' }" @click="push(v.velink, $event)">
 					<div class="imgBox">
 						<img :src="web_url + v.img" alt="" />
-						<img src="~assets/ic_b3_part2_vr.png" alt="" />
+						<img src="~assets/icons/ic_b3_part2_vr.png" alt="" />
 					</div>
 					<div class="content">
 						<div class="top">
