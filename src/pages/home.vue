@@ -23,8 +23,8 @@
 								<p>{{ item.etitle.split('\n')[1] }}</p>
 							</div>
 						</div>
-						<div>
-							<Button text="走进波涛" @click.native="onRoute('brand')"></Button>
+						<div v-if="item.link!=''">
+							<Button text="走进波涛"></Button>
 						</div>
 					</div>
 				</swiper-slide>

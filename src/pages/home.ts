@@ -70,6 +70,7 @@ export default class home extends Vue {
 				chars.forEach(item => {
 					item.style.opacity = "0";
 				});
+				utils.emitter.$emit('page1IndexFun', this.realIndex);
 			},
 			slideChangeTransitionEnd: function() {
 				let activeSlide = this.slides[this.activeIndex] as HTMLElement;
@@ -80,9 +81,19 @@ export default class home extends Vue {
 						(video as any).currentTime = 0;
 					}
 				});
+			},
+			click: function(event){
+				vm.handleClickSlide1(event);
 			}
 		}
+
 	};
+	handleClickSlide1(event){
+ 	 if(event.target.className === 'btn'){
+		 window.location.href =  this.banner.list[this.page1Index].link;
+	 }
+	}
+
 	swiperOptions:any = {
 		speed: 1000,
 		effect : 'fade',
@@ -160,7 +171,6 @@ export default class home extends Vue {
 				this.$router.push({name: 'cherry-pick', params:{number:'4'}})
 			 }
 	 }
-
 	}
 	created() {
 		this.isIE = device.browser.ie;
@@ -190,6 +200,7 @@ export default class home extends Vue {
 	zxxxList = [];
 	page5Index2:any = '01';
 	alTitle = [];
+	page1Index = 0;
 	mounted() {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
@@ -205,6 +216,10 @@ export default class home extends Vue {
 			}
 			this.page5Index = introductionIndex;
 		});
+		utils.emitter.$on('page1IndexFun', (introductionIndex: number) => {
+			this.page1Index = introductionIndex;
+		});
+
 		utils.service.queryHome({}, res => {
 			if (res.status === 200) {
 				this.banner = res.data.banner;
