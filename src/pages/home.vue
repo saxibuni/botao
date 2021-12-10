@@ -68,7 +68,7 @@
 					<div class="imgs-wrap" v-if="anList.length > 0">
 						<swiper :options="swiperOptions" class="swiper-no-swiping" ref="mSwiper">
 							<swiper-slide v-for="(item, i) in anList" :key="i">
-								<img @click="openUrl(item.aid)" :src="web_url + item.indexpimg" alt="" />
+								<img :src="web_url + item.indexpimg" alt="" />
 							</swiper-slide>
 						</swiper>
 					</div>
@@ -77,13 +77,20 @@
 					<template v-if="anList.length > 0 && anList ">
 						<div class="text wow" v-if="page2Ani">
 							<h3 v-if="anList[swiperIndex] && anList[swiperIndex].title">{{ anList[swiperIndex].title }}</h3>
-							<h4 v-if="anList[swiperIndex] && anList[swiperIndex].title">
-								<span>{{ anList[swiperIndex].istyle }}</span>
-								<span>{{ anList[swiperIndex].imj }}</span>
+							<h4>
+								<span v-if="anList[swiperIndex] && anList[swiperIndex].style">{{ anList[swiperIndex].style }}</span>
+								&nbsp;
+								&nbsp;
+								<span v-if="anList[swiperIndex] && anList[swiperIndex].mj">{{ anList[swiperIndex].mj }}</span>
 							</h4>
-							<p v-if="anList[swiperIndex] && anList[swiperIndex].title">
-								{{ anList[swiperIndex].desc }}
-							</p>
+							<div>
+								<p v-if="anList[swiperIndex] && anList[swiperIndex].desc">
+									{{ anList[swiperIndex].desc }}
+								</p>
+							</div>
+							<div class="btn-box">
+								<Button text="案例详情" @click.native="openUrl(anList[swiperIndex].aid)"></Button>
+							</div>
 						</div>
 					</template>
 				</transition>
@@ -874,7 +881,6 @@ export default home;
 					position: relative;
 					background: #fff;
 					box-sizing: border-box;
-					cursor: pointer;
 					.swiper-slide {
 						&::after {
 							pointer-events: none;
@@ -1047,7 +1053,7 @@ export default home;
 				color: #ffffff;
 				margin-right: 16px;
 				opacity: 0;
-				margin: 21px 0 51px 0;
+				margin: 25px 0 51px 0;
 				animation: slide-down-in 1s 0.2s forwards, fade-in 1s 0.2s forwards;
 			}
 			p {
@@ -1061,11 +1067,14 @@ export default home;
 				max-height: 90px;
 				animation: slide-down-in 1s 0.4s forwards, fade-in 1s 0.4s forwards;
 			}
+			div{
+				height: 160px;
+			}
 			.btn-box {
 				width: 170px;
 				opacity: 0;
 				height: 53px;
-				margin-top: 60px;
+				margin-top: 30px;
 				animation: slide-down-in 1s 0.6s forwards, fade-in 1s 0.6s forwards;
 				/deep/.btn {
 					&::after,

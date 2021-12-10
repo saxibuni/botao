@@ -84,19 +84,22 @@
 				<p>观看大咖专访视频</p>
 			</div>
 		</div>
-		<div class="works" v-if="(detailData.vrList.length && detailData.designer_info.is_vr == '是') || (detailData.sjsList.length && detailData.designer_info.is_vr != '是')">
+		<div class="works" v-if="detailData.vrList.length || detailData.sjsList.length">
 			<img src="~assets/bg_c2_part3.jpg" alt="" />
 			<h3 class="wow">TA的作品</h3>
-			<div class="list wow" v-if="detailData.sjsList.length && detailData.designer_info.is_vr != '是'">
+			<ul class="wow" v-if="detailData.vrList.length && detailData.sjsList.length">
+				<li v-for="(item, index) in tabs" :key="index" :class="activeIndex == index ? 'active' : ''" @click="activeIndex = index">{{ item }}</li>
+			</ul>
+			<div class="list wow" v-show="activeIndex == 0">
 				<Cases :caseData="v" v-for="(v, i) in detailData.sjsList.slice(0, 3 * moreIndex)" :key="i" />
 			</div>
-			<div class="list wow" v-else>
+			<div class="list wow" v-show="activeIndex == 1">
 				<Cases :caseData="v" v-for="(v, i) in detailData.vrList.slice(0, 3 * moreIndex)" :key="i" />
 			</div>
-			<template v-if="detailData.sjsList.length && detailData.designer_info.is_vr != '是'">
+			<template v-if="detailData.sjsList.length && activeIndex == 0">
 				<div class="more" @click="moreIndex++" v-show="detailData.sjsList.length > 3 * moreIndex">更多案例</div>
 			</template>
-			<template v-if="detailData.vrList.length && detailData.designer_info.is_vr == '是'">
+			<template v-if="detailData.vrList.length && activeIndex == 1">
 				<div class="more" @click="moreIndex++" v-show="detailData.vrList.length > 3 * moreIndex">更多案例</div>
 			</template>
 		</div>
@@ -482,11 +485,73 @@ export default DesignDetail;
 			line-height: 55px;
 			margin: 99px 0 60px 0;
 		}
+		> ul {
+			display: flex;
+			justify-content: center;
+			> li {
+				width: 140px;
+				height: 39px;
+				font-size: 18px;
+				color: #666666;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				&:nth-of-type(1) {
+					margin-right: 14px;
+				}
+				cursor: pointer;
+				position: relative;
+				transition: 0.3s;
+				border: 1px solid transparent;
+				&::after,
+				&::before {
+					content: '';
+					position: absolute;
+					border: 2px solid transparent;
+					width: 0px;
+					height: 0px;
+					transition: border 0.3s, width 0.3s, height 0.3s;
+					opacity: 0.35;
+				}
+				&::after {
+					left: 4px;
+					top: 4px;
+					border-right: none;
+					border-bottom: none;
+				}
+				&::before {
+					right: 4px;
+					bottom: 4px;
+					border-top: none;
+					border-left: none;
+				}
+				&.active,
+				&:hover {
+					border: 1px solid #ed5400;
+					color: #fff;
+					background-color: #ed5400;
+					&::after,
+					&::before {
+						border: 2px solid #fff;
+						width: 11px;
+						height: 11px;
+					}
+					&::after {
+						border-right: none;
+						border-bottom: none;
+					}
+					&::before {
+						border-top: none;
+						border-left: none;
+					}
+				}
+			}
+		}
 		.list {
 			display: flex;
 			// justify-content: space-between;
 			flex-wrap: wrap;
-
+			margin-top: 60px;
 			.cases {
 				margin-right: 27px;
 				&:nth-of-type(3n) {

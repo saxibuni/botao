@@ -44,7 +44,7 @@
 							<p>{{ v.des_info.title }}</p>
 							<p>{{ v.des_info.sjssx }}</p>
 						</div>
-						<div>
+						<div v-if="v.des_info.cysj">
 							<p>从业年限</p>
 							<p>{{ v.des_info.cysj }}</p>
 						</div>
@@ -143,7 +143,8 @@ export default CaseList;
 					border: 1px solid #ed5400;
 					outline: none;
 					font-size: 20px;
-					text-indent: 1em;
+					padding-left: 1em;
+					padding-right: 70px;
 				}
 				i {
 					position: absolute;

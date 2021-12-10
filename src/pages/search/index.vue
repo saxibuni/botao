@@ -26,6 +26,17 @@
 			<div class="line"></div>
 		</div>
 
+		<div class="page1" v-if="vr_list&&vr_list.length!=0">
+			<h2>VR装修体验</h2>
+			<p>沉浸式畅游理想家</p>
+			<div class="cases-wrap">
+				<template v-for="(item,i) in vr_list">
+					<Cases v-if="item" :caseData="item" :key="i" />
+				</template>
+			</div>
+			<div class="line"></div>
+		</div>
+
 		<div class="page2" v-if="sjs_list&&sjs_list.length!=0">
 			<h2>设计名人堂</h2>
 			<p>100+ 位别墅大宅设计大咖</p>
@@ -96,6 +107,7 @@ export default class Search extends Vue {
 	news_list = [];
 	web_url = '';
 	total = '-';
+	vr_list = [];
 	mounted() {
 		this.web_url = this.$store.state.footData.web_url;
 		this.queryList()
@@ -110,6 +122,7 @@ export default class Search extends Vue {
 				this.case_list = res.data.case_list;
 				this.sjs_list = res.data.sjs_list;
 				this.news_list = res.data.news_list;
+				this.vr_list = res.data.vr_list;
 				this.total = res.data.total;
 			}
 		});
