@@ -347,6 +347,7 @@ html {
 					font-size: 20px;
 					color: #666666;
 					line-height: 40px;
+					text-align: left;
 				}
 				.btn {
 					margin: 0;
@@ -405,8 +406,12 @@ html {
 					display: flex;
 					// justify-content: flex-end;
 					h2 {
-						margin-left: 40px;
+						// margin-left: 40px;
 					}
+
+				}
+				h3{
+					text-align: left;
 				}
 				p {
 					margin-bottom: 0;
