@@ -22,7 +22,7 @@
 			<swiper :options="jsBannerOptions">
 				<swiper-slide v-for="(v, i) in rclniList" :key="i">
 					<div class="img-box">
-						<img v-if="zpxx[0]"  :src="web_url + v.img" alt="" />
+						<img v-if="zpxx[0]" :src="web_url + v.img" alt="" />
 					</div>
 				</swiper-slide>
 			</swiper>
@@ -38,7 +38,7 @@
 					<p v-for="(value, index) in v.desc" :key="index" v-html="value"></p>
 				</div>
 				<div class="img-box wow">
-					<img v-if="zpxx[0]"  :src="web_url + v.img" alt="" />
+					<img v-if="zpxx[0]" :src="web_url + v.img" alt="" />
 				</div>
 			</div>
 		</div>
@@ -65,15 +65,15 @@
 			<h4 class="wow">人力资源部</h4>
 			<p class="wow">
 				<i></i>
-				<span>{{rlzytel}}</span>
+				<span>{{ rlzytel }}</span>
 			</p>
 			<p class="wow">
 				<i></i>
-				{{rlzyadd}}
+				{{ rlzyadd }}
 			</p>
 			<div class="out-box wow">
 				<div class="img-box">
-					<img :src="$store.state.footData.web_url+rlzyewm" v-if="zpxx[0]" alt="" />
+					<img :src="$store.state.footData.web_url + rlzyewm" v-if="zpxx[0]" alt="" />
 				</div>
 			</div>
 			<p class="wow">扫码咨询</p>
@@ -375,7 +375,9 @@ html {
 				}
 				> div {
 					display: flex;
-					justify-content: flex-end;
+				}
+				h3 {
+					text-align: left;
 				}
 			}
 		}
@@ -401,7 +403,10 @@ html {
 				}
 				> div {
 					display: flex;
-					justify-content: flex-end;
+					// justify-content: flex-end;
+					h2 {
+						margin-left: 40px;
+					}
 				}
 				p {
 					margin-bottom: 0;
