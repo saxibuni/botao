@@ -10,6 +10,9 @@ export default class ResolvePreData {
       utils.service.queryFoot({},res => {
         let data = res.data;
         store.state.footData = data;
+				setTimeout(() => {
+					store.state.hasShowCommitTip = true;
+				}, 600)
         resolve();
       });
     })

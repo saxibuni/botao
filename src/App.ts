@@ -1,9 +1,12 @@
 import { Vue, Component } from "vue-property-decorator";
 import Layout from "./layout/Index.vue";
 import utils, { service } from "./utils";
+import hasShowCommitTip from "./components/hasShowCommitTip.vue";
+
 @Component({
 	components: {
 		Layout,
+		hasShowCommitTip
 	}
 })
 export default class App extends Vue {
