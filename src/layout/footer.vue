@@ -82,8 +82,8 @@
 					<p>
 						{{ footData.copyright }}
 						<span v-html="footData.icp"></span>
-						技术支持：
-						<a href="https://www.zhulu86.com/" target="_blank">逐鹿科技</a>
+						<!-- 技术支持：
+						<a href="https://www.zhulu86.com/" target="_blank">逐鹿科技</a> -->
 					</p>
 					友情链接：
 					<template v-for="(item, i) in footData.link">
