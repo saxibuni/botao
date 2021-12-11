@@ -216,6 +216,7 @@ export default class videoPopup extends Vue {
 						}
 					}
 					&:nth-child(4) {
+						width: 146px;
 						border: none;
 						/deep/.btn {
 								width: 146px;
