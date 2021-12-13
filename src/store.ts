@@ -10,6 +10,7 @@ export interface State {
 	menuData: any;
 	dialog:any;
 	dialogDesign:any;
+	hasShowCommitTip: boolean;
 }
 
 let state: State = {
@@ -17,6 +18,7 @@ let state: State = {
 	dialogVisible: false,
 	footData: null,
 	menuData: null,
+	hasShowCommitTip: false,
 	dialog:{
 		state:0,
 		text: '',

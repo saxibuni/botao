@@ -226,13 +226,8 @@ export default class home extends Vue {
 				this.alTitle = res.data.stylesx_list;
 				this.portraitList = res.data.sjsList;
 
-				if(res.data.sjsList.length>=16){
-					this.sjsItem = res.data.sjsList[16];
-					this.page3Index = 16;
-				}else{
-					this.sjsItem = res.data.sjsList[res.data.sjsList.length];
-					this.page3Index = res.data.sjsList.length;
-				}
+				this.sjsItem = res.data.sjsList[0];
+				this.page3Index = 0;
 
 				this.portraitTotalPages = Math.ceil(this.portraitList.length / this.portraitListSize);
 

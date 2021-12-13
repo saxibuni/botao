@@ -5,6 +5,7 @@
 				<router-view />
 			</div>
 		</Layout>
+		<hasShowCommitTip></hasShowCommitTip>
 	</div>
 </template>
 
@@ -69,6 +70,9 @@ html {
 				}
 				.sidebar {
 					right: calc(50vw - 960px + 3px);
+				}
+				.has-show-tip {
+					width: calc(1920px - 3px);
 				}
 			}
 		}
