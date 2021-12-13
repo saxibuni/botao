@@ -12,7 +12,7 @@ export default class BaseComp extends Vue {
 
 		let imgs = container.querySelectorAll('img');
 		for (let i = 0, len = imgs.length; i < len; i++) {
-			if (imgs[i].hasAttribute('isLocal'))
+			if (!imgs[i].hasAttribute('isLocal'))
 				imgs[i].src = require('assets/white.png');
 		}
 	}
