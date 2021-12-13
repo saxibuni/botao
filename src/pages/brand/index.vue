@@ -899,7 +899,10 @@ html {
 				position: relative;
 				z-index: 11;
 				overflow: hidden;
+
 				img {
+							width: 336px;
+					height: 582px;
 					transition: all 0.3s;
 					transform: scale(1.02);
 				}
@@ -1384,6 +1387,11 @@ html {
 
 			.img-box {
 				display: flex;
+				width: 325px;
+				height: 431px;
+				img{
+					height: 100%;
+				}
 			}
 			h2 {
 				display: flex;
