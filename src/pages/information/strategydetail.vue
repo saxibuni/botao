@@ -19,7 +19,11 @@
 					分享 :
 					<div class="wx">
 						<div>
-							<vue-qr :logoSrc="imageUrl" :text="url" :size="200"></vue-qr>
+							<h3>分享到微信朋友圈</h3>
+							<vue-qr :logoSrc="imageUrl" :text="url" :size="230"></vue-qr>
+							<p>
+								打开微信，点击底部的“发现”，<br>使用“扫一扫”即可将网页分享至朋友圈。
+							</p>
 						</div>
 						<i></i>
 						<i></i>
@@ -204,8 +208,12 @@ html {
 						left: 50%;
 						transform: translateX(-50%) translateY(-10%);
 						bottom: 150%;
-						width: 150px;
-						height: 150px;
+						width: 260px;
+						height: 240px;
+						text-align: center;
+						padding-top: 15px;
+						box-shadow:  0 0 11px 2px rgba($color: #000000, $alpha: .1);
+						border-radius: 5px;
 						img {
 							width: 150px;
 							height: 150px;
@@ -230,6 +238,15 @@ html {
 					&:hover i:nth-last-of-type(2) {
 						z-index: 12;
 						opacity: 1 !important;
+					}
+					h3{
+						font-size: 16px;
+						color: #333;
+					}
+					p{
+						color: #666;
+						font-size: 12px;
+						line-height: 1.1;
 					}
 				}
 				.wb {
