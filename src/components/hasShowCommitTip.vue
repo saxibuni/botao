@@ -1,6 +1,6 @@
 <template>
  <div class="has-show-tip" :class="{active:$store.state.hasShowCommitTip}">
-	 <span @click="$store.state.hasShowCommitTip = false">×</span>
+	 <span @click="$store.state.hasShowCommitTip = false"></span>
 	 <h2>5秒快速获取装修报价<span>已有<b v-if="$store.state.footData&&$store.state.footData.bj_num">{{$store.state.footData.bj_num}}</b>人获取报价</span></h2>
 		<div>
 			<div class="form">
@@ -127,8 +127,9 @@ export default class videoPopup extends Vue {
 		transition:transform .3s;
 		width: 40px;
 		height: 40px;
-		text-align: center;
-		line-height: 40px;
+		padding: 0;
+		background: url(~assets/icons/gb.png)no-repeat center center;
+		background-size: 18px 18px;
 		&:hover{
 			transform: rotate(-90deg);
 		}
