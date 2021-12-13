@@ -86,6 +86,7 @@
 					<li>
 						<span>
 							<ICountUp :endVal="brandDataInfo.btdl * 1" :options="options1" ref="countup1"></ICountUp>
+							<span  class="suffix">+</span>
 							<span class="fs18">m²</span>
 						</span>
 						<span>波涛大楼</span>
