@@ -2,10 +2,12 @@ import { Vue, Component } from 'vue-property-decorator';
 import Button from '../../components/button.vue';
 import Banner from '../../components/banner.vue';
 import utils from 'root/utils';
+import vueQr from 'vue-qr'
 @Component({
 	components: {
 		Button,
-		Banner
+		Banner,
+		vueQr
 	},
 	filters: {
 		formatTime(val: number) {
@@ -32,10 +34,13 @@ export default class StrategyDetail extends Vue {
 	web_url = '';
 	BannerData = {};
 	newsList = [];
+	url = '';
+	imageUrl = require("root/assets/icons/apple-touch-icon.png");
 
 	archivesInfo = {};
 	created() {
 		this.queryDetail(this.$route.query.aid);
+		this.url = window.location.href;
 	}
 
 	queryDetail(aid) {

@@ -19,7 +19,7 @@
 					分享 :
 					<div class="wx">
 						<div>
-							<img src="~assets/bg_home_footer_qa.jpg" v-if="newsList[0]" alt="" />
+							<vue-qr :logoSrc="imageUrl" :text="url" :size="200"></vue-qr>
 						</div>
 						<i></i>
 						<i></i>
