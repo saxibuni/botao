@@ -26,7 +26,50 @@ module.exports = merge(common, {
 				vue: {
 					test: /[\\/]node_modules[\\/]vue*?/,
 					name: "vue",
-					priority: 1
+					priority: 1,
+					enforce: true
+				},
+				gsap: {
+					test: /[\\/]node_modules[\\/]gsap*?/,
+					name: "gsap",
+					priority: 1,
+					enforce: true
+				},
+				echarts: {
+					test: /[\\/]node_modules[\\/]echarts*?/,
+					name: "echarts",
+					priority: 1,
+					enforce: true
+				},
+				zrender: {
+					test: /[\\/]node_modules[\\/]zrender*?/,
+					name: "zrender",
+					priority: 1,
+					enforce: true
+				},
+				swiper: {
+					test: /[\\/]node_modules[\\/]swiper*?/,
+					name: "swiper",
+					priority: 1,
+					enforce: true
+				},
+				pixi: {
+					test: /[\\/]node_modules[\\/]pixi.*?/,
+					name: "pixi",
+					priority: 1,
+					enforce: true
+				},
+				pixi_spine: {
+					test: /[\\/]libs[\\/]pixi-spine/,
+					name: 'pixi_spine',
+					priority: 1,
+					enforce: true
+				},
+				element_ui: {
+					test: /[\\/]node_modules[\\/]element-ui/,
+					name: 'element-ui',
+					priority: 1,
+					enforce: true
 				},
 				vendors: {
 					test: /[\\/]node_modules[\\/]/,
