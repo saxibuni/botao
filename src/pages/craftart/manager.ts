@@ -18,7 +18,7 @@ export default class Manager extends Vue {
 	managerData={}
 	web_url = ''
 	active1Index = 0;
-	active2Index = 0;
+	active2Index = 6;
 	activeName = '1';
 	swiperOptions1: any = {
 		speed: 1000,
