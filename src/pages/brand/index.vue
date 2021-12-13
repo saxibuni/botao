@@ -899,7 +899,10 @@ html {
 				position: relative;
 				z-index: 11;
 				overflow: hidden;
+
 				img {
+							width: 336px;
+					height: 582px;
 					transition: all 0.3s;
 					transform: scale(1.02);
 				}
