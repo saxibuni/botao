@@ -18,9 +18,14 @@ Vue.use(Tabs).use(TabPane).use(Pagination).use(Dialog);
 
 if (utils.device.mobile.device && !utils.device.mobile.tablet) {
 	///移动端非pad时
-	location.href = "./mobile";
+	let hash = location.hash;
+	if (hash.includes('infomation/strategy-detail')) {
+		hash = hash.replace('/infomation', '');
+		location.href = "./mobile" + hash;
+	} else {
+		location.href = "./mobile";
+	}
 }
-
 
 const wow = new (require('wowjs').WOW)({
 	mobile: false,
