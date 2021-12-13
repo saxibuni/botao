@@ -1395,8 +1395,7 @@ html {
 			}
 			h2 {
 				display: flex;
-				max-width: 110%;
-				// width: 330px;
+			width: 325px;
 				margin-top: 35px;
 				text-align: center;
 				justify-content: center;

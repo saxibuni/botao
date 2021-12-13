@@ -70,7 +70,7 @@ export default class Brand extends Vue {
 		observer: true,
 		observeParents: true,
 		speed: 1000,
-		spaceBetween: 77,
+		spaceBetween: 10,
 		slidesPerView: 4,
 		// loop: true,
 		navigation: {
