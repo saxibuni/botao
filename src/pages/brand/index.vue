@@ -1384,6 +1384,11 @@ html {
 
 			.img-box {
 				display: flex;
+				width: 325px;
+				height: 431px;
+				img{
+					height: 100%;
+				}
 			}
 			h2 {
 				display: flex;
