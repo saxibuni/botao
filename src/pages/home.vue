@@ -1,10 +1,10 @@
 <template>
 	<div class="home">
 		<div class="page1">
-			<swiper :options="bannerSwiperOptions" v-if="banner.list && banner.list.length != 0">
+			<swiper :options="bannerSwiperOptions" v-if="banner.list && banner.list.length != 0" ref="myswiper1">
 				<swiper-slide v-for="(item, i) in banner.list" :key="i">
 					<template v-if="item.video">
-						<video class="videos" controls preload="true" loop="loop" muted autoplay="autoplay">
+						<video  class="videos" controls preload="true" muted autoplay="autoplay" :loop='true' :poster='web_url + item.img'>
 							<source v-if="item.vwebm" :src="web_url + item.vwebm" type="video/webm" />
 							<source :src="web_url + item.video" type="video/mp4" />
 						</video>

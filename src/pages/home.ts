@@ -218,6 +218,29 @@ export default class home extends Vue {
 		});
 		utils.emitter.$on('page1IndexFun', (introductionIndex: number) => {
 			this.page1Index = introductionIndex;
+			// if(this.page1Index==0){
+			// 	let video:any = document.querySelector(".videos");
+			// 	if(video){
+			// 		console.log(video);
+			// 		video.onended = function(){
+			// 			video.
+			// 			vm.fun2()
+			// 		}
+			// 	}
+
+			// 	if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
+			// 		let swiper = (this.$refs.myswiper1 as any).$swiper;
+			// 		swiper.autoplay.stop();
+			// 	}
+			// }else{
+			// 	setTimeout(()=>{
+			// 			if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
+			// 				let swiper = (this.$refs.myswiper1 as any).$swiper;
+			// 				swiper.autoplay.start();
+			// 			}
+			// 	})
+
+			// }
 		});
 
 		utils.service.queryHome({}, res => {
@@ -249,6 +272,9 @@ export default class home extends Vue {
 			}
 		});
 
+	}
+	fun2(){
+		(this.$refs.myswiper1 as any).$swiper.slideTo(2, 600, true);
 	}
 	add0(m){return m<10?'0'+m:m }
 	format(shijianchuo){
