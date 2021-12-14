@@ -258,12 +258,15 @@ html {
 							}
 						}
 						> p {
+							padding-right: 10px;
 							width: 386px;
-							min-height: 156px;
+							max-height: 156px;
 							margin-top: 39px;
 							margin-bottom: 51px;
 							font-size: 16px;
 							line-height: 26px;
+							overflow-y:scroll;
+							@include scrollbar-beautify(2px);
 							span {
 								color: #ed5400;
 							}
