@@ -201,6 +201,7 @@ export default class home extends Vue {
 	page5Index2:any = '01';
 	alTitle = [];
 	page1Index = 0;
+	tr:any=null;
 	mounted() {
 		this.web_url=this.$store.state.footData.web_url;
 		this.restartWow();
@@ -218,29 +219,29 @@ export default class home extends Vue {
 		});
 		utils.emitter.$on('page1IndexFun', (introductionIndex: number) => {
 			this.page1Index = introductionIndex;
-			// if(this.page1Index==0){
-			// 	let video:any = document.querySelector(".videos");
-			// 	if(video){
-			// 		console.log(video);
-			// 		video.onended = function(){
-			// 			video.
-			// 			vm.fun2()
-			// 		}
-			// 	}
+			if(this.page1Index==0){
+				window.clearTimeout(this.tr)
+				let video = document.querySelector(".videos");
+				if(video){
+					(video as any).currentTime = 0;
+				}
+			 this.tr =	setTimeout(()=>{
+					(this.$refs.myswiper1 as any).$swiper.slideTo(2, 600, true);
+				},16*1000)
 
-			// 	if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
-			// 		let swiper = (this.$refs.myswiper1 as any).$swiper;
-			// 		swiper.autoplay.stop();
-			// 	}
-			// }else{
-			// 	setTimeout(()=>{
-			// 			if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
-			// 				let swiper = (this.$refs.myswiper1 as any).$swiper;
-			// 				swiper.autoplay.start();
-			// 			}
-			// 	})
+				if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
+					let swiper = (this.$refs.myswiper1 as any).$swiper;
+					swiper.autoplay.stop();
+				}
+			}else{
+				setTimeout(()=>{
+						if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
+							let swiper = (this.$refs.myswiper1 as any).$swiper;
+							swiper.autoplay.start();
+						}
+				})
 
-			// }
+			}
 		});
 
 		utils.service.queryHome({}, res => {
@@ -273,9 +274,7 @@ export default class home extends Vue {
 		});
 
 	}
-	fun2(){
-		(this.$refs.myswiper1 as any).$swiper.slideTo(2, 600, true);
-	}
+
 	add0(m){return m<10?'0'+m:m }
 	format(shijianchuo){
 		var time = new Date(shijianchuo*1000);
