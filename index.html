@@ -5,15 +5,39 @@
 		<title>波涛装饰</title>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no,viewport-fit=cover" />
-		<meta http-equiv="keywords" content="波涛装饰">
-		<meta http-equiv="description" content="波涛装饰">
+		<meta http-equiv="keywords" content="波涛装饰" />
+		<meta http-equiv="description" content="波涛装饰" />
 		<link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 		<link rel="shortcut icon" href="./favicon.ico" mce_href="./favicon.ico" type="image/x-icon" />
 	</head>
 	<body>
-   <script>
-   (function() {var _53code = document.createElement("script");_53code.src = "https://tb.53kf.com/code/code/10196572/1";var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(_53code, s);})();
-   </script>
+		<script>
+			var ua = navigator.userAgent;
+			var andriod = ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1;
+			var ipadPro = !!/macintosh/.test(ua.toLowerCase()) && 'ontouchend' in document;
+			var ios = !!/iphone|ipad|ipod/.test(ua.toLowerCase()) || ipadPro;
+			var tablet = /(?:iPad|PlayBook)/.test(ua) || (andriod && !/(?:Mobile)/.test(ua)) || (/(?:Firefox)/.test(ua) && /(?:Tablet)/.test(ua)) || ipadPro;
+			var device = andriod || ios || tablet;
+
+			if (device && !tablet) {
+				///移动端非pad时
+				let hash = location.hash;
+				if (hash.indexOf('infomation/strategy-detail') > -1) {
+					hash = hash.replace('/infomation', '');
+					location.href = './mobile' + hash;
+				} else {
+					location.href = './mobile';
+				}
+			}
+		</script>
+		<script>
+			(function() {
+				var _53code = document.createElement('script');
+				_53code.src = 'https://tb.53kf.com/code/code/10196572/1';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(_53code, s);
+			})();
+		</script>
 		<div id="app"></div>
 	</body>
 </html>
