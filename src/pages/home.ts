@@ -241,7 +241,9 @@ export default class home extends Vue {
 					this.initTextChars();
 					this.initScrollTrigger();
 					this.onResize();
-					(this.$refs.myswiper3 as any).$swiper.autoplay.stop();
+					if(this.$refs.myswiper3){
+						(this.$refs.myswiper3 as any).$swiper.autoplay.stop();
+					}
 				})
 				this.getCurrentPortraitList();
 			}
@@ -320,8 +322,10 @@ export default class home extends Vue {
 	}
 
 	onPlayPage5Swiper() {
-		let swiper = (this.$refs.myswiper3 as any).$swiper;
-		swiper.autoplay.start();
+		if(this.$refs.myswiper3){
+			let swiper = (this.$refs.myswiper3 as any).$swiper;
+			swiper.autoplay.start();
+		}
 	}
 
 	listwidth = [];

@@ -1,7 +1,7 @@
 <template>
 	<div class="sidebar" :class="{ sidebarie: isIE }">
 		<div>
-			<div @mouseover="onInfoMouseOver($event)">
+			<div @mouseover="onInfoMouseOver($event)" @click="onConsultation()">
 				<i>
 					<svg
 						version="1.1"
@@ -135,7 +135,9 @@ export default class sidebar extends Vue {
 	created() {
 		this.isIE = device.browser.ie;
 	}
-
+	onConsultation(){
+		window.open('https://tb.53kf.com/code/client/10196572/1')
+	}
 	onInfoMouseOver(event: MouseEvent) {
 		let dots = (<HTMLElement>event.currentTarget).querySelectorAll('svg .st1');
 		gsap.fromTo(

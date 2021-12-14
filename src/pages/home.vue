@@ -348,7 +348,7 @@
 			</div>
 		</div>
 		<div class="page5 wow">
-			<div class="swiper" v-if="page5List.length > 0">
+			<div class="swiper" v-if="page5List&&page5List.length > 0">
 				<swiper :options="bannerSwiperOptions3" ref="myswiper3">
 					<swiper-slide v-for="(item, i) in page5List" class="page5Slide" :key="i">
 						<div class="img-box" v-if="item.imgs">
