@@ -219,8 +219,8 @@ export default class home extends Vue {
 		});
 		utils.emitter.$on('page1IndexFun', (introductionIndex: number) => {
 			this.page1Index = introductionIndex;
-			window.clearTimeout(this.tr)
 			if(this.page1Index==0){
+				window.clearTimeout(this.tr)
 				let video = document.querySelector(".videos");
 				if(video){
 					(video as any).currentTime = 0;
