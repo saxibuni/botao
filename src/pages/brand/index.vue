@@ -1739,7 +1739,7 @@ html {
 								left: -75px;
 								top: 11px;
 								width: 40px;
-								height: 28px;
+								height: 40px;
 								background-image: url(~assets/icons/shouhou.png);
 							}
 						}
