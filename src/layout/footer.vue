@@ -45,16 +45,16 @@
 							<i>
 								<img src="~assets/icons/ic_home_footer_phone.png" alt="" />
 							</i>
-							Phone number
+							24小时热线咨询
 						</div>
 						<h3>{{ footData.tel }}</h3>
 					</li>
-					<li v-if="false">
+					<li>
 						<div>
 							<i>
-								<img src="~assets/icons/ic_home_footer_mail.png" alt="" />
+								<img src="~assets/icons/shouhou.png" alt="" />
 							</i>
-							E-mail
+							021-54254910
 						</div>
 						<h3>{{ footData.email }}</h3>
 					</li>
@@ -63,7 +63,7 @@
 							<i>
 								<img src="~assets/icons/ic_home_footer_address.png" alt="" />
 							</i>
-							Address
+							地址
 						</div>
 						<h3>{{ footData.address }}</h3>
 					</li>
@@ -560,7 +560,7 @@ export default class Footer extends Vue {
 						}
 					}
 				}
-				.jszc{
+				.jszc {
 					pointer-events: none;
 				}
 				span {

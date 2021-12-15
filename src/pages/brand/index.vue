@@ -266,15 +266,19 @@
 					<ul>
 						<li>
 							<div>
-								<span>Phone number</span>
+								<span>24小时咨询热线</span>
 								<span>{{ $store.state.footData.tel }}</span>
 								<i></i>
 							</div>
-							<div></div>
+							<div>
+									<span>售后电话</span>
+								<span>021-54254910</span>
+								<i></i>
+							</div>
 						</li>
 						<li>
 							<div>
-								<span>Address</span>
+								<span>地址</span>
 								<span>{{ $store.state.footData.address }}</span>
 								<i></i>
 							</div>
@@ -1736,7 +1740,7 @@ html {
 								top: 11px;
 								width: 40px;
 								height: 28px;
-								background-image: url(~assets/icons/ic_g1_part8_email.png);
+								background-image: url(~assets/icons/shouhou.png);
 							}
 						}
 						&:not(:first-child) {
