@@ -272,7 +272,7 @@
 							</div>
 							<div>
 									<span>售后电话</span>
-								<span>021-54254910</span>
+								<span>{{$store.state.footData.shtel}}</span>
 								<i></i>
 							</div>
 						</li>

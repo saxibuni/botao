@@ -56,7 +56,7 @@
 							</i>
 							售后电话
 						</div>
-						<h3>021-54254910</h3>
+						<h3>{{$store.state.footData.shtel}}</h3>
 					</li>
 					<li>
 						<div>
