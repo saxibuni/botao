@@ -54,9 +54,9 @@
 							<i>
 								<img src="~assets/icons/shouhou.png" alt="" />
 							</i>
-							021-54254910
+							售后电话
 						</div>
-						<h3>{{ footData.email }}</h3>
+						<h3>021-54254910</h3>
 					</li>
 					<li>
 						<div>
