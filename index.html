@@ -21,7 +21,7 @@
 
 			if (device && !tablet) {
 				///移动端非pad时
-				let hash = location.hash;
+				var hash = location.hash;
 				if (hash.indexOf('infomation/strategy-detail') > -1) {
 					hash = hash.replace('/infomation', '');
 					location.href = './mobile' + hash;
