@@ -720,13 +720,14 @@ export default Manager;
 						}
 					}
 					.swiper-pagination {
-						width: 66px;
+						// width: 66px;
 						height: 12px;
 						position: relative;
 						left: 50%;
 						top: -160px;
 						transform: translateX(-50%);
 						display: flex;
+						justify-content: center;
 						/deep/.swiper-pagination-bullet {
 							margin-right: 15px;
 							box-sizing: border-box;
