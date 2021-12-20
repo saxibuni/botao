@@ -356,7 +356,7 @@ export default class home extends Vue {
 	listwidth = [];
 	textActive2 = true;
 	onClick(item, i) {
-		if(item.img == "assets/white.png"){
+		if(item.img == require("assets/white.png")){
 			return
 		}
 
