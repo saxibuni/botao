@@ -7,7 +7,7 @@
 		<CapitalRetention/>
 		<MakeAppointment />
 		<DialogTip />
-
+		<Agreement />
 	</div>
 </template>
 

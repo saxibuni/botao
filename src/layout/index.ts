@@ -5,6 +5,7 @@ import Sidebar from "./sidebar.vue";
 import CapitalRetention from "../components/CapitalRetention.vue";
 import MakeAppointment from "../components/makeAppointment.vue";
 import DialogTip from "../components/dialogtip.vue";
+import Agreement from "../components/agreement.vue";
 
 @Component({
 	components:{
@@ -13,7 +14,8 @@ import DialogTip from "../components/dialogtip.vue";
 		Sidebar,
 		CapitalRetention,
 		DialogTip,
-		MakeAppointment
+		MakeAppointment,
+		Agreement
 	}
 })
 export default class layout extends Vue {

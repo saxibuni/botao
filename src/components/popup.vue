@@ -79,6 +79,14 @@ export default class popup extends Vue {
 		width: 1050px;
 		height: 500px;
 		opacity: 1;
+		.deal{
+			font-size: 14px;
+			color: #999;
+			span{
+				color: #ed5400;
+				cursor: pointer;
+			}
+		}
 		.close {
 			width: 18px;
 			height: 18px;

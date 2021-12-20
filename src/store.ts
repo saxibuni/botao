@@ -11,6 +11,8 @@ export interface State {
 	dialog:any;
 	dialogDesign:any;
 	hasShowCommitTip: boolean;
+	deal: boolean;
+
 }
 
 let state: State = {
@@ -27,7 +29,8 @@ let state: State = {
 	dialogDesign:{
 		design:false,
 		visit:false
-	}
+	},
+	deal: false
 }
 
 let getters = {
