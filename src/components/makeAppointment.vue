@@ -42,7 +42,7 @@
 								<b>*</b>
 							</li>
 						</ul>
-						<p class="deal">自动输入历史信息<span @click="$store.state.deal = true;">《个人信息授权》</span></p>
+						<p class="deal" :class="{active:$store.state.checkbox}" @click="$store.state.checkbox=!$store.state.checkbox">自动输入历史信息<span @click.stop="$store.state.deal = true;">《个人信息授权》</span></p>
 						<div class="btns">
 							<div @click="onSubmit()">
 								<Button text="提交" />
@@ -99,6 +99,13 @@ export default class makeAppointment extends Vue {
 		this.form.phone = this.form.phone.replace(/[^\d]/g, '');
 	}
 	onSubmit() {
+		if (!this.$store.state.checkbox) {
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请阅读个人信息授权'
+			};
+			return;
+		}
 		if (!this.form.userName) {
 			this.$store.state.dialog = {
 				state: 2,

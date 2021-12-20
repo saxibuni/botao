@@ -24,6 +24,7 @@
 							<input type="text" v-model="form.area" placeholder="输入您的装修面积" />
 							<b>*</b>
 						</li>
+						<p class="deal" :class="{active:$store.state.checkbox}" @click="$store.state.checkbox=!$store.state.checkbox">自动输入历史信息<span @click.stop="$store.state.deal = true;">《个人信息授权》</span></p>
 						<li class="btn" @click="onSubmit()">免费获取报价</li>
 					</ul>
 				</div>
@@ -202,6 +203,13 @@ export default class Footer extends Vue {
 		}
 	];
 	onSubmit() {
+		if (!this.$store.state.checkbox) {
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请阅读个人信息授权'
+			};
+			return;
+		}
 		if (!this.form.userName) {
 			this.$store.state.dialog = {
 				state: 2,
@@ -416,6 +424,30 @@ export default class Footer extends Vue {
 						font-weight: 400;
 						color: #ffffff;
 						text-shadow: 0px 0px 30px rgba(185, 52, 0, 0.55);
+					}
+				}
+				.deal{
+					font-size: 14px;
+					color: #999;
+					display: flex;
+					cursor: pointer;
+					align-items: center;
+					&.active{
+						&::before{
+							border: 4px solid #ed5400;
+						}
+					}
+					&::before{
+						content: '';
+						transition: border .1s;
+						width: 15px;
+						height: 15px;
+						border: 2px solid #ed5400;
+						border-radius: 100%;
+						margin-right: 5px;
+					}
+					span{
+						color: #ed5400;
 					}
 				}
 			}

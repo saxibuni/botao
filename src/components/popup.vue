@@ -83,18 +83,24 @@ export default class popup extends Vue {
 			font-size: 14px;
 			color: #999;
 			display: flex;
+			cursor: pointer;
 			align-items: center;
+			&.active{
+				&::before{
+					border:5px solid #ed5400;
+				}
+			}
 			&::before{
 				content: '';
+				transition: border .1s;
 				width: 15px;
 				height: 15px;
-				border: 4px solid #ed5400;
+				border: 2px solid #ed5400;
 				border-radius: 100%;
 				margin-right: 5px;
 			}
 			span{
 				color: #ed5400;
-				cursor: pointer;
 			}
 		}
 		.close {

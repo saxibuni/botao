@@ -212,7 +212,7 @@
 					意书收集、使用、披露、存储、管理和保护我的个人信息。<br>
 					</div>
 					<div class="btn-box">
-						<Button @click.native="$store.state.deal=false" text="确定" />
+						<Button @click.native="$store.state.deal=false,$store.state.checkbox=true" text="确定" />
 					</div>
 				</div>
 			</div>

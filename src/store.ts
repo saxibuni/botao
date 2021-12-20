@@ -12,7 +12,7 @@ export interface State {
 	dialogDesign:any;
 	hasShowCommitTip: boolean;
 	deal: boolean;
-
+	checkbox: boolean;
 }
 
 let state: State = {
@@ -30,7 +30,8 @@ let state: State = {
 		design:false,
 		visit:false
 	},
-	deal: false
+	deal: false,
+	checkbox: false,
 }
 
 let getters = {
