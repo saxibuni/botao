@@ -211,7 +211,9 @@
 					已知晓本产品（或服务）的业务功能/本次活动的目的，并在此明确同意波涛家装按照波涛家装隐私政策及本知情并同<br>
 					意书收集、使用、披露、存储、管理和保护我的个人信息。<br>
 					</div>
-					<Button @click.native="$store.state.deal=false" text="确定" />
+					<div class="btn-box">
+						<Button @click.native="$store.state.deal=false" text="确定" />
+					</div>
 				</div>
 			</div>
 		</Popup>
@@ -240,23 +242,27 @@ export default class agreement extends Vue {
 	 width:1050px;
 	 height:700px;
 	 border-radius: 3px;
+		padding-left: 80px;
 	 h1{
 		 text-align: center;
 		 font-size: 28px;
 		 line-height:60px;
+		 padding-right: 80px;
+		 padding-top: 20px;
 	 }
 	 .text{
-		 font-size: 18px;
-		 height:560px;
+		 font-size: 17px;
+		 height:500px;
 		 overflow: auto;
-		 padding: 30px 0 30px 30px;
+		 margin-top: 20px;
+		 padding-right: 10px;
 		 line-height: 33px;
 		 color: #999;
-		 margin-bottom: 10px;
-		 letter-spacing: 1px;
+		 margin-bottom: 20px;
+		 width: 920px;
 	   @include scrollbar-beautify(8px,5px,#ed5400);
 		 p{
-				font-weight: 700;
+			 font-weight: 700;
 			 color: #555;
 			 &.centent{
 				 text-align: center;
@@ -269,6 +275,9 @@ export default class agreement extends Vue {
 				 text-decoration: underline;
 			 }
 		 }
+	 }
+	 .btn-box{
+		 padding-right: 80px;
 	 }
 	}
 }

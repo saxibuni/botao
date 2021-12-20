@@ -89,7 +89,7 @@
 					<template v-for="(item, i) in footData.link">
 						<a :href="item.url" target="_blank" :key="i">{{ item.title }}</a>
 					</template>
-					<a href="javascript:void(0);" @click="$store.state.deal=true">《隐私政策》</a>
+					<!-- <a href="javascript:void(0);" @click="$store.state.deal=true">《隐私政策》</a> -->
 				</div>
 				<div class="icons">
 					<div class="wx">

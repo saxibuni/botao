@@ -41,7 +41,7 @@
 								<b>*</b>
 							</li>
 						</ul>
-						<p class="deal">自动输入历史信息<span @click="$store.state.deal = true;">《个人信息授权》</span></p>
+						<p class="deal"> 自动输入历史信息<span @click="$store.state.deal = true;">《个人信息授权》</span></p>
 						<div class="btns">
 							<div @click="onSubmit()">提交</div>
 							<div
