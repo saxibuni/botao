@@ -17,11 +17,11 @@
 						<div class="text-content">
 							<h3>
 								<span></span>
-								<span>{{ item.ztitle }}</span>
+								<span>{{ item.ztitle }} <span class="zw">占位</span> </span>
 							</h3>
 							<div v-if="item.etitle">
-								<p>{{ item.etitle.split('\n')[0] }}</p>
-								<p>{{ item.etitle.split('\n')[1] }}</p>
+								<p>{{ item.etitle.split('\n')[0] }} <span class="zw">占位</span></p>
+								<p>{{ item.etitle.split('\n')[1] }} <span class="zw">占位</span></p>
 							</div>
 						</div>
 						<div v-if="item.link!=''">
@@ -587,6 +587,11 @@ export default home;
 									font-weight: bold;
 								}
 							}
+						}
+						.zw{
+							position: absolute;
+							top: -9999px;
+							opacity: 0;
 						}
 						div {
 							font-size: 97px;
