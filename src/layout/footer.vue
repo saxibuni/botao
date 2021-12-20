@@ -24,7 +24,7 @@
 							<input type="text" v-model="form.area" placeholder="输入您的装修面积" />
 							<b>*</b>
 						</li>
-						<p class="deal" :class="{active:$store.state.checkbox}" @click="$store.state.checkbox=!$store.state.checkbox">自动输入历史信息<span @click.stop="$store.state.deal = true;">《个人信息授权》</span></p>
+						<p class="deal" :class="{active:$store.state.checkbox}" @click="$store.state.checkbox=!$store.state.checkbox"><i><b></b></i> 自动输入历史信息<span @click.stop="$store.state.deal = true;">《个人信息授权》</span></p>
 						<li class="btn" @click="onSubmit()">免费获取报价</li>
 					</ul>
 				</div>
@@ -433,18 +433,29 @@ export default class Footer extends Vue {
 					cursor: pointer;
 					align-items: center;
 					&.active{
-						&::before{
-							border: 4px solid #ed5400;
+						i{
+							b{
+								opacity: 1;
+							}
 						}
 					}
-					&::before{
-						content: '';
-						transition: border .1s;
-						width: 15px;
-						height: 15px;
-						border: 2px solid #ed5400;
+					i{
+						width: 14PX;
+						height: 14PX;
+						border: 1PX solid #ed5400;
 						border-radius: 100%;
 						margin-right: 5px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						b{
+							width: 8PX;
+							height: 8PX;
+							background: #ed5400;
+							border-radius: 100%;
+							opacity: 0;
+							transition:.1s;
+						}
 					}
 					span{
 						color: #ed5400;

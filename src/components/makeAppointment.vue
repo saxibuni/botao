@@ -42,7 +42,7 @@
 								<b>*</b>
 							</li>
 						</ul>
-						<p class="deal" :class="{active:$store.state.checkbox}" @click="$store.state.checkbox=!$store.state.checkbox">自动输入历史信息<span @click.stop="$store.state.deal = true;">《个人信息授权》</span></p>
+						<p class="deal" :class="{active:$store.state.checkbox}" @click="$store.state.checkbox=!$store.state.checkbox"><i><b></b></i>自动输入历史信息<span @click.stop="$store.state.deal = true;">《个人信息授权》</span></p>
 						<div class="btns">
 							<div @click="onSubmit()">
 								<Button text="提交" />
