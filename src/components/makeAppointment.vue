@@ -129,9 +129,9 @@ export default class makeAppointment extends Vue {
 		}
 		let data: any = {
 			form_id: this.$store.state.dialogDesign.design ? 10 : 12,
-			attr_45: this.form.userName,
-			attr_46: this.form.phone,
-			attr_47: this.form.area
+			attr_41: this.form.userName,
+			attr_42: this.form.phone,
+			attr_43: this.form.area
 		};
 		if (!this.$store.state.dialogDesign.design) {
 			data = {
