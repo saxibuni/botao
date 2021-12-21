@@ -226,7 +226,9 @@ export default class home extends Vue {
 					(video as any).currentTime = 0;
 				}
 			 this.tr =	setTimeout(()=>{
+				 if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
 					(this.$refs.myswiper1 as any).$swiper.slideTo(2, 600, true);
+				 }
 				},16*1000)
 
 				if(this.$refs.myswiper1&&(this.$refs.myswiper1 as any).$swiper!=undefined){
