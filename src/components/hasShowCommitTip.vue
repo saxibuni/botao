@@ -25,6 +25,7 @@
 					</li>
 				</ul>
 			</div>
+			<p class="deal" :class="{active:$store.state.checkbox}" @click="$store.state.checkbox=!$store.state.checkbox"><i><b></b></i> 自动输入历史信息<span @click.stop="$store.state.deal = true;">《个人信息授权》</span></p>
 			<div>
 			</div>
 		</div>
@@ -51,6 +52,13 @@ export default class videoPopup extends Vue {
 		this.form.phone = this.form.phone.replace(/[^\d]/g, '');
 	}
 		onSubmit() {
+		if (!this.$store.state.checkbox) {
+			this.$store.state.dialog = {
+				state: 2,
+				text: '请阅读个人信息授权'
+			};
+			return;
+		}
 		if (!this.form.userName) {
 			this.$store.state.dialog = {
 				state: 2,
@@ -229,13 +237,42 @@ export default class videoPopup extends Vue {
 			}
 		}
 	}
-	p{
-		font-size: 14px;
-		font-weight: 400;
-		color: #FFFFFF;
-		line-height: 30px;
-		opacity: 0.5;
-		text-align: center;
-	}
+
+	.deal{
+					font-size: 14px;
+					color: #999;
+					display: flex;
+					cursor: pointer;
+					align-items: center;
+					justify-content: center;
+					&.active{
+						i{
+							b{
+								opacity: 1;
+							}
+						}
+					}
+					i{
+						width: 14PX;
+						height: 14PX;
+						border: 1PX solid #ed5400;
+						border-radius: 100%;
+						margin-right: 5px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						b{
+							width: 8PX;
+							height: 8PX;
+							background: #ed5400;
+							border-radius: 100%;
+							opacity: 0;
+							transition:.1s;
+						}
+					}
+					span{
+						color: #ed5400;
+					}
+				}
 }
 </style>
