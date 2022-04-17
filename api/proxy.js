@@ -4,7 +4,7 @@ module.exports = (req, res) => {
 	let target = "";
 
 	if (req.url.startsWith('/api.php')) {
-		target = "http://btgwcs.zhulu76.com";
+		target = "http://btzs.shbotao.net/";
 	}
 
 	createProxyMiddleware({
