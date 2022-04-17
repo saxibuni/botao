@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import utils from "root/utils";
 import ICountUp from 'root/components/countup.vue';
 import { device } from 'root/utils';
+
 gsap.registerPlugin(ScrollTrigger, SplitText);
 @Component({
 	components:{

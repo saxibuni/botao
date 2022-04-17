@@ -61,13 +61,13 @@
 		<div class="page3 wow">
 			<h2>绿色建材让家越住越健康</h2>
 			<p>Green building materials</p>
-			<div class="circle">
+			<div :class="isIE ? 'ieClass' : 'circle'">
 				<div class="father" v-for="(item, i) in yzyjkList" :key="i" :class="activeIndex == i ? 'active' + i : ''">
 					<div class="content">
 						<div class="container">
 							<div class="imgBox">
 								<img :src="web_url + item.img" alt="" />
-								<div class="mask" :class="activeIndex == i ? 'activetext' : ''">
+								<div class="mask" :class="activeIndex == i ? 'activetext' : ''" v-if="!isIE">
 									<p>{{ item.desc }}</p>
 								</div>
 							</div>
@@ -563,6 +563,14 @@ export default CheckPick;
 			width: 660px;
 			height: 324px;
 			clip-path: ellipse(330px 330px at 50% 100%);
+			z-index: 10;
+		}
+		> .ieImg {
+			width: 1640px;
+			position: absolute;
+			left: 49%;
+			bottom: -0px;
+			transform: translateX(-50%);
 		}
 		> .img {
 			// width: 100%;
@@ -957,6 +965,89 @@ export default CheckPick;
 					}
 				}
 			}
+		}
+		.ieClass {
+			width: 1413px;
+			height: 1413px;
+			border: 1px solid #ffffff;
+			border-radius: 50%;
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%, 50%);
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.container {
+				display: flex;
+				// justify-content: space-between;
+				width: 660px;
+				// height: 150px;
+				.imgBox {
+					img {
+					}
+				}
+				.text {
+					position: relative;
+					flex: 1;
+					background: #eeeeee;
+					p {
+						font-size: 22px;
+						font-family: AlibabaPuHuiTiM;
+						color: #000000;
+						position: absolute;
+						top: 0;
+						left: 0;
+						z-index: 5;
+					}
+				}
+			}
+			.father {
+				position: absolute;
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(1) {
+					left: 704px;
+					bottom: 508px;
+				}
+				&:nth-of-type(8) {
+					left: 24px;
+					top: 458px;
+				}
+			}
+		}
+		.circleMask {
+			width: 975px;
+			height: 975px;
+			background: #eeeeee;
+			border-radius: 50%;
+			// z-index: 9;
+			position: absolute;
+			left: 50%;
+			bottom: 0;
+			transform: translate(-50%, 50%);
 		}
 	}
 	.page4 {
